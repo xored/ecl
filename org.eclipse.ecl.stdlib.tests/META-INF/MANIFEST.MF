@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tests Plug-in
+Bundle-SymbolicName: org.eclipse.ecl.stdlib.tests
+Bundle-Version: 1.0.0
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.junit,
+ org.eclipse.ecl.core,
+ org.eclipse.ecl.stdlib,
+ org.eclipse.ecl.parser,
+ org.eclipse.core.runtime

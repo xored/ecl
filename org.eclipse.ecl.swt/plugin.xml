@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.1 2010/08/02 09:24:19 andrey Exp $
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.eclipse.org/ecl/swt.ecore"
+            class="org.eclipse.ecl.swt.SwtPackage"
+            genModel="model/swt.genmodel"/>
+   </extension>
+
+   <extension
+         point="org.eclipse.ecl.core.scriptlet">
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.FindControlsService"
+            name="FindControls"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.GetMenuService"
+            name="GetMenu"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.GetViewService"
+            name="GetView"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.GetEditorService"
+            name="GetEditor"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.WaitShellIsActiveService"
+            name="WaitShellIsActive"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.WaitShellClosesService"
+            name="WaitShellCloses"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.SetTextService"
+            name="SetText"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.ClickService"
+            name="Click"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.SelectService"
+            name="Select"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.GetTreeItemService"
+            name="GetTreeItem"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.ContextMenuService"
+            name="ContextMenu"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.GetBotService"
+            name="GetBot"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.GetTextService"
+            name="GetText"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.TypeTextService"
+            name="TypeText"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.CheckService"
+            name="Check"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.GetTableItemService"
+            name="GetTableItem"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.WaitEnabledService"
+            name="WaitEnabled"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.GetTreeService"
+            name="GetTree"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.GetButtonService"
+            name="GetButton"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.GetEditboxService"
+            name="GetEditbox"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.GetCheckboxService"
+            name="GetCheckbox"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.swt.GetItemService"
+            name="GetItem"
+            namespace="http://www.eclipse.org/ecl/swt.ecore">
+      </scriptlet>
+   </extension>
+
+</plugin>

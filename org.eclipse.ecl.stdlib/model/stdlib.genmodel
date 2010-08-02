@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.ecl.stdlib/gen-src"
+    modelPluginID="org.eclipse.ecl.stdlib" modelName="Stdlib" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" usedGenPackages="../../org.eclipse.ecl.core/model/ecl.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>stdlib.ecore</foreignModel>
+  <foreignModel>../../org.eclipse.ecl.core/model/ecl.ecore</foreignModel>
+  <genPackages prefix="StandartLibrary" basePackage="org.eclipse.ecl" disposableProviderFactory="true"
+      ecorePackage="stdlib.ecore#/">
+    <genClasses ecoreClass="stdlib.ecore#//Length"/>
+    <genClasses ecoreClass="stdlib.ecore#//Concat">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stdlib.ecore#//Concat/string"/>
+    </genClasses>
+    <genClasses ecoreClass="stdlib.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stdlib.ecore#//Property/name"/>
+    </genClasses>
+    <genClasses ecoreClass="stdlib.ecore#//AssertEquals">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stdlib.ecore#//AssertEquals/expected"/>
+    </genClasses>
+    <genClasses ecoreClass="stdlib.ecore#//AssertNotEquals">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute stdlib.ecore#//AssertNotEquals/expected"/>
+    </genClasses>
+    <genClasses ecoreClass="stdlib.ecore#//AssertTrue"/>
+    <genClasses ecoreClass="stdlib.ecore#//AssertFalse"/>
+    <genClasses ecoreClass="stdlib.ecore#//AssertNull"/>
+    <genClasses ecoreClass="stdlib.ecore#//AssertNotNull"/>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.1 2010/08/02 09:24:04 andrey Exp $
+-->
+
+<plugin>
+   <extension
+         point="org.eclipse.ecl.core.param_converter">
+      <converter
+            class="org.eclipse.ecl.parser.CommandParamConverter">
+      </converter>
+   </extension>
+</plugin>

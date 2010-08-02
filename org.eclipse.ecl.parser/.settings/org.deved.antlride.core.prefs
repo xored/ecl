@@ -1,0 +1,8 @@
+#Mon Oct 06 11:19:58 NOVST 2008
+antlr_core_code_generator_XdbgST=false
+antlr_core_code_generator_Xnoinlinedfa=true
+antlr_core_code_generator_out_folder=src
+antlr_core_code_generator_out_option=p
+antlr_core_code_generator_profile=false
+antlr_core_code_generator_trace=false
+eclipse.preferences.version=1

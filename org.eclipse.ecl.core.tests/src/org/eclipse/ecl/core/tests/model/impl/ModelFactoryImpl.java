@@ -1,0 +1,187 @@
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id: ModelFactoryImpl.java,v 1.1 2010/08/02 09:24:08 andrey Exp $
+ */
+package org.eclipse.ecl.core.tests.model.impl;
+
+import org.eclipse.ecl.core.tests.model.*;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+
+import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model <b>Factory</b>.
+ * <!-- end-user-doc -->
+ * @generated
+ */
+public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static ModelFactory init() {
+		try {
+			ModelFactory theModelFactory = (ModelFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/ecl/tests/model.ecore"); 
+			if (theModelFactory != null) {
+				return theModelFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new ModelFactoryImpl();
+	}
+
+	/**
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModelFactoryImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EObject create(EClass eClass) {
+		switch (eClass.getClassifierID()) {
+			case ModelPackage.TEST_COMMAND: return createTestCommand();
+			case ModelPackage.SLOW_COMMAND: return createSlowCommand();
+			case ModelPackage.INCREMENT_COMMAND: return createIncrementCommand();
+			case ModelPackage.DATA: return createData();
+			case ModelPackage.EMIT_DATA: return createEmitData();
+			case ModelPackage.RANDOM: return createRandom();
+			case ModelPackage.IS_PIPE_EMPTY: return createIsPipeEmpty();
+			case ModelPackage.EMIT_EMF_DATA: return createEmitEMFData();
+			case ModelPackage.FAIL: return createFail();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TestCommand createTestCommand() {
+		TestCommandImpl testCommand = new TestCommandImpl();
+		return testCommand;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SlowCommand createSlowCommand() {
+		SlowCommandImpl slowCommand = new SlowCommandImpl();
+		return slowCommand;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IncrementCommand createIncrementCommand() {
+		IncrementCommandImpl incrementCommand = new IncrementCommandImpl();
+		return incrementCommand;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Data createData() {
+		DataImpl data = new DataImpl();
+		return data;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EmitData createEmitData() {
+		EmitDataImpl emitData = new EmitDataImpl();
+		return emitData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Random createRandom() {
+		RandomImpl random = new RandomImpl();
+		return random;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IsPipeEmpty createIsPipeEmpty() {
+		IsPipeEmptyImpl isPipeEmpty = new IsPipeEmptyImpl();
+		return isPipeEmpty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EmitEMFData createEmitEMFData() {
+		EmitEMFDataImpl emitEMFData = new EmitEMFDataImpl();
+		return emitEMFData;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Fail createFail() {
+		FailImpl fail = new FailImpl();
+		return fail;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModelPackage getModelPackage() {
+		return (ModelPackage)getEPackage();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @deprecated
+	 * @generated
+	 */
+	@Deprecated
+	public static ModelPackage getPackage() {
+		return ModelPackage.eINSTANCE;
+	}
+
+} //ModelFactoryImpl
