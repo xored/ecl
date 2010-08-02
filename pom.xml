@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.eclipse.ecl</groupId>
+  <artifactId>ecl</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+    <!--module>org.antlr.runtime</module>
+    <module>org.eclipse.dltk.tcl.ui.tests.ecl</module>
+    <module>org.eclipse.ecl.cc.cvs</module>
+    <module>org.eclipse.ecl.cc.cvs.tests</module-->
+    <module>org.eclipse.ecl.client.tcp</module>
+    <module>org.eclipse.ecl.client.tcp.tests</module>
+    <module>org.eclipse.ecl.core</module>
+    <module>org.eclipse.ecl.core-feature</module>
+    <module>org.eclipse.ecl.core.tests</module>
+    <module>org.eclipse.ecl.core.tests-feature</module>
+    <module>org.eclipse.ecl.parser</module>
+    <module>org.eclipse.ecl.parser.test</module>
+    <module>org.eclipse.ecl.sdk-feature</module>
+    <module>org.eclipse.ecl.server-feature</module>
+    <module>org.eclipse.ecl.server.tcp</module>
+    <module>org.eclipse.ecl.server.tcp.ui</module>
+    <module>org.eclipse.ecl.shell</module>
+    <module>org.eclipse.ecl.stdlib</module>
+    <module>org.eclipse.ecl.stdlib.tests</module>
+    <module>org.eclipse.ecl.swt</module>
+    <module>org.eclipse.ecl.swt.tests</module>
+    <module>org.eclipse.ecl.telnet.server</module>
+    <module>org.eclipse.ecl.telnet.server.ui</module>
+    <module>org.eclipse.ecl.terminal.connector</module>
+    <module>org.eclipse.espace.core</module>
+  </modules>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.sonatype.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>0.9.0</version>
+        <extensions>true</extensions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
