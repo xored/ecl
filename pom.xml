@@ -12,35 +12,59 @@
     <module>org.eclipse.ecl.cc.cvs</module>
     <module>org.eclipse.ecl.cc.cvs.tests</module-->
     <module>org.eclipse.ecl.client.tcp</module>
-    <module>org.eclipse.ecl.client.tcp.tests</module>
+    <!--module>org.eclipse.ecl.client.tcp.tests</module-->
     <module>org.eclipse.ecl.core</module>
     <module>org.eclipse.ecl.core-feature</module>
-    <module>org.eclipse.ecl.core.tests</module>
-    <module>org.eclipse.ecl.core.tests-feature</module>
+    <module>org.eclipse.ecl.core-updatesite</module>
+    <!--module>org.eclipse.ecl.core.tests</module>
+    <module>org.eclipse.ecl.core.tests-feature</module-->
     <module>org.eclipse.ecl.parser</module>
-    <module>org.eclipse.ecl.parser.test</module>
-    <module>org.eclipse.ecl.sdk-feature</module>
+    <!--module>org.eclipse.ecl.parser.test</module>
+    <module>org.eclipse.ecl.sdk-feature</module-->
     <module>org.eclipse.ecl.server-feature</module>
     <module>org.eclipse.ecl.server.tcp</module>
     <module>org.eclipse.ecl.server.tcp.ui</module>
     <module>org.eclipse.ecl.shell</module>
     <module>org.eclipse.ecl.stdlib</module>
-    <module>org.eclipse.ecl.stdlib.tests</module>
+    <!--module>org.eclipse.ecl.stdlib.tests</module>
     <module>org.eclipse.ecl.swt</module>
-    <module>org.eclipse.ecl.swt.tests</module>
+    <module>org.eclipse.ecl.swt.tests</module-->
     <module>org.eclipse.ecl.telnet.server</module>
     <module>org.eclipse.ecl.telnet.server.ui</module>
     <module>org.eclipse.ecl.terminal.connector</module>
     <module>org.eclipse.espace.core</module>
   </modules>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.sonatype.tycho</groupId>
-        <artifactId>tycho-maven-plugin</artifactId>
-        <version>0.9.0</version>
-        <extensions>true</extensions>
-      </plugin>
-    </plugins>
-  </build>
+	<repositories>
+		<repository>
+			<id>helios</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/helios/</url>
+		</repository>
+		<!-- repository>
+			<id>galileoTest</id>
+			<layout>p2</layout>
+			<url>file:/Users/Pascal/Downloads/eclipse-testing/eclipse-junit-tests-I20100312-0800</url>
+		</repository -->
+	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.sonatype.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>0.9.0</version>
+				<extensions>true</extensions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.sonatype.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>0.9.0</version>
+				<configuration>
+					<resolver>p2</resolver>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+	</build>
 </project>
