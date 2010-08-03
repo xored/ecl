@@ -7,11 +7,18 @@ import org.eclipse.ui.IStartup;
 
 public class ServerStarter implements IStartup {
 
+	private static final String ECL_SERVER_PORT = "eclPort";
+
 	public void earlyStartup() {
 		try {
-			EclTcp.runServer(5378);
-		} catch(IOException e) {
-			e.printStackTrace();
+			String port = System.getProperty(ECL_SERVER_PORT);
+			if (port != null) {
+				EclTcp.runServer(Integer.parseInt(port)); // 5378
+			}
+		} catch (NumberFormatException e) {
+			Activator.log("Ecl server port is incorrect.", e);
+		} catch (IOException e) {
+			Activator.log(e);
 		}
 	}
 }
