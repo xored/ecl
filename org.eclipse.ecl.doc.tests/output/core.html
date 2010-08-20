@@ -1,0 +1,280 @@
+<html>
+<head>
+<title>Ecl Documentation</title>
+<style>
+body, div, p, th, td, li, dd, ul, ol, dl, dt, blockquote {
+    font-family: Verdana, sans-serif;
+}
+
+pre, code { font-family: 'Courier New', Courier, monospace; }
+
+pre {
+    background-color:  #f6fcec;
+    border-top:        1px solid #6A6A6A;
+    border-bottom:     1px solid #6A6A6A;
+    padding:           1em;
+    overflow:          auto;
+}
+
+body {
+    background-color:  #FFFFFF;
+    font-size:         12px;
+    line-height:       1.25;
+    letter-spacing:    .2px;
+    padding-left:      .5em;
+}
+
+.commandName {
+    color:             #11577b;
+    font-weight:       bold;
+}
+
+.paramName {
+    font-weight:       bold;
+}
+
+.paramType {
+    font-style:        italic;
+}
+
+h1, h2, h3, h4 {
+    font-family:       Georgia, serif;
+    padding-left:      1em;
+    margin-top:        1em;
+}
+
+h1 {
+    font-size:         22px;
+    border-bottom:     1px dotted black;
+}
+
+h2 {
+    padding-left:      0px;
+}
+
+h4 {
+    padding:           2px;
+    margin :           0px;
+    font-weight:       bold;
+    text-transform:    uppercase;
+}
+
+td {
+    padding:           5px 15px;
+    background-color:  #FFFFFF;
+    font-size:         12px;
+    line-height:       1.25;
+    letter-spacing:    .2px;
+}
+
+div {
+    padding :          2px 2em;
+}
+</style>
+</head>
+<body>
+<h1>Packages</h1><ul>
+<li><a href="#stdlib">stdlib</a></li>
+<li><a href="#common">common</a></li>
+<li><a href="#diagram">diagram</a></li>
+</ul>
+<h1 id="stdlib">Package stdlib</h1><span class="commandName">Length</span><br/>
+<br/>
+
+<span class="commandName">Concat</span>   <span class="paramName">-string</span>[1..1]:<span class="paramType">EString</span><br/>
+<br/>
+
+<span class="commandName">Property</span>   <span class="paramName">-name</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-index</span>[0..1]:<span class="paramType">EIntegerObject</span><br/>
+<br/>
+
+<span class="commandName">AssertEquals</span>   <span class="paramName">-expected</span>[0..1]:<span class="paramType">EString</span><br/>
+<br/>
+
+<span class="commandName">AssertNotEquals</span>   <span class="paramName">-expected</span>[0..1]:<span class="paramType">EString</span><br/>
+<br/>
+
+<span class="commandName">AssertTrue</span><br/>
+<br/>
+
+<span class="commandName">AssertFalse</span><br/>
+<br/>
+
+<span class="commandName">AssertNull</span><br/>
+<br/>
+
+<span class="commandName">AssertNotNull</span><br/>
+<br/>
+
+<h1 id="common">Package common</h1><span class="commandName">Unsupported</span>   <span class="paramName">-commandName</span>[0..1]:<span class="paramType">EString</span><br/>
+<br/>
+
+<span class="commandName">FindControl</span>   <span class="paramName">-kind</span>[1..1]:<span class="paramType">EString</span>   <span class="paramName">-pattern</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Window</span>   <span class="paramName">-pattern</span>[1..1]:<span class="paramType">EString</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Menu</span>   <span class="paramName">-path</span>[1..1]:<span class="paramType">EString</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Tree</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Label</span>   <span class="paramName">-pattern</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Button</span>   <span class="paramName">-pattern</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Editbox</span>   <span class="paramName">-label</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Checkbox</span>   <span class="paramName">-pattern</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Table</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">TabItem</span>   <span class="paramName">-name</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Link</span>   <span class="paramName">-text</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">FormText</span>   <span class="paramName">-text</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">ColorSelector</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Combo</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Group</span>   <span class="paramName">-name</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">CoolBar</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">ToolBar</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">CBanner</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">View</span>   <span class="paramName">-pattern</span>[1..1]:<span class="paramType">EString</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Editor</span>   <span class="paramName">-pattern</span>[1..1]:<span class="paramType">EString</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Item</span>   <span class="paramName">-pattern</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">After</span>   <span class="paramName">-element</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">TypeText</span>   <span class="paramName">-text</span>[1..1]:<span class="paramType">EString</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Click</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span>   <span class="paramName">-default</span>[0..1]:<span class="paramType">EBoolean</span><br/>
+<br/>
+
+<span class="commandName">DoubleClick</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">SelectItem</span>   <span class="paramName">-path</span>[1..-1]:<span class="paramType">EString</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">CheckItem</span>   <span class="paramName">-path</span>[1..1]:<span class="paramType">EString</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">SetText</span>   <span class="paramName">-text</span>[1..1]:<span class="paramType">EString</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Close</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Save</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Show</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Type</span>   <span class="paramName">-key</span>[1..1]:<span class="paramType">EString</span><br/>
+<br/>
+
+<span class="commandName">ActivateCellEditor</span>   <span class="paramName">-column</span>[1..1]:<span class="paramType">EIntegerObject</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">ApplyCellEditor</span>   <span class="paramName">-column</span>[1..1]:<span class="paramType">EIntegerObject</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">CancelCellEditor</span>   <span class="paramName">-column</span>[1..1]:<span class="paramType">EIntegerObject</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">GotoLine</span>   <span class="paramName">-line</span>[1..1]:<span class="paramType">EIntegerObject</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Expand</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">SetSwtDialogInfo</span>   <span class="paramName">-type</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-result</span>[0..1]:<span class="paramType">EString</span><br/>
+<br/>
+
+<span class="commandName">Expandable</span>   <span class="paramName">-pattern</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">Canvas</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span>   <span class="paramName">-index</span>[0..1]:<span class="paramType">EInt</span><br/>
+<br/>
+
+<span class="commandName">TabFolder</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<h1 id="diagram">Package diagram</h1><span class="commandName">DiagramFigure</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">DiagramViewer</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">PaletteViewer</span>   <span class="paramName">-parent</span>[0..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">CreateFigure</span>   <span class="paramName">-x</span>[1..1]:<span class="paramType">EIntegerObject</span>   <span class="paramName">-y</span>[1..1]:<span class="paramType">EIntegerObject</span>   <span class="paramName">-tool</span>[1..1]:<span class="paramType">EString</span><br/>
+<br/>
+
+<span class="commandName">MousePress</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span>   <span class="paramName">-x</span>[1..1]:<span class="paramType">EIntegerObject</span>   <span class="paramName">-y</span>[1..1]:<span class="paramType">EIntegerObject</span>   <span class="paramName">-button</span>[1..1]:<span class="paramType">EIntegerObject</span><br/>
+<br/>
+
+<span class="commandName">MouseRelease</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span>   <span class="paramName">-x</span>[1..1]:<span class="paramType">EIntegerObject</span>   <span class="paramName">-y</span>[1..1]:<span class="paramType">EIntegerObject</span>   <span class="paramName">-button</span>[1..1]:<span class="paramType">EIntegerObject</span><br/>
+<br/>
+
+<span class="commandName">MouseMove</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span>   <span class="paramName">-x</span>[1..1]:<span class="paramType">EIntegerObject</span>   <span class="paramName">-y</span>[1..1]:<span class="paramType">EIntegerObject</span><br/>
+<br/>
+
+<span class="commandName">MouseDrag</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span>   <span class="paramName">-x</span>[1..1]:<span class="paramType">EIntegerObject</span>   <span class="paramName">-y</span>[1..1]:<span class="paramType">EIntegerObject</span><br/>
+<br/>
+
+<span class="commandName">ActivateDirectEdit</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">ApplyDirectEdit</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">CancelDirectEdit</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span><br/>
+<br/>
+
+<span class="commandName">MouseHover</span>   <span class="paramName">-x</span>[1..1]:<span class="paramType">EIntegerObject</span>   <span class="paramName">-y</span>[1..1]:<span class="paramType">EIntegerObject</span><br/>
+<br/>
+
+<span class="commandName">EditPart</span>   <span class="paramName">-kind</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-partPath</span>[0..-1]:<span class="paramType">EIntegerObject</span><br/>
+<br/>
+
+<span class="commandName">Figure</span>   <span class="paramName">-kind</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-figurePath</span>[0..-1]:<span class="paramType">EIntegerObject</span><br/>
+<br/>
+
+<span class="commandName">MouseDoubleClick</span>   <span class="paramName">-element</span>[1..1]:<span class="paramType">Element</span>   <span class="paramName">-x</span>[1..1]:<span class="paramType">EIntegerObject</span>   <span class="paramName">-y</span>[1..1]:<span class="paramType">EIntegerObject</span>   <span class="paramName">-button</span>[1..1]:<span class="paramType">EIntegerObject</span><br/>
+<br/>
+
+</body>
+</html>

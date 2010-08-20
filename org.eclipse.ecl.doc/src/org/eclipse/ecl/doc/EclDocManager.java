@@ -1,0 +1,46 @@
+package org.eclipse.ecl.doc;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.ecl.runtime.FQName;
+
+public class EclDocManager {
+	public static EclDocManager instance = new EclDocManager();
+
+	private final static String DOC_XTPT = "org.eclipse.ecl.doc";
+	private final static String DOC_NAME_ATTR = "name";
+	private final static String DOC_NAMESPACE_ATTR = "namespace";
+	private final static String DOC_ATTR = "doc";
+
+	public Map<FQName, String> map;
+
+	private EclDocManager() {
+	}
+
+	public String getDoc(FQName c) {
+		if (map == null) {
+			load();
+		}
+		String doc = map.get(c);
+		return doc == null ? "" : doc;
+	}
+
+	private Map<FQName, String> load() {
+		if (map == null) {
+			map = new HashMap<FQName, String>();
+			IConfigurationElement[] configs = Platform.getExtensionRegistry()
+					.getConfigurationElementsFor(DOC_XTPT);
+			for (IConfigurationElement config : configs) {
+				String ns = config.getAttribute(DOC_NAMESPACE_ATTR);
+				String name = config.getAttribute(DOC_NAME_ATTR);
+				String doc = config.getAttribute(DOC_ATTR);
+				FQName fqn = new FQName(ns, name);
+				map.put(fqn, doc);
+			}
+		}
+		return map;
+	}
+}
