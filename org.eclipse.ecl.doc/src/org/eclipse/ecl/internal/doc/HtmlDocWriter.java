@@ -12,7 +12,6 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ecl.doc.EclDocPlugin;
-import org.eclipse.ecl.internal.core.ScriptletManager.ScriptletDefinition;
 import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
@@ -164,9 +163,7 @@ public class HtmlDocWriter {
 
 	Set<String> getFriendlyNames(EPackage p, EClass cl) throws IOException {
 		try {
-			ScriptletDefinition def = CoreUtils.getScriptletDefinition(
-					p.getNsURI(), cl.getName());
-			return def.getFriendlyNames();
+			return CoreUtils.getFriendlyNames(p.getNsURI(), cl.getName());
 		} catch (CoreException e) {
 			// do nothing
 			return Collections.emptySet();
