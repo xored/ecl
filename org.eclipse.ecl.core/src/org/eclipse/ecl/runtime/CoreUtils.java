@@ -2,6 +2,7 @@ package org.eclipse.ecl.runtime;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ecl.core.Command;
@@ -23,6 +24,11 @@ public class CoreUtils {
 	public static Command createCommand(String namespace, String name)
 			throws CoreException {
 		return CorePlugin.getScriptletManager().createCommand(namespace, name);
+	}
+
+	public static Set<String> getFriendlyNames(String ns, String name)
+			throws CoreException {
+		return CorePlugin.getScriptletManager().getFriendlyNames(ns, name);
 	}
 
 	public static IPipe createEMFPipe(InputStream in, OutputStream out) {

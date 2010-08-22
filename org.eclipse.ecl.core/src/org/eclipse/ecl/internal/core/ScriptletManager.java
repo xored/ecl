@@ -144,6 +144,12 @@ public class ScriptletManager {
 		return def;
 	}
 
+	synchronized public Set<String> getFriendlyNames(String ns, String name)
+			throws CoreException {
+		ScriptletDefinition def = getScriptletDefinition(ns, name);
+		return def == null ? null : def.getFriendlyNames();
+	}
+
 	private void loadScriptlets() {
 		scriptlets = new HashMap<FQName, ScriptletDefinition>();
 		IConfigurationElement[] configs = Platform.getExtensionRegistry()
