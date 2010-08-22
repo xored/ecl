@@ -101,11 +101,15 @@ public class HtmlDocWriter {
 	void wCommandOverview(EClass c) throws IOException {
 		w("<span class=\"commandName\">").w(c.getName()).w("</span>");
 		for (EStructuralFeature sf : c.getEAllStructuralFeatures()) {
-			EAnnotation ann = sf.getEAnnotation("internal");
-			if (ann != null) {
+			if (sf.getEAnnotation("internal") != null) {
 				continue;
 			}
-			w("   <span class=\"paramName\">-").w(sf.getName()).w("</span>");
+			w("   <span class=\"paramName\">");
+			if (sf.getEAnnotation("input") != null)
+				w("&");
+			else
+				w("-");
+			w(sf.getName()).w("</span>");
 			w("[").w(String.valueOf(sf.getLowerBound())).w("..")
 					.w(String.valueOf(sf.getUpperBound())).w("]");
 			w(":").w("<span class=\"paramType\">").w(sf.getEType().getName())
