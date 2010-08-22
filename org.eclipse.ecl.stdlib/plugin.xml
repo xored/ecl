@@ -5,7 +5,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://www.eclipse.org/ecl/stdlib.ecore"
-            class="org.eclipse.ecl.stdlib.StdlibPackage"
+            class="org.eclipse.ecl.stdlib.StandartLibraryPackage"
             genModel="model/stdlib.genmodel"/>
    </extension>
    
