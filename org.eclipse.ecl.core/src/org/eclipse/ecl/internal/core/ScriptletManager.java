@@ -88,17 +88,17 @@ public class ScriptletManager {
 			throws CoreException {
 		String ns = scriptlet.eClass().getEPackage().getNsURI();
 		String name = scriptlet.eClass().getName();
-		return getScriptletDefintion(ns, name).getService();
+		return getScriptletDefinition(ns, name).getService();
 	}
 
 	synchronized public Command createCommand(String ns, String name)
 			throws CoreException {
-		EClass clazz = getScriptletDefintion(ns, name).getParametersClass();
+		EClass clazz = getScriptletDefinition(ns, name).getParametersClass();
 		return (Command) clazz.getEPackage().getEFactoryInstance()
 				.create(clazz);
 	}
 
-	private synchronized ScriptletDefinition getScriptletDefintion(String ns,
+	private synchronized ScriptletDefinition getScriptletDefinition(String ns,
 			String name) throws CoreException {
 		if (scriptlets == null)
 			loadScriptlets();
