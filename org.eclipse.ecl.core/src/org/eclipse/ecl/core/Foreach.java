@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Foreach.java,v 1.1 2010/08/02 09:24:00 andrey Exp $
+ * $Id: Foreach.java,v 1.2 2010/08/22 14:13:34 alena Exp $
  */
 package org.eclipse.ecl.core;
 
@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.ecl.core.Foreach#getDo <em>Do</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.Foreach#getInput <em>Input</em>}</li>
- *   <li>{@link org.eclipse.ecl.core.Foreach#getScript <em>Script</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,30 +29,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Foreach extends Command {
 	/**
-	 * Returns the value of the '<em><b>Script</b></em>' attribute.
+	 * Returns the value of the '<em><b>Do</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Script</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Do</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Script</em>' attribute.
-	 * @see #setScript(String)
-	 * @see org.eclipse.ecl.core.CorePackage#getForeach_Script()
-	 * @model dataType="org.eclipse.ecl.core.EScript"
+	 * @return the value of the '<em>Do</em>' reference.
+	 * @see #setDo(Command)
+	 * @see org.eclipse.ecl.core.CorePackage#getForeach_Do()
+	 * @model
 	 * @generated
 	 */
-	String getScript();
+	Command getDo();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.ecl.core.Foreach#getScript <em>Script</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.ecl.core.Foreach#getDo <em>Do</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Script</em>' attribute.
-	 * @see #getScript()
+	 * @param value the new value of the '<em>Do</em>' reference.
+	 * @see #getDo()
 	 * @generated
 	 */
-	void setScript(String value);
+	void setDo(Command value);
 
 	/**
 	 * Returns the value of the '<em><b>Input</b></em>' reference list.

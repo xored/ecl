@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CorePackage.java,v 1.1 2010/08/02 09:24:00 andrey Exp $
+ * $Id: CorePackage.java,v 1.2 2010/08/22 14:13:34 alena Exp $
  */
 package org.eclipse.ecl.core;
 
@@ -579,22 +579,22 @@ public interface CorePackage extends EPackage {
 	int FOREACH__BINDINGS = COMMAND__BINDINGS;
 
 	/**
+	 * The feature id for the '<em><b>Do</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOREACH__DO = COMMAND_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Input</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FOREACH__INPUT = COMMAND_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Script</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FOREACH__SCRIPT = COMMAND_FEATURE_COUNT + 1;
+	int FOREACH__INPUT = COMMAND_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Foreach</em>' class.
@@ -1196,15 +1196,15 @@ public interface CorePackage extends EPackage {
 	EClass getForeach();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Foreach#getScript <em>Script</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.Foreach#getDo <em>Do</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Script</em>'.
-	 * @see org.eclipse.ecl.core.Foreach#getScript()
+	 * @return the meta object for the reference '<em>Do</em>'.
+	 * @see org.eclipse.ecl.core.Foreach#getDo()
 	 * @see #getForeach()
 	 * @generated
 	 */
-	EAttribute getForeach_Script();
+	EReference getForeach_Do();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.core.Foreach#getInput <em>Input</em>}'.
@@ -1692,12 +1692,12 @@ public interface CorePackage extends EPackage {
 		 */
 		EClass FOREACH = eINSTANCE.getForeach();
 		/**
-		 * The meta object literal for the '<em><b>Script</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Do</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute FOREACH__SCRIPT = eINSTANCE.getForeach_Script();
+		EReference FOREACH__DO = eINSTANCE.getForeach_Do();
 		/**
 		 * The meta object literal for the '<em><b>Input</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->

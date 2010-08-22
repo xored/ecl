@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CorePackageImpl.java,v 1.1 2010/08/02 09:24:00 andrey Exp $
+ * $Id: CorePackageImpl.java,v 1.2 2010/08/22 14:13:34 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 
@@ -503,8 +503,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getForeach_Script() {
-		return (EAttribute)foreachEClass.getEStructuralFeatures().get(1);
+	public EReference getForeach_Do() {
+		return (EReference)foreachEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -513,7 +513,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	public EReference getForeach_Input() {
-		return (EReference)foreachEClass.getEStructuralFeatures().get(0);
+		return (EReference)foreachEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -788,8 +788,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEAttribute(literalParameterEClass, LITERAL_PARAMETER__FORMAT);
 
 		foreachEClass = createEClass(FOREACH);
+		createEReference(foreachEClass, FOREACH__DO);
 		createEReference(foreachEClass, FOREACH__INPUT);
-		createEAttribute(foreachEClass, FOREACH__SCRIPT);
 
 		defineCommandEClass = createEClass(DEFINE_COMMAND);
 		createEReference(defineCommandEClass, DEFINE_COMMAND__MESSAGE);
@@ -907,8 +907,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEAttribute(getLiteralParameter_Format(), ecorePackage.getEString(), "format", null, 0, 1, LiteralParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(foreachEClass, Foreach.class, "Foreach", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getForeach_Do(), this.getCommand(), null, "do", null, 0, 1, Foreach.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getForeach_Input(), ecorePackage.getEObject(), null, "input", null, 0, -1, Foreach.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getForeach_Script(), this.getEScript(), "script", null, 0, 1, Foreach.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(defineCommandEClass, DefineCommand.class, "DefineCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDefineCommand_Message(), theEcorePackage.getEClass(), null, "message", null, 1, 1, DefineCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -948,6 +948,47 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// internal
+		createInternalAnnotations();
+		// input
+		createInputAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>internal</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createInternalAnnotations() {
+		String source = "internal";		
+		addAnnotation
+		  (getCommand_Host(), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getCommand_Bindings(), 
+		   source, 
+		   new String[] {
+		   });	
+	}
+
+	/**
+	 * Initializes the annotations for <b>input</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createInputAnnotations() {
+		String source = "input";				
+		addAnnotation
+		  (getForeach_Input(), 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 } //CorePackageImpl
