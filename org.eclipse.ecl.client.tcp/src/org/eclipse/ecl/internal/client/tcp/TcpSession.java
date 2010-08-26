@@ -49,7 +49,14 @@ public class TcpSession implements ISession {
 			public void run() {
 				try {
 					commandPipe.write(command);
-					ProcessStatus ps = (ProcessStatus) commandPipe.take(10000);
+					Object result = null;
+					while (true) {
+						result = commandPipe.take(10000);
+						if (result instanceof ProcessStatus) {
+							break;
+						}
+					}
+					ProcessStatus ps = (ProcessStatus) result;
 					ctx.setStatus(new Status(ps.getSeverity(),
 							ps.getPluginId(), ps.getCode(), ps.getMessage(),
 							null));
