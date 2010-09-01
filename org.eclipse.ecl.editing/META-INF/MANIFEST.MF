@@ -7,14 +7,14 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.ecl.editing,
+Export-Package: com.cisco.peg,
+ org.eclipse.ecl.editing,
  org.eclipse.ecl.internal.editing.parser;x-internal:=true,
  org.eclipse.ecl.model.editing,
  org.eclipse.ecl.model.editing.impl,
  org.eclipse.ecl.model.editing.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ecl.core,
- org.eclipse.ecl.parser,
- com.cisco.peg
+ org.eclipse.ecl.parser
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.ecl.editing.EclEditingPlugin
