@@ -54,7 +54,7 @@ public class ScriptletManager {
 			this.config = config;
 		}
 
-		Set<String> getFriendlyNames() throws CoreException {
+		Set<String> getFriendlyNames() {
 			if (friendlyNames == null) {
 				friendlyNames = new HashSet<String>();
 				IConfigurationElement[] elements = config
@@ -89,6 +89,11 @@ public class ScriptletManager {
 		String ns = scriptlet.eClass().getEPackage().getNsURI();
 		String name = scriptlet.eClass().getName();
 		return getScriptletDefinition(ns, name).getService();
+	}
+
+	synchronized public EClass findCommand(String ns, String name)
+			throws CoreException {
+		return getScriptletDefinition(ns, name).getParametersClass();
 	}
 
 	synchronized public Command createCommand(String ns, String name)
@@ -142,6 +147,18 @@ public class ScriptletManager {
 			throw new CoreException(status);
 		}
 		return def;
+	}
+
+	synchronized public Set<FQName> getAllCommandNames() {
+		return scriptlets.keySet();
+	}
+
+	synchronized public Set<String> getAllFriendlyNames() {
+		Set<String> all = new HashSet<String>();
+		for (ScriptletDefinition def : scriptlets.values()) {
+			all.addAll(def.getFriendlyNames());
+		}
+		return all;
 	}
 
 	synchronized public Set<String> getFriendlyNames(String ns, String name)
