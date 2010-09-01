@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tests
+Bundle-SymbolicName: org.eclipse.ecl.editing.tests
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.ecl.editing.tests.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.junit,
+ org.eclipse.ecl.editing,
+ com.cisco.peg
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

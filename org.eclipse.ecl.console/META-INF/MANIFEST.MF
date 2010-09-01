@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Console
+Bundle-SymbolicName: org.eclipse.ecl.console;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.ecl.console.EclConsolePlugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ecl.core,
+ org.eclipse.dltk.console,
+ org.eclipse.ecl.parser,
+ org.eclipse.ecl.client.tcp,
+ org.eclipse.ecl.editing
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.eclipse.ecl.console
