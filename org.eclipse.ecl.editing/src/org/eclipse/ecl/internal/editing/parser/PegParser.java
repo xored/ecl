@@ -1,5 +1,8 @@
 package org.eclipse.ecl.internal.editing.parser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.ecl.editing.EclEditingPlugin;
 
 import com.cisco.peg.Block;
@@ -65,7 +68,7 @@ public class PegParser {
 		if (block.getBegin() <= offset && block.getEnd() >= offset) {
 			if ("cmd".equals(PegParser.getNameByType(block.getType()))) {
 				Block name = block.getChild(0);
-				return name.getSubtext();
+				return name == null ? null : name.getSubtext();
 			}
 			int num = block.getNumChildren();
 			for (int i = 0; i < num; i++) {
@@ -77,5 +80,37 @@ public class PegParser {
 			}
 		}
 		return null;
+	}
+
+	public static List<String> findParams(Block block, int offset) {
+		if (block.getBegin() <= offset && block.getEnd() >= offset) {
+			if ("cmd".equals(PegParser.getNameByType(block.getType()))) {
+				List<String> names = new ArrayList<String>();
+				collectParams(block, offset, names);
+				return names;
+			}
+			int num = block.getNumChildren();
+			for (int i = 0; i < num; i++) {
+				Block child = block.getChild(i);
+				List<String> res = findParams(child, offset);
+				if (res != null) {
+					return res;
+				}
+			}
+		}
+		return null;
+	}
+
+	private static void collectParams(Block block, int offset, List<String> list) {
+		if ("argument_name".equals(PegParser.getNameByType(block.getType()))) {
+			if (block.getBegin() > offset || block.getEnd() < offset) {
+				list.add(block.getSubtext());
+			}
+		}
+		int num = block.getNumChildren();
+		for (int i = 0; i < num; i++) {
+			Block child = block.getChild(i);
+			collectParams(child, offset, list);
+		}
 	}
 }

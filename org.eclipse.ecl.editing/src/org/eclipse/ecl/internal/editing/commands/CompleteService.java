@@ -40,24 +40,26 @@ public class CompleteService implements ICommandService {
 
 	private List<Proposal> findProposals(String text, int offset)
 			throws CoreException {
-		if (text.substring(0, offset).length() == 0)
+		if (text.substring(0, offset).trim().length() == 0)
 			return findCommandNameProposals("");
 		Block result = PegParser.parse(text);
 		Block target = PegParser.findBlock(result, offset);
 		if (target != null) {
 			String type = PegParser.getNameByType(target.getType());
 			String nameStart = target.getText().substring(target.getBegin(),
-					offset);
+					offset).trim();
 			if ("command_name".equals(type)) {
 				return findCommandNameProposals(nameStart);
 			} else if ("argument_name".equals(type)) {
-				if (nameStart.startsWith("--")) {
-					nameStart = nameStart.substring(2);
-				} else if (nameStart.startsWith("-")) {
-					nameStart = nameStart.substring(1);
-				}
 				String name = PegParser.findCommand(result, offset);
-				return findParamNameProposals(name, nameStart);
+				List<String> names = PegParser.findParams(result, offset);
+				return findParamNameProposals(name, nameStart, names);
+			} else if ("Spacing".equals(type)) {
+				String name = PegParser.findCommand(result, offset);
+				if (name != null) {
+					List<String> names = PegParser.findParams(result, offset);
+					return findParamNameProposals(name, nameStart, names);
+				}
 			}
 		}
 		return Collections.emptyList();
@@ -88,7 +90,14 @@ public class CompleteService implements ICommandService {
 		return proposals;
 	}
 
-	private List<Proposal> findParamNameProposals(String command, String prefix) {
+	private List<Proposal> findParamNameProposals(String command, String text,
+			List<String> exclude) {
+		String prefix = text;
+		String add = "-";
+		if (prefix.startsWith("-")) {
+			prefix = prefix.substring(1);
+			add = "";
+		}
 		int start = prefix.length();
 		List<Proposal> proposals = new ArrayList<Proposal>();
 		ScriptletManager manager = CorePlugin.getScriptletManager();
@@ -107,11 +116,14 @@ public class CompleteService implements ICommandService {
 						continue;
 					String sfName = sf.getName();
 					if (sfName.startsWith(prefix)) {
-						Proposal p = EditingFactory.eINSTANCE.createProposal();
-						p.setDisplay(sfName);
-						p.setInsert(p.getDisplay().substring(start));
-						p.setType(ProposalType.PARAM_NAME);
-						proposals.add(p);
+						if (!exclude.contains("-" + sfName)) {
+							Proposal p = EditingFactory.eINSTANCE
+									.createProposal();
+							p.setDisplay(sfName);
+							p.setInsert(add + p.getDisplay().substring(start));
+							p.setType(ProposalType.PARAM_NAME);
+							proposals.add(p);
+						}
 					}
 				}
 			}
