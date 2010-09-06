@@ -4,6 +4,7 @@ import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.internal.ParserPlugin;
 import org.eclipse.ecl.internal.parser.EclLexer;
 import org.eclipse.ecl.internal.parser.EclParser;
 
@@ -22,12 +23,12 @@ public class EclCoreParser {
 		try {
 			return parser.commands();
 		} catch (RecognitionException e) {
-			e.printStackTrace();
+			ParserPlugin.logErr(e.getMessage(), e);
 			return null;
-		}
-		catch(Throwable t) {
-			t.printStackTrace();
-			reporter.reportError("UnknownError", "Unknown error are happend during parsing of ecl code");
+		} catch (Throwable t) {
+			ParserPlugin.logErr(t.getMessage(), t);
+			reporter.reportError("UnknownError",
+					"Unknown error are happend during parsing of ecl code");
 			return null;
 		}
 	}

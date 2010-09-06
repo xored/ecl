@@ -12,7 +12,10 @@
 
 package org.eclipse.ecl.internal;
 
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Plugin;
+import org.eclipse.core.runtime.Status;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -61,6 +64,18 @@ public class ParserPlugin extends Plugin {
 	 */
 	public static ParserPlugin getDefault() {
 		return plugin;
+	}
+
+	public static void log(IStatus status) {
+		getDefault().getLog().log(status);
+	}
+
+	public static void log(CoreException e) {
+		log(e.getStatus());
+	}
+
+	public static void logErr(String message, Throwable e) {
+		log(new Status(IStatus.ERROR, PLUGIN_ID, message, e));
 	}
 
 }
