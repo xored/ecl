@@ -52,7 +52,7 @@ public class EclCompiler {
 				if (!processUnnamed) {
 					IStatus status = new Status(IStatus.ERROR,
 							CorePlugin.PLUGIN_ID,
-							"unnamed parameters disallowed here");
+							"Unnamed parameters disallowed after named ones");
 					throw new CoreException(status);
 				}
 			}
@@ -64,8 +64,8 @@ public class EclCompiler {
 			if (feature == null) {
 				IStatus status = new Status(IStatus.ERROR,
 						CorePlugin.PLUGIN_ID, MessageFormat.format(
-								"invalid param: {0}", new Object[] { param
-										.getName() }));
+								"Invalid parameter name: {0}",
+								new Object[] { param.getName() }));
 				throw new CoreException(status);
 			}
 			evalFeatureValue(target, param, feature);
@@ -92,13 +92,13 @@ public class EclCompiler {
 	private static void checkBounds(int lower, int upper) throws CoreException {
 		if (lower < 0) {
 			IStatus status = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
-					"lower bounds is negative");
+					"Lower bounds is negative");
 			throw new CoreException(status);
 		}
 		if (upper > 1) {
 			// TODO correct message
 			IStatus status = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
-					"upper bounds more than one is not supported yet");
+					"Upper bounds more than one is not supported yet");
 			throw new CoreException(status);
 		}
 	}
@@ -125,16 +125,21 @@ public class EclCompiler {
 				}
 			} catch (Exception e) {
 				// Exception while converting
-				IStatus status = new Status(IStatus.ERROR,
-						CorePlugin.PLUGIN_ID, "converting failed", e);
+				IStatus status = new Status(
+						IStatus.ERROR,
+						CorePlugin.PLUGIN_ID,
+						MessageFormat
+								.format(
+										"Can't assign value {0} to attribute {1}: Type convertation failed",
+										value, feature), e);
 				throw new CoreException(status);
 			}
 			// If failed to convert emit error
 			if (value == null) {
 				IStatus status = new Status(IStatus.ERROR,
 						CorePlugin.PLUGIN_ID, MessageFormat.format(
-								"no converter found for param type: {0}",
-								new Object[] { instanceClass.getSimpleName() }));
+								"Cannot convert value {0} to type {1}", value,
+								instanceClass.getSimpleName()));
 				throw new CoreException(status);
 			}
 			try {
@@ -142,8 +147,8 @@ public class EclCompiler {
 			} catch (ClassCastException cce) {
 				IStatus status = new Status(IStatus.ERROR,
 						CorePlugin.PLUGIN_ID, MessageFormat.format(
-								"can't assign value {0} to attribute {1}",
-								new Object[] { value, feature }), cce);
+								"Can't assign value {0} to attribute {1}",
+								value, feature), cce);
 				throw new CoreException(status);
 			}
 			break;
@@ -155,7 +160,7 @@ public class EclCompiler {
 			target.getBindings().add(binding);
 			break;
 		default:
-			throw new RuntimeException("shall not be here");
+			throw new RuntimeException("Invalid parameter");
 		}
 	}
 }

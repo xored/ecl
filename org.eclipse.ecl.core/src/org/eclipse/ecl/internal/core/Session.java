@@ -159,15 +159,13 @@ public class Session implements ISession {
 		int upper = feature.getUpperBound();
 		if (upper != -1 && actual > upper) {
 			throw new CoreException(CorePlugin.err(MessageFormat.format(
-					"Failed to put {0} object(s) into feature \"{2}\" "
-							+ "with upper bound equaled {1}", actual, upper,
-					feature.getName())));
+					"Parameter {2} is already assigned", actual, upper, feature
+							.getName())));
 		}
 		if (actual < lower) {
 			throw new CoreException(CorePlugin.err(MessageFormat.format(
-					"Failed to put {0} object(s) into feature \"{2}\" "
-							+ "with lower bound equaled {1}", actual, lower,
-					feature.getName())));
+					"Parameter {2} is not assigned", actual, lower, feature
+							.getName())));
 		}
 	}
 
