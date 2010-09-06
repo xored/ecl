@@ -22,7 +22,6 @@ import org.eclipse.ecl.model.editing.EditingFactory;
 import org.eclipse.ecl.model.editing.Proposal;
 import org.eclipse.ecl.parser.EclCoreParser;
 import org.eclipse.ecl.parser.EclParserErrorCollector;
-import org.eclipse.ecl.parser.EclParserErrorCollector.EclError;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
@@ -48,8 +47,10 @@ public class EclInterpreter implements IScriptInterpreter {
 
 	public void close() throws IOException {
 		try {
-			session.close();
-			session = null;
+			if (session != null) {
+				session.close();
+				session = null;
+			}
 		} catch (CoreException e) {
 			EclConsolePlugin.log(e);
 		}
@@ -134,21 +135,21 @@ public class EclInterpreter implements IScriptInterpreter {
 			}
 			IProcess pr = session.execute(command);
 			IStatus status = pr.waitFor();
-			return new ScriptExecResult(status.getMessage() + "\n", !status
-					.isOK());
+			if (status.isOK())
+				return null;
+			else
+				return new ScriptExecResult(status.getMessage() + "\r\n", true);
 		} catch (Exception e) {
 			EclConsolePlugin.logErr(e.getMessage(), e);
-			return new ScriptExecResult(e.getMessage() + "\n", true);
+			return new ScriptExecResult(
+					"Execution is failed. Please see error log for details\r\n",
+					true);
 		}
 	}
 
 	private IScriptExecResult handleNullCommand(
 			EclParserErrorCollector collector) {
-		StringBuilder errorMessage = new StringBuilder();
-		for (EclError err : collector.getErrors()) {
-			errorMessage.append(err.getMessage()).append("\r\n");
-		}
-		return new ScriptExecResult(errorMessage.toString(), true);
+		return new ScriptExecResult("Syntax error\r\n", true);
 	}
 
 	public int getState() {
