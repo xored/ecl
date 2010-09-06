@@ -24,7 +24,13 @@ public class EMFStreamPipe implements IPipe {
 
 	public IPipe close(IStatus status) throws CoreException {
 		try {
-			write(status);
+			// TODO
+			// ProcessStatus ps = CoreFactory.eINSTANCE.createProcessStatus();
+			// ps.setCode(status.getCode());
+			// ps.setMessage(status.getMessage());
+			// ps.setPluginId(status.getPlugin());
+			// ps.setSeverity(status.getSeverity());
+			// write(ps);
 			in.close();
 			out.close();
 		} catch (IOException e) {
