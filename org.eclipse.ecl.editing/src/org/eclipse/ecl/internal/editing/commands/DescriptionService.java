@@ -63,15 +63,15 @@ public class DescriptionService implements ICommandService {
 				}
 				overview.append(" -");
 				overview.append(sf.getName());
-				overview.append(":").append(sf.getEType().getName());
+				overview.append(':').append(sf.getEType().getName());
 				int lower = sf.getLowerBound();
 				int upper = sf.getUpperBound();
 				if (lower == 1 && upper == 1)
 					;
 				else if (lower == 0 && upper == 1)
-					overview.append("?");
+					overview.append('?');
 				else if (lower == 0 && upper < 0)
-					overview.append("*");
+					overview.append('*');
 				else
 					overview.append("[" + lower + ".." + upper + "]");
 			}

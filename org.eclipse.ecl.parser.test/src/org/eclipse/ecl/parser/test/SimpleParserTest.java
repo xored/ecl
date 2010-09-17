@@ -194,7 +194,7 @@ public class SimpleParserTest extends TestCase {
 			buffer.append(pp(null, ns, "::") + exec.getName() + pp("@", host));
 			EList<Parameter> list = exec.getParameters();
 			for (Parameter parameter : list) {
-				buffer.append(" ");
+				buffer.append(' ');
 				buffer.append(toString(parameter));
 			}
 		} else if (command instanceof Sequence) {
@@ -211,7 +211,7 @@ public class SimpleParserTest extends TestCase {
 		EList<Command> list = seq.getCommands();
 		boolean first = true;
 		if (list.size() > 1) {
-			buffer.append("(");
+			buffer.append('(');
 		}
 		for (Command command2 : list) {
 			if (!first) {
@@ -221,7 +221,7 @@ public class SimpleParserTest extends TestCase {
 			buffer.append(toString(command2));
 		}
 		if (list.size() > 1) {
-			buffer.append(")");
+			buffer.append(')');
 		}
 	}
 
