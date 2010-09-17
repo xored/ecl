@@ -29,7 +29,7 @@ public class Session extends Thread {
 		try {
 			IPipe pipe = CoreUtils.createEMFPipe(socket.getInputStream(),
 					socket.getOutputStream());
-			while (!interrupted()) {
+			while (!isInterrupted()) {
 				Command command = (Command) pipe.take(10000000);
 				System.out.println("SERVER:   Got command: " + command);
 				IProcess process = session.execute(command);

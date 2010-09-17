@@ -15,11 +15,11 @@ public class TcpServer extends Thread {
 	@Override
 	public void run() {
 		try {
-			while(!interrupted())
+			while(!isInterrupted()) {
 				new Session(socket.accept());
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
 }
