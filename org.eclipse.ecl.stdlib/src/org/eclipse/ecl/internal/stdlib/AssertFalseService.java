@@ -19,10 +19,12 @@ public class AssertFalseService implements ICommandService {
 					ISession.DEFAULT_TAKE_TIMEOUT);
 			if (value == null) {
 				new Status(IStatus.ERROR, PLUGIN_ID, "Invalid pipe content");
-			}
-			context.getInput().write(value);
-			if (value) {
-				return new Status(IStatus.ERROR, PLUGIN_ID, "Assertion failed");
+			} else {
+				context.getInput().write(value);
+				if (value.booleanValue()) {
+					return new Status(IStatus.ERROR, PLUGIN_ID,
+							"Assertion failed");
+				}
 			}
 		} catch (ClassCastException e) {
 			return new Status(IStatus.ERROR, PLUGIN_ID, "Invalid pipe content");

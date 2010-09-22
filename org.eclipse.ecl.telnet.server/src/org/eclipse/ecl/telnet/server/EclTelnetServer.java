@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EclTelnetServer {
-
-	private Socket socket;
 	private List<EclTelnetConnection> connections = new ArrayList<EclTelnetConnection>();
 	private Connector connector;
 	private int port = 2323;
@@ -41,7 +39,6 @@ public class EclTelnetServer {
 	}
 
 	protected void disconnect() throws IOException {
-		socket.close();
 	}
 
 	private class Connector extends Thread {
