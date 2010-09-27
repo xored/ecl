@@ -1,7 +1,10 @@
 package org.eclipse.ecl.core.util;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.Pipeline;
@@ -54,6 +57,11 @@ public class CommandToStringConverter {
 		String commandName = getScriptletNameByClass(command);
 		formatter.addCommandName(commandName);
 
+		Map<EStructuralFeature, Command> bindingMap = new HashMap<EStructuralFeature, Command>();
+		for (Binding b : command.getBindings()) {
+			bindingMap.put(b.getFeature(), b.getCommand());
+		}
+
 		List<EStructuralFeature> attributes = command.eClass()
 				.getEAllStructuralFeatures();
 
@@ -98,6 +106,13 @@ public class CommandToStringConverter {
 							formatter.closeExec();
 						}
 					}
+				}
+			} else {
+				Command c = bindingMap.get(feature);
+				if (c != null) {
+					formatter.openExec();
+					doConvert(c, formatter);
+					formatter.closeExec();
 				}
 			}
 		}
