@@ -73,22 +73,21 @@ public class CommandToStringConverter {
 					EAttribute attr = (EAttribute) feature;
 					String type = attr.getEAttributeType()
 							.getInstanceTypeName();
-					String value = new String(val.toString());
-					if (type.equals("boolean") && value.equals("false")
-							|| type.equals("int") && value.equals("0"))
-						continue;
-
-					String opening = "", closing = "";
-					if (type.equals("boolean") && value.equals("true")) {
-						value = "";
+					formatter.addAttrName(name);
+					if (val instanceof List<?>) {
+						List<?> list = (List<?>) val;
+						for (Object o : list) {
+							String value = convertValue(o, type);
+							if (value != null) {
+								formatter.addAttrValue(value);
+							}
+						}
 					} else {
-						if (!value.matches("[a-zA-Z0-9]*")) {
-							opening = "\"";
-							closing = "\"";
+						String value = convertValue(val, type);
+						if (value != null) {
+							formatter.addAttrValue(value);
 						}
 					}
-					formatter.addAttrName(name);
-					formatter.addAttrValue(opening + value + closing);
 				} else {
 					EReference ref = (EReference) feature;
 					EClass eclass = ref.getEReferenceType();
@@ -116,6 +115,24 @@ public class CommandToStringConverter {
 				}
 			}
 		}
+	}
+
+	protected String convertValue(Object val, String type) {
+		String value = new String(val.toString());
+		if (type.equals("boolean") && value.equals("false")
+				|| type.equals("int") && value.equals("0"))
+			return null;
+
+		String opening = "", closing = "";
+		if (type.equals("boolean") && value.equals("true")) {
+			value = "";
+		} else {
+			if (!value.matches("[a-zA-Z0-9]*")) {
+				opening = "\"";
+				closing = "\"";
+			}
+		}
+		return opening + value + closing;
 	}
 
 	protected String getScriptletNameByClass(Command command) {
