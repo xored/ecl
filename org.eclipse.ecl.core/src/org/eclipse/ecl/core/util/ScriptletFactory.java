@@ -3,21 +3,31 @@ package org.eclipse.ecl.core.util;
 import java.util.Arrays;
 import java.util.List;
 
+import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.core.Sequence;
 import org.eclipse.ecl.core.With;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 public class ScriptletFactory {
-	public static CoreFactory coreFactory = CoreFactory.eINSTANCE;
+
+	public static <T extends Command> T bind(T command,
+			EStructuralFeature feature, Command binded) {
+		Binding binding = CoreFactory.eINSTANCE.createBinding();
+		binding.setFeature(feature);
+		binding.setCommand(binded);
+		command.getBindings().add(binding);
+		return command;
+	}
 
 	public static Sequence seq(Command... commands) {
 		return seq(Arrays.asList(commands));
 	}
 
 	public static Sequence seq(List<Command> commands) {
-		Sequence sequence = coreFactory.createSequence();
+		Sequence sequence = CoreFactory.eINSTANCE.createSequence();
 		sequence.getCommands().addAll(commands);
 		return sequence;
 	}
@@ -27,15 +37,16 @@ public class ScriptletFactory {
 	}
 
 	public static Pipeline pipe(List<Command> commands) {
-		Pipeline pipeline = coreFactory.createPipeline();
+		Pipeline pipeline = CoreFactory.eINSTANCE.createPipeline();
 		for (Command command : commands) {
-			addToPipe(pipeline, command);
+			if (command != null)
+				addToPipe(pipeline, command);
 		}
 		return pipeline;
 	}
 
 	public static With with(Command withObject, Command doObject) {
-		With with = coreFactory.createWith();
+		With with = CoreFactory.eINSTANCE.createWith();
 		with.setObject(withObject);
 		with.setDo(doObject);
 		return with;
