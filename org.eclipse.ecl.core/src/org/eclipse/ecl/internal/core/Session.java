@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
@@ -83,8 +84,8 @@ public class Session implements ISession {
 	private void setupInputFeature(Command scriptlet, IPipe input)
 			throws CoreException {
 		EStructuralFeature inputFeature = null;
-		for (EStructuralFeature feature : scriptlet.eClass()
-				.getEStructuralFeatures()) {
+		for (EStructuralFeature feature : CoreUtils.getFeatures(scriptlet
+				.eClass())) {
 			if (feature.getEAnnotation("input") != null) {
 				if (inputFeature == null) {
 					inputFeature = feature;

@@ -2,12 +2,18 @@ package org.eclipse.ecl.runtime;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.internal.core.EMFStreamPipe;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 public class CoreUtils {
 
@@ -60,7 +66,6 @@ public class CoreUtils {
 	}
 
 	/**
-	 * 
 	 * It returns suitable primitive type if possible or throw
 	 * {@link ClassNotFoundException} otherwise
 	 * 
@@ -78,5 +83,28 @@ public class CoreUtils {
 			return boolean.class;
 		}
 		throw new ClassNotFoundException();
+	}
+
+	public static List<EStructuralFeature> getFeatures(EClass targetClass) {
+		List<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
+		final List<EClass> classes = new ArrayList<EClass>(targetClass
+				.getEAllSuperTypes());
+		classes.add(targetClass);
+		features.addAll(targetClass.getEAllStructuralFeatures());
+		Collections.sort(features, new Comparator<EStructuralFeature>() {
+			public int compare(EStructuralFeature o1, EStructuralFeature o2) {
+				try {
+					EClass eClass1 = o1.getEContainingClass();
+					EClass eClass2 = o2.getEContainingClass();
+					int i1 = classes.indexOf(eClass1);
+					int i2 = classes.indexOf(eClass2);
+					return i2 - i1;
+				} catch (Exception e) {
+					CorePlugin.err(e.getMessage(), e);
+				}
+				return 0;
+			}
+		});
+		return features;
 	}
 }

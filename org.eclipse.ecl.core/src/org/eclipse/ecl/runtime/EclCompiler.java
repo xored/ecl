@@ -1,7 +1,9 @@
 package org.eclipse.ecl.runtime;
 
 import java.text.MessageFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -43,6 +45,14 @@ public class EclCompiler {
 			throws CoreException {
 		Command target = CoreUtils.createCommand(fqn.ns, fqn.name);
 		EClass targetClass = target.eClass();
+
+		List<EStructuralFeature> features = CoreUtils.getFeatures(targetClass);
+		Map<String, EStructuralFeature> map = new HashMap<String, EStructuralFeature>();
+		for (EStructuralFeature feature : features) {
+			map.put(feature.getName(), feature);
+			// FIXME handle name conflicts!!!!
+		}
+		
 		int i = 0;
 		boolean processUnnamed = canProcessUnnamed(targetClass);
 		for (Parameter param : params) {
@@ -57,9 +67,8 @@ public class EclCompiler {
 				}
 			}
 
-			EStructuralFeature feature = processUnnamed ? targetClass
-					.getEStructuralFeatures().get(i++) : targetClass
-					.getEStructuralFeature(param.getName());
+			EStructuralFeature feature = processUnnamed ? features.get(i++)
+					: map.get(param.getName());
 
 			if (feature == null) {
 				IStatus status = new Status(IStatus.ERROR,
