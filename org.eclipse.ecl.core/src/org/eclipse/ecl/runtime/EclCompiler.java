@@ -152,7 +152,13 @@ public class EclCompiler {
 				throw new CoreException(status);
 			}
 			try {
-				target.eSet(feature, value);
+				if (feature.getUpperBound() == 1) {
+					target.eSet(feature, value);
+				} else {
+					@SuppressWarnings("unchecked")
+					List<Object> list = (List<Object>) target.eGet(feature);
+					list.add(value);
+				}
 			} catch (ClassCastException cce) {
 				IStatus status = new Status(IStatus.ERROR,
 						CorePlugin.PLUGIN_ID, MessageFormat.format(
