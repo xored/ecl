@@ -127,7 +127,7 @@ public class CommandToStringConverter {
 		if (type.equals("boolean") && value.equals("true")) {
 			value = "";
 		} else {
-			if (!value.matches("[a-zA-Z0-9]*")) {
+			if (!value.matches("[a-zA-Z0-9]*") || value.length() == 0) {
 				opening = "\"";
 				closing = "\"";
 			}
