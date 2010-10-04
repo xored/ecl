@@ -148,7 +148,7 @@ public class CommandToStringConverter {
 		}
 
 		if (className.endsWith("Command")) {
-			className = className.substring(0, className.length() - 9);
+			className = className.substring(0, className.length() - 7);
 		}
 		StringBuffer result = new StringBuffer();
 		for (int index = 0; index < className.length(); index++) {
