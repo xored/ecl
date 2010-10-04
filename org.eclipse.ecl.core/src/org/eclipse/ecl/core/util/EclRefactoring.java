@@ -3,12 +3,44 @@ package org.eclipse.ecl.core.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.ecl.core.Block;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.core.Sequence;
 import org.eclipse.ecl.core.With;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class EclRefactoring extends ScriptletFactory {
+
+	public static List<Command> align(List<Command> commands) {
+		List<Command> newCommands = new ArrayList<Command>();
+		for (Command c : commands) {
+			if (c instanceof Sequence) {
+				newCommands.addAll(((Sequence) c).getCommands());
+			} else {
+				newCommands.add(c);
+			}
+		}
+		return newCommands;
+	}
+
+	public static List<Command> exclude(List<Command> commands, Command ex) {
+		int size = commands.size();
+		for (int i = 0; i < size;) {
+			Command command = commands.get(i);
+			if (command instanceof Block) {
+				Block block = (Block) command;
+				exclude(block.getCommands(), ex);
+			}
+			if (command.equals(ex)) {
+				commands.remove(i);
+				size--;
+				continue;
+			}
+			i++;
+		}
+		return commands;
+	}
 
 	public static Command withify(Command command) {
 		if (command instanceof Sequence) {
@@ -33,8 +65,8 @@ public class EclRefactoring extends ScriptletFactory {
 						Command next = commands.get(j);
 						if (next instanceof Pipeline) {
 							Pipeline nextPipeline = (Pipeline) next;
-							if (object
-									.equals(nextPipeline.getCommands().get(0))) {
+							if (EcoreUtil.equals(object, nextPipeline
+									.getCommands().get(0))) {
 								toCollapse.add(subPipe(nextPipeline, 1));
 							} else {
 								break;
@@ -51,7 +83,6 @@ public class EclRefactoring extends ScriptletFactory {
 					i = j;
 					continue;
 				}
-				newCommands.add(pipeline.getCommands().get(0));
 			}
 			newCommands.add(command);
 			i++;
