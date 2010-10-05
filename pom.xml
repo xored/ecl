@@ -32,8 +32,8 @@
     <module>org.eclipse.ecl.server.tcp</module>
     <module>org.eclipse.ecl.server.tcp.ui</module>
     <module>org.eclipse.ecl.shell</module>
-    <module>org.eclipse.ecl.stdlib</module>
-    <!--module>org.eclipse.ecl.stdlib.tests</module>
+    <!--module>org.eclipse.ecl.stdlib</module>
+    <module>org.eclipse.ecl.stdlib.tests</module>
     <module>org.eclipse.ecl.swt</module>
     <module>org.eclipse.ecl.swt.tests</module-->
     <module>org.eclipse.ecl.telnet.server</module>

@@ -22,21 +22,21 @@ public class ScriptletFactory {
 		return command;
 	}
 
-	public static Sequence seq(Command... commands) {
-		return seq(Arrays.asList(commands));
+	public static Sequence makeSeq(Command... commands) {
+		return makeSeq(Arrays.asList(commands));
 	}
 
-	public static Sequence seq(List<Command> commands) {
+	public static Sequence makeSeq(List<Command> commands) {
 		Sequence sequence = CoreFactory.eINSTANCE.createSequence();
 		sequence.getCommands().addAll(commands);
 		return sequence;
 	}
 
-	public static Pipeline pipe(Command... commands) {
-		return pipe(Arrays.asList(commands));
+	public static Pipeline makePipe(Command... commands) {
+		return makePipe(Arrays.asList(commands));
 	}
 
-	public static Pipeline pipe(List<Command> commands) {
+	public static Pipeline makePipe(List<Command> commands) {
 		Pipeline pipeline = CoreFactory.eINSTANCE.createPipeline();
 		for (Command command : commands) {
 			if (command != null)
@@ -45,7 +45,7 @@ public class ScriptletFactory {
 		return pipeline;
 	}
 
-	public static With with(Command withObject, Command doObject) {
+	public static With makeWith(Command withObject, Command doObject) {
 		With with = CoreFactory.eINSTANCE.createWith();
 		with.setObject(withObject);
 		with.setDo(doObject);

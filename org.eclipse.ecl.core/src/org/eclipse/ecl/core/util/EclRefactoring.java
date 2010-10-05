@@ -45,7 +45,7 @@ public class EclRefactoring extends ScriptletFactory {
 	public static Command withify(Command command) {
 		if (command instanceof Sequence) {
 			Sequence seq = (Sequence) command;
-			return seq(withify(seq.getCommands()));
+			return makeSeq(withify(seq.getCommands()));
 		}
 		return command;
 	}
@@ -76,7 +76,7 @@ public class EclRefactoring extends ScriptletFactory {
 						}
 					}
 					if (toCollapse.size() > 1) {
-						newCommands.add(with(object, seq(withify(toCollapse))));
+						newCommands.add(makeWith(object, makeSeq(withify(toCollapse))));
 					} else {
 						newCommands.add(command);
 					}
@@ -116,10 +116,10 @@ public class EclRefactoring extends ScriptletFactory {
 		if (doCommand instanceof With) {
 			// Merging
 			With internalWith = mergeNestedWithCommands((With) doCommand);
-			Command newObject = pipe(withCommand.getObject(), internalWith
+			Command newObject = makePipe(withCommand.getObject(), internalWith
 					.getObject());
 			Command newDo = internalWith.getDo();
-			With newWith = with(newObject, newDo);
+			With newWith = makeWith(newObject, newDo);
 			return newWith;
 		}
 		return withCommand;
@@ -137,6 +137,6 @@ public class EclRefactoring extends ScriptletFactory {
 		}
 		List<Command> rest = new ArrayList<Command>(commands);
 		rest.remove(0);
-		return pipe(pipeline.getCommands().subList(from, to));
+		return makePipe(pipeline.getCommands().subList(from, to));
 	}
 }
