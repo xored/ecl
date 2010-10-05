@@ -7,8 +7,29 @@
   <foreignModel>model.ecore</foreignModel>
   <genPackages prefix="ParserTestModel" basePackage="org.eclipse.ecl.parser.test"
       disposableProviderFactory="true" ecorePackage="model.ecore#/">
-    <genClasses ecoreClass="model.ecore#//Test01">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//Test01/do"/>
+    <genClasses ecoreClass="model.ecore#//TestEmpty"/>
+    <genClasses ecoreClass="model.ecore#//TestCommandParam">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//TestCommandParam/arg"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//TestUnknownParam">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//TestUnknownParam/arg"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//TestIntParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//TestIntParam/arg"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//TestBoolParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//TestBoolParam/arg"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//TestOptionalParams">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//TestOptionalParams/a1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//TestOptionalParams/a2"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//TestParamCollision">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//TestParamCollision/a1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//TestParamCollision/a2"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//TestMultiplicity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//TestMultiplicity/a1"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

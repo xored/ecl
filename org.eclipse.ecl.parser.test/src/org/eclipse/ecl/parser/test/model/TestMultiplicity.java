@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TestMultiplicity.java,v 1.1 2010/08/02 09:24:06 andrey Exp $
+ * $Id: TestMultiplicity.java,v 1.2 2010/10/05 05:07:09 alena Exp $
  */
 package org.eclipse.ecl.parser.test.model;
 
@@ -38,7 +38,7 @@ public interface TestMultiplicity extends Command {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>A1</em>' attribute list.
 	 * @see org.eclipse.ecl.parser.test.model.ParserTestModelPackage#getTestMultiplicity_A1()
-	 * @model upper="3"
+	 * @model
 	 * @generated
 	 */
 	EList<String> getA1();

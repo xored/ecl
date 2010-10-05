@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParserTestModelPackageImpl.java,v 1.1 2010/08/02 09:24:06 andrey Exp $
+ * $Id: ParserTestModelPackageImpl.java,v 1.2 2010/10/05 05:07:09 alena Exp $
  */
 package org.eclipse.ecl.parser.test.model.impl;
 
@@ -426,7 +426,7 @@ public class ParserTestModelPackageImpl extends EPackageImpl implements ParserTe
 		initEAttribute(getTestParamCollision_A2(), theEcorePackage.getEString(), "a2", null, 1, 1, TestParamCollision.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(testMultiplicityEClass, TestMultiplicity.class, "TestMultiplicity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTestMultiplicity_A1(), theEcorePackage.getEString(), "a1", null, 0, 3, TestMultiplicity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTestMultiplicity_A1(), theEcorePackage.getEString(), "a1", null, 0, -1, TestMultiplicity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
