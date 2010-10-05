@@ -22,6 +22,10 @@ public class ScriptletFactory {
 		return command;
 	}
 
+	public static Sequence seq(Command... commands) {
+		return makeSeq(Arrays.asList(commands));
+	}
+
 	public static Sequence makeSeq(Command... commands) {
 		return makeSeq(Arrays.asList(commands));
 	}
