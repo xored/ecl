@@ -86,7 +86,7 @@ public class Session implements ISession {
 		EStructuralFeature inputFeature = null;
 		for (EStructuralFeature feature : CoreUtils.getFeatures(scriptlet
 				.eClass())) {
-			if (feature.getEAnnotation("input") != null) {
+			if (feature.getEAnnotation("http://www.eclipse.org/ecl/input") != null) {
 				if (inputFeature == null) {
 					inputFeature = feature;
 				} else {

@@ -9,7 +9,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="SlowCommand" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command"/>
   <eClassifiers xsi:type="ecore:EClass" name="IncrementCommand" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EIntegerObject">
-      <eAnnotations source="input"/>
+      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Data">
