@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ModelPackageImpl.java,v 1.1 2010/08/02 09:24:07 andrey Exp $
+ * $Id: ModelPackageImpl.java,v 1.2 2010/10/05 05:07:19 alena Exp $
  */
 package org.eclipse.ecl.core.tests.model.impl;
 
@@ -395,18 +395,18 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
-		// input
+		// http://www.eclipse.org/ecl/input
 		createInputAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>input</b>.
+	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/input</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createInputAnnotations() {
-		String source = "input";		
+		String source = "http://www.eclipse.org/ecl/input";		
 		addAnnotation
 		  (getIncrementCommand_Val(), 
 		   source, 
