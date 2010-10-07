@@ -6,6 +6,13 @@
   <artifactId>ecl</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+  
+	<properties>
+		<tycho-version>0.10.0</tycho-version>
+		<tycho-groupid>org.sonatype.tycho</tycho-groupid>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+  
   <modules>
     <!--module>org.antlr.runtime</module>
     <module>org.eclipse.dltk.tcl.ui.tests.ecl</module>
@@ -14,7 +21,7 @@
     <module>org.eclipse.ecl.client.tcp</module>
     <!--module>org.eclipse.ecl.client.tcp.tests</module-->
     <module>org.eclipse.ecl.console</module>
-    <module>org.eclipse.ecl.console.ui</module>
+    <!-- module>org.eclipse.ecl.console.ui</module-->
     <module>org.eclipse.ecl.core</module>
     <module>org.eclipse.ecl.core-feature</module>
     <module>org.eclipse.ecl.core-updatesite</module>
@@ -57,16 +64,16 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.sonatype.tycho</groupId>
+				<groupId>${tycho-groupid}</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
-				<version>0.9.0</version>
+				<version>${tycho-version}</version>
 				<extensions>true</extensions>
 			</plugin>
 			
 			<plugin>
-				<groupId>org.sonatype.tycho</groupId>
+				<groupId>${tycho-groupid}</groupId>
 				<artifactId>target-platform-configuration</artifactId>
-				<version>0.9.0</version>
+				<version>${tycho-version}</version>
 				<configuration>
 					<resolver>p2</resolver>
 				</configuration>
