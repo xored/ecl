@@ -24,6 +24,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.FQName;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.emf.ecore.EClass;
@@ -63,6 +64,9 @@ public class ScriptletManager {
 					String name = e.getAttribute("value");
 					friendlyNames.add(name);
 				}
+				String commandName = CoreUtils
+						.getScriptletNameByClass(getParametersClass());
+				friendlyNames.add(commandName);
 			}
 			return friendlyNames;
 		}
@@ -109,7 +113,7 @@ public class ScriptletManager {
 			loadScriptlets();
 		FQName fqn = new FQName(ns, name);
 		ScriptletDefinition def = scriptlets.get(fqn);
-		// Search unique scriplet
+		// Search unique scriptlet
 		if (def == null) {
 			FQName fqname = null;
 			for (FQName d : scriptlets.keySet()) {

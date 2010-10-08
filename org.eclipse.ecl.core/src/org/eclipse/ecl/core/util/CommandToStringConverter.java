@@ -55,7 +55,8 @@ public class CommandToStringConverter {
 	}
 
 	protected void convertSimple(Command command, ICommandFormatter formatter) {
-		String commandName = getScriptletNameByClass(command);
+		String commandName = CoreUtils
+				.getScriptletNameByClass(command.eClass());
 		formatter.addCommandName(commandName);
 
 		Map<EStructuralFeature, Command> bindingMap = new HashMap<EStructuralFeature, Command>();
@@ -134,36 +135,6 @@ public class CommandToStringConverter {
 			}
 		}
 		return opening + value + closing;
-	}
-
-	protected String getScriptletNameByClass(Command command) {
-
-		String className = command.eClass().getName();
-
-		int startPos = className.lastIndexOf('.');
-		if (startPos != -1) {
-			className = className.substring(startPos);
-		}
-		if (className.endsWith("Impl")) {
-			className = className.substring(0, className.length() - 4);
-		}
-
-		if (className.endsWith("Command")) {
-			className = className.substring(0, className.length() - 7);
-		}
-		StringBuffer result = new StringBuffer();
-		for (int index = 0; index < className.length(); index++) {
-			char symbol = className.charAt(index);
-			if (Character.isUpperCase(symbol)) {
-				if (index != 0)
-					result.append('-');
-				symbol = Character.toLowerCase(symbol);
-			}
-			result.append(symbol);
-		}
-
-		return result.toString();
-
 	}
 
 	protected static class Counter {
