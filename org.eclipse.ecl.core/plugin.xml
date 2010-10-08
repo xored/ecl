@@ -5,7 +5,7 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.1 2010/08/02 09:24:01 andrey Exp $
+ $Id: plugin.xml,v 1.2 2010/10/08 08:30:31 alena Exp $
 -->
 
 <plugin>
@@ -42,14 +42,9 @@
             namespace="http://www.eclipse.org/ecl/core.ecore">
       </scriptlet>
       <scriptlet
-            class="org.eclipse.ecl.internal.commands.DefineService"
-            namespace="http://www.eclipse.org/ecl/core.ecore"
-            name="define">
-      </scriptlet>
-      <scriptlet
             class="org.eclipse.ecl.internal.commands.ForeachService"
             namespace="http://www.eclipse.org/ecl/core.ecore"
-            name="foreach">
+            name="Foreach">
       </scriptlet>     
       <scriptlet
             class="org.eclipse.ecl.internal.commands.WithService"
