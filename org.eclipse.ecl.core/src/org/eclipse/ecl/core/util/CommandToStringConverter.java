@@ -9,6 +9,7 @@ import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.core.Sequence;
+import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
@@ -62,8 +63,8 @@ public class CommandToStringConverter {
 			bindingMap.put(b.getFeature(), b.getCommand());
 		}
 
-		List<EStructuralFeature> attributes = command.eClass()
-				.getEAllStructuralFeatures();
+		List<EStructuralFeature> attributes = CoreUtils.getFeatures(command
+				.eClass());
 
 		for (EStructuralFeature feature : attributes) {
 			String name = feature.getName();
