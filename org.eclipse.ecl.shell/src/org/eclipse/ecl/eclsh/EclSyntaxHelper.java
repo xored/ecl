@@ -1,9 +1,9 @@
 package org.eclipse.ecl.eclsh;
 
 import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.internal.parser.EclParserErrorCollector;
+import org.eclipse.ecl.internal.parser.EclParserErrorCollector.EclError;
 import org.eclipse.ecl.parser.EclCoreParser;
-import org.eclipse.ecl.parser.EclParserErrorCollector;
-import org.eclipse.ecl.parser.EclParserErrorCollector.EclError;
 
 public class EclSyntaxHelper {
 	public final static int CMD_VALID = 0;
