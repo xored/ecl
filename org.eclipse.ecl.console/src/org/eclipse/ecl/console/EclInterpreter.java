@@ -21,7 +21,6 @@ import org.eclipse.ecl.model.editing.Doc;
 import org.eclipse.ecl.model.editing.EditingFactory;
 import org.eclipse.ecl.model.editing.Proposal;
 import org.eclipse.ecl.parser.EclCoreParser;
-import org.eclipse.ecl.parser.EclParserErrorCollector;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
@@ -128,10 +127,9 @@ public class EclInterpreter implements IScriptInterpreter {
 
 	public IScriptExecResult exec(String text) throws IOException {
 		try {
-			EclParserErrorCollector collector = new EclParserErrorCollector();
-			Command command = EclCoreParser.newCommand(text, collector);
+			Command command = EclCoreParser.newCommand(text);
 			if (command == null) {
-				return handleNullCommand(collector);
+				return new ScriptExecResult("Syntax error\r\n", true);
 			}
 			IProcess pr = session.execute(command);
 			IStatus status = pr.waitFor();
@@ -145,11 +143,6 @@ public class EclInterpreter implements IScriptInterpreter {
 					"Execution is failed. Please see error log for details\r\n",
 					true);
 		}
-	}
-
-	private IScriptExecResult handleNullCommand(
-			EclParserErrorCollector collector) {
-		return new ScriptExecResult("Syntax error\r\n", true);
 	}
 
 	public int getState() {
