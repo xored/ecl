@@ -58,8 +58,12 @@ public class ScriptletFactory {
 
 	private static <T extends Block> T block(T block, List<Command> commands) {
 		for (Command command : commands) {
-			if (command != null)
-				block.getCommands().add(command);
+			if (command != null) {
+				if (block.getClass().isInstance(command))
+					block.getCommands().addAll(((Block) command).getCommands());
+				else
+					block.getCommands().add(command);
+			}
 		}
 		return block;
 	}
