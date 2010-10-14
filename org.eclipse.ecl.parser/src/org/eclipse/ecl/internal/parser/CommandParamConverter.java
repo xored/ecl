@@ -1,7 +1,8 @@
-package org.eclipse.ecl.parser;
+package org.eclipse.ecl.internal.parser;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.parser.EclCoreParser;
 import org.eclipse.ecl.runtime.EclCompiler;
 import org.eclipse.ecl.runtime.IParamConverter;
 

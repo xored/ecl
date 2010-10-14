@@ -1,7 +1,9 @@
-package org.eclipse.ecl.parser;
+package org.eclipse.ecl.internal.parser;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.eclipse.ecl.parser.IEclParserErrorReporter;
 
 public class EclParserErrorCollector implements IEclParserErrorReporter {
 	public static class EclError {

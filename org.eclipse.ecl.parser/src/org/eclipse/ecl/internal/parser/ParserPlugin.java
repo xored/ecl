@@ -10,7 +10,13 @@
  *     xored software, Inc. - initial API and Implementation (Ruslan Sychev)
  *******************************************************************************/
 
-package org.eclipse.ecl.internal;
+package org.eclipse.ecl.internal.parser;
+
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -41,6 +47,7 @@ public class ParserPlugin extends Plugin {
 	 * @see
 	 * org.eclipse.core.runtime.Plugins#start(org.osgi.framework.BundleContext)
 	 */
+	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
@@ -52,6 +59,7 @@ public class ParserPlugin extends Plugin {
 	 * @see
 	 * org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
 	 */
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		super.stop(context);
@@ -76,6 +84,33 @@ public class ParserPlugin extends Plugin {
 
 	public static void logErr(String message, Throwable e) {
 		log(new Status(IStatus.ERROR, PLUGIN_ID, message, e));
+	}
+
+	public static String readFile(String file) throws Exception {
+		InputStream openStream = getInputStream(file);
+		byte[] content = getContent(openStream);
+		return new String(content).replace("\r\n", "\n");
+	}
+
+	public static InputStream getInputStream(String file) throws IOException {
+		URL entry = getDefault().getBundle().getEntry(file);
+		InputStream openStream = entry.openStream();
+		return openStream;
+	}
+
+	public static byte[] getContent(InputStream input) throws IOException {
+		final BufferedInputStream buffer = new BufferedInputStream(input);
+		final ByteArrayOutputStream output = new ByteArrayOutputStream(100000);
+		try {
+			final byte[] bytes = new byte[8192];
+			int length = 0;
+			while ((length = buffer.read(bytes)) > 0) {
+				output.write(bytes, 0, length);
+			}
+		} finally {
+			buffer.close();
+		}
+		return output.toByteArray();
 	}
 
 }

@@ -5,14 +5,14 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.1 2010/08/02 09:24:04 andrey Exp $
+ $Id: plugin.xml,v 1.2 2010/10/14 07:07:17 alena Exp $
 -->
 
 <plugin>
    <extension
          point="org.eclipse.ecl.core.param_converter">
       <converter
-            class="org.eclipse.ecl.parser.CommandParamConverter">
+            class="org.eclipse.ecl.internal.parser.CommandParamConverter">
       </converter>
    </extension>
 </plugin>
