@@ -17,6 +17,10 @@
       [Enter License Description here.]
    </license>
 
+   <requires>
+      <import feature="com.xored.peg.core" version="1.0.0.qualifier"/>
+   </requires>
+
    <plugin
          id="org.eclipse.ecl.core"
          download-size="0"
