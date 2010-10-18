@@ -90,13 +90,22 @@ public class CommandBuilder {
 		exec.setName(name);
 		Block params = block.getChild(1);
 		for (int i = 0; i < params.getNumChildren(); i++) {
-			Block paramBlock = params.getChild(i).getChild(0);
-			String paramName = paramBlock.getChild(1).getSubtext();
-			if (paramName.startsWith("-"))
-				paramName = paramName.substring(1);
-			if (paramName.startsWith("-"))
-				paramName = paramName.substring(1);
-			Block child = paramBlock.getChild(2);
+			Block paramBlock = params.getChild(i).getChild(0).getChild(1)
+					.getChild(0);
+			String paramName = null;
+			Block child = null;
+			if (paramBlock.getNumChildren() > 1) {
+				paramName = paramBlock.getChild(0).getSubtext();
+				if (paramName.startsWith("-"))
+					paramName = paramName.substring(1);
+				if (paramName.startsWith("-"))
+					paramName = paramName.substring(1);
+				child = paramBlock.getChild(1);
+				if (paramBlock.getChild(1).getNumChildren() > 0)
+					child = child.getChild(0).getChild(1);
+			} else {
+				child = paramBlock.getChild(0);
+			}
 			Parameter param = value(child);
 			param.setName(paramName);
 			exec.getParameters().add(param);
@@ -107,7 +116,7 @@ public class CommandBuilder {
 	private static Parameter value(Block block) {
 		if (block.getBegin() == block.getEnd())
 			return CoreFactory.eINSTANCE.createLiteralParameter();
-		return nonEmptyValue(block.getChild(0).getChild(1));
+		return nonEmptyValue(block);
 	}
 
 	private static Parameter nonEmptyValue(Block block) {

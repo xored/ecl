@@ -22,82 +22,94 @@ public class CommandBuilderTests extends TestCase {
 	public void test02() throws Exception {
 		Command parsed = EclCoreParser
 				.newCommand("http://www.eclipse.org/ecl/core.ecore::command");
-		assertTrue(EcoreUtil.equals(parsed, makeExec(
-				"http://www.eclipse.org/ecl/core.ecore", "command")));
+		assertTrue(EcoreUtil.equals(parsed,
+				makeExec("http://www.eclipse.org/ecl/core.ecore", "command")));
 	}
 
 	public void test03() throws Exception {
 		Command parsed = EclCoreParser
 				.newCommand("command & command & command & command");
-		assertTrue(EcoreUtil.equals(parsed, makeParallel(makeExec("command"),
-				makeExec("command"), makeExec("command"), makeExec("command"))));
+		assertTrue(EcoreUtil.equals(
+				parsed,
+				makeParallel(makeExec("command"), makeExec("command"),
+						makeExec("command"), makeExec("command"))));
 	}
 
 	public void test04() throws Exception {
 		Command parsed = EclCoreParser.newCommand("command | command");
-		assertTrue(EcoreUtil.equals(parsed, makePipe(makeExec("command"),
-				makeExec("command"))));
+		assertTrue(EcoreUtil.equals(parsed,
+				makePipe(makeExec("command"), makeExec("command"))));
 	}
 
 	public void test05() throws Exception {
 		Command parsed = EclCoreParser
-				.newCommand("(command | command) & (command & command)");
-		assertTrue(EcoreUtil.equals(parsed, makeParallel(makePipe(
-				makeExec("command"), makeExec("command")), makeParallel(
-				makeExec("command"), makeExec("command")))));
+				.newCommand("(command | command) & (command | command)");
+		assertTrue(EcoreUtil.equals(
+				parsed,
+				makeParallel(
+						makePipe(makeExec("command"), makeExec("command")),
+						makePipe(makeExec("command"), makeExec("command")))));
 	}
 
 	public void test06() throws Exception {
 		Command parsed = EclCoreParser
 				.newCommand(" command | \n command ;; command \n\n command");
-		assertTrue(EcoreUtil.equals(parsed, makeSeq(makePipe(
-				makeExec("command"), makeExec("command")), makeExec("command"),
-				makeExec("command"))));
+		assertTrue(EcoreUtil.equals(
+				parsed,
+				makeSeq(makePipe(makeExec("command"), makeExec("command")),
+						makeExec("command"), makeExec("command"))));
 	}
 
 	public void testParam01() throws Exception {
 		Command parsed = EclCoreParser.newCommand("command -arg value");
-		assertTrue(EcoreUtil.equals(parsed, makeExec("command",
-				makeLiteralParameter("arg", "value"))));
+		assertTrue(EcoreUtil.equals(parsed,
+				makeExec("command", makeLiteralParameter("arg", "value"))));
 	}
 
 	public void testParam02() throws Exception {
 		Command parsed = EclCoreParser
 				.newCommand("command -arg1 value1 -arg2 value2");
-		assertTrue(EcoreUtil.equals(parsed, makeExec("command",
-				makeLiteralParameter("arg1", "value1"), makeLiteralParameter(
-						"arg2", "value2"))));
+		assertTrue(EcoreUtil.equals(
+				parsed,
+				makeExec("command", makeLiteralParameter("arg1", "value1"),
+						makeLiteralParameter("arg2", "value2"))));
 	}
 
 	public void testParam03() throws Exception {
 		Command parsed = EclCoreParser.newCommand("command -arg 123");
-		assertTrue(EcoreUtil.equals(parsed, makeExec("command",
-				makeLiteralParameter("arg", "123"))));
+		assertTrue(EcoreUtil.equals(parsed,
+				makeExec("command", makeLiteralParameter("arg", "123"))));
 	}
 
 	public void testParam04() throws Exception {
 		Command parsed = EclCoreParser.newCommand("command -arg \"string\"");
-		assertTrue(EcoreUtil.equals(parsed, makeExec("command",
-				makeLiteralParameter("arg", "string"))));
+		assertTrue(EcoreUtil.equals(parsed,
+				makeExec("command", makeLiteralParameter("arg", "string"))));
 	}
 
 	public void testParam05() throws Exception {
 		Command parsed = EclCoreParser.newCommand("command -arg {string}");
-		assertTrue(EcoreUtil.equals(parsed, makeExec("command",
-				makeLiteralParameter("arg", "{string}"))));
+		assertTrue(EcoreUtil.equals(parsed,
+				makeExec("command", makeLiteralParameter("arg", "{string}"))));
 	}
 
 	public void testParam06() throws Exception {
 		Command parsed = EclCoreParser
 				.newCommand("command -arg [command | command]");
-		assertTrue(EcoreUtil.equals(parsed, makeExec("command",
-				makeExecutableParameter("arg", makePipe(makeExec("command"),
-						makeExec("command"))))));
+		assertTrue(EcoreUtil.equals(
+				parsed,
+				makeExec(
+						"command",
+						makeExecutableParameter(
+								"arg",
+								makePipe(makeExec("command"),
+										makeExec("command"))))));
 	}
 
 	public void testParam07() throws Exception {
 		Command parsed = EclCoreParser.newCommand("command -arg");
-		assertTrue(EcoreUtil.equals(parsed, makeExec("command",
-				makeLiteralParameter("arg", null))));
+		assertTrue(EcoreUtil.equals(parsed,
+				makeExec("command", makeLiteralParameter("arg", null))));
 	}
+
 }

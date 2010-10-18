@@ -9,7 +9,6 @@ Require-Bundle: org.junit,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.ecl.parser,
- org.antlr.runtime,
  org.eclipse.ecl.core,
  org.eclipse.ecl.core.tests
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

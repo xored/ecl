@@ -3,8 +3,8 @@ expr <- WS? andExpr
 andExpr <- orExpr (AND orExpr)*
 orExpr <- primary (OR primary)*
 primary <- command | LPAREN andExpr RPAREN
-command <- '[a-zA-Z]([a-zA-Z0-9:\\./])*' (param | paramValue)* WS?
-param <- WS paramName (WS paramValue)?
+command <- '[a-zA-Z]([a-zA-Z0-9:\\./-])*' (WS (param | paramValue))* WS?
+param <- paramName (WS paramValue)?
 paramName <- '-' '-'? NAME?
 paramValue <- NAME | NUMBER | STRING | curly | subCommand
 curly <- LCURLY (curly | !RCURLY .)* Spacing RCURLY
