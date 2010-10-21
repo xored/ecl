@@ -48,6 +48,9 @@ public class EMFStreamPipe implements IPipe {
 		Resource r = new BinaryResourceImpl();
 		try {
 			int size = in.readInt();
+			if( size == -1) {
+				throw new IOException("Failed to read int from stream");
+			}
 			byte[] data = new byte[size];
 			in.readFully(data);
 			ByteArrayInputStream bin = new ByteArrayInputStream(data);
