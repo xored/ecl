@@ -57,12 +57,15 @@ public class Session implements ISession {
 					s = svc.service(scriptlet, process);
 				} catch (CoreException e) {
 					s = e.getStatus();
+					CorePlugin.err(e.getMessage(),e);
 				} catch (InterruptedException ie) {
 					s = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, ie
 							.getMessage(), ie);
+					CorePlugin.err(ie.getMessage(),ie);
 				} catch (Throwable t) {
 					s = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, t
 							.getMessage(), t);
+					CorePlugin.err(t.getMessage(),t);
 				} finally {
 					try {
 						process.setStatus(s);
