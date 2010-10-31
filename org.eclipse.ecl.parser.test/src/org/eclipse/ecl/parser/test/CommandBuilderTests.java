@@ -14,6 +14,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class CommandBuilderTests extends TestCase {
 
+	public void test00() throws Exception {
+		Command parsed = EclCoreParser.newCommand("");
+		assertTrue(EcoreUtil.equals(parsed, makeSeq()));
+	}
+
 	public void test01() throws Exception {
 		Command parsed = EclCoreParser.newCommand("command");
 		assertTrue(EcoreUtil.equals(parsed, makeExec("command")));
@@ -57,6 +62,15 @@ public class CommandBuilderTests extends TestCase {
 		assertTrue(EcoreUtil.equals(
 				parsed,
 				makeSeq(makePipe(makeExec("command"), makeExec("command")),
+						makeExec("command"), makeExec("command"))));
+	}
+
+	public void test07() throws Exception {
+		Command parsed = EclCoreParser
+				.newCommand("command\ncommand\ncommand\ncommand");
+		assertTrue(EcoreUtil.equals(
+				parsed,
+				makeSeq(makeExec("command"), makeExec("command"),
 						makeExec("command"), makeExec("command"))));
 	}
 
