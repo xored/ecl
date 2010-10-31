@@ -67,13 +67,17 @@ public class CommandBuilder {
 	}
 
 	private static Command sequence(Block block) {
+		if (block.getChild(0).getNumChildren() == 0)
+			return CoreFactory.eINSTANCE.createSequence();
+		block = block.getChild(0).getChild(0);
 		Command cmd = build(block.getChild(0), false);
-		if (block.getChild(1).getNumChildren() == 0)
+		block = block.getChild(1);
+		if (block.getNumChildren() == 0)
 			return cmd;
 		Sequence sequence = CoreFactory.eINSTANCE.createSequence();
 		sequence.getCommands().add(cmd);
-		for (int i = 0; i < block.getChild(1).getNumChildren(); i++) {
-			Block child = block.getChild(1).getChild(i).getChild(0).getChild(1);
+		for (int i = 0; i < block.getNumChildren(); i++) {
+			Block child = block.getChild(i).getChild(0).getChild(1);
 			sequence.getCommands().add(build(child, false));
 		}
 		return sequence;

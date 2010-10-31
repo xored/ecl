@@ -1,4 +1,4 @@
-sequence <- expr ((NL|COLON)+ expr)* (NL|COLON)* EOF
+sequence <- (expr ((NL|COLON)+ expr)* (NL|COLON)*)? EOF
 expr <- WS? andExpr
 andExpr <- orExpr (AND orExpr)*
 orExpr <- primary (OR primary)*
