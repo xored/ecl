@@ -17,6 +17,7 @@ import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.ExecutableParameter;
 import org.eclipse.ecl.core.LiteralParameter;
 import org.eclipse.ecl.core.Parameter;
+import org.eclipse.ecl.core.util.EclCommandNameConvention;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.internal.core.ParamConverterManager;
 import org.eclipse.emf.ecore.EClass;
@@ -29,8 +30,10 @@ public class EclCompiler {
 	public static Command compile(Command command) throws CoreException {
 		if (command instanceof Exec) {
 			Exec exec = (Exec) command;
-			return compile(new FQName(exec.getNamespace(), exec.getName()),
-					exec.getParameters());
+			return compile(
+					new FQName(null,
+							EclCommandNameConvention.toScriptletName(exec
+									.getName())), exec.getParameters());
 		}
 		if (command instanceof Block) {
 			Block block = (Block) command;
@@ -52,7 +55,7 @@ public class EclCompiler {
 			map.put(feature.getName(), feature);
 			// FIXME handle name conflicts!!!!
 		}
-		
+
 		int i = 0;
 		boolean processUnnamed = canProcessUnnamed(targetClass);
 		for (Parameter param : params) {
@@ -128,9 +131,9 @@ public class EclCompiler {
 				}
 				// Type to converter thought EcoreUtil.createFromString
 				if (value == null && feature.getEType() instanceof EDataType) {
-					value = EcoreUtil.createFromString((EDataType) feature
-							.getEType(), ((LiteralParameter) param)
-							.getLiteral());
+					value = EcoreUtil.createFromString(
+							(EDataType) feature.getEType(),
+							((LiteralParameter) param).getLiteral());
 				}
 			} catch (Exception e) {
 				// Exception while converting
@@ -138,8 +141,7 @@ public class EclCompiler {
 						IStatus.ERROR,
 						CorePlugin.PLUGIN_ID,
 						MessageFormat
-								.format(
-										"Can't assign value {0} to attribute {1}: Type convertation failed",
+								.format("Can't assign value {0} to attribute {1}: Type convertation failed",
 										value, feature), e);
 				throw new CoreException(status);
 			}
