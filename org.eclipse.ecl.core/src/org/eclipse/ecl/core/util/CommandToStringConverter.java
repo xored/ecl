@@ -7,6 +7,10 @@ import java.util.Map;
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CorePackage;
+import org.eclipse.ecl.core.Exec;
+import org.eclipse.ecl.core.ExecutableParameter;
+import org.eclipse.ecl.core.LiteralParameter;
+import org.eclipse.ecl.core.Parameter;
 import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.core.Sequence;
 import org.eclipse.ecl.runtime.CoreUtils;
@@ -31,8 +35,29 @@ public class CommandToStringConverter {
 			convertSequence((Sequence) command, formatter);
 		} else if (command instanceof Pipeline) {
 			convertPipeline((Pipeline) command, formatter);
+		} else if (command instanceof Exec) {
+			convertExec((Exec) command, formatter);
 		} else {
 			convertSimple(command, formatter);
+		}
+	}
+
+	private void convertExec(Exec exec, ICommandFormatter formatter) {
+		if (exec.getNamespace() != null)
+			formatter.addCommandName(exec.getNamespace() + "::"
+					+ exec.getName());
+		else
+			formatter.addCommandName(exec.getName());
+		for (Parameter p : exec.getParameters()) {
+			formatter.addAttrName(p.getName());
+			if (p instanceof LiteralParameter)
+				formatter.addAttrValue(((LiteralParameter) p).getLiteral());
+			else if (p instanceof ExecutableParameter) {
+				formatter.openGroup();
+				doConvert(((ExecutableParameter) p).getCommand(), formatter);
+				formatter.closeGroup();
+			}
+			// TODO else what?? exception or log or what?
 		}
 	}
 

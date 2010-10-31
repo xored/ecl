@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CorePackage.java,v 1.2 2010/08/22 14:13:34 alena Exp $
+ * $Id: CorePackage.java,v 1.3 2010/10/31 12:47:44 alena Exp $
  */
 package org.eclipse.ecl.core;
 
@@ -892,6 +892,52 @@ public interface CorePackage extends EPackage {
 	int PROCESS_STATUS_FEATURE_COUNT = 5;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.ScriptImpl <em>Script</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.ScriptImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getScript()
+	 * @generated
+	 */
+	int SCRIPT = 19;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT__CONTENT = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Script</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '<em>EScript</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -899,7 +945,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEScript()
 	 * @generated
 	 */
-	int ESCRIPT = 19;
+	int ESCRIPT = 20;
 
 	/**
 	 * The meta object id for the '<em>Any</em>' data type.
@@ -909,7 +955,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getAny()
 	 * @generated
 	 */
-	int ANY = 20;
+	int ANY = 21;
 
 	/**
 	 * The meta object id for the '<em>Ref</em>' data type.
@@ -919,7 +965,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getRef()
 	 * @generated
 	 */
-	int REF = 21;
+	int REF = 22;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -1431,6 +1477,27 @@ public interface CorePackage extends EPackage {
 	EAttribute getProcessStatus_ProcessId();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Script <em>Script</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Script</em>'.
+	 * @see org.eclipse.ecl.core.Script
+	 * @generated
+	 */
+	EClass getScript();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Script#getContent <em>Content</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Content</em>'.
+	 * @see org.eclipse.ecl.core.Script#getContent()
+	 * @see #getScript()
+	 * @generated
+	 */
+	EAttribute getScript_Content();
+
+	/**
 	 * Returns the meta object for data type '{@link java.lang.String <em>EScript</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1859,6 +1926,22 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROCESS_STATUS__PROCESS_ID = eINSTANCE.getProcessStatus_ProcessId();
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ScriptImpl <em>Script</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.ScriptImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getScript()
+		 * @generated
+		 */
+		EClass SCRIPT = eINSTANCE.getScript();
+		/**
+		 * The meta object literal for the '<em><b>Content</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCRIPT__CONTENT = eINSTANCE.getScript_Content();
 		/**
 		 * The meta object literal for the '<em>EScript</em>' data type.
 		 * <!-- begin-user-doc -->

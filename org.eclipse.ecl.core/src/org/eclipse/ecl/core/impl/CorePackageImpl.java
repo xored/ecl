@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CorePackageImpl.java,v 1.3 2010/10/05 05:07:20 alena Exp $
+ * $Id: CorePackageImpl.java,v 1.4 2010/10/31 12:47:43 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 
@@ -25,6 +25,7 @@ import org.eclipse.ecl.core.Parameter;
 import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.core.ProcessStatus;
 import org.eclipse.ecl.core.Resolve;
+import org.eclipse.ecl.core.Script;
 import org.eclipse.ecl.core.Sequence;
 
 import org.eclipse.ecl.core.With;
@@ -178,6 +179,13 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	private EClass processStatusEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass scriptEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -701,6 +709,24 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getScript() {
+		return scriptEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getScript_Content() {
+		return (EAttribute)scriptEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getEScript() {
 		return eScriptEDataType;
 	}
@@ -818,6 +844,9 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEAttribute(processStatusEClass, PROCESS_STATUS__SEVERITY);
 		createEAttribute(processStatusEClass, PROCESS_STATUS__PROCESS_ID);
 
+		scriptEClass = createEClass(SCRIPT);
+		createEAttribute(scriptEClass, SCRIPT__CONTENT);
+
 		// Create data types
 		eScriptEDataType = createEDataType(ESCRIPT);
 		anyEDataType = createEDataType(ANY);
@@ -868,6 +897,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		getChildrenEClass.getESuperTypes().add(this.getCommand());
 		eAnyObjectEClass.getESuperTypes().add(this.getAnyObject());
 		anyModelObjectEClass.getESuperTypes().add(this.getAnyObject());
+		scriptEClass.getESuperTypes().add(this.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -940,6 +970,9 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEAttribute(getProcessStatus_Message(), ecorePackage.getEString(), "message", null, 0, 1, ProcessStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProcessStatus_Severity(), ecorePackage.getEInt(), "severity", null, 0, 1, ProcessStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProcessStatus_ProcessId(), ecorePackage.getEInt(), "processId", null, 0, 1, ProcessStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(scriptEClass, Script.class, "Script", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getScript_Content(), theEcorePackage.getEString(), "content", null, 0, 1, Script.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(eScriptEDataType, String.class, "EScript", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

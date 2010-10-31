@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CoreSwitch.java,v 1.1 2010/08/02 09:24:01 andrey Exp $
+ * $Id: CoreSwitch.java,v 1.2 2010/10/31 12:47:44 alena Exp $
  */
 package org.eclipse.ecl.core.util;
 
@@ -214,6 +214,13 @@ public class CoreSwitch<T> {
 			case CorePackage.PROCESS_STATUS: {
 				ProcessStatus processStatus = (ProcessStatus)theEObject;
 				T result = caseProcessStatus(processStatus);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.SCRIPT: {
+				Script script = (Script)theEObject;
+				T result = caseScript(script);
+				if (result == null) result = caseCommand(script);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -503,6 +510,21 @@ public class CoreSwitch<T> {
 	 * @generated
 	 */
 	public T caseProcessStatus(ProcessStatus object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Script</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Script</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseScript(Script object) {
 		return null;
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CoreAdapterFactory.java,v 1.1 2010/08/02 09:24:01 andrey Exp $
+ * $Id: CoreAdapterFactory.java,v 1.2 2010/10/31 12:47:44 alena Exp $
  */
 package org.eclipse.ecl.core.util;
 
@@ -146,6 +146,10 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseProcessStatus(ProcessStatus object) {
 				return createProcessStatusAdapter();
+			}
+			@Override
+			public Adapter caseScript(Script object) {
+				return createScriptAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -430,6 +434,20 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createProcessStatusAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.Script <em>Script</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.Script
+	 * @generated
+	 */
+	public Adapter createScriptAdapter() {
 		return null;
 	}
 

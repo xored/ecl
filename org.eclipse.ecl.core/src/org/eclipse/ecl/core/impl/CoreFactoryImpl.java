@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CoreFactoryImpl.java,v 1.1 2010/08/02 09:23:59 andrey Exp $
+ * $Id: CoreFactoryImpl.java,v 1.2 2010/10/31 12:47:44 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 
@@ -84,6 +84,7 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.ANY_MODEL_OBJECT: return createAnyModelObject();
 			case CorePackage.RESOLVE: return createResolve();
 			case CorePackage.PROCESS_STATUS: return createProcessStatus();
+			case CorePackage.SCRIPT: return createScript();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -305,6 +306,16 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public ProcessStatus createProcessStatus() {
 		ProcessStatusImpl processStatus = new ProcessStatusImpl();
 		return processStatus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Script createScript() {
+		ScriptImpl script = new ScriptImpl();
+		return script;
 	}
 
 	/**

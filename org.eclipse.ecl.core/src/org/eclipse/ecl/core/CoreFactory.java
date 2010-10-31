@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CoreFactory.java,v 1.1 2010/08/02 09:24:00 andrey Exp $
+ * $Id: CoreFactory.java,v 1.2 2010/10/31 12:47:44 alena Exp $
  */
 package org.eclipse.ecl.core;
 
@@ -186,6 +186,15 @@ public interface CoreFactory extends EFactory {
 	 * @generated
 	 */
 	ProcessStatus createProcessStatus();
+
+	/**
+	 * Returns a new object of class '<em>Script</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Script</em>'.
+	 * @generated
+	 */
+	Script createScript();
 
 	/**
 	 * Returns the package supported by this factory.
