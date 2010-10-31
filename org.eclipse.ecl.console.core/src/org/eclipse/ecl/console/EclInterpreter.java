@@ -14,13 +14,13 @@ import org.eclipse.dltk.console.IScriptInterpreter;
 import org.eclipse.dltk.console.ScriptConsoleCompletionProposal;
 import org.eclipse.dltk.console.ScriptExecResult;
 import org.eclipse.ecl.client.tcp.EclTcpClientPlugin;
-import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.core.CoreFactory;
+import org.eclipse.ecl.core.Script;
 import org.eclipse.ecl.model.editing.Complete;
 import org.eclipse.ecl.model.editing.Description;
 import org.eclipse.ecl.model.editing.Doc;
 import org.eclipse.ecl.model.editing.EditingFactory;
 import org.eclipse.ecl.model.editing.Proposal;
-import org.eclipse.ecl.parser.EclCoreParser;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
@@ -127,16 +127,14 @@ public class EclInterpreter implements IScriptInterpreter {
 
 	public IScriptExecResult exec(String text) throws IOException {
 		try {
-			Command command = EclCoreParser.newCommand(text);
-			if (command == null) {
-				return new ScriptExecResult("Syntax error\r\n", true);
-			}
-			IProcess pr = session.execute(command);
+			Script s = CoreFactory.eINSTANCE.createScript();
+			s.setContent(text);
+			IProcess pr = session.execute(s);
 			IStatus status = pr.waitFor();
 			if (status.isOK())
 				return null;
 			else
-				return new ScriptExecResult(status.getMessage() + "\r\n", true);
+				throw new CoreException(status);
 		} catch (Exception e) {
 			EclConsolePlugin.logErr(e.getMessage(), e);
 			return new ScriptExecResult(
