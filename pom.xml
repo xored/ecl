@@ -16,10 +16,10 @@
   <modules>
     <module>org.eclipse.ecl.client.tcp</module>
     <!--module>org.eclipse.ecl.client.tcp.tests</module-->
-    <module>org.eclipse.ecl.console.core</module>
+    <!--module>org.eclipse.ecl.console.core</module>
     <module>org.eclipse.ecl.console.ui</module>
     <module>org.eclipse.ecl.console-feature</module>
-    <module>org.eclipse.ecl.console-updatesite</module>
+    <module>org.eclipse.ecl.console-updatesite</module-->
     <module>org.eclipse.ecl.core</module>
     <module>org.eclipse.ecl.core-feature</module>
     <module>org.eclipse.ecl.core-updatesite</module>
