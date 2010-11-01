@@ -14,9 +14,6 @@
 	</properties>
   
   <modules>
-    <module>org.eclipse.dltk.tcl.ui.tests.ecl</module>
-    <module>org.eclipse.ecl.cc.cvs</module>
-    <module>org.eclipse.ecl.cc.cvs.tests</module-->
     <module>org.eclipse.ecl.client.tcp</module>
     <!--module>org.eclipse.ecl.client.tcp.tests</module-->
     <module>org.eclipse.ecl.console.core</module>
