@@ -14,8 +14,8 @@ public class ServerStarter implements IStartup {
 			String port = System.getProperty(ECL_SERVER_PORT);
 			if (port != null)
 				EclTcp.runServer(Integer.parseInt(port));
-			else
-				EclTcp.runServer(5378);
+			// else
+			// EclTcp.runServer(5378);
 		} catch (NumberFormatException e) {
 			Activator.log("Ecl server port is incorrect.", e);
 		} catch (IOException e) {
