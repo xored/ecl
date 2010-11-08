@@ -6,7 +6,7 @@ import java.io.OutputStream;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.ecl.core.Command;
-import org.eclipse.ecl.parser.EclCoreParser;
+import org.eclipse.ecl.parser.EclParser;
 import org.eclipse.ecl.runtime.EclRuntime;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
@@ -24,7 +24,7 @@ public class EclShell implements IEclShell {
 			writeCloseMessage(this.outputStream);
 			return;
 		}
-		Command cmd = EclCoreParser.newCommand(command);
+		Command cmd = new EclParser(command).compile();
 		if (cmd == null)
 			return;
 		try {

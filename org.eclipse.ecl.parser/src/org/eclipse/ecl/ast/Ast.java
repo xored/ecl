@@ -33,7 +33,7 @@ public class Ast {
 	public Ast(String text) {
 		this.text = text;
 		this.root = createNode(0, text.length(), EclPartition.unknown);
-		Block block = EclParser.instance.parse(text);
+		Block block = new EclParser(text).parse();
 		if (block == Block.NO_PARSE)
 			throw new RuntimeException();
 		command = new AstBuilder().build(block);

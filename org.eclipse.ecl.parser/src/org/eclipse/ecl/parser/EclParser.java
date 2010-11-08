@@ -1,6 +1,8 @@
 package org.eclipse.ecl.parser;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.internal.parser.AstBuilder;
 import org.eclipse.ecl.internal.parser.EclParserPlugin;
 
 import com.xored.peg.Block;
@@ -10,13 +12,13 @@ import com.xored.peg.ParsingGrammar;
 
 public final class EclParser {
 
-	public static final EclParser instance = new EclParser();
-
 	protected static ParsingGrammar grammar = null;
 
 	protected PEGParser peg = null;
+	protected final String content;
 
-	protected EclParser() {
+	public EclParser(String content) {
+		this.content = content;
 		peg = new PEGParser(getGrammar());
 	}
 
@@ -35,11 +37,18 @@ public final class EclParser {
 		return grammar;
 	}
 
-	public Block parse(String content) {
-		return parse(content);
+	public Block parse() {
+		return peg.parse(content);
 	}
 
 	public IStatus[] getProblems() {
 		throw new RuntimeException("Not implemented yet.");
+	}
+
+	public Command compile() {
+		Block block = parse();
+		if (block == Block.NO_PARSE)
+			return null;
+		return new AstBuilder().build(block);
 	}
 }
