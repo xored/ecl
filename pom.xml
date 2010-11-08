@@ -46,7 +46,7 @@
 		<repository>
 			<id>helios</id>
 			<layout>p2</layout>
-			<url>http://mirror.tspu.ru/eclipse/releases/helios/</url>
+			<url>http://download.xored.com/mirrors/helios/</url>
 		</repository>
 		<!-- repository>
 			<id>galileoTest</id>
