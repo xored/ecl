@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.eclipse.dltk.console.IScriptConsoleShell;
 import org.eclipse.dltk.console.ui.IScriptConsoleViewer;
 import org.eclipse.dltk.console.ui.ScriptConsoleTextHover;
-import org.eclipse.ecl.console.ui.EclConsoleUiPlugin;
 import org.eclipse.jface.text.IRegion;
 
 public class EclConsoleTextHover extends ScriptConsoleTextHover {

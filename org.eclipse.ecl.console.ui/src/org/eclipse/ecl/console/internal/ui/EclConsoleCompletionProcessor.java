@@ -8,7 +8,6 @@ import org.eclipse.dltk.console.ScriptConsoleCompletionProposal;
 import org.eclipse.dltk.console.ui.IScriptConsoleViewer;
 import org.eclipse.dltk.console.ui.ScriptConsoleCompletionProcessor;
 import org.eclipse.dltk.ui.DLTKPluginImages;
-import org.eclipse.ecl.console.ui.EclConsoleUiPlugin;
 import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.TextPresentation;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;

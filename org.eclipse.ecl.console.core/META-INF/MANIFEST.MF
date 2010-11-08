@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Console
 Bundle-SymbolicName: org.eclipse.ecl.console.core;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: org.eclipse.ecl.console.EclConsolePlugin
+Bundle-Activator: org.eclipse.ecl.internal.console.EclConsolePlugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ecl.core,
  org.eclipse.dltk.console,
@@ -12,4 +12,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ecl.editing
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.ecl.console
+Export-Package: org.eclipse.ecl.internal.console

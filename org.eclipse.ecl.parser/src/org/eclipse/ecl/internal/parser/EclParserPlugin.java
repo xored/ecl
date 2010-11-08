@@ -27,18 +27,18 @@ import org.osgi.framework.BundleContext;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class ParserPlugin extends Plugin {
+public class EclParserPlugin extends Plugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.eclipse.ecl.parser";
 
 	// The shared instance
-	private static ParserPlugin plugin;
+	private static EclParserPlugin plugin;
 
 	/**
 	 * The constructor
 	 */
-	public ParserPlugin() {
+	public EclParserPlugin() {
 	}
 
 	/*
@@ -70,7 +70,7 @@ public class ParserPlugin extends Plugin {
 	 * 
 	 * @return the shared instance
 	 */
-	public static ParserPlugin getDefault() {
+	public static EclParserPlugin getDefault() {
 		return plugin;
 	}
 

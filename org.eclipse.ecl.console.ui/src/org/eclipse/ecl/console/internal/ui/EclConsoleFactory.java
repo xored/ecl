@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.ecl.console.ui.EclConsoleUiPlugin;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;

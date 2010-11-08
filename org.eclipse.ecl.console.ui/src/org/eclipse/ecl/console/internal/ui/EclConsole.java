@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import org.eclipse.dltk.console.ScriptConsolePrompt;
 import org.eclipse.dltk.console.ui.ScriptConsole;
-import org.eclipse.ecl.console.EclInterpreter;
+import org.eclipse.ecl.internal.console.EclInterpreter;
 
 public class EclConsole extends ScriptConsole {
 

@@ -1,16 +1,15 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
+Bundle-Name: Ecl Parser
 Bundle-SymbolicName: org.eclipse.ecl.parser;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Vendor: %providerName
-Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ecl.core,
  com.xored.peg;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Export-Package: org.eclipse.ecl.internal.parser;x-internal:=true,
+Export-Package: org.eclipse.ecl.ast,
+ org.eclipse.ecl.gen.ast,
  org.eclipse.ecl.parser
-Bundle-Activator: org.eclipse.ecl.internal.parser.ParserPlugin
+Bundle-Activator: org.eclipse.ecl.internal.parser.EclParserPlugin

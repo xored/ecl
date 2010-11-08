@@ -1,27 +1,30 @@
-sequence <- (expr ((NL|COLON)+ expr)* (NL|COLON)*)? EOF
-expr <- WS? andExpr
-andExpr <- orExpr (AND orExpr)*
-orExpr <- primary (OR primary)*
-primary <- command | LPAREN andExpr RPAREN
-command <- '[a-zA-Z]([a-zA-Z0-9:\\./-])*' (WS (param | paramValue))* WS?
+script <- (sequence)? EOF
+sequence <- expr ((NL|COLON)+ expr)* (NL|COLON)*
+expr <- WS? parallel
+parallel <- pipeline (AND pipeline)*
+pipeline <- primary (OR primary)*
+primary <- command | LPAREN sequence RPAREN
+command <- (cmdNs '::')? cmdName (WS (param | paramValue))* WS?
+cmdNs <- '[a-zA-Z]([a-zA-Z0-9\\.-])*'
+cmdName <- '[a-zA-Z]([a-zA-Z0-9\\.-])*'
 param <- paramName (WS paramValue)?
-paramName <- '-' '-'? NAME?
-paramValue <- NAME | NUMBER | STRING | curly | subCommand
+paramName <- '-' '-'? '[a-zA-Z]([a-zA-Z0-9:\\.-])*'?
+paramValue <- literal | number | string | curly | subCommand
 curly <- LCURLY (curly | !RCURLY .)* Spacing RCURLY
-subCommand <- LBRACK orExpr? RBRACK
+subCommand <- LBRACK sequence? RBRACK
+literal <- '[a-zA-Z]([a-zA-Z0-9:\\.-])*'
+number <- '[0-9\\.]+'
+string <- '"' ('\\"' | !('"'|NL) .)* '"'
 
-NAME <- '[a-zA-Z]([a-zA-Z0-9]|-)*'
 COLON <- ';' Spacing
 AND <- '&' Spacing
 OR <- '\|' Spacing
-NUMBER <- '[0-9]+'
-STRING <- '"' ('\\"' | !('"'|NL) .)* '"'
 LPAREN <- '\(' Spacing
-RPAREN <- '\)' WS?
+RPAREN <- '\)' Spacing
 LCURLY <- '\{' Spacing
-RCURLY <- '\}' WS?
+RCURLY <- '\}'
 LBRACK <- '\[' Spacing
-RBRACK <- '\]' WS?
+RBRACK <- '\]'
 Spacing <- '\s*'
 WS <- '[\s&&[^\n\r]]+'
 NL <- '[\n\r]+'

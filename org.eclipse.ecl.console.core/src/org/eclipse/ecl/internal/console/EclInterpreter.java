@@ -1,4 +1,4 @@
-package org.eclipse.ecl.console;
+package org.eclipse.ecl.internal.console;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,28 +1,34 @@
-package org.eclipse.ecl.console;
+package org.eclipse.ecl.console.internal.ui;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-public class EclConsolePlugin extends Plugin {
+/**
+ * The activator class controls the plug-in life cycle
+ */
+public class EclConsoleUiPlugin extends AbstractUIPlugin {
 
-	public static final String PLUGIN_ID = "org.eclipse.ecl.console";
+	// The plug-in ID
+	public static final String PLUGIN_ID = "org.eclipse.ecl.console.ui"; //$NON-NLS-1$
 
-	private static EclConsolePlugin plugin;
+	// The shared instance
+	private static EclConsoleUiPlugin plugin;
 
 	/**
 	 * The constructor
 	 */
-	public EclConsolePlugin() {
+	public EclConsoleUiPlugin() {
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.core.runtime.Plugins#start(org.osgi.framework.BundleContext)
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
+	 * )
 	 */
 	@Override
 	public void start(BundleContext context) throws Exception {
@@ -34,7 +40,8 @@ public class EclConsolePlugin extends Plugin {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
+	 * )
 	 */
 	@Override
 	public void stop(BundleContext context) throws Exception {
@@ -47,7 +54,7 @@ public class EclConsolePlugin extends Plugin {
 	 * 
 	 * @return the shared instance
 	 */
-	public static EclConsolePlugin getDefault() {
+	public static EclConsoleUiPlugin getDefault() {
 		return plugin;
 	}
 

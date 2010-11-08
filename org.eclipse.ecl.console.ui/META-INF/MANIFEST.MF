@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Ui
+Bundle-Name: ECL Console UI
 Bundle-SymbolicName: org.eclipse.ecl.console.ui;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: org.eclipse.ecl.console.ui.EclConsoleUiPlugin
+Bundle-Activator: org.eclipse.ecl.console.internal.ui.EclConsoleUiPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jface.text,
