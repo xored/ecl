@@ -48,11 +48,16 @@
 			<layout>p2</layout>
 			<url>http://download.xored.com/mirrors/helios/</url>
 		</repository>
-		<!-- repository>
-			<id>galileoTest</id>
-			<layout>p2</layout>
-			<url>file:/Users/Pascal/Downloads/eclipse-testing/eclipse-junit-tests-I20100312-0800</url>
-		</repository -->
+		<repository>
+		  <snapshots>
+		    <enabled>true</enabled>
+		      <updatePolicy>never</updatePolicy>
+		      <checksumPolicy>fail</checksumPolicy>
+		  </snapshots>
+		  <id>xored</id>
+		  <name>Xored Snapshots</name>
+		  <url>http://maven.xored.com/nexus/content/repositories/snapshots/</url>
+		</repository>
 	</repositories>
 
 	<build>
@@ -75,4 +80,13 @@
 			
 		</plugins>
 	</build>
+	
+ 	<distributionManagement>
+ 	  <snapshotRepository>
+ 	    <id>xored</id>
+ 	      <name>Xored Maven Repo</name>
+ 	      <url>http://maven.xored.com/nexus/content/repositories/snapshots/</url>
+ 	  </snapshotRepository>
+ 	</distributionManagement>
+	
 </project>
