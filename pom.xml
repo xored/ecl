@@ -49,6 +49,9 @@
 			<url>http://download.xored.com/mirrors/helios/</url>
 		</repository>
 		<repository>
+		    <snapshots>
+    	      <updatePolicy>always</updatePolicy>
+    		</snapshots>		
 			<id>peg</id>
 			<layout>p2</layout>
 			<url>http://build.xored.com/browse/PEG-PEG/latest/artifact/Update-Site</url>
