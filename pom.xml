@@ -49,14 +49,9 @@
 			<url>http://download.xored.com/mirrors/helios/</url>
 		</repository>
 		<repository>
-		  <snapshots>
-		    <enabled>true</enabled>
-		      <updatePolicy>never</updatePolicy>
-		      <checksumPolicy>fail</checksumPolicy>
-		  </snapshots>
-		  <id>xored</id>
-		  <name>Xored Snapshots</name>
-		  <url>http://maven.xored.com/nexus/content/repositories/snapshots/</url>
+			<id>peg</id>
+			<layout>p2</layout>
+			<url>http://build.xored.com/browse/PEG-PEG/latest/artifact/Update-Site</url>
 		</repository>
 	</repositories>
 
@@ -80,13 +75,5 @@
 			
 		</plugins>
 	</build>
-	
- 	<distributionManagement>
- 	  <snapshotRepository>
- 	    <id>xored</id>
- 	      <name>Xored Maven Repo</name>
- 	      <url>http://maven.xored.com/nexus/content/repositories/snapshots/</url>
- 	  </snapshotRepository>
- 	</distributionManagement>
 	
 </project>
