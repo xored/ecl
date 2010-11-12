@@ -53,9 +53,9 @@ public class CommandToStringConverter {
 			if (p instanceof LiteralParameter)
 				formatter.addAttrValue(((LiteralParameter) p).getLiteral());
 			else if (p instanceof ExecutableParameter) {
-				formatter.openGroup();
+				formatter.openExec();
 				doConvert(((ExecutableParameter) p).getCommand(), formatter);
-				formatter.closeGroup();
+				formatter.openExec();
 			}
 			// TODO else what?? exception or log or what?
 		}
@@ -100,7 +100,7 @@ public class CommandToStringConverter {
 					EAttribute attr = (EAttribute) feature;
 					String type = attr.getEAttributeType()
 							.getInstanceTypeName();
-					formatter.addAttrName(name);
+					// formatter.addAttrName(name);
 					if (val instanceof List<?>) {
 						List<?> list = (List<?>) val;
 						for (Object o : list) {
@@ -120,16 +120,16 @@ public class CommandToStringConverter {
 					EClass eclass = ref.getEReferenceType();
 					if (eclass.getClassifierID() == CorePackage.COMMAND) {
 						Command inner = (Command) val;
-						formatter.addAttrName(name);
+						// formatter.addAttrName(name);
 						if (inner instanceof Sequence) {
 							// TODO FIXIT!!!
-							formatter.openGroup();
+							formatter.openGroup(false);
 							doConvert(inner, formatter);
-							formatter.closeGroup();
+							formatter.closeGroup(false);
 						} else {
-							formatter.openExec();
+							formatter.openGroup(true);
 							doConvert(inner, formatter);
-							formatter.closeExec();
+							formatter.closeGroup(true);
 						}
 					}
 				}

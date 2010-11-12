@@ -12,9 +12,9 @@ public interface ICommandFormatter {
 
 	void addAttrValue(String value);
 
-	void openGroup();
+	void openGroup(boolean singleLine);
 
-	void closeGroup();
+	void closeGroup(boolean singleLine);
 
 	void openExec();
 

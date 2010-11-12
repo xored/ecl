@@ -41,15 +41,18 @@ public class DefaultFormatter implements ICommandFormatter {
 		buffer.append(SPACE).append(value);
 	}
 
-	public void openGroup() {
+	public void openGroup(boolean singleLine) {
 		buffer.append(SPACE).append(OPEN_BRACE);
-		level++;
+		if (!singleLine)
+			level++;
 	}
 
-	public void closeGroup() {
-		level--;
-		newLine();
-		addIndent();
+	public void closeGroup(boolean singleLine) {
+		if (!singleLine) {
+			level--;
+			newLine();
+			addIndent();
+		}
 		buffer.append(CLOSE_BRACE);
 	}
 

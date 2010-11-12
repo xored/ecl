@@ -29,6 +29,8 @@ public class SequenceService implements ICommandService {
 			IProcess child = process.getSession().execute(cmd,
 					process.getInput(), null);
 			status = child.waitFor();
+			if (!status.isOK())
+				return status;
 		}
 		return status;
 	}

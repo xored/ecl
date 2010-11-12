@@ -14,7 +14,6 @@ package org.eclipse.ecl.internal.commands;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.runtime.ICommandService;
@@ -39,6 +38,8 @@ public class PipelineService implements ICommandService {
 			child = process.getSession().execute(seq.getCommands().get(i), in,
 					out);
 			status = child.waitFor();
+			if (!status.isOK())
+				return status;
 			in = out;
 		}
 		return status;
