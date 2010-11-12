@@ -7,6 +7,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.SocketException;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -48,7 +49,7 @@ public class EMFStreamPipe implements IPipe {
 		Resource r = new BinaryResourceImpl();
 		try {
 			int size = in.readInt();
-			if( size == -1) {
+			if (size == -1) {
 				throw new IOException("Failed to read int from stream");
 			}
 			byte[] data = new byte[size];
@@ -71,6 +72,13 @@ public class EMFStreamPipe implements IPipe {
 			out.writeInt(bout.size());
 			out.write(bout.toByteArray());
 		} catch (IOException e) {
+			if (e instanceof SocketException) {
+				if (e.getMessage().contains(
+						"Connection reset by peer: socket write error")) {
+					throw new CoreException(new Status(IStatus.ERROR,
+							CorePlugin.PLUGIN_ID, e.getMessage()));
+				}
+			}
 			throw new CoreException(new Status(IStatus.ERROR,
 					CorePlugin.PLUGIN_ID, e.getMessage(), e));
 		}
