@@ -24,10 +24,10 @@ public class EclShell implements IEclShell {
 			writeCloseMessage(this.outputStream);
 			return;
 		}
-		Command cmd = new EclParser(command).compile();
-		if (cmd == null)
-			return;
 		try {
+			Command cmd = new EclParser(command).compile();
+			if (cmd == null)
+				return;
 			IProcess process = session.execute(cmd);
 			IStatus status = process.waitFor();
 			if (status.getSeverity() != IStatus.OK) {

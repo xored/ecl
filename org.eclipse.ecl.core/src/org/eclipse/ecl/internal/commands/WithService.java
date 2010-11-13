@@ -34,6 +34,8 @@ public class WithService implements ICommandService {
 		IProcess inner;
 		inner = session.execute(with.getObject(), input, pipe);
 		IStatus status = inner.waitFor();
+		if (!status.isOK())
+			return status;
 		inner = session.execute(with.getDo(), pipe, null);
 		return inner.waitFor();
 	}

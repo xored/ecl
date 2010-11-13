@@ -22,6 +22,8 @@ import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.internal.core.ParamConverterManager;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
@@ -120,37 +122,48 @@ public class EclCompiler {
 		Object value = null;
 		switch (param.eClass().getClassifierID()) {
 		case CorePackage.LITERAL_PARAMETER:
+			LiteralParameter literal = (LiteralParameter) param;
 			Class<?> instanceClass = feature.getEType().getInstanceClass();
-			IParamConverter<?> converter = ParamConverterManager.getInstance()
-					.getConverter(instanceClass);
 			try {
-				// Type to converter thought IParamConverter
-				if (converter != null) {
-					value = converter.convert(((LiteralParameter) param)
+				if (feature.getEType() instanceof EEnum) {
+					EEnum en = (EEnum) feature.getEType();
+					EEnumLiteral eEnumLiteral = en.getEEnumLiteral(literal
 							.getLiteral());
+					if (eEnumLiteral == null) {
+						IStatus status = new Status(IStatus.ERROR,
+								CorePlugin.PLUGIN_ID, "Invalid constant: "
+										+ literal.getLiteral());
+						throw new CoreException(status);
+					}
+					value = eEnumLiteral.getInstance();
+				}
+				// Type to converter thought IParamConverter
+				if (value == null) {
+					IParamConverter<?> converter = ParamConverterManager
+							.getInstance().getConverter(instanceClass);
+					if (converter != null) {
+						value = converter.convert(literal.getLiteral());
+					}
 				}
 				// Type to converter thought EcoreUtil.createFromString
 				if (value == null && feature.getEType() instanceof EDataType) {
 					value = EcoreUtil.createFromString(
 							(EDataType) feature.getEType(),
-							((LiteralParameter) param).getLiteral());
+							literal.getLiteral());
 				}
 			} catch (Exception e) {
 				// Exception while converting
-				IStatus status = new Status(
-						IStatus.ERROR,
-						CorePlugin.PLUGIN_ID,
-						MessageFormat
-								.format("Can't assign value {0} to attribute {1}: Type convertation failed",
-										value, feature), e);
+				IStatus status = new Status(IStatus.ERROR,
+						CorePlugin.PLUGIN_ID, "Can't assign value " + value
+								+ " to attribute " + feature.getName()
+								+ ": Type convertation failed", e);
 				throw new CoreException(status);
 			}
 			// If failed to convert emit error
 			if (value == null) {
 				IStatus status = new Status(IStatus.ERROR,
-						CorePlugin.PLUGIN_ID, MessageFormat.format(
-								"Cannot convert value {0} to type {1}", value,
-								instanceClass.getSimpleName()));
+						CorePlugin.PLUGIN_ID, "Can't convert value " + value
+								+ " to type " + instanceClass.getSimpleName());
 				throw new CoreException(status);
 			}
 			try {
@@ -163,9 +176,8 @@ public class EclCompiler {
 				}
 			} catch (ClassCastException cce) {
 				IStatus status = new Status(IStatus.ERROR,
-						CorePlugin.PLUGIN_ID, MessageFormat.format(
-								"Can't assign value {0} to attribute {1}",
-								value, feature), cce);
+						CorePlugin.PLUGIN_ID, "Can't assign value " + value
+								+ " to attribute " + feature.getName(), cce);
 				throw new CoreException(status);
 			}
 			break;

@@ -12,11 +12,16 @@
 
 package org.eclipse.ecl.internal.commands;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.Sequence;
+import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.ICommandService;
+import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 
 public class SequenceService implements ICommandService {
@@ -25,9 +30,13 @@ public class SequenceService implements ICommandService {
 			throws InterruptedException, CoreException {
 		IStatus status = null;
 		Sequence seq = (Sequence) command;
+		List<Object> content = CoreUtils.readPipeContent(process.getInput());
 		for (Command cmd : seq.getCommands()) {
-			IProcess child = process.getSession().execute(cmd,
-					process.getInput(), null);
+			IPipe pipe = process.getSession().createPipe();
+			for (Object o : content)
+				pipe.write(o);
+			pipe.close(Status.OK_STATUS);
+			IProcess child = process.getSession().execute(cmd, pipe, null);
 			status = child.waitFor();
 			if (!status.isOK())
 				return status;

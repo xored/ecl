@@ -24,28 +24,19 @@ public class Pipe implements IPipe {
 			throw new CoreException(CorePlugin.err("Pipe was not initialized"
 					+ " for some reason"));
 		}
-		if (closed && queue.isEmpty()) {
-			return this.status;
-		}
 		try {
 			if (timeout > DELTA) {
 				long steps = timeout / DELTA;
 				long end = timeout % DELTA;
 				for (int i = 0; i < steps; i++) {
-					if (closed && queue.isEmpty()) {
-						// Couldn't happen
-						throw new CoreException(
-								CorePlugin
-										.err("Pipe was closed without status specified"));
-					}
+					if (closed && queue.isEmpty())
+						return this.status;
 					Object o = queue.poll(DELTA, TimeUnit.MILLISECONDS);
-					if (o != null) {
+					if (o != null)
 						return o;
-					}
 				}
-				if (end > 0) {
+				if (end > 0)
 					return queue.poll(end, TimeUnit.MILLISECONDS);
-				}
 				return CorePlugin.err("Timeout");
 			}
 			return queue.poll(timeout, TimeUnit.MILLISECONDS);
@@ -69,12 +60,11 @@ public class Pipe implements IPipe {
 	}
 
 	public IPipe close(IStatus status) throws CoreException {
-		closed = true;
-		this.status = status;
-		if (status == null) {
-			throw new CoreException(CorePlugin
-					.err("Pipe was closed without status specified"));
+		if ((this.status = status) == null) {
+			throw new CoreException(
+					CorePlugin.err("Pipe was closed without status specified"));
 		}
+		closed = true;
 		return this;
 	}
 }
