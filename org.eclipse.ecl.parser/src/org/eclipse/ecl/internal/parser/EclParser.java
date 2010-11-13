@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g 2010-11-12 23:37:51
+// $ANTLR 3.0 D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g 2010-11-13 15:12:12
 
 package org.eclipse.ecl.internal.parser;
 import org.antlr.runtime.BitSet;
@@ -31,10 +31,7 @@ public class EclParser extends Parser {
     };
     public static final int RBRACK=11;
     public static final int LBRACK=10;
-    public static final int T__28=28;
-    public static final int T__27=27;
     public static final int SYMBOL=19;
-    public static final int T__26=26;
     public static final int SingleLineComment=25;
     public static final int NUMBER=15;
     public static final int LCURLY=21;
@@ -56,20 +53,12 @@ public class EclParser extends Parser {
     public static final int MultiLineComment=24;
     public static final int STRING=16;
 
-    // delegates
-    // delegators
-
-
         public EclParser(TokenStream input) {
-            this(input, new RecognizerSharedState());
-        }
-        public EclParser(TokenStream input, RecognizerSharedState state) {
-            super(input, state);
-             
+            super(input);
         }
         
 
-    public String[] getTokenNames() { return EclParser.tokenNames; }
+    public String[] getTokenNames() { return tokenNames; }
     public String getGrammarFileName() { return "D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g"; }
 
 
@@ -108,7 +97,7 @@ public class EclParser extends Parser {
 
 
 
-    // $ANTLR start "commands"
+    // $ANTLR start commands
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:102:1: commands returns [Command cmd=null;] : ( NEWLINE | exprs= expr_list );
     public final Command commands() throws RecognitionException {
         Command cmd = null;;
@@ -117,7 +106,7 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:102:36: ( NEWLINE | exprs= expr_list )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:103:2: ( NEWLINE | exprs= expr_list )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -132,7 +121,7 @@ public class EclParser extends Parser {
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 1, 1, input);
+                        new NoViableAltException("102:1: commands returns [Command cmd=null;] : ( NEWLINE | exprs= expr_list );", 1, 1, input);
 
                     throw nvae;
                 }
@@ -142,7 +131,7 @@ public class EclParser extends Parser {
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 1, 0, input);
+                    new NoViableAltException("102:1: commands returns [Command cmd=null;] : ( NEWLINE | exprs= expr_list );", 1, 0, input);
 
                 throw nvae;
             }
@@ -159,8 +148,7 @@ public class EclParser extends Parser {
                     {
                     pushFollow(FOLLOW_expr_list_in_commands72);
                     exprs=expr_list();
-
-                    state._fsp--;
+                    _fsp--;
 
                      cmd=exprs;
 
@@ -177,10 +165,10 @@ public class EclParser extends Parser {
         }
         return cmd;
     }
-    // $ANTLR end "commands"
+    // $ANTLR end commands
 
 
-    // $ANTLR start "expr_list"
+    // $ANTLR start expr_list
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:105:1: expr_list returns [Command cmd=null] : ( NEWLINE )? c= expression ( ( NEWLINE | COLON ) c2= expression )* ( NEWLINE | COLON )* ;
     public final Command expr_list() throws RecognitionException {
         Command cmd = null;
@@ -191,7 +179,7 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:105:37: ( ( NEWLINE )? c= expression ( ( NEWLINE | COLON ) c2= expression )* ( NEWLINE | COLON )* )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:106:3: ( ( NEWLINE )? c= expression ( ( NEWLINE | COLON ) c2= expression )* ( NEWLINE | COLON )* )
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:106:3: ( NEWLINE )? c= expression ( ( NEWLINE | COLON ) c2= expression )* ( NEWLINE | COLON )*
             {
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:106:3: ( NEWLINE )?
@@ -214,8 +202,7 @@ public class EclParser extends Parser {
 
             pushFollow(FOLLOW_expression_in_expr_list95);
             c=expression();
-
-            state._fsp--;
+            _fsp--;
 
 
               	if( c != null ) {
@@ -226,24 +213,36 @@ public class EclParser extends Parser {
             loop3:
             do {
                 int alt3=2;
-                alt3 = dfa3.predict(input);
+                int LA3_0 = input.LA(1);
+
+                if ( ((LA3_0>=NEWLINE && LA3_0<=COLON)) ) {
+                    int LA3_1 = input.LA(2);
+
+                    if ( (LA3_1==LOPEN||(LA3_1>=NAME && LA3_1<=DNAME)) ) {
+                        alt3=1;
+                    }
+
+
+                }
+
+
                 switch (alt3) {
             	case 1 :
             	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:111:6: ( NEWLINE | COLON ) c2= expression
             	    {
             	    if ( (input.LA(1)>=NEWLINE && input.LA(1)<=COLON) ) {
             	        input.consume();
-            	        state.errorRecovery=false;
+            	        errorRecovery=false;
             	    }
             	    else {
-            	        MismatchedSetException mse = new MismatchedSetException(null,input);
-            	        throw mse;
+            	        MismatchedSetException mse =
+            	            new MismatchedSetException(null,input);
+            	        recoverFromMismatchedSet(input,mse,FOLLOW_set_in_expr_list100);    throw mse;
             	    }
 
             	    pushFollow(FOLLOW_expression_in_expr_list108);
             	    c2=expression();
-
-            	    state._fsp--;
+            	    _fsp--;
 
 
             	    		cmd = processSequence(cmd, c2);
@@ -274,11 +273,12 @@ public class EclParser extends Parser {
             	    {
             	    if ( (input.LA(1)>=NEWLINE && input.LA(1)<=COLON) ) {
             	        input.consume();
-            	        state.errorRecovery=false;
+            	        errorRecovery=false;
             	    }
             	    else {
-            	        MismatchedSetException mse = new MismatchedSetException(null,input);
-            	        throw mse;
+            	        MismatchedSetException mse =
+            	            new MismatchedSetException(null,input);
+            	        recoverFromMismatchedSet(input,mse,FOLLOW_set_in_expr_list117);    throw mse;
             	    }
 
 
@@ -302,10 +302,10 @@ public class EclParser extends Parser {
         }
         return cmd;
     }
-    // $ANTLR end "expr_list"
+    // $ANTLR end expr_list
 
 
-    // $ANTLR start "expression"
+    // $ANTLR start expression
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:117:1: expression returns [Command cmd=null;] : c= and_expr ;
     public final Command expression() throws RecognitionException {
         Command cmd = null;;
@@ -314,13 +314,12 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:117:38: (c= and_expr )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:118:4: (c= and_expr )
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:118:4: c= and_expr
             {
             pushFollow(FOLLOW_and_expr_in_expression139);
             c=and_expr();
-
-            state._fsp--;
+            _fsp--;
 
 
                	cmd = c;
@@ -337,10 +336,10 @@ public class EclParser extends Parser {
         }
         return cmd;
     }
-    // $ANTLR end "expression"
+    // $ANTLR end expression
 
 
-    // $ANTLR start "and_expr"
+    // $ANTLR start and_expr
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:123:1: and_expr returns [Command cmd=null;] : or1= or_expr ( AND or2= or_expr )* ;
     public final Command and_expr() throws RecognitionException {
         Command cmd = null;;
@@ -351,13 +350,12 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:123:37: (or1= or_expr ( AND or2= or_expr )* )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:124:3: (or1= or_expr ( AND or2= or_expr )* )
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:124:3: or1= or_expr ( AND or2= or_expr )*
             {
             pushFollow(FOLLOW_or_expr_in_and_expr158);
             or1=or_expr();
-
-            state._fsp--;
+            _fsp--;
 
             cmd=or1;
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:124:26: ( AND or2= or_expr )*
@@ -378,8 +376,7 @@ public class EclParser extends Parser {
             	    match(input,AND,FOLLOW_AND_in_and_expr163); 
             	    pushFollow(FOLLOW_or_expr_in_and_expr167);
             	    or2=or_expr();
-
-            	    state._fsp--;
+            	    _fsp--;
 
 
             	      	//Construct parallel if not yet constructed.
@@ -418,10 +415,10 @@ public class EclParser extends Parser {
         }
         return cmd;
     }
-    // $ANTLR end "and_expr"
+    // $ANTLR end and_expr
 
 
-    // $ANTLR start "or_expr"
+    // $ANTLR start or_expr
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:142:1: or_expr returns [Command cmd=null;] : c= cmd ( OR cmd2= cmd )* ;
     public final Command or_expr() throws RecognitionException {
         Command cmd = null;;
@@ -432,13 +429,12 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:142:36: (c= cmd ( OR cmd2= cmd )* )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:143:3: (c= cmd ( OR cmd2= cmd )* )
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:143:3: c= cmd ( OR cmd2= cmd )*
             {
             pushFollow(FOLLOW_cmd_in_or_expr189);
             c=cmd();
-
-            state._fsp--;
+            _fsp--;
 
 
               cmd = c;
@@ -461,8 +457,7 @@ public class EclParser extends Parser {
             	    match(input,OR,FOLLOW_OR_in_or_expr194); 
             	    pushFollow(FOLLOW_cmd_in_or_expr198);
             	    cmd2=cmd();
-
-            	    state._fsp--;
+            	    _fsp--;
 
 
             	      	//Construct pipe if not yet constructed.
@@ -501,10 +496,10 @@ public class EclParser extends Parser {
         }
         return cmd;
     }
-    // $ANTLR end "or_expr"
+    // $ANTLR end or_expr
 
 
-    // $ANTLR start "open_expr_list"
+    // $ANTLR start open_expr_list
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:163:1: open_expr_list returns [Command cmd=null] : c= expression ( COLON c2= expression )* ;
     public final Command open_expr_list() throws RecognitionException {
         Command cmd = null;
@@ -515,13 +510,12 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:163:42: (c= expression ( COLON c2= expression )* )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:164:3: (c= expression ( COLON c2= expression )* )
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:164:3: c= expression ( COLON c2= expression )*
             {
             pushFollow(FOLLOW_expression_in_open_expr_list219);
             c=expression();
-
-            state._fsp--;
+            _fsp--;
 
 
               	if( c != null ) {
@@ -546,8 +540,7 @@ public class EclParser extends Parser {
             	    match(input,COLON,FOLLOW_COLON_in_open_expr_list224); 
             	    pushFollow(FOLLOW_expression_in_open_expr_list228);
             	    c2=expression();
-
-            	    state._fsp--;
+            	    _fsp--;
 
 
             	      	cmd = processSequence(cmd, c2);
@@ -573,10 +566,10 @@ public class EclParser extends Parser {
         }
         return cmd;
     }
-    // $ANTLR end "open_expr_list"
+    // $ANTLR end open_expr_list
 
 
-    // $ANTLR start "cmd"
+    // $ANTLR start cmd
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:173:1: cmd returns [Command cmd=null;] : (c= command | LOPEN c= open_expr_list ROPEN );
     public final Command cmd() throws RecognitionException {
         Command cmd = null;;
@@ -585,7 +578,7 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:173:32: (c= command | LOPEN c= open_expr_list ROPEN )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:174:2: (c= command | LOPEN c= open_expr_list ROPEN )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -597,7 +590,7 @@ public class EclParser extends Parser {
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 8, 0, input);
+                    new NoViableAltException("173:1: cmd returns [Command cmd=null;] : (c= command | LOPEN c= open_expr_list ROPEN );", 8, 0, input);
 
                 throw nvae;
             }
@@ -607,8 +600,7 @@ public class EclParser extends Parser {
                     {
                     pushFollow(FOLLOW_command_in_cmd248);
                     c=command();
-
-                    state._fsp--;
+                    _fsp--;
 
 
                     	cmd = c;
@@ -622,8 +614,7 @@ public class EclParser extends Parser {
                     match(input,LOPEN,FOLLOW_LOPEN_in_cmd255); 
                     pushFollow(FOLLOW_open_expr_list_in_cmd259);
                     c=open_expr_list();
-
-                    state._fsp--;
+                    _fsp--;
 
 
                      	cmd = c; 
@@ -643,10 +634,10 @@ public class EclParser extends Parser {
         }
         return cmd;
     }
-    // $ANTLR end "cmd"
+    // $ANTLR end cmd
 
 
-    // $ANTLR start "command"
+    // $ANTLR start command
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:182:1: command returns [Exec cmd=null;] : n= command_name (ho= host )? (a= argument_value )* (arg= argument )* ;
     public final Exec command() throws RecognitionException {
         Exec cmd = null;;
@@ -661,13 +652,12 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:182:32: (n= command_name (ho= host )? (a= argument_value )* (arg= argument )* )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:183:4: (n= command_name (ho= host )? (a= argument_value )* (arg= argument )* )
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:183:4: n= command_name (ho= host )? (a= argument_value )* (arg= argument )*
             {
             pushFollow(FOLLOW_command_name_in_command279);
             n=command_name();
-
-            state._fsp--;
+            _fsp--;
 
 
                	cmd = factory.createExec();
@@ -682,15 +672,18 @@ public class EclParser extends Parser {
                
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:194:4: (ho= host )?
             int alt9=2;
-            alt9 = dfa9.predict(input);
+            int LA9_0 = input.LA(1);
+
+            if ( (LA9_0==26) ) {
+                alt9=1;
+            }
             switch (alt9) {
                 case 1 :
                     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:194:5: ho= host
                     {
                     pushFollow(FOLLOW_host_in_command290);
                     ho=host();
-
-                    state._fsp--;
+                    _fsp--;
 
 
                     		cmd.setHost(ho);
@@ -705,15 +698,20 @@ public class EclParser extends Parser {
             loop10:
             do {
                 int alt10=2;
-                alt10 = dfa10.predict(input);
+                int LA10_0 = input.LA(1);
+
+                if ( (LA10_0==LBRACK||LA10_0==NAME||(LA10_0>=NUMBER && LA10_0<=CURLY_STRING)) ) {
+                    alt10=1;
+                }
+
+
                 switch (alt10) {
             	case 1 :
             	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:197:5: a= argument_value
             	    {
             	    pushFollow(FOLLOW_argument_value_in_command302);
             	    a=argument_value();
-
-            	    state._fsp--;
+            	    _fsp--;
 
 
             	       	if( a != null ) {
@@ -746,8 +744,7 @@ public class EclParser extends Parser {
             	    {
             	    pushFollow(FOLLOW_argument_in_command315);
             	    arg=argument();
-
-            	    state._fsp--;
+            	    _fsp--;
 
 
             	       	if( arg != null ) {
@@ -775,10 +772,10 @@ public class EclParser extends Parser {
         }
         return cmd;
     }
-    // $ANTLR end "command"
+    // $ANTLR end command
 
 
-    // $ANTLR start "subcommand"
+    // $ANTLR start subcommand
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:209:1: subcommand returns [Parameter param=null;] : LBRACK c= expr_list RBRACK ;
     public final Parameter subcommand() throws RecognitionException {
         Parameter param = null;;
@@ -787,14 +784,13 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:209:42: ( LBRACK c= expr_list RBRACK )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:210:3: ( LBRACK c= expr_list RBRACK )
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:210:3: LBRACK c= expr_list RBRACK
             {
             match(input,LBRACK,FOLLOW_LBRACK_in_subcommand332); 
             pushFollow(FOLLOW_expr_list_in_subcommand340);
             c=expr_list();
-
-            state._fsp--;
+            _fsp--;
 
 
                 	ExecutableParameter p = factory.createExecutableParameter();
@@ -814,10 +810,10 @@ public class EclParser extends Parser {
         }
         return param;
     }
-    // $ANTLR end "subcommand"
+    // $ANTLR end subcommand
 
 
-    // $ANTLR start "command_name"
+    // $ANTLR start command_name
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:219:1: command_name returns [String name=null;] : (n= NAME | n= DNAME ) ;
     public final String command_name() throws RecognitionException {
         String name = null;;
@@ -825,7 +821,7 @@ public class EclParser extends Parser {
         Token n=null;
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:219:40: ( (n= NAME | n= DNAME ) )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:220:2: ( (n= NAME | n= DNAME ) )
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:220:2: (n= NAME | n= DNAME )
             {
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:220:2: (n= NAME | n= DNAME )
@@ -840,7 +836,7 @@ public class EclParser extends Parser {
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 12, 0, input);
+                    new NoViableAltException("220:2: (n= NAME | n= DNAME )", 12, 0, input);
 
                 throw nvae;
             }
@@ -848,14 +844,16 @@ public class EclParser extends Parser {
                 case 1 :
                     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:220:3: n= NAME
                     {
-                    n=(Token)match(input,NAME,FOLLOW_NAME_in_command_name364); 
+                    n=(Token)input.LT(1);
+                    match(input,NAME,FOLLOW_NAME_in_command_name364); 
 
                     }
                     break;
                 case 2 :
                     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:220:33: n= DNAME
                     {
-                    n=(Token)match(input,DNAME,FOLLOW_DNAME_in_command_name371); 
+                    n=(Token)input.LT(1);
+                    match(input,DNAME,FOLLOW_DNAME_in_command_name371); 
 
                     }
                     break;
@@ -875,10 +873,10 @@ public class EclParser extends Parser {
         }
         return name;
     }
-    // $ANTLR end "command_name"
+    // $ANTLR end command_name
 
 
-    // $ANTLR start "host"
+    // $ANTLR start host
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:223:1: host returns [String host=null;] : ( '@' (n= NAME | n= IP4 ) ) ;
     public final String host() throws RecognitionException {
         String host = null;;
@@ -886,7 +884,7 @@ public class EclParser extends Parser {
         Token n=null;
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:223:33: ( ( '@' (n= NAME | n= IP4 ) ) )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:224:2: ( ( '@' (n= NAME | n= IP4 ) ) )
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:224:2: ( '@' (n= NAME | n= IP4 ) )
             {
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:224:2: ( '@' (n= NAME | n= IP4 ) )
@@ -905,7 +903,7 @@ public class EclParser extends Parser {
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 13, 0, input);
+                    new NoViableAltException("224:7: (n= NAME | n= IP4 )", 13, 0, input);
 
                 throw nvae;
             }
@@ -913,14 +911,16 @@ public class EclParser extends Parser {
                 case 1 :
                     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:224:8: n= NAME
                     {
-                    n=(Token)match(input,NAME,FOLLOW_NAME_in_host394); 
+                    n=(Token)input.LT(1);
+                    match(input,NAME,FOLLOW_NAME_in_host394); 
 
                     }
                     break;
                 case 2 :
                     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:224:15: n= IP4
                     {
-                    n=(Token)match(input,IP4,FOLLOW_IP4_in_host398); 
+                    n=(Token)input.LT(1);
+                    match(input,IP4,FOLLOW_IP4_in_host398); 
 
                     }
                     break;
@@ -945,10 +945,10 @@ public class EclParser extends Parser {
         }
         return host;
     }
-    // $ANTLR end "host"
+    // $ANTLR end host
 
 
-    // $ANTLR start "argument"
+    // $ANTLR start argument
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:229:1: argument returns [Parameter param = null] : (p= named_argument ) ;
     public final Parameter argument() throws RecognitionException {
         Parameter param =  null;
@@ -957,7 +957,7 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:229:42: ( (p= named_argument ) )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:230:4: ( (p= named_argument ) )
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:230:4: (p= named_argument )
             {
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:230:4: (p= named_argument )
@@ -965,8 +965,7 @@ public class EclParser extends Parser {
             {
             pushFollow(FOLLOW_named_argument_in_argument420);
             p=named_argument();
-
-            state._fsp--;
+            _fsp--;
 
 
             }
@@ -984,10 +983,10 @@ public class EclParser extends Parser {
         }
         return param;
     }
-    // $ANTLR end "argument"
+    // $ANTLR end argument
 
 
-    // $ANTLR start "argument_value"
+    // $ANTLR start argument_value
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:232:1: argument_value returns [Parameter param=null;] : (p= simple_value | p= subcommand | p= convert_string ) ;
     public final Parameter argument_value() throws RecognitionException {
         Parameter param = null;;
@@ -996,20 +995,56 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:232:47: ( (p= simple_value | p= subcommand | p= convert_string ) )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:233:3: ( (p= simple_value | p= subcommand | p= convert_string ) )
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:233:3: (p= simple_value | p= subcommand | p= convert_string )
             {
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:233:3: (p= simple_value | p= subcommand | p= convert_string )
             int alt14=3;
-            alt14 = dfa14.predict(input);
+            switch ( input.LA(1) ) {
+            case NAME:
+                {
+                int LA14_1 = input.LA(2);
+
+                if ( (LA14_1==SEMI) ) {
+                    alt14=3;
+                }
+                else if ( (LA14_1==EOF||(LA14_1>=NEWLINE && LA14_1<=OR)||(LA14_1>=ROPEN && LA14_1<=NAME)||(LA14_1>=NUMBER && LA14_1<=CURLY_STRING)||LA14_1==27) ) {
+                    alt14=1;
+                }
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("233:3: (p= simple_value | p= subcommand | p= convert_string )", 14, 1, input);
+
+                    throw nvae;
+                }
+                }
+                break;
+            case NUMBER:
+            case STRING:
+            case CURLY_STRING:
+                {
+                alt14=1;
+                }
+                break;
+            case LBRACK:
+                {
+                alt14=2;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("233:3: (p= simple_value | p= subcommand | p= convert_string )", 14, 0, input);
+
+                throw nvae;
+            }
+
             switch (alt14) {
                 case 1 :
                     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:233:4: p= simple_value
                     {
                     pushFollow(FOLLOW_simple_value_in_argument_value441);
                     p=simple_value();
-
-                    state._fsp--;
+                    _fsp--;
 
 
                     }
@@ -1019,8 +1054,7 @@ public class EclParser extends Parser {
                     {
                     pushFollow(FOLLOW_subcommand_in_argument_value448);
                     p=subcommand();
-
-                    state._fsp--;
+                    _fsp--;
 
 
                     }
@@ -1030,8 +1064,7 @@ public class EclParser extends Parser {
                     {
                     pushFollow(FOLLOW_convert_string_in_argument_value456);
                     p=convert_string();
-
-                    state._fsp--;
+                    _fsp--;
 
 
                     }
@@ -1054,10 +1087,10 @@ public class EclParser extends Parser {
         }
         return param;
     }
-    // $ANTLR end "argument_value"
+    // $ANTLR end argument_value
 
 
-    // $ANTLR start "simple_value"
+    // $ANTLR start simple_value
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:237:1: simple_value returns [Parameter param = null;] : (d= NAME | d= NUMBER | d2= STRING | d2= CURLY_STRING ) ;
     public final Parameter simple_value() throws RecognitionException {
         Parameter param =  null;;
@@ -1066,7 +1099,7 @@ public class EclParser extends Parser {
         Token d2=null;
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:237:46: ( (d= NAME | d= NUMBER | d2= STRING | d2= CURLY_STRING ) )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:2: ( (d= NAME | d= NUMBER | d2= STRING | d2= CURLY_STRING ) )
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:2: (d= NAME | d= NUMBER | d2= STRING | d2= CURLY_STRING )
             {
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:2: (d= NAME | d= NUMBER | d2= STRING | d2= CURLY_STRING )
@@ -1094,7 +1127,7 @@ public class EclParser extends Parser {
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 15, 0, input);
+                    new NoViableAltException("238:2: (d= NAME | d= NUMBER | d2= STRING | d2= CURLY_STRING )", 15, 0, input);
 
                 throw nvae;
             }
@@ -1103,28 +1136,32 @@ public class EclParser extends Parser {
                 case 1 :
                     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:3: d= NAME
                     {
-                    d=(Token)match(input,NAME,FOLLOW_NAME_in_simple_value473); 
+                    d=(Token)input.LT(1);
+                    match(input,NAME,FOLLOW_NAME_in_simple_value473); 
 
                     }
                     break;
                 case 2 :
                     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:10: d= NUMBER
                     {
-                    d=(Token)match(input,NUMBER,FOLLOW_NUMBER_in_simple_value477); 
+                    d=(Token)input.LT(1);
+                    match(input,NUMBER,FOLLOW_NUMBER_in_simple_value477); 
 
                     }
                     break;
                 case 3 :
                     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:19: d2= STRING
                     {
-                    d2=(Token)match(input,STRING,FOLLOW_STRING_in_simple_value481); 
+                    d2=(Token)input.LT(1);
+                    match(input,STRING,FOLLOW_STRING_in_simple_value481); 
 
                     }
                     break;
                 case 4 :
                     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:29: d2= CURLY_STRING
                     {
-                    d2=(Token)match(input,CURLY_STRING,FOLLOW_CURLY_STRING_in_simple_value485); 
+                    d2=(Token)input.LT(1);
+                    match(input,CURLY_STRING,FOLLOW_CURLY_STRING_in_simple_value485); 
 
                     }
                     break;
@@ -1154,10 +1191,10 @@ public class EclParser extends Parser {
         }
         return param;
     }
-    // $ANTLR end "simple_value"
+    // $ANTLR end simple_value
 
 
-    // $ANTLR start "named_argument"
+    // $ANTLR start named_argument
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:250:1: named_argument returns [Parameter param=null;] : ( '-' ( '-' )? n= NAME ( '=' )? (v= argument_value ) ) ;
     public final Parameter named_argument() throws RecognitionException {
         Parameter param = null;;
@@ -1167,7 +1204,7 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:250:47: ( ( '-' ( '-' )? n= NAME ( '=' )? (v= argument_value ) ) )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:251:2: ( ( '-' ( '-' )? n= NAME ( '=' )? (v= argument_value ) ) )
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:251:2: ( '-' ( '-' )? n= NAME ( '=' )? (v= argument_value ) )
             {
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:251:2: ( '-' ( '-' )? n= NAME ( '=' )? (v= argument_value ) )
@@ -1192,7 +1229,8 @@ public class EclParser extends Parser {
 
             }
 
-            n=(Token)match(input,NAME,FOLLOW_NAME_in_named_argument509); 
+            n=(Token)input.LT(1);
+            match(input,NAME,FOLLOW_NAME_in_named_argument509); 
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:251:19: ( '=' )?
             int alt17=2;
             int LA17_0 = input.LA(1);
@@ -1216,8 +1254,7 @@ public class EclParser extends Parser {
             {
             pushFollow(FOLLOW_argument_value_in_named_argument517);
             v=argument_value();
-
-            state._fsp--;
+            _fsp--;
 
 
             }
@@ -1241,10 +1278,10 @@ public class EclParser extends Parser {
         }
         return param;
     }
-    // $ANTLR end "named_argument"
+    // $ANTLR end named_argument
 
 
-    // $ANTLR start "convert_string"
+    // $ANTLR start convert_string
     // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:257:1: convert_string returns [Parameter param=null;] : (f= NAME SEMI v= CURLY_STRING ) ;
     public final Parameter convert_string() throws RecognitionException {
         Parameter param = null;;
@@ -1253,15 +1290,17 @@ public class EclParser extends Parser {
         Token v=null;
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:257:47: ( (f= NAME SEMI v= CURLY_STRING ) )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:258:2: ( (f= NAME SEMI v= CURLY_STRING ) )
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:258:2: (f= NAME SEMI v= CURLY_STRING )
             {
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:258:2: (f= NAME SEMI v= CURLY_STRING )
             // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:258:3: f= NAME SEMI v= CURLY_STRING
             {
-            f=(Token)match(input,NAME,FOLLOW_NAME_in_convert_string537); 
+            f=(Token)input.LT(1);
+            match(input,NAME,FOLLOW_NAME_in_convert_string537); 
             match(input,SEMI,FOLLOW_SEMI_in_convert_string539); 
-            v=(Token)match(input,CURLY_STRING,FOLLOW_CURLY_STRING_in_convert_string543); 
+            v=(Token)input.LT(1);
+            match(input,CURLY_STRING,FOLLOW_CURLY_STRING_in_convert_string543); 
 
             }
 
@@ -1284,266 +1323,9 @@ public class EclParser extends Parser {
         }
         return param;
     }
-    // $ANTLR end "convert_string"
-
-    // Delegated rules
+    // $ANTLR end convert_string
 
 
-    protected DFA3 dfa3 = new DFA3(this);
-    protected DFA9 dfa9 = new DFA9(this);
-    protected DFA10 dfa10 = new DFA10(this);
-    protected DFA14 dfa14 = new DFA14(this);
-    static final String DFA3_eotS =
-        "\12\uffff";
-    static final String DFA3_eofS =
-        "\2\2\10\uffff";
-    static final String DFA3_minS =
-        "\2\4\10\uffff";
-    static final String DFA3_maxS =
-        "\1\13\1\15\10\uffff";
-    static final String DFA3_acceptS =
-        "\2\uffff\1\2\4\uffff\1\1\2\uffff";
-    static final String DFA3_specialS =
-        "\12\uffff}>";
-    static final String[] DFA3_transitionS = {
-            "\2\1\5\uffff\1\2",
-            "\2\2\2\uffff\1\7\2\uffff\1\2\2\7",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-    };
-
-    static final short[] DFA3_eot = DFA.unpackEncodedString(DFA3_eotS);
-    static final short[] DFA3_eof = DFA.unpackEncodedString(DFA3_eofS);
-    static final char[] DFA3_min = DFA.unpackEncodedStringToUnsignedChars(DFA3_minS);
-    static final char[] DFA3_max = DFA.unpackEncodedStringToUnsignedChars(DFA3_maxS);
-    static final short[] DFA3_accept = DFA.unpackEncodedString(DFA3_acceptS);
-    static final short[] DFA3_special = DFA.unpackEncodedString(DFA3_specialS);
-    static final short[][] DFA3_transition;
-
-    static {
-        int numStates = DFA3_transitionS.length;
-        DFA3_transition = new short[numStates][];
-        for (int i=0; i<numStates; i++) {
-            DFA3_transition[i] = DFA.unpackEncodedString(DFA3_transitionS[i]);
-        }
-    }
-
-    class DFA3 extends DFA {
-
-        public DFA3(BaseRecognizer recognizer) {
-            this.recognizer = recognizer;
-            this.decisionNumber = 3;
-            this.eot = DFA3_eot;
-            this.eof = DFA3_eof;
-            this.min = DFA3_min;
-            this.max = DFA3_max;
-            this.accept = DFA3_accept;
-            this.special = DFA3_special;
-            this.transition = DFA3_transition;
-        }
-        public String getDescription() {
-            return "()* loopback of 111:5: ( ( NEWLINE | COLON ) c2= expression )*";
-        }
-    }
-    static final String DFA9_eotS =
-        "\17\uffff";
-    static final String DFA9_eofS =
-        "\1\2\16\uffff";
-    static final String DFA9_minS =
-        "\1\4\16\uffff";
-    static final String DFA9_maxS =
-        "\1\33\16\uffff";
-    static final String DFA9_acceptS =
-        "\1\uffff\1\1\1\2\14\uffff";
-    static final String DFA9_specialS =
-        "\17\uffff}>";
-    static final String[] DFA9_transitionS = {
-            "\4\2\1\uffff\4\2\2\uffff\3\2\10\uffff\1\1\1\2",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-    };
-
-    static final short[] DFA9_eot = DFA.unpackEncodedString(DFA9_eotS);
-    static final short[] DFA9_eof = DFA.unpackEncodedString(DFA9_eofS);
-    static final char[] DFA9_min = DFA.unpackEncodedStringToUnsignedChars(DFA9_minS);
-    static final char[] DFA9_max = DFA.unpackEncodedStringToUnsignedChars(DFA9_maxS);
-    static final short[] DFA9_accept = DFA.unpackEncodedString(DFA9_acceptS);
-    static final short[] DFA9_special = DFA.unpackEncodedString(DFA9_specialS);
-    static final short[][] DFA9_transition;
-
-    static {
-        int numStates = DFA9_transitionS.length;
-        DFA9_transition = new short[numStates][];
-        for (int i=0; i<numStates; i++) {
-            DFA9_transition[i] = DFA.unpackEncodedString(DFA9_transitionS[i]);
-        }
-    }
-
-    class DFA9 extends DFA {
-
-        public DFA9(BaseRecognizer recognizer) {
-            this.recognizer = recognizer;
-            this.decisionNumber = 9;
-            this.eot = DFA9_eot;
-            this.eof = DFA9_eof;
-            this.min = DFA9_min;
-            this.max = DFA9_max;
-            this.accept = DFA9_accept;
-            this.special = DFA9_special;
-            this.transition = DFA9_transition;
-        }
-        public String getDescription() {
-            return "194:4: (ho= host )?";
-        }
-    }
-    static final String DFA10_eotS =
-        "\16\uffff";
-    static final String DFA10_eofS =
-        "\1\1\15\uffff";
-    static final String DFA10_minS =
-        "\1\4\15\uffff";
-    static final String DFA10_maxS =
-        "\1\33\15\uffff";
-    static final String DFA10_acceptS =
-        "\1\uffff\1\2\7\uffff\1\1\4\uffff";
-    static final String DFA10_specialS =
-        "\16\uffff}>";
-    static final String[] DFA10_transitionS = {
-            "\4\1\1\uffff\1\1\1\11\1\1\1\11\2\uffff\3\11\11\uffff\1\1",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-    };
-
-    static final short[] DFA10_eot = DFA.unpackEncodedString(DFA10_eotS);
-    static final short[] DFA10_eof = DFA.unpackEncodedString(DFA10_eofS);
-    static final char[] DFA10_min = DFA.unpackEncodedStringToUnsignedChars(DFA10_minS);
-    static final char[] DFA10_max = DFA.unpackEncodedStringToUnsignedChars(DFA10_maxS);
-    static final short[] DFA10_accept = DFA.unpackEncodedString(DFA10_acceptS);
-    static final short[] DFA10_special = DFA.unpackEncodedString(DFA10_specialS);
-    static final short[][] DFA10_transition;
-
-    static {
-        int numStates = DFA10_transitionS.length;
-        DFA10_transition = new short[numStates][];
-        for (int i=0; i<numStates; i++) {
-            DFA10_transition[i] = DFA.unpackEncodedString(DFA10_transitionS[i]);
-        }
-    }
-
-    class DFA10 extends DFA {
-
-        public DFA10(BaseRecognizer recognizer) {
-            this.recognizer = recognizer;
-            this.decisionNumber = 10;
-            this.eot = DFA10_eot;
-            this.eof = DFA10_eof;
-            this.min = DFA10_min;
-            this.max = DFA10_max;
-            this.accept = DFA10_accept;
-            this.special = DFA10_special;
-            this.transition = DFA10_transition;
-        }
-        public String getDescription() {
-            return "()* loopback of 197:4: (a= argument_value )*";
-        }
-    }
-    static final String DFA14_eotS =
-        "\24\uffff";
-    static final String DFA14_eofS =
-        "\1\uffff\1\2\22\uffff";
-    static final String DFA14_minS =
-        "\1\12\1\4\22\uffff";
-    static final String DFA14_maxS =
-        "\1\21\1\33\22\uffff";
-    static final String DFA14_acceptS =
-        "\2\uffff\1\1\2\uffff\1\2\1\3\15\uffff";
-    static final String DFA14_specialS =
-        "\24\uffff}>";
-    static final String[] DFA14_transitionS = {
-            "\1\5\1\uffff\1\1\2\uffff\3\2",
-            "\4\2\1\uffff\4\2\2\uffff\3\2\1\6\10\uffff\1\2",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-    };
-
-    static final short[] DFA14_eot = DFA.unpackEncodedString(DFA14_eotS);
-    static final short[] DFA14_eof = DFA.unpackEncodedString(DFA14_eofS);
-    static final char[] DFA14_min = DFA.unpackEncodedStringToUnsignedChars(DFA14_minS);
-    static final char[] DFA14_max = DFA.unpackEncodedStringToUnsignedChars(DFA14_maxS);
-    static final short[] DFA14_accept = DFA.unpackEncodedString(DFA14_acceptS);
-    static final short[] DFA14_special = DFA.unpackEncodedString(DFA14_specialS);
-    static final short[][] DFA14_transition;
-
-    static {
-        int numStates = DFA14_transitionS.length;
-        DFA14_transition = new short[numStates][];
-        for (int i=0; i<numStates; i++) {
-            DFA14_transition[i] = DFA.unpackEncodedString(DFA14_transitionS[i]);
-        }
-    }
-
-    class DFA14 extends DFA {
-
-        public DFA14(BaseRecognizer recognizer) {
-            this.recognizer = recognizer;
-            this.decisionNumber = 14;
-            this.eot = DFA14_eot;
-            this.eof = DFA14_eof;
-            this.min = DFA14_min;
-            this.max = DFA14_max;
-            this.accept = DFA14_accept;
-            this.special = DFA14_special;
-            this.transition = DFA14_transition;
-        }
-        public String getDescription() {
-            return "233:3: (p= simple_value | p= subcommand | p= convert_string )";
-        }
-    }
  
 
     public static final BitSet FOLLOW_NEWLINE_in_commands66 = new BitSet(new long[]{0x0000000000000002L});
