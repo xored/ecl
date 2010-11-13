@@ -14,7 +14,6 @@
 	</properties>
   
   <modules>
-    <module>org.antlr.runtime</module>
     <module>org.eclipse.ecl.client.tcp</module>
     <!--module>org.eclipse.ecl.client.tcp.tests</module-->
     <!--module>org.eclipse.ecl.console.core</module>
