@@ -3,6 +3,7 @@ package org.eclipse.ecl.ast;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.gen.ast.AstFactory;
 import org.eclipse.ecl.gen.ast.AstPackage;
@@ -30,7 +31,7 @@ public class Ast {
 		}
 	};
 
-	public Ast(String text) {
+	public Ast(String text) throws CoreException {
 		this.text = text;
 		this.root = createNode(0, text.length(), EclPartition.unknown);
 		Block block = new EclParser(text).parse();

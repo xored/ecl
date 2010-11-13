@@ -1,9 +1,9 @@
-script <- (sequence)? EOF
+script <- (sequence)? !.
 sequence <- expr ((NL|COLON)+ expr)* (NL|COLON)*
 expr <- WS? parallel
 parallel <- pipeline (AND pipeline)*
-pipeline <- primary (OR primary)*
-primary <- command | LPAREN sequence RPAREN
+pipeline <- command (OR command)*
+#primary <- command | LPAREN sequence RPAREN
 command <- (cmdNs '::')? cmdName (WS (param | paramValue))* WS?
 cmdNs <- '[a-zA-Z]([a-zA-Z0-9\\.-])*'
 cmdName <- '[a-zA-Z]([a-zA-Z0-9\\.-])*'

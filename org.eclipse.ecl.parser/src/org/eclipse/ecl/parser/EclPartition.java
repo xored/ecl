@@ -1,7 +1,9 @@
 package org.eclipse.ecl.parser;
 
 public enum EclPartition {
-	script, sequence, expr, parallel, pipeline, primary, command, commandNamespace, commandName,
+	script, sequence, expr, parallel, pipeline,
+	// primary,
+	command, commandNamespace, commandName,
 	//
 	param, paramName, paramValue, curly, subCommand, literal, number, string,
 	//

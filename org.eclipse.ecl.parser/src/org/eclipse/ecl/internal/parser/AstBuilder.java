@@ -1,5 +1,7 @@
 package org.eclipse.ecl.internal.parser;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.core.Exec;
@@ -15,7 +17,9 @@ import com.xored.peg.Block;
 
 public class AstBuilder {
 	public Command build(Block block) {
-		if (block != Block.NO_PARSE) {
+		if (block == Block.NO_PARSE)
+			return null;
+		try {
 			switch (EclPartition.values()[block.getType()]) {
 			case script:
 				if (block.getChild(0).getNumChildren() == 0)
@@ -27,16 +31,24 @@ public class AstBuilder {
 				return parallel(block.getChild(1));
 			case pipeline:
 				return pipeline(block);
-			case primary:
-				if (block.getNumChildren() == 1)
-					return build(block.getChild(0).getChild(1));
-				else
-					return command(block);
+				// case primary:
+				// if (block.getNumChildren() == 1)
+				// return command(block.getChild(0));
+				// else
+				// return command(block);
 			case command:
 				return command(block);
+			default:
+				throw new RuntimeException("Script has problems");
 			}
+		} catch (Exception e) {
+			EclParserPlugin
+					.getDefault()
+					.getLog()
+					.log(new Status(IStatus.OK, EclParserPlugin.PLUGIN_ID, e
+							.getMessage(), e));
+			return null;
 		}
-		return null;
 	}
 
 	protected Command parallel(Block block) {

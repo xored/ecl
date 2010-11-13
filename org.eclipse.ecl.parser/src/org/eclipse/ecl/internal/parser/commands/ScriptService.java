@@ -6,7 +6,8 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.Script;
 import org.eclipse.ecl.internal.core.CorePlugin;
-import org.eclipse.ecl.parser.EclParser;
+import org.eclipse.ecl.parser.EclCoreParser;
+import org.eclipse.ecl.parser.EclParserErrorCollector;
 import org.eclipse.ecl.runtime.EclCompiler;
 import org.eclipse.ecl.runtime.EclRuntime;
 import org.eclipse.ecl.runtime.ICommandService;
@@ -20,8 +21,9 @@ public class ScriptService implements ICommandService {
 		String content = s.getContent();
 		if (content == null || content.length() == 0)
 			return Status.OK_STATUS;
-		Command c = new EclParser(content).compile();
-		if (c == null) {
+		EclParserErrorCollector reporter = new EclParserErrorCollector();
+		Command c = EclCoreParser.newCommand(content, reporter);
+		if (reporter.getErrors().length > 0) {
 			return new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
 					"Errors in the script.");
 		}
