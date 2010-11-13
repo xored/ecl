@@ -12,10 +12,6 @@
 
 package org.eclipse.ecl.internal.core;
 
-import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -26,7 +22,6 @@ import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import com.xored.espace.core.ESpace;
@@ -57,15 +52,15 @@ public class Session implements ISession {
 					s = svc.service(scriptlet, process);
 				} catch (CoreException e) {
 					s = e.getStatus();
-					CorePlugin.err(e.getMessage(),e);
+					CorePlugin.err(e.getMessage(), e);
 				} catch (InterruptedException ie) {
-					s = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, ie
-							.getMessage(), ie);
-					CorePlugin.err(ie.getMessage(),ie);
+					s = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
+							ie.getMessage(), ie);
+					CorePlugin.err(ie.getMessage(), ie);
 				} catch (Throwable t) {
-					s = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, t
-							.getMessage(), t);
-					CorePlugin.err(t.getMessage(),t);
+					s = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
+							t.getMessage(), t);
+					CorePlugin.err(t.getMessage(), t);
 				} finally {
 					try {
 						process.setStatus(s);
@@ -101,7 +96,8 @@ public class Session implements ISession {
 			}
 		}
 		if (inputFeature != null) {
-			featureSafeSet(scriptlet, inputFeature, getPipeContent(input));
+			CoreUtils.featureSafeSet(scriptlet, inputFeature,
+					CoreUtils.readPipeContent(input));
 		}
 	}
 
@@ -112,64 +108,15 @@ public class Session implements ISession {
 			Command command = binding.getCommand();
 			IPipe out = createPipe();
 			execute(command, null, out);
-			featureSafeSet(scriptlet, feature, getPipeContent(out));
+			CoreUtils.featureSafeSet(scriptlet, feature,
+					CoreUtils.readPipeContent(out));
 		}
 	}
 
 	private void checkParams(Command scriptlet) throws CoreException {
 		for (EStructuralFeature feature : scriptlet.eClass()
 				.getEStructuralFeatures()) {
-			checkBounds(feature, scriptlet.eGet(feature));
-		}
-	}
-
-	private static List<?> getPipeContent(IPipe pipe) throws CoreException {
-		List<Object> pipeContent = new ArrayList<Object>();
-		Object o = null;
-		while (true) {
-			o = pipe.take(Long.MAX_VALUE); // wait forever to take content
-			if (o instanceof IStatus)
-				break;
-			pipeContent.add(o);
-		}
-		// Now pipe is empty for sure
-		IStatus status = (IStatus) o;
-		if (status.getSeverity() != IStatus.OK) {
-			throw new CoreException(status);
-		}
-		return pipeContent;
-	}
-
-	private static void featureSafeSet(EObject object,
-			EStructuralFeature feature, List<?> value) throws CoreException {
-		checkBounds(feature, value);
-		if (value.size() > 0) {
-			if (feature.getUpperBound() == 1)
-				object.eSet(feature, value.get(0));
-			else
-				object.eSet(feature, value);
-		}
-	}
-
-	private static void checkBounds(EStructuralFeature feature, Object value)
-			throws CoreException {
-		int actual = 0;
-		if (value instanceof List<?>) {
-			actual = ((List<?>) value).size();
-		} else if (value != null) {
-			actual = 1;
-		}
-		int lower = feature.getLowerBound();
-		int upper = feature.getUpperBound();
-		if (upper != -1 && actual > upper) {
-			throw new CoreException(CorePlugin.err(MessageFormat.format(
-					"Parameter {2} is already assigned", actual, upper, feature
-							.getName())));
-		}
-		if (actual < lower) {
-			throw new CoreException(CorePlugin.err(MessageFormat.format(
-					"Parameter {2} is not assigned", actual, lower, feature
-							.getName())));
+			CoreUtils.checkBounds(feature, scriptlet.eGet(feature));
 		}
 	}
 

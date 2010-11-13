@@ -2,6 +2,7 @@ package org.eclipse.ecl.runtime;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,10 +10,12 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.internal.core.EMFStreamPipe;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 public class CoreUtils {
@@ -87,8 +90,8 @@ public class CoreUtils {
 
 	public static List<EStructuralFeature> getFeatures(EClass targetClass) {
 		List<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
-		final List<EClass> classes = new ArrayList<EClass>(targetClass
-				.getEAllSuperTypes());
+		final List<EClass> classes = new ArrayList<EClass>(
+				targetClass.getEAllSuperTypes());
 		classes.add(targetClass);
 		features.addAll(targetClass.getEAllStructuralFeatures());
 		Collections.sort(features, new Comparator<EStructuralFeature>() {
@@ -136,5 +139,56 @@ public class CoreUtils {
 
 		return result.toString();
 
+	}
+
+	public static List<Object> readPipeContent(IPipe pipe) throws CoreException {
+		List<Object> pipeContent = new ArrayList<Object>();
+		Object o = null;
+		while (true) {
+			o = pipe.take(Long.MAX_VALUE); // wait forever to take
+											// content
+			if (o instanceof IStatus)
+				break;
+			pipeContent.add(o);
+		}
+		// Now pipe is empty for sure
+		IStatus status = (IStatus) o;
+		if (status.getSeverity() != IStatus.OK) {
+			throw new CoreException(status);
+		}
+		return pipeContent;
+	}
+
+	public static void featureSafeSet(EObject object,
+			EStructuralFeature feature, List<?> value) throws CoreException {
+		checkBounds(feature, value);
+		if (value.size() > 0) {
+			if (feature.getUpperBound() == 1)
+				object.eSet(feature, value.get(0));
+			else
+				object.eSet(feature, value);
+		}
+	}
+
+	public static void checkBounds(EStructuralFeature feature, Object value)
+			throws CoreException {
+		int actual = 0;
+		if (value instanceof List<?>) {
+			actual = ((List<?>) value).size();
+		} else if (value != null) {
+			actual = 1;
+		}
+		int lower = feature.getLowerBound();
+		int upper = feature.getUpperBound();
+		if (upper != -1 && actual > upper) {
+			throw new CoreException(CorePlugin.err(MessageFormat.format(
+					"Parameter {2} is already assigned", actual, upper,
+					feature.getName())));
+		}
+		if (actual < lower) {
+			throw new CoreException(CorePlugin.err(MessageFormat.format(
+					"Parameter {2} is not assigned", actual, lower,
+					feature.getName())));
+		}
 	}
 }
