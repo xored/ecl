@@ -28,15 +28,10 @@ public class WithService implements ICommandService {
 			throws InterruptedException, CoreException {
 		With with = (With) command;
 		ISession session = process.getSession();
-		IPipe input = process.getInput();
-		input.close(Status.OK_STATUS);
 		IPipe pipe = session.createPipe();
-		IProcess inner;
-		inner = session.execute(with.getObject(), input, pipe);
-		IStatus status = inner.waitFor();
-		if (!status.isOK())
-			return status;
-		inner = session.execute(with.getDo(), pipe, null);
-		return inner.waitFor();
+		pipe.write(with.getObject());
+		pipe.close(Status.OK_STATUS);
+		IProcess doProcess = session.execute(with.getDo(), pipe, null);
+		return doProcess.waitFor();
 	}
 }

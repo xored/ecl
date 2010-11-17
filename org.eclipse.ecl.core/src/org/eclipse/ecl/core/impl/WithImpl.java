@@ -2,16 +2,19 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WithImpl.java,v 1.1 2010/08/02 09:24:00 andrey Exp $
+ * $Id: WithImpl.java,v 1.2 2010/11/17 09:08:23 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CorePackage;
+import org.eclipse.ecl.core.Sequence;
+import org.eclipse.ecl.core.Resolve;
 import org.eclipse.ecl.core.With;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -38,7 +41,7 @@ public class WithImpl extends CommandImpl implements With {
 	 * @generated
 	 * @ordered
 	 */
-	protected Command object;
+	protected EObject object;
 	/**
 	 * The cached value of the '{@link #getDo() <em>Do</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -73,10 +76,10 @@ public class WithImpl extends CommandImpl implements With {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Command getObject() {
+	public EObject getObject() {
 		if (object != null && object.eIsProxy()) {
 			InternalEObject oldObject = (InternalEObject)object;
-			object = (Command)eResolveProxy(oldObject);
+			object = eResolveProxy(oldObject);
 			if (object != oldObject) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CorePackage.WITH__OBJECT, oldObject, object));
@@ -90,7 +93,7 @@ public class WithImpl extends CommandImpl implements With {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Command basicGetObject() {
+	public EObject basicGetObject() {
 		return object;
 	}
 
@@ -99,8 +102,8 @@ public class WithImpl extends CommandImpl implements With {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setObject(Command newObject) {
-		Command oldObject = object;
+	public void setObject(EObject newObject) {
+		EObject oldObject = object;
 		object = newObject;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.WITH__OBJECT, oldObject, object));
@@ -171,7 +174,7 @@ public class WithImpl extends CommandImpl implements With {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CorePackage.WITH__OBJECT:
-				setObject((Command)newValue);
+				setObject((EObject)newValue);
 				return;
 			case CorePackage.WITH__DO:
 				setDo((Command)newValue);
@@ -189,7 +192,7 @@ public class WithImpl extends CommandImpl implements With {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case CorePackage.WITH__OBJECT:
-				setObject((Command)null);
+				setObject((EObject)null);
 				return;
 			case CorePackage.WITH__DO:
 				setDo((Command)null);

@@ -3,8 +3,10 @@ package org.eclipse.ecl.core.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Block;
 import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.core.Sequence;
 import org.eclipse.ecl.core.With;
@@ -76,7 +78,8 @@ public class EclRefactoring extends ScriptletFactory {
 						}
 					}
 					if (toCollapse.size() > 1) {
-						newCommands.add(makeWith(object, makeSeq(withify(toCollapse))));
+						newCommands.add(makeWith(object,
+								makeSeq(withify(toCollapse))));
 					} else {
 						newCommands.add(command);
 					}
@@ -115,9 +118,21 @@ public class EclRefactoring extends ScriptletFactory {
 		}
 		if (doCommand instanceof With) {
 			// Merging
+			// bind(with, CorePackage.eINSTANCE.getWith_Object(), withObject);
 			With internalWith = mergeNestedWithCommands((With) doCommand);
-			Command newObject = makePipe(withCommand.getObject(), internalWith
-					.getObject());
+			Command first = null;
+			Command second = null;
+			if (withCommand.getBindings().size() == 1) {
+				Binding binding = withCommand.getBindings().get(0);
+				if (binding.getFeature().getFeatureID() == CorePackage.WITH__OBJECT)
+					first = binding.getCommand();
+			}
+			if (internalWith.getBindings().size() == 1) {
+				Binding binding = internalWith.getBindings().get(0);
+				if (binding.getFeature().getFeatureID() == CorePackage.WITH__OBJECT)
+					second = binding.getCommand();
+			}
+			Command newObject = makePipe(first, second);
 			Command newDo = internalWith.getDo();
 			With newWith = makeWith(newObject, newDo);
 			return newWith;

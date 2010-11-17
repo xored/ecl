@@ -7,6 +7,7 @@ import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Block;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CoreFactory;
+import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.ExecutableParameter;
 import org.eclipse.ecl.core.LiteralParameter;
@@ -70,9 +71,8 @@ public class ScriptletFactory {
 
 	public static With makeWith(Command withObject, Command doObject) {
 		With with = CoreFactory.eINSTANCE.createWith();
-		with.setObject(withObject);
 		with.setDo(doObject);
-		return with;
+		return bind(with, CorePackage.eINSTANCE.getWith_Object(), withObject);
 	}
 
 	public static Exec makeExec(String name, Parameter... parameters) {

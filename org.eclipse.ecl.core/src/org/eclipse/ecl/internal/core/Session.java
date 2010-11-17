@@ -107,7 +107,10 @@ public class Session implements ISession {
 			EStructuralFeature feature = binding.getFeature();
 			Command command = binding.getCommand();
 			IPipe out = createPipe();
-			execute(command, null, out);
+			IProcess process = execute(command, null, out);
+			IStatus status = process.waitFor();
+			if (!status.isOK())
+				throw new CoreException(status);
 			CoreUtils.featureSafeSet(scriptlet, feature,
 					CoreUtils.readPipeContent(out));
 		}

@@ -2,9 +2,11 @@
  * <copyright>
  * </copyright>
  *
- * $Id: With.java,v 1.1 2010/08/02 09:24:00 andrey Exp $
+ * $Id: With.java,v 1.2 2010/11/17 09:08:23 alena Exp $
  */
 package org.eclipse.ecl.core;
+
+import org.eclipse.emf.ecore.EObject;
 
 
 /**
@@ -35,12 +37,12 @@ public interface With extends Command {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Object</em>' reference.
-	 * @see #setObject(Command)
+	 * @see #setObject(EObject)
 	 * @see org.eclipse.ecl.core.CorePackage#getWith_Object()
 	 * @model required="true"
 	 * @generated
 	 */
-	Command getObject();
+	EObject getObject();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.ecl.core.With#getObject <em>Object</em>}' reference.
@@ -50,7 +52,7 @@ public interface With extends Command {
 	 * @see #getObject()
 	 * @generated
 	 */
-	void setObject(Command value);
+	void setObject(EObject value);
 
 	/**
 	 * Returns the value of the '<em><b>Do</b></em>' reference.
