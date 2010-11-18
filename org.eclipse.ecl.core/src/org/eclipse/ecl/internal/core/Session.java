@@ -12,6 +12,8 @@
 
 package org.eclipse.ecl.internal.core;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -38,16 +40,21 @@ public class Session implements ISession {
 			throws CoreException {
 		final ICommandService svc = CorePlugin.getScriptletManager()
 				.getScriptletService(scriptlet);
-		final IPipe input = in == null ? createPipe().close(Status.OK_STATUS)
+		final IPipe tinput = in == null ? createPipe().close(Status.OK_STATUS)
 				: in;
 		final IPipe output = out == null ? createPipe() : out;
+		final List<Object> inputContent = CoreUtils.readPipeContent(tinput);
+		final IPipe input = createPipe();
+		for (Object o : inputContent)
+			input.write(o);
+		input.close(Status.OK_STATUS);
 		final Process process = new Process(this, input, output);
 		new Thread(new Runnable() {
 			public void run() {
 				IStatus s = null;
 				try {
-					setupInputFeature(scriptlet, input);
-					resolveBindings(scriptlet);
+					resolveBindings(scriptlet, inputContent);
+					setupInputFeature(scriptlet, inputContent);
 					checkParams(scriptlet);
 					s = svc.service(scriptlet, process);
 				} catch (CoreException e) {
@@ -79,7 +86,7 @@ public class Session implements ISession {
 		return process;
 	}
 
-	private void setupInputFeature(Command scriptlet, IPipe input)
+	private void setupInputFeature(Command scriptlet, List<Object> inputContent)
 			throws CoreException {
 		EStructuralFeature inputFeature = null;
 		for (EStructuralFeature feature : CoreUtils.getFeatures(scriptlet
@@ -96,18 +103,21 @@ public class Session implements ISession {
 			}
 		}
 		if (inputFeature != null) {
-			CoreUtils.featureSafeSet(scriptlet, inputFeature,
-					CoreUtils.readPipeContent(input));
+			CoreUtils.featureSafeSet(scriptlet, inputFeature, inputContent);
 		}
 	}
 
-	private void resolveBindings(Command scriptlet) throws CoreException,
-			InterruptedException {
+	private void resolveBindings(Command scriptlet, List<Object> inputContent)
+			throws CoreException, InterruptedException {
 		for (Binding binding : scriptlet.getBindings()) {
 			EStructuralFeature feature = binding.getFeature();
 			Command command = binding.getCommand();
+			IPipe in = createPipe();
+			for (Object o : inputContent)
+				in.write(o);
+			in.close(Status.OK_STATUS);
 			IPipe out = createPipe();
-			IProcess process = execute(command, null, out);
+			IProcess process = execute(command, in, out);
 			IStatus status = process.waitFor();
 			if (!status.isOK())
 				throw new CoreException(status);
