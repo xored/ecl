@@ -25,44 +25,20 @@ import org.eclipse.ecl.core.Parallel;
 import org.eclipse.ecl.core.Parameter;
 import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.core.Sequence;
-import org.eclipse.ecl.parser.IEclParserErrorReporter;
 }
 
 // applies only to the lexer:
 @lexer::header {
 package org.eclipse.ecl.internal.parser;
-import org.eclipse.ecl.parser.IEclParserErrorReporter;
 }
-
-
 @lexer::members {
-	private IEclParserErrorReporter reporter;
-	public void setErrorReporter(IEclParserErrorReporter reporter) {
-		this.reporter = reporter;
-	}
-	public void displayRecognitionError(String[] tokenNames,
-                                        RecognitionException e) {
-        String hdr = getErrorHeader(e);
-        String msg = getErrorMessage(e, tokenNames);
-        // Now do something with hdr and msg...
-        if( this.reporter != null ) {
-        	this.reporter.reportError(hdr, msg);
-        }
-    }
-	
-	List tokens = new ArrayList();
-	public void emit(Token token) {
-	        token = token;
-	    	tokens.add(token);
-	}
-	public Token nextToken() {
-	    	super.nextToken();
-	        if ( tokens.size()==0 ) {
-	            return Token.EOF_TOKEN;
-	        }
-	        return (Token)tokens.remove(0);
-	}
+  public void displayRecognitionError(String[] tokenNames,
+      RecognitionException e) {
+      throw new SyntaxErrorException(e.line, e.charPositionInLine);
+  }
 }
+
+
 @members {
 	CoreFactory factory= CoreFactory.eINSTANCE;
   
@@ -81,29 +57,20 @@ import org.eclipse.ecl.parser.IEclParserErrorReporter;
 			seq.getCommands().add(c2);
 			return seq;
 		}
-	}
-	private IEclParserErrorReporter reporter;
-	public void setErrorReporter(IEclParserErrorReporter reporter) {
-		this.reporter = reporter;
-	}
-	public void displayRecognitionError(String[] tokenNames,
-                                        RecognitionException e) {
-        String hdr = getErrorHeader(e);
-        String msg = getErrorMessage(e, tokenNames);
-        // Now do something with hdr and msg...
-        if( this.reporter != null ) {
-        	this.reporter.reportError(hdr, msg);
-        }
-    }
+	}	
 	
+  public void displayRecognitionError(String[] tokenNames,
+      RecognitionException e) {
+      throw new SyntaxErrorException(e.line, e.charPositionInLine);
+  }
 }
   
 // Parser rules
 commands returns[Command cmd=null;]:
-	NEWLINE | exprs=expr_list { cmd=exprs;}
+	exprs=expr_list  { cmd=exprs;}
 ;
 expr_list returns [Command cmd=null]:
-  NEWLINE?
+  NEWLINE*
   c =expression {
   	if( c != null ) {
   		cmd=c;
