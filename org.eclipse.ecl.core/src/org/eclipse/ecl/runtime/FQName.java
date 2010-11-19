@@ -42,6 +42,8 @@ public final class FQName {
 
 	@Override
 	public String toString() {
+		if (ns == null || ns.length() == 0)
+			return name;
 		return ns + "::" + name;
 	}
 }
