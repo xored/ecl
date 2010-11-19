@@ -108,7 +108,7 @@ expr_list returns [Command cmd=null]:
   	if( c != null ) {
   		cmd=c;
   	}
-  } ((NEWLINE|COLON) c2=expression {
+  } ((NEWLINE+|COLON) c2=expression {
 		cmd = processSequence(cmd, c2);
   } )*
   (NEWLINE|COLON)*
@@ -121,7 +121,7 @@ expression returns[Command cmd=null;]:
 ;
 
 and_expr returns [Command cmd=null;]: 
-  or1=or_expr {cmd=or1;} (AND or2=or_expr{
+  or1=or_expr {cmd=or1;} (NEWLINE* AND NEWLINE* or2=or_expr{
   	//Construct parallel if not yet constructed.
 	if (cmd instanceof Parallel) {
 		Parallel par = (Parallel) cmd;
@@ -142,7 +142,7 @@ and_expr returns [Command cmd=null;]:
 or_expr returns [Command cmd=null;]: 
   c = cmd {
   cmd = c;
-  } (OR cmd2=cmd{
+  } (NEWLINE* OR NEWLINE* cmd2=cmd{
   	//Construct pipe if not yet constructed.
 	if (cmd instanceof Pipeline) {
 		Pipeline pipe = (Pipeline) cmd;
