@@ -162,8 +162,9 @@ public class EclCompiler {
 			// If failed to convert emit error
 			if (value == null) {
 				IStatus status = new Status(IStatus.ERROR,
-						CorePlugin.PLUGIN_ID, "Can't convert value " + value
-								+ " to type " + instanceClass.getSimpleName());
+						CorePlugin.PLUGIN_ID, "Can't convert value "
+								+ literal.getLiteral() + " to type "
+								+ instanceClass.getSimpleName());
 				throw new CoreException(status);
 			}
 			try {
