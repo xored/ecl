@@ -208,8 +208,10 @@ simple_value returns[Parameter param = null;]:
   			p.setLiteral(d.getText());
   		}
   		else if( d2 != null ) {
-	  		String value = d2.getText();
-  			p.setLiteral(value.substring(1, value.length()-1));
+          String value = d2.getText();
+          value = value.substring(1, value.length() - 1);
+          value = value.replace("\\\"", "\"");
+          p.setLiteral(value);
   		}
 	  	param = p;
 	}
