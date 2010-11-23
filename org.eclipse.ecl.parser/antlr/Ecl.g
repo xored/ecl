@@ -208,10 +208,28 @@ simple_value returns[Parameter param = null;]:
   			p.setLiteral(d.getText());
   		}
   		else if( d2 != null ) {
-          String value = d2.getText();
-          value = value.substring(1, value.length() - 1);
-          value = value.replace("\\\"", "\"");
-          p.setLiteral(value);
+        String value = d2.getText();
+        StringBuilder result = new StringBuilder(value.length()-2);
+        loop: for (int i = 1; i+1 < value.length(); i++){
+          char ch = value.charAt(i);
+          if (ch == '\\'){
+            if (i+2 >= value.length())
+              throw new SyntaxErrorException(d2.getLine(), 
+                  d2.getCharPositionInLine()+i+1, "Invalid escape sequence");
+            switch(value.charAt(i+1)){
+              case 't': result.append("\t"); i++; continue loop;
+              case 'b': result.append("\b"); i++; continue loop;
+              case 'n': result.append("\n"); i++; continue loop;
+              case 'r': result.append("\r"); i++; continue loop;
+              case 'f': result.append("\f"); i++; continue loop;
+              case '\'': result.append("'"); i++; continue loop;
+              case '"': result.append("\""); i++; continue loop;
+              case '\\': result.append("\\"); i++; continue loop;
+            }
+          }
+          result.append(ch);
+        }                      
+        p.setLiteral(result.toString());
   		}
 	  	param = p;
 	}

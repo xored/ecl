@@ -26,11 +26,10 @@ public class EclCoreParser {
 		} catch (RecognitionException e) {
 			throw new CoreException(new Status(IStatus.ERROR,
 					EclParserPlugin.PLUGIN_ID, "Syntax error on line " + e.line
-							+ ", col " + e.charPositionInLine));
+					+ ", col " + e.charPositionInLine));
 		} catch (SyntaxErrorException e) {
 			throw new CoreException(new Status(IStatus.ERROR,
-					EclParserPlugin.PLUGIN_ID, "Syntax error on line " + e.line
-							+ ", col " + e.col));
+					EclParserPlugin.PLUGIN_ID, e.toString()));
 		} catch (Throwable t) {
 			EclParserPlugin.logErr(
 					"Unknown error are happend during parsing of ecl code", t);
