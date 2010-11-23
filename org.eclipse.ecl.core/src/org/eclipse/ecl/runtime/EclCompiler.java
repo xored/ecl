@@ -83,6 +83,9 @@ public class EclCompiler {
 				throw new CoreException(status);
 			}
 			evalFeatureValue(target, param, feature);
+			// TODO support any upper bound
+			if (feature.getUpperBound() == -1)
+				i--;
 		}
 		return target;
 	}
