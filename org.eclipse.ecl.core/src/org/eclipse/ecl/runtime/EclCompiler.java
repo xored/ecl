@@ -16,7 +16,10 @@ import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.ExecutableParameter;
 import org.eclipse.ecl.core.LiteralParameter;
+import org.eclipse.ecl.core.Parallel;
 import org.eclipse.ecl.core.Parameter;
+import org.eclipse.ecl.core.Pipeline;
+import org.eclipse.ecl.core.Sequence;
 import org.eclipse.ecl.core.util.EclCommandNameConvention;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.internal.core.ParamConverterManager;
@@ -28,26 +31,42 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class EclCompiler {
-
 	public static Command compile(Command command) throws CoreException {
+		return compile(command, false);
+	}
+
+	public static Command compile(Command command, boolean hasInput)
+			throws CoreException {
 		if (command instanceof Exec) {
 			Exec exec = (Exec) command;
 			return compile(
 					new FQName(null,
 							EclCommandNameConvention.toScriptletName(exec
-									.getName())), exec.getParameters());
+									.getName())), exec.getParameters(),
+					hasInput);
 		}
 		if (command instanceof Block) {
 			Block block = (Block) command;
 			for (int i = 0; i < block.getCommands().size(); i++) {
-				block.getCommands().set(i, compile(block.getCommands().get(i)));
+				boolean innerHasInput = false;
+				if (block instanceof Sequence)
+					innerHasInput = hasInput;
+				else if (block instanceof Pipeline)
+					if (i == 0)
+						innerHasInput = hasInput;
+					else
+						innerHasInput = true;
+				else if (block instanceof Parallel)
+					innerHasInput = hasInput;
+				block.getCommands().set(i,
+						compile(block.getCommands().get(i), innerHasInput));
 			}
 		}
 		return command;
 	}
 
-	public static Command compile(FQName fqn, List<Parameter> params)
-			throws CoreException {
+	public static Command compile(FQName fqn, List<Parameter> params,
+			boolean hasInput) throws CoreException {
 		Command target = CoreUtils.createCommand(fqn.ns, fqn.name);
 		EClass targetClass = target.eClass();
 
@@ -82,7 +101,11 @@ public class EclCompiler {
 								new Object[] { param.getName() }));
 				throw new CoreException(status);
 			}
-			evalFeatureValue(target, param, feature);
+			if (processUnnamed
+					&& feature.getEAnnotation(CoreUtils.INPUT_ANN) != null
+					&& hasInput)
+				feature = features.get(i++);
+			evalFeatureValue(target, param, feature, hasInput);
 			// TODO support any upper bound
 			if (feature.getUpperBound() == -1)
 				i--;
@@ -121,7 +144,7 @@ public class EclCompiler {
 	}
 
 	private static void evalFeatureValue(Command target, Parameter param,
-			EStructuralFeature feature) throws CoreException {
+			EStructuralFeature feature, boolean hasInput) throws CoreException {
 		Object value = null;
 		switch (param.eClass().getClassifierID()) {
 		case CorePackage.LITERAL_PARAMETER:
@@ -146,6 +169,9 @@ public class EclCompiler {
 							.getInstance().getConverter(instanceClass);
 					if (converter != null) {
 						value = converter.convert(literal.getLiteral());
+						if (value instanceof Command) {
+							value = compile((Command) value, hasInput);
+						}
 					}
 				}
 				// Type to converter thought EcoreUtil.createFromString
@@ -189,7 +215,7 @@ public class EclCompiler {
 			Binding binding = CoreFactory.eINSTANCE.createBinding();
 			binding.setFeature(feature);
 			ExecutableParameter execParam = (ExecutableParameter) param;
-			binding.setCommand(compile(execParam.getCommand()));
+			binding.setCommand(compile(execParam.getCommand(), hasInput));
 			target.getBindings().add(binding);
 			break;
 		default:

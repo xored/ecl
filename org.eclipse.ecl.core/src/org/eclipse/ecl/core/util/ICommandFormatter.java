@@ -8,7 +8,7 @@ public interface ICommandFormatter {
 
 	void addCommandName(String name);
 
-	void addAttrName(String name);
+	void addAttrName(String name, boolean forced);
 
 	void addAttrValue(String value);
 

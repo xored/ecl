@@ -26,35 +26,39 @@ public class CommandToStringConverter {
 	}
 
 	public String convert(Command command, ICommandFormatter formatter) {
-		doConvert(command, formatter);
+		doConvert(command, formatter, false);
 		return formatter.toString();
 	}
 
-	protected void doConvert(Command command, ICommandFormatter formatter) {
+	protected void doConvert(Command command, ICommandFormatter formatter,
+			boolean hasInput) {
 		if (command instanceof Sequence) {
-			convertSequence((Sequence) command, formatter);
+			convertSequence((Sequence) command, formatter, hasInput);
 		} else if (command instanceof Pipeline) {
-			convertPipeline((Pipeline) command, formatter);
+			convertPipeline((Pipeline) command, formatter, hasInput);
 		} else if (command instanceof Exec) {
-			convertExec((Exec) command, formatter);
+			convertExec((Exec) command, formatter, hasInput);
 		} else {
-			convertSimple(command, formatter);
+			convertSimple(command, formatter, hasInput);
 		}
 	}
 
-	private void convertExec(Exec exec, ICommandFormatter formatter) {
+	private void convertExec(Exec exec, ICommandFormatter formatter,
+			boolean hasInput) {
 		if (exec.getNamespace() != null)
 			formatter.addCommandName(exec.getNamespace() + "::"
 					+ exec.getName());
 		else
 			formatter.addCommandName(exec.getName());
 		for (Parameter p : exec.getParameters()) {
-			formatter.addAttrName(p.getName());
+			formatter.addAttrName(p.getName(), p.getName() != null
+					&& p.getName().length() > 0);
 			if (p instanceof LiteralParameter)
 				formatter.addAttrValue(((LiteralParameter) p).getLiteral());
 			else if (p instanceof ExecutableParameter) {
 				formatter.openExec();
-				doConvert(((ExecutableParameter) p).getCommand(), formatter);
+				doConvert(((ExecutableParameter) p).getCommand(), formatter,
+						hasInput);
 				formatter.openExec();
 			}
 			// TODO else what?? exception or log or what?
@@ -62,24 +66,25 @@ public class CommandToStringConverter {
 	}
 
 	protected void convertSequence(Sequence sequence,
-			ICommandFormatter formatter) {
+			ICommandFormatter formatter, boolean hasInput) {
 		List<Command> commands = sequence.getCommands();
 		for (int i = 0; i < commands.size(); i++) {
 			formatter.newSequenceCommand();
-			doConvert(commands.get(i), formatter);
+			doConvert(commands.get(i), formatter, hasInput);
 		}
 	}
 
 	protected void convertPipeline(Pipeline pipeline,
-			ICommandFormatter formatter) {
+			ICommandFormatter formatter, boolean hasInput) {
 		List<Command> commands = pipeline.getCommands();
 		for (int i = 0; i < commands.size(); i++) {
 			formatter.newPipeCommand();
-			doConvert(commands.get(i), formatter);
+			doConvert(commands.get(i), formatter, i > 0 || hasInput);
 		}
 	}
 
-	protected void convertSimple(Command command, ICommandFormatter formatter) {
+	protected void convertSimple(Command command, ICommandFormatter formatter,
+			boolean hasInput) {
 		String commandName = CoreUtils
 				.getScriptletNameByClass(command.eClass());
 		formatter.addCommandName(commandName);
@@ -92,27 +97,38 @@ public class CommandToStringConverter {
 		List<EStructuralFeature> attributes = CoreUtils.getFeatures(command
 				.eClass());
 
+		boolean forced = false;
+
 		for (EStructuralFeature feature : attributes) {
+			if (feature.getEAnnotation("http://www.eclipse.org/ecl/input") != null
+					&& hasInput)
+				continue;
 			String name = feature.getName();
+			if ("index".equals(name) || "after".equals(name))
+				forced = true;
 			Object val = command.eGet(feature);
+			boolean skippped = true;
 			if (val != null) {
 				if (feature instanceof EAttribute) {
 					EAttribute attr = (EAttribute) feature;
 					String type = attr.getEAttributeType()
 							.getInstanceTypeName();
-					// formatter.addAttrName(name);
 					if (val instanceof List<?>) {
 						List<?> list = (List<?>) val;
 						for (Object o : list) {
 							String value = convertValue(o, type);
 							if (value != null) {
+								formatter.addAttrName(name, forced);
 								formatter.addAttrValue(value);
+								skippped = false;
 							}
 						}
 					} else {
 						String value = convertValue(val, type);
 						if (value != null) {
+							formatter.addAttrName(name, forced);
 							formatter.addAttrValue(value);
+							skippped = false;
 						}
 					}
 				} else {
@@ -120,27 +136,33 @@ public class CommandToStringConverter {
 					EClass eclass = ref.getEReferenceType();
 					if (eclass.getClassifierID() == CorePackage.COMMAND) {
 						Command inner = (Command) val;
-						// formatter.addAttrName(name);
 						if (inner instanceof Sequence) {
 							// TODO FIXIT!!!
+							formatter.addAttrName(name, forced);
 							formatter.openGroup(false);
-							doConvert(inner, formatter);
+							doConvert(inner, formatter, hasInput);
 							formatter.closeGroup(false);
 						} else {
+							formatter.addAttrName(name, forced);
 							formatter.openGroup(true);
-							doConvert(inner, formatter);
+							doConvert(inner, formatter, hasInput);
 							formatter.closeGroup(true);
 						}
+						skippped = false;
 					}
 				}
 			} else {
 				Command c = bindingMap.get(feature);
 				if (c != null) {
+					formatter.addAttrName(name, forced);
 					formatter.openExec();
-					doConvert(c, formatter);
+					doConvert(c, formatter, hasInput);
 					formatter.closeExec();
+					skippped = false;
 				}
 			}
+			if (skippped)
+				forced = true;
 		}
 	}
 

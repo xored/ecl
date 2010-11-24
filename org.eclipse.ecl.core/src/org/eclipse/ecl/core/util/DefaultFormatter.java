@@ -33,8 +33,9 @@ public class DefaultFormatter implements ICommandFormatter {
 		buffer.append(name);
 	}
 
-	public void addAttrName(String name) {
-		buffer.append(SPACE).append(ATTR_PREFIX).append(name);
+	public void addAttrName(String name, boolean forced) {
+		if (forced)
+			buffer.append(SPACE).append(ATTR_PREFIX).append(name);
 	}
 
 	public void addAttrValue(String value) {
