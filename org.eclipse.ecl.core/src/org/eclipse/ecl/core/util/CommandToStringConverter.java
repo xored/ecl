@@ -100,8 +100,7 @@ public class CommandToStringConverter {
 		boolean forced = false;
 
 		for (EStructuralFeature feature : attributes) {
-			if (feature.getEAnnotation("http://www.eclipse.org/ecl/input") != null
-					&& hasInput)
+			if (feature.getEAnnotation(CoreUtils.INPUT_ANN) != null)
 				continue;
 			String name = feature.getName();
 			if ("index".equals(name) || "after".equals(name))
