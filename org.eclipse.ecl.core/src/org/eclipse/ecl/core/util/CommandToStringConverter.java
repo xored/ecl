@@ -100,14 +100,17 @@ public class CommandToStringConverter {
 		boolean forced = false;
 
 		for (EStructuralFeature feature : attributes) {
-			if (feature.getEAnnotation(CoreUtils.INPUT_ANN) != null)
+			if (feature.getEAnnotation("http://www.eclipse.org/ecl/input") != null
+					&& hasInput)
 				continue;
 			String name = feature.getName();
-			if ("index".equals(name) || "after".equals(name))
+			if (isForced(commandName, name))
 				forced = true;
 			Object val = command.eGet(feature);
 			boolean skippped = true;
-			if (val != null) {
+			Object defaultValue = feature.getDefaultValue();
+			boolean isDefault = val == null || val.equals(defaultValue);
+			if (!isDefault) {
 				if (feature instanceof EAttribute) {
 					EAttribute attr = (EAttribute) feature;
 					String type = attr.getEAttributeType()
@@ -134,19 +137,11 @@ public class CommandToStringConverter {
 					EReference ref = (EReference) feature;
 					EClass eclass = ref.getEReferenceType();
 					if (eclass.getClassifierID() == CorePackage.COMMAND) {
-						Command inner = (Command) val;
-						if (inner instanceof Sequence) {
-							// TODO FIXIT!!!
-							formatter.addAttrName(name, forced);
-							formatter.openGroup(false);
-							doConvert(inner, formatter, hasInput);
-							formatter.closeGroup(false);
-						} else {
-							formatter.addAttrName(name, forced);
-							formatter.openGroup(true);
-							doConvert(inner, formatter, hasInput);
-							formatter.closeGroup(true);
-						}
+						boolean singleLine = !(val instanceof Sequence);
+						formatter.addAttrName(name, forced);
+						formatter.openGroup(singleLine);
+						doConvert((Command) val, formatter, true);
+						formatter.closeGroup(singleLine);
 						skippped = false;
 					}
 				}
@@ -163,6 +158,12 @@ public class CommandToStringConverter {
 			if (skippped)
 				forced = true;
 		}
+	}
+
+	private boolean isForced(String commandName, String paramName) {
+		return "index".equals(paramName) || "after".equals(paramName)
+				|| "height".equals(paramName) || "width".equals(paramName)
+				|| "detail".equals(paramName) || "operation".equals(paramName);
 	}
 
 	protected String convertValue(Object val, String type) {
