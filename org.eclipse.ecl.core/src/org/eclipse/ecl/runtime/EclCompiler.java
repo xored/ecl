@@ -170,7 +170,7 @@ public class EclCompiler {
 					if (converter != null) {
 						value = converter.convert(literal.getLiteral());
 						if (value instanceof Command) {
-							value = compile((Command) value, hasInput);
+							value = compile((Command) value, true);
 						}
 					}
 				}
