@@ -184,8 +184,8 @@ public class EclCompiler {
 				// Exception while converting
 				IStatus status = new Status(IStatus.ERROR,
 						CorePlugin.PLUGIN_ID, "Can't assign value " + value
-								+ " to attribute " + feature.getName()
-								+ ": Type convertation failed", e);
+								+ " to attribute " + feature.getName() + ": "
+								+ e.getMessage(), e);
 				throw new CoreException(status);
 			}
 			// If failed to convert emit error
