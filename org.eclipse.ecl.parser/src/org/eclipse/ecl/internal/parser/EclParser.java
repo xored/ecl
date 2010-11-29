@@ -1,4 +1,4 @@
-// $ANTLR 3.0.1 D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g 2010-11-23 16:25:21
+// $ANTLR 3.0.1 D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g 2010-11-29 17:01:56
 
 package org.eclipse.ecl.internal.parser;
 import org.antlr.runtime.BitSet;
@@ -1238,18 +1238,19 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start simple_value
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:204:1: simple_value returns [Parameter param = null;] : (d= NAME | d= NUMBER | d2= STRING | d2= CURLY_STRING ) ;
+    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:204:1: simple_value returns [Parameter param = null;] : (d= NAME | d= NUMBER | d2= STRING | d3= CURLY_STRING ) ;
     public final Parameter simple_value() throws RecognitionException {
         Parameter param =  null;;
 
         Token d=null;
         Token d2=null;
+        Token d3=null;
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:204:46: ( (d= NAME | d= NUMBER | d2= STRING | d2= CURLY_STRING ) )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:205:2: (d= NAME | d= NUMBER | d2= STRING | d2= CURLY_STRING )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:204:46: ( (d= NAME | d= NUMBER | d2= STRING | d3= CURLY_STRING ) )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:205:2: (d= NAME | d= NUMBER | d2= STRING | d3= CURLY_STRING )
             {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:205:2: (d= NAME | d= NUMBER | d2= STRING | d2= CURLY_STRING )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:205:2: (d= NAME | d= NUMBER | d2= STRING | d3= CURLY_STRING )
             int alt20=4;
             switch ( input.LA(1) ) {
             case NAME:
@@ -1274,7 +1275,7 @@ public class EclParser extends Parser {
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("205:2: (d= NAME | d= NUMBER | d2= STRING | d2= CURLY_STRING )", 20, 0, input);
+                    new NoViableAltException("205:2: (d= NAME | d= NUMBER | d2= STRING | d3= CURLY_STRING )", 20, 0, input);
 
                 throw nvae;
             }
@@ -1305,9 +1306,9 @@ public class EclParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:205:29: d2= CURLY_STRING
+                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:205:29: d3= CURLY_STRING
                     {
-                    d2=(Token)input.LT(1);
+                    d3=(Token)input.LT(1);
                     match(input,CURLY_STRING,FOLLOW_CURLY_STRING_in_simple_value495); 
 
                     }
@@ -1344,6 +1345,10 @@ public class EclParser extends Parser {
                     }                      
                     p.setLiteral(result.toString());
               		}
+                  else if( d3 != null ) {
+                    String text = d3.getText();
+                    p.setLiteral(text.substring(1, text.length()-1));
+                  }
             	  	param = p;
             	
 
@@ -1362,7 +1367,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start named_argument
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:237:1: named_argument returns [Parameter param=null;] : ( '-' ( '-' )? n= NAME ( '=' )? (v= argument_value ) ) ;
+    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:241:1: named_argument returns [Parameter param=null;] : ( '-' ( '-' )? n= NAME ( '=' )? (v= argument_value ) ) ;
     public final Parameter named_argument() throws RecognitionException {
         Parameter param = null;;
 
@@ -1371,14 +1376,14 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:237:47: ( ( '-' ( '-' )? n= NAME ( '=' )? (v= argument_value ) ) )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:2: ( '-' ( '-' )? n= NAME ( '=' )? (v= argument_value ) )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:241:47: ( ( '-' ( '-' )? n= NAME ( '=' )? (v= argument_value ) ) )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:2: ( '-' ( '-' )? n= NAME ( '=' )? (v= argument_value ) )
             {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:2: ( '-' ( '-' )? n= NAME ( '=' )? (v= argument_value ) )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:3: '-' ( '-' )? n= NAME ( '=' )? (v= argument_value )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:2: ( '-' ( '-' )? n= NAME ( '=' )? (v= argument_value ) )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:3: '-' ( '-' )? n= NAME ( '=' )? (v= argument_value )
             {
             match(input,27,FOLLOW_27_in_named_argument512); 
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:7: ( '-' )?
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:7: ( '-' )?
             int alt21=2;
             int LA21_0 = input.LA(1);
 
@@ -1387,7 +1392,7 @@ public class EclParser extends Parser {
             }
             switch (alt21) {
                 case 1 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:7: '-'
+                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:7: '-'
                     {
                     match(input,27,FOLLOW_27_in_named_argument514); 
 
@@ -1398,7 +1403,7 @@ public class EclParser extends Parser {
 
             n=(Token)input.LT(1);
             match(input,NAME,FOLLOW_NAME_in_named_argument519); 
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:19: ( '=' )?
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:19: ( '=' )?
             int alt22=2;
             int LA22_0 = input.LA(1);
 
@@ -1407,7 +1412,7 @@ public class EclParser extends Parser {
             }
             switch (alt22) {
                 case 1 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:19: '='
+                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:19: '='
                     {
                     match(input,28,FOLLOW_28_in_named_argument521); 
 
@@ -1416,8 +1421,8 @@ public class EclParser extends Parser {
 
             }
 
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:24: (v= argument_value )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:238:25: v= argument_value
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:24: (v= argument_value )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:25: v= argument_value
             {
             pushFollow(FOLLOW_argument_value_in_named_argument527);
             v=argument_value();
@@ -1449,7 +1454,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start convert_string
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:244:1: convert_string returns [Parameter param=null;] : (f= NAME SEMI v= CURLY_STRING ) ;
+    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:248:1: convert_string returns [Parameter param=null;] : (f= NAME SEMI v= CURLY_STRING ) ;
     public final Parameter convert_string() throws RecognitionException {
         Parameter param = null;;
 
@@ -1457,11 +1462,11 @@ public class EclParser extends Parser {
         Token v=null;
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:244:47: ( (f= NAME SEMI v= CURLY_STRING ) )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:245:2: (f= NAME SEMI v= CURLY_STRING )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:248:47: ( (f= NAME SEMI v= CURLY_STRING ) )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:249:2: (f= NAME SEMI v= CURLY_STRING )
             {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:245:2: (f= NAME SEMI v= CURLY_STRING )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:245:3: f= NAME SEMI v= CURLY_STRING
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:249:2: (f= NAME SEMI v= CURLY_STRING )
+            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:249:3: f= NAME SEMI v= CURLY_STRING
             {
             f=(Token)input.LT(1);
             match(input,NAME,FOLLOW_NAME_in_convert_string547); 

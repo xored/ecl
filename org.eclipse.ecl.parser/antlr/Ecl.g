@@ -202,7 +202,7 @@ argument_value returns [Parameter param=null;]:
   }
 ;
 simple_value returns[Parameter param = null;]:
-	(d=NAME|d=NUMBER|d2=STRING|d2=CURLY_STRING) { 
+	(d=NAME|d=NUMBER|d2=STRING|d3=CURLY_STRING) { 
 		LiteralParameter p = factory.createLiteralParameter();
 		if( d != null ) {
   			p.setLiteral(d.getText());
@@ -231,6 +231,10 @@ simple_value returns[Parameter param = null;]:
         }                      
         p.setLiteral(result.toString());
   		}
+      else if( d3 != null ) {
+        String text = d3.getText();
+        p.setLiteral(text.substring(1, text.length()-1));
+      }
 	  	param = p;
 	}
 ;
