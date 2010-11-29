@@ -177,6 +177,7 @@ public class CommandToStringConverter {
 			value = "";
 		} else {
 			if (!value.matches("[a-zA-Z0-9]*") || value.length() == 0) {
+				value = value.replace("\\", "\\\\");
 				value = value.replace("\t", "\\t");
 				value = value.replace("\b", "\\b");
 				value = value.replace("\n", "\\n");
@@ -184,7 +185,6 @@ public class CommandToStringConverter {
 				value = value.replace("\f", "\\f");
 				value = value.replace("'", "\\'");
 				value = value.replace("\"", "\\\"");
-				value = value.replace("\\", "\\\\");
 				opening = "\"";
 				closing = "\"";
 			}
