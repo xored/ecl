@@ -90,7 +90,6 @@ public class EclCompiler {
 					throw new CoreException(status);
 				}
 			}
-
 			EStructuralFeature feature = processUnnamed ? features.get(i++)
 					: map.get(param.getName());
 
@@ -105,6 +104,9 @@ public class EclCompiler {
 					&& feature.getEAnnotation(CoreUtils.INPUT_ANN) != null
 					&& hasInput)
 				feature = features.get(i++);
+			if (feature.getEAnnotation(CoreUtils.INTERNAL_ANN) != null)
+				feature = features.get(i++);
+
 			evalFeatureValue(target, param, feature, hasInput);
 			// TODO support any upper bound
 			if (feature.getUpperBound() == -1)

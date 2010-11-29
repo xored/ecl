@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 public class CoreUtils {
 
 	public static final String INPUT_ANN = "http://www.eclipse.org/ecl/input";
+	public static final String INTERNAL_ANN = "http://www.eclipse.org/ecl/internal";
 
 	/**
 	 * Creates command parameters class using namespace and name specified

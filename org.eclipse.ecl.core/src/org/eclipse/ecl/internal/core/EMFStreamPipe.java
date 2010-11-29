@@ -29,13 +29,7 @@ public class EMFStreamPipe implements IPipe {
 
 	public IPipe close(IStatus status) throws CoreException {
 		try {
-			// TODO
-			// ProcessStatus ps = CoreFactory.eINSTANCE.createProcessStatus();
-			// ps.setCode(status.getCode());
-			// ps.setMessage(status.getMessage());
-			// ps.setPluginId(status.getPlugin());
-			// ps.setSeverity(status.getSeverity());
-			// write(ps);
+			// Ignore status
 			in.close();
 			out.close();
 		} catch (IOException e) {
@@ -50,7 +44,7 @@ public class EMFStreamPipe implements IPipe {
 		try {
 			int size = in.readInt();
 			if (size <= 0) {
-				throw new IOException("Failed to read int from stream");
+				throw new IOException("Failed to read from stream");
 			}
 			byte[] data = new byte[size];
 			in.readFully(data);

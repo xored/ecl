@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CorePackageImpl.java,v 1.5 2010/11/17 09:08:23 alena Exp $
+ * $Id: CorePackageImpl.java,v 1.6 2010/11/29 11:03:04 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 
@@ -983,20 +983,20 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createResource(eNS_URI);
 
 		// Create annotations
-		// internal
+		// http://www.eclipse.org/ecl/internal
 		createInternalAnnotations();
 		// http://www.eclipse.org/ecl/input
 		createInputAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>internal</b>.
+	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/internal</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createInternalAnnotations() {
-		String source = "internal";		
+		String source = "http://www.eclipse.org/ecl/internal";		
 		addAnnotation
 		  (getCommand_Host(), 
 		   source, 
