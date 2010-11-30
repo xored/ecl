@@ -9,6 +9,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.ProcessStatus;
+import org.eclipse.ecl.internal.core.Pipe;
 import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
@@ -37,7 +38,9 @@ public class TcpSession implements ISession {
 	}
 
 	public IPipe createPipe() {
-		throw new UnsupportedOperationException();
+		// throw new RuntimeException("rethink this");
+		// add default implementation, while somebody rethink it
+		return new Pipe();
 	}
 
 	public IProcess execute(final Command command) throws CoreException {
@@ -67,7 +70,31 @@ public class TcpSession implements ISession {
 
 	public IProcess execute(final Command command, final IPipe in,
 			final IPipe out) throws CoreException {
-		throw new UnsupportedOperationException();
+		// TODO this is just necessary implementation
+		final RemoteProcess ctx = new RemoteProcess(this);
+		new Thread(new Runnable() {
+			public void run() {
+				try {
+					commandPipe.write(command);
+					Object result = null;
+					while (true) {
+						result = commandPipe.take(10000);
+						if (result instanceof ProcessStatus) {
+							break;
+						} else {
+							out.write(result);
+						}
+					}
+					ProcessStatus ps = (ProcessStatus) result;
+					ctx.setStatus(new Status(ps.getSeverity(),
+							ps.getPluginId(), ps.getCode(), ps.getMessage(),
+							null));
+				} catch (CoreException e) {
+					ctx.setStatus(e.getStatus());
+				}
+			}
+		}).start();
+		return ctx;
 	}
 
 	public void reconnect() throws CoreException {
