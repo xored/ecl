@@ -18,7 +18,7 @@ public class TestTcpSession extends AbstractCoreTest {
 
 	static {
 		try {
-			EclTcp.runServer(EclTcpClient.DEFAULT_PORT);
+			EclTcp.runServer(EclTcpClient.DEFAULT_PORT, false);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

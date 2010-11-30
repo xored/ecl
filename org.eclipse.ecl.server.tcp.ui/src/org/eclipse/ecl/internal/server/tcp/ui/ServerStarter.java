@@ -13,7 +13,7 @@ public class ServerStarter implements IStartup {
 		try {
 			String port = System.getProperty(ECL_SERVER_PORT);
 			if (port != null)
-				EclTcp.runServer(Integer.parseInt(port));
+				EclTcp.runServer(Integer.parseInt(port), false);
 			// else
 			// EclTcp.runServer(5378);
 		} catch (NumberFormatException e) {
