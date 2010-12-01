@@ -239,9 +239,15 @@ simple_value returns[Parameter param = null;]:
 	}
 ;
 named_argument returns [Parameter param=null;]: 
- ('-' '-'? n=NAME '='? (v=argument_value)) {
- 	v.setName(n.getText());
- 	param=v;
+ ('-' '-'? n=NAME ('='? (v=argument_value))?) {
+  if (v == null){    
+    LiteralParameter l = factory.createLiteralParameter();
+    l.setLiteral("true");
+    param=l;
+  } else {
+    param=v;
+  }
+  param.setName(n.getText());
  }
 ;
 

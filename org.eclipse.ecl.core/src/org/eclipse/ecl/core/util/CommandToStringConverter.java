@@ -126,11 +126,16 @@ public class CommandToStringConverter {
 							}
 						}
 					} else {
-						String value = convertValue(val, type);
-						if (value != null) {
+						if (val.equals(true)) {
+							forced = true;
 							formatter.addAttrName(name, forced);
-							formatter.addAttrValue(value);
-							skippped = false;
+						} else {
+							String value = convertValue(val, type);
+							if (value != null) {
+								formatter.addAttrName(name, forced);
+								formatter.addAttrValue(value);
+								skippped = false;
+							}
 						}
 					}
 				} else {
