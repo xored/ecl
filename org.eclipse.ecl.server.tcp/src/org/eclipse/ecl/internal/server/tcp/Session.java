@@ -14,7 +14,7 @@ import org.eclipse.ecl.runtime.ISession;
 import org.eclipse.emf.ecore.EObject;
 
 public class Session extends Thread {
-
+	private final static boolean DEBUG_LOG = false;
 	private Socket socket;
 	private ISession session;
 
@@ -25,16 +25,22 @@ public class Session extends Thread {
 	}
 
 	public void run() {
-		System.out.println("SERVER: New TCP Server Session:");
+		if (DEBUG_LOG) {
+			System.out.println("SERVER: New TCP Server Session:");
+		}
 		try {
 			IPipe pipe = CoreUtils.createEMFPipe(socket.getInputStream(),
 					socket.getOutputStream());
 			while (!isInterrupted()) {
 				Command command = (Command) pipe.take(10000000);
-				System.out.println("SERVER:   Got command: " + command);
+				if (DEBUG_LOG) {
+					System.out.println("SERVER:   Got command: " + command);
+				}
 				IProcess process = session.execute(command);
 				IStatus status = process.waitFor();
-				System.out.println("SERVER:   Done: " + status);
+				if (DEBUG_LOG) {
+					System.out.println("SERVER:   Done: " + status);
+				}
 				ProcessStatus ps = CoreFactory.eINSTANCE.createProcessStatus();
 				ps.setCode(status.getCode());
 				ps.setMessage(status.getMessage());
@@ -52,8 +58,10 @@ public class Session extends Thread {
 				pipe.write(ps);
 			}
 		} catch (Exception e) {
-			System.out.println("SERVER: Closing TCP Server Session due: "
-					+ e.getMessage());
+			if (DEBUG_LOG) {
+				System.out.println("SERVER: Closing TCP Server Session due: "
+						+ e.getMessage());
+			}
 		} finally {
 			try {
 				session.close();
