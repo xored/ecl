@@ -1,4 +1,4 @@
-// $ANTLR 3.0.1 D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g 2010-12-01 11:57:34
+// $ANTLR 3.0.1 D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g 2010-12-14 15:15:00
 
 package org.eclipse.ecl.internal.parser;
 import org.antlr.runtime.BitSet;
@@ -17,6 +17,9 @@ import org.eclipse.ecl.core.Parallel;
 import org.eclipse.ecl.core.Parameter;
 import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.core.Sequence;
+import org.eclipse.ecl.gen.ast.AstFactory;
+import org.eclipse.ecl.gen.ast.AstExec;
+import org.eclipse.ecl.gen.ast.AstLiteral;
 
 
 import org.antlr.runtime.*;
@@ -58,11 +61,10 @@ public class EclParser extends Parser {
         
 
     public String[] getTokenNames() { return tokenNames; }
-    public String getGrammarFileName() { return "D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g"; }
+    public String getGrammarFileName() { return "D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g"; }
 
-
-    	CoreFactory factory= CoreFactory.eINSTANCE;
       
+    	CoreFactory factory = CoreFactory.eINSTANCE;  
     	Command processSequence(Command cmd, Command c2 ) {
     		//Construct sequence if not yet constructed.
     		if (cmd instanceof Sequence) {
@@ -88,7 +90,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start commands
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:69:1: commands returns [Command cmd=null;] : exprs= expr_list ;
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:71:1: commands returns [Command cmd=null;] : exprs= expr_list ;
     public final Command commands() throws RecognitionException {
         Command cmd = null;;
 
@@ -96,14 +98,14 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:69:36: (exprs= expr_list )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:70:2: exprs= expr_list
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:71:36: (exprs= expr_list )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:72:2: exprs= expr_list
             {
             pushFollow(FOLLOW_expr_list_in_commands68);
             exprs=expr_list();
             _fsp--;
 
-             cmd=exprs;
+            cmd=exprs;
 
             }
 
@@ -120,7 +122,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start expr_list
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:72:1: expr_list returns [Command cmd=null] : ( NEWLINE )* c= expression ( ( ( NEWLINE )+ | COLON ) c2= expression )* ( NEWLINE | COLON )* ;
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:74:1: expr_list returns [Command cmd=null] : ( NEWLINE )* c= expression ( ( ( NEWLINE )+ | COLON ) c2= expression )* ( NEWLINE | COLON )* ;
     public final Command expr_list() throws RecognitionException {
         Command cmd = null;
 
@@ -130,10 +132,10 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:72:37: ( ( NEWLINE )* c= expression ( ( ( NEWLINE )+ | COLON ) c2= expression )* ( NEWLINE | COLON )* )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:73:3: ( NEWLINE )* c= expression ( ( ( NEWLINE )+ | COLON ) c2= expression )* ( NEWLINE | COLON )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:74:37: ( ( NEWLINE )* c= expression ( ( ( NEWLINE )+ | COLON ) c2= expression )* ( NEWLINE | COLON )* )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:75:3: ( NEWLINE )* c= expression ( ( ( NEWLINE )+ | COLON ) c2= expression )* ( NEWLINE | COLON )*
             {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:73:3: ( NEWLINE )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:75:3: ( NEWLINE )*
             loop1:
             do {
                 int alt1=2;
@@ -146,9 +148,9 @@ public class EclParser extends Parser {
 
                 switch (alt1) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:73:3: NEWLINE
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:75:3: NEWLINE
             	    {
-            	    match(input,NEWLINE,FOLLOW_NEWLINE_in_expr_list84); 
+            	    match(input,NEWLINE,FOLLOW_NEWLINE_in_expr_list83); 
 
             	    }
             	    break;
@@ -158,7 +160,7 @@ public class EclParser extends Parser {
                 }
             } while (true);
 
-            pushFollow(FOLLOW_expression_in_expr_list92);
+            pushFollow(FOLLOW_expression_in_expr_list91);
             c=expression();
             _fsp--;
 
@@ -167,7 +169,7 @@ public class EclParser extends Parser {
               		cmd=c;
               	}
               
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:78:5: ( ( ( NEWLINE )+ | COLON ) c2= expression )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:80:5: ( ( ( NEWLINE )+ | COLON ) c2= expression )*
             loop4:
             do {
                 int alt4=2;
@@ -198,9 +200,9 @@ public class EclParser extends Parser {
 
                 switch (alt4) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:78:6: ( ( NEWLINE )+ | COLON ) c2= expression
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:80:6: ( ( NEWLINE )+ | COLON ) c2= expression
             	    {
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:78:6: ( ( NEWLINE )+ | COLON )
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:80:6: ( ( NEWLINE )+ | COLON )
             	    int alt3=2;
             	    int LA3_0 = input.LA(1);
 
@@ -212,15 +214,15 @@ public class EclParser extends Parser {
             	    }
             	    else {
             	        NoViableAltException nvae =
-            	            new NoViableAltException("78:6: ( ( NEWLINE )+ | COLON )", 3, 0, input);
+            	            new NoViableAltException("80:6: ( ( NEWLINE )+ | COLON )", 3, 0, input);
 
             	        throw nvae;
             	    }
             	    switch (alt3) {
             	        case 1 :
-            	            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:78:7: ( NEWLINE )+
+            	            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:80:7: ( NEWLINE )+
             	            {
-            	            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:78:7: ( NEWLINE )+
+            	            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:80:7: ( NEWLINE )+
             	            int cnt2=0;
             	            loop2:
             	            do {
@@ -234,9 +236,9 @@ public class EclParser extends Parser {
 
             	                switch (alt2) {
             	            	case 1 :
-            	            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:78:7: NEWLINE
+            	            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:80:7: NEWLINE
             	            	    {
-            	            	    match(input,NEWLINE,FOLLOW_NEWLINE_in_expr_list98); 
+            	            	    match(input,NEWLINE,FOLLOW_NEWLINE_in_expr_list97); 
 
             	            	    }
             	            	    break;
@@ -254,16 +256,16 @@ public class EclParser extends Parser {
             	            }
             	            break;
             	        case 2 :
-            	            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:78:16: COLON
+            	            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:80:16: COLON
             	            {
-            	            match(input,COLON,FOLLOW_COLON_in_expr_list101); 
+            	            match(input,COLON,FOLLOW_COLON_in_expr_list100); 
 
             	            }
             	            break;
 
             	    }
 
-            	    pushFollow(FOLLOW_expression_in_expr_list106);
+            	    pushFollow(FOLLOW_expression_in_expr_list105);
             	    c2=expression();
             	    _fsp--;
 
@@ -279,7 +281,7 @@ public class EclParser extends Parser {
                 }
             } while (true);
 
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:81:3: ( NEWLINE | COLON )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:83:3: ( NEWLINE | COLON )*
             loop5:
             do {
                 int alt5=2;
@@ -292,7 +294,7 @@ public class EclParser extends Parser {
 
                 switch (alt5) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:
             	    {
             	    if ( (input.LA(1)>=NEWLINE && input.LA(1)<=COLON) ) {
             	        input.consume();
@@ -301,7 +303,7 @@ public class EclParser extends Parser {
             	    else {
             	        MismatchedSetException mse =
             	            new MismatchedSetException(null,input);
-            	        recoverFromMismatchedSet(input,mse,FOLLOW_set_in_expr_list115);    throw mse;
+            	        recoverFromMismatchedSet(input,mse,FOLLOW_set_in_expr_list114);    throw mse;
             	    }
 
 
@@ -329,7 +331,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start expression
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:84:1: expression returns [Command cmd=null;] : c= and_expr ;
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:86:1: expression returns [Command cmd=null;] : c= and_expr ;
     public final Command expression() throws RecognitionException {
         Command cmd = null;;
 
@@ -337,10 +339,10 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:84:38: (c= and_expr )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:85:4: c= and_expr
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:86:38: (c= and_expr )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:87:4: c= and_expr
             {
-            pushFollow(FOLLOW_and_expr_in_expression137);
+            pushFollow(FOLLOW_and_expr_in_expression136);
             c=and_expr();
             _fsp--;
 
@@ -363,7 +365,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start and_expr
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:90:1: and_expr returns [Command cmd=null;] : or1= or_expr ( ( NEWLINE )* AND ( NEWLINE )* or2= or_expr )* ;
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:92:1: and_expr returns [Command cmd=null;] : or1= or_expr ( ( NEWLINE )* AND ( NEWLINE )* or2= or_expr )* ;
     public final Command and_expr() throws RecognitionException {
         Command cmd = null;;
 
@@ -373,15 +375,15 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:90:37: (or1= or_expr ( ( NEWLINE )* AND ( NEWLINE )* or2= or_expr )* )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:91:3: or1= or_expr ( ( NEWLINE )* AND ( NEWLINE )* or2= or_expr )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:92:37: (or1= or_expr ( ( NEWLINE )* AND ( NEWLINE )* or2= or_expr )* )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:93:3: or1= or_expr ( ( NEWLINE )* AND ( NEWLINE )* or2= or_expr )*
             {
-            pushFollow(FOLLOW_or_expr_in_and_expr156);
+            pushFollow(FOLLOW_or_expr_in_and_expr155);
             or1=or_expr();
             _fsp--;
 
             cmd=or1;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:91:26: ( ( NEWLINE )* AND ( NEWLINE )* or2= or_expr )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:93:26: ( ( NEWLINE )* AND ( NEWLINE )* or2= or_expr )*
             loop8:
             do {
                 int alt8=2;
@@ -406,9 +408,9 @@ public class EclParser extends Parser {
 
                 switch (alt8) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:91:27: ( NEWLINE )* AND ( NEWLINE )* or2= or_expr
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:93:27: ( NEWLINE )* AND ( NEWLINE )* or2= or_expr
             	    {
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:91:27: ( NEWLINE )*
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:93:27: ( NEWLINE )*
             	    loop6:
             	    do {
             	        int alt6=2;
@@ -421,9 +423,9 @@ public class EclParser extends Parser {
 
             	        switch (alt6) {
             	    	case 1 :
-            	    	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:91:27: NEWLINE
+            	    	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:93:27: NEWLINE
             	    	    {
-            	    	    match(input,NEWLINE,FOLLOW_NEWLINE_in_and_expr161); 
+            	    	    match(input,NEWLINE,FOLLOW_NEWLINE_in_and_expr160); 
 
             	    	    }
             	    	    break;
@@ -433,8 +435,8 @@ public class EclParser extends Parser {
             	        }
             	    } while (true);
 
-            	    match(input,AND,FOLLOW_AND_in_and_expr164); 
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:91:40: ( NEWLINE )*
+            	    match(input,AND,FOLLOW_AND_in_and_expr163); 
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:93:40: ( NEWLINE )*
             	    loop7:
             	    do {
             	        int alt7=2;
@@ -447,9 +449,9 @@ public class EclParser extends Parser {
 
             	        switch (alt7) {
             	    	case 1 :
-            	    	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:91:40: NEWLINE
+            	    	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:93:40: NEWLINE
             	    	    {
-            	    	    match(input,NEWLINE,FOLLOW_NEWLINE_in_and_expr166); 
+            	    	    match(input,NEWLINE,FOLLOW_NEWLINE_in_and_expr165); 
 
             	    	    }
             	    	    break;
@@ -459,7 +461,7 @@ public class EclParser extends Parser {
             	        }
             	    } while (true);
 
-            	    pushFollow(FOLLOW_or_expr_in_and_expr171);
+            	    pushFollow(FOLLOW_or_expr_in_and_expr170);
             	    or2=or_expr();
             	    _fsp--;
 
@@ -504,7 +506,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start or_expr
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:109:1: or_expr returns [Command cmd=null;] : c= cmd ( ( NEWLINE )* OR ( NEWLINE )* cmd2= cmd )* ;
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:111:1: or_expr returns [Command cmd=null;] : c= cmd ( ( NEWLINE )* OR ( NEWLINE )* cmd2= cmd )* ;
     public final Command or_expr() throws RecognitionException {
         Command cmd = null;;
 
@@ -514,17 +516,17 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:109:36: (c= cmd ( ( NEWLINE )* OR ( NEWLINE )* cmd2= cmd )* )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:110:3: c= cmd ( ( NEWLINE )* OR ( NEWLINE )* cmd2= cmd )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:111:36: (c= cmd ( ( NEWLINE )* OR ( NEWLINE )* cmd2= cmd )* )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:112:3: c= cmd ( ( NEWLINE )* OR ( NEWLINE )* cmd2= cmd )*
             {
-            pushFollow(FOLLOW_cmd_in_or_expr193);
+            pushFollow(FOLLOW_cmd_in_or_expr192);
             c=cmd();
             _fsp--;
 
 
               cmd = c;
               
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:112:5: ( ( NEWLINE )* OR ( NEWLINE )* cmd2= cmd )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:114:5: ( ( NEWLINE )* OR ( NEWLINE )* cmd2= cmd )*
             loop11:
             do {
                 int alt11=2;
@@ -549,9 +551,9 @@ public class EclParser extends Parser {
 
                 switch (alt11) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:112:6: ( NEWLINE )* OR ( NEWLINE )* cmd2= cmd
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:114:6: ( NEWLINE )* OR ( NEWLINE )* cmd2= cmd
             	    {
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:112:6: ( NEWLINE )*
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:114:6: ( NEWLINE )*
             	    loop9:
             	    do {
             	        int alt9=2;
@@ -564,9 +566,9 @@ public class EclParser extends Parser {
 
             	        switch (alt9) {
             	    	case 1 :
-            	    	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:112:6: NEWLINE
+            	    	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:114:6: NEWLINE
             	    	    {
-            	    	    match(input,NEWLINE,FOLLOW_NEWLINE_in_or_expr198); 
+            	    	    match(input,NEWLINE,FOLLOW_NEWLINE_in_or_expr197); 
 
             	    	    }
             	    	    break;
@@ -576,8 +578,8 @@ public class EclParser extends Parser {
             	        }
             	    } while (true);
 
-            	    match(input,OR,FOLLOW_OR_in_or_expr201); 
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:112:18: ( NEWLINE )*
+            	    match(input,OR,FOLLOW_OR_in_or_expr200); 
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:114:18: ( NEWLINE )*
             	    loop10:
             	    do {
             	        int alt10=2;
@@ -590,9 +592,9 @@ public class EclParser extends Parser {
 
             	        switch (alt10) {
             	    	case 1 :
-            	    	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:112:18: NEWLINE
+            	    	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:114:18: NEWLINE
             	    	    {
-            	    	    match(input,NEWLINE,FOLLOW_NEWLINE_in_or_expr203); 
+            	    	    match(input,NEWLINE,FOLLOW_NEWLINE_in_or_expr202); 
 
             	    	    }
             	    	    break;
@@ -602,7 +604,7 @@ public class EclParser extends Parser {
             	        }
             	    } while (true);
 
-            	    pushFollow(FOLLOW_cmd_in_or_expr208);
+            	    pushFollow(FOLLOW_cmd_in_or_expr207);
             	    cmd2=cmd();
             	    _fsp--;
 
@@ -647,7 +649,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start open_expr_list
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:130:1: open_expr_list returns [Command cmd=null] : c= expression ( COLON c2= expression )* ;
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:132:1: open_expr_list returns [Command cmd=null] : c= expression ( COLON c2= expression )* ;
     public final Command open_expr_list() throws RecognitionException {
         Command cmd = null;
 
@@ -657,10 +659,10 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:130:42: (c= expression ( COLON c2= expression )* )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:131:3: c= expression ( COLON c2= expression )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:132:42: (c= expression ( COLON c2= expression )* )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:133:3: c= expression ( COLON c2= expression )*
             {
-            pushFollow(FOLLOW_expression_in_open_expr_list229);
+            pushFollow(FOLLOW_expression_in_open_expr_list228);
             c=expression();
             _fsp--;
 
@@ -669,7 +671,7 @@ public class EclParser extends Parser {
               		cmd=c;
               	}
               
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:135:5: ( COLON c2= expression )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:137:5: ( COLON c2= expression )*
             loop12:
             do {
                 int alt12=2;
@@ -682,10 +684,10 @@ public class EclParser extends Parser {
 
                 switch (alt12) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:135:6: COLON c2= expression
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:137:6: COLON c2= expression
             	    {
-            	    match(input,COLON,FOLLOW_COLON_in_open_expr_list234); 
-            	    pushFollow(FOLLOW_expression_in_open_expr_list238);
+            	    match(input,COLON,FOLLOW_COLON_in_open_expr_list233); 
+            	    pushFollow(FOLLOW_expression_in_open_expr_list237);
             	    c2=expression();
             	    _fsp--;
 
@@ -717,7 +719,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start cmd
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:140:1: cmd returns [Command cmd=null;] : (c= command | LOPEN c= open_expr_list ROPEN );
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:142:1: cmd returns [Command cmd=null;] : (c= command | LOPEN c= open_expr_list ROPEN );
     public final Command cmd() throws RecognitionException {
         Command cmd = null;;
 
@@ -725,7 +727,7 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:140:32: (c= command | LOPEN c= open_expr_list ROPEN )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:142:32: (c= command | LOPEN c= open_expr_list ROPEN )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -737,15 +739,15 @@ public class EclParser extends Parser {
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("140:1: cmd returns [Command cmd=null;] : (c= command | LOPEN c= open_expr_list ROPEN );", 13, 0, input);
+                    new NoViableAltException("142:1: cmd returns [Command cmd=null;] : (c= command | LOPEN c= open_expr_list ROPEN );", 13, 0, input);
 
                 throw nvae;
             }
             switch (alt13) {
                 case 1 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:141:2: c= command
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:143:2: c= command
                     {
-                    pushFollow(FOLLOW_command_in_cmd258);
+                    pushFollow(FOLLOW_command_in_cmd257);
                     c=command();
                     _fsp--;
 
@@ -756,17 +758,17 @@ public class EclParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:144:2: LOPEN c= open_expr_list ROPEN
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:146:2: LOPEN c= open_expr_list ROPEN
                     {
-                    match(input,LOPEN,FOLLOW_LOPEN_in_cmd265); 
-                    pushFollow(FOLLOW_open_expr_list_in_cmd269);
+                    match(input,LOPEN,FOLLOW_LOPEN_in_cmd264); 
+                    pushFollow(FOLLOW_open_expr_list_in_cmd268);
                     c=open_expr_list();
                     _fsp--;
 
 
                      	cmd = c; 
                      
-                    match(input,ROPEN,FOLLOW_ROPEN_in_cmd273); 
+                    match(input,ROPEN,FOLLOW_ROPEN_in_cmd272); 
 
                     }
                     break;
@@ -785,7 +787,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start command
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:149:1: command returns [Exec cmd=null;] : n= command_name (ho= host )? (a= argument_value )* (arg= argument )* ;
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:151:1: command returns [Exec cmd=null;] : n= command_name (ho= host )? (a= argument_value )* (arg= argument )* ;
     public final Exec command() throws RecognitionException {
         Exec cmd = null;;
 
@@ -799,25 +801,33 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:149:32: (n= command_name (ho= host )? (a= argument_value )* (arg= argument )* )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:150:4: n= command_name (ho= host )? (a= argument_value )* (arg= argument )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:151:32: (n= command_name (ho= host )? (a= argument_value )* (arg= argument )* )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:152:3: n= command_name (ho= host )? (a= argument_value )* (arg= argument )*
             {
-            pushFollow(FOLLOW_command_name_in_command289);
+
+                Token t = input.LT(1);
+                int line = t.getLine();
+                int column = t.getCharPositionInLine();
+              
+            pushFollow(FOLLOW_command_name_in_command292);
             n=command_name();
             _fsp--;
 
 
-               	cmd = factory.createExec();
-               	int pos = n.lastIndexOf("::");
-               	if( pos == -1 ) {
+               	AstExec exec = AstFactory.eINSTANCE.createAstExec();
+               	exec.setLine(line);
+                exec.setColumn(column + 1);
+                cmd = exec;
+               	int index = n.lastIndexOf("::");
+               	if( index == -1 ) {
                		cmd.setName(n);
                	}
                	else {
-               		cmd.setNamespace(n.substring(0, pos));
-               		cmd.setName(n.substring(pos+2));
+               		cmd.setNamespace(n.substring(0, index));
+               		cmd.setName(n.substring(index+2));
                	}
                
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:161:4: (ho= host )?
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:171:4: (ho= host )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -826,9 +836,9 @@ public class EclParser extends Parser {
             }
             switch (alt14) {
                 case 1 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:161:5: ho= host
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:171:5: ho= host
                     {
-                    pushFollow(FOLLOW_host_in_command300);
+                    pushFollow(FOLLOW_host_in_command303);
                     ho=host();
                     _fsp--;
 
@@ -841,7 +851,7 @@ public class EclParser extends Parser {
 
             }
 
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:164:4: (a= argument_value )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:174:4: (a= argument_value )*
             loop15:
             do {
                 int alt15=2;
@@ -854,9 +864,9 @@ public class EclParser extends Parser {
 
                 switch (alt15) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:164:5: a= argument_value
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:174:5: a= argument_value
             	    {
-            	    pushFollow(FOLLOW_argument_value_in_command312);
+            	    pushFollow(FOLLOW_argument_value_in_command315);
             	    a=argument_value();
             	    _fsp--;
 
@@ -874,7 +884,7 @@ public class EclParser extends Parser {
                 }
             } while (true);
 
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:169:4: (arg= argument )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:179:4: (arg= argument )*
             loop16:
             do {
                 int alt16=2;
@@ -887,9 +897,9 @@ public class EclParser extends Parser {
 
                 switch (alt16) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:169:5: arg= argument
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:179:5: arg= argument
             	    {
-            	    pushFollow(FOLLOW_argument_in_command325);
+            	    pushFollow(FOLLOW_argument_in_command328);
             	    arg=argument();
             	    _fsp--;
 
@@ -908,6 +918,12 @@ public class EclParser extends Parser {
             } while (true);
 
 
+                t = input.LT(-1);
+                int end = t.getCharPositionInLine()+t.getText().length();
+                int length = end - column;
+                exec.setLength(length);
+              
+
             }
 
         }
@@ -923,7 +939,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start subcommand
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:176:1: subcommand returns [Parameter param=null;] : LBRACK c= expr_list RBRACK ;
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:192:1: subcommand returns [Parameter param=null;] : LBRACK c= expr_list RBRACK ;
     public final Parameter subcommand() throws RecognitionException {
         Parameter param = null;;
 
@@ -931,11 +947,11 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:176:42: ( LBRACK c= expr_list RBRACK )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:177:3: LBRACK c= expr_list RBRACK
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:192:42: ( LBRACK c= expr_list RBRACK )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:193:3: LBRACK c= expr_list RBRACK
             {
-            match(input,LBRACK,FOLLOW_LBRACK_in_subcommand342); 
-            pushFollow(FOLLOW_expr_list_in_subcommand350);
+            match(input,LBRACK,FOLLOW_LBRACK_in_subcommand349); 
+            pushFollow(FOLLOW_expr_list_in_subcommand357);
             c=expr_list();
             _fsp--;
 
@@ -944,7 +960,7 @@ public class EclParser extends Parser {
               		p.setCommand(c);
             	  	param = p;
                 
-            match(input,RBRACK,FOLLOW_RBRACK_in_subcommand356); 
+            match(input,RBRACK,FOLLOW_RBRACK_in_subcommand363); 
 
             }
 
@@ -961,17 +977,17 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start command_name
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:186:1: command_name returns [String name=null;] : (n= NAME | n= DNAME ) ;
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:202:1: command_name returns [String name=null;] : (n= NAME | n= DNAME ) ;
     public final String command_name() throws RecognitionException {
         String name = null;;
 
         Token n=null;
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:186:40: ( (n= NAME | n= DNAME ) )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:187:2: (n= NAME | n= DNAME )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:202:40: ( (n= NAME | n= DNAME ) )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:203:2: (n= NAME | n= DNAME )
             {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:187:2: (n= NAME | n= DNAME )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:203:2: (n= NAME | n= DNAME )
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -983,24 +999,24 @@ public class EclParser extends Parser {
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("187:2: (n= NAME | n= DNAME )", 17, 0, input);
+                    new NoViableAltException("203:2: (n= NAME | n= DNAME )", 17, 0, input);
 
                 throw nvae;
             }
             switch (alt17) {
                 case 1 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:187:3: n= NAME
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:203:3: n= NAME
                     {
                     n=(Token)input.LT(1);
-                    match(input,NAME,FOLLOW_NAME_in_command_name374); 
+                    match(input,NAME,FOLLOW_NAME_in_command_name381); 
 
                     }
                     break;
                 case 2 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:187:33: n= DNAME
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:203:33: n= DNAME
                     {
                     n=(Token)input.LT(1);
-                    match(input,DNAME,FOLLOW_DNAME_in_command_name381); 
+                    match(input,DNAME,FOLLOW_DNAME_in_command_name388); 
 
                     }
                     break;
@@ -1024,21 +1040,21 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start host
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:190:1: host returns [String host=null;] : ( '@' (n= NAME | n= IP4 ) ) ;
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:206:1: host returns [String host=null;] : ( '@' (n= NAME | n= IP4 ) ) ;
     public final String host() throws RecognitionException {
         String host = null;;
 
         Token n=null;
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:190:33: ( ( '@' (n= NAME | n= IP4 ) ) )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:191:2: ( '@' (n= NAME | n= IP4 ) )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:206:33: ( ( '@' (n= NAME | n= IP4 ) ) )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:207:2: ( '@' (n= NAME | n= IP4 ) )
             {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:191:2: ( '@' (n= NAME | n= IP4 ) )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:191:3: '@' (n= NAME | n= IP4 )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:207:2: ( '@' (n= NAME | n= IP4 ) )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:207:3: '@' (n= NAME | n= IP4 )
             {
-            match(input,26,FOLLOW_26_in_host399); 
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:191:7: (n= NAME | n= IP4 )
+            match(input,26,FOLLOW_26_in_host406); 
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:207:7: (n= NAME | n= IP4 )
             int alt18=2;
             int LA18_0 = input.LA(1);
 
@@ -1050,24 +1066,24 @@ public class EclParser extends Parser {
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("191:7: (n= NAME | n= IP4 )", 18, 0, input);
+                    new NoViableAltException("207:7: (n= NAME | n= IP4 )", 18, 0, input);
 
                 throw nvae;
             }
             switch (alt18) {
                 case 1 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:191:8: n= NAME
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:207:8: n= NAME
                     {
                     n=(Token)input.LT(1);
-                    match(input,NAME,FOLLOW_NAME_in_host404); 
+                    match(input,NAME,FOLLOW_NAME_in_host411); 
 
                     }
                     break;
                 case 2 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:191:15: n= IP4
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:207:15: n= IP4
                     {
                     n=(Token)input.LT(1);
-                    match(input,IP4,FOLLOW_IP4_in_host408); 
+                    match(input,IP4,FOLLOW_IP4_in_host415); 
 
                     }
                     break;
@@ -1096,7 +1112,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start argument
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:196:1: argument returns [Parameter param = null] : (p= named_argument ) ;
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:212:1: argument returns [Parameter param = null] : (p= named_argument ) ;
     public final Parameter argument() throws RecognitionException {
         Parameter param =  null;
 
@@ -1104,13 +1120,13 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:196:42: ( (p= named_argument ) )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:197:4: (p= named_argument )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:212:42: ( (p= named_argument ) )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:213:4: (p= named_argument )
             {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:197:4: (p= named_argument )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:197:5: p= named_argument
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:213:4: (p= named_argument )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:213:5: p= named_argument
             {
-            pushFollow(FOLLOW_named_argument_in_argument430);
+            pushFollow(FOLLOW_named_argument_in_argument437);
             p=named_argument();
             _fsp--;
 
@@ -1134,7 +1150,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start argument_value
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:199:1: argument_value returns [Parameter param=null;] : (p= simple_value | p= subcommand | p= convert_string ) ;
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:215:1: argument_value returns [Parameter param=null;] : (p= simple_value | p= subcommand | p= convert_string ) ;
     public final Parameter argument_value() throws RecognitionException {
         Parameter param = null;;
 
@@ -1142,10 +1158,10 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:199:47: ( (p= simple_value | p= subcommand | p= convert_string ) )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:200:3: (p= simple_value | p= subcommand | p= convert_string )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:215:47: ( (p= simple_value | p= subcommand | p= convert_string ) )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:216:3: (p= simple_value | p= subcommand | p= convert_string )
             {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:200:3: (p= simple_value | p= subcommand | p= convert_string )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:216:3: (p= simple_value | p= subcommand | p= convert_string )
             int alt19=3;
             switch ( input.LA(1) ) {
             case NAME:
@@ -1160,7 +1176,7 @@ public class EclParser extends Parser {
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("200:3: (p= simple_value | p= subcommand | p= convert_string )", 19, 1, input);
+                        new NoViableAltException("216:3: (p= simple_value | p= subcommand | p= convert_string )", 19, 1, input);
 
                     throw nvae;
                 }
@@ -1180,16 +1196,16 @@ public class EclParser extends Parser {
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("200:3: (p= simple_value | p= subcommand | p= convert_string )", 19, 0, input);
+                    new NoViableAltException("216:3: (p= simple_value | p= subcommand | p= convert_string )", 19, 0, input);
 
                 throw nvae;
             }
 
             switch (alt19) {
                 case 1 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:200:4: p= simple_value
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:216:4: p= simple_value
                     {
-                    pushFollow(FOLLOW_simple_value_in_argument_value451);
+                    pushFollow(FOLLOW_simple_value_in_argument_value458);
                     p=simple_value();
                     _fsp--;
 
@@ -1197,9 +1213,9 @@ public class EclParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:200:23: p= subcommand
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:216:23: p= subcommand
                     {
-                    pushFollow(FOLLOW_subcommand_in_argument_value458);
+                    pushFollow(FOLLOW_subcommand_in_argument_value465);
                     p=subcommand();
                     _fsp--;
 
@@ -1207,9 +1223,9 @@ public class EclParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:200:39: p= convert_string
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:216:39: p= convert_string
                     {
-                    pushFollow(FOLLOW_convert_string_in_argument_value466);
+                    pushFollow(FOLLOW_convert_string_in_argument_value473);
                     p=convert_string();
                     _fsp--;
 
@@ -1238,7 +1254,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start simple_value
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:204:1: simple_value returns [Parameter param = null;] : (d= NAME | d= NUMBER | d2= STRING | d3= CURLY_STRING ) ;
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:220:1: simple_value returns [Parameter param = null;] : (d= NAME | d= NUMBER | d2= STRING | d3= CURLY_STRING ) ;
     public final Parameter simple_value() throws RecognitionException {
         Parameter param =  null;;
 
@@ -1247,10 +1263,10 @@ public class EclParser extends Parser {
         Token d3=null;
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:204:46: ( (d= NAME | d= NUMBER | d2= STRING | d3= CURLY_STRING ) )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:205:2: (d= NAME | d= NUMBER | d2= STRING | d3= CURLY_STRING )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:220:46: ( (d= NAME | d= NUMBER | d2= STRING | d3= CURLY_STRING ) )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:221:2: (d= NAME | d= NUMBER | d2= STRING | d3= CURLY_STRING )
             {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:205:2: (d= NAME | d= NUMBER | d2= STRING | d3= CURLY_STRING )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:221:2: (d= NAME | d= NUMBER | d2= STRING | d3= CURLY_STRING )
             int alt20=4;
             switch ( input.LA(1) ) {
             case NAME:
@@ -1275,41 +1291,41 @@ public class EclParser extends Parser {
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("205:2: (d= NAME | d= NUMBER | d2= STRING | d3= CURLY_STRING )", 20, 0, input);
+                    new NoViableAltException("221:2: (d= NAME | d= NUMBER | d2= STRING | d3= CURLY_STRING )", 20, 0, input);
 
                 throw nvae;
             }
 
             switch (alt20) {
                 case 1 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:205:3: d= NAME
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:221:3: d= NAME
                     {
                     d=(Token)input.LT(1);
-                    match(input,NAME,FOLLOW_NAME_in_simple_value483); 
+                    match(input,NAME,FOLLOW_NAME_in_simple_value490); 
 
                     }
                     break;
                 case 2 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:205:10: d= NUMBER
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:221:10: d= NUMBER
                     {
                     d=(Token)input.LT(1);
-                    match(input,NUMBER,FOLLOW_NUMBER_in_simple_value487); 
+                    match(input,NUMBER,FOLLOW_NUMBER_in_simple_value494); 
 
                     }
                     break;
                 case 3 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:205:19: d2= STRING
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:221:19: d2= STRING
                     {
                     d2=(Token)input.LT(1);
-                    match(input,STRING,FOLLOW_STRING_in_simple_value491); 
+                    match(input,STRING,FOLLOW_STRING_in_simple_value498); 
 
                     }
                     break;
                 case 4 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:205:29: d3= CURLY_STRING
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:221:29: d3= CURLY_STRING
                     {
                     d3=(Token)input.LT(1);
-                    match(input,CURLY_STRING,FOLLOW_CURLY_STRING_in_simple_value495); 
+                    match(input,CURLY_STRING,FOLLOW_CURLY_STRING_in_simple_value502); 
 
                     }
                     break;
@@ -1317,7 +1333,12 @@ public class EclParser extends Parser {
             }
 
              
-            		LiteralParameter p = factory.createLiteralParameter();
+                AstLiteral literal = AstFactory.eINSTANCE.createAstLiteral();
+                Token t = input.LT(-1);    
+                literal.setLine(t.getLine());
+                literal.setColumn(t.getCharPositionInLine());
+                literal.setLength(t.getText().length());
+            		LiteralParameter p = literal;
             		if( d != null ) {
               			p.setLiteral(d.getText());
               		}
@@ -1367,7 +1388,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start named_argument
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:241:1: named_argument returns [Parameter param=null;] : ( '-' ( '-' )? n= NAME ( ( '=' )? (v= argument_value ) )? ) ;
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:262:1: named_argument returns [Parameter param=null;] : ( '-' ( '-' )? n= NAME ( ( '=' )? (v= argument_value ) )? ) ;
     public final Parameter named_argument() throws RecognitionException {
         Parameter param = null;;
 
@@ -1376,14 +1397,14 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:241:47: ( ( '-' ( '-' )? n= NAME ( ( '=' )? (v= argument_value ) )? ) )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:2: ( '-' ( '-' )? n= NAME ( ( '=' )? (v= argument_value ) )? )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:262:47: ( ( '-' ( '-' )? n= NAME ( ( '=' )? (v= argument_value ) )? ) )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:263:2: ( '-' ( '-' )? n= NAME ( ( '=' )? (v= argument_value ) )? )
             {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:2: ( '-' ( '-' )? n= NAME ( ( '=' )? (v= argument_value ) )? )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:3: '-' ( '-' )? n= NAME ( ( '=' )? (v= argument_value ) )?
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:263:2: ( '-' ( '-' )? n= NAME ( ( '=' )? (v= argument_value ) )? )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:263:3: '-' ( '-' )? n= NAME ( ( '=' )? (v= argument_value ) )?
             {
-            match(input,27,FOLLOW_27_in_named_argument512); 
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:7: ( '-' )?
+            match(input,27,FOLLOW_27_in_named_argument519); 
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:263:7: ( '-' )?
             int alt21=2;
             int LA21_0 = input.LA(1);
 
@@ -1392,9 +1413,9 @@ public class EclParser extends Parser {
             }
             switch (alt21) {
                 case 1 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:7: '-'
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:263:7: '-'
                     {
-                    match(input,27,FOLLOW_27_in_named_argument514); 
+                    match(input,27,FOLLOW_27_in_named_argument521); 
 
                     }
                     break;
@@ -1402,8 +1423,8 @@ public class EclParser extends Parser {
             }
 
             n=(Token)input.LT(1);
-            match(input,NAME,FOLLOW_NAME_in_named_argument519); 
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:19: ( ( '=' )? (v= argument_value ) )?
+            match(input,NAME,FOLLOW_NAME_in_named_argument526); 
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:263:19: ( ( '=' )? (v= argument_value ) )?
             int alt23=2;
             int LA23_0 = input.LA(1);
 
@@ -1412,9 +1433,9 @@ public class EclParser extends Parser {
             }
             switch (alt23) {
                 case 1 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:20: ( '=' )? (v= argument_value )
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:263:20: ( '=' )? (v= argument_value )
                     {
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:20: ( '=' )?
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:263:20: ( '=' )?
                     int alt22=2;
                     int LA22_0 = input.LA(1);
 
@@ -1423,19 +1444,19 @@ public class EclParser extends Parser {
                     }
                     switch (alt22) {
                         case 1 :
-                            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:20: '='
+                            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:263:20: '='
                             {
-                            match(input,28,FOLLOW_28_in_named_argument522); 
+                            match(input,28,FOLLOW_28_in_named_argument529); 
 
                             }
                             break;
 
                     }
 
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:25: (v= argument_value )
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:242:26: v= argument_value
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:263:25: (v= argument_value )
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:263:26: v= argument_value
                     {
-                    pushFollow(FOLLOW_argument_value_in_named_argument528);
+                    pushFollow(FOLLOW_argument_value_in_named_argument535);
                     v=argument_value();
                     _fsp--;
 
@@ -1477,7 +1498,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start convert_string
-    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:254:1: convert_string returns [Parameter param=null;] : (f= NAME SEMI v= CURLY_STRING ) ;
+    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:275:1: convert_string returns [Parameter param=null;] : (f= NAME SEMI v= CURLY_STRING ) ;
     public final Parameter convert_string() throws RecognitionException {
         Parameter param = null;;
 
@@ -1485,17 +1506,17 @@ public class EclParser extends Parser {
         Token v=null;
 
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:254:47: ( (f= NAME SEMI v= CURLY_STRING ) )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:255:2: (f= NAME SEMI v= CURLY_STRING )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:275:47: ( (f= NAME SEMI v= CURLY_STRING ) )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:276:2: (f= NAME SEMI v= CURLY_STRING )
             {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:255:2: (f= NAME SEMI v= CURLY_STRING )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:255:3: f= NAME SEMI v= CURLY_STRING
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:276:2: (f= NAME SEMI v= CURLY_STRING )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:276:3: f= NAME SEMI v= CURLY_STRING
             {
             f=(Token)input.LT(1);
-            match(input,NAME,FOLLOW_NAME_in_convert_string550); 
-            match(input,SEMI,FOLLOW_SEMI_in_convert_string552); 
+            match(input,NAME,FOLLOW_NAME_in_convert_string557); 
+            match(input,SEMI,FOLLOW_SEMI_in_convert_string559); 
             v=(Token)input.LT(1);
-            match(input,CURLY_STRING,FOLLOW_CURLY_STRING_in_convert_string556); 
+            match(input,CURLY_STRING,FOLLOW_CURLY_STRING_in_convert_string563); 
 
             }
 
@@ -1524,57 +1545,57 @@ public class EclParser extends Parser {
  
 
     public static final BitSet FOLLOW_expr_list_in_commands68 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NEWLINE_in_expr_list84 = new BitSet(new long[]{0x0000000000003110L});
-    public static final BitSet FOLLOW_expression_in_expr_list92 = new BitSet(new long[]{0x0000000000000032L});
-    public static final BitSet FOLLOW_NEWLINE_in_expr_list98 = new BitSet(new long[]{0x0000000000003110L});
-    public static final BitSet FOLLOW_COLON_in_expr_list101 = new BitSet(new long[]{0x0000000000003100L});
-    public static final BitSet FOLLOW_expression_in_expr_list106 = new BitSet(new long[]{0x0000000000000032L});
-    public static final BitSet FOLLOW_set_in_expr_list115 = new BitSet(new long[]{0x0000000000000032L});
-    public static final BitSet FOLLOW_and_expr_in_expression137 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_or_expr_in_and_expr156 = new BitSet(new long[]{0x0000000000000052L});
-    public static final BitSet FOLLOW_NEWLINE_in_and_expr161 = new BitSet(new long[]{0x0000000000000050L});
-    public static final BitSet FOLLOW_AND_in_and_expr164 = new BitSet(new long[]{0x0000000000003110L});
-    public static final BitSet FOLLOW_NEWLINE_in_and_expr166 = new BitSet(new long[]{0x0000000000003110L});
-    public static final BitSet FOLLOW_or_expr_in_and_expr171 = new BitSet(new long[]{0x0000000000000052L});
-    public static final BitSet FOLLOW_cmd_in_or_expr193 = new BitSet(new long[]{0x0000000000000092L});
-    public static final BitSet FOLLOW_NEWLINE_in_or_expr198 = new BitSet(new long[]{0x0000000000000090L});
-    public static final BitSet FOLLOW_OR_in_or_expr201 = new BitSet(new long[]{0x0000000000003110L});
-    public static final BitSet FOLLOW_NEWLINE_in_or_expr203 = new BitSet(new long[]{0x0000000000003110L});
-    public static final BitSet FOLLOW_cmd_in_or_expr208 = new BitSet(new long[]{0x0000000000000092L});
-    public static final BitSet FOLLOW_expression_in_open_expr_list229 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_COLON_in_open_expr_list234 = new BitSet(new long[]{0x0000000000003100L});
-    public static final BitSet FOLLOW_expression_in_open_expr_list238 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_command_in_cmd258 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LOPEN_in_cmd265 = new BitSet(new long[]{0x0000000000003100L});
-    public static final BitSet FOLLOW_open_expr_list_in_cmd269 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_ROPEN_in_cmd273 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_command_name_in_command289 = new BitSet(new long[]{0x000000000C039402L});
-    public static final BitSet FOLLOW_host_in_command300 = new BitSet(new long[]{0x0000000008039402L});
-    public static final BitSet FOLLOW_argument_value_in_command312 = new BitSet(new long[]{0x0000000008039402L});
-    public static final BitSet FOLLOW_argument_in_command325 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_LBRACK_in_subcommand342 = new BitSet(new long[]{0x0000000000003110L});
-    public static final BitSet FOLLOW_expr_list_in_subcommand350 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_RBRACK_in_subcommand356 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NAME_in_command_name374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DNAME_in_command_name381 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_host399 = new BitSet(new long[]{0x0000000000005000L});
-    public static final BitSet FOLLOW_NAME_in_host404 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IP4_in_host408 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_named_argument_in_argument430 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simple_value_in_argument_value451 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_subcommand_in_argument_value458 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_convert_string_in_argument_value466 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NAME_in_simple_value483 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NUMBER_in_simple_value487 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_in_simple_value491 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CURLY_STRING_in_simple_value495 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_named_argument512 = new BitSet(new long[]{0x0000000008001000L});
-    public static final BitSet FOLLOW_27_in_named_argument514 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_NAME_in_named_argument519 = new BitSet(new long[]{0x0000000010039402L});
-    public static final BitSet FOLLOW_28_in_named_argument522 = new BitSet(new long[]{0x0000000000039400L});
-    public static final BitSet FOLLOW_argument_value_in_named_argument528 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NAME_in_convert_string550 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_SEMI_in_convert_string552 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_CURLY_STRING_in_convert_string556 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NEWLINE_in_expr_list83 = new BitSet(new long[]{0x0000000000003110L});
+    public static final BitSet FOLLOW_expression_in_expr_list91 = new BitSet(new long[]{0x0000000000000032L});
+    public static final BitSet FOLLOW_NEWLINE_in_expr_list97 = new BitSet(new long[]{0x0000000000003110L});
+    public static final BitSet FOLLOW_COLON_in_expr_list100 = new BitSet(new long[]{0x0000000000003100L});
+    public static final BitSet FOLLOW_expression_in_expr_list105 = new BitSet(new long[]{0x0000000000000032L});
+    public static final BitSet FOLLOW_set_in_expr_list114 = new BitSet(new long[]{0x0000000000000032L});
+    public static final BitSet FOLLOW_and_expr_in_expression136 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_or_expr_in_and_expr155 = new BitSet(new long[]{0x0000000000000052L});
+    public static final BitSet FOLLOW_NEWLINE_in_and_expr160 = new BitSet(new long[]{0x0000000000000050L});
+    public static final BitSet FOLLOW_AND_in_and_expr163 = new BitSet(new long[]{0x0000000000003110L});
+    public static final BitSet FOLLOW_NEWLINE_in_and_expr165 = new BitSet(new long[]{0x0000000000003110L});
+    public static final BitSet FOLLOW_or_expr_in_and_expr170 = new BitSet(new long[]{0x0000000000000052L});
+    public static final BitSet FOLLOW_cmd_in_or_expr192 = new BitSet(new long[]{0x0000000000000092L});
+    public static final BitSet FOLLOW_NEWLINE_in_or_expr197 = new BitSet(new long[]{0x0000000000000090L});
+    public static final BitSet FOLLOW_OR_in_or_expr200 = new BitSet(new long[]{0x0000000000003110L});
+    public static final BitSet FOLLOW_NEWLINE_in_or_expr202 = new BitSet(new long[]{0x0000000000003110L});
+    public static final BitSet FOLLOW_cmd_in_or_expr207 = new BitSet(new long[]{0x0000000000000092L});
+    public static final BitSet FOLLOW_expression_in_open_expr_list228 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_COLON_in_open_expr_list233 = new BitSet(new long[]{0x0000000000003100L});
+    public static final BitSet FOLLOW_expression_in_open_expr_list237 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_command_in_cmd257 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LOPEN_in_cmd264 = new BitSet(new long[]{0x0000000000003100L});
+    public static final BitSet FOLLOW_open_expr_list_in_cmd268 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_ROPEN_in_cmd272 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_command_name_in_command292 = new BitSet(new long[]{0x000000000C039402L});
+    public static final BitSet FOLLOW_host_in_command303 = new BitSet(new long[]{0x0000000008039402L});
+    public static final BitSet FOLLOW_argument_value_in_command315 = new BitSet(new long[]{0x0000000008039402L});
+    public static final BitSet FOLLOW_argument_in_command328 = new BitSet(new long[]{0x0000000008000002L});
+    public static final BitSet FOLLOW_LBRACK_in_subcommand349 = new BitSet(new long[]{0x0000000000003110L});
+    public static final BitSet FOLLOW_expr_list_in_subcommand357 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_RBRACK_in_subcommand363 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NAME_in_command_name381 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DNAME_in_command_name388 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_host406 = new BitSet(new long[]{0x0000000000005000L});
+    public static final BitSet FOLLOW_NAME_in_host411 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IP4_in_host415 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_named_argument_in_argument437 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simple_value_in_argument_value458 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_subcommand_in_argument_value465 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_convert_string_in_argument_value473 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NAME_in_simple_value490 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NUMBER_in_simple_value494 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_in_simple_value498 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CURLY_STRING_in_simple_value502 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_named_argument519 = new BitSet(new long[]{0x0000000008001000L});
+    public static final BitSet FOLLOW_27_in_named_argument521 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_NAME_in_named_argument526 = new BitSet(new long[]{0x0000000010039402L});
+    public static final BitSet FOLLOW_28_in_named_argument529 = new BitSet(new long[]{0x0000000000039400L});
+    public static final BitSet FOLLOW_argument_value_in_named_argument535 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NAME_in_convert_string557 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_SEMI_in_convert_string559 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_CURLY_STRING_in_convert_string563 = new BitSet(new long[]{0x0000000000000002L});
 
 }

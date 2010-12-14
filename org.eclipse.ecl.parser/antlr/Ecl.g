@@ -25,13 +25,16 @@ import org.eclipse.ecl.core.Parallel;
 import org.eclipse.ecl.core.Parameter;
 import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.core.Sequence;
+import org.eclipse.ecl.gen.ast.AstFactory;
+import org.eclipse.ecl.gen.ast.AstExec;
+import org.eclipse.ecl.gen.ast.AstLiteral;
 }
 
 // applies only to the lexer:
 @lexer::header {
 package org.eclipse.ecl.internal.parser;
 }
-@lexer::members {
+@lexer::members {  
   public void displayRecognitionError(String[] tokenNames,
       RecognitionException e) {
       throw new SyntaxErrorException(e.line, e.charPositionInLine);
@@ -39,9 +42,8 @@ package org.eclipse.ecl.internal.parser;
 }
 
 
-@members {
-	CoreFactory factory= CoreFactory.eINSTANCE;
-  
+@members {  
+	CoreFactory factory = CoreFactory.eINSTANCE;  
 	Command processSequence(Command cmd, Command c2 ) {
 		//Construct sequence if not yet constructed.
 		if (cmd instanceof Sequence) {
@@ -67,7 +69,7 @@ package org.eclipse.ecl.internal.parser;
   
 // Parser rules
 commands returns[Command cmd=null;]:
-	exprs=expr_list  { cmd=exprs;}
+	exprs=expr_list	{cmd=exprs;}
 ;
 expr_list returns [Command cmd=null]:
   NEWLINE*
@@ -147,15 +149,23 @@ cmd returns [Command cmd=null;]:
 ;
 
 command returns[Exec cmd=null;]:
+  {
+    Token t = input.LT(1);
+    int line = t.getLine();
+    int column = t.getCharPositionInLine();
+  }
    n=command_name {
-   	cmd = factory.createExec();
-   	int pos = n.lastIndexOf("::");
-   	if( pos == -1 ) {
+   	AstExec exec = AstFactory.eINSTANCE.createAstExec();
+   	exec.setLine(line);
+    exec.setColumn(column + 1);
+    cmd = exec;
+   	int index = n.lastIndexOf("::");
+   	if( index == -1 ) {
    		cmd.setName(n);
    	}
    	else {
-   		cmd.setNamespace(n.substring(0, pos));
-   		cmd.setName(n.substring(pos+2));
+   		cmd.setNamespace(n.substring(0, index));
+   		cmd.setName(n.substring(index+2));
    	}
    } 
    (ho=host {
@@ -171,6 +181,12 @@ command returns[Exec cmd=null;]:
  		cmd.getParameters().add(arg);
    	}
    })*
+  {
+    t = input.LT(-1);
+    int end = t.getCharPositionInLine()+t.getText().length();
+    int length = end - column;
+    exec.setLength(length);
+  }
 ;
 
 subcommand returns[Parameter param=null;]:
@@ -203,7 +219,12 @@ argument_value returns [Parameter param=null;]:
 ;
 simple_value returns[Parameter param = null;]:
 	(d=NAME|d=NUMBER|d2=STRING|d3=CURLY_STRING) { 
-		LiteralParameter p = factory.createLiteralParameter();
+    AstLiteral literal = AstFactory.eINSTANCE.createAstLiteral();
+    Token t = input.LT(-1);    
+    literal.setLine(t.getLine());
+    literal.setColumn(t.getCharPositionInLine());
+    literal.setLength(t.getText().length());
+		LiteralParameter p = literal;
 		if( d != null ) {
   			p.setLiteral(d.getText());
   		}

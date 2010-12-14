@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class EclCompiler {
+
 	public static Command compile(Command command) throws CoreException {
 		return compile(command, false);
 	}
@@ -43,7 +44,7 @@ public class EclCompiler {
 					new FQName(null,
 							EclCommandNameConvention.toScriptletName(exec
 									.getName())), exec.getParameters(),
-					hasInput);
+					hasInput, false);
 		}
 		if (command instanceof Block) {
 			Block block = (Block) command;
@@ -65,8 +66,20 @@ public class EclCompiler {
 		return command;
 	}
 
+	public static Command rawCompile(Exec exec, boolean hasInput)
+			throws CoreException {
+		return compile(
+				new FQName(null, EclCommandNameConvention.toScriptletName(exec
+						.getName())), exec.getParameters(), hasInput, true);
+	}
+
 	public static Command compile(FQName fqn, List<Parameter> params,
 			boolean hasInput) throws CoreException {
+		return compile(fqn, params, hasInput, false);
+	}
+
+	public static Command compile(FQName fqn, List<Parameter> params,
+			boolean hasInput, boolean inDepth) throws CoreException {
 		Command target = CoreUtils.createCommand(fqn.ns, fqn.name);
 		EClass targetClass = target.eClass();
 
@@ -107,7 +120,7 @@ public class EclCompiler {
 			if (feature.getEAnnotation(CoreUtils.INTERNAL_ANN) != null)
 				feature = features.get(i++);
 
-			evalFeatureValue(target, param, feature, hasInput);
+			evalFeatureValue(target, param, feature, hasInput, inDepth);
 			// TODO support any upper bound
 			if (feature.getUpperBound() == -1)
 				i--;
@@ -146,10 +159,10 @@ public class EclCompiler {
 	}
 
 	private static void evalFeatureValue(Command target, Parameter param,
-			EStructuralFeature feature, boolean hasInput) throws CoreException {
+			EStructuralFeature feature, boolean hasInput, boolean inDepth)
+			throws CoreException {
 		Object value = null;
-		switch (param.eClass().getClassifierID()) {
-		case CorePackage.LITERAL_PARAMETER:
+		if (param instanceof LiteralParameter) {
 			LiteralParameter literal = (LiteralParameter) param;
 			Class<?> instanceClass = feature.getEType().getInstanceClass();
 			try {
@@ -170,8 +183,8 @@ public class EclCompiler {
 					IParamConverter<?> converter = ParamConverterManager
 							.getInstance().getConverter(instanceClass);
 					if (converter != null) {
-						value = converter.convert(literal.getLiteral());
-						if (value instanceof Command) {
+						value = converter.convert(literal);
+						if (value instanceof Command && inDepth) {
 							value = compile((Command) value, true);
 						}
 					}
@@ -212,15 +225,13 @@ public class EclCompiler {
 								+ " to attribute " + feature.getName(), cce);
 				throw new CoreException(status);
 			}
-			break;
-		case CorePackage.EXECUTABLE_PARAMETER:
+		} else if (param instanceof ExecutableParameter) {
 			Binding binding = CoreFactory.eINSTANCE.createBinding();
 			binding.setFeature(feature);
 			ExecutableParameter execParam = (ExecutableParameter) param;
 			binding.setCommand(compile(execParam.getCommand(), hasInput));
 			target.getBindings().add(binding);
-			break;
-		default:
+		} else {
 			throw new RuntimeException("Invalid parameter");
 		}
 	}

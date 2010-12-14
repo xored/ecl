@@ -2,17 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AstFactoryImpl.java,v 1.2 2010/11/08 08:42:15 alena Exp $
+ * $Id: AstFactoryImpl.java,v 1.3 2010/12/14 10:01:31 alena Exp $
  */
 package org.eclipse.ecl.gen.ast.impl;
 
-import org.eclipse.ecl.ast.Ast;
 import org.eclipse.ecl.gen.ast.*;
 
-import org.eclipse.ecl.parser.EclPartition;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -64,7 +60,9 @@ public class AstFactoryImpl extends EFactoryImpl implements AstFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case AstPackage.NODE: return createNode();
+			case AstPackage.AST_NODE: return createAstNode();
+			case AstPackage.AST_EXEC: return createAstExec();
+			case AstPackage.AST_LITERAL: return createAstLiteral();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -75,16 +73,9 @@ public class AstFactoryImpl extends EFactoryImpl implements AstFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case AstPackage.ECL_PARTITION:
-				return createEclPartitionFromString(eDataType, initialValue);
-			case AstPackage.AST:
-				return createAstFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
+	public AstNode createAstNode() {
+		AstNodeImpl astNode = new AstNodeImpl();
+		return astNode;
 	}
 
 	/**
@@ -92,16 +83,9 @@ public class AstFactoryImpl extends EFactoryImpl implements AstFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case AstPackage.ECL_PARTITION:
-				return convertEclPartitionToString(eDataType, instanceValue);
-			case AstPackage.AST:
-				return convertAstToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
+	public AstExec createAstExec() {
+		AstExecImpl astExec = new AstExecImpl();
+		return astExec;
 	}
 
 	/**
@@ -109,45 +93,9 @@ public class AstFactoryImpl extends EFactoryImpl implements AstFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Node createNode() {
-		NodeImpl node = new NodeImpl();
-		return node;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EclPartition createEclPartitionFromString(EDataType eDataType, String initialValue) {
-		return (EclPartition)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertEclPartitionToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Ast createAstFromString(EDataType eDataType, String initialValue) {
-		return (Ast)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertAstToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
+	public AstLiteral createAstLiteral() {
+		AstLiteralImpl astLiteral = new AstLiteralImpl();
+		return astLiteral;
 	}
 
 	/**

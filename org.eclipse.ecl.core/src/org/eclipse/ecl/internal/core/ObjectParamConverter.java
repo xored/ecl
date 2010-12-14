@@ -1,11 +1,13 @@
 package org.eclipse.ecl.internal.core;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.ecl.core.LiteralParameter;
 import org.eclipse.ecl.runtime.IParamConverter;
 
 public class ObjectParamConverter implements IParamConverter<Object> {
 
-	public Object convert(String original) throws CoreException {
+	public Object convert(LiteralParameter parameter) throws CoreException {
+		String original = parameter.getLiteral();
 		try {
 			return Integer.decode(original);
 		} catch (NumberFormatException e0) {

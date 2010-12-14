@@ -6,7 +6,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.Script;
 import org.eclipse.ecl.parser.EclCoreParser;
-import org.eclipse.ecl.runtime.EclCompiler;
 import org.eclipse.ecl.runtime.EclRuntime;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
@@ -20,7 +19,7 @@ public class ScriptService implements ICommandService {
 		if (content == null || content.length() == 0)
 			return Status.OK_STATUS;
 		Command c = EclCoreParser.newCommand(content);
-		c = EclCompiler.compile(c);
+		// c = EclCompiler.compile(c);
 		IProcess process = EclRuntime.createSession().execute(c);
 		return process.waitFor();
 	}

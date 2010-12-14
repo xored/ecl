@@ -2,24 +2,23 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AstPackageImpl.java,v 1.2 2010/11/08 08:42:15 alena Exp $
+ * $Id: AstPackageImpl.java,v 1.3 2010/12/14 10:01:31 alena Exp $
  */
 package org.eclipse.ecl.gen.ast.impl;
 
-import org.eclipse.ecl.ast.Ast;
 import org.eclipse.ecl.core.CorePackage;
 
+import org.eclipse.ecl.gen.ast.AstExec;
 import org.eclipse.ecl.gen.ast.AstFactory;
+import org.eclipse.ecl.gen.ast.AstLiteral;
+import org.eclipse.ecl.gen.ast.AstNode;
 import org.eclipse.ecl.gen.ast.AstPackage;
-import org.eclipse.ecl.gen.ast.Node;
-
-import org.eclipse.ecl.parser.EclPartition;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -35,21 +34,20 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass nodeEClass = null;
+	private EClass astNodeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType eclPartitionEDataType = null;
-
+	private EClass astExecEClass = null;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType astEDataType = null;
+	private EClass astLiteralEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -120,8 +118,8 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getNode() {
-		return nodeEClass;
+	public EClass getAstNode() {
+		return astNodeEClass;
 	}
 
 	/**
@@ -129,8 +127,8 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNode_Ast() {
-		return (EAttribute)nodeEClass.getEStructuralFeatures().get(0);
+	public EAttribute getAstNode_Column() {
+		return (EAttribute)astNodeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -138,8 +136,8 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNode_Start() {
-		return (EAttribute)nodeEClass.getEStructuralFeatures().get(1);
+	public EAttribute getAstNode_Line() {
+		return (EAttribute)astNodeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -147,8 +145,8 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNode_End() {
-		return (EAttribute)nodeEClass.getEStructuralFeatures().get(2);
+	public EAttribute getAstNode_Length() {
+		return (EAttribute)astNodeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -156,8 +154,8 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getNode_Children() {
-		return (EReference)nodeEClass.getEStructuralFeatures().get(4);
+	public EClass getAstExec() {
+		return astExecEClass;
 	}
 
 	/**
@@ -165,26 +163,8 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNode_Partition() {
-		return (EAttribute)nodeEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getEclPartition() {
-		return eclPartitionEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getAst() {
-		return astEDataType;
+	public EClass getAstLiteral() {
+		return astLiteralEClass;
 	}
 
 	/**
@@ -215,16 +195,14 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		nodeEClass = createEClass(NODE);
-		createEAttribute(nodeEClass, NODE__AST);
-		createEAttribute(nodeEClass, NODE__START);
-		createEAttribute(nodeEClass, NODE__END);
-		createEAttribute(nodeEClass, NODE__PARTITION);
-		createEReference(nodeEClass, NODE__CHILDREN);
+		astNodeEClass = createEClass(AST_NODE);
+		createEAttribute(astNodeEClass, AST_NODE__COLUMN);
+		createEAttribute(astNodeEClass, AST_NODE__LINE);
+		createEAttribute(astNodeEClass, AST_NODE__LENGTH);
 
-		// Create data types
-		eclPartitionEDataType = createEDataType(ECL_PARTITION);
-		astEDataType = createEDataType(AST);
+		astExecEClass = createEClass(AST_EXEC);
+
+		astLiteralEClass = createEClass(AST_LITERAL);
 	}
 
 	/**
@@ -250,26 +228,60 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		CorePackage theCorePackage = (CorePackage)EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		astExecEClass.getESuperTypes().add(theCorePackage.getExec());
+		astExecEClass.getESuperTypes().add(this.getAstNode());
+		astLiteralEClass.getESuperTypes().add(theCorePackage.getLiteralParameter());
+		astLiteralEClass.getESuperTypes().add(this.getAstNode());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNode_Ast(), this.getAst(), "ast", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNode_Start(), ecorePackage.getEInt(), "start", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNode_End(), ecorePackage.getEInt(), "end", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNode_Partition(), this.getEclPartition(), "partition", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNode_Children(), this.getNode(), null, "children", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(astNodeEClass, AstNode.class, "AstNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAstNode_Column(), ecorePackage.getEInt(), "column", null, 0, 1, AstNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAstNode_Line(), ecorePackage.getEInt(), "line", null, 0, 1, AstNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAstNode_Length(), ecorePackage.getEInt(), "length", null, 0, 1, AstNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		// Initialize data types
-		initEDataType(eclPartitionEDataType, EclPartition.class, "EclPartition", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(astEDataType, Ast.class, "Ast", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEClass(astExecEClass, AstExec.class, "AstExec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(astLiteralEClass, AstLiteral.class, "AstLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/ecl/internal
+		createInternalAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/internal</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createInternalAnnotations() {
+		String source = "http://www.eclipse.org/ecl/internal";		
+		addAnnotation
+		  (getAstNode_Column(), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getAstNode_Line(), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getAstNode_Length(), 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 } //AstPackageImpl

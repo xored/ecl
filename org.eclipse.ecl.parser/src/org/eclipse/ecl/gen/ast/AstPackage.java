@@ -2,13 +2,13 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AstPackage.java,v 1.2 2010/11/08 08:42:14 alena Exp $
+ * $Id: AstPackage.java,v 1.3 2010/12/14 10:01:32 alena Exp $
  */
 package org.eclipse.ecl.gen.ast;
 
+import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -61,59 +61,41 @@ public interface AstPackage extends EPackage {
 	AstPackage eINSTANCE = org.eclipse.ecl.gen.ast.impl.AstPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.gen.ast.impl.NodeImpl <em>Node</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.ecl.gen.ast.impl.AstNodeImpl <em>Node</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.gen.ast.impl.NodeImpl
-	 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getNode()
+	 * @see org.eclipse.ecl.gen.ast.impl.AstNodeImpl
+	 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getAstNode()
 	 * @generated
 	 */
-	int NODE = 0;
+	int AST_NODE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Ast</b></em>' attribute.
+	 * The feature id for the '<em><b>Column</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__AST = 0;
+	int AST_NODE__COLUMN = 0;
 
 	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * The feature id for the '<em><b>Line</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__START = 1;
+	int AST_NODE__LINE = 1;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__END = 2;
-
-	/**
-	 * The feature id for the '<em><b>Partition</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__PARTITION = 3;
-
-	/**
-	 * The feature id for the '<em><b>Children</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__CHILDREN = 4;
+	int AST_NODE__LENGTH = 2;
 
 	/**
 	 * The number of structural features of the '<em>Node</em>' class.
@@ -122,116 +104,236 @@ public interface AstPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = 5;
+	int AST_NODE_FEATURE_COUNT = 3;
+
 
 	/**
-	 * The meta object id for the '<em>Ecl Partition</em>' data type.
+	 * The meta object id for the '{@link org.eclipse.ecl.gen.ast.impl.AstExecImpl <em>Exec</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.parser.EclPartition
-	 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getEclPartition()
+	 * @see org.eclipse.ecl.gen.ast.impl.AstExecImpl
+	 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getAstExec()
 	 * @generated
 	 */
-	int ECL_PARTITION = 1;
-
+	int AST_EXEC = 1;
 
 	/**
-	 * The meta object id for the '<em>Ast</em>' data type.
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.ast.Ast
-	 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getAst()
+	 * @generated
+	 * @ordered
+	 */
+	int AST_EXEC__HOST = CorePackage.EXEC__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_EXEC__BINDINGS = CorePackage.EXEC__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Namespace</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_EXEC__NAMESPACE = CorePackage.EXEC__NAMESPACE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_EXEC__NAME = CorePackage.EXEC__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_EXEC__PARAMETERS = CorePackage.EXEC__PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Column</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_EXEC__COLUMN = CorePackage.EXEC_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Line</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_EXEC__LINE = CorePackage.EXEC_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_EXEC__LENGTH = CorePackage.EXEC_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Exec</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_EXEC_FEATURE_COUNT = CorePackage.EXEC_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.gen.ast.impl.AstLiteralImpl <em>Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.gen.ast.impl.AstLiteralImpl
+	 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getAstLiteral()
 	 * @generated
 	 */
-	int AST = 2;
+	int AST_LITERAL = 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_LITERAL__NAME = CorePackage.LITERAL_PARAMETER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Literal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_LITERAL__LITERAL = CorePackage.LITERAL_PARAMETER__LITERAL;
+
+	/**
+	 * The feature id for the '<em><b>Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_LITERAL__FORMAT = CorePackage.LITERAL_PARAMETER__FORMAT;
+
+	/**
+	 * The feature id for the '<em><b>Column</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_LITERAL__COLUMN = CorePackage.LITERAL_PARAMETER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Line</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_LITERAL__LINE = CorePackage.LITERAL_PARAMETER_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_LITERAL__LENGTH = CorePackage.LITERAL_PARAMETER_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_LITERAL_FEATURE_COUNT = CorePackage.LITERAL_PARAMETER_FEATURE_COUNT + 3;
 
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.ecl.gen.ast.Node <em>Node</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.ecl.gen.ast.AstNode <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Node</em>'.
-	 * @see org.eclipse.ecl.gen.ast.Node
+	 * @see org.eclipse.ecl.gen.ast.AstNode
 	 * @generated
 	 */
-	EClass getNode();
+	EClass getAstNode();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.gen.ast.Node#getAst <em>Ast</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.gen.ast.AstNode#getColumn <em>Column</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ast</em>'.
-	 * @see org.eclipse.ecl.gen.ast.Node#getAst()
-	 * @see #getNode()
+	 * @return the meta object for the attribute '<em>Column</em>'.
+	 * @see org.eclipse.ecl.gen.ast.AstNode#getColumn()
+	 * @see #getAstNode()
 	 * @generated
 	 */
-	EAttribute getNode_Ast();
+	EAttribute getAstNode_Column();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.gen.ast.Node#getStart <em>Start</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.gen.ast.AstNode#getLine <em>Line</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Start</em>'.
-	 * @see org.eclipse.ecl.gen.ast.Node#getStart()
-	 * @see #getNode()
+	 * @return the meta object for the attribute '<em>Line</em>'.
+	 * @see org.eclipse.ecl.gen.ast.AstNode#getLine()
+	 * @see #getAstNode()
 	 * @generated
 	 */
-	EAttribute getNode_Start();
+	EAttribute getAstNode_Line();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.gen.ast.Node#getEnd <em>End</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.gen.ast.AstNode#getLength <em>Length</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>End</em>'.
-	 * @see org.eclipse.ecl.gen.ast.Node#getEnd()
-	 * @see #getNode()
+	 * @return the meta object for the attribute '<em>Length</em>'.
+	 * @see org.eclipse.ecl.gen.ast.AstNode#getLength()
+	 * @see #getAstNode()
 	 * @generated
 	 */
-	EAttribute getNode_End();
+	EAttribute getAstNode_Length();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.gen.ast.Node#getChildren <em>Children</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.ecl.gen.ast.AstExec <em>Exec</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Children</em>'.
-	 * @see org.eclipse.ecl.gen.ast.Node#getChildren()
-	 * @see #getNode()
+	 * @return the meta object for class '<em>Exec</em>'.
+	 * @see org.eclipse.ecl.gen.ast.AstExec
 	 * @generated
 	 */
-	EReference getNode_Children();
+	EClass getAstExec();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.gen.ast.Node#getPartition <em>Partition</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.ecl.gen.ast.AstLiteral <em>Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Partition</em>'.
-	 * @see org.eclipse.ecl.gen.ast.Node#getPartition()
-	 * @see #getNode()
+	 * @return the meta object for class '<em>Literal</em>'.
+	 * @see org.eclipse.ecl.gen.ast.AstLiteral
 	 * @generated
 	 */
-	EAttribute getNode_Partition();
-
-	/**
-	 * Returns the meta object for data type '{@link org.eclipse.ecl.parser.EclPartition <em>Ecl Partition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Ecl Partition</em>'.
-	 * @see org.eclipse.ecl.parser.EclPartition
-	 * @model instanceClass="org.eclipse.ecl.parser.EclPartition"
-	 * @generated
-	 */
-	EDataType getEclPartition();
-
-	/**
-	 * Returns the meta object for data type '{@link org.eclipse.ecl.ast.Ast <em>Ast</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Ast</em>'.
-	 * @see org.eclipse.ecl.ast.Ast
-	 * @model instanceClass="org.eclipse.ecl.ast.Ast"
-	 * @generated
-	 */
-	EDataType getAst();
+	EClass getAstLiteral();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -256,74 +358,58 @@ public interface AstPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.eclipse.ecl.gen.ast.impl.NodeImpl <em>Node</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.ecl.gen.ast.impl.AstNodeImpl <em>Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.gen.ast.impl.NodeImpl
-		 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getNode()
+		 * @see org.eclipse.ecl.gen.ast.impl.AstNodeImpl
+		 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getAstNode()
 		 * @generated
 		 */
-		EClass NODE = eINSTANCE.getNode();
+		EClass AST_NODE = eINSTANCE.getAstNode();
 
 		/**
-		 * The meta object literal for the '<em><b>Ast</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Column</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NODE__AST = eINSTANCE.getNode_Ast();
+		EAttribute AST_NODE__COLUMN = eINSTANCE.getAstNode_Column();
 
 		/**
-		 * The meta object literal for the '<em><b>Start</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Line</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NODE__START = eINSTANCE.getNode_Start();
+		EAttribute AST_NODE__LINE = eINSTANCE.getAstNode_Line();
 
 		/**
-		 * The meta object literal for the '<em><b>End</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Length</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NODE__END = eINSTANCE.getNode_End();
+		EAttribute AST_NODE__LENGTH = eINSTANCE.getAstNode_Length();
 
 		/**
-		 * The meta object literal for the '<em><b>Children</b></em>' reference list feature.
+		 * The meta object literal for the '{@link org.eclipse.ecl.gen.ast.impl.AstExecImpl <em>Exec</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.gen.ast.impl.AstExecImpl
+		 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getAstExec()
 		 * @generated
 		 */
-		EReference NODE__CHILDREN = eINSTANCE.getNode_Children();
+		EClass AST_EXEC = eINSTANCE.getAstExec();
 
 		/**
-		 * The meta object literal for the '<em><b>Partition</b></em>' attribute feature.
+		 * The meta object literal for the '{@link org.eclipse.ecl.gen.ast.impl.AstLiteralImpl <em>Literal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.gen.ast.impl.AstLiteralImpl
+		 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getAstLiteral()
 		 * @generated
 		 */
-		EAttribute NODE__PARTITION = eINSTANCE.getNode_Partition();
-
-		/**
-		 * The meta object literal for the '<em>Ecl Partition</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.parser.EclPartition
-		 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getEclPartition()
-		 * @generated
-		 */
-		EDataType ECL_PARTITION = eINSTANCE.getEclPartition();
-
-		/**
-		 * The meta object literal for the '<em>Ast</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.ast.Ast
-		 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getAst()
-		 * @generated
-		 */
-		EDataType AST = eINSTANCE.getAst();
+		EClass AST_LITERAL = eINSTANCE.getAstLiteral();
 
 	}
 

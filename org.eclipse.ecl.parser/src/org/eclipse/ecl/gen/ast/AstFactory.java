@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AstFactory.java,v 1.2 2010/11/08 08:42:14 alena Exp $
+ * $Id: AstFactory.java,v 1.3 2010/12/14 10:01:32 alena Exp $
  */
 package org.eclipse.ecl.gen.ast;
 
@@ -32,7 +32,25 @@ public interface AstFactory extends EFactory {
 	 * @return a new object of class '<em>Node</em>'.
 	 * @generated
 	 */
-	Node createNode();
+	AstNode createAstNode();
+
+	/**
+	 * Returns a new object of class '<em>Exec</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Exec</em>'.
+	 * @generated
+	 */
+	AstExec createAstExec();
+
+	/**
+	 * Returns a new object of class '<em>Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal</em>'.
+	 * @generated
+	 */
+	AstLiteral createAstLiteral();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -7,12 +7,11 @@
   <foreignModel>ast.ecore</foreignModel>
   <genPackages prefix="Ast" basePackage="org.eclipse.ecl.gen" disposableProviderFactory="true"
       adapterFactory="false" ecorePackage="ast.ecore#/">
-    <genDataTypes ecoreDataType="ast.ecore#//EclPartition"/>
-    <genClasses ecoreClass="ast.ecore#//Node">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ast.ecore#//Node/start"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ast.ecore#//Node/end"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ast.ecore#//Node/children"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ast.ecore#//Node/partition"/>
+    <genClasses ecoreClass="ast.ecore#//AstNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ast.ecore#//AstNode/start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ast.ecore#//AstNode/end"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ast.ecore#//AstNode/length"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ast.ecore#//AstNode/command"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

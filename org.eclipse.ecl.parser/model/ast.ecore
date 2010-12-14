@@ -3,14 +3,17 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ast"
     nsURI="http://www.eclipse.org/ecl/ast.ecore" nsPrefix="org.eclipse.ecl.ast">
-  <eClassifiers xsi:type="ecore:EClass" name="Node">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ast" eType="#//Ast"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="partition" eType="#//EclPartition"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//Node" changeable="false"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AstNode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="column" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http://www.eclipse.org/ecl/internal"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="line" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http://www.eclipse.org/ecl/internal"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http://www.eclipse.org/ecl/internal"/>
+    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="EclPartition" instanceClassName="org.eclipse.ecl.parser.EclPartition"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="Ast" instanceClassName="org.eclipse.ecl.ast.Ast"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AstExec" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Exec #//AstNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AstLiteral" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//LiteralParameter #//AstNode"/>
 </ecore:EPackage>

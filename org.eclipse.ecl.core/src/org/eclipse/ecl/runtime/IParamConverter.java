@@ -13,11 +13,12 @@
 package org.eclipse.ecl.runtime;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.ecl.core.LiteralParameter;
 
 public interface IParamConverter<T> {
 
 	Class<T> forType();
 
-	T convert(String original) throws CoreException;
+	T convert(LiteralParameter literal) throws CoreException;
 
 }

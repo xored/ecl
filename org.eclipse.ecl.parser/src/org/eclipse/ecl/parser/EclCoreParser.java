@@ -16,25 +16,31 @@ import org.eclipse.ecl.internal.parser.SyntaxErrorException;
 public class EclCoreParser {
 
 	public static Command newCommand(String content) throws CoreException {
+		return newCommand(content, 1, 1);
+	}
+
+	public static Command newCommand(String content, int line, int pos)
+			throws CoreException {
 		if (content == null || content.trim().length() == 0)
 			return ScriptletFactory.makeSeq();
-		EclLexer lexer = new EclLexer(new ANTLRStringStream(content));
+		ANTLRStringStream input = new ANTLRStringStream(content);
+		input.setLine(line);
+		input.setCharPositionInLine(pos - 1);
+		EclLexer lexer = new EclLexer(input);
 		CommonTokenStream stream = new CommonTokenStream(lexer);
 		EclParser parser = new EclParser(stream);
 		try {
 			return parser.commands();
 		} catch (RecognitionException e) {
-			throw new CoreException(new Status(IStatus.ERROR,
-					EclParserPlugin.PLUGIN_ID, "Syntax error on line " + e.line
-					+ ", col " + e.charPositionInLine));
+			throw new CoreException(new ExecutionErrorStatus(null, e.line,
+					e.charPositionInLine));
 		} catch (SyntaxErrorException e) {
-			throw new CoreException(new Status(IStatus.ERROR,
-					EclParserPlugin.PLUGIN_ID, e.toString()));
+			throw new CoreException(new ExecutionErrorStatus(null, e.line,
+					e.col));
 		} catch (Throwable t) {
-			EclParserPlugin.logErr(
-					"Unknown error are happend during parsing of ecl code", t);
+			EclParserPlugin.logErr(t.getMessage(), t);
 			throw new CoreException(new Status(IStatus.ERROR,
-					EclParserPlugin.PLUGIN_ID, "Syntax error"));
+					EclParserPlugin.PLUGIN_ID, "Parse error"));
 		}
 	}
 }

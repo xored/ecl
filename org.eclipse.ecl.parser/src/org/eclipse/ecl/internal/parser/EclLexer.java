@@ -1,4 +1,4 @@
-// $ANTLR 3.0.1 D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g 2010-12-01 11:57:35
+// $ANTLR 3.0.1 D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g 2010-12-14 15:15:00
 
 package org.eclipse.ecl.internal.parser;
 
@@ -36,7 +36,7 @@ public class EclLexer extends Lexer {
     public static final int ROPEN=9;
     public static final int MultiLineComment=24;
     public static final int STRING=16;
-
+      
       public void displayRecognitionError(String[] tokenNames,
           RecognitionException e) {
           throw new SyntaxErrorException(e.line, e.charPositionInLine);
@@ -46,14 +46,14 @@ public class EclLexer extends Lexer {
     public EclLexer(CharStream input) {
         super(input);
     }
-    public String getGrammarFileName() { return "D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g"; }
+    public String getGrammarFileName() { return "D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g"; }
 
     // $ANTLR start T26
     public final void mT26() throws RecognitionException {
         try {
             int _type = T26;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:16:5: ( '@' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:16:7: '@'
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:16:5: ( '@' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:16:7: '@'
             {
             match('@'); 
 
@@ -70,8 +70,8 @@ public class EclLexer extends Lexer {
     public final void mT27() throws RecognitionException {
         try {
             int _type = T27;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:17:5: ( '-' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:17:7: '-'
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:17:5: ( '-' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:17:7: '-'
             {
             match('-'); 
 
@@ -88,8 +88,8 @@ public class EclLexer extends Lexer {
     public final void mT28() throws RecognitionException {
         try {
             int _type = T28;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:18:5: ( '=' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:18:7: '='
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:18:5: ( '=' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:18:7: '='
             {
             match('='); 
 
@@ -106,8 +106,8 @@ public class EclLexer extends Lexer {
     public final void mCOLON() throws RecognitionException {
         try {
             int _type = COLON;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:266:6: ( ';' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:266:8: ';'
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:287:6: ( ';' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:287:8: ';'
             {
             match(';'); 
 
@@ -124,8 +124,8 @@ public class EclLexer extends Lexer {
     public final void mAND() throws RecognitionException {
         try {
             int _type = AND;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:267:4: ( '&' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:267:6: '&'
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:288:4: ( '&' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:288:6: '&'
             {
             match('&'); 
 
@@ -142,8 +142,8 @@ public class EclLexer extends Lexer {
     public final void mOR() throws RecognitionException {
         try {
             int _type = OR;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:268:3: ( '|' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:268:5: '|'
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:289:3: ( '|' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:289:5: '|'
             {
             match('|'); 
 
@@ -160,8 +160,8 @@ public class EclLexer extends Lexer {
     public final void mSEMI() throws RecognitionException {
         try {
             int _type = SEMI;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:269:5: ( ':' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:269:7: ':'
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:290:5: ( ':' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:290:7: ':'
             {
             match(':'); 
 
@@ -177,8 +177,8 @@ public class EclLexer extends Lexer {
     // $ANTLR start SYMBOL
     public final void mSYMBOL() throws RecognitionException {
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:271:16: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' | '/' ) )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:272:3: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' | '/' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:292:16: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' | '/' ) )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:293:3: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' | '/' )
             {
             if ( (input.LA(1)>='.' && input.LA(1)<='/')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -202,11 +202,11 @@ public class EclLexer extends Lexer {
     // $ANTLR start DIGIT
     public final void mDIGIT() throws RecognitionException {
         try {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:275:15: ( ( '0' .. '9' ) )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:276:1: ( '0' .. '9' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:296:15: ( ( '0' .. '9' ) )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:297:1: ( '0' .. '9' )
             {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:276:1: ( '0' .. '9' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:276:2: '0' .. '9'
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:297:1: ( '0' .. '9' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:297:2: '0' .. '9'
             {
             matchRange('0','9'); 
 
@@ -225,10 +225,10 @@ public class EclLexer extends Lexer {
     public final void mNUMBER() throws RecognitionException {
         try {
             int _type = NUMBER;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:279:7: ( ( DIGIT )+ )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:280:3: ( DIGIT )+
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:300:7: ( ( DIGIT )+ )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:301:3: ( DIGIT )+
             {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:280:3: ( DIGIT )+
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:301:3: ( DIGIT )+
             int cnt1=0;
             loop1:
             do {
@@ -242,7 +242,7 @@ public class EclLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:280:3: DIGIT
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:301:3: DIGIT
             	    {
             	    mDIGIT(); 
 
@@ -272,8 +272,8 @@ public class EclLexer extends Lexer {
     public final void mIP4() throws RecognitionException {
         try {
             int _type = IP4;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:284:4: ( NUMBER '.' NUMBER '.' NUMBER '.' NUMBER )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:285:3: NUMBER '.' NUMBER '.' NUMBER '.' NUMBER
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:305:4: ( NUMBER '.' NUMBER '.' NUMBER '.' NUMBER )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:306:3: NUMBER '.' NUMBER '.' NUMBER '.' NUMBER
             {
             mNUMBER(); 
             match('.'); 
@@ -296,11 +296,11 @@ public class EclLexer extends Lexer {
     public final void mSTRING() throws RecognitionException {
         try {
             int _type = STRING;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:288:7: ( '\"' (~ ( '\"' | '\\n' | '\\\\' ) | ( '\\\\' . ) )* '\"' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:289:4: '\"' (~ ( '\"' | '\\n' | '\\\\' ) | ( '\\\\' . ) )* '\"'
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:309:7: ( '\"' (~ ( '\"' | '\\n' | '\\\\' ) | ( '\\\\' . ) )* '\"' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:310:4: '\"' (~ ( '\"' | '\\n' | '\\\\' ) | ( '\\\\' . ) )* '\"'
             {
             match('\"'); 
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:289:8: (~ ( '\"' | '\\n' | '\\\\' ) | ( '\\\\' . ) )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:310:8: (~ ( '\"' | '\\n' | '\\\\' ) | ( '\\\\' . ) )*
             loop2:
             do {
                 int alt2=3;
@@ -316,7 +316,7 @@ public class EclLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:289:9: ~ ( '\"' | '\\n' | '\\\\' )
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:310:9: ~ ( '\"' | '\\n' | '\\\\' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFE') ) {
             	        input.consume();
@@ -332,10 +332,10 @@ public class EclLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:289:26: ( '\\\\' . )
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:310:26: ( '\\\\' . )
             	    {
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:289:26: ( '\\\\' . )
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:289:27: '\\\\' .
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:310:26: ( '\\\\' . )
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:310:27: '\\\\' .
             	    {
             	    match('\\'); 
             	    matchAny(); 
@@ -366,8 +366,8 @@ public class EclLexer extends Lexer {
     public final void mLOPEN() throws RecognitionException {
         try {
             int _type = LOPEN;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:292:8: ( '(' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:292:10: '('
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:313:8: ( '(' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:313:10: '('
             {
             match('('); 
 
@@ -384,8 +384,8 @@ public class EclLexer extends Lexer {
     public final void mROPEN() throws RecognitionException {
         try {
             int _type = ROPEN;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:295:8: ( ')' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:295:10: ')'
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:316:8: ( ')' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:316:10: ')'
             {
             match(')'); 
 
@@ -402,8 +402,8 @@ public class EclLexer extends Lexer {
     public final void mLCURLY() throws RecognitionException {
         try {
             int _type = LCURLY;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:298:9: ( '{' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:298:11: '{'
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:319:9: ( '{' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:319:11: '{'
             {
             match('{'); 
 
@@ -420,8 +420,8 @@ public class EclLexer extends Lexer {
     public final void mRCURLY() throws RecognitionException {
         try {
             int _type = RCURLY;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:301:9: ( '}' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:301:11: '}'
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:322:9: ( '}' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:322:11: '}'
             {
             match('}'); 
 
@@ -438,8 +438,8 @@ public class EclLexer extends Lexer {
     public final void mLBRACK() throws RecognitionException {
         try {
             int _type = LBRACK;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:304:9: ( '[' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:304:11: '['
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:325:9: ( '[' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:325:11: '['
             {
             match('['); 
 
@@ -456,8 +456,8 @@ public class EclLexer extends Lexer {
     public final void mRBRACK() throws RecognitionException {
         try {
             int _type = RBRACK;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:307:9: ( ']' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:307:11: ']'
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:328:9: ( ']' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:328:11: ']'
             {
             match(']'); 
 
@@ -474,13 +474,13 @@ public class EclLexer extends Lexer {
     public final void mCURLY_STRING() throws RecognitionException {
         try {
             int _type = CURLY_STRING;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:309:13: ( LCURLY ( . )* RCURLY )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:309:15: LCURLY ( . )* RCURLY
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:330:13: ( LCURLY ( . )* RCURLY )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:330:15: LCURLY ( . )* RCURLY
             {
              int deep = 0; 
             mLCURLY(); 
              deep += 1; 
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:311:3: ( . )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:332:3: ( . )*
             loop3:
             do {
                 int alt3=2;
@@ -502,7 +502,7 @@ public class EclLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:312:3: .
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:333:3: .
             	    {
             	     
             	        if( input.LA( 1 ) == '{' ) {
@@ -547,11 +547,11 @@ public class EclLexer extends Lexer {
     public final void mNAME() throws RecognitionException {
         try {
             int _type = NAME;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:333:5: ( SYMBOL ( SYMBOL | DIGIT )* )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:334:2: SYMBOL ( SYMBOL | DIGIT )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:354:5: ( SYMBOL ( SYMBOL | DIGIT )* )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:355:2: SYMBOL ( SYMBOL | DIGIT )*
             {
             mSYMBOL(); 
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:334:9: ( SYMBOL | DIGIT )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:355:9: ( SYMBOL | DIGIT )*
             loop4:
             do {
                 int alt4=3;
@@ -567,14 +567,14 @@ public class EclLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:334:10: SYMBOL
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:355:10: SYMBOL
             	    {
             	    mSYMBOL(); 
 
             	    }
             	    break;
             	case 2 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:334:17: DIGIT
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:355:17: DIGIT
             	    {
             	    mDIGIT(); 
 
@@ -600,11 +600,11 @@ public class EclLexer extends Lexer {
     public final void mDNAME() throws RecognitionException {
         try {
             int _type = DNAME;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:348:6: ( NAME ( '-' NAME )+ )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:349:2: NAME ( '-' NAME )+
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:369:6: ( NAME ( '-' NAME )+ )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:370:2: NAME ( '-' NAME )+
             {
             mNAME(); 
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:349:7: ( '-' NAME )+
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:370:7: ( '-' NAME )+
             int cnt5=0;
             loop5:
             do {
@@ -618,7 +618,7 @@ public class EclLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:349:8: '-' NAME
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:370:8: '-' NAME
             	    {
             	    match('-'); 
             	    mNAME(); 
@@ -649,10 +649,10 @@ public class EclLexer extends Lexer {
     public final void mWS() throws RecognitionException {
         try {
             int _type = WS;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:352:3: ( ( ' ' | '\\t' )+ )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:352:5: ( ' ' | '\\t' )+
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:373:3: ( ( ' ' | '\\t' )+ )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:373:5: ( ' ' | '\\t' )+
             {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:352:5: ( ' ' | '\\t' )+
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:373:5: ( ' ' | '\\t' )+
             int cnt6=0;
             loop6:
             do {
@@ -666,7 +666,7 @@ public class EclLexer extends Lexer {
 
                 switch (alt6) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:
             	    {
             	    if ( input.LA(1)=='\t'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -708,10 +708,10 @@ public class EclLexer extends Lexer {
     public final void mNEWLINE() throws RecognitionException {
         try {
             int _type = NEWLINE;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:359:5: ( ( '\\r' | '\\n' )+ )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:359:9: ( '\\r' | '\\n' )+
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:380:5: ( ( '\\r' | '\\n' )+ )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:380:9: ( '\\r' | '\\n' )+
             {
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:359:9: ( '\\r' | '\\n' )+
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:380:9: ( '\\r' | '\\n' )+
             int cnt7=0;
             loop7:
             do {
@@ -725,7 +725,7 @@ public class EclLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:
             	    {
             	    if ( input.LA(1)=='\n'||input.LA(1)=='\r' ) {
             	        input.consume();
@@ -764,12 +764,12 @@ public class EclLexer extends Lexer {
     public final void mMultiLineComment() throws RecognitionException {
         try {
             int _type = MultiLineComment;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:362:18: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:363:3: '/*' ( options {greedy=false; } : . )* '*/'
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:383:18: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:384:3: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:363:8: ( options {greedy=false; } : . )*
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:384:8: ( options {greedy=false; } : . )*
             loop8:
             do {
                 int alt8=2;
@@ -794,7 +794,7 @@ public class EclLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:363:36: .
+            	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:384:36: .
             	    {
             	    matchAny(); 
 
@@ -823,7 +823,7 @@ public class EclLexer extends Lexer {
     public final void mSingleLineComment() throws RecognitionException {
         try {
             int _type = SingleLineComment;
-            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:365:19: ( '//' | '#' (~ ( '\\n' | '\\r' ) )* ( '\\n' | '\\r' ( '\\n' )? )? )
+            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:386:19: ( '//' | '#' (~ ( '\\n' | '\\r' ) )* ( '\\n' | '\\r' ( '\\n' )? )? )
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -835,13 +835,13 @@ public class EclLexer extends Lexer {
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("365:1: SingleLineComment : ( '//' | '#' (~ ( '\\n' | '\\r' ) )* ( '\\n' | '\\r' ( '\\n' )? )? );", 12, 0, input);
+                    new NoViableAltException("386:1: SingleLineComment : ( '//' | '#' (~ ( '\\n' | '\\r' ) )* ( '\\n' | '\\r' ( '\\n' )? )? );", 12, 0, input);
 
                 throw nvae;
             }
             switch (alt12) {
                 case 1 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:366:3: '//'
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:387:3: '//'
                     {
                     match("//"); 
 
@@ -849,10 +849,10 @@ public class EclLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:366:8: '#' (~ ( '\\n' | '\\r' ) )* ( '\\n' | '\\r' ( '\\n' )? )?
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:387:8: '#' (~ ( '\\n' | '\\r' ) )* ( '\\n' | '\\r' ( '\\n' )? )?
                     {
                     match('#'); 
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:366:12: (~ ( '\\n' | '\\r' ) )*
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:387:12: (~ ( '\\n' | '\\r' ) )*
                     loop9:
                     do {
                         int alt9=2;
@@ -865,7 +865,7 @@ public class EclLexer extends Lexer {
 
                         switch (alt9) {
                     	case 1 :
-                    	    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:366:13: ~ ( '\\n' | '\\r' )
+                    	    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:387:13: ~ ( '\\n' | '\\r' )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFE') ) {
                     	        input.consume();
@@ -886,7 +886,7 @@ public class EclLexer extends Lexer {
                         }
                     } while (true);
 
-                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:366:28: ( '\\n' | '\\r' ( '\\n' )? )?
+                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:387:28: ( '\\n' | '\\r' ( '\\n' )? )?
                     int alt11=3;
                     int LA11_0 = input.LA(1);
 
@@ -898,17 +898,17 @@ public class EclLexer extends Lexer {
                     }
                     switch (alt11) {
                         case 1 :
-                            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:366:29: '\\n'
+                            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:387:29: '\\n'
                             {
                             match('\n'); 
 
                             }
                             break;
                         case 2 :
-                            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:366:34: '\\r' ( '\\n' )?
+                            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:387:34: '\\r' ( '\\n' )?
                             {
                             match('\r'); 
-                            // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:366:38: ( '\\n' )?
+                            // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:387:38: ( '\\n' )?
                             int alt10=2;
                             int LA10_0 = input.LA(1);
 
@@ -917,7 +917,7 @@ public class EclLexer extends Lexer {
                             }
                             switch (alt10) {
                                 case 1 :
-                                    // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:366:39: '\\n'
+                                    // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:387:39: '\\n'
                                     {
                                     match('\n'); 
 
@@ -946,166 +946,166 @@ public class EclLexer extends Lexer {
     // $ANTLR end SingleLineComment
 
     public void mTokens() throws RecognitionException {
-        // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:8: ( T26 | T27 | T28 | COLON | AND | OR | SEMI | NUMBER | IP4 | STRING | LOPEN | ROPEN | LCURLY | RCURLY | LBRACK | RBRACK | CURLY_STRING | NAME | DNAME | WS | NEWLINE | MultiLineComment | SingleLineComment )
+        // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:8: ( T26 | T27 | T28 | COLON | AND | OR | SEMI | NUMBER | IP4 | STRING | LOPEN | ROPEN | LCURLY | RCURLY | LBRACK | RBRACK | CURLY_STRING | NAME | DNAME | WS | NEWLINE | MultiLineComment | SingleLineComment )
         int alt13=23;
         alt13 = dfa13.predict(input);
         switch (alt13) {
             case 1 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:10: T26
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:10: T26
                 {
                 mT26(); 
 
                 }
                 break;
             case 2 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:14: T27
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:14: T27
                 {
                 mT27(); 
 
                 }
                 break;
             case 3 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:18: T28
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:18: T28
                 {
                 mT28(); 
 
                 }
                 break;
             case 4 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:22: COLON
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:22: COLON
                 {
                 mCOLON(); 
 
                 }
                 break;
             case 5 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:28: AND
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:28: AND
                 {
                 mAND(); 
 
                 }
                 break;
             case 6 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:32: OR
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:32: OR
                 {
                 mOR(); 
 
                 }
                 break;
             case 7 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:35: SEMI
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:35: SEMI
                 {
                 mSEMI(); 
 
                 }
                 break;
             case 8 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:40: NUMBER
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:40: NUMBER
                 {
                 mNUMBER(); 
 
                 }
                 break;
             case 9 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:47: IP4
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:47: IP4
                 {
                 mIP4(); 
 
                 }
                 break;
             case 10 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:51: STRING
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:51: STRING
                 {
                 mSTRING(); 
 
                 }
                 break;
             case 11 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:58: LOPEN
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:58: LOPEN
                 {
                 mLOPEN(); 
 
                 }
                 break;
             case 12 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:64: ROPEN
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:64: ROPEN
                 {
                 mROPEN(); 
 
                 }
                 break;
             case 13 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:70: LCURLY
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:70: LCURLY
                 {
                 mLCURLY(); 
 
                 }
                 break;
             case 14 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:77: RCURLY
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:77: RCURLY
                 {
                 mRCURLY(); 
 
                 }
                 break;
             case 15 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:84: LBRACK
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:84: LBRACK
                 {
                 mLBRACK(); 
 
                 }
                 break;
             case 16 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:91: RBRACK
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:91: RBRACK
                 {
                 mRBRACK(); 
 
                 }
                 break;
             case 17 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:98: CURLY_STRING
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:98: CURLY_STRING
                 {
                 mCURLY_STRING(); 
 
                 }
                 break;
             case 18 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:111: NAME
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:111: NAME
                 {
                 mNAME(); 
 
                 }
                 break;
             case 19 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:116: DNAME
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:116: DNAME
                 {
                 mDNAME(); 
 
                 }
                 break;
             case 20 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:122: WS
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:122: WS
                 {
                 mWS(); 
 
                 }
                 break;
             case 21 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:125: NEWLINE
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:125: NEWLINE
                 {
                 mNEWLINE(); 
 
                 }
                 break;
             case 22 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:133: MultiLineComment
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:133: MultiLineComment
                 {
                 mMultiLineComment(); 
 
                 }
                 break;
             case 23 :
-                // D:\\work\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:150: SingleLineComment
+                // D:\\dev\\ecl\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:1:150: SingleLineComment
                 {
                 mSingleLineComment(); 
 
