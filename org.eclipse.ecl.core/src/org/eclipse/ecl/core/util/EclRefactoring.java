@@ -1,6 +1,7 @@
 package org.eclipse.ecl.core.util;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import org.eclipse.ecl.core.Binding;
@@ -44,15 +45,16 @@ public class EclRefactoring extends ScriptletFactory {
 		return commands;
 	}
 
-	public static Command withify(Command command) {
-		if (command instanceof Sequence) {
-			Sequence seq = (Sequence) command;
-			return makeSeq(withify(seq.getCommands()));
-		}
-		return command;
+	public static List<Command> withify(List<Command> commands) {
+		return withify(commands, new Comparator<Command>() {
+			public int compare(Command c1, Command c2) {
+				return EcoreUtil.equals(c1, c2) ? 0 : 1;
+			}
+		});
 	}
 
-	public static List<Command> withify(List<Command> commands) {
+	public static List<Command> withify(List<Command> commands,
+			Comparator<Command> comparator) {
 		List<Command> newCommands = new ArrayList<Command>();
 		for (int i = 0; i < commands.size();) {
 			Command command = commands.get(i);
@@ -67,8 +69,8 @@ public class EclRefactoring extends ScriptletFactory {
 						Command next = commands.get(j);
 						if (next instanceof Pipeline) {
 							Pipeline nextPipeline = (Pipeline) next;
-							if (EcoreUtil.equals(object, nextPipeline
-									.getCommands().get(0))) {
+							if (comparator.compare(object, nextPipeline
+									.getCommands().get(0)) == 0) {
 								toCollapse.add(subPipe(nextPipeline, 1));
 							} else {
 								break;
@@ -79,7 +81,7 @@ public class EclRefactoring extends ScriptletFactory {
 					}
 					if (toCollapse.size() > 1) {
 						newCommands.add(makeWith(object,
-								makeSeq(withify(toCollapse))));
+								makeSeq(withify(toCollapse, comparator))));
 					} else {
 						newCommands.add(command);
 					}
