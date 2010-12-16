@@ -181,7 +181,7 @@ public class CommandToStringConverter {
 		if (type.equals("boolean") && value.equals("true")) {
 			value = "";
 		} else {
-			if (!value.matches("[a-zA-Z0-9]*") || value.length() == 0) {
+			if (!value.matches("[a-zA-Z][a-zA-Z0-9]*") || value.length() == 0) {
 				value = value.replace("\\", "\\\\");
 				value = value.replace("\t", "\\t");
 				value = value.replace("\b", "\\b");
