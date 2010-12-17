@@ -3,6 +3,7 @@ package org.eclipse.ecl.core.util;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Command;
@@ -171,6 +172,9 @@ public class CommandToStringConverter {
 				|| "detail".equals(paramName) || "operation".equals(paramName);
 	}
 
+	private static final Pattern id = Pattern.compile("[a-zA-Z][a-zA-Z0-9]*");
+	private static final Pattern number = Pattern.compile("[0-9]+");
+
 	protected String convertValue(Object val, String type) {
 		String value = val.toString();
 		if (type.equals("boolean") && value.equals("false")
@@ -181,7 +185,8 @@ public class CommandToStringConverter {
 		if (type.equals("boolean") && value.equals("true")) {
 			value = "";
 		} else {
-			if (!value.matches("[a-zA-Z][a-zA-Z0-9]*") || value.length() == 0) {
+			if (!id.matcher(value).matches()
+					&& !number.matcher(value).matches()) {
 				value = value.replace("\\", "\\\\");
 				value = value.replace("\t", "\\t");
 				value = value.replace("\b", "\\b");
