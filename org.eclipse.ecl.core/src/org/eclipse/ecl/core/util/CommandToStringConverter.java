@@ -172,7 +172,7 @@ public class CommandToStringConverter {
 	}
 
 	protected String convertValue(Object val, String type) {
-		String value = new String(val.toString());
+		String value = val.toString();
 		if (type.equals("boolean") && value.equals("false")
 				|| type.equals("int") && value.equals("0"))
 			return null;

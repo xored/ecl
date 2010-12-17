@@ -41,7 +41,7 @@ public class ScriptletManager {
 			Platform.getDebugOption(CorePlugin.PLUGIN_ID
 					+ "/traceRegisteredCommands")).booleanValue();
 
-	final class ScriptletDefinition {
+	final static class ScriptletDefinition {
 
 		private final String name;
 		private final String namespace;

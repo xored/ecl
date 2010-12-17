@@ -9,7 +9,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.runtime.IPipe;
 
 public class Pipe implements IPipe {
-	private final int DELTA = 100;
+	private static final int DELTA = 100;
 	private final LinkedBlockingQueue<Object> queue;
 	private boolean closed = false;
 	private IStatus status = null;
