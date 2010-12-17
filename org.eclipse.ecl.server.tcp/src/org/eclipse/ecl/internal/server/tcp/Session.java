@@ -19,6 +19,7 @@ public class Session extends Thread {
 	private ISession session;
 
 	Session(Socket socket) {
+		super("ECL tcp session");
 		this.socket = socket;
 		session = EclRuntime.createSession();
 		start();

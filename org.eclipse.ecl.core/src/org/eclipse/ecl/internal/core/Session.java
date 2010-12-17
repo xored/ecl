@@ -82,7 +82,7 @@ public class Session implements ISession {
 					}
 				}
 			}
-		}).start();
+		}, "ECL session execute:" + scriptlet.getClass().getName()).start();
 		return process;
 	}
 

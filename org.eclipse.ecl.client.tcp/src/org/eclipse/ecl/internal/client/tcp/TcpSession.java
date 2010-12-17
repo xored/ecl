@@ -33,8 +33,8 @@ public class TcpSession implements ISession {
 
 	protected void init() throws IOException {
 		socket = new Socket(address, port);
-		commandPipe = CoreUtils.createEMFPipe(socket.getInputStream(), socket
-				.getOutputStream());
+		commandPipe = CoreUtils.createEMFPipe(socket.getInputStream(),
+				socket.getOutputStream());
 	}
 
 	public IPipe createPipe() {
@@ -64,7 +64,8 @@ public class TcpSession implements ISession {
 					ctx.setStatus(e.getStatus());
 				}
 			}
-		}).start();
+		}, "ECL TCP session execute:" + command.getClass().getName())
+				.start();
 		return ctx;
 	}
 
@@ -93,7 +94,7 @@ public class TcpSession implements ISession {
 					ctx.setStatus(e.getStatus());
 				}
 			}
-		}).start();
+		},"ECL TCP session execute:" + command.getClass().getName()).start();
 		return ctx;
 	}
 
@@ -106,8 +107,8 @@ public class TcpSession implements ISession {
 		try {
 			init();
 		} catch (IOException e) {
-			throw new CoreException(new Status(IStatus.ERROR, PLUGIN_ID, e
-					.getMessage(), e));
+			throw new CoreException(new Status(IStatus.ERROR, PLUGIN_ID,
+					e.getMessage(), e));
 		}
 	}
 
@@ -116,8 +117,8 @@ public class TcpSession implements ISession {
 		try {
 			socket.close();
 		} catch (IOException e) {
-			throw new CoreException(new Status(IStatus.ERROR, PLUGIN_ID, e
-					.getMessage(), e));
+			throw new CoreException(new Status(IStatus.ERROR, PLUGIN_ID,
+					e.getMessage(), e));
 		}
 	}
 

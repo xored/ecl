@@ -11,6 +11,7 @@ public class TcpServer extends Thread {
 	private int port;
 
 	public TcpServer(int port) throws IOException {
+		super("ECL tcp server");
 		socket = new ServerSocket(port);
 		this.port = port;
 		start();
