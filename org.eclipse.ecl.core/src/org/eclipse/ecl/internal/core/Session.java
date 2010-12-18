@@ -26,15 +26,7 @@ import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import com.xored.espace.core.ESpace;
-
 public class Session implements ISession {
-
-	private final ESpace space;
-
-	public Session(ESpace space) {
-		this.space = space;
-	}
 
 	public IProcess execute(final Command scriptlet, IPipe in, IPipe out)
 			throws CoreException {

@@ -14,11 +14,9 @@ package org.eclipse.ecl.runtime;
 
 import org.eclipse.ecl.internal.core.Session;
 
-import com.xored.espace.memory.MemorySpace;
-
 public class EclRuntime {
 
 	public static ISession createSession() {
-		return new Session(new MemorySpace());
+		return new Session();
 	}
 }
