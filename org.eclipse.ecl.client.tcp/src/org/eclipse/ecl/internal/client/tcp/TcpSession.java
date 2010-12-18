@@ -64,8 +64,7 @@ public class TcpSession implements ISession {
 					ctx.setStatus(e.getStatus());
 				}
 			}
-		}, "ECL TCP session execute:" + command.getClass().getName())
-				.start();
+		}, "ECL TCP session execute:" + command.getClass().getName()).start();
 		return ctx;
 	}
 
@@ -82,7 +81,7 @@ public class TcpSession implements ISession {
 						result = commandPipe.take(10000);
 						if (result instanceof ProcessStatus) {
 							break;
-						} else {
+						} else if (out != null) {
 							out.write(result);
 						}
 					}
@@ -94,7 +93,7 @@ public class TcpSession implements ISession {
 					ctx.setStatus(e.getStatus());
 				}
 			}
-		},"ECL TCP session execute:" + command.getClass().getName()).start();
+		}, "ECL TCP session execute:" + command.getClass().getName()).start();
 		return ctx;
 	}
 
