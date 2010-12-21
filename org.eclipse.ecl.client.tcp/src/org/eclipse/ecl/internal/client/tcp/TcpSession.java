@@ -28,11 +28,24 @@ public class TcpSession implements ISession {
 	public TcpSession(InetAddress address, int port) throws IOException {
 		this.address = address;
 		this.port = port;
-		init();
+		init(null, 0);
 	}
 
-	protected void init() throws IOException {
-		socket = new Socket(address, port);
+	public TcpSession(InetAddress address, int port, InetAddress localAddress,
+			int localPort) throws IOException {
+		this.address = address;
+		this.port = port;
+		init(localAddress, localPort);
+	}
+
+	protected void init(InetAddress localAddress, int localPort)
+			throws IOException {
+		if (localAddress != null) {
+			socket = new Socket(address, port, localAddress, localPort);
+		} else {
+			socket = new Socket(address, port);
+
+		}
 		commandPipe = CoreUtils.createEMFPipe(socket.getInputStream(),
 				socket.getOutputStream());
 	}
@@ -104,7 +117,7 @@ public class TcpSession implements ISession {
 			// ignore closing exceptions
 		}
 		try {
-			init();
+			init(null, 0);
 		} catch (IOException e) {
 			throw new CoreException(new Status(IStatus.ERROR, PLUGIN_ID,
 					e.getMessage(), e));
