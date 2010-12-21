@@ -121,4 +121,8 @@ public class TcpSession implements ISession {
 		}
 	}
 
+	public boolean isClosed() {
+		return socket.isClosed();
+	}
+
 }

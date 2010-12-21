@@ -31,4 +31,6 @@ public interface ISession {
 	void reconnect() throws CoreException;
 
 	void close() throws CoreException;
+
+	boolean isClosed();
 }

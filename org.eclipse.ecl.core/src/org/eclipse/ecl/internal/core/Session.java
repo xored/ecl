@@ -13,10 +13,13 @@
 package org.eclipse.ecl.internal.core;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.runtime.CoreUtils;
@@ -27,6 +30,16 @@ import org.eclipse.ecl.runtime.ISession;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 public class Session implements ISession {
+	private AtomicBoolean closed = new AtomicBoolean(false);
+
+	public static abstract class EclJob extends Job {
+
+		private EclJob(Command scriptlet) {
+			super("ECL session execute: "
+					+ CoreUtils.getScriptletNameByClass(scriptlet.eClass()));
+		}
+
+	}
 
 	public IProcess execute(final Command scriptlet, IPipe in, IPipe out)
 			throws CoreException {
@@ -41,8 +54,9 @@ public class Session implements ISession {
 			input.write(o);
 		input.close(Status.OK_STATUS);
 		final Process process = new Process(this, input, output);
-		new Thread(new Runnable() {
-			public void run() {
+		new EclJob(scriptlet) {
+			@Override
+			protected IStatus run(IProgressMonitor monitor) {
 				IStatus s = null;
 				try {
 					resolveBindings(scriptlet, inputContent);
@@ -73,8 +87,22 @@ public class Session implements ISession {
 						}
 					}
 				}
+				return s;
 			}
-		}, "ECL session execute:" + scriptlet.getClass().getName()).start();
+
+			@Override
+			protected void canceling() {
+				// Waiting for process is finished
+				while (getResult() == null) {
+					try {
+						Thread.sleep(50);
+					} catch (InterruptedException e) {
+						// Ignore
+					}
+				}
+				super.canceling();
+			}
+		}.schedule();
 		return process;
 	}
 
@@ -134,9 +162,15 @@ public class Session implements ISession {
 	}
 
 	public void reconnect() throws CoreException {
+		closed.compareAndSet(true, false);
 	}
 
 	public void close() throws CoreException {
+		closed.set(true);
+	}
+
+	public boolean isClosed() {
+		return closed.get();
 	}
 
 }
