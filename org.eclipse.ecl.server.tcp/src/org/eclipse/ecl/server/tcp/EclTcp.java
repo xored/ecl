@@ -7,7 +7,8 @@ import org.eclipse.ecl.internal.server.tcp.TcpServer;
 
 public class EclTcp {
 
-	public static void runServer(int port, boolean restart) throws IOException {
+	public static synchronized void runServer(int port, boolean restart)
+			throws IOException {
 		Activator activator = Activator.getDefault();
 		if (activator.getServer() == null) {
 			activator.setServer(new TcpServer(port));
