@@ -14,8 +14,6 @@ public class TcpServer extends Thread {
 		super("ECL tcp server");
 		socket = new ServerSocket(port);
 		this.port = port;
-		start();
-
 	}
 
 	@Override

@@ -11,21 +11,25 @@ public class EclTcp {
 			throws IOException {
 		Activator activator = Activator.getDefault();
 		if (activator.getServer() == null) {
-			activator.setServer(new TcpServer(port));
+			TcpServer newServer = new TcpServer(port);
+			activator.setServer(newServer);
+			newServer.start();
 		} else {
 			TcpServer server = activator.getServer();
 			int oldPort = server.getPort();
 			if (oldPort != port) {
 				if (restart) {
 					server.interrupt();
-					activator.setServer(new TcpServer(port));
+					TcpServer newServer = new TcpServer(port);
+					activator.setServer(newServer);
+					newServer.start();
 				}
 			}
 			// throw new IOException("server already running");
 		}
 	}
 
-	public static TcpServer getServer() {
+	public synchronized static TcpServer getServer() {
 		return Activator.getDefault().getServer();
 	}
 }

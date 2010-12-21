@@ -50,11 +50,11 @@ public class Activator extends Plugin {
 	public static Activator getDefault() {
 		return plugin;
 	}
-	public synchronized TcpServer getServer() {
+	public TcpServer getServer() {
 		return server;
 	}
 
-	public synchronized void setServer(TcpServer tcpServer) {
+	public void setServer(TcpServer tcpServer) {
 		this.server = tcpServer;
 	}
 }
