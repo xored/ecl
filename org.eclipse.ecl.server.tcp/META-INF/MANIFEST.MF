@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Tcp
-Bundle-SymbolicName: org.eclipse.ecl.server.tcp
+Bundle-SymbolicName: org.eclipse.ecl.server.tcp;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipse.ecl.internal.server.tcp.Activator
 Require-Bundle: org.eclipse.core.runtime,
