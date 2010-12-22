@@ -87,7 +87,7 @@ public class Session implements ISession {
 						}
 					}
 				}
-				return s;
+				return Status.OK_STATUS;
 			}
 
 			@Override
