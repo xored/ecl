@@ -19,4 +19,5 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AstExec" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Exec #//AstNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="AstLiteral" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//LiteralParameter #//AstNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LocatedProcessStatus" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//ProcessStatus #//AstNode"/>
 </ecore:EPackage>

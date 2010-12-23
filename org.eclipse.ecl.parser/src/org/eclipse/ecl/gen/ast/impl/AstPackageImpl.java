@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AstPackageImpl.java,v 1.4 2010/12/21 07:10:48 alena Exp $
+ * $Id: AstPackageImpl.java,v 1.5 2010/12/23 08:12:01 alena Exp $
  */
 package org.eclipse.ecl.gen.ast.impl;
 
@@ -14,6 +14,7 @@ import org.eclipse.ecl.gen.ast.AstLiteral;
 import org.eclipse.ecl.gen.ast.AstNode;
 import org.eclipse.ecl.gen.ast.AstPackage;
 
+import org.eclipse.ecl.gen.ast.LocatedProcessStatus;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -48,6 +49,13 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * @generated
 	 */
 	private EClass astLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass locatedProcessStatusEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -172,6 +180,15 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLocatedProcessStatus() {
+		return locatedProcessStatusEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public AstFactory getAstFactory() {
 		return (AstFactory)getEFactoryInstance();
 	}
@@ -203,6 +220,8 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		astExecEClass = createEClass(AST_EXEC);
 
 		astLiteralEClass = createEClass(AST_LITERAL);
+
+		locatedProcessStatusEClass = createEClass(LOCATED_PROCESS_STATUS);
 	}
 
 	/**
@@ -240,6 +259,8 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		astExecEClass.getESuperTypes().add(this.getAstNode());
 		astLiteralEClass.getESuperTypes().add(theCorePackage.getLiteralParameter());
 		astLiteralEClass.getESuperTypes().add(this.getAstNode());
+		locatedProcessStatusEClass.getESuperTypes().add(theCorePackage.getProcessStatus());
+		locatedProcessStatusEClass.getESuperTypes().add(this.getAstNode());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(astNodeEClass, AstNode.class, "AstNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -250,6 +271,8 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		initEClass(astExecEClass, AstExec.class, "AstExec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(astLiteralEClass, AstLiteral.class, "AstLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(locatedProcessStatusEClass, LocatedProcessStatus.class, "LocatedProcessStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

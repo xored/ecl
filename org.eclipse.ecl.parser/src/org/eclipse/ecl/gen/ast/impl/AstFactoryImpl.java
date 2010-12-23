@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AstFactoryImpl.java,v 1.3 2010/12/14 10:01:31 alena Exp $
+ * $Id: AstFactoryImpl.java,v 1.4 2010/12/23 08:12:01 alena Exp $
  */
 package org.eclipse.ecl.gen.ast.impl;
 
@@ -63,6 +63,7 @@ public class AstFactoryImpl extends EFactoryImpl implements AstFactory {
 			case AstPackage.AST_NODE: return createAstNode();
 			case AstPackage.AST_EXEC: return createAstExec();
 			case AstPackage.AST_LITERAL: return createAstLiteral();
+			case AstPackage.LOCATED_PROCESS_STATUS: return createLocatedProcessStatus();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -96,6 +97,16 @@ public class AstFactoryImpl extends EFactoryImpl implements AstFactory {
 	public AstLiteral createAstLiteral() {
 		AstLiteralImpl astLiteral = new AstLiteralImpl();
 		return astLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LocatedProcessStatus createLocatedProcessStatus() {
+		LocatedProcessStatusImpl locatedProcessStatus = new LocatedProcessStatusImpl();
+		return locatedProcessStatus;
 	}
 
 	/**

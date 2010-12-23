@@ -6,6 +6,9 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.core.ProcessStatus;
+import org.eclipse.ecl.gen.ast.AstFactory;
+import org.eclipse.ecl.gen.ast.LocatedProcessStatus;
+import org.eclipse.ecl.parser.LocatedErrorStatus;
 import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.EclRuntime;
 import org.eclipse.ecl.runtime.IPipe;
@@ -42,11 +45,25 @@ public class Session extends Thread {
 				if (DEBUG_LOG) {
 					System.out.println("SERVER:   Done: " + status);
 				}
-				ProcessStatus ps = CoreFactory.eINSTANCE.createProcessStatus();
+
+				ProcessStatus ps;
+				if (status instanceof LocatedErrorStatus) {
+					LocatedErrorStatus s = (LocatedErrorStatus) status;
+					LocatedProcessStatus lps = AstFactory.eINSTANCE
+							.createLocatedProcessStatus();
+					lps.setLine(s.getLine());
+					lps.setColumn(s.getColumn());
+					lps.setLength(s.getLength());
+					ps = lps;
+				} else {
+					ps = CoreFactory.eINSTANCE.createProcessStatus();
+				}
+
 				ps.setCode(status.getCode());
 				ps.setMessage(status.getMessage());
 				ps.setPluginId(status.getPlugin());
 				ps.setSeverity(status.getSeverity());
+
 				Object output = null;
 				do {
 					output = process.getOutput().take(0);

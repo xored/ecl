@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AstFactory.java,v 1.3 2010/12/14 10:01:32 alena Exp $
+ * $Id: AstFactory.java,v 1.4 2010/12/23 08:11:58 alena Exp $
  */
 package org.eclipse.ecl.gen.ast;
 
@@ -51,6 +51,15 @@ public interface AstFactory extends EFactory {
 	 * @generated
 	 */
 	AstLiteral createAstLiteral();
+
+	/**
+	 * Returns a new object of class '<em>Located Process Status</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Located Process Status</em>'.
+	 * @generated
+	 */
+	LocatedProcessStatus createLocatedProcessStatus();
 
 	/**
 	 * Returns the package supported by this factory.

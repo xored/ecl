@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AstPackage.java,v 1.3 2010/12/14 10:01:32 alena Exp $
+ * $Id: AstPackage.java,v 1.4 2010/12/23 08:12:00 alena Exp $
  */
 package org.eclipse.ecl.gen.ast;
 
@@ -273,6 +273,98 @@ public interface AstPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.gen.ast.impl.LocatedProcessStatusImpl <em>Located Process Status</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.gen.ast.impl.LocatedProcessStatusImpl
+	 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getLocatedProcessStatus()
+	 * @generated
+	 */
+	int LOCATED_PROCESS_STATUS = 3;
+
+	/**
+	 * The feature id for the '<em><b>Plugin Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATED_PROCESS_STATUS__PLUGIN_ID = CorePackage.PROCESS_STATUS__PLUGIN_ID;
+
+	/**
+	 * The feature id for the '<em><b>Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATED_PROCESS_STATUS__CODE = CorePackage.PROCESS_STATUS__CODE;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATED_PROCESS_STATUS__MESSAGE = CorePackage.PROCESS_STATUS__MESSAGE;
+
+	/**
+	 * The feature id for the '<em><b>Severity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATED_PROCESS_STATUS__SEVERITY = CorePackage.PROCESS_STATUS__SEVERITY;
+
+	/**
+	 * The feature id for the '<em><b>Process Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATED_PROCESS_STATUS__PROCESS_ID = CorePackage.PROCESS_STATUS__PROCESS_ID;
+
+	/**
+	 * The feature id for the '<em><b>Column</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATED_PROCESS_STATUS__COLUMN = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Line</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATED_PROCESS_STATUS__LINE = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATED_PROCESS_STATUS__LENGTH = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Located Process Status</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCATED_PROCESS_STATUS_FEATURE_COUNT = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 3;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.gen.ast.AstNode <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -334,6 +426,16 @@ public interface AstPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAstLiteral();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.gen.ast.LocatedProcessStatus <em>Located Process Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Located Process Status</em>'.
+	 * @see org.eclipse.ecl.gen.ast.LocatedProcessStatus
+	 * @generated
+	 */
+	EClass getLocatedProcessStatus();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -410,6 +512,16 @@ public interface AstPackage extends EPackage {
 		 * @generated
 		 */
 		EClass AST_LITERAL = eINSTANCE.getAstLiteral();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.gen.ast.impl.LocatedProcessStatusImpl <em>Located Process Status</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.gen.ast.impl.LocatedProcessStatusImpl
+		 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getLocatedProcessStatus()
+		 * @generated
+		 */
+		EClass LOCATED_PROCESS_STATUS = eINSTANCE.getLocatedProcessStatus();
 
 	}
 
