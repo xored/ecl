@@ -54,7 +54,7 @@ public class Session implements ISession {
 			input.write(o);
 		input.close(Status.OK_STATUS);
 		final Process process = new Process(this, input, output);
-		new EclJob(scriptlet) {
+		EclJob job = new EclJob(scriptlet) {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
 				IStatus s = null;
@@ -102,7 +102,9 @@ public class Session implements ISession {
 				}
 				super.canceling();
 			}
-		}.schedule();
+		};
+		job.setSystem(true);
+		job.schedule();
 		return process;
 	}
 
