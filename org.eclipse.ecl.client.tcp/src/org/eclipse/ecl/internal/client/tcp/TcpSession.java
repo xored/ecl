@@ -2,6 +2,7 @@ package org.eclipse.ecl.internal.client.tcp;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.ServerSocket;
 import java.net.Socket;
 
 import org.eclipse.core.runtime.CoreException;
@@ -27,6 +28,10 @@ public class TcpSession implements ISession {
 	private InetAddress address;
 	private int port;
 
+	private InetAddress lastLocalAddress;
+
+	private int lastLocalPort;
+
 	public TcpSession(InetAddress address, int port) throws IOException {
 		this.address = address;
 		this.port = port;
@@ -43,6 +48,8 @@ public class TcpSession implements ISession {
 	protected void init(InetAddress localAddress, int localPort)
 			throws IOException {
 		if (localAddress != null) {
+			lastLocalAddress = localAddress;
+			lastLocalPort = localPort;
 			socket = new Socket(address, port, localAddress, localPort);
 		} else {
 			socket = new Socket(address, port);
@@ -128,6 +135,31 @@ public class TcpSession implements ISession {
 		return ctx;
 	}
 
+	public static int findFreePort(int nonPort) {
+		int findFreePort = findFreePort();
+		while (findFreePort == nonPort) {
+			findFreePort = findFreePort();
+		}
+		return findFreePort;
+	}
+
+	public static int findFreePort() {
+		ServerSocket socket = null;
+		try {
+			socket = new ServerSocket(0);
+			return socket.getLocalPort();
+		} catch (IOException e) {
+		} finally {
+			if (socket != null) {
+				try {
+					socket.close();
+				} catch (IOException e) {
+				}
+			}
+		}
+		return -1;
+	}
+
 	public void reconnect() throws CoreException {
 		try {
 			close();
@@ -135,7 +167,7 @@ public class TcpSession implements ISession {
 			// ignore closing exceptions
 		}
 		try {
-			init(null, 0);
+			init(lastLocalAddress, findFreePort(port));
 		} catch (IOException e) {
 			throw new CoreException(new Status(IStatus.ERROR, PLUGIN_ID,
 					e.getMessage(), e));
