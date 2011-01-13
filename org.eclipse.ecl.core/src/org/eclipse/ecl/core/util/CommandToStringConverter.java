@@ -167,6 +167,8 @@ public class CommandToStringConverter {
 	}
 
 	private boolean isForced(String commandName, String paramName) {
+		if ("set-text-selection".equals(commandName))
+			return true;
 		return "index".equals(paramName) || "after".equals(paramName)
 				|| "height".equals(paramName) || "width".equals(paramName)
 				|| "detail".equals(paramName) || "operation".equals(paramName);
