@@ -9,7 +9,9 @@ public class LocatedErrorStatus extends Status {
 
 	public LocatedErrorStatus(int severity, String pluginId, String message,
 			int line, int column, int length) {
-		super(severity, pluginId, message);
+		super(severity, pluginId,
+				message == null || message.length() == 0 ? "Execution failed"
+						: message);
 		this.line = line;
 		this.column = column;
 		this.length = length;
