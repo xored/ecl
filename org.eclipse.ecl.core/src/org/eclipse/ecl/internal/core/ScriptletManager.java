@@ -18,6 +18,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
@@ -178,10 +179,21 @@ public class ScriptletManager {
 		for (IConfigurationElement config : configs) {
 			String ns = config.getAttribute(SCRIPTLET_NAMESPACE_ATTR);
 			String name = config.getAttribute(SCRIPTLET_NAME_ATTR);
-			FQName fqn = new FQName(ns, name);
-			scriptlets.put(fqn, new ScriptletDefinition(ns, name, config));
-			if (TRACE_REGISTERED_COMMANDS)
-				System.out.println("Loaded definition of command " + fqn);
+			try {
+				EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(ns);
+				Assert.isLegal(ePackage != null, "Unknown package nsURI=" + ns);
+				Assert.isLegal(
+						ePackage.getEClassifier(name) != null,
+						"Unknown class=" + name + " in package="
+								+ ePackage.getName());
+				FQName fqn = new FQName(ns, name);
+				if (TRACE_REGISTERED_COMMANDS)
+					System.out.println("Loaded definition of command " + fqn);
+				scriptlets.put(fqn, new ScriptletDefinition(ns, name, config));
+			} catch (Exception e) {
+				CorePlugin.log(CorePlugin.err("Failed to load scriptlet "
+						+ name + ": " + e.getMessage(), e));
+			}
 		}
 	}
 }
