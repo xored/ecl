@@ -109,7 +109,7 @@ public class EclParser extends Parser {
           index--;
           token = input.get(index);
           if (token.getType() == EOF) {
-            result=true;
+            result=false;
             break;
           }
           if (token.getChannel() != Token.HIDDEN_CHANNEL)
@@ -117,6 +117,7 @@ public class EclParser extends Parser {
             /* We are out of the hidden channel, in other word we found a "real" item,
             which means we didn't find a linebreak, so we are done (false)
             */
+            result=false;
             break;
           }
           if (token.getType() == NEWLINE)
@@ -127,7 +128,7 @@ public class EclParser extends Parser {
           }
         }
         if(index==0)
-          result=true;
+          result=false;
         input.rewind(start);
         return result;
     }
