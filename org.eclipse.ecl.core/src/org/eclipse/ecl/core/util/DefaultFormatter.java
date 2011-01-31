@@ -43,6 +43,7 @@ public class DefaultFormatter implements ICommandFormatter {
 	}
 
 	public void openGroup(boolean singleLine) {
+		firstPipeCommand = true;
 		buffer.append(SPACE).append(OPEN_BRACE);
 		if (!singleLine)
 			level++;
@@ -58,6 +59,7 @@ public class DefaultFormatter implements ICommandFormatter {
 	}
 
 	public void openExec() {
+		firstPipeCommand = true;
 		buffer.append(SPACE).append(OPEN_BRACKET);
 	}
 
