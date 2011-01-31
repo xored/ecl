@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Binding.java,v 1.1 2010/08/02 09:24:00 andrey Exp $
+ * $Id: Binding.java,v 1.2 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core;
 
@@ -31,7 +31,7 @@ public interface Binding extends EObject {
 	 * Returns the value of the '<em><b>Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Feature</em>' reference isn't clear,
+	 * If the meaning of the '<em>Feature</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -54,26 +54,26 @@ public interface Binding extends EObject {
 	void setFeature(EStructuralFeature value);
 
 	/**
-	 * Returns the value of the '<em><b>Command</b></em>' reference.
+	 * Returns the value of the '<em><b>Command</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Command</em>' reference isn't clear,
+	 * If the meaning of the '<em>Command</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Command</em>' reference.
+	 * @return the value of the '<em>Command</em>' containment reference.
 	 * @see #setCommand(Command)
 	 * @see org.eclipse.ecl.core.CorePackage#getBinding_Command()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	Command getCommand();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.ecl.core.Binding#getCommand <em>Command</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.ecl.core.Binding#getCommand <em>Command</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Command</em>' reference.
+	 * @param value the new value of the '<em>Command</em>' containment reference.
 	 * @see #getCommand()
 	 * @generated
 	 */

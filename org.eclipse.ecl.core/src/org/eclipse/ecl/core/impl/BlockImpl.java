@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BlockImpl.java,v 1.1 2010/08/02 09:23:59 andrey Exp $
+ * $Id: BlockImpl.java,v 1.2 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 
@@ -12,11 +12,15 @@ import org.eclipse.ecl.core.Block;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CorePackage;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +37,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public abstract class BlockImpl extends CommandImpl implements Block {
 	/**
-	 * The cached value of the '{@link #getCommands() <em>Commands</em>}' reference list.
+	 * The cached value of the '{@link #getCommands() <em>Commands</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCommands()
@@ -68,9 +72,23 @@ public abstract class BlockImpl extends CommandImpl implements Block {
 	 */
 	public EList<Command> getCommands() {
 		if (commands == null) {
-			commands = new EObjectResolvingEList<Command>(Command.class, this, CorePackage.BLOCK__COMMANDS);
+			commands = new EObjectContainmentEList<Command>(Command.class, this, CorePackage.BLOCK__COMMANDS);
 		}
 		return commands;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CorePackage.BLOCK__COMMANDS:
+				return ((InternalEList<?>)getCommands()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

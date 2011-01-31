@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ForeachImpl.java,v 1.2 2010/08/22 14:13:34 alena Exp $
+ * $Id: ForeachImpl.java,v 1.3 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 
@@ -13,16 +13,18 @@ import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.Foreach;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,7 +42,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class ForeachImpl extends CommandImpl implements Foreach {
 	/**
-	 * The cached value of the '{@link #getDo() <em>Do</em>}' reference.
+	 * The cached value of the '{@link #getDo() <em>Do</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDo()
@@ -50,7 +52,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	protected Command do_;
 
 	/**
-	 * The cached value of the '{@link #getInput() <em>Input</em>}' reference list.
+	 * The cached value of the '{@link #getInput() <em>Input</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getInput()
@@ -84,14 +86,6 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	 * @generated
 	 */
 	public Command getDo() {
-		if (do_ != null && do_.eIsProxy()) {
-			InternalEObject oldDo = (InternalEObject)do_;
-			do_ = (Command)eResolveProxy(oldDo);
-			if (do_ != oldDo) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CorePackage.FOREACH__DO, oldDo, do_));
-			}
-		}
 		return do_;
 	}
 
@@ -100,8 +94,14 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Command basicGetDo() {
-		return do_;
+	public NotificationChain basicSetDo(Command newDo, NotificationChain msgs) {
+		Command oldDo = do_;
+		do_ = newDo;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CorePackage.FOREACH__DO, oldDo, newDo);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -110,10 +110,17 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	 * @generated
 	 */
 	public void setDo(Command newDo) {
-		Command oldDo = do_;
-		do_ = newDo;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.FOREACH__DO, oldDo, do_));
+		if (newDo != do_) {
+			NotificationChain msgs = null;
+			if (do_ != null)
+				msgs = ((InternalEObject)do_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CorePackage.FOREACH__DO, null, msgs);
+			if (newDo != null)
+				msgs = ((InternalEObject)newDo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CorePackage.FOREACH__DO, null, msgs);
+			msgs = basicSetDo(newDo, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.FOREACH__DO, newDo, newDo));
 	}
 
 	/**
@@ -123,9 +130,25 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	 */
 	public EList<EObject> getInput() {
 		if (input == null) {
-			input = new EObjectResolvingEList<EObject>(EObject.class, this, CorePackage.FOREACH__INPUT);
+			input = new EObjectContainmentEList<EObject>(EObject.class, this, CorePackage.FOREACH__INPUT);
 		}
 		return input;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CorePackage.FOREACH__DO:
+				return basicSetDo(null, msgs);
+			case CorePackage.FOREACH__INPUT:
+				return ((InternalEList<?>)getInput()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -137,8 +160,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CorePackage.FOREACH__DO:
-				if (resolve) return getDo();
-				return basicGetDo();
+				return getDo();
 			case CorePackage.FOREACH__INPUT:
 				return getInput();
 		}

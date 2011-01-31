@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Exec.java,v 1.1 2010/08/02 09:24:00 andrey Exp $
+ * $Id: Exec.java,v 1.2 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core;
 
@@ -80,17 +80,17 @@ public interface Exec extends Command {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' reference list.
+	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.ecl.core.Parameter}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Parameters</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameters</em>' reference list.
+	 * @return the value of the '<em>Parameters</em>' containment reference list.
 	 * @see org.eclipse.ecl.core.CorePackage#getExec_Parameters()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Parameter> getParameters();

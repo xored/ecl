@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CoreFactory.java,v 1.2 2010/10/31 12:47:44 alena Exp $
+ * $Id: CoreFactory.java,v 1.3 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core;
 
@@ -123,60 +123,6 @@ public interface CoreFactory extends EFactory {
 	 * @generated
 	 */
 	Foreach createForeach();
-
-	/**
-	 * Returns a new object of class '<em>Define Command</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Define Command</em>'.
-	 * @generated
-	 */
-	DefineCommand createDefineCommand();
-
-	/**
-	 * Returns a new object of class '<em>Get Children</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Get Children</em>'.
-	 * @generated
-	 */
-	GetChildren createGetChildren();
-
-	/**
-	 * Returns a new object of class '<em>Any Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Any Object</em>'.
-	 * @generated
-	 */
-	AnyObject createAnyObject();
-
-	/**
-	 * Returns a new object of class '<em>EAny Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>EAny Object</em>'.
-	 * @generated
-	 */
-	EAnyObject createEAnyObject();
-
-	/**
-	 * Returns a new object of class '<em>Any Model Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Any Model Object</em>'.
-	 * @generated
-	 */
-	AnyModelObject createAnyModelObject();
-
-	/**
-	 * Returns a new object of class '<em>Resolve</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Resolve</em>'.
-	 * @generated
-	 */
-	Resolve createResolve();
 
 	/**
 	 * Returns a new object of class '<em>Process Status</em>'.

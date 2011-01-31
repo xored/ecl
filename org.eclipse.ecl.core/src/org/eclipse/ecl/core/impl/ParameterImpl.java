@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParameterImpl.java,v 1.1 2010/08/02 09:24:00 andrey Exp $
+ * $Id: ParameterImpl.java,v 1.2 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 

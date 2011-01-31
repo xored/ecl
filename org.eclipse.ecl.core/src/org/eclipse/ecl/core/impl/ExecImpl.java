@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ExecImpl.java,v 1.1 2010/08/02 09:24:00 andrey Exp $
+ * $Id: ExecImpl.java,v 1.2 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 
@@ -13,14 +13,17 @@ import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.Parameter;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,7 +82,7 @@ public class ExecImpl extends CommandImpl implements Exec {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' reference list.
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getParameters()
@@ -156,9 +159,23 @@ public class ExecImpl extends CommandImpl implements Exec {
 	 */
 	public EList<Parameter> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectResolvingEList<Parameter>(Parameter.class, this, CorePackage.EXEC__PARAMETERS);
+			parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this, CorePackage.EXEC__PARAMETERS);
 		}
 		return parameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CorePackage.EXEC__PARAMETERS:
+				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

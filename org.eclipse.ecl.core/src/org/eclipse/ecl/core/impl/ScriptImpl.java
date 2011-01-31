@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ScriptImpl.java,v 1.2 2010/10/31 12:47:43 alena Exp $
+ * $Id: ScriptImpl.java,v 1.3 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 
@@ -14,7 +14,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->

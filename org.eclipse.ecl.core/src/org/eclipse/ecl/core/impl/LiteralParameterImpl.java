@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LiteralParameterImpl.java,v 1.1 2010/08/02 09:23:59 andrey Exp $
+ * $Id: LiteralParameterImpl.java,v 1.2 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 

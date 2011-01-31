@@ -2,13 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CorePackage.java,v 1.3 2010/10/31 12:47:44 alena Exp $
+ * $Id: CorePackage.java,v 1.4 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -80,7 +79,7 @@ public interface CorePackage extends EPackage {
 	int COMMAND__HOST = 0;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -117,7 +116,7 @@ public interface CorePackage extends EPackage {
 	int BINDING__FEATURE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Command</b></em>' reference.
+	 * The feature id for the '<em><b>Command</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -154,7 +153,7 @@ public interface CorePackage extends EPackage {
 	int BLOCK__HOST = COMMAND__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -163,7 +162,7 @@ public interface CorePackage extends EPackage {
 	int BLOCK__BINDINGS = COMMAND__BINDINGS;
 
 	/**
-	 * The feature id for the '<em><b>Commands</b></em>' reference list.
+	 * The feature id for the '<em><b>Commands</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -200,7 +199,7 @@ public interface CorePackage extends EPackage {
 	int PIPELINE__HOST = BLOCK__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -209,7 +208,7 @@ public interface CorePackage extends EPackage {
 	int PIPELINE__BINDINGS = BLOCK__BINDINGS;
 
 	/**
-	 * The feature id for the '<em><b>Commands</b></em>' reference list.
+	 * The feature id for the '<em><b>Commands</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -246,7 +245,7 @@ public interface CorePackage extends EPackage {
 	int SEQUENCE__HOST = BLOCK__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -255,7 +254,7 @@ public interface CorePackage extends EPackage {
 	int SEQUENCE__BINDINGS = BLOCK__BINDINGS;
 
 	/**
-	 * The feature id for the '<em><b>Commands</b></em>' reference list.
+	 * The feature id for the '<em><b>Commands</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -292,7 +291,7 @@ public interface CorePackage extends EPackage {
 	int PARALLEL__HOST = BLOCK__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -301,7 +300,7 @@ public interface CorePackage extends EPackage {
 	int PARALLEL__BINDINGS = BLOCK__BINDINGS;
 
 	/**
-	 * The feature id for the '<em><b>Commands</b></em>' reference list.
+	 * The feature id for the '<em><b>Commands</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -317,7 +316,6 @@ public interface CorePackage extends EPackage {
 	 * @ordered
 	 */
 	int PARALLEL_FEATURE_COUNT = BLOCK_FEATURE_COUNT + 0;
-
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.WithImpl <em>With</em>}' class.
@@ -339,7 +337,7 @@ public interface CorePackage extends EPackage {
 	int WITH__HOST = COMMAND__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -348,7 +346,7 @@ public interface CorePackage extends EPackage {
 	int WITH__BINDINGS = COMMAND__BINDINGS;
 
 	/**
-	 * The feature id for the '<em><b>Object</b></em>' reference.
+	 * The feature id for the '<em><b>Object</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -357,7 +355,7 @@ public interface CorePackage extends EPackage {
 	int WITH__OBJECT = COMMAND_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Do</b></em>' reference.
+	 * The feature id for the '<em><b>Do</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -394,7 +392,7 @@ public interface CorePackage extends EPackage {
 	int EXEC__HOST = COMMAND__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -421,7 +419,7 @@ public interface CorePackage extends EPackage {
 	int EXEC__NAME = COMMAND_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -486,7 +484,7 @@ public interface CorePackage extends EPackage {
 	int EXECUTABLE_PARAMETER__NAME = PARAMETER__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Command</b></em>' reference.
+	 * The feature id for the '<em><b>Command</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -549,7 +547,6 @@ public interface CorePackage extends EPackage {
 	 */
 	int LITERAL_PARAMETER_FEATURE_COUNT = PARAMETER_FEATURE_COUNT + 2;
 
-
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.ForeachImpl <em>Foreach</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -570,7 +567,7 @@ public interface CorePackage extends EPackage {
 	int FOREACH__HOST = COMMAND__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -579,7 +576,7 @@ public interface CorePackage extends EPackage {
 	int FOREACH__BINDINGS = COMMAND__BINDINGS;
 
 	/**
-	 * The feature id for the '<em><b>Do</b></em>' reference.
+	 * The feature id for the '<em><b>Do</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -588,7 +585,7 @@ public interface CorePackage extends EPackage {
 	int FOREACH__DO = COMMAND_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Input</b></em>' reference list.
+	 * The feature id for the '<em><b>Input</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -606,228 +603,6 @@ public interface CorePackage extends EPackage {
 	int FOREACH_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.DefineCommandImpl <em>Define Command</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.core.impl.DefineCommandImpl
-	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getDefineCommand()
-	 * @generated
-	 */
-	int DEFINE_COMMAND = 12;
-
-	/**
-	 * The feature id for the '<em><b>Host</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEFINE_COMMAND__HOST = COMMAND__HOST;
-
-	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEFINE_COMMAND__BINDINGS = COMMAND__BINDINGS;
-
-	/**
-	 * The feature id for the '<em><b>Message</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEFINE_COMMAND__MESSAGE = COMMAND_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Script</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEFINE_COMMAND__SCRIPT = COMMAND_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Define Command</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEFINE_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.GetChildrenImpl <em>Get Children</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.core.impl.GetChildrenImpl
-	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getGetChildren()
-	 * @generated
-	 */
-	int GET_CHILDREN = 13;
-
-	/**
-	 * The feature id for the '<em><b>Host</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GET_CHILDREN__HOST = COMMAND__HOST;
-
-	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GET_CHILDREN__BINDINGS = COMMAND__BINDINGS;
-
-	/**
-	 * The feature id for the '<em><b>Object</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GET_CHILDREN__OBJECT = COMMAND_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Children</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GET_CHILDREN__CHILDREN = COMMAND_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Get Children</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GET_CHILDREN_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.AnyObjectImpl <em>Any Object</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.core.impl.AnyObjectImpl
-	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getAnyObject()
-	 * @generated
-	 */
-	int ANY_OBJECT = 14;
-
-	/**
-	 * The number of structural features of the '<em>Any Object</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_OBJECT_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EAnyObjectImpl <em>EAny Object</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.core.impl.EAnyObjectImpl
-	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEAnyObject()
-	 * @generated
-	 */
-	int EANY_OBJECT = 15;
-
-	/**
-	 * The feature id for the '<em><b>Emf Object</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EANY_OBJECT__EMF_OBJECT = ANY_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>EAny Object</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EANY_OBJECT_FEATURE_COUNT = ANY_OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.AnyModelObjectImpl <em>Any Model Object</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.core.impl.AnyModelObjectImpl
-	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getAnyModelObject()
-	 * @generated
-	 */
-	int ANY_MODEL_OBJECT = 16;
-
-	/**
-	 * The feature id for the '<em><b>Java Object</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_MODEL_OBJECT__JAVA_OBJECT = ANY_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Any Model Object</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANY_MODEL_OBJECT_FEATURE_COUNT = ANY_OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.ResolveImpl <em>Resolve</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.core.impl.ResolveImpl
-	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getResolve()
-	 * @generated
-	 */
-	int RESOLVE = 17;
-
-	/**
-	 * The feature id for the '<em><b>Ref</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOLVE__REF = 0;
-
-	/**
-	 * The feature id for the '<em><b>Object</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOLVE__OBJECT = 1;
-
-	/**
-	 * The number of structural features of the '<em>Resolve</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOLVE_FEATURE_COUNT = 2;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.ProcessStatusImpl <em>Process Status</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -835,7 +610,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getProcessStatus()
 	 * @generated
 	 */
-	int PROCESS_STATUS = 18;
+	int PROCESS_STATUS = 12;
 
 	/**
 	 * The feature id for the '<em><b>Plugin Id</b></em>' attribute.
@@ -899,7 +674,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getScript()
 	 * @generated
 	 */
-	int SCRIPT = 19;
+	int SCRIPT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -911,7 +686,7 @@ public interface CorePackage extends EPackage {
 	int SCRIPT__HOST = COMMAND__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -937,35 +712,6 @@ public interface CorePackage extends EPackage {
 	 */
 	int SCRIPT_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
 
-	/**
-	 * The meta object id for the '<em>EScript</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.String
-	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEScript()
-	 * @generated
-	 */
-	int ESCRIPT = 20;
-
-	/**
-	 * The meta object id for the '<em>Any</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.core.model.Any
-	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getAny()
-	 * @generated
-	 */
-	int ANY = 21;
-
-	/**
-	 * The meta object id for the '<em>Ref</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.core.model.Ref
-	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getRef()
-	 * @generated
-	 */
-	int REF = 22;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -989,10 +735,10 @@ public interface CorePackage extends EPackage {
 	EAttribute getCommand_Host();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.core.Command#getBindings <em>Bindings</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.core.Command#getBindings <em>Bindings</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Bindings</em>'.
+	 * @return the meta object for the containment reference list '<em>Bindings</em>'.
 	 * @see org.eclipse.ecl.core.Command#getBindings()
 	 * @see #getCommand()
 	 * @generated
@@ -1021,10 +767,10 @@ public interface CorePackage extends EPackage {
 	EReference getBinding_Feature();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.Binding#getCommand <em>Command</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.Binding#getCommand <em>Command</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Command</em>'.
+	 * @return the meta object for the containment reference '<em>Command</em>'.
 	 * @see org.eclipse.ecl.core.Binding#getCommand()
 	 * @see #getBinding()
 	 * @generated
@@ -1042,10 +788,10 @@ public interface CorePackage extends EPackage {
 	EClass getBlock();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.core.Block#getCommands <em>Commands</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.core.Block#getCommands <em>Commands</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Commands</em>'.
+	 * @return the meta object for the containment reference list '<em>Commands</em>'.
 	 * @see org.eclipse.ecl.core.Block#getCommands()
 	 * @see #getBlock()
 	 * @generated
@@ -1093,10 +839,10 @@ public interface CorePackage extends EPackage {
 	EClass getWith();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.With#getObject <em>Object</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.With#getObject <em>Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Object</em>'.
+	 * @return the meta object for the containment reference '<em>Object</em>'.
 	 * @see org.eclipse.ecl.core.With#getObject()
 	 * @see #getWith()
 	 * @generated
@@ -1104,10 +850,10 @@ public interface CorePackage extends EPackage {
 	EReference getWith_Object();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.With#getDo <em>Do</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.With#getDo <em>Do</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Do</em>'.
+	 * @return the meta object for the containment reference '<em>Do</em>'.
 	 * @see org.eclipse.ecl.core.With#getDo()
 	 * @see #getWith()
 	 * @generated
@@ -1147,10 +893,10 @@ public interface CorePackage extends EPackage {
 	EAttribute getExec_Name();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.core.Exec#getParameters <em>Parameters</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.core.Exec#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Parameters</em>'.
+	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
 	 * @see org.eclipse.ecl.core.Exec#getParameters()
 	 * @see #getExec()
 	 * @generated
@@ -1189,10 +935,10 @@ public interface CorePackage extends EPackage {
 	EClass getExecutableParameter();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.ExecutableParameter#getCommand <em>Command</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.ExecutableParameter#getCommand <em>Command</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Command</em>'.
+	 * @return the meta object for the containment reference '<em>Command</em>'.
 	 * @see org.eclipse.ecl.core.ExecutableParameter#getCommand()
 	 * @see #getExecutableParameter()
 	 * @generated
@@ -1242,10 +988,10 @@ public interface CorePackage extends EPackage {
 	EClass getForeach();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.Foreach#getDo <em>Do</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.Foreach#getDo <em>Do</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Do</em>'.
+	 * @return the meta object for the containment reference '<em>Do</em>'.
 	 * @see org.eclipse.ecl.core.Foreach#getDo()
 	 * @see #getForeach()
 	 * @generated
@@ -1253,163 +999,15 @@ public interface CorePackage extends EPackage {
 	EReference getForeach_Do();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.core.Foreach#getInput <em>Input</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.core.Foreach#getInput <em>Input</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Input</em>'.
+	 * @return the meta object for the containment reference list '<em>Input</em>'.
 	 * @see org.eclipse.ecl.core.Foreach#getInput()
 	 * @see #getForeach()
 	 * @generated
 	 */
 	EReference getForeach_Input();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.ecl.core.DefineCommand <em>Define Command</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Define Command</em>'.
-	 * @see org.eclipse.ecl.core.DefineCommand
-	 * @generated
-	 */
-	EClass getDefineCommand();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.DefineCommand#getMessage <em>Message</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Message</em>'.
-	 * @see org.eclipse.ecl.core.DefineCommand#getMessage()
-	 * @see #getDefineCommand()
-	 * @generated
-	 */
-	EReference getDefineCommand_Message();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.DefineCommand#getScript <em>Script</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Script</em>'.
-	 * @see org.eclipse.ecl.core.DefineCommand#getScript()
-	 * @see #getDefineCommand()
-	 * @generated
-	 */
-	EAttribute getDefineCommand_Script();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.ecl.core.GetChildren <em>Get Children</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Get Children</em>'.
-	 * @see org.eclipse.ecl.core.GetChildren
-	 * @generated
-	 */
-	EClass getGetChildren();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.GetChildren#getObject <em>Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Object</em>'.
-	 * @see org.eclipse.ecl.core.GetChildren#getObject()
-	 * @see #getGetChildren()
-	 * @generated
-	 */
-	EAttribute getGetChildren_Object();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link org.eclipse.ecl.core.GetChildren#getChildren <em>Children</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Children</em>'.
-	 * @see org.eclipse.ecl.core.GetChildren#getChildren()
-	 * @see #getGetChildren()
-	 * @generated
-	 */
-	EAttribute getGetChildren_Children();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.ecl.core.AnyObject <em>Any Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Any Object</em>'.
-	 * @see org.eclipse.ecl.core.AnyObject
-	 * @generated
-	 */
-	EClass getAnyObject();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EAnyObject <em>EAny Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>EAny Object</em>'.
-	 * @see org.eclipse.ecl.core.EAnyObject
-	 * @generated
-	 */
-	EClass getEAnyObject();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.EAnyObject#getEmfObject <em>Emf Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Emf Object</em>'.
-	 * @see org.eclipse.ecl.core.EAnyObject#getEmfObject()
-	 * @see #getEAnyObject()
-	 * @generated
-	 */
-	EReference getEAnyObject_EmfObject();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.ecl.core.AnyModelObject <em>Any Model Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Any Model Object</em>'.
-	 * @see org.eclipse.ecl.core.AnyModelObject
-	 * @generated
-	 */
-	EClass getAnyModelObject();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.AnyModelObject#getJavaObject <em>Java Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Java Object</em>'.
-	 * @see org.eclipse.ecl.core.AnyModelObject#getJavaObject()
-	 * @see #getAnyModelObject()
-	 * @generated
-	 */
-	EAttribute getAnyModelObject_JavaObject();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Resolve <em>Resolve</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Resolve</em>'.
-	 * @see org.eclipse.ecl.core.Resolve
-	 * @generated
-	 */
-	EClass getResolve();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Resolve#getRef <em>Ref</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ref</em>'.
-	 * @see org.eclipse.ecl.core.Resolve#getRef()
-	 * @see #getResolve()
-	 * @generated
-	 */
-	EAttribute getResolve_Ref();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Resolve#getObject <em>Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Object</em>'.
-	 * @see org.eclipse.ecl.core.Resolve#getObject()
-	 * @see #getResolve()
-	 * @generated
-	 */
-	EAttribute getResolve_Object();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.ProcessStatus <em>Process Status</em>}'.
@@ -1498,39 +1096,6 @@ public interface CorePackage extends EPackage {
 	EAttribute getScript_Content();
 
 	/**
-	 * Returns the meta object for data type '{@link java.lang.String <em>EScript</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>EScript</em>'.
-	 * @see java.lang.String
-	 * @model instanceClass="java.lang.String"
-	 * @generated
-	 */
-	EDataType getEScript();
-
-	/**
-	 * Returns the meta object for data type '{@link org.eclipse.ecl.core.model.Any <em>Any</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Any</em>'.
-	 * @see org.eclipse.ecl.core.model.Any
-	 * @model instanceClass="org.eclipse.ecl.core.model.Any"
-	 * @generated
-	 */
-	EDataType getAny();
-
-	/**
-	 * Returns the meta object for data type '{@link org.eclipse.ecl.core.model.Ref <em>Ref</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Ref</em>'.
-	 * @see org.eclipse.ecl.core.model.Ref
-	 * @model instanceClass="org.eclipse.ecl.core.model.Ref"
-	 * @generated
-	 */
-	EDataType getRef();
-
-	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1561,6 +1126,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass COMMAND = eINSTANCE.getCommand();
+
 		/**
 		 * The meta object literal for the '<em><b>Host</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -1568,13 +1134,15 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMMAND__HOST = eINSTANCE.getCommand_Host();
+
 		/**
-		 * The meta object literal for the '<em><b>Bindings</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Bindings</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference COMMAND__BINDINGS = eINSTANCE.getCommand_Bindings();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.BindingImpl <em>Binding</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1584,6 +1152,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass BINDING = eINSTANCE.getBinding();
+
 		/**
 		 * The meta object literal for the '<em><b>Feature</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
@@ -1591,13 +1160,15 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference BINDING__FEATURE = eINSTANCE.getBinding_Feature();
+
 		/**
-		 * The meta object literal for the '<em><b>Command</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Command</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference BINDING__COMMAND = eINSTANCE.getBinding_Command();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.BlockImpl <em>Block</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1607,13 +1178,15 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass BLOCK = eINSTANCE.getBlock();
+
 		/**
-		 * The meta object literal for the '<em><b>Commands</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Commands</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference BLOCK__COMMANDS = eINSTANCE.getBlock_Commands();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.PipelineImpl <em>Pipeline</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1623,6 +1196,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass PIPELINE = eINSTANCE.getPipeline();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.SequenceImpl <em>Sequence</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1632,6 +1206,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass SEQUENCE = eINSTANCE.getSequence();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ParallelImpl <em>Parallel</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1641,6 +1216,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass PARALLEL = eINSTANCE.getParallel();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.WithImpl <em>With</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1650,20 +1226,23 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass WITH = eINSTANCE.getWith();
+
 		/**
-		 * The meta object literal for the '<em><b>Object</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Object</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference WITH__OBJECT = eINSTANCE.getWith_Object();
+
 		/**
-		 * The meta object literal for the '<em><b>Do</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Do</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference WITH__DO = eINSTANCE.getWith_Do();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ExecImpl <em>Exec</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1673,6 +1252,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass EXEC = eINSTANCE.getExec();
+
 		/**
 		 * The meta object literal for the '<em><b>Namespace</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -1680,6 +1260,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EXEC__NAMESPACE = eINSTANCE.getExec_Namespace();
+
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -1687,13 +1268,15 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EXEC__NAME = eINSTANCE.getExec_Name();
+
 		/**
-		 * The meta object literal for the '<em><b>Parameters</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference EXEC__PARAMETERS = eINSTANCE.getExec_Parameters();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ParameterImpl <em>Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1703,6 +1286,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass PARAMETER = eINSTANCE.getParameter();
+
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -1710,6 +1294,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PARAMETER__NAME = eINSTANCE.getParameter_Name();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ExecutableParameterImpl <em>Executable Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1719,13 +1304,15 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass EXECUTABLE_PARAMETER = eINSTANCE.getExecutableParameter();
+
 		/**
-		 * The meta object literal for the '<em><b>Command</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Command</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference EXECUTABLE_PARAMETER__COMMAND = eINSTANCE.getExecutableParameter_Command();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.LiteralParameterImpl <em>Literal Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1735,6 +1322,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass LITERAL_PARAMETER = eINSTANCE.getLiteralParameter();
+
 		/**
 		 * The meta object literal for the '<em><b>Literal</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -1742,6 +1330,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LITERAL_PARAMETER__LITERAL = eINSTANCE.getLiteralParameter_Literal();
+
 		/**
 		 * The meta object literal for the '<em><b>Format</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -1749,6 +1338,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LITERAL_PARAMETER__FORMAT = eINSTANCE.getLiteralParameter_Format();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ForeachImpl <em>Foreach</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1758,130 +1348,23 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass FOREACH = eINSTANCE.getForeach();
+
 		/**
-		 * The meta object literal for the '<em><b>Do</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Do</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference FOREACH__DO = eINSTANCE.getForeach_Do();
+
 		/**
-		 * The meta object literal for the '<em><b>Input</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Input</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference FOREACH__INPUT = eINSTANCE.getForeach_Input();
-		/**
-		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.DefineCommandImpl <em>Define Command</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.core.impl.DefineCommandImpl
-		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getDefineCommand()
-		 * @generated
-		 */
-		EClass DEFINE_COMMAND = eINSTANCE.getDefineCommand();
-		/**
-		 * The meta object literal for the '<em><b>Message</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DEFINE_COMMAND__MESSAGE = eINSTANCE.getDefineCommand_Message();
-		/**
-		 * The meta object literal for the '<em><b>Script</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DEFINE_COMMAND__SCRIPT = eINSTANCE.getDefineCommand_Script();
-		/**
-		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.GetChildrenImpl <em>Get Children</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.core.impl.GetChildrenImpl
-		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getGetChildren()
-		 * @generated
-		 */
-		EClass GET_CHILDREN = eINSTANCE.getGetChildren();
-		/**
-		 * The meta object literal for the '<em><b>Object</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GET_CHILDREN__OBJECT = eINSTANCE.getGetChildren_Object();
-		/**
-		 * The meta object literal for the '<em><b>Children</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GET_CHILDREN__CHILDREN = eINSTANCE.getGetChildren_Children();
-		/**
-		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.AnyObjectImpl <em>Any Object</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.core.impl.AnyObjectImpl
-		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getAnyObject()
-		 * @generated
-		 */
-		EClass ANY_OBJECT = eINSTANCE.getAnyObject();
-		/**
-		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EAnyObjectImpl <em>EAny Object</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.core.impl.EAnyObjectImpl
-		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEAnyObject()
-		 * @generated
-		 */
-		EClass EANY_OBJECT = eINSTANCE.getEAnyObject();
-		/**
-		 * The meta object literal for the '<em><b>Emf Object</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EANY_OBJECT__EMF_OBJECT = eINSTANCE.getEAnyObject_EmfObject();
-		/**
-		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.AnyModelObjectImpl <em>Any Model Object</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.core.impl.AnyModelObjectImpl
-		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getAnyModelObject()
-		 * @generated
-		 */
-		EClass ANY_MODEL_OBJECT = eINSTANCE.getAnyModelObject();
-		/**
-		 * The meta object literal for the '<em><b>Java Object</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ANY_MODEL_OBJECT__JAVA_OBJECT = eINSTANCE.getAnyModelObject_JavaObject();
-		/**
-		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ResolveImpl <em>Resolve</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.core.impl.ResolveImpl
-		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getResolve()
-		 * @generated
-		 */
-		EClass RESOLVE = eINSTANCE.getResolve();
-		/**
-		 * The meta object literal for the '<em><b>Ref</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESOLVE__REF = eINSTANCE.getResolve_Ref();
-		/**
-		 * The meta object literal for the '<em><b>Object</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESOLVE__OBJECT = eINSTANCE.getResolve_Object();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ProcessStatusImpl <em>Process Status</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1891,6 +1374,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass PROCESS_STATUS = eINSTANCE.getProcessStatus();
+
 		/**
 		 * The meta object literal for the '<em><b>Plugin Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -1898,6 +1382,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROCESS_STATUS__PLUGIN_ID = eINSTANCE.getProcessStatus_PluginId();
+
 		/**
 		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -1905,6 +1390,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROCESS_STATUS__CODE = eINSTANCE.getProcessStatus_Code();
+
 		/**
 		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -1912,6 +1398,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROCESS_STATUS__MESSAGE = eINSTANCE.getProcessStatus_Message();
+
 		/**
 		 * The meta object literal for the '<em><b>Severity</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -1919,6 +1406,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROCESS_STATUS__SEVERITY = eINSTANCE.getProcessStatus_Severity();
+
 		/**
 		 * The meta object literal for the '<em><b>Process Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -1926,6 +1414,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROCESS_STATUS__PROCESS_ID = eINSTANCE.getProcessStatus_ProcessId();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ScriptImpl <em>Script</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1935,6 +1424,7 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass SCRIPT = eINSTANCE.getScript();
+
 		/**
 		 * The meta object literal for the '<em><b>Content</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -1942,33 +1432,6 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SCRIPT__CONTENT = eINSTANCE.getScript_Content();
-		/**
-		 * The meta object literal for the '<em>EScript</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see java.lang.String
-		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEScript()
-		 * @generated
-		 */
-		EDataType ESCRIPT = eINSTANCE.getEScript();
-		/**
-		 * The meta object literal for the '<em>Any</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.core.model.Any
-		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getAny()
-		 * @generated
-		 */
-		EDataType ANY = eINSTANCE.getAny();
-		/**
-		 * The meta object literal for the '<em>Ref</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.core.model.Ref
-		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getRef()
-		 * @generated
-		 */
-		EDataType REF = eINSTANCE.getRef();
 
 	}
 

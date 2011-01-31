@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BindingImpl.java,v 1.1 2010/08/02 09:23:59 andrey Exp $
+ * $Id: BindingImpl.java,v 1.2 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 
@@ -11,6 +11,7 @@ import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CorePackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -45,7 +46,7 @@ public class BindingImpl extends EObjectImpl implements Binding {
 	protected EStructuralFeature feature;
 
 	/**
-	 * The cached value of the '{@link #getCommand() <em>Command</em>}' reference.
+	 * The cached value of the '{@link #getCommand() <em>Command</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCommand()
@@ -117,14 +118,6 @@ public class BindingImpl extends EObjectImpl implements Binding {
 	 * @generated
 	 */
 	public Command getCommand() {
-		if (command != null && command.eIsProxy()) {
-			InternalEObject oldCommand = (InternalEObject)command;
-			command = (Command)eResolveProxy(oldCommand);
-			if (command != oldCommand) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CorePackage.BINDING__COMMAND, oldCommand, command));
-			}
-		}
 		return command;
 	}
 
@@ -133,8 +126,14 @@ public class BindingImpl extends EObjectImpl implements Binding {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Command basicGetCommand() {
-		return command;
+	public NotificationChain basicSetCommand(Command newCommand, NotificationChain msgs) {
+		Command oldCommand = command;
+		command = newCommand;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CorePackage.BINDING__COMMAND, oldCommand, newCommand);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -143,10 +142,31 @@ public class BindingImpl extends EObjectImpl implements Binding {
 	 * @generated
 	 */
 	public void setCommand(Command newCommand) {
-		Command oldCommand = command;
-		command = newCommand;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.BINDING__COMMAND, oldCommand, command));
+		if (newCommand != command) {
+			NotificationChain msgs = null;
+			if (command != null)
+				msgs = ((InternalEObject)command).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CorePackage.BINDING__COMMAND, null, msgs);
+			if (newCommand != null)
+				msgs = ((InternalEObject)newCommand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CorePackage.BINDING__COMMAND, null, msgs);
+			msgs = basicSetCommand(newCommand, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.BINDING__COMMAND, newCommand, newCommand));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CorePackage.BINDING__COMMAND:
+				return basicSetCommand(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -161,8 +181,7 @@ public class BindingImpl extends EObjectImpl implements Binding {
 				if (resolve) return getFeature();
 				return basicGetFeature();
 			case CorePackage.BINDING__COMMAND:
-				if (resolve) return getCommand();
-				return basicGetCommand();
+				return getCommand();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

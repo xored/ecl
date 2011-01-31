@@ -2,20 +2,21 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WithImpl.java,v 1.2 2010/11/17 09:08:23 alena Exp $
+ * $Id: WithImpl.java,v 1.3 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CorePackage;
-import org.eclipse.ecl.core.Sequence;
-import org.eclipse.ecl.core.Resolve;
 import org.eclipse.ecl.core.With;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -34,7 +35,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class WithImpl extends CommandImpl implements With {
 	/**
-	 * The cached value of the '{@link #getObject() <em>Object</em>}' reference.
+	 * The cached value of the '{@link #getObject() <em>Object</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getObject()
@@ -42,8 +43,9 @@ public class WithImpl extends CommandImpl implements With {
 	 * @ordered
 	 */
 	protected EObject object;
+
 	/**
-	 * The cached value of the '{@link #getDo() <em>Do</em>}' reference.
+	 * The cached value of the '{@link #getDo() <em>Do</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDo()
@@ -77,14 +79,6 @@ public class WithImpl extends CommandImpl implements With {
 	 * @generated
 	 */
 	public EObject getObject() {
-		if (object != null && object.eIsProxy()) {
-			InternalEObject oldObject = (InternalEObject)object;
-			object = eResolveProxy(oldObject);
-			if (object != oldObject) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CorePackage.WITH__OBJECT, oldObject, object));
-			}
-		}
 		return object;
 	}
 
@@ -93,8 +87,14 @@ public class WithImpl extends CommandImpl implements With {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject basicGetObject() {
-		return object;
+	public NotificationChain basicSetObject(EObject newObject, NotificationChain msgs) {
+		EObject oldObject = object;
+		object = newObject;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CorePackage.WITH__OBJECT, oldObject, newObject);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -103,10 +103,17 @@ public class WithImpl extends CommandImpl implements With {
 	 * @generated
 	 */
 	public void setObject(EObject newObject) {
-		EObject oldObject = object;
-		object = newObject;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.WITH__OBJECT, oldObject, object));
+		if (newObject != object) {
+			NotificationChain msgs = null;
+			if (object != null)
+				msgs = ((InternalEObject)object).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CorePackage.WITH__OBJECT, null, msgs);
+			if (newObject != null)
+				msgs = ((InternalEObject)newObject).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CorePackage.WITH__OBJECT, null, msgs);
+			msgs = basicSetObject(newObject, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.WITH__OBJECT, newObject, newObject));
 	}
 
 	/**
@@ -115,14 +122,6 @@ public class WithImpl extends CommandImpl implements With {
 	 * @generated
 	 */
 	public Command getDo() {
-		if (do_ != null && do_.eIsProxy()) {
-			InternalEObject oldDo = (InternalEObject)do_;
-			do_ = (Command)eResolveProxy(oldDo);
-			if (do_ != oldDo) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CorePackage.WITH__DO, oldDo, do_));
-			}
-		}
 		return do_;
 	}
 
@@ -131,8 +130,14 @@ public class WithImpl extends CommandImpl implements With {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Command basicGetDo() {
-		return do_;
+	public NotificationChain basicSetDo(Command newDo, NotificationChain msgs) {
+		Command oldDo = do_;
+		do_ = newDo;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CorePackage.WITH__DO, oldDo, newDo);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -141,10 +146,33 @@ public class WithImpl extends CommandImpl implements With {
 	 * @generated
 	 */
 	public void setDo(Command newDo) {
-		Command oldDo = do_;
-		do_ = newDo;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.WITH__DO, oldDo, do_));
+		if (newDo != do_) {
+			NotificationChain msgs = null;
+			if (do_ != null)
+				msgs = ((InternalEObject)do_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CorePackage.WITH__DO, null, msgs);
+			if (newDo != null)
+				msgs = ((InternalEObject)newDo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CorePackage.WITH__DO, null, msgs);
+			msgs = basicSetDo(newDo, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.WITH__DO, newDo, newDo));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CorePackage.WITH__OBJECT:
+				return basicSetObject(null, msgs);
+			case CorePackage.WITH__DO:
+				return basicSetDo(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -156,11 +184,9 @@ public class WithImpl extends CommandImpl implements With {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CorePackage.WITH__OBJECT:
-				if (resolve) return getObject();
-				return basicGetObject();
+				return getObject();
 			case CorePackage.WITH__DO:
-				if (resolve) return getDo();
-				return basicGetDo();
+				return getDo();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

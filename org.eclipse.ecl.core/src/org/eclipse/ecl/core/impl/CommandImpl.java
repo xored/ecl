@@ -2,22 +2,29 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CommandImpl.java,v 1.1 2010/08/02 09:23:59 andrey Exp $
+ * $Id: CommandImpl.java,v 1.2 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 
 import java.util.Collection;
+
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CorePackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,6 +50,7 @@ public class CommandImpl extends EObjectImpl implements Command {
 	 * @ordered
 	 */
 	protected static final String HOST_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getHost() <em>Host</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -54,7 +62,7 @@ public class CommandImpl extends EObjectImpl implements Command {
 	protected String host = HOST_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getBindings() <em>Bindings</em>}' reference list.
+	 * The cached value of the '{@link #getBindings() <em>Bindings</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getBindings()
@@ -110,9 +118,23 @@ public class CommandImpl extends EObjectImpl implements Command {
 	 */
 	public EList<Binding> getBindings() {
 		if (bindings == null) {
-			bindings = new EObjectResolvingEList<Binding>(Binding.class, this, CorePackage.COMMAND__BINDINGS);
+			bindings = new EObjectContainmentEList<Binding>(Binding.class, this, CorePackage.COMMAND__BINDINGS);
 		}
 		return bindings;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CorePackage.COMMAND__BINDINGS:
+				return ((InternalEList<?>)getBindings()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

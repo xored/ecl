@@ -2,11 +2,10 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Script.java,v 1.2 2010/10/31 12:47:44 alena Exp $
+ * $Id: Script.java,v 1.3 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

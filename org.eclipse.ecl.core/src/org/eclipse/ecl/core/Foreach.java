@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Foreach.java,v 1.2 2010/08/22 14:13:34 alena Exp $
+ * $Id: Foreach.java,v 1.3 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core;
 
@@ -29,43 +29,43 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Foreach extends Command {
 	/**
-	 * Returns the value of the '<em><b>Do</b></em>' reference.
+	 * Returns the value of the '<em><b>Do</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Do</em>' reference isn't clear,
+	 * If the meaning of the '<em>Do</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Do</em>' reference.
+	 * @return the value of the '<em>Do</em>' containment reference.
 	 * @see #setDo(Command)
 	 * @see org.eclipse.ecl.core.CorePackage#getForeach_Do()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	Command getDo();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.ecl.core.Foreach#getDo <em>Do</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.ecl.core.Foreach#getDo <em>Do</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Do</em>' reference.
+	 * @param value the new value of the '<em>Do</em>' containment reference.
 	 * @see #getDo()
 	 * @generated
 	 */
 	void setDo(Command value);
 
 	/**
-	 * Returns the value of the '<em><b>Input</b></em>' reference list.
+	 * Returns the value of the '<em><b>Input</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Input</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Input</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Input</em>' reference list.
+	 * @return the value of the '<em>Input</em>' containment reference list.
 	 * @see org.eclipse.ecl.core.CorePackage#getForeach_Input()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<EObject> getInput();

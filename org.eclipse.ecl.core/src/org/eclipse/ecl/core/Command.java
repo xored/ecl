@@ -2,11 +2,12 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Command.java,v 1.1 2010/08/02 09:24:00 andrey Exp $
+ * $Id: Command.java,v 1.2 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -27,7 +28,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Command extends EObject {
-
 	/**
 	 * Returns the value of the '<em><b>Host</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -55,18 +55,19 @@ public interface Command extends EObject {
 	void setHost(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Bindings</b></em>' reference list.
+	 * Returns the value of the '<em><b>Bindings</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.ecl.core.Binding}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Bindings</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Bindings</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Bindings</em>' reference list.
+	 * @return the value of the '<em>Bindings</em>' containment reference list.
 	 * @see org.eclipse.ecl.core.CorePackage#getCommand_Bindings()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Binding> getBindings();
+
 } // Command

@@ -7,6 +7,7 @@ import java.util.List;
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Block;
 import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.core.Sequence;
@@ -62,7 +63,7 @@ public class EclRefactoring extends ScriptletFactory {
 				Pipeline pipeline = (Pipeline) command;
 				if (pipeline.getCommands().size() > 1) {
 					List<Command> toCollapse = new ArrayList<Command>();
-					toCollapse.add(subPipe(pipeline, 1));
+					toCollapse.add(getTail(pipeline));
 					Command object = pipeline.getCommands().get(0);
 					int j = i + 1;
 					for (; j < commands.size(); j++) {
@@ -71,7 +72,7 @@ public class EclRefactoring extends ScriptletFactory {
 							Pipeline nextPipeline = (Pipeline) next;
 							if (comparator.compare(object, nextPipeline
 									.getCommands().get(0)) == 0) {
-								toCollapse.add(subPipe(nextPipeline, 1));
+								toCollapse.add(getTail(nextPipeline));
 							} else {
 								break;
 							}
@@ -80,7 +81,8 @@ public class EclRefactoring extends ScriptletFactory {
 						}
 					}
 					if (toCollapse.size() > 1) {
-						newCommands.add(makeWith(object,
+						newCommands.add(makeWith(
+								(Command) EcoreUtil.copy(object),
 								makeSeq(withify(toCollapse, comparator))));
 					} else {
 						newCommands.add(command);
@@ -142,18 +144,16 @@ public class EclRefactoring extends ScriptletFactory {
 		return withCommand;
 	}
 
-	private static Command subPipe(Pipeline pipeline, int from) {
-		return subPipe(pipeline, from, pipeline.getCommands().size());
-	}
-
-	private static Command subPipe(Pipeline pipeline, int from, int to) {
+	private static Command getTail(Pipeline pipeline) {
 		List<Command> commands = pipeline.getCommands();
 		// it is checked already that size > 1
 		if (commands.size() == 2) {
-			return commands.get(1);
+			return (Command) EcoreUtil.copy(commands.get(1));
 		}
-		List<Command> rest = new ArrayList<Command>(commands);
-		rest.remove(0);
-		return makePipe(pipeline.getCommands().subList(from, to));
+		Pipeline tail = CoreFactory.eINSTANCE.createPipeline();
+		for (int i = 1; i < commands.size(); i++) {
+			tail.getCommands().add((Command) EcoreUtil.copy(commands.get(i)));
+		}
+		return tail;
 	}
 }

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CoreSwitch.java,v 1.2 2010/10/31 12:47:44 alena Exp $
+ * $Id: CoreSwitch.java,v 1.3 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core.util;
 
@@ -168,46 +168,6 @@ public class CoreSwitch<T> {
 				Foreach foreach = (Foreach)theEObject;
 				T result = caseForeach(foreach);
 				if (result == null) result = caseCommand(foreach);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CorePackage.DEFINE_COMMAND: {
-				DefineCommand defineCommand = (DefineCommand)theEObject;
-				T result = caseDefineCommand(defineCommand);
-				if (result == null) result = caseCommand(defineCommand);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CorePackage.GET_CHILDREN: {
-				GetChildren getChildren = (GetChildren)theEObject;
-				T result = caseGetChildren(getChildren);
-				if (result == null) result = caseCommand(getChildren);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CorePackage.ANY_OBJECT: {
-				AnyObject anyObject = (AnyObject)theEObject;
-				T result = caseAnyObject(anyObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CorePackage.EANY_OBJECT: {
-				EAnyObject eAnyObject = (EAnyObject)theEObject;
-				T result = caseEAnyObject(eAnyObject);
-				if (result == null) result = caseAnyObject(eAnyObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CorePackage.ANY_MODEL_OBJECT: {
-				AnyModelObject anyModelObject = (AnyModelObject)theEObject;
-				T result = caseAnyModelObject(anyModelObject);
-				if (result == null) result = caseAnyObject(anyModelObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CorePackage.RESOLVE: {
-				Resolve resolve = (Resolve)theEObject;
-				T result = caseResolve(resolve);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -405,96 +365,6 @@ public class CoreSwitch<T> {
 	 * @generated
 	 */
 	public T caseForeach(Foreach object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Define Command</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Define Command</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDefineCommand(DefineCommand object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Get Children</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Get Children</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseGetChildren(GetChildren object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Any Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Any Object</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAnyObject(AnyObject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>EAny Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>EAny Object</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEAnyObject(EAnyObject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Any Model Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Any Model Object</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAnyModelObject(AnyModelObject object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Resolve</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Resolve</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseResolve(Resolve object) {
 		return null;
 	}
 

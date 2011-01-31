@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CoreAdapterFactory.java,v 1.2 2010/10/31 12:47:44 alena Exp $
+ * $Id: CoreAdapterFactory.java,v 1.3 2011/01/31 14:20:11 alena Exp $
  */
 package org.eclipse.ecl.core.util;
 
@@ -118,30 +118,6 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseForeach(Foreach object) {
 				return createForeachAdapter();
-			}
-			@Override
-			public Adapter caseDefineCommand(DefineCommand object) {
-				return createDefineCommandAdapter();
-			}
-			@Override
-			public Adapter caseGetChildren(GetChildren object) {
-				return createGetChildrenAdapter();
-			}
-			@Override
-			public Adapter caseAnyObject(AnyObject object) {
-				return createAnyObjectAdapter();
-			}
-			@Override
-			public Adapter caseEAnyObject(EAnyObject object) {
-				return createEAnyObjectAdapter();
-			}
-			@Override
-			public Adapter caseAnyModelObject(AnyModelObject object) {
-				return createAnyModelObjectAdapter();
-			}
-			@Override
-			public Adapter caseResolve(Resolve object) {
-				return createResolveAdapter();
 			}
 			@Override
 			public Adapter caseProcessStatus(ProcessStatus object) {
@@ -336,90 +312,6 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createForeachAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.DefineCommand <em>Define Command</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.ecl.core.DefineCommand
-	 * @generated
-	 */
-	public Adapter createDefineCommandAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.GetChildren <em>Get Children</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.ecl.core.GetChildren
-	 * @generated
-	 */
-	public Adapter createGetChildrenAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.AnyObject <em>Any Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.ecl.core.AnyObject
-	 * @generated
-	 */
-	public Adapter createAnyObjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EAnyObject <em>EAny Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.ecl.core.EAnyObject
-	 * @generated
-	 */
-	public Adapter createEAnyObjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.AnyModelObject <em>Any Model Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.ecl.core.AnyModelObject
-	 * @generated
-	 */
-	public Adapter createAnyModelObjectAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.Resolve <em>Resolve</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.ecl.core.Resolve
-	 * @generated
-	 */
-	public Adapter createResolveAdapter() {
 		return null;
 	}
 
