@@ -15,7 +15,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.impl.BinaryResourceImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 public class EMFStreamPipe implements IPipe {
 
@@ -40,32 +40,36 @@ public class EMFStreamPipe implements IPipe {
 	}
 
 	public Object take(long timeout) throws CoreException {
-		Resource r = new BinaryResourceImpl();
+		// Resource r = new BinaryResourceImpl();
+		Resource r = new XMIResourceImpl();
+		int size = 0;
+		byte[] data = null;
 		try {
-			int size = in.readInt();
+			size = in.readInt();
 			if (size <= 0) {
 				throw new IOException("Failed to read from stream");
 			}
-			byte[] data = new byte[size];
+			data = new byte[size];
 			in.readFully(data);
 			ByteArrayInputStream bin = new ByteArrayInputStream(data);
 			r.load(bin, null);
 			return r.getContents().get(0);
-		} catch (IOException e) {
+		} catch (Throwable e) {
 			throw new CoreException(new Status(IStatus.ERROR,
 					CorePlugin.PLUGIN_ID, e.getMessage(), e));
 		}
 	}
 
 	public IPipe write(Object object) throws CoreException {
-		Resource r = new BinaryResourceImpl();
+		// Resource r = new BinaryResourceImpl();
+		Resource r = new XMIResourceImpl();
 		r.getContents().add((EObject) object);
 		try {
 			ByteArrayOutputStream bout = new ByteArrayOutputStream();
 			r.save(bout, null);
 			out.writeInt(bout.size());
 			out.write(bout.toByteArray());
-		} catch (IOException e) {
+		} catch (Throwable e) {
 			if (e instanceof SocketException) {
 				if (e.getMessage().contains(
 						"Connection reset by peer: socket write error")) {
