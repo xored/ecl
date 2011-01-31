@@ -14,10 +14,10 @@ public class DefaultFormatter implements ICommandFormatter {
 	protected static final String ATTR_PREFIX = "-";
 
 	public void newPipeCommand() {
-		if (!firstPipeCommand) {
+		if (!(firstPipeCommand || firstPipeCommandInExec || firstPipeCommandInGroup)) {
 			buffer.append(SPACE).append(PIPE).append(SPACE);
 		}
-		firstPipeCommand = false;
+		firstPipeCommand = firstPipeCommandInExec = firstPipeCommandInGroup = false;
 	}
 
 	public void newSequenceCommand() {
@@ -43,13 +43,14 @@ public class DefaultFormatter implements ICommandFormatter {
 	}
 
 	public void openGroup(boolean singleLine) {
-		firstPipeCommand = true;
+		firstPipeCommandInGroup = true;
 		buffer.append(SPACE).append(OPEN_BRACE);
 		if (!singleLine)
 			level++;
 	}
 
 	public void closeGroup(boolean singleLine) {
+		firstPipeCommandInGroup = false;
 		if (!singleLine) {
 			level--;
 			newLine();
@@ -59,11 +60,12 @@ public class DefaultFormatter implements ICommandFormatter {
 	}
 
 	public void openExec() {
-		firstPipeCommand = true;
+		firstPipeCommandInExec = true;
 		buffer.append(SPACE).append(OPEN_BRACKET);
 	}
 
 	public void closeExec() {
+		firstPipeCommandInExec = false;
 		buffer.append(CLOSE_BRACKET);
 	}
 
@@ -88,5 +90,7 @@ public class DefaultFormatter implements ICommandFormatter {
 
 	protected boolean firstSequenceCommand = true;
 	protected boolean firstPipeCommand = true;
+	protected boolean firstPipeCommandInGroup = true;
+	protected boolean firstPipeCommandInExec = true;
 
 }
