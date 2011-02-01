@@ -82,9 +82,4 @@ public class EclTcpClientPlugin extends Plugin {
 			throws IOException {
 		return new TcpSession(address, port);
 	}
-
-	public static ISession startSession(InetAddress address, int port,
-			InetAddress localAddress, int localPort) throws IOException {
-		return new TcpSession(address, port, localAddress, localPort);
-	}
 }
