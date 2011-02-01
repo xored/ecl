@@ -129,6 +129,9 @@ public class TcpSession implements ISession {
 					}
 				} catch (CoreException e) {
 					ctx.setStatus(e.getStatus());
+				} catch (Throwable e) {
+					ctx.setStatus(new Status(Status.ERROR,
+							"org.eclipse.core.ecl", e.getMessage(), e));
 				}
 			}
 		}, "ECL TCP session execute:" + command.getClass().getName()).start();

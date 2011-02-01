@@ -4,7 +4,6 @@ import junit.framework.TestCase;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.ecl.core.AnyModelObject;
 import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.ExecutableParameter;
@@ -145,9 +144,9 @@ public abstract class AbstractCoreTest extends TestCase {
 		IStatus status = process.waitFor();
 		assertTrue(status.isOK());
 		IPipe pipe = process.getOutput();
-		AnyModelObject res = (AnyModelObject) pipe
+		Object res = pipe
 				.take(ISession.DEFAULT_TAKE_TIMEOUT);
-		assertEquals(42, ((Integer) res.getJavaObject()).intValue());
+		assertEquals(42, ((Integer) res).intValue());
 	}
 
 	/*
