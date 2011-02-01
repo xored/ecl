@@ -4,7 +4,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -56,11 +55,11 @@ public class EMFStreamPipe implements IPipe {
 			r.load(bin, null);
 			return r.getContents().get(0);
 		} catch (Throwable e) {
-			if (!(e instanceof EOFException)) {
-				throw new CoreException(new Status(IStatus.ERROR,
-						CorePlugin.PLUGIN_ID, e.getMessage(), e));
-			}
-			return null;
+			// if (!(e instanceof EOFException)) {
+			throw new CoreException(new Status(IStatus.ERROR,
+					CorePlugin.PLUGIN_ID, e.getMessage(), e));
+			// }
+			// return null;
 		}
 	}
 
