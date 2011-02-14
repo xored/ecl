@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -11,6 +12,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.ProcessStatus;
 import org.eclipse.ecl.gen.ast.LocatedProcessStatus;
+import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.internal.core.Pipe;
 import org.eclipse.ecl.parser.LocatedErrorStatus;
 import org.eclipse.ecl.runtime.CoreUtils;
@@ -22,8 +24,7 @@ public class TcpSession implements ISession {
 
 	private final static String PLUGIN_ID = "org.eclipse.ecl.internal.client.tcp";
 
-	private Socket socket;
-	private IPipe commandPipe;
+	private final AtomicBoolean closed = new AtomicBoolean(false);
 
 	private InetAddress address;
 	private int port;
@@ -31,13 +32,6 @@ public class TcpSession implements ISession {
 	public TcpSession(InetAddress address, int port) throws IOException {
 		this.address = address;
 		this.port = port;
-		init();
-	}
-
-	protected void init() throws IOException {
-		socket = new Socket(address, port);
-		commandPipe = CoreUtils.createEMFPipe(socket.getInputStream(),
-				socket.getOutputStream());
 	}
 
 	public IPipe createPipe() {
@@ -51,6 +45,9 @@ public class TcpSession implements ISession {
 		new Thread(new Runnable() {
 			public void run() {
 				try {
+					Socket socket = new Socket(address, port);
+					IPipe commandPipe = CoreUtils.createEMFPipe(
+							socket.getInputStream(), socket.getOutputStream());
 					commandPipe.write(command);
 					Object result = null;
 					while (true) {
@@ -73,6 +70,8 @@ public class TcpSession implements ISession {
 					}
 				} catch (CoreException e) {
 					ctx.setStatus(e.getStatus());
+				} catch (Throwable t) {
+					ctx.setStatus(CorePlugin.err(t.getMessage(), t));
 				}
 			}
 		}, "ECL TCP session execute:" + command.getClass().getName()).start();
@@ -85,7 +84,12 @@ public class TcpSession implements ISession {
 		final RemoteProcess ctx = new RemoteProcess(this);
 		new Thread(new Runnable() {
 			public void run() {
+				Socket socket = null;
+				IPipe commandPipe = null;
 				try {
+					socket = new Socket(address, port);
+					commandPipe = CoreUtils.createEMFPipe(
+							socket.getInputStream(), socket.getOutputStream());
 					commandPipe.write(command);
 					Object result = null;
 					while (true) {
@@ -110,9 +114,15 @@ public class TcpSession implements ISession {
 					}
 				} catch (CoreException e) {
 					ctx.setStatus(e.getStatus());
-				} catch (Throwable e) {
-					ctx.setStatus(new Status(Status.ERROR,
-							"org.eclipse.core.ecl", e.getMessage(), e));
+				} catch (Throwable t) {
+					ctx.setStatus(CorePlugin.err(t.getMessage(), t));
+				} finally {
+					try {
+						commandPipe.close(Status.OK_STATUS);
+						socket.close();
+					} catch (Throwable e) {
+						CorePlugin.log(CorePlugin.err(e.getMessage(), e));
+					}
 				}
 			}
 		}, "ECL TCP session execute:" + command.getClass().getName()).start();
@@ -146,12 +156,7 @@ public class TcpSession implements ISession {
 
 	public void reconnect() throws CoreException {
 		try {
-			close();
-		} catch (Exception e) {
-			// ignore closing exceptions
-		}
-		try {
-			init();
+			new Socket(address, port);
 		} catch (IOException e) {
 			throw new CoreException(new Status(IStatus.ERROR, PLUGIN_ID,
 					e.getMessage(), e));
@@ -159,17 +164,11 @@ public class TcpSession implements ISession {
 	}
 
 	public void close() throws CoreException {
-		commandPipe.close(Status.OK_STATUS);
-		try {
-			socket.close();
-		} catch (IOException e) {
-			throw new CoreException(new Status(IStatus.ERROR, PLUGIN_ID,
-					e.getMessage(), e));
-		}
+		closed.compareAndSet(false, true);
 	}
 
 	public boolean isClosed() {
-		return socket.isClosed();
+		return closed.get();
 	}
 
 }
