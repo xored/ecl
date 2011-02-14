@@ -37,6 +37,8 @@ public class Session extends Thread {
 					socket.getOutputStream());
 			while (!isInterrupted()) {
 				Command command = (Command) pipe.take(10000000);
+				if (command == null)
+					break;
 				if (DEBUG_LOG) {
 					System.out.println("SERVER:   Got command: " + command);
 				}
