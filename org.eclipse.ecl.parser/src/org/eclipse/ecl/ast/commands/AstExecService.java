@@ -6,7 +6,7 @@ import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.gen.ast.AstExec;
 import org.eclipse.ecl.internal.commands.ExecService;
 import org.eclipse.ecl.internal.core.CorePlugin;
-import org.eclipse.ecl.parser.LocatedErrorStatus;
+import org.eclipse.ecl.parser.LocatedStatus;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
 
@@ -16,8 +16,8 @@ public class AstExecService implements ICommandService {
 			throws InterruptedException, CoreException {
 		AstExec exec = (AstExec) command;
 		IStatus s = new ExecService().service(exec, process);
-		if (!s.isOK() && !(s instanceof LocatedErrorStatus)) {
-			return new LocatedErrorStatus(IStatus.ERROR, CorePlugin.PLUGIN_ID,
+		if (!s.isOK() && !(s instanceof LocatedStatus)) {
+			return new LocatedStatus(IStatus.ERROR, CorePlugin.PLUGIN_ID,
 					s.getMessage(), exec.getLine(), exec.getColumn(),
 					exec.getLength());
 		}

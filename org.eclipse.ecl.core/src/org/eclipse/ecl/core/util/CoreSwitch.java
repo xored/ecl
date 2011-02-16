@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CoreSwitch.java,v 1.3 2011/01/31 14:20:11 alena Exp $
+ * $Id: CoreSwitch.java,v 1.4 2011/02/16 06:55:52 alena Exp $
  */
 package org.eclipse.ecl.core.util;
 
@@ -171,16 +171,22 @@ public class CoreSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CorePackage.SCRIPT: {
+				Script script = (Script)theEObject;
+				T result = caseScript(script);
+				if (result == null) result = caseCommand(script);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case CorePackage.PROCESS_STATUS: {
 				ProcessStatus processStatus = (ProcessStatus)theEObject;
 				T result = caseProcessStatus(processStatus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CorePackage.SCRIPT: {
-				Script script = (Script)theEObject;
-				T result = caseScript(script);
-				if (result == null) result = caseCommand(script);
+			case CorePackage.CONVERTED_TO_EMF_PIPE: {
+				ConvertedToEMFPipe convertedToEMFPipe = (ConvertedToEMFPipe)theEObject;
+				T result = caseConvertedToEMFPipe(convertedToEMFPipe);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -380,6 +386,21 @@ public class CoreSwitch<T> {
 	 * @generated
 	 */
 	public T caseProcessStatus(ProcessStatus object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Converted To EMF Pipe</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Converted To EMF Pipe</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConvertedToEMFPipe(ConvertedToEMFPipe object) {
 		return null;
 	}
 

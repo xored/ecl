@@ -32,12 +32,12 @@ public class EclCoreParser {
 		try {
 			return parser.commands();
 		} catch (RecognitionException e) {
-			throw new CoreException(new LocatedErrorStatus(IStatus.ERROR,
+			throw new CoreException(new LocatedStatus(IStatus.ERROR,
 					EclParserPlugin.PLUGIN_ID, "Syntax error", e.line,
 					e.charPositionInLine, 1));
 		} catch (SyntaxErrorException e) {
 			throw new CoreException(
-					new LocatedErrorStatus(IStatus.ERROR,
+					new LocatedStatus(IStatus.ERROR,
 							EclParserPlugin.PLUGIN_ID, "Syntax error", e.line,
 							e.col, 1));
 		} catch (Throwable t) {

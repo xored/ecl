@@ -28,4 +28,10 @@
             namespace="http://www.eclipse.org/ecl/ast.ecore">
       </scriptlet>
    </extension>
+   <extension
+         point="org.eclipse.ecl.core.emfConverters">
+      <serializer
+            class="org.eclipse.ecl.internal.parser.LocatedStatusConverter">
+      </serializer>
+   </extension>
 </plugin>

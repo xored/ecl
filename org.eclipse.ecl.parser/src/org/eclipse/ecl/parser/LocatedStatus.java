@@ -2,12 +2,12 @@ package org.eclipse.ecl.parser;
 
 import org.eclipse.core.runtime.Status;
 
-public class LocatedErrorStatus extends Status {
+public class LocatedStatus extends Status {
 	final private int line;
 	final private int column;
 	final private int length;
 
-	public LocatedErrorStatus(int severity, String pluginId, String message,
+	public LocatedStatus(int severity, String pluginId, String message,
 			int line, int column, int length) {
 		super(severity, pluginId,
 				message == null || message.length() == 0 ? "Execution failed"

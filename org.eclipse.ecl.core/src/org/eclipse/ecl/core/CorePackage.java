@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CorePackage.java,v 1.4 2011/01/31 14:20:11 alena Exp $
+ * $Id: CorePackage.java,v 1.5 2011/02/16 06:55:52 alena Exp $
  */
 package org.eclipse.ecl.core;
 
@@ -610,7 +610,53 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getProcessStatus()
 	 * @generated
 	 */
-	int PROCESS_STATUS = 12;
+	int PROCESS_STATUS = 13;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.ScriptImpl <em>Script</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.ScriptImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getScript()
+	 * @generated
+	 */
+	int SCRIPT = 12;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT__CONTENT = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Script</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Plugin Id</b></em>' attribute.
@@ -649,69 +695,41 @@ public interface CorePackage extends EPackage {
 	int PROCESS_STATUS__SEVERITY = 3;
 
 	/**
-	 * The feature id for the '<em><b>Process Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROCESS_STATUS__PROCESS_ID = 4;
-
-	/**
 	 * The number of structural features of the '<em>Process Status</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_STATUS_FEATURE_COUNT = 5;
+	int PROCESS_STATUS_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.ScriptImpl <em>Script</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.ConvertedToEMFPipeImpl <em>Converted To EMF Pipe</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.core.impl.ScriptImpl
-	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getScript()
+	 * @see org.eclipse.ecl.core.impl.ConvertedToEMFPipeImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getConvertedToEMFPipe()
 	 * @generated
 	 */
-	int SCRIPT = 13;
+	int CONVERTED_TO_EMF_PIPE = 14;
 
 	/**
-	 * The feature id for the '<em><b>Host</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCRIPT__HOST = COMMAND__HOST;
-
-	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Object</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCRIPT__BINDINGS = COMMAND__BINDINGS;
+	int CONVERTED_TO_EMF_PIPE__OBJECT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * The number of structural features of the '<em>Converted To EMF Pipe</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCRIPT__CONTENT = COMMAND_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Script</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCRIPT_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
-
+	int CONVERTED_TO_EMF_PIPE_FEATURE_COUNT = 1;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -1064,15 +1082,25 @@ public interface CorePackage extends EPackage {
 	EAttribute getProcessStatus_Severity();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.ProcessStatus#getProcessId <em>Process Id</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.ConvertedToEMFPipe <em>Converted To EMF Pipe</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Process Id</em>'.
-	 * @see org.eclipse.ecl.core.ProcessStatus#getProcessId()
-	 * @see #getProcessStatus()
+	 * @return the meta object for class '<em>Converted To EMF Pipe</em>'.
+	 * @see org.eclipse.ecl.core.ConvertedToEMFPipe
 	 * @generated
 	 */
-	EAttribute getProcessStatus_ProcessId();
+	EClass getConvertedToEMFPipe();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.ConvertedToEMFPipe#getObject <em>Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Object</em>'.
+	 * @see org.eclipse.ecl.core.ConvertedToEMFPipe#getObject()
+	 * @see #getConvertedToEMFPipe()
+	 * @generated
+	 */
+	EReference getConvertedToEMFPipe_Object();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Script <em>Script</em>}'.
@@ -1408,12 +1436,22 @@ public interface CorePackage extends EPackage {
 		EAttribute PROCESS_STATUS__SEVERITY = eINSTANCE.getProcessStatus_Severity();
 
 		/**
-		 * The meta object literal for the '<em><b>Process Id</b></em>' attribute feature.
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ConvertedToEMFPipeImpl <em>Converted To EMF Pipe</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.ConvertedToEMFPipeImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getConvertedToEMFPipe()
+		 * @generated
+		 */
+		EClass CONVERTED_TO_EMF_PIPE = eINSTANCE.getConvertedToEMFPipe();
+
+		/**
+		 * The meta object literal for the '<em><b>Object</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROCESS_STATUS__PROCESS_ID = eINSTANCE.getProcessStatus_ProcessId();
+		EReference CONVERTED_TO_EMF_PIPE__OBJECT = eINSTANCE.getConvertedToEMFPipe_Object();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ScriptImpl <em>Script</em>}' class.

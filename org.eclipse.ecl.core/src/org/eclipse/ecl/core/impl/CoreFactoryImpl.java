@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CoreFactoryImpl.java,v 1.3 2011/01/31 14:20:11 alena Exp $
+ * $Id: CoreFactoryImpl.java,v 1.4 2011/02/16 06:55:52 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 
@@ -71,8 +71,9 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.EXECUTABLE_PARAMETER: return createExecutableParameter();
 			case CorePackage.LITERAL_PARAMETER: return createLiteralParameter();
 			case CorePackage.FOREACH: return createForeach();
-			case CorePackage.PROCESS_STATUS: return createProcessStatus();
 			case CorePackage.SCRIPT: return createScript();
+			case CorePackage.PROCESS_STATUS: return createProcessStatus();
+			case CorePackage.CONVERTED_TO_EMF_PIPE: return createConvertedToEMFPipe();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -196,6 +197,16 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public ProcessStatus createProcessStatus() {
 		ProcessStatusImpl processStatus = new ProcessStatusImpl();
 		return processStatus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConvertedToEMFPipe createConvertedToEMFPipe() {
+		ConvertedToEMFPipeImpl convertedToEMFPipe = new ConvertedToEMFPipeImpl();
+		return convertedToEMFPipe;
 	}
 
 	/**

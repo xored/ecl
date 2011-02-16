@@ -5,12 +5,13 @@
  <copyright>
  </copyright>
 
- $Id: plugin.xml,v 1.2 2010/10/08 08:30:31 alena Exp $
+ $Id: plugin.xml,v 1.3 2011/02/16 06:55:52 alena Exp $
 -->
 
 <plugin>
    <extension-point id="scriptlet" name="%scriptlet" schema="schema/scriptlet.exsd"/>
    <extension-point id="param_converter" name="Param Converter" schema="schema/param_converter.exsd"/>
+   <extension-point id="emfConverters" name="EMF Converters" schema="schema/emfConverters.exsd"/>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
@@ -57,5 +58,11 @@
       <converter
             class="org.eclipse.ecl.internal.core.ObjectParamConverter">
       </converter>
+   </extension>
+   <extension
+         point="org.eclipse.ecl.core.emfConverters">
+      <serializer
+            class="org.eclipse.ecl.internal.core.ProcessStatusConverter">
+      </serializer>
    </extension>
 </plugin>

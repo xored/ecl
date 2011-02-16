@@ -10,11 +10,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
-import org.eclipse.ecl.core.ProcessStatus;
-import org.eclipse.ecl.gen.ast.LocatedProcessStatus;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.internal.core.Pipe;
-import org.eclipse.ecl.parser.LocatedErrorStatus;
 import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
@@ -52,22 +49,11 @@ public class TcpSession implements ISession {
 					Object result = null;
 					while (true) {
 						result = commandPipe.take(10000);
-						if (result instanceof ProcessStatus) {
+						if (result instanceof IStatus) {
 							break;
 						}
 					}
-					ProcessStatus ps = (ProcessStatus) result;
-					if (ps instanceof LocatedProcessStatus) {
-						LocatedProcessStatus lps = (LocatedProcessStatus) ps;
-						ctx.setStatus(new LocatedErrorStatus(lps.getSeverity(),
-								lps.getPluginId(), lps.getMessage(), lps
-										.getLine(), lps.getColumn(), lps
-										.getLength()));
-					} else {
-						ctx.setStatus(new Status(ps.getSeverity(), ps
-								.getPluginId(), ps.getCode(), ps.getMessage(),
-								null));
-					}
+					ctx.setStatus((IStatus) result);
 				} catch (CoreException e) {
 					ctx.setStatus(e.getStatus());
 				} catch (Throwable t) {
@@ -94,24 +80,13 @@ public class TcpSession implements ISession {
 					Object result = null;
 					while (true) {
 						result = commandPipe.take(10000);
-						if (result instanceof ProcessStatus) {
+						if (result instanceof IStatus) {
 							break;
 						} else if (out != null) {
 							out.write(result);
 						}
 					}
-					ProcessStatus ps = (ProcessStatus) result;
-					if (ps instanceof LocatedProcessStatus) {
-						LocatedProcessStatus lps = (LocatedProcessStatus) ps;
-						ctx.setStatus(new LocatedErrorStatus(lps.getSeverity(),
-								lps.getPluginId(), lps.getMessage(), lps
-										.getLine(), lps.getColumn(), lps
-										.getLength()));
-					} else {
-						ctx.setStatus(new Status(ps.getSeverity(), ps
-								.getPluginId(), ps.getCode(), ps.getMessage(),
-								null));
-					}
+					ctx.setStatus((IStatus) result);
 				} catch (CoreException e) {
 					ctx.setStatus(e.getStatus());
 				} catch (Throwable t) {

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProcessStatus.java,v 1.2 2011/01/31 14:20:11 alena Exp $
+ * $Id: ProcessStatus.java,v 1.3 2011/02/16 06:55:52 alena Exp $
  */
 package org.eclipse.ecl.core;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.ecl.core.ProcessStatus#getCode <em>Code</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.ProcessStatus#getMessage <em>Message</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.ProcessStatus#getSeverity <em>Severity</em>}</li>
- *   <li>{@link org.eclipse.ecl.core.ProcessStatus#getProcessId <em>Process Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -132,31 +131,5 @@ public interface ProcessStatus extends EObject {
 	 * @generated
 	 */
 	void setSeverity(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Process Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Process Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Process Id</em>' attribute.
-	 * @see #setProcessId(int)
-	 * @see org.eclipse.ecl.core.CorePackage#getProcessStatus_ProcessId()
-	 * @model
-	 * @generated
-	 */
-	int getProcessId();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.ecl.core.ProcessStatus#getProcessId <em>Process Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Process Id</em>' attribute.
-	 * @see #getProcessId()
-	 * @generated
-	 */
-	void setProcessId(int value);
 
 } // ProcessStatus

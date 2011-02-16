@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ProcessStatusImpl.java,v 1.2 2011/01/31 14:20:11 alena Exp $
+ * $Id: ProcessStatusImpl.java,v 1.3 2011/02/16 06:55:52 alena Exp $
  */
 package org.eclipse.ecl.core.impl;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link org.eclipse.ecl.core.impl.ProcessStatusImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.ProcessStatusImpl#getMessage <em>Message</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.ProcessStatusImpl#getSeverity <em>Severity</em>}</li>
- *   <li>{@link org.eclipse.ecl.core.impl.ProcessStatusImpl#getProcessId <em>Process Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -113,26 +112,6 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 	 * @ordered
 	 */
 	protected int severity = SEVERITY_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getProcessId() <em>Process Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getProcessId()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int PROCESS_ID_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getProcessId() <em>Process Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getProcessId()
-	 * @generated
-	 * @ordered
-	 */
-	protected int processId = PROCESS_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -242,27 +221,6 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getProcessId() {
-		return processId;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setProcessId(int newProcessId) {
-		int oldProcessId = processId;
-		processId = newProcessId;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.PROCESS_STATUS__PROCESS_ID, oldProcessId, processId));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -274,8 +232,6 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 				return getMessage();
 			case CorePackage.PROCESS_STATUS__SEVERITY:
 				return getSeverity();
-			case CorePackage.PROCESS_STATUS__PROCESS_ID:
-				return getProcessId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -299,9 +255,6 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 				return;
 			case CorePackage.PROCESS_STATUS__SEVERITY:
 				setSeverity((Integer)newValue);
-				return;
-			case CorePackage.PROCESS_STATUS__PROCESS_ID:
-				setProcessId((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -327,9 +280,6 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 			case CorePackage.PROCESS_STATUS__SEVERITY:
 				setSeverity(SEVERITY_EDEFAULT);
 				return;
-			case CorePackage.PROCESS_STATUS__PROCESS_ID:
-				setProcessId(PROCESS_ID_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -350,8 +300,6 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 				return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
 			case CorePackage.PROCESS_STATUS__SEVERITY:
 				return severity != SEVERITY_EDEFAULT;
-			case CorePackage.PROCESS_STATUS__PROCESS_ID:
-				return processId != PROCESS_ID_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -374,8 +322,6 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 		result.append(message);
 		result.append(", severity: ");
 		result.append(severity);
-		result.append(", processId: ");
-		result.append(processId);
 		result.append(')');
 		return result.toString();
 	}

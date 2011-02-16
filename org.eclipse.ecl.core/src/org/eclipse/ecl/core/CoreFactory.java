@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CoreFactory.java,v 1.3 2011/01/31 14:20:11 alena Exp $
+ * $Id: CoreFactory.java,v 1.4 2011/02/16 06:55:52 alena Exp $
  */
 package org.eclipse.ecl.core;
 
@@ -132,6 +132,15 @@ public interface CoreFactory extends EFactory {
 	 * @generated
 	 */
 	ProcessStatus createProcessStatus();
+
+	/**
+	 * Returns a new object of class '<em>Converted To EMF Pipe</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Converted To EMF Pipe</em>'.
+	 * @generated
+	 */
+	ConvertedToEMFPipe createConvertedToEMFPipe();
 
 	/**
 	 * Returns a new object of class '<em>Script</em>'.

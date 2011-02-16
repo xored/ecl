@@ -3,7 +3,7 @@
 <schema targetNamespace="org.eclipse.ecl.core" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appInfo>
-         <meta.schema plugin="org.eclipse.ecl.core" id="param-converter" name="Param Converter"/>
+         <meta.schema plugin="org.eclipse.ecl.core" id="emfSerializers" name="EMF Serializers"/>
       </appInfo>
       <documentation>
          [Enter description of this extension point.]
@@ -18,7 +18,7 @@
       </annotation>
       <complexType>
          <sequence minOccurs="1" maxOccurs="unbounded">
-            <element ref="converter" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="serializer" minOccurs="1" maxOccurs="unbounded"/>
          </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -47,7 +47,7 @@
       </complexType>
    </element>
 
-   <element name="converter">
+   <element name="serializer">
       <complexType>
          <attribute name="class" type="string" use="required">
             <annotation>
@@ -55,7 +55,7 @@
                   
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.ecl.runtime.IParamConverter"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.ecl.runtime.IEMFSerializer"/>
                </appInfo>
             </annotation>
          </attribute>
