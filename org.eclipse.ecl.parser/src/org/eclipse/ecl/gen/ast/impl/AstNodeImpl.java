@@ -2,12 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AstNodeImpl.java,v 1.1 2010/12/14 10:01:31 alena Exp $
+ * $Id: AstNodeImpl.java,v 1.2 2011/02/17 09:31:02 alena Exp $
  */
 package org.eclipse.ecl.gen.ast.impl;
-
-import org.eclipse.ecl.core.impl.ExecImpl;
-import org.eclipse.ecl.core.Command;
 
 import org.eclipse.ecl.gen.ast.AstNode;
 import org.eclipse.ecl.gen.ast.AstPackage;
@@ -15,7 +12,6 @@ import org.eclipse.ecl.gen.ast.AstPackage;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;

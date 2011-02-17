@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AstPackage.java,v 1.5 2011/02/16 06:55:52 alena Exp $
+ * $Id: AstPackage.java,v 1.6 2011/02/17 09:31:02 alena Exp $
  */
 package org.eclipse.ecl.gen.ast;
 
@@ -10,6 +10,7 @@ import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -21,46 +22,43 @@ import org.eclipse.emf.ecore.EPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
  * @see org.eclipse.ecl.gen.ast.AstFactory
  * @model kind="package"
  * @generated
  */
 public interface AstPackage extends EPackage {
 	/**
-	 * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNAME = "ast";
 
 	/**
-	 * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package namespace URI.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNS_URI = "http://www.eclipse.org/ecl/ast.ecore";
 
 	/**
-	 * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The package namespace name.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	String eNS_PREFIX = "org.eclipse.ecl.ast";
 
 	/**
-	 * The singleton instance of the package. <!-- begin-user-doc --> <!--
+	 * The singleton instance of the package.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	AstPackage eINSTANCE = org.eclipse.ecl.gen.ast.impl.AstPackageImpl.init();
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.eclipse.ecl.gen.ast.impl.AstNodeImpl <em>Node</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.ecl.gen.ast.impl.AstNodeImpl <em>Node</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see org.eclipse.ecl.gen.ast.impl.AstNodeImpl
 	 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getAstNode()
 	 * @generated
@@ -104,10 +102,8 @@ public interface AstPackage extends EPackage {
 	int AST_NODE_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.eclipse.ecl.gen.ast.impl.AstExecImpl <em>Exec</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.ecl.gen.ast.impl.AstExecImpl <em>Exec</em>}' class.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see org.eclipse.ecl.gen.ast.impl.AstExecImpl
 	 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getAstExec()
 	 * @generated
@@ -196,10 +192,8 @@ public interface AstPackage extends EPackage {
 	int AST_EXEC_FEATURE_COUNT = CorePackage.EXEC_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.eclipse.ecl.gen.ast.impl.AstLiteralImpl <em>Literal</em>}'
-	 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The meta object id for the '{@link org.eclipse.ecl.gen.ast.impl.AstLiteralImpl <em>Literal</em>}' class.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see org.eclipse.ecl.gen.ast.impl.AstLiteralImpl
 	 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getAstLiteral()
 	 * @generated
@@ -270,88 +264,95 @@ public interface AstPackage extends EPackage {
 	int AST_LITERAL_FEATURE_COUNT = CorePackage.LITERAL_PARAMETER_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '
-	 * {@link org.eclipse.ecl.gen.ast.impl.LocatedProcessStatusImpl
-	 * <em>Located Process Status</em>}' class. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @see org.eclipse.ecl.gen.ast.impl.LocatedProcessStatusImpl
-	 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getLocatedProcessStatus()
+	 * The meta object id for the '{@link org.eclipse.ecl.gen.ast.impl.ScriptProcessStatusImpl <em>Script Process Status</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.gen.ast.impl.ScriptProcessStatusImpl
+	 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getScriptProcessStatus()
 	 * @generated
 	 */
-	int LOCATED_PROCESS_STATUS = 3;
+	int SCRIPT_PROCESS_STATUS = 3;
 
 	/**
-	 * The feature id for the '<em><b>Plugin Id</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Plugin Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOCATED_PROCESS_STATUS__PLUGIN_ID = CorePackage.PROCESS_STATUS__PLUGIN_ID;
+	int SCRIPT_PROCESS_STATUS__PLUGIN_ID = CorePackage.PROCESS_STATUS__PLUGIN_ID;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOCATED_PROCESS_STATUS__CODE = CorePackage.PROCESS_STATUS__CODE;
+	int SCRIPT_PROCESS_STATUS__CODE = CorePackage.PROCESS_STATUS__CODE;
 
 	/**
-	 * The feature id for the '<em><b>Message</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOCATED_PROCESS_STATUS__MESSAGE = CorePackage.PROCESS_STATUS__MESSAGE;
+	int SCRIPT_PROCESS_STATUS__MESSAGE = CorePackage.PROCESS_STATUS__MESSAGE;
 
 	/**
-	 * The feature id for the '<em><b>Severity</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Severity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOCATED_PROCESS_STATUS__SEVERITY = CorePackage.PROCESS_STATUS__SEVERITY;
+	int SCRIPT_PROCESS_STATUS__SEVERITY = CorePackage.PROCESS_STATUS__SEVERITY;
 
 	/**
-	 * The feature id for the '<em><b>Column</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Column</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOCATED_PROCESS_STATUS__COLUMN = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 0;
+	int SCRIPT_PROCESS_STATUS__COLUMN = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Line</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Line</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOCATED_PROCESS_STATUS__LINE = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 1;
+	int SCRIPT_PROCESS_STATUS__LINE = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Length</b></em>' attribute. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOCATED_PROCESS_STATUS__LENGTH = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 2;
+	int SCRIPT_PROCESS_STATUS__LENGTH = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Located Process Status</em>
-	 * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The feature id for the '<em><b>Cause</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOCATED_PROCESS_STATUS_FEATURE_COUNT = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 3;
+	int SCRIPT_PROCESS_STATUS__CAUSE = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Script Process Status</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_PROCESS_STATUS_FEATURE_COUNT = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 4;
 
 	/**
 	 * Returns the meta object for class '
@@ -423,16 +424,25 @@ public interface AstPackage extends EPackage {
 	EClass getAstLiteral();
 
 	/**
-	 * Returns the meta object for class '
-	 * {@link org.eclipse.ecl.gen.ast.LocatedProcessStatus
-	 * <em>Located Process Status</em>}'. <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * 
-	 * @return the meta object for class '<em>Located Process Status</em>'.
-	 * @see org.eclipse.ecl.gen.ast.LocatedProcessStatus
+	 * Returns the meta object for class '{@link org.eclipse.ecl.gen.ast.ScriptProcessStatus <em>Script Process Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Script Process Status</em>'.
+	 * @see org.eclipse.ecl.gen.ast.ScriptProcessStatus
 	 * @generated
 	 */
-	EClass getLocatedProcessStatus();
+	EClass getScriptProcessStatus();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.gen.ast.ScriptProcessStatus#getCause <em>Cause</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Cause</em>'.
+	 * @see org.eclipse.ecl.gen.ast.ScriptProcessStatus#getCause()
+	 * @see #getScriptProcessStatus()
+	 * @generated
+	 */
+	EReference getScriptProcessStatus_Cause();
 
 	/**
 	 * Returns the factory that creates the instances of the model. <!--
@@ -453,15 +463,12 @@ public interface AstPackage extends EPackage {
 	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '
-		 * {@link org.eclipse.ecl.gen.ast.impl.AstNodeImpl <em>Node</em>}'
-		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.eclipse.ecl.gen.ast.impl.AstNodeImpl <em>Node</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.ecl.gen.ast.impl.AstNodeImpl
 		 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getAstNode()
 		 * @generated
@@ -469,34 +476,29 @@ public interface AstPackage extends EPackage {
 		EClass AST_NODE = eINSTANCE.getAstNode();
 
 		/**
-		 * The meta object literal for the '<em><b>Column</b></em>' attribute
-		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '<em><b>Column</b></em>' attribute feature.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute AST_NODE__COLUMN = eINSTANCE.getAstNode_Column();
 
 		/**
-		 * The meta object literal for the '<em><b>Line</b></em>' attribute
-		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '<em><b>Line</b></em>' attribute feature.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute AST_NODE__LINE = eINSTANCE.getAstNode_Line();
 
 		/**
-		 * The meta object literal for the '<em><b>Length</b></em>' attribute
-		 * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '<em><b>Length</b></em>' attribute feature.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute AST_NODE__LENGTH = eINSTANCE.getAstNode_Length();
 
 		/**
-		 * The meta object literal for the '
-		 * {@link org.eclipse.ecl.gen.ast.impl.AstExecImpl <em>Exec</em>}'
-		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.eclipse.ecl.gen.ast.impl.AstExecImpl <em>Exec</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.ecl.gen.ast.impl.AstExecImpl
 		 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getAstExec()
 		 * @generated
@@ -504,10 +506,8 @@ public interface AstPackage extends EPackage {
 		EClass AST_EXEC = eINSTANCE.getAstExec();
 
 		/**
-		 * The meta object literal for the '
-		 * {@link org.eclipse.ecl.gen.ast.impl.AstLiteralImpl <em>Literal</em>}'
-		 * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 * The meta object literal for the '{@link org.eclipse.ecl.gen.ast.impl.AstLiteralImpl <em>Literal</em>}' class.
+		 * <!-- begin-user-doc --> <!-- end-user-doc -->
 		 * @see org.eclipse.ecl.gen.ast.impl.AstLiteralImpl
 		 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getAstLiteral()
 		 * @generated
@@ -515,16 +515,22 @@ public interface AstPackage extends EPackage {
 		EClass AST_LITERAL = eINSTANCE.getAstLiteral();
 
 		/**
-		 * The meta object literal for the '
-		 * {@link org.eclipse.ecl.gen.ast.impl.LocatedProcessStatusImpl
-		 * <em>Located Process Status</em>}' class. <!-- begin-user-doc --> <!--
-		 * end-user-doc -->
-		 * 
-		 * @see org.eclipse.ecl.gen.ast.impl.LocatedProcessStatusImpl
-		 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getLocatedProcessStatus()
+		 * The meta object literal for the '{@link org.eclipse.ecl.gen.ast.impl.ScriptProcessStatusImpl <em>Script Process Status</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.gen.ast.impl.ScriptProcessStatusImpl
+		 * @see org.eclipse.ecl.gen.ast.impl.AstPackageImpl#getScriptProcessStatus()
 		 * @generated
 		 */
-		EClass LOCATED_PROCESS_STATUS = eINSTANCE.getLocatedProcessStatus();
+		EClass SCRIPT_PROCESS_STATUS = eINSTANCE.getScriptProcessStatus();
+
+		/**
+		 * The meta object literal for the '<em><b>Cause</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCRIPT_PROCESS_STATUS__CAUSE = eINSTANCE.getScriptProcessStatus_Cause();
 
 	}
 

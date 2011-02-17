@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AstPackageImpl.java,v 1.5 2010/12/23 08:12:01 alena Exp $
+ * $Id: AstPackageImpl.java,v 1.6 2011/02/17 09:31:02 alena Exp $
  */
 package org.eclipse.ecl.gen.ast.impl;
 
@@ -14,13 +14,12 @@ import org.eclipse.ecl.gen.ast.AstLiteral;
 import org.eclipse.ecl.gen.ast.AstNode;
 import org.eclipse.ecl.gen.ast.AstPackage;
 
-import org.eclipse.ecl.gen.ast.LocatedProcessStatus;
+import org.eclipse.ecl.gen.ast.ScriptProcessStatus;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EcorePackage;
 
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -55,7 +54,7 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass locatedProcessStatusEClass = null;
+	private EClass scriptProcessStatusEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -180,8 +179,17 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getLocatedProcessStatus() {
-		return locatedProcessStatusEClass;
+	public EClass getScriptProcessStatus() {
+		return scriptProcessStatusEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getScriptProcessStatus_Cause() {
+		return (EReference)scriptProcessStatusEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -221,7 +229,8 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 
 		astLiteralEClass = createEClass(AST_LITERAL);
 
-		locatedProcessStatusEClass = createEClass(LOCATED_PROCESS_STATUS);
+		scriptProcessStatusEClass = createEClass(SCRIPT_PROCESS_STATUS);
+		createEReference(scriptProcessStatusEClass, SCRIPT_PROCESS_STATUS__CAUSE);
 	}
 
 	/**
@@ -259,8 +268,8 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		astExecEClass.getESuperTypes().add(this.getAstNode());
 		astLiteralEClass.getESuperTypes().add(theCorePackage.getLiteralParameter());
 		astLiteralEClass.getESuperTypes().add(this.getAstNode());
-		locatedProcessStatusEClass.getESuperTypes().add(theCorePackage.getProcessStatus());
-		locatedProcessStatusEClass.getESuperTypes().add(this.getAstNode());
+		scriptProcessStatusEClass.getESuperTypes().add(theCorePackage.getProcessStatus());
+		scriptProcessStatusEClass.getESuperTypes().add(this.getAstNode());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(astNodeEClass, AstNode.class, "AstNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -272,7 +281,8 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 
 		initEClass(astLiteralEClass, AstLiteral.class, "AstLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(locatedProcessStatusEClass, LocatedProcessStatus.class, "LocatedProcessStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(scriptProcessStatusEClass, ScriptProcessStatus.class, "ScriptProcessStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getScriptProcessStatus_Cause(), theCorePackage.getProcessStatus(), null, "cause", null, 0, 1, ScriptProcessStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

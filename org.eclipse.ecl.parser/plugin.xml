@@ -31,7 +31,7 @@
    <extension
          point="org.eclipse.ecl.core.emfConverters">
       <serializer
-            class="org.eclipse.ecl.internal.parser.LocatedStatusConverter">
+            class="org.eclipse.ecl.internal.parser.ScriptStatusConverter">
       </serializer>
    </extension>
 </plugin>

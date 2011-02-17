@@ -1,6 +1,9 @@
 package org.eclipse.ecl.internal.parser;
 
 public class SyntaxErrorException extends RuntimeException {
+
+	private static final long serialVersionUID = -3597387509846380248L;
+
 	public final int line;
 	public final int col;
 

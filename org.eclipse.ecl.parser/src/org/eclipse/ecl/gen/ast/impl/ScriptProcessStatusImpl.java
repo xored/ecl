@@ -2,38 +2,42 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LocatedProcessStatusImpl.java,v 1.1 2010/12/23 08:12:01 alena Exp $
+ * $Id: ScriptProcessStatusImpl.java,v 1.1 2011/02/17 09:31:02 alena Exp $
  */
 package org.eclipse.ecl.gen.ast.impl;
 
+import org.eclipse.ecl.core.ProcessStatus;
 import org.eclipse.ecl.core.impl.ProcessStatusImpl;
 
 import org.eclipse.ecl.gen.ast.AstNode;
 import org.eclipse.ecl.gen.ast.AstPackage;
-import org.eclipse.ecl.gen.ast.LocatedProcessStatus;
+import org.eclipse.ecl.gen.ast.ScriptProcessStatus;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Located Process Status</b></em>'.
+ * An implementation of the model object '<em><b>Script Process Status</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.gen.ast.impl.LocatedProcessStatusImpl#getColumn <em>Column</em>}</li>
- *   <li>{@link org.eclipse.ecl.gen.ast.impl.LocatedProcessStatusImpl#getLine <em>Line</em>}</li>
- *   <li>{@link org.eclipse.ecl.gen.ast.impl.LocatedProcessStatusImpl#getLength <em>Length</em>}</li>
+ *   <li>{@link org.eclipse.ecl.gen.ast.impl.ScriptProcessStatusImpl#getColumn <em>Column</em>}</li>
+ *   <li>{@link org.eclipse.ecl.gen.ast.impl.ScriptProcessStatusImpl#getLine <em>Line</em>}</li>
+ *   <li>{@link org.eclipse.ecl.gen.ast.impl.ScriptProcessStatusImpl#getLength <em>Length</em>}</li>
+ *   <li>{@link org.eclipse.ecl.gen.ast.impl.ScriptProcessStatusImpl#getCause <em>Cause</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class LocatedProcessStatusImpl extends ProcessStatusImpl implements LocatedProcessStatus {
+public class ScriptProcessStatusImpl extends ProcessStatusImpl implements ScriptProcessStatus {
 	/**
 	 * The default value of the '{@link #getColumn() <em>Column</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -95,11 +99,21 @@ public class LocatedProcessStatusImpl extends ProcessStatusImpl implements Locat
 	protected int length = LENGTH_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getCause() <em>Cause</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCause()
+	 * @generated
+	 * @ordered
+	 */
+	protected ProcessStatus cause;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LocatedProcessStatusImpl() {
+	protected ScriptProcessStatusImpl() {
 		super();
 	}
 
@@ -110,7 +124,7 @@ public class LocatedProcessStatusImpl extends ProcessStatusImpl implements Locat
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AstPackage.Literals.LOCATED_PROCESS_STATUS;
+		return AstPackage.Literals.SCRIPT_PROCESS_STATUS;
 	}
 
 	/**
@@ -131,7 +145,7 @@ public class LocatedProcessStatusImpl extends ProcessStatusImpl implements Locat
 		int oldColumn = column;
 		column = newColumn;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AstPackage.LOCATED_PROCESS_STATUS__COLUMN, oldColumn, column));
+			eNotify(new ENotificationImpl(this, Notification.SET, AstPackage.SCRIPT_PROCESS_STATUS__COLUMN, oldColumn, column));
 	}
 
 	/**
@@ -152,7 +166,7 @@ public class LocatedProcessStatusImpl extends ProcessStatusImpl implements Locat
 		int oldLine = line;
 		line = newLine;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AstPackage.LOCATED_PROCESS_STATUS__LINE, oldLine, line));
+			eNotify(new ENotificationImpl(this, Notification.SET, AstPackage.SCRIPT_PROCESS_STATUS__LINE, oldLine, line));
 	}
 
 	/**
@@ -173,7 +187,64 @@ public class LocatedProcessStatusImpl extends ProcessStatusImpl implements Locat
 		int oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AstPackage.LOCATED_PROCESS_STATUS__LENGTH, oldLength, length));
+			eNotify(new ENotificationImpl(this, Notification.SET, AstPackage.SCRIPT_PROCESS_STATUS__LENGTH, oldLength, length));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProcessStatus getCause() {
+		return cause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCause(ProcessStatus newCause, NotificationChain msgs) {
+		ProcessStatus oldCause = cause;
+		cause = newCause;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstPackage.SCRIPT_PROCESS_STATUS__CAUSE, oldCause, newCause);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCause(ProcessStatus newCause) {
+		if (newCause != cause) {
+			NotificationChain msgs = null;
+			if (cause != null)
+				msgs = ((InternalEObject)cause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstPackage.SCRIPT_PROCESS_STATUS__CAUSE, null, msgs);
+			if (newCause != null)
+				msgs = ((InternalEObject)newCause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstPackage.SCRIPT_PROCESS_STATUS__CAUSE, null, msgs);
+			msgs = basicSetCause(newCause, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstPackage.SCRIPT_PROCESS_STATUS__CAUSE, newCause, newCause));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AstPackage.SCRIPT_PROCESS_STATUS__CAUSE:
+				return basicSetCause(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -184,12 +255,14 @@ public class LocatedProcessStatusImpl extends ProcessStatusImpl implements Locat
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AstPackage.LOCATED_PROCESS_STATUS__COLUMN:
+			case AstPackage.SCRIPT_PROCESS_STATUS__COLUMN:
 				return getColumn();
-			case AstPackage.LOCATED_PROCESS_STATUS__LINE:
+			case AstPackage.SCRIPT_PROCESS_STATUS__LINE:
 				return getLine();
-			case AstPackage.LOCATED_PROCESS_STATUS__LENGTH:
+			case AstPackage.SCRIPT_PROCESS_STATUS__LENGTH:
 				return getLength();
+			case AstPackage.SCRIPT_PROCESS_STATUS__CAUSE:
+				return getCause();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -202,14 +275,17 @@ public class LocatedProcessStatusImpl extends ProcessStatusImpl implements Locat
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AstPackage.LOCATED_PROCESS_STATUS__COLUMN:
+			case AstPackage.SCRIPT_PROCESS_STATUS__COLUMN:
 				setColumn((Integer)newValue);
 				return;
-			case AstPackage.LOCATED_PROCESS_STATUS__LINE:
+			case AstPackage.SCRIPT_PROCESS_STATUS__LINE:
 				setLine((Integer)newValue);
 				return;
-			case AstPackage.LOCATED_PROCESS_STATUS__LENGTH:
+			case AstPackage.SCRIPT_PROCESS_STATUS__LENGTH:
 				setLength((Integer)newValue);
+				return;
+			case AstPackage.SCRIPT_PROCESS_STATUS__CAUSE:
+				setCause((ProcessStatus)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -223,14 +299,17 @@ public class LocatedProcessStatusImpl extends ProcessStatusImpl implements Locat
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AstPackage.LOCATED_PROCESS_STATUS__COLUMN:
+			case AstPackage.SCRIPT_PROCESS_STATUS__COLUMN:
 				setColumn(COLUMN_EDEFAULT);
 				return;
-			case AstPackage.LOCATED_PROCESS_STATUS__LINE:
+			case AstPackage.SCRIPT_PROCESS_STATUS__LINE:
 				setLine(LINE_EDEFAULT);
 				return;
-			case AstPackage.LOCATED_PROCESS_STATUS__LENGTH:
+			case AstPackage.SCRIPT_PROCESS_STATUS__LENGTH:
 				setLength(LENGTH_EDEFAULT);
+				return;
+			case AstPackage.SCRIPT_PROCESS_STATUS__CAUSE:
+				setCause((ProcessStatus)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -244,12 +323,14 @@ public class LocatedProcessStatusImpl extends ProcessStatusImpl implements Locat
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AstPackage.LOCATED_PROCESS_STATUS__COLUMN:
+			case AstPackage.SCRIPT_PROCESS_STATUS__COLUMN:
 				return column != COLUMN_EDEFAULT;
-			case AstPackage.LOCATED_PROCESS_STATUS__LINE:
+			case AstPackage.SCRIPT_PROCESS_STATUS__LINE:
 				return line != LINE_EDEFAULT;
-			case AstPackage.LOCATED_PROCESS_STATUS__LENGTH:
+			case AstPackage.SCRIPT_PROCESS_STATUS__LENGTH:
 				return length != LENGTH_EDEFAULT;
+			case AstPackage.SCRIPT_PROCESS_STATUS__CAUSE:
+				return cause != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -263,9 +344,9 @@ public class LocatedProcessStatusImpl extends ProcessStatusImpl implements Locat
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == AstNode.class) {
 			switch (derivedFeatureID) {
-				case AstPackage.LOCATED_PROCESS_STATUS__COLUMN: return AstPackage.AST_NODE__COLUMN;
-				case AstPackage.LOCATED_PROCESS_STATUS__LINE: return AstPackage.AST_NODE__LINE;
-				case AstPackage.LOCATED_PROCESS_STATUS__LENGTH: return AstPackage.AST_NODE__LENGTH;
+				case AstPackage.SCRIPT_PROCESS_STATUS__COLUMN: return AstPackage.AST_NODE__COLUMN;
+				case AstPackage.SCRIPT_PROCESS_STATUS__LINE: return AstPackage.AST_NODE__LINE;
+				case AstPackage.SCRIPT_PROCESS_STATUS__LENGTH: return AstPackage.AST_NODE__LENGTH;
 				default: return -1;
 			}
 		}
@@ -281,9 +362,9 @@ public class LocatedProcessStatusImpl extends ProcessStatusImpl implements Locat
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == AstNode.class) {
 			switch (baseFeatureID) {
-				case AstPackage.AST_NODE__COLUMN: return AstPackage.LOCATED_PROCESS_STATUS__COLUMN;
-				case AstPackage.AST_NODE__LINE: return AstPackage.LOCATED_PROCESS_STATUS__LINE;
-				case AstPackage.AST_NODE__LENGTH: return AstPackage.LOCATED_PROCESS_STATUS__LENGTH;
+				case AstPackage.AST_NODE__COLUMN: return AstPackage.SCRIPT_PROCESS_STATUS__COLUMN;
+				case AstPackage.AST_NODE__LINE: return AstPackage.SCRIPT_PROCESS_STATUS__LINE;
+				case AstPackage.AST_NODE__LENGTH: return AstPackage.SCRIPT_PROCESS_STATUS__LENGTH;
 				default: return -1;
 			}
 		}
@@ -310,4 +391,4 @@ public class LocatedProcessStatusImpl extends ProcessStatusImpl implements Locat
 		return result.toString();
 	}
 
-} //LocatedProcessStatusImpl
+} //ScriptProcessStatusImpl

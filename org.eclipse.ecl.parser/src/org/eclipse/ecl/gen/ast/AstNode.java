@@ -2,12 +2,9 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AstNode.java,v 1.2 2010/12/21 07:10:47 alena Exp $
+ * $Id: AstNode.java,v 1.3 2011/02/17 09:31:02 alena Exp $
  */
 package org.eclipse.ecl.gen.ast;
-
-import org.eclipse.ecl.core.Exec;
-import org.eclipse.ecl.core.Command;
 
 import org.eclipse.emf.ecore.EObject;
 
