@@ -38,35 +38,11 @@ public class TcpSession implements ISession {
 	}
 
 	public IProcess execute(final Command command) throws CoreException {
-		final RemoteProcess ctx = new RemoteProcess(this);
-		new Thread(new Runnable() {
-			public void run() {
-				try {
-					Socket socket = new Socket(address, port);
-					IPipe commandPipe = CoreUtils.createEMFPipe(
-							socket.getInputStream(), socket.getOutputStream());
-					commandPipe.write(command);
-					Object result = null;
-					while (true) {
-						result = commandPipe.take(10000);
-						if (result instanceof IStatus) {
-							break;
-						}
-					}
-					ctx.setStatus((IStatus) result);
-				} catch (CoreException e) {
-					ctx.setStatus(e.getStatus());
-				} catch (Throwable t) {
-					ctx.setStatus(CorePlugin.err(t.getMessage(), t));
-				}
-			}
-		}, "ECL TCP session execute:" + command.getClass().getName()).start();
-		return ctx;
+		return execute(command, null, null);
 	}
 
 	public IProcess execute(final Command command, final IPipe in,
 			final IPipe out) throws CoreException {
-		// TODO this is just necessary implementation
 		final RemoteProcess ctx = new RemoteProcess(this);
 		new Thread(new Runnable() {
 			public void run() {
