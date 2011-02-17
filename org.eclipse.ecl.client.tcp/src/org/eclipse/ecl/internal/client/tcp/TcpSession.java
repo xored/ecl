@@ -93,8 +93,12 @@ public class TcpSession implements ISession {
 					ctx.setStatus(CorePlugin.err(t.getMessage(), t));
 				} finally {
 					try {
-						commandPipe.close(Status.OK_STATUS);
-						socket.close();
+						if (commandPipe != null) {
+							commandPipe.close(Status.OK_STATUS);
+						}
+						if (socket != null) {
+							socket.close();
+						}
 					} catch (Throwable e) {
 						CorePlugin.log(CorePlugin.err(e.getMessage(), e));
 					}
