@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Doc
+Bundle-Name: ECL Documentation
 Bundle-SymbolicName: org.eclipse.ecl.doc;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipse.ecl.doc.EclDocPlugin
@@ -10,3 +10,4 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.ecl.doc
+Bundle-Vendor: xored software, Inc.

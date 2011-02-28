@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
+Bundle-Name: ECL Shell
 Bundle-SymbolicName: org.eclipse.ecl.shell;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipse.ecl.eclsh.EclPlugin
@@ -10,4 +10,4 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.ecl.eclsh
-Bundle-Vendor: %providerName
+Bundle-Vendor: xored software, Inc.

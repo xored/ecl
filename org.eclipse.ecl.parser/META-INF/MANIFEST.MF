@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Ecl Parser
+Bundle-Name: ECL Parser
 Bundle-SymbolicName: org.eclipse.ecl.parser;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
@@ -11,3 +11,4 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.ecl.gen.ast,
  org.eclipse.ecl.parser
 Bundle-Activator: org.eclipse.ecl.internal.parser.EclParserPlugin
+Bundle-Vendor: xored software, Inc.

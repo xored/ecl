@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Core Plug-in
+Bundle-Name: ECL Spaces
 Bundle-SymbolicName: org.eclipse.espace.core
 Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: XORED
+Bundle-Vendor: xored software, Inc.
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: com.xored.espace.core,
  com.xored.espace.memory

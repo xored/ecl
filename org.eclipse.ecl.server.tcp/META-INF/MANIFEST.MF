@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Tcp
+Bundle-Name: ECL TCP Server
 Bundle-SymbolicName: org.eclipse.ecl.server.tcp;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipse.ecl.internal.server.tcp.Activator
@@ -11,3 +11,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.ecl.internal.server.tcp,
  org.eclipse.ecl.server.tcp
+Bundle-Vendor: xored software, Inc.
