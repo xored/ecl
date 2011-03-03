@@ -14,6 +14,13 @@ public class EclTcp {
 			TcpServer newServer = new TcpServer(port);
 			activator.setServer(newServer);
 			newServer.start();
+			while (newServer.isStarting()) {
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					//
+				}
+			}
 		} else {
 			TcpServer server = activator.getServer();
 			int oldPort = server.getPort();
@@ -23,6 +30,13 @@ public class EclTcp {
 					TcpServer newServer = new TcpServer(port);
 					activator.setServer(newServer);
 					newServer.start();
+					while (newServer.isStarting()) {
+						try {
+							Thread.sleep(50);
+						} catch (InterruptedException e) {
+							//
+						}
+					}
 				}
 			}
 			// throw new IOException("server already running");

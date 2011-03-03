@@ -9,15 +9,21 @@ public class TcpServer extends Thread {
 
 	private ServerSocket socket;
 	private int port;
+	private boolean starting = true;
 
 	public TcpServer(int port) throws IOException {
 		super("ECL tcp server");
 		socket = new ServerSocket(port);
 		this.port = port;
 	}
+	
+	public boolean isStarting() {
+		return starting;
+	}
 
 	@Override
 	public void run() {
+		starting = false;
 		try {
 			while (!isInterrupted()) {
 				new Session(socket.accept());
