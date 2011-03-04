@@ -116,9 +116,16 @@ package org.eclipse.ecl.internal.parser;
 commands returns[Command cmd=null;]:
 	exprs=expr_list	{cmd=exprs;}
 ;
-expr_list returns [Sequence seq=null]:
-  {seq = factory.createSequence();} 
-  ( c2=expression {seq.getCommands().add(c2);} )*
+expr_list returns [Command cmd=null]:
+  {Sequence seq = factory.createSequence();} 
+  ( c2=expression {seq.getCommands().add(c2);} )* 
+  {
+    if (seq.getCommands().size() == 1) {
+      cmd = seq.getCommands().get(0);
+    } else {
+      cmd = seq;
+    }
+  }
 ;
 
 expression returns[Command cmd=null;]: 

@@ -1,4 +1,4 @@
-// $ANTLR 3.0 D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g 2011-03-04 16:02:19
+// $ANTLR 3.0 D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g 2011-03-04 17:25:06
 
 package org.eclipse.ecl.internal.parser;
 
@@ -105,8 +105,8 @@ public class EclLexer extends Lexer {
     public final void mCOLON() throws RecognitionException {
         try {
             int _type = COLON;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:332:8: ( ';' )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:332:8: ';'
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:339:8: ( ';' )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:339:8: ';'
             {
             match(';'); 
 
@@ -123,8 +123,8 @@ public class EclLexer extends Lexer {
     public final void mAND() throws RecognitionException {
         try {
             int _type = AND;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:333:6: ( '&' )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:333:6: '&'
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:340:6: ( '&' )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:340:6: '&'
             {
             match('&'); 
 
@@ -141,8 +141,8 @@ public class EclLexer extends Lexer {
     public final void mOR() throws RecognitionException {
         try {
             int _type = OR;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:334:5: ( '|' )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:334:5: '|'
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:341:5: ( '|' )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:341:5: '|'
             {
             match('|'); 
 
@@ -159,8 +159,8 @@ public class EclLexer extends Lexer {
     public final void mSEMI() throws RecognitionException {
         try {
             int _type = SEMI;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:335:7: ( ':' )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:335:7: ':'
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:342:7: ( ':' )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:342:7: ':'
             {
             match(':'); 
 
@@ -176,11 +176,11 @@ public class EclLexer extends Lexer {
     // $ANTLR start DIGIT
     public final void mDIGIT() throws RecognitionException {
         try {
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:338:1: ( ( '0' .. '9' ) )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:338:1: ( '0' .. '9' )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:345:1: ( ( '0' .. '9' ) )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:345:1: ( '0' .. '9' )
             {
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:338:1: ( '0' .. '9' )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:338:2: '0' .. '9'
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:345:1: ( '0' .. '9' )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:345:2: '0' .. '9'
             {
             matchRange('0','9'); 
 
@@ -199,10 +199,10 @@ public class EclLexer extends Lexer {
     public final void mNUMBER() throws RecognitionException {
         try {
             int _type = NUMBER;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:342:3: ( ( DIGIT )+ )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:342:3: ( DIGIT )+
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:349:3: ( ( DIGIT )+ )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:349:3: ( DIGIT )+
             {
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:342:3: ( DIGIT )+
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:349:3: ( DIGIT )+
             int cnt1=0;
             loop1:
             do {
@@ -216,7 +216,7 @@ public class EclLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:342:3: DIGIT
+            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:349:3: DIGIT
             	    {
             	    mDIGIT(); 
 
@@ -246,8 +246,8 @@ public class EclLexer extends Lexer {
     public final void mIP4() throws RecognitionException {
         try {
             int _type = IP4;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:347:3: ( NUMBER '.' NUMBER '.' NUMBER '.' NUMBER )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:347:3: NUMBER '.' NUMBER '.' NUMBER '.' NUMBER
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:354:3: ( NUMBER '.' NUMBER '.' NUMBER '.' NUMBER )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:354:3: NUMBER '.' NUMBER '.' NUMBER '.' NUMBER
             {
             mNUMBER(); 
             match('.'); 
@@ -270,11 +270,11 @@ public class EclLexer extends Lexer {
     public final void mSTRING() throws RecognitionException {
         try {
             int _type = STRING;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:351:4: ( '\"' (~ ( '\"' | '\\n' | '\\\\' ) | ( '\\\\' . ) )* '\"' )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:351:4: '\"' (~ ( '\"' | '\\n' | '\\\\' ) | ( '\\\\' . ) )* '\"'
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:358:4: ( '\"' (~ ( '\"' | '\\n' | '\\\\' ) | ( '\\\\' . ) )* '\"' )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:358:4: '\"' (~ ( '\"' | '\\n' | '\\\\' ) | ( '\\\\' . ) )* '\"'
             {
             match('\"'); 
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:351:8: (~ ( '\"' | '\\n' | '\\\\' ) | ( '\\\\' . ) )*
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:358:8: (~ ( '\"' | '\\n' | '\\\\' ) | ( '\\\\' . ) )*
             loop2:
             do {
                 int alt2=3;
@@ -290,7 +290,7 @@ public class EclLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:351:9: ~ ( '\"' | '\\n' | '\\\\' )
+            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:358:9: ~ ( '\"' | '\\n' | '\\\\' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFE') ) {
             	        input.consume();
@@ -306,10 +306,10 @@ public class EclLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:351:26: ( '\\\\' . )
+            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:358:26: ( '\\\\' . )
             	    {
-            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:351:26: ( '\\\\' . )
-            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:351:27: '\\\\' .
+            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:358:26: ( '\\\\' . )
+            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:358:27: '\\\\' .
             	    {
             	    match('\\'); 
             	    matchAny(); 
@@ -340,8 +340,8 @@ public class EclLexer extends Lexer {
     public final void mLOPEN() throws RecognitionException {
         try {
             int _type = LOPEN;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:354:10: ( '(' )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:354:10: '('
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:361:10: ( '(' )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:361:10: '('
             {
             match('('); 
 
@@ -358,8 +358,8 @@ public class EclLexer extends Lexer {
     public final void mROPEN() throws RecognitionException {
         try {
             int _type = ROPEN;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:357:10: ( ')' )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:357:10: ')'
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:364:10: ( ')' )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:364:10: ')'
             {
             match(')'); 
 
@@ -376,8 +376,8 @@ public class EclLexer extends Lexer {
     public final void mLCURLY() throws RecognitionException {
         try {
             int _type = LCURLY;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:360:11: ( '{' )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:360:11: '{'
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:367:11: ( '{' )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:367:11: '{'
             {
             match('{'); 
 
@@ -394,8 +394,8 @@ public class EclLexer extends Lexer {
     public final void mRCURLY() throws RecognitionException {
         try {
             int _type = RCURLY;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:363:11: ( '}' )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:363:11: '}'
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:370:11: ( '}' )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:370:11: '}'
             {
             match('}'); 
 
@@ -412,8 +412,8 @@ public class EclLexer extends Lexer {
     public final void mLBRACK() throws RecognitionException {
         try {
             int _type = LBRACK;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:366:11: ( '[' )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:366:11: '['
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:373:11: ( '[' )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:373:11: '['
             {
             match('['); 
 
@@ -430,8 +430,8 @@ public class EclLexer extends Lexer {
     public final void mRBRACK() throws RecognitionException {
         try {
             int _type = RBRACK;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:369:11: ( ']' )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:369:11: ']'
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:376:11: ( ']' )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:376:11: ']'
             {
             match(']'); 
 
@@ -448,13 +448,13 @@ public class EclLexer extends Lexer {
     public final void mCURLY_STRING() throws RecognitionException {
         try {
             int _type = CURLY_STRING;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:377:15: ( LCURLY ( . )* RCURLY )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:377:15: LCURLY ( . )* RCURLY
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:384:15: ( LCURLY ( . )* RCURLY )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:384:15: LCURLY ( . )* RCURLY
             {
              int deep = 0; 
             mLCURLY(); 
              deep += 1; 
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:379:3: ( . )*
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:386:3: ( . )*
             loop3:
             do {
                 int alt3=2;
@@ -476,7 +476,7 @@ public class EclLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:380:3: .
+            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:387:3: .
             	    {
             	     
             	        if (input.LA(1) == '"') {
@@ -524,8 +524,8 @@ public class EclLexer extends Lexer {
     public final void mNAME() throws RecognitionException {
         try {
             int _type = NAME;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:405:2: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' | '/' ) | DIGIT )* )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:405:2: ( 'a' .. 'z' | 'A' .. 'Z' ) ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' | '/' ) | DIGIT )*
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:412:2: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' | '/' ) | DIGIT )* )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:412:2: ( 'a' .. 'z' | 'A' .. 'Z' ) ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' | '/' ) | DIGIT )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -537,7 +537,7 @@ public class EclLexer extends Lexer {
                 recover(mse);    throw mse;
             }
 
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:405:22: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' | '/' ) | DIGIT )*
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:412:22: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' | '/' ) | DIGIT )*
             loop4:
             do {
                 int alt4=3;
@@ -553,7 +553,7 @@ public class EclLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:405:23: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' | '/' )
+            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:412:23: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '.' | '/' )
             	    {
             	    if ( (input.LA(1)>='.' && input.LA(1)<='/')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -569,7 +569,7 @@ public class EclLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:405:55: DIGIT
+            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:412:55: DIGIT
             	    {
             	    mDIGIT(); 
 
@@ -595,11 +595,11 @@ public class EclLexer extends Lexer {
     public final void mDNAME() throws RecognitionException {
         try {
             int _type = DNAME;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:420:2: ( NAME ( '-' NAME )+ )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:420:2: NAME ( '-' NAME )+
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:427:2: ( NAME ( '-' NAME )+ )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:427:2: NAME ( '-' NAME )+
             {
             mNAME(); 
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:420:7: ( '-' NAME )+
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:427:7: ( '-' NAME )+
             int cnt5=0;
             loop5:
             do {
@@ -613,7 +613,7 @@ public class EclLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:420:8: '-' NAME
+            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:427:8: '-' NAME
             	    {
             	    match('-'); 
             	    mNAME(); 
@@ -644,10 +644,10 @@ public class EclLexer extends Lexer {
     public final void mWS() throws RecognitionException {
         try {
             int _type = WS;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:423:5: ( ( ' ' | '\\t' )+ )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:423:5: ( ' ' | '\\t' )+
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:430:5: ( ( ' ' | '\\t' )+ )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:430:5: ( ' ' | '\\t' )+
             {
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:423:5: ( ' ' | '\\t' )+
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:430:5: ( ' ' | '\\t' )+
             int cnt6=0;
             loop6:
             do {
@@ -703,10 +703,10 @@ public class EclLexer extends Lexer {
     public final void mNEWLINE() throws RecognitionException {
         try {
             int _type = NEWLINE;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:429:10: ( ( '\\r' | '\\n' )+ )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:429:10: ( '\\r' | '\\n' )+
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:436:10: ( ( '\\r' | '\\n' )+ )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:436:10: ( '\\r' | '\\n' )+
             {
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:429:10: ( '\\r' | '\\n' )+
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:436:10: ( '\\r' | '\\n' )+
             int cnt7=0;
             loop7:
             do {
@@ -762,12 +762,12 @@ public class EclLexer extends Lexer {
     public final void mCOMMENT() throws RecognitionException {
         try {
             int _type = COMMENT;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:435:10: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:435:10: '/*' ( options {greedy=false; } : . )* '*/'
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:442:10: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:442:10: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:435:15: ( options {greedy=false; } : . )*
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:442:15: ( options {greedy=false; } : . )*
             loop8:
             do {
                 int alt8=2;
@@ -792,7 +792,7 @@ public class EclLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:435:43: .
+            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:442:43: .
             	    {
             	    matchAny(); 
 
@@ -821,12 +821,12 @@ public class EclLexer extends Lexer {
     public final void mLINE_COMMENT() throws RecognitionException {
         try {
             int _type = LINE_COMMENT;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:438:15: ( '//' (~ ( '\\n' | '\\r' ) )* )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:438:15: '//' (~ ( '\\n' | '\\r' ) )*
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:445:15: ( '//' (~ ( '\\n' | '\\r' ) )* )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:445:15: '//' (~ ( '\\n' | '\\r' ) )*
             {
             match("//"); 
 
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:438:20: (~ ( '\\n' | '\\r' ) )*
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:445:20: (~ ( '\\n' | '\\r' ) )*
             loop9:
             do {
                 int alt9=2;
@@ -839,7 +839,7 @@ public class EclLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:438:20: ~ ( '\\n' | '\\r' )
+            	    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:445:20: ~ ( '\\n' | '\\r' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFE') ) {
             	        input.consume();
