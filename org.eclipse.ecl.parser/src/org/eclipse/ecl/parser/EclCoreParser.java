@@ -32,20 +32,22 @@ public class EclCoreParser {
 		try {
 			return parser.commands();
 		} catch (RecognitionException e) {
-			ScriptErrorStatus status = new ScriptErrorStatus(IStatus.ERROR,
-					EclParserPlugin.PLUGIN_ID, "Syntax error", e.line,
+			throw emitErr(e.line,
 					e.charPositionInLine, 1);
-			throw new CoreException(status);
 		} catch (SyntaxErrorException e) {
-			ScriptErrorStatus status = new ScriptErrorStatus(IStatus.ERROR,
-					EclParserPlugin.PLUGIN_ID, "Syntax error", e.line,
+			throw emitErr(e.line,
 					e.col, 1);
-			throw new CoreException(
-					status);
 		} catch (Throwable t) {
 			EclParserPlugin.logErr(t.getMessage(), t);
 			throw new CoreException(new Status(IStatus.ERROR,
 					EclParserPlugin.PLUGIN_ID, "Parse error"));
 		}
+	}
+
+	private static CoreException emitErr(int line, int pos, int len) throws CoreException {
+		ScriptErrorStatus status = new ScriptErrorStatus(new Status(IStatus.ERROR,
+				EclParserPlugin.PLUGIN_ID, "Syntax error"), line,
+				pos, len);
+		return  new CoreException(status);
 	}
 }

@@ -116,14 +116,9 @@ package org.eclipse.ecl.internal.parser;
 commands returns[Command cmd=null;]:
 	exprs=expr_list	{cmd=exprs;}
 ;
-expr_list returns [Command cmd=null]:
-  c =expression {
-  	if( c != null ) {
-  		cmd=c;
-  	}
-  } ( c2=expression {
-		cmd = processSequence(cmd, c2);
-  } )*
+expr_list returns [Sequence seq=null]:
+  {seq = factory.createSequence();} 
+  EOF | ( c2=expression {seq.getCommands().add(c2);} )*
 ;
 
 expression returns[Command cmd=null;]: 
@@ -339,10 +334,6 @@ AND: '&';
 OR: '|';
 SEMI: ':';
 
-fragment SYMBOL:
-  ('a'..'z'|'A'..'Z'|'_'|'.'|'/')
-;
-
 fragment DIGIT:
 ('0'..'9')
 ;
@@ -411,7 +402,7 @@ CURLY_STRING: { int deep = 0; }
 ;
 
 NAME:
- SYMBOL (SYMBOL|DIGIT)*
+ ('a'..'z'|'A'..'Z') (('a'..'z'|'A'..'Z'|'_'|'.'|'/')|DIGIT)*
 ; 
 
 //COMMAND_NAME:
@@ -444,5 +435,5 @@ NEWLINE: ('\r'|'\n')+
 COMMENT: '/*' ( options {greedy=false;} : . )* '*/' {skip();}
 ;
 
-LINE_COMMENT: '//' ~('\n'|'\r')* '\r'? '\n' {skip();}
+LINE_COMMENT: '//' ~('\n'|'\r')* (('\r'? '\n') | EOF) {skip();}
 ;
