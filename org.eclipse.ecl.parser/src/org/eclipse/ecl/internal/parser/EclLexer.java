@@ -1,4 +1,4 @@
-// $ANTLR 3.0 D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g 2011-03-04 15:39:58
+// $ANTLR 3.0 D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g 2011-03-04 16:02:19
 
 package org.eclipse.ecl.internal.parser;
 
@@ -821,8 +821,8 @@ public class EclLexer extends Lexer {
     public final void mLINE_COMMENT() throws RecognitionException {
         try {
             int _type = LINE_COMMENT;
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:438:15: ( '//' (~ ( '\\n' | '\\r' ) )* ( ( ( '\\r' )? '\\n' ) | EOF ) )
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:438:15: '//' (~ ( '\\n' | '\\r' ) )* ( ( ( '\\r' )? '\\n' ) | EOF )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:438:15: ( '//' (~ ( '\\n' | '\\r' ) )* )
+            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:438:15: '//' (~ ( '\\n' | '\\r' ) )*
             {
             match("//"); 
 
@@ -860,57 +860,6 @@ public class EclLexer extends Lexer {
                 }
             } while (true);
 
-            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:438:34: ( ( ( '\\r' )? '\\n' ) | EOF )
-            int alt11=2;
-            int LA11_0 = input.LA(1);
-
-            if ( (LA11_0=='\n'||LA11_0=='\r') ) {
-                alt11=1;
-            }
-            else {
-                alt11=2;}
-            switch (alt11) {
-                case 1 :
-                    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:438:35: ( ( '\\r' )? '\\n' )
-                    {
-                    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:438:35: ( ( '\\r' )? '\\n' )
-                    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:438:36: ( '\\r' )? '\\n'
-                    {
-                    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:438:36: ( '\\r' )?
-                    int alt10=2;
-                    int LA10_0 = input.LA(1);
-
-                    if ( (LA10_0=='\r') ) {
-                        alt10=1;
-                    }
-                    switch (alt10) {
-                        case 1 :
-                            // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:438:36: '\\r'
-                            {
-                            match('\r'); 
-
-                            }
-                            break;
-
-                    }
-
-                    match('\n'); 
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:438:50: EOF
-                    {
-                    match(EOF); 
-
-                    }
-                    break;
-
-            }
-
             skip();
 
             }
@@ -924,9 +873,9 @@ public class EclLexer extends Lexer {
 
     public void mTokens() throws RecognitionException {
         // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:1:10: ( T25 | T26 | T27 | COLON | AND | OR | SEMI | NUMBER | IP4 | STRING | LOPEN | ROPEN | LCURLY | RCURLY | LBRACK | RBRACK | CURLY_STRING | NAME | DNAME | WS | NEWLINE | COMMENT | LINE_COMMENT )
-        int alt12=23;
-        alt12 = dfa12.predict(input);
-        switch (alt12) {
+        int alt10=23;
+        alt10 = dfa10.predict(input);
+        switch (alt10) {
             case 1 :
                 // D:\\dev\\q7\\workspace\\test\\META-INF\\Ecl.g:1:10: T25
                 {
@@ -1094,24 +1043,24 @@ public class EclLexer extends Lexer {
     }
 
 
-    protected DFA12 dfa12 = new DFA12(this);
-    static final String DFA12_eotS =
+    protected DFA10 dfa10 = new DFA10(this);
+    static final String DFA10_eotS =
         "\10\uffff\1\24\3\uffff\1\26\3\uffff\1\32\7\uffff\2\32\4\uffff";
-    static final String DFA12_eofS =
+    static final String DFA10_eofS =
         "\36\uffff";
-    static final String DFA12_minS =
+    static final String DFA10_minS =
         "\1\11\7\uffff\1\56\3\uffff\1\0\3\uffff\1\55\2\uffff\1\52\4\uffff"+
         "\2\55\4\uffff";
-    static final String DFA12_maxS =
+    static final String DFA10_maxS =
         "\1\175\7\uffff\1\71\3\uffff\1\ufffe\3\uffff\1\172\2\uffff\1\57"+
         "\4\uffff\2\172\4\uffff";
-    static final String DFA12_acceptS =
+    static final String DFA10_acceptS =
         "\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\uffff\1\12\1\13\1\14\1\uffff"+
         "\1\16\1\17\1\20\1\uffff\1\24\1\25\1\uffff\1\10\1\11\1\15\1\21\2"+
         "\uffff\1\22\1\23\1\27\1\26";
-    static final String DFA12_specialS =
+    static final String DFA10_specialS =
         "\36\uffff}>";
-    static final String[] DFA12_transitionS = {
+    static final String[] DFA10_transitionS = {
             "\1\21\1\22\2\uffff\1\22\22\uffff\1\21\1\uffff\1\11\3\uffff"+
             "\1\5\1\uffff\1\12\1\13\3\uffff\1\2\1\uffff\1\23\12\10\1\7\1"+
             "\4\1\uffff\1\3\2\uffff\1\1\32\20\1\16\1\uffff\1\17\3\uffff\32"+
@@ -1147,34 +1096,34 @@ public class EclLexer extends Lexer {
             ""
     };
 
-    static final short[] DFA12_eot = DFA.unpackEncodedString(DFA12_eotS);
-    static final short[] DFA12_eof = DFA.unpackEncodedString(DFA12_eofS);
-    static final char[] DFA12_min = DFA.unpackEncodedStringToUnsignedChars(DFA12_minS);
-    static final char[] DFA12_max = DFA.unpackEncodedStringToUnsignedChars(DFA12_maxS);
-    static final short[] DFA12_accept = DFA.unpackEncodedString(DFA12_acceptS);
-    static final short[] DFA12_special = DFA.unpackEncodedString(DFA12_specialS);
-    static final short[][] DFA12_transition;
+    static final short[] DFA10_eot = DFA.unpackEncodedString(DFA10_eotS);
+    static final short[] DFA10_eof = DFA.unpackEncodedString(DFA10_eofS);
+    static final char[] DFA10_min = DFA.unpackEncodedStringToUnsignedChars(DFA10_minS);
+    static final char[] DFA10_max = DFA.unpackEncodedStringToUnsignedChars(DFA10_maxS);
+    static final short[] DFA10_accept = DFA.unpackEncodedString(DFA10_acceptS);
+    static final short[] DFA10_special = DFA.unpackEncodedString(DFA10_specialS);
+    static final short[][] DFA10_transition;
 
     static {
-        int numStates = DFA12_transitionS.length;
-        DFA12_transition = new short[numStates][];
+        int numStates = DFA10_transitionS.length;
+        DFA10_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA12_transition[i] = DFA.unpackEncodedString(DFA12_transitionS[i]);
+            DFA10_transition[i] = DFA.unpackEncodedString(DFA10_transitionS[i]);
         }
     }
 
-    class DFA12 extends DFA {
+    class DFA10 extends DFA {
 
-        public DFA12(BaseRecognizer recognizer) {
+        public DFA10(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 12;
-            this.eot = DFA12_eot;
-            this.eof = DFA12_eof;
-            this.min = DFA12_min;
-            this.max = DFA12_max;
-            this.accept = DFA12_accept;
-            this.special = DFA12_special;
-            this.transition = DFA12_transition;
+            this.decisionNumber = 10;
+            this.eot = DFA10_eot;
+            this.eof = DFA10_eof;
+            this.min = DFA10_min;
+            this.max = DFA10_max;
+            this.accept = DFA10_accept;
+            this.special = DFA10_special;
+            this.transition = DFA10_transition;
         }
         public String getDescription() {
             return "1:1: Tokens : ( T25 | T26 | T27 | COLON | AND | OR | SEMI | NUMBER | IP4 | STRING | LOPEN | ROPEN | LCURLY | RCURLY | LBRACK | RBRACK | CURLY_STRING | NAME | DNAME | WS | NEWLINE | COMMENT | LINE_COMMENT );";

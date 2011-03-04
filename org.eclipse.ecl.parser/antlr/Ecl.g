@@ -118,7 +118,7 @@ commands returns[Command cmd=null;]:
 ;
 expr_list returns [Sequence seq=null]:
   {seq = factory.createSequence();} 
-  EOF | ( c2=expression {seq.getCommands().add(c2);} )*
+  ( c2=expression {seq.getCommands().add(c2);} )*
 ;
 
 expression returns[Command cmd=null;]: 
@@ -435,5 +435,5 @@ NEWLINE: ('\r'|'\n')+
 COMMENT: '/*' ( options {greedy=false;} : . )* '*/' {skip();}
 ;
 
-LINE_COMMENT: '//' ~('\n'|'\r')* (('\r'? '\n') | EOF) {skip();}
+LINE_COMMENT: '//' ~('\n'|'\r')* {skip();}
 ;
