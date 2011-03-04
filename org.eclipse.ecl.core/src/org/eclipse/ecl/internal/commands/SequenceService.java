@@ -28,7 +28,7 @@ public class SequenceService implements ICommandService {
 
 	public IStatus service(Command command, IProcess process)
 			throws InterruptedException, CoreException {
-		IStatus status = null;
+		IStatus status = Status.OK_STATUS;
 		Sequence seq = (Sequence) command;
 		List<Object> content = CoreUtils.readPipeContent(process.getInput());
 		for (Command cmd : seq.getCommands()) {
