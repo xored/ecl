@@ -105,8 +105,6 @@ package org.eclipse.ecl.internal.parser;
         break;
       }
     }
-    if(index==0)
-      result=true;
     input.rewind(start);
     return result;
 }

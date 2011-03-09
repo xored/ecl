@@ -125,8 +125,6 @@ public class EclParser extends Parser {
             break;
           }
         }
-        if(index==0)
-          result=true;
         input.rewind(start);
         return result;
     }
