@@ -111,7 +111,10 @@ public class TcpSession implements ISession {
 
 	public void reconnect() throws CoreException {
 		try {
-			new Socket(address, port);
+			Socket socket = new Socket(address, port);
+			if (socket != null && socket.isConnected()) {
+				socket.close();
+			}
 		} catch (IOException e) {
 			throw new CoreException(new Status(IStatus.ERROR, PLUGIN_ID,
 					e.getMessage(), e));
