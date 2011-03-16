@@ -84,6 +84,7 @@ public class CommandToStringConverter {
 		}
 	}
 
+	// TODO ! need new presentation of set-text-selection command or hide args
 	protected void convertSimple(Command command, ICommandFormatter formatter,
 			boolean hasInput) {
 		String commandName = CoreUtils
@@ -167,6 +168,8 @@ public class CommandToStringConverter {
 	}
 
 	private boolean isForced(String commandName, String paramName) {
+		// TODO ! need new presentation of set-text-selection command or nide
+		// args
 		if ("set-text-selection".equals(commandName))
 			return true;
 		return "index".equals(paramName) || "after".equals(paramName)

@@ -68,7 +68,8 @@ public class EMFStreamPipe implements IPipe {
 				throw new CoreException(new Status(IStatus.ERROR,
 						CorePlugin.PLUGIN_ID, e.getMessage(), e));
 			}
-			return null;
+			return new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
+					"Connection is not Available", e);
 		}
 	}
 
