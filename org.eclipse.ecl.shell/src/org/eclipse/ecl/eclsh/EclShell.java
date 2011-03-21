@@ -2,11 +2,13 @@ package org.eclipse.ecl.eclsh;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintStream;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.ecl.core.Command;
-import org.eclipse.ecl.parser.EclParser;
+import org.eclipse.ecl.parser.EclCoreParser;
+import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.EclRuntime;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
@@ -25,7 +27,7 @@ public class EclShell implements IEclShell {
 			return;
 		}
 		try {
-			Command cmd = new EclParser(command).compile();
+			Command cmd = EclCoreParser.newCommand(command); //CoreFactory.eINSTANCE.createScript();
 			if (cmd == null)
 				return;
 			IProcess process = session.execute(cmd);
@@ -34,6 +36,14 @@ public class EclShell implements IEclShell {
 				outputStream.write((status.getMessage()).getBytes());
 				outputStream.write("\r\n".getBytes());
 			}
+			
+			//dump pipe
+			PrintStream os = new PrintStream(outputStream);
+			for(Object o : CoreUtils.readPipeContent(process.getOutput())) {
+				os.println(o);
+			}
+			os.flush();
+			
 		} catch (CoreException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
