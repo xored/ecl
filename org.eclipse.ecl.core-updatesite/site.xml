@@ -3,4 +3,5 @@
    <feature url="features/org.eclipse.ecl.core_1.0.0.qualifier.jar" id="org.eclipse.ecl.core" version="1.0.0.qualifier"/>
    <feature url="features/org.eclipse.ecl.server_1.0.0.qualifier.jar" id="org.eclipse.ecl.server" version="1.0.0.qualifier"/>
    <feature url="features/com.xored.peg.core_1.0.0.qualifier.jar" id="com.xored.peg.core" version="1.0.0.qualifier"/>
+   <feature url="features/org.eclipse.ecl.shell_1.0.0.qualifier.jar" id="org.eclipse.ecl.shell" version="1.0.0.qualifier"/>
 </site>
