@@ -46,6 +46,14 @@ public class EclShell implements IEclShell {
 			
 		} catch (CoreException e) {
 			e.printStackTrace();
+			IStatus status = e.getStatus();
+			if(status != null) {
+				System.out.println(status.getMessage());
+				Throwable t = status.getException();
+				if(t != null) {
+					t.printStackTrace();
+				}
+			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
