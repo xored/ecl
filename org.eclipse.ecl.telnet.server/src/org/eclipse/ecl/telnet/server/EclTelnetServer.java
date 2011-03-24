@@ -11,9 +11,10 @@ import java.util.List;
 public class EclTelnetServer {
 	private List<EclTelnetConnection> connections = new ArrayList<EclTelnetConnection>();
 	private Connector connector;
-	private int port = 2323;
+	private int port;
 
-	public EclTelnetServer() throws IOException {
+	public EclTelnetServer(int port) throws IOException {
+		this.port = port;
 	}
 
 	public void start() throws IOException {

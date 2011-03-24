@@ -33,8 +33,6 @@ public class EclTelnetServerPlugin extends Plugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		server = createServer();
-		server.start();
 	}
 
 	/*
@@ -58,7 +56,12 @@ public class EclTelnetServerPlugin extends Plugin {
 		return plugin;
 	}
 
-	public static EclTelnetServer createServer() throws IOException {
-		return new EclTelnetServer();
+	public void startServer(int port) throws IOException {
+		server = new EclTelnetServer(port);
+		server.start();
+	}
+	
+	public EclTelnetServer getServer() {
+		return server;
 	}
 }
