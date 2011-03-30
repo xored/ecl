@@ -76,7 +76,22 @@
 					<resolver>p2</resolver>
 				</configuration>
 			</plugin>
-			
+			 <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>remove-old-installations</id>
+                        <goals>
+                            <goal>remove-project-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <removeAll>true</removeAll>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin> 
 		</plugins>
 	</build>
 	
