@@ -1,30 +1,23 @@
-script <- (sequence)? !.
-sequence <- expr ((NL|COLON)+ expr)* (NL|COLON)*
-expr <- WS? parallel
-parallel <- pipeline (AND pipeline)*
-pipeline <- command (OR command)*
-#primary <- command | LPAREN sequence RPAREN
-command <- (cmdNs '::')? cmdName (WS (param | paramValue))* WS?
-cmdNs <- '[a-zA-Z]([a-zA-Z0-9\\.-])*'
-cmdName <- '[a-zA-Z]([a-zA-Z0-9\\.-])*'
-param <- paramName (WS paramValue)?
-paramName <- '-' '-'? '[a-zA-Z]([a-zA-Z0-9:\\.-])*'?
-paramValue <- literal | number | string | curly | subCommand
-curly <- LCURLY (curly | !RCURLY .)* Spacing RCURLY
-subCommand <- LBRACK sequence? RBRACK
-literal <- '[a-zA-Z]([a-zA-Z0-9:\\.-])*'
-number <- '[0-9\\.]+'
-string <- '"' ('\\"' | !('"'|NL) .)* '"'
-
-COLON <- ';' Spacing
-AND <- '&' Spacing
-OR <- '\|' Spacing
-LPAREN <- '\(' Spacing
-RPAREN <- '\)' Spacing
-LCURLY <- '\{' Spacing
-RCURLY <- '\}'
-LBRACK <- '\[' Spacing
-RBRACK <- '\]'
-Spacing <- '\s*'
-WS <- '[\s&&[^\n\r]]+'
-NL <- '[\n\r]+'
+Commands <- Sequence EOF
+Sequence <- Spacing Pipeline CommandSpacing ((EndOfLine|Colon) Spacing Pipeline)* CommandSpacing (EndOfLine|Colon)?  Spacing
+Pipeline <- Command (Spacing Pipe Spacing Command?)*
+Command <- CommandName (ParameterDelim Parameter)*
+CommandName <- Identifier
+Parameter <- ParameterName (ParameterDelim ParameterValue)? | ParameterValue
+ParameterName <- "-" "-"? Identifier?
+ParameterValue <- Identifier | Number | String | CurlyExpression | Substitution
+Substitution <- LBrack Spacing Pipeline? Spacing RBrack
+CurlyExpression <- LCurly (CurlyExpression | !RCurly .)* Spacing RCurly
+Identifier <- "[a-zA-Z]([a-zA-Z0-9]|-)*"
+Number <- "[0-9]+"
+String <- "'" (!"'" .)* "'" | '"' (!'"' .)* '"'
+Colon <- ";"
+Pipe <- "\|"
+LCurly <- "\{"
+RCurly <- "\}" 
+LBrack <- "\["
+RBrack <- "\]"
+Spacing <- "[ \t\n\r]*"
+ParameterDelim <- "[ \t]+"
+CommandSpacing <- "[ \t]*"
+EndOfLine <- "[\n\r]+"
