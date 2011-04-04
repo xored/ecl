@@ -144,7 +144,7 @@ public class EclRefactoring extends ScriptletFactory {
 		return withCommand;
 	}
 
-	private static Command getTail(Pipeline pipeline) {
+	public static Command getTail(Pipeline pipeline) {
 		List<Command> commands = pipeline.getCommands();
 		// it is checked already that size > 1
 		if (commands.size() == 2) {
