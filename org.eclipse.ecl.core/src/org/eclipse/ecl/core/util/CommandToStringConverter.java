@@ -102,8 +102,9 @@ public class CommandToStringConverter {
 		boolean forced = false;
 
 		for (EStructuralFeature feature : attributes) {
-			if (feature.getEAnnotation("http://www.eclipse.org/ecl/input") != null
-					&& hasInput)
+			if (feature.getEAnnotation(CoreUtils.INTERNAL_ANN) != null)
+				continue;
+			if (feature.getEAnnotation(CoreUtils.INPUT_ANN) != null && hasInput)
 				continue;
 			String name = feature.getName();
 			if (isForced(commandName, name))
