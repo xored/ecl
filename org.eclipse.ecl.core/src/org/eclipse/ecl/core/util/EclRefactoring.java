@@ -81,9 +81,12 @@ public class EclRefactoring extends ScriptletFactory {
 						}
 					}
 					if (toCollapse.size() > 1) {
+						// eclipse 3.4 compatibility:
+						// EcoreUtil.copy raise exception if argument is null
 						newCommands.add(makeWith(
-								(Command) EcoreUtil.copy(object),
-								makeSeq(withify(toCollapse, comparator))));
+								(object != null) ? (Command) EcoreUtil
+										.copy(object) : null, makeSeq(withify(
+										toCollapse, comparator))));
 					} else {
 						newCommands.add(command);
 					}
@@ -148,11 +151,18 @@ public class EclRefactoring extends ScriptletFactory {
 		List<Command> commands = pipeline.getCommands();
 		// it is checked already that size > 1
 		if (commands.size() == 2) {
-			return (Command) EcoreUtil.copy(commands.get(1));
+			// eclipse 3.4 compatibility:
+			// EcoreUtil.copy raise exception if argument is null
+			return (commands.get(1) != null) ? (Command) EcoreUtil
+					.copy(commands.get(1)) : null;
 		}
 		Pipeline tail = CoreFactory.eINSTANCE.createPipeline();
 		for (int i = 1; i < commands.size(); i++) {
-			tail.getCommands().add((Command) EcoreUtil.copy(commands.get(i)));
+			// eclipse 3.4 compatibility:
+			// EcoreUtil.copy raise exception if argument is null
+			tail.getCommands().add(
+					(commands.get(i) != null) ? (Command) EcoreUtil
+							.copy(commands.get(i)) : null);
 		}
 		return tail;
 	}
