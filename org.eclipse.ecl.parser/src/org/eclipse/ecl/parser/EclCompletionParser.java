@@ -1,13 +1,12 @@
 package org.eclipse.ecl.parser;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ecl.core.util.EclCommandNameConvention;
-import org.eclipse.ecl.internal.core.CorePlugin;
-import org.eclipse.ecl.internal.core.ScriptletManager;
 import org.eclipse.ecl.internal.parser.EclParserPlugin;
 import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.emf.ecore.EClass;
@@ -71,10 +70,15 @@ public class EclCompletionParser {
 		return parser;
 	}
 
-	private Set<String> scriplets;
+	private Map<String, EClass> scriplets;
 
-	public EclCompletionParser(Set<String> scriplets) {
-		this.scriplets = scriplets;
+	public EclCompletionParser(Set<EClass> scriplets) {
+		this.scriplets = new HashMap<String, EClass>();
+		for (EClass eClass : scriplets) {
+			String name = eClass.getName();
+			this.scriplets.put(EclCommandNameConvention.toCommandName(name),
+					eClass);
+		}
 	}
 
 	public void reportCompletionProposals(String text, int offset,
@@ -155,7 +159,7 @@ public class EclCompletionParser {
 	private void reportCommandNameProposals(String prefix, int offset,
 			CompletionProposalReporter reporter) {
 		int start = prefix.length();
-		for (String name : scriplets) {
+		for (String name : scriplets.keySet()) {
 			if (name.startsWith(prefix)) {
 				reporter.reportCommandName(name.substring(start), offset, name);
 			}
@@ -172,11 +176,8 @@ public class EclCompletionParser {
 			add = "";
 		}
 		int start = prefix.length();
-		ScriptletManager manager = CorePlugin.getScriptletManager();
-		String ns = null;
-		String name = EclCommandNameConvention.toScriptletName(command);
-		try {
-			EClass c = manager.findCommand(ns, name);
+		EClass c = scriplets.get(command);
+		if (c != null) {
 			for (EStructuralFeature sf : c.getEAllStructuralFeatures()) {
 				if (sf.getEAnnotation(CoreUtils.INTERNAL_ANN) != null)
 					continue;
@@ -189,8 +190,6 @@ public class EclCompletionParser {
 					}
 				}
 			}
-		} catch (CoreException e) {
-			// Ignore
 		}
 	}
 

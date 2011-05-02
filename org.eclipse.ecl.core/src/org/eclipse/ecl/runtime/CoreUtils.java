@@ -6,16 +6,20 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.internal.core.EMFStreamPipe;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 public class CoreUtils {
@@ -193,5 +197,26 @@ public class CoreUtils {
 					"Parameter {2} is not assigned", actual, lower,
 					feature.getName())));
 		}
+	}
+
+	public static Set<EClass> collectScriptlets(EPackage ePackage) {
+		Set<EClass> scriplets = new HashSet<EClass>();
+		EList<EObject> eContents = ePackage.eContents();
+		EClass commandClass = CorePackage.eINSTANCE.getCommand();
+		for (EObject o : eContents) {
+			if (o instanceof EClass) {
+				EClass eClass = (EClass) o;
+				if (eClass.getEAnnotation(CoreUtils.INTERNAL_ANN) != null)
+					continue;
+				if (eClass.getEAllSuperTypes().contains(commandClass)) {
+					scriplets.add(eClass);
+				}
+			}
+		}
+		return scriplets;
+	}
+
+	private CoreUtils() {
+		throw new AssertionError();
 	}
 }
