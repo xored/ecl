@@ -16,7 +16,7 @@ public class Session extends Thread {
 	private ISession session;
 
 	Session(Socket socket) {
-		super("ECL tcp session");
+		super("ECL tcp session:" + socket.getPort());
 		this.socket = socket;
 		session = EclRuntime.createSession();
 		start();
@@ -36,6 +36,8 @@ public class Session extends Thread {
 				if (DEBUG_LOG) {
 					System.out.println("SERVER:   Got command: " + command);
 				}
+				setName("ECL tcp session command:"
+						+ command.getClass().getSimpleName());
 				IProcess process = session.execute(command);
 				IStatus status = process.waitFor();
 				if (DEBUG_LOG) {
