@@ -1,21 +1,49 @@
 package org.eclipse.ecl.core.util;
 
+import org.eclipse.core.runtime.Assert;
+
 public class DefaultFormatter implements ICommandFormatter {
 
-	public static final int INDENT_SIZE = 4;
+	private static final int INDENT_SIZE = 4;
+	private static final int LINE_LENGTH = 80;
 
-	protected static final String LINE_SEP = "\n";
-	protected static final String SPACE = " ";
-	protected static final String PIPE = "|";
-	protected static final String OPEN_BRACE = "{";
-	protected static final String CLOSE_BRACE = "}";
-	protected static final String OPEN_BRACKET = "[";
-	protected static final String CLOSE_BRACKET = "]";
-	protected static final String ATTR_PREFIX = "-";
+	private static final String LINE_SEP = "\n";
+	private static final String SPACE = " ";
+	private static final String PIPE = "|";
+	private static final String OPEN_BRACE = "{";
+	private static final String CLOSE_BRACE = "}";
+	private static final String OPEN_BRACKET = "[";
+	private static final String CLOSE_BRACKET = "]";
+	private static final String ATTR_PREFIX = "-";
+
+	private final StringBuffer buffer = new StringBuffer();
+	private int level;
+	private int lineNumber = 0;
+	private int posInLine = 0;
+	private int possibleLineBreak;
+	private String lineBreak;
+
+	private boolean firstSequenceCommand = true;
+	private boolean firstPipeCommand = true;
+	private boolean firstPipeCommandInGroup = true;
+	private boolean firstPipeCommandInExec = true;
+
+	private final boolean wrap;
+
+	public DefaultFormatter() {
+		this(true);
+	}
+
+	public DefaultFormatter(boolean wrap) {
+		this.wrap = wrap;
+		resetLineBreak();
+	}
 
 	public void newPipeCommand() {
 		if (!(firstPipeCommand || firstPipeCommandInExec || firstPipeCommandInGroup)) {
-			buffer.append(SPACE).append(PIPE).append(SPACE);
+			append(SPACE);
+			possibleLineBreak();
+			append(PIPE).append(SPACE);
 		}
 		firstPipeCommand = firstPipeCommandInExec = firstPipeCommandInGroup = false;
 	}
@@ -30,21 +58,46 @@ public class DefaultFormatter implements ICommandFormatter {
 	}
 
 	public void addCommandName(String name) {
-		buffer.append(name);
+		append(name);
 	}
 
 	public void addAttrName(String name, boolean forced) {
-		if (forced)
-			buffer.append(SPACE).append(ATTR_PREFIX).append(name);
+		if (forced) {
+			append(SPACE);
+			possibleLineBreak();
+			append(ATTR_PREFIX).append(name);
+		} else {
+			possibleLineBreak("\n" + ATTR_PREFIX + name);
+		}
 	}
 
 	public void addAttrValue(String value) {
-		buffer.append(SPACE).append(value);
+		append(SPACE);
+		if (value.startsWith("\"") && value.length() > 3) {
+			if (value.contains("\\n")) {
+				String[] parts = value.split("\\\\n");
+				append(parts[0]);
+				for (int i = 1; i < parts.length; i++) {
+					append("\\n");
+					lineBreak(posInLine, "\"\n+ \"");
+					append(parts[i]);
+				}
+			} else {
+				append(value.substring(0, 2));
+				for (int i = 2; i + 1 < value.length(); i++) {
+					possibleLineBreak("\"\n+ \"");
+					append(value.substring(i, i + 1));
+				}
+				append("\"");
+			}
+		} else {
+			append(value);
+		}
 	}
 
 	public void openGroup(boolean singleLine) {
 		firstPipeCommandInGroup = true;
-		buffer.append(SPACE).append(OPEN_BRACE);
+		append(SPACE).append(OPEN_BRACE);
 		if (!singleLine)
 			level++;
 	}
@@ -56,17 +109,17 @@ public class DefaultFormatter implements ICommandFormatter {
 			newLine();
 			addIndent();
 		}
-		buffer.append(CLOSE_BRACE);
+		append(CLOSE_BRACE);
 	}
 
 	public void openExec() {
 		firstPipeCommandInExec = true;
-		buffer.append(SPACE).append(OPEN_BRACKET);
+		append(SPACE).append(OPEN_BRACKET);
 	}
 
 	public void closeExec() {
 		firstPipeCommandInExec = false;
-		buffer.append(CLOSE_BRACKET);
+		append(CLOSE_BRACKET);
 	}
 
 	@Override
@@ -74,23 +127,58 @@ public class DefaultFormatter implements ICommandFormatter {
 		return buffer.toString();
 	}
 
-	protected void addIndent() {
+	private void addIndent() {
 		for (int i = 0; i < level * INDENT_SIZE; i++)
-			buffer.append(SPACE);
+			append(SPACE);
 	}
 
-	protected void newLine() {
+	private DefaultFormatter append(String s) {
+		buffer.append(s);
+		posInLine += s.length();
+		if (posInLine > LINE_LENGTH && possibleLineBreak > 0
+				&& possibleLineBreak < posInLine) {
+			lineBreak(possibleLineBreak, lineBreak);
+			resetLineBreak();
+		}
+		return this;
+	}
+
+	private void lineBreak(int pos, String lineBreak) {
+		if (wrap) {
+			int index = lineBreak.indexOf('\n');
+			StringBuilder sb = new StringBuilder(lineBreak.substring(0,
+					index + 1));
+			for (int i = 0; i < (level + 1) * INDENT_SIZE; i++)
+				sb.append(SPACE);
+			sb.append(lineBreak.substring(index + 1, lineBreak.length()));
+			buffer.insert(buffer.length() - posInLine + pos, sb.toString());
+			lineNumber++;
+			posInLine -= pos;
+			posInLine += sb.length() - index;
+		}
+	}
+
+	private void resetLineBreak() {
+		possibleLineBreak = -1;
+		lineBreak = "\n";
+	}
+
+	private void newLine() {
 		buffer.append(LINE_SEP);
 		lineNumber++;
+		posInLine = 0;
 	}
 
-	protected StringBuffer buffer = new StringBuffer();
-	protected int level;
-	protected int lineNumber;
+	private void possibleLineBreak() {
+		this.possibleLineBreak = posInLine;
+		this.lineBreak = "\n";
+	}
 
-	protected boolean firstSequenceCommand = true;
-	protected boolean firstPipeCommand = true;
-	protected boolean firstPipeCommandInGroup = true;
-	protected boolean firstPipeCommandInExec = true;
+	private void possibleLineBreak(String lineBreak) {
+		this.possibleLineBreak = posInLine;
+		Assert.isLegal(lineBreak.contains("\n"));
+		Assert.isLegal(lineBreak.indexOf('\n') == lineBreak.lastIndexOf('\n'));
+		this.lineBreak = lineBreak;
+	}
 
 }

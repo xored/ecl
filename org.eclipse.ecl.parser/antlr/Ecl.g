@@ -79,6 +79,8 @@ package org.eclipse.ecl.internal.parser;
         return true;
       if(input.get(index).getType() == RCURLY)
         return true;
+      if(input.get(index).getType() == ROPEN)
+        return true;
     }
     Token token;
     boolean result=false;
@@ -184,7 +186,7 @@ open_expr_list returns [Command cmd=null]:
   	if( c != null ) {
   		cmd=c;
   	}
-  } (COLON c2=expression {
+  } (c2=expression {
   	cmd = processSequence(cmd, c2);
   } )*
 ;
@@ -268,7 +270,7 @@ argument_value returns [Parameter param=null;]:
   }
 ;
 simple_value returns[Parameter param = null;]:
-	(d=NAME|d=NUMBER|d2=STRING|d3=CURLY_STRING) { 
+	(d=NAME|d=NUMBER|d2=string|d3=CURLY_STRING) { 
     AstLiteral literal = AstFactory.eINSTANCE.createAstLiteral();
     Token t = input.LT(-1);    
     literal.setLine(t.getLine());
@@ -279,14 +281,13 @@ simple_value returns[Parameter param = null;]:
   			p.setLiteral(d.getText());
   		}
   		else if( d2 != null ) {
-        String value = d2.getText();
-        StringBuilder result = new StringBuilder(value.length()-2);
-        loop: for (int i = 1; i+1 < value.length(); i++){
+        String value = d2;
+        StringBuilder result = new StringBuilder(value.length());
+        loop: for (int i = 0; i < value.length(); i++){
           char ch = value.charAt(i);
           if (ch == '\\'){
             if (i+2 >= value.length())
-              throw new SyntaxErrorException(d2.getLine(), 
-                  d2.getCharPositionInLine()+i+1, "Invalid escape sequence");
+              throw new SyntaxErrorException(1, 1, "Invalid escape sequence");
             switch(value.charAt(i+1)){
               case 't': result.append("\t"); i++; continue loop;
               case 'b': result.append("\b"); i++; continue loop;
@@ -351,16 +352,34 @@ NUMBER:
 IP4:
   NUMBER '.' NUMBER '.' NUMBER '.' NUMBER
 ;
-  
-STRING:
-   '"' (~('"'|'\n'|'\\')|('\\' . ))* '"'
-;
+ 
+string returns [String s = null]:
+  f=STRING  {StringBuilder sb = 
+    new StringBuilder(f.getText().substring(1, f.getText().length()-1));}
+  ('+' r=STRING 
+    {sb.append(r.getText().substring(1, r.getText().length()-1));}
+  )*
+  {s = sb.toString();}
+  ;
+ 
+STRING
+    :  '"' ( EscapeSequence | ~('\\'|'"') )* '"'
+    ;
+    
+fragment
+EscapeSequence
+    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\'|'\n')
+    |   '\\' ('0'..'3') ('0'..'7') ('0'..'7')
+    |   '\\' ('0'..'7') ('0'..'7')
+    |   '\\' ('0'..'7')
+    ;
+
 protected
 LOPEN  : '(';
 
 protected
 ROPEN  : ')';
-  
+
 protected
 LCURLY  : '{';
 
@@ -393,7 +412,7 @@ CURLY_STRING: { int deep = 0; }
       deep -= 1;
     }
     if( deep == 0 ) {
-      break loop3;
+      break loop4;
     }
   }.)* 
   RCURLY

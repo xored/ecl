@@ -8,7 +8,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ecl.core,
  com.xored.peg;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Export-Package: org.eclipse.ecl.gen.ast,
+Export-Package: org.antlr.runtime;x-internal:=true,
+ org.eclipse.ecl.gen.ast,
+ org.eclipse.ecl.internal.parser;x-internal:=true,
  org.eclipse.ecl.parser
 Bundle-Activator: org.eclipse.ecl.internal.parser.EclParserPlugin
 Bundle-Vendor: xored software, Inc.
