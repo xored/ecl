@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/org.eclipse.ecl.console_1.0.0.qualifier.jar" id="org.eclipse.ecl.console" version="1.0.0.qualifier"/>
-   <feature url="features/org.eclipse.dltk.core_3.0.0.qualifier.jar" id="org.eclipse.dltk.core" version="3.0.0.qualifier"/>
-</site>
