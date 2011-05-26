@@ -157,6 +157,10 @@ public class SimpleParserTest extends TestCase {
 		check("get-string \"str1\\n\" + \"str2\"", "get-string str1\nstr2");
 	}
 
+	public void testParser022() throws Throwable {
+		check("get-string \"bla\\'\"", "get-string bla\'");
+	}
+
 	private Command process(String content) throws Throwable {
 		String method = Thread.currentThread().getStackTrace()[3]
 				.getMethodName();

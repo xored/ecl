@@ -1,4 +1,4 @@
-// $ANTLR 3.0 D:\\Dev\\q7\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g 2011-05-25 17:40:14
+// $ANTLR 3.0 D:\\Dev\\q7\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g 2011-05-26 13:49:06
 
 package org.eclipse.ecl.internal.parser;
 import org.antlr.runtime.BitSet;
@@ -29,30 +29,29 @@ import java.util.ArrayList;
 
 public class EclParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "COLON", "AND", "OR", "LOPEN", "ROPEN", "LBRACK", "RBRACK", "NAME", "DNAME", "IP4", "NUMBER", "CURLY_STRING", "SEMI", "DIGIT", "STRING", "EscapeSequence", "LCURLY", "RCURLY", "WS", "NEWLINE", "COMMENT", "LINE_COMMENT", "'@'", "'-'", "'='", "'+'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "COLON", "AND", "OR", "LOPEN", "ROPEN", "LBRACK", "RBRACK", "NAME", "DNAME", "IP4", "NUMBER", "CURLY_STRING", "SEMI", "DIGIT", "STRING", "LCURLY", "RCURLY", "WS", "NEWLINE", "COMMENT", "LINE_COMMENT", "'@'", "'-'", "'='", "'+'"
     };
     public static final int RBRACK=10;
     public static final int LBRACK=9;
-    public static final int LINE_COMMENT=25;
+    public static final int LINE_COMMENT=24;
     public static final int NUMBER=14;
-    public static final int LCURLY=20;
+    public static final int LCURLY=19;
     public static final int AND=5;
     public static final int EOF=-1;
     public static final int SEMI=16;
     public static final int COLON=4;
     public static final int NAME=11;
-    public static final int WS=22;
-    public static final int NEWLINE=23;
+    public static final int WS=21;
+    public static final int NEWLINE=22;
     public static final int CURLY_STRING=15;
     public static final int DNAME=12;
-    public static final int RCURLY=21;
+    public static final int RCURLY=20;
     public static final int OR=6;
     public static final int LOPEN=7;
     public static final int IP4=13;
     public static final int DIGIT=17;
     public static final int ROPEN=8;
-    public static final int COMMENT=24;
-    public static final int EscapeSequence=19;
+    public static final int COMMENT=23;
     public static final int STRING=18;
 
         public EclParser(TokenStream input) {
@@ -691,7 +690,7 @@ public class EclParser extends Parser {
             int alt7=2;
             int LA7_0 = input.LA(1);
 
-            if ( (LA7_0==26) ) {
+            if ( (LA7_0==25) ) {
                 alt7=1;
             }
             switch (alt7) {
@@ -759,7 +758,7 @@ public class EclParser extends Parser {
                 int alt9=2;
                 int LA9_0 = input.LA(1);
 
-                if ( (LA9_0==27) ) {
+                if ( (LA9_0==26) ) {
                     alt9=1;
                 }
 
@@ -922,7 +921,7 @@ public class EclParser extends Parser {
             // D:\\Dev\\q7\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:259:2: ( '@' (n= NAME | n= IP4 ) )
             // D:\\Dev\\q7\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:259:3: '@' (n= NAME | n= IP4 )
             {
-            match(input,26,FOLLOW_26_in_host408); 
+            match(input,25,FOLLOW_25_in_host408); 
             // D:\\Dev\\q7\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:259:7: (n= NAME | n= IP4 )
             int alt11=2;
             int LA11_0 = input.LA(1);
@@ -1040,7 +1039,7 @@ public class EclParser extends Parser {
                 if ( (LA12_1==SEMI) ) {
                     alt12=3;
                 }
-                else if ( (LA12_1==EOF||(LA12_1>=COLON && LA12_1<=DNAME)||(LA12_1>=NUMBER && LA12_1<=CURLY_STRING)||LA12_1==STRING||LA12_1==27) ) {
+                else if ( (LA12_1==EOF||(LA12_1>=COLON && LA12_1<=DNAME)||(LA12_1>=NUMBER && LA12_1<=CURLY_STRING)||LA12_1==STRING||LA12_1==26) ) {
                     alt12=1;
                 }
                 else {
@@ -1220,7 +1219,7 @@ public class EclParser extends Parser {
                     loop: for (int i = 0; i < value.length(); i++){
                       char ch = value.charAt(i);
                       if (ch == '\\'){
-                        if (i+2 >= value.length())
+                        if (i+1 >= value.length())
                           throw new SyntaxErrorException(1, 1, "Invalid escape sequence");
                         switch(value.charAt(i+1)){
                           case 't': result.append("\t"); i++; continue loop;
@@ -1274,19 +1273,19 @@ public class EclParser extends Parser {
             // D:\\Dev\\q7\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:314:2: ( '-' ( '-' )? n= NAME ( ( '=' )? (v= argument_value ) )? )
             // D:\\Dev\\q7\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:314:3: '-' ( '-' )? n= NAME ( ( '=' )? (v= argument_value ) )?
             {
-            match(input,27,FOLLOW_27_in_named_argument521); 
+            match(input,26,FOLLOW_26_in_named_argument521); 
             // D:\\Dev\\q7\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:314:7: ( '-' )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
-            if ( (LA14_0==27) ) {
+            if ( (LA14_0==26) ) {
                 alt14=1;
             }
             switch (alt14) {
                 case 1 :
                     // D:\\Dev\\q7\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:314:7: '-'
                     {
-                    match(input,27,FOLLOW_27_in_named_argument523); 
+                    match(input,26,FOLLOW_26_in_named_argument523); 
 
                     }
                     break;
@@ -1299,7 +1298,7 @@ public class EclParser extends Parser {
             int alt16=2;
             int LA16_0 = input.LA(1);
 
-            if ( (LA16_0==LBRACK||(LA16_0>=NUMBER && LA16_0<=CURLY_STRING)||LA16_0==STRING||LA16_0==28) ) {
+            if ( (LA16_0==LBRACK||(LA16_0>=NUMBER && LA16_0<=CURLY_STRING)||LA16_0==STRING||LA16_0==27) ) {
                 alt16=1;
             }
             else if ( (LA16_0==NAME) ) {
@@ -1317,14 +1316,14 @@ public class EclParser extends Parser {
                     int alt15=2;
                     int LA15_0 = input.LA(1);
 
-                    if ( (LA15_0==28) ) {
+                    if ( (LA15_0==27) ) {
                         alt15=1;
                     }
                     switch (alt15) {
                         case 1 :
                             // D:\\Dev\\q7\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:314:20: '='
                             {
-                            match(input,28,FOLLOW_28_in_named_argument531); 
+                            match(input,27,FOLLOW_27_in_named_argument531); 
 
                             }
                             break;
@@ -1442,7 +1441,7 @@ public class EclParser extends Parser {
                 int alt17=2;
                 int LA17_0 = input.LA(1);
 
-                if ( (LA17_0==29) ) {
+                if ( (LA17_0==28) ) {
                     alt17=1;
                 }
 
@@ -1451,7 +1450,7 @@ public class EclParser extends Parser {
             	case 1 :
             	    // D:\\Dev\\q7\\workspace\\org.eclipse.ecl.parser\\antlr\\Ecl.g:359:4: '+' r= STRING
             	    {
-            	    match(input,29,FOLLOW_29_in_string670); 
+            	    match(input,28,FOLLOW_28_in_string670); 
             	    r=(Token)input.LT(1);
             	    match(input,STRING,FOLLOW_STRING_in_string674); 
             	    sb.append(r.getText().substring(1, r.getText().length()-1));
@@ -1500,16 +1499,16 @@ public class EclParser extends Parser {
     public static final BitSet FOLLOW_LOPEN_in_cmd266 = new BitSet(new long[]{0x0000000000001880L});
     public static final BitSet FOLLOW_open_expr_list_in_cmd270 = new BitSet(new long[]{0x0000000000000100L});
     public static final BitSet FOLLOW_ROPEN_in_cmd274 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_command_name_in_command294 = new BitSet(new long[]{0x000000000C04CA02L});
-    public static final BitSet FOLLOW_host_in_command305 = new BitSet(new long[]{0x000000000804CA02L});
-    public static final BitSet FOLLOW_argument_value_in_command317 = new BitSet(new long[]{0x000000000804CA02L});
-    public static final BitSet FOLLOW_argument_in_command330 = new BitSet(new long[]{0x0000000008000002L});
+    public static final BitSet FOLLOW_command_name_in_command294 = new BitSet(new long[]{0x000000000604CA02L});
+    public static final BitSet FOLLOW_host_in_command305 = new BitSet(new long[]{0x000000000404CA02L});
+    public static final BitSet FOLLOW_argument_value_in_command317 = new BitSet(new long[]{0x000000000404CA02L});
+    public static final BitSet FOLLOW_argument_in_command330 = new BitSet(new long[]{0x0000000004000002L});
     public static final BitSet FOLLOW_LBRACK_in_subcommand351 = new BitSet(new long[]{0x0000000000001C80L});
     public static final BitSet FOLLOW_expr_list_in_subcommand359 = new BitSet(new long[]{0x0000000000000400L});
     public static final BitSet FOLLOW_RBRACK_in_subcommand365 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_NAME_in_command_name383 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_DNAME_in_command_name390 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_host408 = new BitSet(new long[]{0x0000000000002800L});
+    public static final BitSet FOLLOW_25_in_host408 = new BitSet(new long[]{0x0000000000002800L});
     public static final BitSet FOLLOW_NAME_in_host413 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_IP4_in_host417 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_named_argument_in_argument439 = new BitSet(new long[]{0x0000000000000002L});
@@ -1520,16 +1519,16 @@ public class EclParser extends Parser {
     public static final BitSet FOLLOW_NUMBER_in_simple_value496 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_string_in_simple_value500 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_CURLY_STRING_in_simple_value504 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_named_argument521 = new BitSet(new long[]{0x0000000008000800L});
-    public static final BitSet FOLLOW_27_in_named_argument523 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_NAME_in_named_argument528 = new BitSet(new long[]{0x000000001004CA02L});
-    public static final BitSet FOLLOW_28_in_named_argument531 = new BitSet(new long[]{0x000000000004CA00L});
+    public static final BitSet FOLLOW_26_in_named_argument521 = new BitSet(new long[]{0x0000000004000800L});
+    public static final BitSet FOLLOW_26_in_named_argument523 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_NAME_in_named_argument528 = new BitSet(new long[]{0x000000000804CA02L});
+    public static final BitSet FOLLOW_27_in_named_argument531 = new BitSet(new long[]{0x000000000004CA00L});
     public static final BitSet FOLLOW_argument_value_in_named_argument537 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_NAME_in_convert_string559 = new BitSet(new long[]{0x0000000000010000L});
     public static final BitSet FOLLOW_SEMI_in_convert_string561 = new BitSet(new long[]{0x0000000000008000L});
     public static final BitSet FOLLOW_CURLY_STRING_in_convert_string565 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_in_string662 = new BitSet(new long[]{0x0000000020000002L});
-    public static final BitSet FOLLOW_29_in_string670 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_STRING_in_string674 = new BitSet(new long[]{0x0000000020000002L});
+    public static final BitSet FOLLOW_STRING_in_string662 = new BitSet(new long[]{0x0000000010000002L});
+    public static final BitSet FOLLOW_28_in_string670 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_STRING_in_string674 = new BitSet(new long[]{0x0000000010000002L});
 
 }

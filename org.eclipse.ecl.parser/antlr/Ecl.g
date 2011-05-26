@@ -286,7 +286,7 @@ simple_value returns[Parameter param = null;]:
         loop: for (int i = 0; i < value.length(); i++){
           char ch = value.charAt(i);
           if (ch == '\\'){
-            if (i+2 >= value.length())
+            if (i+1 >= value.length())
               throw new SyntaxErrorException(1, 1, "Invalid escape sequence");
             switch(value.charAt(i+1)){
               case 't': result.append("\t"); i++; continue loop;
@@ -362,17 +362,9 @@ string returns [String s = null]:
   {s = sb.toString();}
   ;
  
-STRING
-    :  '"' ( EscapeSequence | ~('\\'|'"') )* '"'
-    ;
-    
-fragment
-EscapeSequence
-    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\'|'\n')
-    |   '\\' ('0'..'3') ('0'..'7') ('0'..'7')
-    |   '\\' ('0'..'7') ('0'..'7')
-    |   '\\' ('0'..'7')
-    ;
+STRING:
+   '"' (~('"'|'\n'|'\\')|('\\' . ))* '"'
+;
 
 protected
 LOPEN  : '(';
@@ -412,7 +404,7 @@ CURLY_STRING: { int deep = 0; }
       deep -= 1;
     }
     if( deep == 0 ) {
-      break loop4;
+      break loop3;
     }
   }.)* 
   RCURLY
