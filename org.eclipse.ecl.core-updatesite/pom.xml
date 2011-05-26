@@ -5,10 +5,10 @@
   <parent>
     <artifactId>ecl</artifactId>
     <groupId>org.eclipse.ecl</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
   </parent>
   <groupId>org.eclipse.ecl</groupId>
   <artifactId>org.eclipse.ecl.core-updatesite</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.1-SNAPSHOT</version>
   <packaging>eclipse-update-site</packaging>
 </project>
