@@ -55,7 +55,7 @@
     		</snapshots>		
 			<id>peg</id>
 			<layout>p2</layout>
-			<url>http://build.xored.com/browse/PEG-CORE-JOB1/latest/artifact/Update-Site</url>
+			<url>http://build.xored.com/browse/PEG-CORE/latest/artifact/JOB1/Update-Site</url>
 		</repository>
 	</repositories>
 
