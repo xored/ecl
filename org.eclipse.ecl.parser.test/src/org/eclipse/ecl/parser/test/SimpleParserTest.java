@@ -40,6 +40,11 @@ public class SimpleParserTest extends TestCase {
 		check("(set1|set2)", "(set1|set2)");
 	}
 
+	public void testLexer001d() throws Throwable {
+		check("set1\n|set2", "(set1|set2)");
+		check("(set1\n|set2)", "(set1|set2)");
+	}
+
 	public void testParser001d() throws Throwable {
 		// check("set1;set2", "(set1;set2)");
 		check("(set1;set2)", "(set1;set2)");
@@ -74,6 +79,10 @@ public class SimpleParserTest extends TestCase {
 
 	public void testParser003() throws Throwable {
 		check("set1 c -a b", "set1 c -a=b");
+	}
+
+	public void testParser003a() throws Throwable {
+		check("set1 \n-a b", "set1 -a=b");
 	}
 
 	public void testParser004() throws Throwable {
