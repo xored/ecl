@@ -20,10 +20,11 @@ public class FormatterTest extends TestCase {
 				.setHello("loooooooooooooooooooooooooooooooooooooooooooooooooooooo"
 						+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
 						+ "oooooooooooong");
-		assertFormatter(testCommand, "test\n"
-				+ "    -hello looooooooooooooooooooooooooooooooooooooooooooooo"
-				+ "ooooooooooooooooooooooooooooooooooooooooooooooooo"
-				+ "ooooooooooooooooooooooooong");
+		assertFormatter(
+				testCommand,
+				"test loooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+						+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+						+ "oooooooooooong");
 	}
 
 	public void test02() throws Exception {
@@ -34,8 +35,8 @@ public class FormatterTest extends TestCase {
 						+ "ooooooooooong");
 		assertFormatter(
 				testCommand,
-				"test \"&loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo\"\n"
-						+ "    + \"ooooooooooooooooooooooooooooooooooooooooooooooooong\"");
+				"test \"&loooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+						+ "ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong\"");
 	}
 
 	public void test03() throws Exception {
@@ -63,33 +64,21 @@ public class FormatterTest extends TestCase {
 		pipeline.getCommands().add(EcoreUtil.copy(test));
 		pipeline.getCommands().add(EcoreUtil.copy(test));
 		pipeline.getCommands().add(EcoreUtil.copy(test));
+		pipeline.getCommands().add(EcoreUtil.copy(test));
+		pipeline.getCommands().add(EcoreUtil.copy(test));
+		pipeline.getCommands().add(EcoreUtil.copy(test));
+		pipeline.getCommands().add(EcoreUtil.copy(test));
+		pipeline.getCommands().add(EcoreUtil.copy(test));
+		pipeline.getCommands().add(EcoreUtil.copy(test));
+		pipeline.getCommands().add(EcoreUtil.copy(test));
+		pipeline.getCommands().add(EcoreUtil.copy(test));
 		assertFormatter(
 				pipeline,
-				"test value | test value | test value | test value | test value | test value \n"
-						+ "    | test value | test value");
+				"test value | test value | test value | test value | test value | test value | test value | test value | test value \n"
+						+ "    | test value | test value | test value | test value | test value | test value | test value");
 	}
 
 	public void test05() throws Exception {
-		Pipeline pipeline = CoreFactory.eINSTANCE.createPipeline();
-		TestCommand test = ModelFactory.eINSTANCE.createTestCommand();
-		test.setHello("loooooooooooooong value");
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		assertFormatter(
-				pipeline,
-				"test \"loooooooooooooong value\" | test \"loooooooooooooong value\" | test \"looooooo\"\n"
-						+ "    + \"ooooooong value\" | test \"loooooooooooooong value\" | test \"looooooooooooo\"\n"
-						+ "    + \"ong value\" | test \"loooooooooooooong value\" | test \"loooooooooooooong va\"\n"
-						+ "    + \"lue\" | test \"loooooooooooooong value\"");
-	}
-
-	public void test06() throws Exception {
 		Pipeline pipeline = CoreFactory.eINSTANCE.createPipeline();
 		TestCommand test = ModelFactory.eINSTANCE.createTestCommand();
 		test.setHello("loooooooooooooong value");
@@ -110,10 +99,9 @@ public class FormatterTest extends TestCase {
 		assertFormatter(
 				seq,
 				"test \"loooooooooooooong value\"\n"
-						+ "test \"loooooooooooooong value\" | test \"loooooooooooooong value\" | test \"looooooo\"\n"
-						+ "    + \"ooooooong value\" | test \"loooooooooooooong value\" | test \"looooooooooooo\"\n"
-						+ "    + \"ong value\" | test \"loooooooooooooong value\" | test \"loooooooooooooong va\"\n"
-						+ "    + \"lue\" | test \"loooooooooooooong value\"");
+						+ "test \"loooooooooooooong value\" | test \"loooooooooooooong value\" | test \"loooooooooooooong value\" \n"
+						+ "    | test \"loooooooooooooong value\" | test \"loooooooooooooong value\" | test \"loooooooooooooong value\" \n"
+						+ "    | test \"loooooooooooooong value\" | test \"loooooooooooooong value\"");
 	}
 
 	// public void test07() throws Exception {

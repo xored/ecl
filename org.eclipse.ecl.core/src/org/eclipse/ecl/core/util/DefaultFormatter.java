@@ -5,7 +5,7 @@ import org.eclipse.core.runtime.Assert;
 public class DefaultFormatter implements ICommandFormatter {
 
 	private static final int INDENT_SIZE = 4;
-	private static final int LINE_LENGTH = 80;
+	private static final int LINE_LENGTH = 120;
 
 	private static final String LINE_SEP = "\n";
 	private static final String SPACE = " ";
@@ -66,8 +66,6 @@ public class DefaultFormatter implements ICommandFormatter {
 			append(SPACE);
 			possibleLineBreak();
 			append(ATTR_PREFIX).append(name);
-		} else {
-			possibleLineBreak("\n" + ATTR_PREFIX + name);
 		}
 	}
 
@@ -85,7 +83,7 @@ public class DefaultFormatter implements ICommandFormatter {
 			} else {
 				append(value.substring(0, 2));
 				for (int i = 2; i + 1 < value.length(); i++) {
-					possibleLineBreak("\"\n+ \"");
+					// possibleLineBreak("\"\n+ \"");
 					append(value.substring(i, i + 1));
 				}
 				append("\"");
@@ -153,7 +151,7 @@ public class DefaultFormatter implements ICommandFormatter {
 			sb.append(lineBreak.substring(index + 1, lineBreak.length()));
 			buffer.insert(buffer.length() - posInLine + pos, sb.toString());
 			lineNumber++;
-			posInLine -= pos;
+			posInLine -= pos + 1;
 			posInLine += sb.length() - index;
 		}
 	}
