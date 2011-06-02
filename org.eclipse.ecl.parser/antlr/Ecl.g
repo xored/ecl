@@ -63,6 +63,11 @@ package org.eclipse.ecl.internal.parser;
 	
   public void displayRecognitionError(String[] tokenNames,
       RecognitionException e) {
+	    if (e.token == Token.EOF_TOKEN) {
+	      Token prev = getTokenStream().get(e.index - 1);
+	      throw new SyntaxErrorException(prev.getLine(),
+	          prev.getCharPositionInLine());
+	    }
       throw new SyntaxErrorException(e.line, e.charPositionInLine);
   }
   
