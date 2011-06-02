@@ -197,9 +197,11 @@ public class EclCompiler {
 				}
 			} catch (Exception e) {
 				// Exception while converting
+				if (e instanceof CoreException) {
+					throw (CoreException) e;
+				}
 				IStatus status = new Status(IStatus.ERROR,
-						CorePlugin.PLUGIN_ID, "Can't assign value " + value
-								+ " to attribute " + feature.getName() + ": "
+						CorePlugin.PLUGIN_ID, "Parameter conversion failed: "
 								+ e.getMessage(), e);
 				throw new CoreException(status);
 			}
