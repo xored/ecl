@@ -1,4 +1,4 @@
-// $ANTLR 3.0 D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g 2011-06-02 19:21:52
+// $ANTLR 3.0 D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g 2011-06-03 17:09:27
 
 package org.eclipse.ecl.internal.parser;
 

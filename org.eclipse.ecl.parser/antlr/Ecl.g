@@ -119,7 +119,7 @@ package org.eclipse.ecl.internal.parser;
   
 // Parser rules
 commands returns[Command cmd=null;]:
-	exprs=expr_list	{cmd=exprs;}
+	exprs=expr_list	{cmd=exprs;} EOF
 ;
 expr_list returns [Command cmd=null]:
   {Sequence seq = factory.createSequence();} 

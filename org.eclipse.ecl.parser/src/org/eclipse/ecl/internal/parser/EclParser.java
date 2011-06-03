@@ -1,4 +1,4 @@
-// $ANTLR 3.0 D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g 2011-06-02 19:21:52
+// $ANTLR 3.0 D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g 2011-06-03 17:09:26
 
 package org.eclipse.ecl.internal.parser;
 import org.antlr.runtime.BitSet;
@@ -139,7 +139,7 @@ public class EclParser extends Parser {
 
 
     // $ANTLR start commands
-    // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:121:1: commands returns [Command cmd=null;] : exprs= expr_list ;
+    // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:121:1: commands returns [Command cmd=null;] : exprs= expr_list EOF ;
     public final Command commands() throws RecognitionException {
         Command cmd = null;;
 
@@ -147,14 +147,15 @@ public class EclParser extends Parser {
 
 
         try {
-            // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:122:2: (exprs= expr_list )
-            // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:122:2: exprs= expr_list
+            // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:122:2: (exprs= expr_list EOF )
+            // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:122:2: exprs= expr_list EOF
             {
             pushFollow(FOLLOW_expr_list_in_commands68);
             exprs=expr_list();
             _fsp--;
 
             cmd=exprs;
+            match(input,EOF,FOLLOW_EOF_in_commands72); 
 
             }
 
@@ -198,7 +199,7 @@ public class EclParser extends Parser {
             	case 1 :
             	    // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:126:5: c2= expression
             	    {
-            	    pushFollow(FOLLOW_expression_in_expr_list92);
+            	    pushFollow(FOLLOW_expression_in_expr_list94);
             	    c2=expression();
             	    _fsp--;
 
@@ -246,14 +247,14 @@ public class EclParser extends Parser {
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:137:4: (c= and_expr eos )
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:137:4: c= and_expr eos
             {
-            pushFollow(FOLLOW_and_expr_in_expression119);
+            pushFollow(FOLLOW_and_expr_in_expression121);
             c=and_expr();
             _fsp--;
 
 
                	cmd = c;
                
-            pushFollow(FOLLOW_eos_in_expression126);
+            pushFollow(FOLLOW_eos_in_expression128);
             eos();
             _fsp--;
 
@@ -283,7 +284,23 @@ public class EclParser extends Parser {
                 {
                 int LA2_1 = input.LA(2);
 
-                if ( (LA2_1==EOF||(LA2_1>=LOPEN && LA2_1<=ROPEN)||(LA2_1>=RBRACK && LA2_1<=DNAME)) ) {
+                if ( (LA2_1==EOF) ) {
+                    int LA2_8 = input.LA(3);
+
+                    if ( (!(lookupNL())) ) {
+                        alt2=1;
+                    }
+                    else if ( (lookupNL()) ) {
+                        alt2=3;
+                    }
+                    else {
+                        NoViableAltException nvae =
+                            new NoViableAltException("143:1: eos : ( EOF | COLON | {...}?);", 2, 8, input);
+
+                        throw nvae;
+                    }
+                }
+                else if ( ((LA2_1>=LOPEN && LA2_1<=ROPEN)||(LA2_1>=RBRACK && LA2_1<=DNAME)) ) {
                     alt2=1;
                 }
                 else {
@@ -319,14 +336,14 @@ public class EclParser extends Parser {
                 case 1 :
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:145:5: EOF
                     {
-                    match(input,EOF,FOLLOW_EOF_in_eos141); 
+                    match(input,EOF,FOLLOW_EOF_in_eos143); 
 
                     }
                     break;
                 case 2 :
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:146:5: COLON
                     {
-                    match(input,COLON,FOLLOW_COLON_in_eos147); 
+                    match(input,COLON,FOLLOW_COLON_in_eos149); 
 
                     }
                     break;
@@ -367,7 +384,7 @@ public class EclParser extends Parser {
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:150:3: (or1= or_expr ( AND or2= or_expr )* )
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:150:3: or1= or_expr ( AND or2= or_expr )*
             {
-            pushFollow(FOLLOW_or_expr_in_and_expr169);
+            pushFollow(FOLLOW_or_expr_in_and_expr171);
             or1=or_expr();
             _fsp--;
 
@@ -387,8 +404,8 @@ public class EclParser extends Parser {
             	case 1 :
             	    // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:150:27: AND or2= or_expr
             	    {
-            	    match(input,AND,FOLLOW_AND_in_and_expr174); 
-            	    pushFollow(FOLLOW_or_expr_in_and_expr178);
+            	    match(input,AND,FOLLOW_AND_in_and_expr176); 
+            	    pushFollow(FOLLOW_or_expr_in_and_expr180);
             	    or2=or_expr();
             	    _fsp--;
 
@@ -446,7 +463,7 @@ public class EclParser extends Parser {
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:169:3: (c= cmd ( OR cmd2= cmd )* )
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:169:3: c= cmd ( OR cmd2= cmd )*
             {
-            pushFollow(FOLLOW_cmd_in_or_expr200);
+            pushFollow(FOLLOW_cmd_in_or_expr202);
             c=cmd();
             _fsp--;
 
@@ -468,8 +485,8 @@ public class EclParser extends Parser {
             	case 1 :
             	    // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:171:7: OR cmd2= cmd
             	    {
-            	    match(input,OR,FOLLOW_OR_in_or_expr206); 
-            	    pushFollow(FOLLOW_cmd_in_or_expr210);
+            	    match(input,OR,FOLLOW_OR_in_or_expr208); 
+            	    pushFollow(FOLLOW_cmd_in_or_expr212);
             	    cmd2=cmd();
             	    _fsp--;
 
@@ -527,7 +544,7 @@ public class EclParser extends Parser {
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:190:3: (c= expression (c2= expression )* )
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:190:3: c= expression (c2= expression )*
             {
-            pushFollow(FOLLOW_expression_in_open_expr_list232);
+            pushFollow(FOLLOW_expression_in_open_expr_list234);
             c=expression();
             _fsp--;
 
@@ -551,7 +568,7 @@ public class EclParser extends Parser {
             	case 1 :
             	    // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:194:6: c2= expression
             	    {
-            	    pushFollow(FOLLOW_expression_in_open_expr_list239);
+            	    pushFollow(FOLLOW_expression_in_open_expr_list241);
             	    c2=expression();
             	    _fsp--;
 
@@ -611,7 +628,7 @@ public class EclParser extends Parser {
                 case 1 :
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:200:2: c= command
                     {
-                    pushFollow(FOLLOW_command_in_cmd259);
+                    pushFollow(FOLLOW_command_in_cmd261);
                     c=command();
                     _fsp--;
 
@@ -624,15 +641,15 @@ public class EclParser extends Parser {
                 case 2 :
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:203:2: LOPEN c= open_expr_list ROPEN
                     {
-                    match(input,LOPEN,FOLLOW_LOPEN_in_cmd266); 
-                    pushFollow(FOLLOW_open_expr_list_in_cmd270);
+                    match(input,LOPEN,FOLLOW_LOPEN_in_cmd268); 
+                    pushFollow(FOLLOW_open_expr_list_in_cmd272);
                     c=open_expr_list();
                     _fsp--;
 
 
                      	cmd = c; 
                      
-                    match(input,ROPEN,FOLLOW_ROPEN_in_cmd274); 
+                    match(input,ROPEN,FOLLOW_ROPEN_in_cmd276); 
 
                     }
                     break;
@@ -673,7 +690,7 @@ public class EclParser extends Parser {
                 int line = t.getLine();
                 int column = t.getCharPositionInLine();
               
-            pushFollow(FOLLOW_command_name_in_command294);
+            pushFollow(FOLLOW_command_name_in_command296);
             n=command_name();
             _fsp--;
 
@@ -702,7 +719,7 @@ public class EclParser extends Parser {
                 case 1 :
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:228:5: ho= host
                     {
-                    pushFollow(FOLLOW_host_in_command305);
+                    pushFollow(FOLLOW_host_in_command307);
                     ho=host();
                     _fsp--;
 
@@ -739,7 +756,7 @@ public class EclParser extends Parser {
             	case 1 :
             	    // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:231:5: a= argument_value
             	    {
-            	    pushFollow(FOLLOW_argument_value_in_command317);
+            	    pushFollow(FOLLOW_argument_value_in_command319);
             	    a=argument_value();
             	    _fsp--;
 
@@ -772,7 +789,7 @@ public class EclParser extends Parser {
             	case 1 :
             	    // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:236:5: arg= argument
             	    {
-            	    pushFollow(FOLLOW_argument_in_command330);
+            	    pushFollow(FOLLOW_argument_in_command332);
             	    arg=argument();
             	    _fsp--;
 
@@ -823,8 +840,8 @@ public class EclParser extends Parser {
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:250:3: ( LBRACK c= expr_list RBRACK )
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:250:3: LBRACK c= expr_list RBRACK
             {
-            match(input,LBRACK,FOLLOW_LBRACK_in_subcommand351); 
-            pushFollow(FOLLOW_expr_list_in_subcommand359);
+            match(input,LBRACK,FOLLOW_LBRACK_in_subcommand353); 
+            pushFollow(FOLLOW_expr_list_in_subcommand361);
             c=expr_list();
             _fsp--;
 
@@ -833,7 +850,7 @@ public class EclParser extends Parser {
               		p.setCommand(c);
             	  	param = p;
                 
-            match(input,RBRACK,FOLLOW_RBRACK_in_subcommand365); 
+            match(input,RBRACK,FOLLOW_RBRACK_in_subcommand367); 
 
             }
 
@@ -881,7 +898,7 @@ public class EclParser extends Parser {
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:260:3: n= NAME
                     {
                     n=(Token)input.LT(1);
-                    match(input,NAME,FOLLOW_NAME_in_command_name383); 
+                    match(input,NAME,FOLLOW_NAME_in_command_name385); 
 
                     }
                     break;
@@ -889,7 +906,7 @@ public class EclParser extends Parser {
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:260:33: n= DNAME
                     {
                     n=(Token)input.LT(1);
-                    match(input,DNAME,FOLLOW_DNAME_in_command_name390); 
+                    match(input,DNAME,FOLLOW_DNAME_in_command_name392); 
 
                     }
                     break;
@@ -926,7 +943,7 @@ public class EclParser extends Parser {
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:264:2: ( '@' (n= NAME | n= IP4 ) )
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:264:3: '@' (n= NAME | n= IP4 )
             {
-            match(input,25,FOLLOW_25_in_host408); 
+            match(input,25,FOLLOW_25_in_host410); 
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:264:7: (n= NAME | n= IP4 )
             int alt11=2;
             int LA11_0 = input.LA(1);
@@ -948,7 +965,7 @@ public class EclParser extends Parser {
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:264:8: n= NAME
                     {
                     n=(Token)input.LT(1);
-                    match(input,NAME,FOLLOW_NAME_in_host413); 
+                    match(input,NAME,FOLLOW_NAME_in_host415); 
 
                     }
                     break;
@@ -956,7 +973,7 @@ public class EclParser extends Parser {
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:264:15: n= IP4
                     {
                     n=(Token)input.LT(1);
-                    match(input,IP4,FOLLOW_IP4_in_host417); 
+                    match(input,IP4,FOLLOW_IP4_in_host419); 
 
                     }
                     break;
@@ -999,7 +1016,7 @@ public class EclParser extends Parser {
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:270:4: (p= named_argument )
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:270:5: p= named_argument
             {
-            pushFollow(FOLLOW_named_argument_in_argument439);
+            pushFollow(FOLLOW_named_argument_in_argument441);
             p=named_argument();
             _fsp--;
 
@@ -1078,7 +1095,7 @@ public class EclParser extends Parser {
                 case 1 :
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:273:4: p= simple_value
                     {
-                    pushFollow(FOLLOW_simple_value_in_argument_value460);
+                    pushFollow(FOLLOW_simple_value_in_argument_value462);
                     p=simple_value();
                     _fsp--;
 
@@ -1088,7 +1105,7 @@ public class EclParser extends Parser {
                 case 2 :
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:273:23: p= subcommand
                     {
-                    pushFollow(FOLLOW_subcommand_in_argument_value467);
+                    pushFollow(FOLLOW_subcommand_in_argument_value469);
                     p=subcommand();
                     _fsp--;
 
@@ -1098,7 +1115,7 @@ public class EclParser extends Parser {
                 case 3 :
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:273:39: p= convert_string
                     {
-                    pushFollow(FOLLOW_convert_string_in_argument_value475);
+                    pushFollow(FOLLOW_convert_string_in_argument_value477);
                     p=convert_string();
                     _fsp--;
 
@@ -1175,7 +1192,7 @@ public class EclParser extends Parser {
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:278:3: d= NAME
                     {
                     d=(Token)input.LT(1);
-                    match(input,NAME,FOLLOW_NAME_in_simple_value492); 
+                    match(input,NAME,FOLLOW_NAME_in_simple_value494); 
 
                     }
                     break;
@@ -1183,14 +1200,14 @@ public class EclParser extends Parser {
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:278:10: d= NUMBER
                     {
                     d=(Token)input.LT(1);
-                    match(input,NUMBER,FOLLOW_NUMBER_in_simple_value496); 
+                    match(input,NUMBER,FOLLOW_NUMBER_in_simple_value498); 
 
                     }
                     break;
                 case 3 :
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:278:19: d2= string
                     {
-                    pushFollow(FOLLOW_string_in_simple_value500);
+                    pushFollow(FOLLOW_string_in_simple_value502);
                     d2=string();
                     _fsp--;
 
@@ -1201,7 +1218,7 @@ public class EclParser extends Parser {
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:278:29: d3= CURLY_STRING
                     {
                     d3=(Token)input.LT(1);
-                    match(input,CURLY_STRING,FOLLOW_CURLY_STRING_in_simple_value504); 
+                    match(input,CURLY_STRING,FOLLOW_CURLY_STRING_in_simple_value506); 
 
                     }
                     break;
@@ -1278,7 +1295,7 @@ public class EclParser extends Parser {
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:319:2: ( '-' ( '-' )? n= NAME ( ( '=' )? (v= argument_value ) )? )
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:319:3: '-' ( '-' )? n= NAME ( ( '=' )? (v= argument_value ) )?
             {
-            match(input,26,FOLLOW_26_in_named_argument521); 
+            match(input,26,FOLLOW_26_in_named_argument523); 
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:319:7: ( '-' )?
             int alt14=2;
             int LA14_0 = input.LA(1);
@@ -1290,7 +1307,7 @@ public class EclParser extends Parser {
                 case 1 :
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:319:7: '-'
                     {
-                    match(input,26,FOLLOW_26_in_named_argument523); 
+                    match(input,26,FOLLOW_26_in_named_argument525); 
 
                     }
                     break;
@@ -1298,7 +1315,7 @@ public class EclParser extends Parser {
             }
 
             n=(Token)input.LT(1);
-            match(input,NAME,FOLLOW_NAME_in_named_argument528); 
+            match(input,NAME,FOLLOW_NAME_in_named_argument530); 
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:319:19: ( ( '=' )? (v= argument_value ) )?
             int alt16=2;
             int LA16_0 = input.LA(1);
@@ -1328,7 +1345,7 @@ public class EclParser extends Parser {
                         case 1 :
                             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:319:20: '='
                             {
-                            match(input,27,FOLLOW_27_in_named_argument531); 
+                            match(input,27,FOLLOW_27_in_named_argument533); 
 
                             }
                             break;
@@ -1338,7 +1355,7 @@ public class EclParser extends Parser {
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:319:25: (v= argument_value )
                     // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:319:26: v= argument_value
                     {
-                    pushFollow(FOLLOW_argument_value_in_named_argument537);
+                    pushFollow(FOLLOW_argument_value_in_named_argument539);
                     v=argument_value();
                     _fsp--;
 
@@ -1395,10 +1412,10 @@ public class EclParser extends Parser {
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:332:3: f= NAME SEMI v= CURLY_STRING
             {
             f=(Token)input.LT(1);
-            match(input,NAME,FOLLOW_NAME_in_convert_string559); 
-            match(input,SEMI,FOLLOW_SEMI_in_convert_string561); 
+            match(input,NAME,FOLLOW_NAME_in_convert_string561); 
+            match(input,SEMI,FOLLOW_SEMI_in_convert_string563); 
             v=(Token)input.LT(1);
-            match(input,CURLY_STRING,FOLLOW_CURLY_STRING_in_convert_string565); 
+            match(input,CURLY_STRING,FOLLOW_CURLY_STRING_in_convert_string567); 
 
             }
 
@@ -1437,7 +1454,7 @@ public class EclParser extends Parser {
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:362:3: f= STRING ( '+' r= STRING )*
             {
             f=(Token)input.LT(1);
-            match(input,STRING,FOLLOW_STRING_in_string662); 
+            match(input,STRING,FOLLOW_STRING_in_string664); 
             StringBuilder sb = 
                 new StringBuilder(f.getText().substring(1, f.getText().length()-1));
             // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:364:3: ( '+' r= STRING )*
@@ -1455,9 +1472,9 @@ public class EclParser extends Parser {
             	case 1 :
             	    // D:\\Dev\\git\\ecl\\org.eclipse.ecl.parser\\antlr\\Ecl.g:364:4: '+' r= STRING
             	    {
-            	    match(input,28,FOLLOW_28_in_string670); 
+            	    match(input,28,FOLLOW_28_in_string672); 
             	    r=(Token)input.LT(1);
-            	    match(input,STRING,FOLLOW_STRING_in_string674); 
+            	    match(input,STRING,FOLLOW_STRING_in_string676); 
             	    sb.append(r.getText().substring(1, r.getText().length()-1));
 
             	    }
@@ -1486,54 +1503,55 @@ public class EclParser extends Parser {
 
  
 
-    public static final BitSet FOLLOW_expr_list_in_commands68 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expression_in_expr_list92 = new BitSet(new long[]{0x0000000000001882L});
-    public static final BitSet FOLLOW_and_expr_in_expression119 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_eos_in_expression126 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_EOF_in_eos141 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_COLON_in_eos147 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_or_expr_in_and_expr169 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_AND_in_and_expr174 = new BitSet(new long[]{0x0000000000001880L});
-    public static final BitSet FOLLOW_or_expr_in_and_expr178 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_cmd_in_or_expr200 = new BitSet(new long[]{0x0000000000000042L});
-    public static final BitSet FOLLOW_OR_in_or_expr206 = new BitSet(new long[]{0x0000000000001880L});
-    public static final BitSet FOLLOW_cmd_in_or_expr210 = new BitSet(new long[]{0x0000000000000042L});
-    public static final BitSet FOLLOW_expression_in_open_expr_list232 = new BitSet(new long[]{0x0000000000001882L});
-    public static final BitSet FOLLOW_expression_in_open_expr_list239 = new BitSet(new long[]{0x0000000000001882L});
-    public static final BitSet FOLLOW_command_in_cmd259 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LOPEN_in_cmd266 = new BitSet(new long[]{0x0000000000001880L});
-    public static final BitSet FOLLOW_open_expr_list_in_cmd270 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ROPEN_in_cmd274 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_command_name_in_command294 = new BitSet(new long[]{0x000000000604CA02L});
-    public static final BitSet FOLLOW_host_in_command305 = new BitSet(new long[]{0x000000000404CA02L});
-    public static final BitSet FOLLOW_argument_value_in_command317 = new BitSet(new long[]{0x000000000404CA02L});
-    public static final BitSet FOLLOW_argument_in_command330 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_LBRACK_in_subcommand351 = new BitSet(new long[]{0x0000000000001C80L});
-    public static final BitSet FOLLOW_expr_list_in_subcommand359 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_RBRACK_in_subcommand365 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NAME_in_command_name383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DNAME_in_command_name390 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_host408 = new BitSet(new long[]{0x0000000000002800L});
-    public static final BitSet FOLLOW_NAME_in_host413 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IP4_in_host417 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_named_argument_in_argument439 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simple_value_in_argument_value460 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_subcommand_in_argument_value467 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_convert_string_in_argument_value475 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NAME_in_simple_value492 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NUMBER_in_simple_value496 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_string_in_simple_value500 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CURLY_STRING_in_simple_value504 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_named_argument521 = new BitSet(new long[]{0x0000000004000800L});
-    public static final BitSet FOLLOW_26_in_named_argument523 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_NAME_in_named_argument528 = new BitSet(new long[]{0x000000000804CA02L});
-    public static final BitSet FOLLOW_27_in_named_argument531 = new BitSet(new long[]{0x000000000004CA00L});
-    public static final BitSet FOLLOW_argument_value_in_named_argument537 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NAME_in_convert_string559 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_SEMI_in_convert_string561 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_CURLY_STRING_in_convert_string565 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_in_string662 = new BitSet(new long[]{0x0000000010000002L});
-    public static final BitSet FOLLOW_28_in_string670 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_STRING_in_string674 = new BitSet(new long[]{0x0000000010000002L});
+    public static final BitSet FOLLOW_expr_list_in_commands68 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_commands72 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expression_in_expr_list94 = new BitSet(new long[]{0x0000000000001882L});
+    public static final BitSet FOLLOW_and_expr_in_expression121 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_eos_in_expression128 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_EOF_in_eos143 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COLON_in_eos149 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_or_expr_in_and_expr171 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_AND_in_and_expr176 = new BitSet(new long[]{0x0000000000001880L});
+    public static final BitSet FOLLOW_or_expr_in_and_expr180 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_cmd_in_or_expr202 = new BitSet(new long[]{0x0000000000000042L});
+    public static final BitSet FOLLOW_OR_in_or_expr208 = new BitSet(new long[]{0x0000000000001880L});
+    public static final BitSet FOLLOW_cmd_in_or_expr212 = new BitSet(new long[]{0x0000000000000042L});
+    public static final BitSet FOLLOW_expression_in_open_expr_list234 = new BitSet(new long[]{0x0000000000001882L});
+    public static final BitSet FOLLOW_expression_in_open_expr_list241 = new BitSet(new long[]{0x0000000000001882L});
+    public static final BitSet FOLLOW_command_in_cmd261 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LOPEN_in_cmd268 = new BitSet(new long[]{0x0000000000001880L});
+    public static final BitSet FOLLOW_open_expr_list_in_cmd272 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ROPEN_in_cmd276 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_command_name_in_command296 = new BitSet(new long[]{0x000000000604CA02L});
+    public static final BitSet FOLLOW_host_in_command307 = new BitSet(new long[]{0x000000000404CA02L});
+    public static final BitSet FOLLOW_argument_value_in_command319 = new BitSet(new long[]{0x000000000404CA02L});
+    public static final BitSet FOLLOW_argument_in_command332 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_LBRACK_in_subcommand353 = new BitSet(new long[]{0x0000000000001C80L});
+    public static final BitSet FOLLOW_expr_list_in_subcommand361 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_RBRACK_in_subcommand367 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NAME_in_command_name385 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DNAME_in_command_name392 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_host410 = new BitSet(new long[]{0x0000000000002800L});
+    public static final BitSet FOLLOW_NAME_in_host415 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IP4_in_host419 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_named_argument_in_argument441 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simple_value_in_argument_value462 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_subcommand_in_argument_value469 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_convert_string_in_argument_value477 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NAME_in_simple_value494 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NUMBER_in_simple_value498 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_string_in_simple_value502 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CURLY_STRING_in_simple_value506 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_named_argument523 = new BitSet(new long[]{0x0000000004000800L});
+    public static final BitSet FOLLOW_26_in_named_argument525 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_NAME_in_named_argument530 = new BitSet(new long[]{0x000000000804CA02L});
+    public static final BitSet FOLLOW_27_in_named_argument533 = new BitSet(new long[]{0x000000000004CA00L});
+    public static final BitSet FOLLOW_argument_value_in_named_argument539 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NAME_in_convert_string561 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_SEMI_in_convert_string563 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_CURLY_STRING_in_convert_string567 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_in_string664 = new BitSet(new long[]{0x0000000010000002L});
+    public static final BitSet FOLLOW_28_in_string672 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_STRING_in_string676 = new BitSet(new long[]{0x0000000010000002L});
 
 }
