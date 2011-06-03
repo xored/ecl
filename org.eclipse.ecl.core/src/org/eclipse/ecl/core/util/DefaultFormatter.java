@@ -1,7 +1,5 @@
 package org.eclipse.ecl.core.util;
 
-import org.eclipse.core.runtime.Assert;
-
 public class DefaultFormatter implements ICommandFormatter {
 
 	private static final int INDENT_SIZE = 4;
@@ -136,7 +134,6 @@ public class DefaultFormatter implements ICommandFormatter {
 		if (posInLine > LINE_LENGTH && possibleLineBreak > 0
 				&& possibleLineBreak < posInLine) {
 			lineBreak(possibleLineBreak, lineBreak);
-			resetLineBreak();
 		}
 		return this;
 	}
@@ -153,6 +150,7 @@ public class DefaultFormatter implements ICommandFormatter {
 			lineNumber++;
 			posInLine -= pos + 1;
 			posInLine += sb.length() - index;
+			resetLineBreak();
 		}
 	}
 
@@ -165,18 +163,12 @@ public class DefaultFormatter implements ICommandFormatter {
 		buffer.append(LINE_SEP);
 		lineNumber++;
 		posInLine = 0;
+		resetLineBreak();
 	}
 
 	private void possibleLineBreak() {
 		this.possibleLineBreak = posInLine;
 		this.lineBreak = "\n";
-	}
-
-	private void possibleLineBreak(String lineBreak) {
-		this.possibleLineBreak = posInLine;
-		Assert.isLegal(lineBreak.contains("\n"));
-		Assert.isLegal(lineBreak.indexOf('\n') == lineBreak.lastIndexOf('\n'));
-		this.lineBreak = lineBreak;
 	}
 
 }
