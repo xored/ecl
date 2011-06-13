@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.core.SessionListenerManager;
 import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IPipe;
@@ -62,7 +63,9 @@ public class Session implements ISession {
 					resolveBindings(scriptlet, inputContent);
 					setupInputFeature(scriptlet, inputContent);
 					checkParams(scriptlet);
+					SessionListenerManager.beginCommand(scriptlet);
 					s = svc.service(scriptlet, process);
+					SessionListenerManager.endCommand(scriptlet);
 				} catch (CoreException e) {
 					s = e.getStatus();
 					CorePlugin.err(e.getMessage(), e);
