@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.SocketException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -18,6 +20,7 @@ import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 public class EMFStreamPipe implements IPipe {
@@ -88,7 +91,12 @@ public class EMFStreamPipe implements IPipe {
 		r.getContents().add(eObject);
 		try {
 			ByteArrayOutputStream bout = new ByteArrayOutputStream();
-			r.save(bout, null);
+			Map<String, Object> options = new HashMap<String, Object>();
+			options.put(XMLResource.OPTION_ENCODING, "utf-8");
+			options.put(XMLResource.OPTION_ESCAPE_USING_CDATA, Boolean.TRUE);
+			options.put(XMLResource.OPTION_SKIP_ESCAPE, Boolean.FALSE);
+
+			r.save(bout, options);
 			out.writeInt(bout.size());
 			out.write(bout.toByteArray());
 		} catch (Throwable e) {

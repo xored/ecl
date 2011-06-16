@@ -65,7 +65,6 @@ public class Session implements ISession {
 					checkParams(scriptlet);
 					SessionListenerManager.beginCommand(scriptlet);
 					s = svc.service(scriptlet, process);
-					SessionListenerManager.endCommand(scriptlet);
 				} catch (CoreException e) {
 					s = e.getStatus();
 					CorePlugin.err(e.getMessage(), e);
@@ -78,6 +77,7 @@ public class Session implements ISession {
 							t.getMessage(), t);
 					CorePlugin.err(t.getMessage(), t);
 				} finally {
+					SessionListenerManager.endCommand(scriptlet, s);
 					try {
 						process.setStatus(s);
 					} catch (CoreException ioe) {

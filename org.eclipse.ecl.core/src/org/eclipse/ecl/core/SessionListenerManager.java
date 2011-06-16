@@ -3,6 +3,8 @@ package org.eclipse.ecl.core;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.eclipse.core.runtime.IStatus;
+
 public class SessionListenerManager {
 	private static Set<ISessionListener> listeners = new HashSet<ISessionListener>();
 
@@ -26,10 +28,10 @@ public class SessionListenerManager {
 		}
 	}
 
-	public static void endCommand(Command cmd) {
+	public static void endCommand(Command cmd, IStatus s) {
 		synchronized (listeners) {
 			for (ISessionListener l : listeners) {
-				l.endCommand(cmd);
+				l.endCommand(cmd, s);
 			}
 		}
 	}
