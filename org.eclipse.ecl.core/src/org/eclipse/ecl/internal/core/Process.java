@@ -23,9 +23,9 @@ public class Process implements IProcess {
 	private final IPipe in;
 	private final IPipe out;
 	private IStatus status;
-	private final Session session;
+	private final ISession session;
 
-	public Process(Session session, IPipe in, IPipe out) {
+	public Process(ISession session, IPipe in, IPipe out) {
 		this.session = session;
 		this.in = in;
 		this.out = out;
@@ -39,7 +39,7 @@ public class Process implements IProcess {
 		return out;
 	}
 
-	synchronized void setStatus(IStatus status) throws CoreException {
+	public synchronized void setStatus(IStatus status) throws CoreException {
 		this.status = status;
 		out.close(status);
 		notifyAll();

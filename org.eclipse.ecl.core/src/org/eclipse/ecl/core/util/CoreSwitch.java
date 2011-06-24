@@ -190,6 +190,12 @@ public class CoreSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CorePackage.SERIALIZED: {
+				Serialized serialized = (Serialized)theEObject;
+				T result = caseSerialized(serialized);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -401,6 +407,21 @@ public class CoreSwitch<T> {
 	 * @generated
 	 */
 	public T caseConvertedToEMFPipe(ConvertedToEMFPipe object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Serialized</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Serialized</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSerialized(Serialized object) {
 		return null;
 	}
 

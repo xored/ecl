@@ -104,11 +104,13 @@ public class EMFStreamPipe implements IPipe {
 				if (e.getMessage().contains(
 						"Connection reset by peer: socket write error")) {
 					throw new CoreException(new Status(IStatus.ERROR,
-							CorePlugin.PLUGIN_ID, e.getMessage()));
+							CorePlugin.PLUGIN_ID, e.getMessage() + "  ---- "
+									+ object));
 				}
 			}
 			throw new CoreException(new Status(IStatus.ERROR,
-					CorePlugin.PLUGIN_ID, e.getMessage(), e));
+					CorePlugin.PLUGIN_ID, e.getMessage() + "  ---- " + object,
+					e));
 		}
 		return this;
 	}

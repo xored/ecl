@@ -132,6 +132,10 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 				return createConvertedToEMFPipeAdapter();
 			}
 			@Override
+			public Adapter caseSerialized(Serialized object) {
+				return createSerializedAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -344,6 +348,20 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConvertedToEMFPipeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.Serialized <em>Serialized</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.Serialized
+	 * @generated
+	 */
+	public Adapter createSerializedAdapter() {
 		return null;
 	}
 

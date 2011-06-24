@@ -143,6 +143,15 @@ public interface CoreFactory extends EFactory {
 	ConvertedToEMFPipe createConvertedToEMFPipe();
 
 	/**
+	 * Returns a new object of class '<em>Serialized</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Serialized</em>'.
+	 * @generated
+	 */
+	Serialized createSerialized();
+
+	/**
 	 * Returns a new object of class '<em>Script</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

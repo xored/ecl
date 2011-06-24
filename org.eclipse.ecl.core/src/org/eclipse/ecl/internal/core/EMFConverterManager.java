@@ -12,6 +12,11 @@
 
 package org.eclipse.ecl.internal.core;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +25,8 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.ecl.core.CoreFactory;
+import org.eclipse.ecl.core.Serialized;
 import org.eclipse.ecl.runtime.IEMFConverter;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -61,6 +68,9 @@ public enum EMFConverterManager implements IEMFConverter<Object, EObject> {
 		@SuppressWarnings("rawtypes")
 		IEMFConverter serializer = byJavaClass.get(object.getClass());
 		if (serializer == null) {
+			if (object instanceof Serializable) {
+				return serializeObject(object);
+			}
 			throw new CoreException(new Status(IStatus.ERROR,
 					CorePlugin.PLUGIN_ID,
 					"Serialization is not supported for instances of: "
@@ -69,16 +79,46 @@ public enum EMFConverterManager implements IEMFConverter<Object, EObject> {
 		return serializer.toEObject(object);
 	}
 
+	private EObject serializeObject(Object object) throws CoreException {
+		try {
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			new ObjectOutputStream(out).writeObject(object);
+			out.flush();
+			out.close();
+			Serialized serialized = CoreFactory.eINSTANCE.createSerialized();
+			serialized.setBytes(out.toByteArray());
+			return serialized;
+		} catch (Exception e) {
+			throw new CoreException(new Status(IStatus.ERROR,
+					CorePlugin.PLUGIN_ID, "Failed to serialize object"));
+		}
+	}
+
 	public Object fromEObject(EObject eObject) throws CoreException {
 		@SuppressWarnings("rawtypes")
 		IEMFConverter deserializer = byEClass.get(eObject.eClass());
 		if (deserializer == null) {
+			if (eObject instanceof Serialized) {
+				return deserializeObject((Serialized) eObject);
+			}
 			throw new CoreException(new Status(IStatus.ERROR,
 					CorePlugin.PLUGIN_ID,
 					"Deserialization is not supported for instances of: "
 							+ eObject.eClass().getName()));
 		}
 		return deserializer.fromEObject(eObject);
+	}
+
+	private Object deserializeObject(Serialized serialized)
+			throws CoreException {
+		try {
+			ByteArrayInputStream in = new ByteArrayInputStream(
+					serialized.getBytes());
+			return new ObjectInputStream(in).readObject();
+		} catch (Exception e) {
+			throw new CoreException(new Status(IStatus.ERROR,
+					CorePlugin.PLUGIN_ID, "Failed to deserialize object"));
+		}
 	}
 
 	public Class<Object> getJavaClass() {

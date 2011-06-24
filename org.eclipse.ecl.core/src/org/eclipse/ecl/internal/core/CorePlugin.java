@@ -78,8 +78,25 @@ public class CorePlugin extends Plugin {
 		return new Status(IStatus.ERROR, PLUGIN_ID, message);
 	}
 
+	public static IStatus err(Throwable throwable) {
+		return new Status(IStatus.ERROR, PLUGIN_ID, throwable.getMessage(),
+				throwable);
+	}
+
 	public static void log(IStatus status) {
 		getDefault().getLog().log(status);
+	}
+
+	public static void log(String message) {
+		log(err(message));
+	}
+
+	public static void log(String message, Throwable throwable) {
+		log(err(message, throwable));
+	}
+
+	public static void log(Throwable throwable) {
+		log(err(throwable.getMessage(), throwable));
 	}
 
 }

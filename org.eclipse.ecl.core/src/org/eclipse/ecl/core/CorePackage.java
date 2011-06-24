@@ -732,6 +732,34 @@ public interface CorePackage extends EPackage {
 	int CONVERTED_TO_EMF_PIPE_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.SerializedImpl <em>Serialized</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.SerializedImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getSerialized()
+	 * @generated
+	 */
+	int SERIALIZED = 15;
+
+	/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERIALIZED__BYTES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Serialized</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERIALIZED_FEATURE_COUNT = 1;
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1103,6 +1131,27 @@ public interface CorePackage extends EPackage {
 	EReference getConvertedToEMFPipe_Object();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Serialized <em>Serialized</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Serialized</em>'.
+	 * @see org.eclipse.ecl.core.Serialized
+	 * @generated
+	 */
+	EClass getSerialized();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Serialized#getBytes <em>Bytes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Bytes</em>'.
+	 * @see org.eclipse.ecl.core.Serialized#getBytes()
+	 * @see #getSerialized()
+	 * @generated
+	 */
+	EAttribute getSerialized_Bytes();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Script <em>Script</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1452,6 +1501,24 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONVERTED_TO_EMF_PIPE__OBJECT = eINSTANCE.getConvertedToEMFPipe_Object();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.SerializedImpl <em>Serialized</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.SerializedImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getSerialized()
+		 * @generated
+		 */
+		EClass SERIALIZED = eINSTANCE.getSerialized();
+
+		/**
+		 * The meta object literal for the '<em><b>Bytes</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERIALIZED__BYTES = eINSTANCE.getSerialized_Bytes();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ScriptImpl <em>Script</em>}' class.

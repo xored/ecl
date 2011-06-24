@@ -74,6 +74,7 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.SCRIPT: return createScript();
 			case CorePackage.PROCESS_STATUS: return createProcessStatus();
 			case CorePackage.CONVERTED_TO_EMF_PIPE: return createConvertedToEMFPipe();
+			case CorePackage.SERIALIZED: return createSerialized();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -207,6 +208,16 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public ConvertedToEMFPipe createConvertedToEMFPipe() {
 		ConvertedToEMFPipeImpl convertedToEMFPipe = new ConvertedToEMFPipeImpl();
 		return convertedToEMFPipe;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Serialized createSerialized() {
+		SerializedImpl serialized = new SerializedImpl();
+		return serialized;
 	}
 
 	/**
