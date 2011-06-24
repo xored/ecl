@@ -1,5 +1,11 @@
 package org.eclipse.ecl.core.tests;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 import junit.framework.TestCase;
 
 import org.eclipse.core.runtime.IStatus;
@@ -144,8 +150,7 @@ public abstract class AbstractCoreTest extends TestCase {
 		IStatus status = process.waitFor();
 		assertTrue(status.isOK());
 		IPipe pipe = process.getOutput();
-		Object res = pipe
-				.take(ISession.DEFAULT_TAKE_TIMEOUT);
+		Object res = pipe.take(ISession.DEFAULT_TAKE_TIMEOUT);
 		assertEquals(42, ((Integer) res).intValue());
 	}
 
@@ -201,6 +206,24 @@ public abstract class AbstractCoreTest extends TestCase {
 		p.waitFor();
 		boolean res = (Boolean) pipe.take(ISession.DEFAULT_TAKE_TIMEOUT);
 		assertEquals(true, res);
+	}
+
+	public static void main(String[] args) throws Throwable {
+		Integer i = 42;
+		Class<? extends Integer> class1 = i.getClass();
+		if (i instanceof Serializable) {
+			ByteArrayOutputStream bout = new ByteArrayOutputStream();
+			ObjectOutputStream stream = new ObjectOutputStream(bout);
+			stream.writeObject(i);
+			bout.flush();
+			bout.close();
+			byte[] byteArray = bout.toByteArray();
+			ByteArrayInputStream in = new ByteArrayInputStream(byteArray);
+			ObjectInputStream oin = new ObjectInputStream(in);
+			Object readObject = oin.readObject();
+			System.out.println();
+		}
+		System.out.println();
 	}
 
 }
