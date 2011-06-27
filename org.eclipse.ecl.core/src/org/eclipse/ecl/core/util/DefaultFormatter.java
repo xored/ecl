@@ -75,7 +75,9 @@ public class DefaultFormatter implements ICommandFormatter {
 				append(parts[0]);
 				for (int i = 1; i < parts.length; i++) {
 					append("\\n");
-					lineBreak(posInLine, "\"\n+ \"");
+					if (parts[i].length() > 1) {
+						lineBreak(posInLine, "\"\n+ \"");
+					}
 					append(parts[i]);
 				}
 			} else {
