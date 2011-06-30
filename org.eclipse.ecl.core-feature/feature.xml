@@ -1,11 +1,52 @@
-<feature id="org.eclipse.ecl.core" label="ECL Core" provider-name="Xored" version="1.0.0.qualifier">
-  <description url="http://www.example.com/description">[Enter Feature Description here.]</description>
-  <copyright url="http://www.example.com/copyright">[Enter Copyright Description here.]</copyright>
-  <license url="http://www.example.com/license">[Enter License Description here.]</license>
-  <requires>
-    <import feature="com.xored.peg.core" version="1.0.0.qualifier"/>
-  </requires>
-  <plugin unpack="false" id="org.eclipse.ecl.core" install-size="0" version="0.0.0" download-size="0"/>
-  <plugin unpack="false" id="org.eclipse.ecl.client.tcp" install-size="0" version="0.0.0" download-size="0"/>
-  <plugin unpack="false" id="org.eclipse.ecl.parser" install-size="0" version="0.0.0" download-size="0"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.ecl.core"
+      label="ECL Core"
+      version="1.0.0.qualifier"
+      provider-name="Xored">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import feature="com.xored.peg.core" version="1.0.0.qualifier"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.ecl.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ecl.client.tcp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ecl.parser"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ecl.perf"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>
