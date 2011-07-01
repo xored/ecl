@@ -32,6 +32,7 @@ public class PerfService {
 			return result;
 		}
 		result.setDuration((int) (endTime - times.get(label)));
+		times.remove(label);
 		return result;
 	}
 
