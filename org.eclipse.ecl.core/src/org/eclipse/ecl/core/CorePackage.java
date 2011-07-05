@@ -8,6 +8,7 @@ package org.eclipse.ecl.core;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -695,13 +696,22 @@ public interface CorePackage extends EPackage {
 	int PROCESS_STATUS__SEVERITY = 3;
 
 	/**
+	 * The feature id for the '<em><b>Exception</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_STATUS__EXCEPTION = 4;
+
+	/**
 	 * The number of structural features of the '<em>Process Status</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_STATUS_FEATURE_COUNT = 4;
+	int PROCESS_STATUS_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.ConvertedToEMFPipeImpl <em>Converted To EMF Pipe</em>}' class.
@@ -758,6 +768,16 @@ public interface CorePackage extends EPackage {
 	 * @ordered
 	 */
 	int SERIALIZED_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '<em>Throwable</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Throwable
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
+	 * @generated
+	 */
+	int THROWABLE = 16;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -1110,6 +1130,17 @@ public interface CorePackage extends EPackage {
 	EAttribute getProcessStatus_Severity();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.ProcessStatus#getException <em>Exception</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Exception</em>'.
+	 * @see org.eclipse.ecl.core.ProcessStatus#getException()
+	 * @see #getProcessStatus()
+	 * @generated
+	 */
+	EAttribute getProcessStatus_Exception();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.ConvertedToEMFPipe <em>Converted To EMF Pipe</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1150,6 +1181,17 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSerialized_Bytes();
+
+	/**
+	 * Returns the meta object for data type '{@link java.lang.Throwable <em>Throwable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Throwable</em>'.
+	 * @see java.lang.Throwable
+	 * @model instanceClass="java.lang.Throwable"
+	 * @generated
+	 */
+	EDataType getThrowable();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Script <em>Script</em>}'.
@@ -1485,6 +1527,14 @@ public interface CorePackage extends EPackage {
 		EAttribute PROCESS_STATUS__SEVERITY = eINSTANCE.getProcessStatus_Severity();
 
 		/**
+		 * The meta object literal for the '<em><b>Exception</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS_STATUS__EXCEPTION = eINSTANCE.getProcessStatus_Exception();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ConvertedToEMFPipeImpl <em>Converted To EMF Pipe</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1519,6 +1569,16 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SERIALIZED__BYTES = eINSTANCE.getSerialized_Bytes();
+
+		/**
+		 * The meta object literal for the '<em>Throwable</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.Throwable
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
+		 * @generated
+		 */
+		EDataType THROWABLE = eINSTANCE.getThrowable();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ScriptImpl <em>Script</em>}' class.

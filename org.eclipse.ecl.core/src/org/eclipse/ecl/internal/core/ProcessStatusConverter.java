@@ -1,8 +1,5 @@
 package org.eclipse.ecl.internal.core;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
-
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.core.CorePackage;
@@ -23,29 +20,16 @@ public class ProcessStatusConverter implements
 
 	public Status fromEObject(ProcessStatus ps) {
 		return new Status(ps.getSeverity(), ps.getPluginId(), ps.getCode(),
-				ps.getMessage(), null);
+				ps.getMessage(), ps.getException());
 	}
 
 	public ProcessStatus toEObject(Status status) {
 		ProcessStatus ps = CoreFactory.eINSTANCE.createProcessStatus();
 		ps.setCode(status.getCode());
-		String msg = status.getMessage();
-		StringBuilder builder = new StringBuilder();
-		if (msg != null && msg.length() > 0) {
-			builder.append(msg);
-		}
-		if (status.getException() != null) {
-			if (builder.length() > 0) {
-				builder.append("\n");
-			}
-			StringWriter out = new StringWriter();
-			status.getException().printStackTrace(new PrintWriter(out));
-			String stackTrace = out.toString();
-			builder.append(stackTrace);
-		}
-		ps.setMessage(builder.toString());
+		ps.setMessage(status.getMessage());
 		ps.setPluginId(status.getPlugin());
 		ps.setSeverity(status.getSeverity());
+		ps.setException(status.getException());
 		return ps;
 	}
 

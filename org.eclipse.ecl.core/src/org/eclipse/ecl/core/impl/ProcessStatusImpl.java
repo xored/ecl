@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link org.eclipse.ecl.core.impl.ProcessStatusImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.ProcessStatusImpl#getMessage <em>Message</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.ProcessStatusImpl#getSeverity <em>Severity</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.impl.ProcessStatusImpl#getException <em>Exception</em>}</li>
  * </ul>
  * </p>
  *
@@ -112,6 +113,26 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 	 * @ordered
 	 */
 	protected int severity = SEVERITY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getException() <em>Exception</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getException()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Throwable EXCEPTION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getException() <em>Exception</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getException()
+	 * @generated
+	 * @ordered
+	 */
+	protected Throwable exception = EXCEPTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -221,6 +242,27 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Throwable getException() {
+		return exception;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setException(Throwable newException) {
+		Throwable oldException = exception;
+		exception = newException;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.PROCESS_STATUS__EXCEPTION, oldException, exception));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -232,6 +274,8 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 				return getMessage();
 			case CorePackage.PROCESS_STATUS__SEVERITY:
 				return getSeverity();
+			case CorePackage.PROCESS_STATUS__EXCEPTION:
+				return getException();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -255,6 +299,9 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 				return;
 			case CorePackage.PROCESS_STATUS__SEVERITY:
 				setSeverity((Integer)newValue);
+				return;
+			case CorePackage.PROCESS_STATUS__EXCEPTION:
+				setException((Throwable)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -280,6 +327,9 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 			case CorePackage.PROCESS_STATUS__SEVERITY:
 				setSeverity(SEVERITY_EDEFAULT);
 				return;
+			case CorePackage.PROCESS_STATUS__EXCEPTION:
+				setException(EXCEPTION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -300,6 +350,8 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 				return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
 			case CorePackage.PROCESS_STATUS__SEVERITY:
 				return severity != SEVERITY_EDEFAULT;
+			case CorePackage.PROCESS_STATUS__EXCEPTION:
+				return EXCEPTION_EDEFAULT == null ? exception != null : !EXCEPTION_EDEFAULT.equals(exception);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -322,6 +374,8 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 		result.append(message);
 		result.append(", severity: ");
 		result.append(severity);
+		result.append(", exception: ");
+		result.append(exception);
 		result.append(')');
 		return result.toString();
 	}
