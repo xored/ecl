@@ -51,18 +51,22 @@ public class CommandToStringConverter {
 					+ exec.getName());
 		else
 			formatter.addCommandName(exec.getName());
+		String lastParam = null;
 		for (Parameter p : exec.getParameters()) {
-			formatter.addAttrName(p.getName(), p.getName() != null
-					&& p.getName().length() > 0);
-			if (p instanceof LiteralParameter)
-				formatter.addAttrValue(((LiteralParameter) p).getLiteral());
-			else if (p instanceof ExecutableParameter) {
+			String name = p.getName();
+			formatter.addAttrName(name,
+					isForced(exec.getName(), name) && !name.equals(lastParam));
+			lastParam = name;
+			if (p instanceof LiteralParameter) {
+				String value = convertValue(
+						((LiteralParameter) p).getLiteral(), "string");
+				formatter.addAttrValue(value);
+			} else if (p instanceof ExecutableParameter) {
 				formatter.openExec();
 				doConvert(((ExecutableParameter) p).getCommand(), formatter,
 						hasInput);
-				formatter.openExec();
+				formatter.closeExec();
 			}
-			// TODO else what?? exception or log or what?
 		}
 	}
 
