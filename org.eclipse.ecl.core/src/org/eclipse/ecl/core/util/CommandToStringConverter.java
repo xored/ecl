@@ -175,6 +175,9 @@ public class CommandToStringConverter {
 	private boolean isForced(String commandName, String paramName) {
 		// TODO ! need new presentation of set-text-selection command or nide
 		// args
+		if ("activate-cell-edit".equals(commandName)
+				&& "column".equals(paramName))
+			return true;
 		if ("set-text-selection".equals(commandName))
 			return true;
 		return "index".equals(paramName) || "after".equals(paramName)
