@@ -66,7 +66,7 @@ public class TcpSession implements ISession {
 				} catch (CoreException e) {
 					ctx.setStatus(e.getStatus());
 				} catch (Throwable t) {
-					ctx.setStatus(CorePlugin.err(t.getMessage(), t));
+					ctx.setStatus(CorePlugin.err(t));
 				} finally {
 					try {
 						if (commandPipe != null) {

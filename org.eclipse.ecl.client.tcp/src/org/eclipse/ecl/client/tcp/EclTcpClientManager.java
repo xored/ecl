@@ -9,7 +9,7 @@ public enum EclTcpClientManager {
 
 	Instance;
 
-	public final static int DEFAULT_PORT = EclTcpClient.DEFAULT_PORT;
+	public final static int DEFAULT_PORT = EclTcpClientPlugin.DEFAULT_PORT;
 
 	public ISession startClientSession(InetAddress address, int port)
 			throws IOException {
