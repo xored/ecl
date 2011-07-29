@@ -6,11 +6,12 @@ import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
 
 //TODO same as Process
+@Deprecated
 public class RemoteProcess implements IProcess {
-	
+
 	private TcpSession session;
 	private IStatus status;
-	
+
 	RemoteProcess(TcpSession session) {
 		this.session = session;
 	}
@@ -29,7 +30,7 @@ public class RemoteProcess implements IProcess {
 	}
 
 	public synchronized IStatus waitFor() throws InterruptedException {
-		while (status == null) {	
+		while (status == null) {
 			wait(100);
 		}
 		return status;
@@ -42,6 +43,5 @@ public class RemoteProcess implements IProcess {
 	public ISession getSession() {
 		return session;
 	}
-
 
 }

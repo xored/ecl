@@ -74,10 +74,22 @@ public class EclTcpClientPlugin extends Plugin {
 				e));
 	}
 
+	/**
+	 * @deprecated Use
+	 *             {@link org.eclipse.ecl.client.tcp.EclTcpClientManager#startClientSession(InetAddress, int)}
+	 *             instead
+	 */
+	@Deprecated
 	public static ISession startLocalSession() throws IOException {
 		return new TcpSession(InetAddress.getByName("localhost"), DEFAULT_PORT);
 	}
 
+	/**
+	 * @deprecated Use
+	 *             {@link org.eclipse.ecl.client.tcp.EclTcpClientManager#startClientSession(InetAddress, int)}
+	 *             instead
+	 */
+	@Deprecated
 	public static ISession startSession(InetAddress address, int port)
 			throws IOException {
 		return new TcpSession(address, port);

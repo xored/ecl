@@ -10,6 +10,7 @@ import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
 
+@Deprecated
 public class Session extends Thread {
 	private final static boolean DEBUG_LOG = false;
 	private Socket socket;

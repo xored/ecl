@@ -5,6 +5,11 @@ import java.io.IOException;
 import org.eclipse.ecl.internal.server.tcp.Activator;
 import org.eclipse.ecl.internal.server.tcp.TcpServer;
 
+/**
+ * @deprecated Replaced by
+ *             {@link org.eclipse.ecl.server.tcp.EclTcpServerManager}
+ */
+@Deprecated
 public class EclTcp {
 
 	public static synchronized void runServer(int port, boolean restart)

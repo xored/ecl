@@ -17,6 +17,10 @@ import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
 
+/**
+ * @deprecated Replaced by {@link org.eclipse.ecl.client.tcp.EclTcpSession}
+ */
+@Deprecated
 public class TcpSession implements ISession {
 
 	private final static String PLUGIN_ID = "org.eclipse.ecl.internal.client.tcp";

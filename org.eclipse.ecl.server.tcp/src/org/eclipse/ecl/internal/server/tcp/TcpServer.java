@@ -5,6 +5,10 @@ import java.net.ServerSocket;
 
 import org.eclipse.core.runtime.Status;
 
+/**
+ * @deprecated Replaced by {@link org.eclipse.ecl.server.tcp.EclTcpServer}
+ */
+@Deprecated
 public class TcpServer extends Thread {
 
 	private ServerSocket socket;
@@ -16,7 +20,7 @@ public class TcpServer extends Thread {
 		socket = new ServerSocket(port);
 		this.port = port;
 	}
-	
+
 	public boolean isStarting() {
 		return starting;
 	}

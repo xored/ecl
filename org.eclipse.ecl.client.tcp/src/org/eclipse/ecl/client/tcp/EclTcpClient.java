@@ -5,11 +5,17 @@ import java.net.InetAddress;
 
 import org.eclipse.ecl.runtime.ISession;
 
+/**
+ * @deprecated Replaced by
+ *             {@link org.eclipse.ecl.client.tcp.EclTcpClientManager}
+ */
+@Deprecated
 public class EclTcpClient {
 
 	public final static int DEFAULT_PORT = EclTcpClientPlugin.DEFAULT_PORT;
 
-	public static ISession startSession(InetAddress address, int port) throws IOException {
+	public static ISession startSession(InetAddress address, int port)
+			throws IOException {
 		return EclTcpClientPlugin.startSession(address, port);
 	}
 }
