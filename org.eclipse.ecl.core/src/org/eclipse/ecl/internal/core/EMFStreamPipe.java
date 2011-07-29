@@ -20,8 +20,8 @@ import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.impl.BinaryResourceImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 public class EMFStreamPipe implements IPipe {
 
@@ -46,8 +46,8 @@ public class EMFStreamPipe implements IPipe {
 	}
 
 	public Object take(long timeout) throws CoreException {
-		// Resource r = new BinaryResourceImpl();
-		Resource r = new XMIResourceImpl();
+		Resource r = new BinaryResourceImpl();
+		// Resource r = new XMIResourceImpl();
 		int size = 0;
 		byte[] data = null;
 		try {
@@ -86,8 +86,8 @@ public class EMFStreamPipe implements IPipe {
 			converted.setObject(EMFConverterManager.INSTANCE.toEObject(object));
 			eObject = converted;
 		}
-		// Resource r = new BinaryResourceImpl();
-		Resource r = new XMIResourceImpl();
+		Resource r = new BinaryResourceImpl();
+		// Resource r = new XMIResourceImpl();
 		r.getContents().add(eObject);
 		try {
 			ByteArrayOutputStream bout = new ByteArrayOutputStream();
@@ -98,7 +98,8 @@ public class EMFStreamPipe implements IPipe {
 
 			r.save(bout, options);
 			out.writeInt(bout.size());
-			out.write(bout.toByteArray());
+			bout.writeTo(out);
+			// out.write(bout.toByteArray());
 		} catch (Throwable e) {
 			if (e instanceof SocketException) {
 				if (e.getMessage().contains(
