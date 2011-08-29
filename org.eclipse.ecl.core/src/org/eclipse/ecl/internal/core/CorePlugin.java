@@ -75,7 +75,7 @@ public class CorePlugin extends Plugin {
 	}
 
 	public static IStatus err(String message, Throwable throwable) {
-		return new Status(IStatus.ERROR, PLUGIN_ID, message);
+		return new Status(IStatus.ERROR, PLUGIN_ID, message, throwable);
 	}
 
 	public static IStatus err(Throwable throwable) {
