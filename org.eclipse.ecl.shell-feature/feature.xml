@@ -1,11 +1,26 @@
-<feature id="org.eclipse.ecl.shell" label="ECL Telnet Shell " provider-name="xored software, Inc." version="1.0.0.qualifier">
-  <description url="http://www.example.com/description">[Enter Feature Description here.]</description>
-  <copyright url="http://www.example.com/copyright">[Enter Copyright Description here.]</copyright>
-  <license url="http://www.example.com/license">[Enter License Description here.]</license>
+<feature 
+	id="org.eclipse.ecl.shell" 
+	label="ECL Telnet Shell" 
+	provider-name="xored software, Inc." 
+	version="1.0.0.qualifier">
+	
+  <description url="http://www.xored.com/q7/discover/ecl">
+	Telnet shell for interactive remote execution of ECL commands
+  </description>
+  
+  <copyright url="%copyrightURL">
+  	%copyright
+  </copyright>
+  
+  <license url="%licenseURL">
+  	%license
+  </license>
+  
   <requires>
     <import feature="org.eclipse.ecl.core" version="1.0.0.qualifier"/>
     <import feature="org.eclipse.ecl.server" version="1.0.0.qualifier"/>
   </requires>
+  
   <plugin unpack="false" id="org.eclipse.ecl.telnet.server" install-size="0" version="0.0.0" download-size="0"/>
   <plugin unpack="false" id="org.eclipse.ecl.shell" install-size="0" version="0.0.0" download-size="0"/>
 </feature>
