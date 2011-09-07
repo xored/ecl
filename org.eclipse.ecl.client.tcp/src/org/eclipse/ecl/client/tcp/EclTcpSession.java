@@ -109,9 +109,13 @@ public class EclTcpSession implements ISession {
 
 	public void reconnect() throws CoreException {
 		try {
-			Socket socket = new Socket(address, port);
-			if (socket != null && socket.isConnected()) {
-				socket.close();
+			Socket socket = null;
+			try {
+				socket = new Socket(address, port);
+			} finally {
+				if (socket != null) {
+					socket.close();
+				}
 			}
 		} catch (IOException e) {
 			throw new CoreException(CorePlugin.err(e));
