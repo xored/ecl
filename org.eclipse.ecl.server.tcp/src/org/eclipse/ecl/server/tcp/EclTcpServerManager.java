@@ -24,13 +24,12 @@ public enum EclTcpServerManager {
 			servers.put(port, newServer);
 			return newServer;
 		} else {
-			throw new IOException("Another server is already running on port "
-					+ port);
+			throw new IOException("Another server is already running on port " + port);
 		}
 	}
 
 	public synchronized void stopServer(int port) throws IOException {
-		EclTcpServer server = servers.get(port);
+		EclTcpServer server = servers.remove(port);
 		if (server != null) {
 			server.interrupt();
 		} else {
