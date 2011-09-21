@@ -3,7 +3,10 @@
    <feature url="features/org.eclipse.ecl.core_1.0.0.qualifier.jar" id="org.eclipse.ecl.core" version="1.0.0.qualifier">
    		<category name="ecl" />
    </feature>
-   <feature url="features/org.eclipse.ecl.server_1.0.0.qualifier.jar" id="org.eclipse.ecl.server" version="1.0.0.qualifier">
+   <feature url="features/org.eclipse.ecl.server_1.0.1.qualifier.jar" id="org.eclipse.ecl.server" version="1.0.1.qualifier">
+      	<category name="ecl" />
+   </feature>
+   <feature url="features/org.eclipse.ecl.server.ui_1.0.1.qualifier.jar" id="org.eclipse.ecl.server.ui" version="1.0.1.qualifier">
       	<category name="ecl" />
    </feature>
 
