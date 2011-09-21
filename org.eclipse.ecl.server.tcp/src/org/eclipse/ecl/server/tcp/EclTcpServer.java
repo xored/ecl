@@ -17,7 +17,7 @@ import org.eclipse.ecl.runtime.ISession;
 public class EclTcpServer extends Thread {
 	private final ServerSocket socket;
 	private final int port;
-	private boolean starting = true;
+	private volatile boolean starting = true;
 
 	public EclTcpServer(int port) throws IOException {
 		super("ECL TCP server");
