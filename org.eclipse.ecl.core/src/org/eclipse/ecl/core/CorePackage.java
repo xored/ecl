@@ -770,6 +770,43 @@ public interface CorePackage extends EPackage {
 	int SERIALIZED_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.NullableImpl <em>Nullable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.NullableImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getNullable()
+	 * @generated
+	 */
+	int NULLABLE = 16;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NULLABLE__VALUE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NULLABLE__TYPE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Nullable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NULLABLE_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -777,7 +814,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
 	 * @generated
 	 */
-	int THROWABLE = 16;
+	int THROWABLE = 17;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -1183,6 +1220,38 @@ public interface CorePackage extends EPackage {
 	EAttribute getSerialized_Bytes();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Nullable <em>Nullable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Nullable</em>'.
+	 * @see org.eclipse.ecl.core.Nullable
+	 * @generated
+	 */
+	EClass getNullable();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.Nullable#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see org.eclipse.ecl.core.Nullable#getValue()
+	 * @see #getNullable()
+	 * @generated
+	 */
+	EReference getNullable_Value();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Nullable#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see org.eclipse.ecl.core.Nullable#getType()
+	 * @see #getNullable()
+	 * @generated
+	 */
+	EAttribute getNullable_Type();
+
+	/**
 	 * Returns the meta object for data type '{@link java.lang.Throwable <em>Throwable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1569,6 +1638,32 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SERIALIZED__BYTES = eINSTANCE.getSerialized_Bytes();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.NullableImpl <em>Nullable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.NullableImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getNullable()
+		 * @generated
+		 */
+		EClass NULLABLE = eINSTANCE.getNullable();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NULLABLE__VALUE = eINSTANCE.getNullable_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NULLABLE__TYPE = eINSTANCE.getNullable_Type();
 
 		/**
 		 * The meta object literal for the '<em>Throwable</em>' data type.

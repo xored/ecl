@@ -152,6 +152,15 @@ public interface CoreFactory extends EFactory {
 	Serialized createSerialized();
 
 	/**
+	 * Returns a new object of class '<em>Nullable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Nullable</em>'.
+	 * @generated
+	 */
+	Nullable createNullable();
+
+	/**
 	 * Returns a new object of class '<em>Script</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

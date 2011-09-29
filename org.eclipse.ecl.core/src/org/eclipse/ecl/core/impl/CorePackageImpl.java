@@ -16,6 +16,7 @@ import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.ExecutableParameter;
 import org.eclipse.ecl.core.Foreach;
 import org.eclipse.ecl.core.LiteralParameter;
+import org.eclipse.ecl.core.Nullable;
 import org.eclipse.ecl.core.Parallel;
 import org.eclipse.ecl.core.Parameter;
 import org.eclipse.ecl.core.Pipeline;
@@ -127,6 +128,13 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	private EClass serializedEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass nullableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -517,6 +525,33 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getNullable() {
+		return nullableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNullable_Value() {
+		return (EReference)nullableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNullable_Type() {
+		return (EAttribute)nullableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getThrowable() {
 		return throwableEDataType;
 	}
@@ -619,6 +654,10 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		serializedEClass = createEClass(SERIALIZED);
 		createEAttribute(serializedEClass, SERIALIZED__BYTES);
 
+		nullableEClass = createEClass(NULLABLE);
+		createEReference(nullableEClass, NULLABLE__VALUE);
+		createEAttribute(nullableEClass, NULLABLE__TYPE);
+
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
 	}
@@ -720,6 +759,10 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 
 		initEClass(serializedEClass, Serialized.class, "Serialized", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSerialized_Bytes(), ecorePackage.getEByteArray(), "bytes", null, 0, 1, Serialized.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(nullableEClass, Nullable.class, "Nullable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getNullable_Value(), theEcorePackage.getEObject(), null, "value", null, 0, 1, Nullable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNullable_Type(), theEcorePackage.getEString(), "type", null, 0, 1, Nullable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
