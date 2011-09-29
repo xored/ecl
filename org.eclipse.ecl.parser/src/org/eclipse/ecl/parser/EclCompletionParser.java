@@ -98,8 +98,8 @@ public class EclCompletionParser {
 			return;
 		}
 		int type = target.getType();
-		String substring = target.getText().substring(target.getBegin(),
-				textOffset);
+		String substring = type == Rules.Spacing.ordinal() ? "" : target
+				.getText().substring(target.getBegin(), textOffset);
 		String nameStart = substring.trim();
 		if (type < 0 || type >= Rules.values().length) {
 			return;
@@ -199,6 +199,7 @@ public class EclCompletionParser {
 		TreeOptimizer.removeChildrenOfType(b, Rules.CommandName.ordinal());
 		TreeOptimizer.removeChildrenOfType(b, Rules.ParameterName.ordinal());
 		TreeOptimizer.removeChildrenOfType(b, Rules.CurlyExpression.ordinal());
+		TreeOptimizer.removeChildrenOfType(b, Rules.Spacing.ordinal());
 		return b;
 	}
 

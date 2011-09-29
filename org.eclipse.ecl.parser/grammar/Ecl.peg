@@ -1,4 +1,4 @@
-Commands <- Sequence EOF
+Commands <- Spacing Sequence? EOF
 Sequence <- Spacing Pipeline CommandSpacing ((EndOfLine|Colon) Spacing Pipeline)* CommandSpacing (EndOfLine|Colon)?  Spacing
 Pipeline <- Command (Spacing Pipe Spacing Command?)*
 Command <- CommandName (ParameterDelim Parameter)*
@@ -17,7 +17,9 @@ LCurly <- "\{"
 RCurly <- "\}" 
 LBrack <- "\["
 RBrack <- "\]"
-Spacing <- "[ \t\n\r]*"
+Spacing <- ("[ \t\n\r]+" | SlComment | MlComment)*
 ParameterDelim <- "[ \t]+"
-CommandSpacing <- "[ \t]*"
+CommandSpacing <- ("[ \t]+" | SlComment | MlComment)*
 EndOfLine <- "[\n\r]+"
+SlComment <- '//[^\n\r]*'
+MlComment <- '/\*.*\*/'
