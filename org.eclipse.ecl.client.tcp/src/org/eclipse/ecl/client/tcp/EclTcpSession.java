@@ -53,8 +53,8 @@ public class EclTcpSession implements ISession {
 							socket.getOutputStream());
 					pipe.write(command);
 					readInput(input, pipe);
-					Object result = writeOutput(output, pipe);
-					process.setStatus((IStatus) result);
+					IStatus result = writeOutput(output, pipe);
+					process.setStatus(result);
 				} catch (CoreException e) {
 					try {
 						process.setStatus(e.getStatus());

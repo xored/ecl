@@ -67,8 +67,7 @@ public class EclTcpServer extends Thread {
 					Command command = (Command) object;
 					IPipe input = readInput(pipe);
 					IProcess process = session.execute(command, input, null);
-					IStatus status = process.waitFor();
-					writeOutput(pipe, process);
+					IStatus status = writeOutput(pipe, process);
 					pipe.write(status);
 				}
 			} catch (Exception e) {
@@ -97,13 +96,13 @@ public class EclTcpServer extends Thread {
 			return input;
 		}
 
-		private void writeOutput(IPipe pipe, IProcess process)
+		private IStatus writeOutput(IPipe pipe, IProcess process)
 				throws CoreException {
 			Object object;
 			do {
 				object = process.getOutput().take(Long.MAX_VALUE);
-				if (object == null || object instanceof IStatus) {
-					break;
+				if (object instanceof IStatus) {
+					return (IStatus) object;
 				} else {
 					pipe.write(object);
 				}
