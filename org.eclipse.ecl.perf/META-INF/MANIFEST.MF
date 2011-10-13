@@ -5,7 +5,6 @@ Bundle-SymbolicName: org.eclipse.ecl.perf;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: xored software, Inc.
-Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.ecl.perf,
  org.eclipse.ecl.perf.impl,
