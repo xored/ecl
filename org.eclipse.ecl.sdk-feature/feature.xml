@@ -20,8 +20,4 @@
          id="org.eclipse.ecl.core"
          version="0.0.0"/>
 
-   <includes
-         id="org.eclipse.ecl.core.source"
-         version="0.0.0"/>
-
 </feature>
