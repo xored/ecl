@@ -14,6 +14,7 @@
 	</properties>
   
   <modules>
+    <module>com.xored.peg</module>
     <module>org.eclipse.ecl.client.tcp</module>
     <!--module>org.eclipse.ecl.client.tcp.tests</module-->
     <!--module>org.eclipse.ecl.console.core</module>
@@ -50,14 +51,6 @@
 			<id>helios</id>
 			<layout>p2</layout>
 			<url>http://download.xored.com/mirrors/helios/</url>
-		</repository>
-		<repository>
-		    <snapshots>
-    	      <updatePolicy>always</updatePolicy>
-    		</snapshots>		
-			<id>peg</id>
-			<layout>p2</layout>
-			<url>http://build.xored.com/browse/PEG-CORE/latest/artifact/JOB1/Update-Site</url>
 		</repository>
 	</repositories>
 

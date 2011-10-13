@@ -10,10 +10,6 @@
       	<category name="ecl" />
    </feature>
 
-   <feature url="features/com.xored.peg.core_1.0.0.qualifier.jar" id="com.xored.peg.core" version="1.0.0.qualifier">
-   		<category name="ecl" />
-   </feature>
-
    <feature url="features/org.eclipse.ecl.shell_1.0.0.qualifier.jar" id="org.eclipse.ecl.shell" version="1.0.0.qualifier">
    		<category name="ecl" />
    </feature>
