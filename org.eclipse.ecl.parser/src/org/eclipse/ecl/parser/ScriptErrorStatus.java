@@ -25,11 +25,9 @@ public class ScriptErrorStatus extends Status {
 	}
 
 	public ScriptErrorStatus(IStatus cause, int line, int column, int length) {
-		super(cause.getSeverity(), CorePlugin.PLUGIN_ID, "Execution failed");
-		this.line = line;
-		this.column = column;
-		this.length = length;
-		this.cause = cause;
+		this(cause.getSeverity(), CorePlugin.PLUGIN_ID, String.format(
+				"Execution failed. Cause: '%s'", cause.getMessage()), line,
+				column, length, cause);
 	}
 
 	public int getLine() {
