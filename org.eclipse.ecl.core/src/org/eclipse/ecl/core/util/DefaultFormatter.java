@@ -125,6 +125,10 @@ public class DefaultFormatter implements ICommandFormatter {
 		return buffer.toString();
 	}
 
+	public int getLineNumber() {
+		return lineNumber;
+	}
+
 	private void addIndent() {
 		for (int i = 0; i < level * INDENT_SIZE; i++)
 			append(SPACE);
@@ -133,8 +137,7 @@ public class DefaultFormatter implements ICommandFormatter {
 	private DefaultFormatter append(String s) {
 		buffer.append(s);
 		posInLine += s.length();
-		if (posInLine > LINE_LENGTH && possibleLineBreak > 0
-				&& possibleLineBreak < posInLine) {
+		if (posInLine > LINE_LENGTH && possibleLineBreak > 0 && possibleLineBreak < posInLine) {
 			lineBreak(possibleLineBreak, lineBreak);
 		}
 		return this;
@@ -143,8 +146,7 @@ public class DefaultFormatter implements ICommandFormatter {
 	private void lineBreak(int pos, String lineBreak) {
 		if (wrap) {
 			int index = lineBreak.indexOf('\n');
-			StringBuilder sb = new StringBuilder(lineBreak.substring(0,
-					index + 1));
+			StringBuilder sb = new StringBuilder(lineBreak.substring(0, index + 1));
 			for (int i = 0; i < (level + 1) * INDENT_SIZE; i++)
 				sb.append(SPACE);
 			sb.append(lineBreak.substring(index + 1, lineBreak.length()));

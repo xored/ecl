@@ -16,7 +16,6 @@ import org.eclipse.ecl.core.tests.model.IsPipeEmpty;
 import org.eclipse.ecl.core.tests.model.ModelFactory;
 import org.eclipse.ecl.core.tests.model.ModelPackage;
 import org.eclipse.ecl.core.tests.model.Random;
-import org.eclipse.ecl.core.tests.model.ReadFromPipe;
 import org.eclipse.ecl.core.tests.model.SlowCommand;
 import org.eclipse.ecl.core.tests.model.TestCommand;
 import org.eclipse.emf.ecore.EAttribute;

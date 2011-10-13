@@ -7,17 +7,12 @@
 package org.eclipse.ecl.perf.impl;
 
 import org.eclipse.ecl.core.impl.CommandImpl;
-
 import org.eclipse.ecl.perf.ConstrainMax;
-import org.eclipse.ecl.perf.PerfCounter;
 import org.eclipse.ecl.perf.PerfPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**

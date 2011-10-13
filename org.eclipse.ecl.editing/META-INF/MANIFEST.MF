@@ -9,7 +9,7 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: com.cisco.peg,
  org.eclipse.ecl.editing,
- org.eclipse.ecl.internal.editing.parser;x-internal:=true,
+ org.eclipse.ecl.internal.editing.parser;x-friends:="org.eclipse.ecl.editing.tests",
  org.eclipse.ecl.model.editing
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ecl.core,

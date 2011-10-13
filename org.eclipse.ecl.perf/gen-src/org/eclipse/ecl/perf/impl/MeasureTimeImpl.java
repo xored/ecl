@@ -7,19 +7,14 @@
 package org.eclipse.ecl.perf.impl;
 
 import org.eclipse.ecl.core.Command;
-
 import org.eclipse.ecl.core.impl.CommandImpl;
 import org.eclipse.ecl.perf.MeasureTime;
 import org.eclipse.ecl.perf.PerfPackage;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->

@@ -44,12 +44,9 @@ public class SimpleLexerTest extends TestCase {
 	}
 
 	private void process(String content) throws IllegalAccessException {
-		String method = Thread.currentThread().getStackTrace()[2]
-				.getMethodName();
+		String method = Thread.currentThread().getStackTrace()[2].getMethodName();
 		System.out.println("Test:" + method);
 		EclLexer lexer = new EclLexer(new ANTLRStringStream(content));
-		// EclParserErrorCollector collector = new EclParserErrorCollector();
-		// lexer.setErrorReporter(collector);
 		while (true) {
 			Token token = lexer.nextToken();
 			int type = token.getType();
@@ -58,26 +55,18 @@ public class SimpleLexerTest extends TestCase {
 			}
 			printToken(token, lexer);
 		}
-		// EclError[] errors = collector.getErrors();
-		// for (int i = 0; i < errors.length; i++) {
-		// System.out.println(errors[i].getMessage() + ":"
-		// + errors[i].getHeader());
-		// }
-		// System.out.println("");
 	}
 
-	public static void printToken(Token token, EclLexer lexer)
-			throws IllegalArgumentException, IllegalAccessException {
+	public static void printToken(Token token, EclLexer lexer) throws IllegalArgumentException, IllegalAccessException {
 		boolean found = false;
-		Class lexerClass = lexer.getClass();
+		Class<?> lexerClass = lexer.getClass();
 		Field[] fields = lexerClass.getFields();
 		int type = token.getType();
 		for (int i = 0; i < fields.length; i++) {
 			if (fields[i].getType().getName().equals("int")) {
 				int int1 = fields[i].getInt(lexer);
 				if (int1 == type) {
-					System.out.print("[" + fields[i].getName() + "("
-							+ token.getText() + ")] ");
+					System.out.print("[" + fields[i].getName() + "(" + token.getText() + ")] ");
 					found = true;
 					break;
 				}

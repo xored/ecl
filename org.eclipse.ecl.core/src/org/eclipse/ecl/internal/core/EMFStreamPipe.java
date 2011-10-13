@@ -21,7 +21,6 @@ import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.BinaryResourceImpl;
-import org.eclipse.emf.ecore.xmi.XMLResource;
 
 public class EMFStreamPipe implements IPipe {
 
@@ -39,15 +38,13 @@ public class EMFStreamPipe implements IPipe {
 			in.close();
 			out.close();
 		} catch (IOException e) {
-			throw new CoreException(new Status(IStatus.ERROR,
-					CorePlugin.PLUGIN_ID, e.getMessage(), e));
+			throw new CoreException(new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, e.getMessage(), e));
 		}
 		return this;
 	}
 
 	public Object take(long timeout) throws CoreException {
 		Resource r = new BinaryResourceImpl();
-		// Resource r = new XMIResourceImpl();
 		int size = 0;
 		byte[] data = null;
 		try {
@@ -61,18 +58,15 @@ public class EMFStreamPipe implements IPipe {
 			r.load(bin, null);
 			EObject eObject = r.getContents().get(0);
 			if (eObject instanceof ConvertedToEMFPipe) {
-				return EMFConverterManager.INSTANCE
-						.fromEObject(((ConvertedToEMFPipe) eObject).getObject());
+				return EMFConverterManager.INSTANCE.fromEObject(((ConvertedToEMFPipe) eObject).getObject());
 			} else {
 				return eObject;
 			}
 		} catch (Throwable e) {
 			if (!(e instanceof EOFException)) {
-				throw new CoreException(new Status(IStatus.ERROR,
-						CorePlugin.PLUGIN_ID, e.getMessage(), e));
+				throw new CoreException(new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, e.getMessage(), e));
 			}
-			return new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
-					"Connection is not Available", e);
+			return new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, "Connection is not Available", e);
 		}
 	}
 
@@ -81,37 +75,27 @@ public class EMFStreamPipe implements IPipe {
 		if (object instanceof EObject) {
 			eObject = (EObject) object;
 		} else {
-			ConvertedToEMFPipe converted = CoreFactory.eINSTANCE
-					.createConvertedToEMFPipe();
+			ConvertedToEMFPipe converted = CoreFactory.eINSTANCE.createConvertedToEMFPipe();
 			converted.setObject(EMFConverterManager.INSTANCE.toEObject(object));
 			eObject = converted;
 		}
 		Resource r = new BinaryResourceImpl();
-		// Resource r = new XMIResourceImpl();
 		r.getContents().add(eObject);
 		try {
 			ByteArrayOutputStream bout = new ByteArrayOutputStream();
 			Map<String, Object> options = new HashMap<String, Object>();
-			options.put(XMLResource.OPTION_ENCODING, "utf-8");
-			options.put(XMLResource.OPTION_ESCAPE_USING_CDATA, Boolean.TRUE);
-			options.put(XMLResource.OPTION_SKIP_ESCAPE, Boolean.FALSE);
-
 			r.save(bout, options);
 			out.writeInt(bout.size());
 			bout.writeTo(out);
-			// out.write(bout.toByteArray());
 		} catch (Throwable e) {
 			if (e instanceof SocketException) {
-				if (e.getMessage().contains(
-						"Connection reset by peer: socket write error")) {
-					throw new CoreException(new Status(IStatus.ERROR,
-							CorePlugin.PLUGIN_ID, e.getMessage() + "  ---- "
-									+ object));
+				if (e.getMessage().contains("Connection reset by peer: socket write error")) {
+					throw new CoreException(new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, e.getMessage() + "  ---- "
+							+ object));
 				}
 			}
-			throw new CoreException(new Status(IStatus.ERROR,
-					CorePlugin.PLUGIN_ID, e.getMessage() + "  ---- " + object,
-					e));
+			throw new CoreException(new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
+					e.getMessage() + "  ---- " + object, e));
 		}
 		return this;
 	}

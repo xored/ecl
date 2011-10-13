@@ -34,7 +34,7 @@ public class ParamConverterManager {
 	private final static String CONVERTER_EXTPT = "org.eclipse.ecl.core.param_converter";
 	private final static String CONVERTER_CLASS_ATTR = "class";
 
-	private Map<Class, IParamConverter> converters;
+	private Map<Class<?>, IParamConverter<?>> converters;
 
 	private ParamConverterManager() {
 	}
@@ -43,10 +43,10 @@ public class ParamConverterManager {
 		if (converters == null) {
 			loadScriptlets();
 		}
-		return converters.get(type);
+		return (IParamConverter<T>) converters.get(type);
 	}
 
-	public <T> boolean hasConverter(Class<T> type) {
+	public boolean hasConverter(Class<?> type) {
 		if (converters == null) {
 			loadScriptlets();
 		}
@@ -54,18 +54,21 @@ public class ParamConverterManager {
 	}
 
 	private void loadScriptlets() {
-		converters = new HashMap<Class, IParamConverter>();
-		IConfigurationElement[] configs = Platform.getExtensionRegistry()
-				.getConfigurationElementsFor(CONVERTER_EXTPT);
+		converters = new HashMap<Class<?>, IParamConverter<?>>();
+		IConfigurationElement[] configs = Platform.getExtensionRegistry().getConfigurationElementsFor(CONVERTER_EXTPT);
 		for (IConfigurationElement config : configs) {
 			try {
-				IParamConverter converter = (IParamConverter) config
+				IParamConverter<?> converter = (IParamConverter<?>) config
 						.createExecutableExtension(CONVERTER_CLASS_ATTR);
-				Class clazz = converter.forType();
-				converters.put(clazz, converter);
+				addConverter(converter);
 			} catch (CoreException e) {
 				CorePlugin.getDefault().getLog().log(e.getStatus());
 			}
 		}
+	}
+
+	private <T> void addConverter(IParamConverter<T> converter) {
+		Class<T> clazz = converter.forType();
+		converters.put(clazz, converter);
 	}
 }

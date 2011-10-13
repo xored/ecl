@@ -7,7 +7,6 @@
 package org.eclipse.ecl.perf;
 
 import org.eclipse.ecl.core.Command;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

@@ -1,14 +1,9 @@
 package org.eclipse.ecl.client.tcp;
 
-import java.io.IOException;
-import java.net.InetAddress;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.ecl.internal.client.tcp.TcpSession;
-import org.eclipse.ecl.runtime.ISession;
 import org.osgi.framework.BundleContext;
 
 public class EclTcpClientPlugin extends Plugin {
@@ -74,24 +69,4 @@ public class EclTcpClientPlugin extends Plugin {
 				e));
 	}
 
-	/**
-	 * @deprecated Use
-	 *             {@link org.eclipse.ecl.client.tcp.EclTcpClientManager#startClientSession(InetAddress, int)}
-	 *             instead
-	 */
-	@Deprecated
-	public static ISession startLocalSession() throws IOException {
-		return new TcpSession(InetAddress.getByName("localhost"), DEFAULT_PORT);
-	}
-
-	/**
-	 * @deprecated Use
-	 *             {@link org.eclipse.ecl.client.tcp.EclTcpClientManager#startClientSession(InetAddress, int)}
-	 *             instead
-	 */
-	@Deprecated
-	public static ISession startSession(InetAddress address, int port)
-			throws IOException {
-		return new TcpSession(address, port);
-	}
 }

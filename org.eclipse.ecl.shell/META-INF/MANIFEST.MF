@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: ECL Shell
-Bundle-SymbolicName: org.eclipse.ecl.shell;singleton:=true
+Bundle-SymbolicName: org.eclipse.ecl.shell
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipse.ecl.eclsh.EclPlugin
 Require-Bundle: org.eclipse.core.runtime,

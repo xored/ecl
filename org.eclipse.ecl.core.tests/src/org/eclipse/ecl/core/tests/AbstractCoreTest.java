@@ -210,7 +210,6 @@ public abstract class AbstractCoreTest extends TestCase {
 
 	public static void main(String[] args) throws Throwable {
 		Integer i = 42;
-		Class<? extends Integer> class1 = i.getClass();
 		if (i instanceof Serializable) {
 			ByteArrayOutputStream bout = new ByteArrayOutputStream();
 			ObjectOutputStream stream = new ObjectOutputStream(bout);
@@ -221,9 +220,8 @@ public abstract class AbstractCoreTest extends TestCase {
 			ByteArrayInputStream in = new ByteArrayInputStream(byteArray);
 			ObjectInputStream oin = new ObjectInputStream(in);
 			Object readObject = oin.readObject();
-			System.out.println();
+			System.out.println(readObject);
 		}
-		System.out.println();
 	}
 
 }

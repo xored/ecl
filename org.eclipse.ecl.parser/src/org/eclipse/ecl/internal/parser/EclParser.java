@@ -2,7 +2,7 @@
 
 package org.eclipse.ecl.internal.parser;
 import org.antlr.runtime.BitSet;
-import org.antlr.runtime.MismatchedSetException;
+import org.antlr.runtime.FailedPredicateException;
 import org.antlr.runtime.NoViableAltException;
 import org.antlr.runtime.Parser;
 import org.antlr.runtime.RecognitionException;
@@ -17,15 +17,9 @@ import org.eclipse.ecl.core.Parallel;
 import org.eclipse.ecl.core.Parameter;
 import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.core.Sequence;
-import org.eclipse.ecl.gen.ast.AstFactory;
 import org.eclipse.ecl.gen.ast.AstExec;
+import org.eclipse.ecl.gen.ast.AstFactory;
 import org.eclipse.ecl.gen.ast.AstLiteral;
-
-
-import org.antlr.runtime.*;
-import java.util.Stack;
-import java.util.List;
-import java.util.ArrayList;
 
 public class EclParser extends Parser {
     public static final String[] tokenNames = new String[] {
@@ -285,7 +279,7 @@ public class EclParser extends Parser {
                 int LA2_1 = input.LA(2);
 
                 if ( (LA2_1==EOF) ) {
-                    int LA2_8 = input.LA(3);
+                    /*int LA2_8 = */input.LA(3);
 
                     if ( (!(lookupNL())) ) {
                         alt2=1;
@@ -739,7 +733,7 @@ public class EclParser extends Parser {
                 int LA8_0 = input.LA(1);
 
                 if ( (LA8_0==NAME) ) {
-                    int LA8_7 = input.LA(2);
+                    /*int LA8_7 = */input.LA(2);
 
                     if ( (!(lookupNL())) ) {
                         alt8=1;
@@ -1324,7 +1318,7 @@ public class EclParser extends Parser {
                 alt16=1;
             }
             else if ( (LA16_0==NAME) ) {
-                int LA16_2 = input.LA(2);
+                /*int LA16_2 = */input.LA(2);
 
                 if ( (!(lookupNL())) ) {
                     alt16=1;

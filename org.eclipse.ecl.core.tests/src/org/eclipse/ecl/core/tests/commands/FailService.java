@@ -5,7 +5,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.tests.AbstractCoreTest;
-import org.eclipse.ecl.core.tests.model.TestCommand;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
 

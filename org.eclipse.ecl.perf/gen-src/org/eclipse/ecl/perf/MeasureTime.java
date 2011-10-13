@@ -8,8 +8,6 @@ package org.eclipse.ecl.perf;
 
 import org.eclipse.ecl.core.Command;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Measure Time</b></em>'.
