@@ -14,7 +14,6 @@
 	</properties>
   
   <modules>
-    <module>com.xored.peg</module>
     <module>org.eclipse.ecl.client.tcp</module>
     <module>org.eclipse.ecl.core</module>
     <module>org.eclipse.ecl.perf</module>
