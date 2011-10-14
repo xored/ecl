@@ -26,7 +26,7 @@
     <module>org.eclipse.ecl.platform-feature</module>
     <module>org.eclipse.ecl.editing</module>
     <module>org.eclipse.ecl.parser</module>
-    <module>org.eclipse.ecl.sdk-feature</module-->
+    <!-- module>org.eclipse.ecl.sdk-feature</module -->
     <module>org.eclipse.ecl.server-feature</module>
     <module>org.eclipse.ecl.server.ui-feature</module>
     <module>org.eclipse.ecl.server.tcp</module>
