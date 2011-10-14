@@ -23,7 +23,7 @@
     <module>org.eclipse.ecl.doc</module>
     <module>org.eclipse.ecl.platform</module>
     <module>org.eclipse.ecl.platform-feature</module>
-    <module>org.eclipse.ecl.editing</module>
+    <!-- module>org.eclipse.ecl.editing</module -->
     <module>org.eclipse.ecl.parser</module>
     <!-- module>org.eclipse.ecl.sdk-feature</module -->
     <module>org.eclipse.ecl.server-feature</module>
