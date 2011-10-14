@@ -11,7 +11,6 @@ Export-Package: org.eclipse.ecl.editing,
  org.eclipse.ecl.model.editing
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ecl.core,
- org.eclipse.ecl.parser,
- com.xored.peg
+ org.eclipse.ecl.parser
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.ecl.editing.EclEditingPlugin
