@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ECL Platform
+Bundle-SymbolicName: org.eclipse.ecl.platform;singleton:=true
+Bundle-Version: 1.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: xored softwarem Inc.
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.eclipse.ecl.platform.commands,
+ org.eclipse.ecl.platform.commands.impl,
+ org.eclipse.ecl.platform.commands.util,
+ org.eclipse.ecl.platform.objects,
+ org.eclipse.ecl.platform.objects.impl,
+ org.eclipse.ecl.platform.objects.util,
+ org.eclipse.ecl.platform.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.ecl.core;bundle-version="1.0.0",
+ org.eclipse.pde.core;bundle-version="3.6.1",
+ org.eclipse.equinox.p2.core;bundle-version="2.0.2",
+ org.eclipse.equinox.p2.repository;bundle-version="2.0.1",
+ org.eclipse.equinox.p2.metadata;bundle-version="2.0.0",
+ org.eclipse.equinox.p2.operations;bundle-version="2.0.0",
+ org.eclipse.equinox.p2.artifact.repository,
+ org.eclipse.equinox.p2.engine,
+ org.eclipse.equinox.p2.metadata.repository,
+ org.eclipse.equinox.p2.repository,
+ org.eclipse.equinox.frameworkadmin
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: org.eclipse.ecl.platform.internal.PlatformPlugin

@@ -14,8 +14,8 @@ import junit.framework.TestCase;
 
 import org.eclipse.ecl.internal.editing.parser.PegParser;
 
-import com.cisco.peg.Block;
-import com.cisco.peg.PEGParser;
+import com.xored.peg.Block;
+import com.xored.peg.PEGParser;
 
 public class PegParserTest extends TestCase {
 	PEGParser parser;

@@ -5,8 +5,7 @@ Bundle-SymbolicName: org.eclipse.ecl.server.tcp;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipse.ecl.internal.server.tcp.Activator
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.ecl.core;bundle-version="1.0.0",
- org.eclipse.ecl.parser
+ org.eclipse.ecl.core
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.ecl.internal.server.tcp,

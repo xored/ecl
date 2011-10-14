@@ -15,11 +15,11 @@ import java.util.List;
 
 import org.eclipse.ecl.editing.EclEditingPlugin;
 
-import com.cisco.peg.Block;
-import com.cisco.peg.PEGParser;
-import com.cisco.peg.ParsingExpressionGrammar;
-import com.cisco.peg.ParsingGrammar;
-import com.cisco.peg.TreeOptimizer;
+import com.xored.peg.Block;
+import com.xored.peg.PEGParser;
+import com.xored.peg.ParsingExpressionGrammar;
+import com.xored.peg.ParsingGrammar;
+import com.xored.peg.TreeOptimizer;
 
 public class PegParser {
 	static PEGParser parser = null;

@@ -25,7 +25,7 @@ import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import com.cisco.peg.Block;
+import com.xored.peg.Block;
 
 public class DescriptionService implements ICommandService {
 

@@ -16,24 +16,16 @@
   <modules>
     <module>com.xored.peg</module>
     <module>org.eclipse.ecl.client.tcp</module>
-    <!--module>org.eclipse.ecl.client.tcp.tests</module-->
-    <!--module>org.eclipse.ecl.console.core</module>
-    <module>org.eclipse.ecl.console.ui</module>
-    <module>org.eclipse.ecl.console-feature</module>
-    <module>org.eclipse.ecl.console-updatesite</module-->
     <module>org.eclipse.ecl.core</module>
-	<module>org.eclipse.ecl.perf</module>
+    <module>org.eclipse.ecl.perf</module>
     <module>org.eclipse.ecl.core-feature</module>
     <module>org.eclipse.ecl.core-updatesite</module>
     <module>org.eclipse.ecl.shell-feature</module>
-    <!--module>org.eclipse.ecl.core.tests</module>
-    <module>org.eclipse.ecl.core.tests-feature</module-->
     <module>org.eclipse.ecl.doc</module>
-    <!--module>org.eclipse.ecl.doc.test</module-->
+    <module>org.eclipse.ecl.platform</module>
+    <module>org.eclipse.ecl.platform-feature</module>
     <module>org.eclipse.ecl.editing</module>
-    <!--module>org.eclipse.ecl.editing.test</module-->
     <module>org.eclipse.ecl.parser</module>
-    <!--module>org.eclipse.ecl.parser.test</module>
     <module>org.eclipse.ecl.sdk-feature</module-->
     <module>org.eclipse.ecl.server-feature</module>
     <module>org.eclipse.ecl.server.ui-feature</module>
@@ -42,8 +34,6 @@
     <module>org.eclipse.ecl.shell</module>
     <module>org.eclipse.ecl.telnet.server</module>
     <module>org.eclipse.ecl.telnet.server.ui</module>
-    <!-- module>org.eclipse.ecl.terminal.connector</module-->
-    <!-- module>org.eclipse.espace.core</module-->
   </modules>
 	<repositories>
 		<repository>
