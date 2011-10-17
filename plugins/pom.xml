@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.eclipse.ecl</groupId>
+  <artifactId>ecl-plugins</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <parent>
+    <artifactId>ecl</artifactId>
+    <groupId>org.eclipse.ecl</groupId>
+    <version>1.0.1-SNAPSHOT</version>
+  </parent>
+  <modules>
+    <module>org.eclipse.ecl.client.tcp</module>
+    <module>org.eclipse.ecl.core</module>
+    <module>org.eclipse.ecl.doc</module>
+    <module>org.eclipse.ecl.parser</module>
+    <module>org.eclipse.ecl.perf</module>
+    <module>org.eclipse.ecl.platform</module>
+    <module>org.eclipse.ecl.server.tcp</module>
+    <module>org.eclipse.ecl.server.tcp.ui</module>
+    <module>org.eclipse.ecl.shell</module>
+    <module>org.eclipse.ecl.telnet.server</module>
+    <module>org.eclipse.ecl.telnet.server.ui</module>
+  </modules>
+</project>

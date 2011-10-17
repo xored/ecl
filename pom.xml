@@ -1,81 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.eclipse.ecl</groupId>
   <artifactId>ecl</artifactId>
   <version>1.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  
-	<properties>
-		<tycho-version>0.11.0</tycho-version>
-		<tycho-groupid>org.sonatype.tycho</tycho-groupid>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-  
-  <modules>
-    <module>org.eclipse.ecl.client.tcp</module>
-    <module>org.eclipse.ecl.core</module>
-    <module>org.eclipse.ecl.perf</module>
-    <module>org.eclipse.ecl.core-feature</module>
-    <module>org.eclipse.ecl.core-updatesite</module>
-    <module>org.eclipse.ecl.shell-feature</module>
-    <module>org.eclipse.ecl.doc</module>
-    <module>org.eclipse.ecl.platform</module>
-    <module>org.eclipse.ecl.platform-feature</module>
-    <!-- module>org.eclipse.ecl.editing</module -->
-    <module>org.eclipse.ecl.parser</module>
-    <!-- module>org.eclipse.ecl.sdk-feature</module -->
-    <module>org.eclipse.ecl.server-feature</module>
-    <module>org.eclipse.ecl.server.ui-feature</module>
-    <module>org.eclipse.ecl.server.tcp</module>
-    <module>org.eclipse.ecl.server.tcp.ui</module>
-    <module>org.eclipse.ecl.shell</module>
-    <module>org.eclipse.ecl.telnet.server</module>
-    <module>org.eclipse.ecl.telnet.server.ui</module>
-  </modules>
-	<repositories>
-		<repository>
-			<id>helios</id>
-			<layout>p2</layout>
-			<url>http://download.xored.com/mirrors/helios/</url>
-		</repository>
-	</repositories>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>${tycho-groupid}</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<extensions>true</extensions>
-			</plugin>
-			
-			<plugin>
-				<groupId>${tycho-groupid}</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<resolver>p2</resolver>
-				</configuration>
-			</plugin>
-			 <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.5</version>
-                <executions>
-                    <execution>
-                        <id>remove-old-installations</id>
-                        <goals>
-                            <goal>remove-project-artifact</goal>
-                        </goals>
-                        <configuration>
-                            <removeAll>true</removeAll>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin> 
-		</plugins>
-	</build>
-	
+  <properties>
+    <tycho-version>0.11.0</tycho-version>
+    <tycho-groupid>org.sonatype.tycho</tycho-groupid>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <modules>
+    <module>plugins</module>
+    <module>features</module>
+    <module>tests</module>
+    <module>releng</module>
+  </modules>
+
+  <repositories>
+    <repository>
+      <id>helios</id>
+      <layout>p2</layout>
+      <url>http://download.xored.com/mirrors/helios/</url>
+    </repository>
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>${tycho-groupid}</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <extensions>true</extensions>
+      </plugin>
+      <plugin>
+        <groupId>${tycho-groupid}</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <resolver>p2</resolver>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>remove-old-installations</id>
+            <goals>
+              <goal>remove-project-artifact</goal>
+            </goals>
+            <configuration>
+              <removeAll>true</removeAll>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin> 
+    </plugins>
+  </build>
 </project>
