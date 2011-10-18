@@ -93,10 +93,10 @@ public class ModelSwitch<T> {
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ModelPackage.TEST_COMMAND: {
-				TestCommand testCommand = (TestCommand)theEObject;
-				T result = caseTestCommand(testCommand);
-				if (result == null) result = caseCommand(testCommand);
+			case ModelPackage.SAMPLE_COMMAND: {
+				SampleCommand sampleCommand = (SampleCommand)theEObject;
+				T result = caseSampleCommand(sampleCommand);
+				if (result == null) result = caseCommand(sampleCommand);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -160,17 +160,17 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Test Command</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Sample Command</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Test Command</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Sample Command</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTestCommand(TestCommand object) {
+	public T caseSampleCommand(SampleCommand object) {
 		return null;
 	}
 

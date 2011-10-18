@@ -78,8 +78,8 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	protected ModelSwitch<Adapter> modelSwitch =
 		new ModelSwitch<Adapter>() {
 			@Override
-			public Adapter caseTestCommand(TestCommand object) {
-				return createTestCommandAdapter();
+			public Adapter caseSampleCommand(SampleCommand object) {
+				return createSampleCommandAdapter();
 			}
 			@Override
 			public Adapter caseSlowCommand(SlowCommand object) {
@@ -138,16 +138,16 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.tests.model.TestCommand <em>Test Command</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.tests.model.SampleCommand <em>Sample Command</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.ecl.core.tests.model.TestCommand
+	 * @see org.eclipse.ecl.core.tests.model.SampleCommand
 	 * @generated
 	 */
-	public Adapter createTestCommandAdapter() {
+	public Adapter createSampleCommandAdapter() {
 		return null;
 	}
 

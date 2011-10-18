@@ -19,8 +19,8 @@
    <extension
          point="org.eclipse.ecl.core.scriptlet">
       <scriptlet
-            class="org.eclipse.ecl.core.tests.commands.TestCommandService"
-            name="TestCommand"
+            class="org.eclipse.ecl.core.tests.commands.SampleCommandService"
+            name="SampleCommand"
             namespace="http://www.eclipse.org/ecl/tests/model.ecore">
       </scriptlet>
       <scriptlet

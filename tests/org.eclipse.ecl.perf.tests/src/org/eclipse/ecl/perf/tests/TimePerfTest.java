@@ -10,6 +10,8 @@
  ******************************************************************************/
 package org.eclipse.ecl.perf.tests;
 
+import junit.framework.TestCase;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.ecl.perf.ConstrainMax;
@@ -24,7 +26,8 @@ import org.eclipse.ecl.runtime.ISession;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TimePerfTests {
+public class TimePerfTest extends TestCase {
+
 	@Test
 	public void testSimple() throws CoreException, InterruptedException {
 		ISession session = createSession();

@@ -29,7 +29,7 @@ import org.eclipse.ecl.core.Sequence;
 import org.eclipse.ecl.core.tests.model.EmitData;
 import org.eclipse.ecl.core.tests.model.IsPipeEmpty;
 import org.eclipse.ecl.core.tests.model.ModelFactory;
-import org.eclipse.ecl.core.tests.model.TestCommand;
+import org.eclipse.ecl.core.tests.model.SampleCommand;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
@@ -71,8 +71,8 @@ public abstract class AbstractCoreTest extends TestCase {
 		super.tearDown();
 	}
 
-	private TestCommand createTestCommand(String s) {
-		TestCommand testCommand = ModelFactory.eINSTANCE.createTestCommand();
+	private SampleCommand createTestCommand(String s) {
+		SampleCommand testCommand = ModelFactory.eINSTANCE.createSampleCommand();
 		testCommand.setHello(s);
 		return testCommand;
 	}

@@ -20,8 +20,8 @@ import org.eclipse.ecl.core.tests.model.IsPipeEmpty;
 import org.eclipse.ecl.core.tests.model.ModelFactory;
 import org.eclipse.ecl.core.tests.model.ModelPackage;
 import org.eclipse.ecl.core.tests.model.Random;
+import org.eclipse.ecl.core.tests.model.SampleCommand;
 import org.eclipse.ecl.core.tests.model.SlowCommand;
-import org.eclipse.ecl.core.tests.model.TestCommand;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -35,10 +35,11 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  */
 public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass testCommandEClass = null;
+	private EClass sampleCommandEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -154,19 +155,21 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTestCommand() {
-		return testCommandEClass;
+	public EClass getSampleCommand() {
+		return sampleCommandEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTestCommand_Hello() {
-		return (EAttribute)testCommandEClass.getEStructuralFeatures().get(0);
+	public EAttribute getSampleCommand_Hello() {
+		return (EAttribute)sampleCommandEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -304,8 +307,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		testCommandEClass = createEClass(TEST_COMMAND);
-		createEAttribute(testCommandEClass, TEST_COMMAND__HELLO);
+		sampleCommandEClass = createEClass(SAMPLE_COMMAND);
+		createEAttribute(sampleCommandEClass, SAMPLE_COMMAND__HELLO);
 
 		slowCommandEClass = createEClass(SLOW_COMMAND);
 
@@ -360,7 +363,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		testCommandEClass.getESuperTypes().add(theCorePackage.getCommand());
+		sampleCommandEClass.getESuperTypes().add(theCorePackage.getCommand());
 		slowCommandEClass.getESuperTypes().add(theCorePackage.getCommand());
 		incrementCommandEClass.getESuperTypes().add(theCorePackage.getCommand());
 		emitDataEClass.getESuperTypes().add(theCorePackage.getCommand());
@@ -370,8 +373,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		failEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(testCommandEClass, TestCommand.class, "TestCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTestCommand_Hello(), ecorePackage.getEString(), "hello", null, 0, 1, TestCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(sampleCommandEClass, SampleCommand.class, "SampleCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSampleCommand_Hello(), ecorePackage.getEString(), "hello", null, 0, 1, SampleCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(slowCommandEClass, SlowCommand.class, "SlowCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

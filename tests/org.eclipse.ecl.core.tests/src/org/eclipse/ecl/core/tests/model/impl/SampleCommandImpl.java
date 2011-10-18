@@ -1,19 +1,15 @@
-/*******************************************************************************
- * Copyright (c) 2011 xored software, Inc.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     xored software, Inc - initial API and implementation
- ******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.ecl.core.tests.model.impl;
 
 import org.eclipse.ecl.core.impl.CommandImpl;
 
 import org.eclipse.ecl.core.tests.model.ModelPackage;
-import org.eclipse.ecl.core.tests.model.TestCommand;
+import org.eclipse.ecl.core.tests.model.SampleCommand;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -23,18 +19,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Test Command</b></em>'.
+ * An implementation of the model object '<em><b>Sample Command</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.core.tests.model.impl.TestCommandImpl#getHello <em>Hello</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.tests.model.impl.SampleCommandImpl#getHello <em>Hello</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class TestCommandImpl extends CommandImpl implements TestCommand {
+public class SampleCommandImpl extends CommandImpl implements SampleCommand {
 	/**
 	 * The default value of the '{@link #getHello() <em>Hello</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -60,7 +56,7 @@ public class TestCommandImpl extends CommandImpl implements TestCommand {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TestCommandImpl() {
+	protected SampleCommandImpl() {
 		super();
 	}
 
@@ -71,7 +67,7 @@ public class TestCommandImpl extends CommandImpl implements TestCommand {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ModelPackage.Literals.TEST_COMMAND;
+		return ModelPackage.Literals.SAMPLE_COMMAND;
 	}
 
 	/**
@@ -92,7 +88,7 @@ public class TestCommandImpl extends CommandImpl implements TestCommand {
 		String oldHello = hello;
 		hello = newHello;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TEST_COMMAND__HELLO, oldHello, hello));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SAMPLE_COMMAND__HELLO, oldHello, hello));
 	}
 
 	/**
@@ -103,7 +99,7 @@ public class TestCommandImpl extends CommandImpl implements TestCommand {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ModelPackage.TEST_COMMAND__HELLO:
+			case ModelPackage.SAMPLE_COMMAND__HELLO:
 				return getHello();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -117,7 +113,7 @@ public class TestCommandImpl extends CommandImpl implements TestCommand {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ModelPackage.TEST_COMMAND__HELLO:
+			case ModelPackage.SAMPLE_COMMAND__HELLO:
 				setHello((String)newValue);
 				return;
 		}
@@ -132,7 +128,7 @@ public class TestCommandImpl extends CommandImpl implements TestCommand {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ModelPackage.TEST_COMMAND__HELLO:
+			case ModelPackage.SAMPLE_COMMAND__HELLO:
 				setHello(HELLO_EDEFAULT);
 				return;
 		}
@@ -147,7 +143,7 @@ public class TestCommandImpl extends CommandImpl implements TestCommand {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ModelPackage.TEST_COMMAND__HELLO:
+			case ModelPackage.SAMPLE_COMMAND__HELLO:
 				return HELLO_EDEFAULT == null ? hello != null : !HELLO_EDEFAULT.equals(hello);
 		}
 		return super.eIsSet(featureID);
@@ -169,4 +165,4 @@ public class TestCommandImpl extends CommandImpl implements TestCommand {
 		return result.toString();
 	}
 
-} //TestCommandImpl
+} //SampleCommandImpl

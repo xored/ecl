@@ -21,7 +21,8 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.ecl.doc.EclDocPlugin;
 import org.eclipse.emf.ecore.EPackage;
 
-public class EclDocTests extends TestCase {
+public class EclDocTest extends TestCase {
+
 	public void test01() throws Exception {
 		EPackage[] ePackages = new EPackage[] {
 				EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/ecl/core.ecore"),

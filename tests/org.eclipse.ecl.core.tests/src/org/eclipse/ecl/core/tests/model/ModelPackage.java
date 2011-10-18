@@ -65,14 +65,14 @@ public interface ModelPackage extends EPackage {
 	ModelPackage eINSTANCE = org.eclipse.ecl.core.tests.model.impl.ModelPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.core.tests.model.impl.TestCommandImpl <em>Test Command</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.ecl.core.tests.model.impl.SampleCommandImpl <em>Sample Command</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.core.tests.model.impl.TestCommandImpl
-	 * @see org.eclipse.ecl.core.tests.model.impl.ModelPackageImpl#getTestCommand()
+	 * @see org.eclipse.ecl.core.tests.model.impl.SampleCommandImpl
+	 * @see org.eclipse.ecl.core.tests.model.impl.ModelPackageImpl#getSampleCommand()
 	 * @generated
 	 */
-	int TEST_COMMAND = 0;
+	int SAMPLE_COMMAND = 0;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -81,16 +81,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_COMMAND__HOST = CorePackage.COMMAND__HOST;
+	int SAMPLE_COMMAND__HOST = CorePackage.COMMAND__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_COMMAND__BINDINGS = CorePackage.COMMAND__BINDINGS;
+	int SAMPLE_COMMAND__BINDINGS = CorePackage.COMMAND__BINDINGS;
 
 	/**
 	 * The feature id for the '<em><b>Hello</b></em>' attribute.
@@ -99,17 +99,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_COMMAND__HELLO = CorePackage.COMMAND_FEATURE_COUNT + 0;
+	int SAMPLE_COMMAND__HELLO = CorePackage.COMMAND_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Test Command</em>' class.
+	 * The number of structural features of the '<em>Sample Command</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEST_COMMAND_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
-
+	int SAMPLE_COMMAND_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.core.tests.model.impl.SlowCommandImpl <em>Slow Command</em>}' class.
@@ -131,7 +130,7 @@ public interface ModelPackage extends EPackage {
 	int SLOW_COMMAND__HOST = CorePackage.COMMAND__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -169,7 +168,7 @@ public interface ModelPackage extends EPackage {
 	int INCREMENT_COMMAND__HOST = CorePackage.COMMAND__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -245,7 +244,7 @@ public interface ModelPackage extends EPackage {
 	int EMIT_DATA__HOST = CorePackage.COMMAND__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -292,7 +291,7 @@ public interface ModelPackage extends EPackage {
 	int RANDOM__HOST = CorePackage.COMMAND__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -339,7 +338,7 @@ public interface ModelPackage extends EPackage {
 	int IS_PIPE_EMPTY__HOST = CorePackage.COMMAND__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -376,7 +375,7 @@ public interface ModelPackage extends EPackage {
 	int EMIT_EMF_DATA__HOST = CorePackage.COMMAND__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -422,7 +421,7 @@ public interface ModelPackage extends EPackage {
 	int FAIL__HOST = CorePackage.COMMAND__HOST;
 
 	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' reference list.
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -440,25 +439,25 @@ public interface ModelPackage extends EPackage {
 	int FAIL_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.ecl.core.tests.model.TestCommand <em>Test Command</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.tests.model.SampleCommand <em>Sample Command</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Test Command</em>'.
-	 * @see org.eclipse.ecl.core.tests.model.TestCommand
+	 * @return the meta object for class '<em>Sample Command</em>'.
+	 * @see org.eclipse.ecl.core.tests.model.SampleCommand
 	 * @generated
 	 */
-	EClass getTestCommand();
+	EClass getSampleCommand();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.tests.model.TestCommand#getHello <em>Hello</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.tests.model.SampleCommand#getHello <em>Hello</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Hello</em>'.
-	 * @see org.eclipse.ecl.core.tests.model.TestCommand#getHello()
-	 * @see #getTestCommand()
+	 * @see org.eclipse.ecl.core.tests.model.SampleCommand#getHello()
+	 * @see #getSampleCommand()
 	 * @generated
 	 */
-	EAttribute getTestCommand_Hello();
+	EAttribute getSampleCommand_Hello();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.tests.model.SlowCommand <em>Slow Command</em>}'.
@@ -618,14 +617,14 @@ public interface ModelPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.eclipse.ecl.core.tests.model.impl.TestCommandImpl <em>Test Command</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.tests.model.impl.SampleCommandImpl <em>Sample Command</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.core.tests.model.impl.TestCommandImpl
-		 * @see org.eclipse.ecl.core.tests.model.impl.ModelPackageImpl#getTestCommand()
+		 * @see org.eclipse.ecl.core.tests.model.impl.SampleCommandImpl
+		 * @see org.eclipse.ecl.core.tests.model.impl.ModelPackageImpl#getSampleCommand()
 		 * @generated
 		 */
-		EClass TEST_COMMAND = eINSTANCE.getTestCommand();
+		EClass SAMPLE_COMMAND = eINSTANCE.getSampleCommand();
 
 		/**
 		 * The meta object literal for the '<em><b>Hello</b></em>' attribute feature.
@@ -633,7 +632,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TEST_COMMAND__HELLO = eINSTANCE.getTestCommand_Hello();
+		EAttribute SAMPLE_COMMAND__HELLO = eINSTANCE.getSampleCommand_Hello();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.tests.model.impl.SlowCommandImpl <em>Slow Command</em>}' class.

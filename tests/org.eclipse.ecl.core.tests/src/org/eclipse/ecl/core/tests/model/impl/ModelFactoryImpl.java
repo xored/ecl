@@ -64,7 +64,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ModelPackage.TEST_COMMAND: return createTestCommand();
+			case ModelPackage.SAMPLE_COMMAND: return createSampleCommand();
 			case ModelPackage.SLOW_COMMAND: return createSlowCommand();
 			case ModelPackage.INCREMENT_COMMAND: return createIncrementCommand();
 			case ModelPackage.DATA: return createData();
@@ -83,9 +83,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TestCommand createTestCommand() {
-		TestCommandImpl testCommand = new TestCommandImpl();
-		return testCommand;
+	public SampleCommand createSampleCommand() {
+		SampleCommandImpl sampleCommand = new SampleCommandImpl();
+		return sampleCommand;
 	}
 
 	/**

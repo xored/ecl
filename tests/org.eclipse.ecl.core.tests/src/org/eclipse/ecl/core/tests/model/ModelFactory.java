@@ -30,13 +30,13 @@ public interface ModelFactory extends EFactory {
 	ModelFactory eINSTANCE = org.eclipse.ecl.core.tests.model.impl.ModelFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Test Command</em>'.
+	 * Returns a new object of class '<em>Sample Command</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Test Command</em>'.
+	 * @return a new object of class '<em>Sample Command</em>'.
 	 * @generated
 	 */
-	TestCommand createTestCommand();
+	SampleCommand createSampleCommand();
 
 	/**
 	 * Returns a new object of class '<em>Slow Command</em>'.
