@@ -19,6 +19,7 @@ import java.io.Serializable;
 import junit.framework.TestCase;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.ExecutableParameter;
@@ -107,26 +108,23 @@ public abstract class AbstractCoreTest extends TestCase {
 		assertEquals(3, getCount());
 	}
 
-	//TODO need to understand why this tests doesn't work
-	/*public void testPipeline() throws Exception {
-		// ISession session = EclRuntime.createSession();
+	public void testPipeline() throws Exception {
 		Pipeline pipeline = CoreFactory.eINSTANCE.createPipeline();
-		pipeline.getCommands().add(
-				ModelFactory.eINSTANCE.createIncrementCommand());
-		pipeline.getCommands().add(
-				ModelFactory.eINSTANCE.createIncrementCommand());
-		pipeline.getCommands().add(
-				ModelFactory.eINSTANCE.createIncrementCommand());
+		pipeline.getCommands().add(ModelFactory.eINSTANCE.createIncrementCommand());
+		pipeline.getCommands().add(ModelFactory.eINSTANCE.createIncrementCommand());
+		pipeline.getCommands().add(ModelFactory.eINSTANCE.createIncrementCommand());
 
 		IPipe source = session.createPipe();
 		IPipe sink = session.createPipe();
-		session.execute(pipeline, source, sink);
 
 		source.write(new Integer(42));
 		source.close(Status.OK_STATUS);
+
+		session.execute(pipeline, source, sink);
+
 		Integer res = (Integer) sink.take(Long.MAX_VALUE);
 		assertEquals(45, res.intValue());
-	}*/
+	}
 
 	/*
 	 * Execute "EmitData 42" via Exec
@@ -176,8 +174,7 @@ public abstract class AbstractCoreTest extends TestCase {
 		Exec exec = CoreFactory.eINSTANCE.createExec();
 		exec.setNamespace(TEST_NS);
 		exec.setName("EmitData");
-		ExecutableParameter param = CoreFactory.eINSTANCE
-				.createExecutableParameter();
+		ExecutableParameter param = CoreFactory.eINSTANCE.createExecutableParameter();
 		param.setCommand(subcommand);
 		exec.getParameters().add(param);
 

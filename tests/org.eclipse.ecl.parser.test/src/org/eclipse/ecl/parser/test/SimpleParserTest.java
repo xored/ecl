@@ -78,11 +78,10 @@ public class SimpleParserTest extends TestCase {
 		check("set1|(set2&set3)", "(set1|(set2&set3))");
 	}
 
-	//TODO why this test doesn't work?
-	/*public void testParser001h() throws Throwable {
+	public void testParser001h() throws Throwable {
 		check("set1&set2|set3", "(set1&(set2|set3))");
-		check("set1&set2|set3)", "(set1&(set2|set3))");
-	}*/
+		check("(set1&set2|set3)", "(set1&(set2|set3))");
+	}
 
 	public void testParser002() throws Throwable {
 		check("set1 a b c", "set1 a b c");
@@ -182,8 +181,7 @@ public class SimpleParserTest extends TestCase {
 	}
 
 	private Command process(String content) throws Throwable {
-		String method = Thread.currentThread().getStackTrace()[3]
-				.getMethodName();
+		String method = Thread.currentThread().getStackTrace()[3].getMethodName();
 		System.out.println("Test:" + method);
 		// EclParserErrorCollector collector = new EclParserErrorCollector();
 		Command cmd = EclCoreParser.newCommand(content);
