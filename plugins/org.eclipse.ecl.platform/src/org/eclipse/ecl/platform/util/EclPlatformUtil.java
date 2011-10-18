@@ -123,7 +123,7 @@ public class EclPlatformUtil {
 	 */
 	public static void replaceReposotory(URI uri, String nick) {
 		for (Repository repo : listRepositories()) {
-			if (repo.getName().equals(nick)) {
+			if (nick.equals(repo.getName())) {
 				removeRepository(URI.create(repo.getLocation()));
 			}
 		}
