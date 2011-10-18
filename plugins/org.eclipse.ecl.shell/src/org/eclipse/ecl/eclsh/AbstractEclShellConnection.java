@@ -106,6 +106,9 @@ public abstract class AbstractEclShellConnection {
 				for (int i = 0; i < n; i++) {
 					byte c = bytes[i];
 					switch (c) {
+					case -1:
+						i += 2;
+						continue;
 					case 13:
 					case 10:
 						if (prev != 10 && prev != 13) {
