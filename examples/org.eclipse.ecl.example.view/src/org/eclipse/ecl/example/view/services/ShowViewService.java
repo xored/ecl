@@ -18,7 +18,6 @@ import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.example.view.ShowView;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
@@ -28,8 +27,7 @@ public class ShowViewService implements ICommandService {
 	public IStatus service(Command command, IProcess context) throws InterruptedException, CoreException {
 		ShowView view = (ShowView) command;
 		final String id = view.getId();
-		Display display = PlatformUI.getWorkbench().getDisplay();
-		display.syncExec(new Runnable() {
+		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 
 			@Override
 			public void run() {
