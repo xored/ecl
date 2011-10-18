@@ -10,5 +10,5 @@
   <groupId>org.eclipse.ecl</groupId>
   <artifactId>org.eclipse.ecl.client.tcp.tests</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <packaging>eclipse-plugin</packaging>
+  <packaging>eclipse-test-plugin</packaging>
 </project>

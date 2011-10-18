@@ -24,18 +24,13 @@ import org.eclipse.emf.ecore.EPackage;
 public class EclDocTests extends TestCase {
 	public void test01() throws Exception {
 		EPackage[] ePackages = new EPackage[] {
-				EPackage.Registry.INSTANCE
-						.getEPackage("http://www.eclipse.org/ecl/stdlib.ecore"),
-				EPackage.Registry.INSTANCE
-						.getEPackage("http://www.eclipse.org/ecl/tesla/common.ecore"),
-				EPackage.Registry.INSTANCE
-						.getEPackage("http://www.eclipse.org/ecl/tesla/diagram.ecore") };
+				EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/ecl/core.ecore"),
+				EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/ecl/platform/commands.ecore") };
 		EclDocPlugin.genPackagesInfo(ePackages, getOutput());
 	}
 
 	private Writer getOutput() throws IOException {
-		URL entry = Activator.getDefault().getBundle()
-				.getEntry("output/core.html");
+		URL entry = Activator.getDefault().getBundle().getEntry("output/core.html");
 		entry = FileLocator.resolve(entry);
 		String file = entry.getFile();
 		FileWriter fw = new FileWriter(file);
