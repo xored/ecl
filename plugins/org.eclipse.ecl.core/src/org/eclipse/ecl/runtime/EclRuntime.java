@@ -13,10 +13,20 @@
 package org.eclipse.ecl.runtime;
 
 import org.eclipse.ecl.internal.core.Session;
+import org.eclipse.ecl.internal.core.ThreadSession;
 
 public class EclRuntime {
 
 	public static ISession createSession() {
 		return new Session();
 	}
+
+	public static ISession createSession(boolean useJobs) {
+		if (useJobs) {
+			return new Session();
+		} else {
+			return new ThreadSession();
+		}
+	}
+
 }

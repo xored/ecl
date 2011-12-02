@@ -13,6 +13,8 @@ package org.eclipse.ecl.server.tcp;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -28,24 +30,43 @@ public class EclTcpServer extends Thread {
 	private final ServerSocket socket;
 	private final int port;
 	private volatile boolean starting = true;
-
-	public EclTcpServer(int port) throws IOException {
-		super("ECL TCP server");
-		this.socket = new ServerSocket(port);
-		this.port = port;
-	}
+	private boolean useJobs;
+	private boolean useFixedPool;
 
 	public boolean isStarting() {
 		return starting;
+	}
+
+	public EclTcpServer(int port) throws IOException {
+		this(port, true, false);
+	}
+
+	public EclTcpServer(int port, boolean useJobs, boolean useFixedPool)
+			throws IOException {
+		super("ECL TCP server");
+		this.socket = new ServerSocket(port);
+		this.port = port;
+		this.useJobs = useJobs;
+		this.useFixedPool = useFixedPool;
 	}
 
 	@Override
 	public void run() {
 		starting = false;
 		try {
-			while (!isInterrupted()) {
-				new SessionRequestHandler(socket.accept());
+			ExecutorService executor = null;
+			if (useFixedPool) {
+				executor = Executors.newFixedThreadPool(10);
 			}
+			while (!isInterrupted()) {
+				Socket client = socket.accept();
+				if (executor != null) {
+					executor.execute(new SessionRequestHandler(client, useJobs));
+				} else {
+					new SessionRequestHandler(client, useJobs).start();
+				}
+			}
+			executor.shutdown();
 		} catch (Exception e) {
 			CorePlugin.log(CorePlugin.err("Failed to start ECL TCP server", e));
 		}
@@ -59,11 +80,10 @@ public class EclTcpServer extends Thread {
 		private final Socket socket;
 		private final ISession session;
 
-		SessionRequestHandler(Socket socket) {
+		SessionRequestHandler(Socket socket, boolean useJobs) {
 			super("ECL tcp session:" + socket.getPort());
 			this.socket = socket;
-			this.session = EclRuntime.createSession();
-			start();
+			this.session = EclRuntime.createSession(useJobs);			
 		}
 
 		public void run() {

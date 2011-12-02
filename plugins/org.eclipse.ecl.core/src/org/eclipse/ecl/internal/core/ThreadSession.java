@@ -9,22 +9,17 @@
  * Contributors:
  *     xored software, Inc. - initial API and Implementation (Andrey Platov)
  *******************************************************************************/
-
 package org.eclipse.ecl.internal.core;
 
 import java.util.List;
 
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.ISession;
 
-public class Session extends AbstractSession implements ISession {
-
+public class ThreadSession extends AbstractSession implements ISession {
 	public static abstract class EclJob extends Job {
 
 		private EclJob(Command scriptlet) {
@@ -37,29 +32,12 @@ public class Session extends AbstractSession implements ISession {
 	protected void doExecute(final Command scriptlet,
 			final ICommandService svc, final List<Object> inputContent,
 			final Process process) {
-		EclJob job = new EclJob(scriptlet) {
+		new Thread(new Runnable() {
 			@Override
-			protected IStatus run(IProgressMonitor monitor) {
+			public void run() {
 				internalDoExecute(scriptlet, svc, inputContent, process);
-				return Status.OK_STATUS;
 			}
-
-			@Override
-			protected void canceling() {
-				// Waiting for process is finished
-				while (getResult() == null) {
-					try {
-						Thread.sleep(50);
-					} catch (InterruptedException e) {
-						// Ignore
-					}
-				}
-				super.canceling();
-			}
-		};
-		job.setSystem(true);
-		job.schedule();
-
+		}).start();
 	}
 
 }

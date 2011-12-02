@@ -19,10 +19,16 @@ public enum EclTcpServerManager {
 
 	private final Map<Integer, EclTcpServer> servers = new HashMap<Integer, EclTcpServer>();
 
-	public synchronized EclTcpServer startServer(int port) throws IOException {
+	public EclTcpServer startServer(int port) throws IOException {
+		return startServer(port, true, false);
+	}
+
+	public synchronized EclTcpServer startServer(int port, boolean useJobs,
+			boolean useFixedPool) throws IOException {
 		EclTcpServer server = servers.get(port);
 		if (server == null) {
-			EclTcpServer newServer = new EclTcpServer(port);
+			EclTcpServer newServer = new EclTcpServer(port, useJobs,
+					useFixedPool);
 			newServer.start();
 			while (newServer.isStarting()) {
 				try {
@@ -34,7 +40,8 @@ public enum EclTcpServerManager {
 			servers.put(port, newServer);
 			return newServer;
 		} else {
-			throw new IOException("Another server is already running on port " + port);
+			throw new IOException("Another server is already running on port "
+					+ port);
 		}
 	}
 
