@@ -144,6 +144,10 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 				return createNullableAdapter();
 			}
 			@Override
+			public Adapter caseIf(If object) {
+				return createIfAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -384,6 +388,20 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNullableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.If <em>If</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.If
+	 * @generated
+	 */
+	public Adapter createIfAdapter() {
 		return null;
 	}
 

@@ -19,6 +19,7 @@ import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.ExecutableParameter;
 import org.eclipse.ecl.core.Foreach;
+import org.eclipse.ecl.core.If;
 import org.eclipse.ecl.core.LiteralParameter;
 import org.eclipse.ecl.core.Nullable;
 import org.eclipse.ecl.core.Parallel;
@@ -139,6 +140,13 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	private EClass nullableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ifEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -556,6 +564,42 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getIf() {
+		return ifEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIf_Condition() {
+		return (EAttribute)ifEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getIf_Then() {
+		return (EReference)ifEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getIf_Else() {
+		return (EReference)ifEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getThrowable() {
 		return throwableEDataType;
 	}
@@ -662,6 +706,11 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEReference(nullableEClass, NULLABLE__VALUE);
 		createEAttribute(nullableEClass, NULLABLE__TYPE);
 
+		ifEClass = createEClass(IF);
+		createEAttribute(ifEClass, IF__CONDITION);
+		createEReference(ifEClass, IF__THEN);
+		createEReference(ifEClass, IF__ELSE);
+
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
 	}
@@ -706,6 +755,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		literalParameterEClass.getESuperTypes().add(this.getParameter());
 		foreachEClass.getESuperTypes().add(this.getCommand());
 		scriptEClass.getESuperTypes().add(this.getCommand());
+		ifEClass.getESuperTypes().add(this.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -767,6 +817,11 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEClass(nullableEClass, Nullable.class, "Nullable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNullable_Value(), theEcorePackage.getEObject(), null, "value", null, 0, 1, Nullable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNullable_Type(), theEcorePackage.getEString(), "type", null, 0, 1, Nullable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(ifEClass, If.class, "If", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIf_Condition(), ecorePackage.getEBoolean(), "condition", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIf_Then(), this.getCommand(), null, "then", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIf_Else(), this.getCommand(), null, "else", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

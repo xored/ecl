@@ -811,6 +811,70 @@ public interface CorePackage extends EPackage {
 	int NULLABLE_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.IfImpl <em>If</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.IfImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getIf()
+	 * @generated
+	 */
+	int IF = 17;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF__CONDITION = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Then</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF__THEN = COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Else</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF__ELSE = COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>If</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 3;
+
+	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -818,7 +882,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
 	 * @generated
 	 */
-	int THROWABLE = 17;
+	int THROWABLE = 18;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -1256,6 +1320,49 @@ public interface CorePackage extends EPackage {
 	EAttribute getNullable_Type();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.If <em>If</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>If</em>'.
+	 * @see org.eclipse.ecl.core.If
+	 * @generated
+	 */
+	EClass getIf();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.If#isCondition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Condition</em>'.
+	 * @see org.eclipse.ecl.core.If#isCondition()
+	 * @see #getIf()
+	 * @generated
+	 */
+	EAttribute getIf_Condition();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.If#getThen <em>Then</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Then</em>'.
+	 * @see org.eclipse.ecl.core.If#getThen()
+	 * @see #getIf()
+	 * @generated
+	 */
+	EReference getIf_Then();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.If#getElse <em>Else</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Else</em>'.
+	 * @see org.eclipse.ecl.core.If#getElse()
+	 * @see #getIf()
+	 * @generated
+	 */
+	EReference getIf_Else();
+
+	/**
 	 * Returns the meta object for data type '{@link java.lang.Throwable <em>Throwable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1668,6 +1775,40 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NULLABLE__TYPE = eINSTANCE.getNullable_Type();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.IfImpl <em>If</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.IfImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getIf()
+		 * @generated
+		 */
+		EClass IF = eINSTANCE.getIf();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IF__CONDITION = eINSTANCE.getIf_Condition();
+
+		/**
+		 * The meta object literal for the '<em><b>Then</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IF__THEN = eINSTANCE.getIf_Then();
+
+		/**
+		 * The meta object literal for the '<em><b>Else</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IF__ELSE = eINSTANCE.getIf_Else();
 
 		/**
 		 * The meta object literal for the '<em>Throwable</em>' data type.

@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipse.ecl.core.util;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -190,9 +191,11 @@ public class CommandToStringConverter {
 			return true;
 		if ("set-text-selection".equals(commandName))
 			return true;
-		return "index".equals(paramName) || "after".equals(paramName)
-				|| "height".equals(paramName) || "width".equals(paramName)
-				|| "detail".equals(paramName) || "operation".equals(paramName);
+		if ("hover-at-text".equals(commandName)
+				&& "stateMask".equals(paramName))
+			return true;
+		return Arrays.asList("index", "after", "height", "width", "detail",
+				"operation").contains(paramName);
 	}
 
 	private static final Pattern id = Pattern.compile("[a-zA-Z][a-zA-Z0-9]*");

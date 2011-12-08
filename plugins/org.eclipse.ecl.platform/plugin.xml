@@ -73,6 +73,11 @@
             name="GetLog"
             namespace="http://www.eclipse.org/ecl/platform/commands.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.platform.internal.commands.LogService"
+            name="Log"
+            namespace="http://www.eclipse.org/ecl/platform/commands.ecore">
+      </scriptlet>
       
    </extension>
 

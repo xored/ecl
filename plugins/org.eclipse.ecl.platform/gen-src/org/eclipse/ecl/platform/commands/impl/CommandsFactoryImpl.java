@@ -71,6 +71,7 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 			case CommandsPackage.SORT_BY: return createSortBy();
 			case CommandsPackage.LIST_INSTALL_UNITS: return createListInstallUnits();
 			case CommandsPackage.GET_LOG: return createGetLog();
+			case CommandsPackage.LOG: return createLog();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -184,6 +185,16 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public GetLog createGetLog() {
 		GetLogImpl getLog = new GetLogImpl();
 		return getLog;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Log createLog() {
+		LogImpl log = new LogImpl();
+		return log;
 	}
 
 	/**

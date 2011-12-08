@@ -16,6 +16,7 @@ import org.eclipse.ecl.platform.commands.ListFeatures;
 import org.eclipse.ecl.platform.commands.ListInstallUnits;
 import org.eclipse.ecl.platform.commands.ListPlugins;
 import org.eclipse.ecl.platform.commands.ListRepositories;
+import org.eclipse.ecl.platform.commands.Log;
 import org.eclipse.ecl.platform.commands.Print;
 import org.eclipse.ecl.platform.commands.RemoveRepository;
 import org.eclipse.ecl.platform.commands.SortBy;
@@ -24,6 +25,7 @@ import org.eclipse.ecl.platform.commands.UpdateFeature;
 
 import org.eclipse.ecl.platform.objects.ObjectsPackage;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -114,6 +116,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass getLogEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass logEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -347,6 +356,42 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLog() {
+		return logEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLog_Severity() {
+		return (EAttribute)logEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLog_Message() {
+		return (EAttribute)logEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLog_Plugin() {
+		return (EAttribute)logEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommandsFactory getCommandsFactory() {
 		return (CommandsFactory)getEFactoryInstance();
 	}
@@ -398,6 +443,11 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		getLogEClass = createEClass(GET_LOG);
 		createEAttribute(getLogEClass, GET_LOG__LIMIT);
 		createEAttribute(getLogEClass, GET_LOG__SKIP_INFO);
+
+		logEClass = createEClass(LOG);
+		createEAttribute(logEClass, LOG__SEVERITY);
+		createEAttribute(logEClass, LOG__MESSAGE);
+		createEAttribute(logEClass, LOG__PLUGIN);
 	}
 
 	/**
@@ -443,6 +493,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		sortByEClass.getESuperTypes().add(theCorePackage.getCommand());
 		listInstallUnitsEClass.getESuperTypes().add(theCorePackage.getCommand());
 		getLogEClass.getESuperTypes().add(theCorePackage.getCommand());
+		logEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(listPluginsEClass, ListPlugins.class, "ListPlugins", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -474,8 +525,35 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		initEAttribute(getGetLog_Limit(), theEcorePackage.getEInt(), "limit", "100", 0, 1, GetLog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGetLog_SkipInfo(), theEcorePackage.getEBoolean(), "skipInfo", "false", 0, 1, GetLog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(logEClass, Log.class, "Log", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLog_Severity(), theEcorePackage.getEString(), "severity", "info", 0, 1, Log.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLog_Message(), theEcorePackage.getEString(), "message", null, 0, 1, Log.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLog_Plugin(), theEcorePackage.getEString(), "plugin", "org.eclipse.ecl.platform", 0, 1, Log.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/ecl/input
+		createInputAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/input</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createInputAnnotations() {
+		String source = "http://www.eclipse.org/ecl/input";		
+		addAnnotation
+		  (getLog_Message(), 
+		   source, 
+		   new String[] {
+		   },
+		   new URI[] {
+			 URI.createURI(CorePackage.eNS_URI).appendFragment("//Foreach/input/%http:%2F%2Fwww.eclipse.org%2Fecl%2Finput%")
+		   });
 	}
 
 } //CommandsPackageImpl

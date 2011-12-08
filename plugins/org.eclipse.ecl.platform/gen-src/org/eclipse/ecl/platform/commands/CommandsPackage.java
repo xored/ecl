@@ -534,6 +534,71 @@ public interface CommandsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.LogImpl <em>Log</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.commands.impl.LogImpl
+	 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getLog()
+	 * @generated
+	 */
+	int LOG = 11;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOG__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOG__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Severity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOG__SEVERITY = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOG__MESSAGE = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Plugin</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOG__PLUGIN = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Log</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOG_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 3;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.ListPlugins <em>List Plugins</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -719,6 +784,49 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getGetLog_SkipInfo();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.Log <em>Log</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Log</em>'.
+	 * @see org.eclipse.ecl.platform.commands.Log
+	 * @generated
+	 */
+	EClass getLog();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.Log#getSeverity <em>Severity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Severity</em>'.
+	 * @see org.eclipse.ecl.platform.commands.Log#getSeverity()
+	 * @see #getLog()
+	 * @generated
+	 */
+	EAttribute getLog_Severity();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.Log#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see org.eclipse.ecl.platform.commands.Log#getMessage()
+	 * @see #getLog()
+	 * @generated
+	 */
+	EAttribute getLog_Message();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.Log#getPlugin <em>Plugin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Plugin</em>'.
+	 * @see org.eclipse.ecl.platform.commands.Log#getPlugin()
+	 * @see #getLog()
+	 * @generated
+	 */
+	EAttribute getLog_Plugin();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -907,6 +1015,40 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GET_LOG__SKIP_INFO = eINSTANCE.getGetLog_SkipInfo();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.commands.impl.LogImpl <em>Log</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.commands.impl.LogImpl
+		 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getLog()
+		 * @generated
+		 */
+		EClass LOG = eINSTANCE.getLog();
+
+		/**
+		 * The meta object literal for the '<em><b>Severity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LOG__SEVERITY = eINSTANCE.getLog_Severity();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LOG__MESSAGE = eINSTANCE.getLog_Message();
+
+		/**
+		 * The meta object literal for the '<em><b>Plugin</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LOG__PLUGIN = eINSTANCE.getLog_Plugin();
 
 	}
 

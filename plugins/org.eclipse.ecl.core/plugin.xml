@@ -52,6 +52,11 @@
             name="With"
             namespace="http://www.eclipse.org/ecl/core.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.commands.IfService"
+            name="If"
+            namespace="http://www.eclipse.org/ecl/core.ecore">
+      </scriptlet>
    </extension>   
    <extension
          point="org.eclipse.ecl.core.param_converter">

@@ -165,6 +165,15 @@ public interface CoreFactory extends EFactory {
 	Nullable createNullable();
 
 	/**
+	 * Returns a new object of class '<em>If</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>If</em>'.
+	 * @generated
+	 */
+	If createIf();
+
+	/**
 	 * Returns a new object of class '<em>Script</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

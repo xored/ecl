@@ -81,6 +81,7 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.CONVERTED_TO_EMF_PIPE: return createConvertedToEMFPipe();
 			case CorePackage.SERIALIZED: return createSerialized();
 			case CorePackage.NULLABLE: return createNullable();
+			case CorePackage.IF: return createIf();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -264,6 +265,16 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public Nullable createNullable() {
 		NullableImpl nullable = new NullableImpl();
 		return nullable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public If createIf() {
+		IfImpl if_ = new IfImpl();
+		return if_;
 	}
 
 	/**
