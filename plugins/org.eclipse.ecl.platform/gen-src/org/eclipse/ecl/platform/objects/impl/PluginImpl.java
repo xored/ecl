@@ -8,8 +8,8 @@ package org.eclipse.ecl.platform.objects.impl;
 
 import org.eclipse.ecl.platform.objects.ObjectsPackage;
 import org.eclipse.ecl.platform.objects.Plugin;
-
 import org.eclipse.ecl.platform.objects.PluginState;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;

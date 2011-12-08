@@ -224,7 +224,6 @@ public interface ObjectsPackage extends EPackage {
 	 */
 	int REPOSITORY_FEATURE_COUNT = 4;
 
-
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.platform.objects.impl.InstallUnitImpl <em>Install Unit</em>}' class.
 	 * <!-- begin-user-doc -->

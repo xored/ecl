@@ -14,8 +14,8 @@ import org.eclipse.ecl.platform.objects.ObjectsPackage;
 import org.eclipse.ecl.platform.objects.Plugin;
 import org.eclipse.ecl.platform.objects.PluginState;
 import org.eclipse.ecl.platform.objects.Repository;
-
 import org.eclipse.ecl.platform.objects.UpdateResult;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;

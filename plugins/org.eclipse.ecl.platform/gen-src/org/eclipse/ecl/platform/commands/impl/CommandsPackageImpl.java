@@ -26,6 +26,7 @@ import org.eclipse.ecl.platform.commands.UpdateFeature;
 import org.eclipse.ecl.platform.objects.ObjectsPackage;
 
 import org.eclipse.emf.common.util.URI;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;

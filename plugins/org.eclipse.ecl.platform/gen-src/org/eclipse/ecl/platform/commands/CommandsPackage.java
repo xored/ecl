@@ -438,7 +438,6 @@ public interface CommandsPackage extends EPackage {
 	 */
 	int SORT_BY_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
-
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.ListInstallUnitsImpl <em>List Install Units</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -475,7 +474,6 @@ public interface CommandsPackage extends EPackage {
 	 * @ordered
 	 */
 	int LIST_INSTALL_UNITS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
-
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.GetLogImpl <em>Get Log</em>}' class.
@@ -531,7 +529,6 @@ public interface CommandsPackage extends EPackage {
 	 * @ordered
 	 */
 	int GET_LOG_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
-
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.LogImpl <em>Log</em>}' class.
