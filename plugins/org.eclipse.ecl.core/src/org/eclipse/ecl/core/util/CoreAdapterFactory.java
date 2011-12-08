@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2011 xored software, Inc.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     xored software, Inc - initial API and implementation
- ******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.ecl.core.util;
 
 import org.eclipse.ecl.core.*;
@@ -336,6 +332,20 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.Script <em>Script</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.Script
+	 * @generated
+	 */
+	public Adapter createScriptAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.ProcessStatus <em>Process Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -402,20 +412,6 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIfAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.Script <em>Script</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.ecl.core.Script
-	 * @generated
-	 */
-	public Adapter createScriptAdapter() {
 		return null;
 	}
 
