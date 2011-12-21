@@ -15,6 +15,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -43,7 +44,7 @@ public class EclTcpServer extends Thread {
 
 	public EclTcpServer(int port, boolean useJobs, boolean useFixedPool)
 			throws IOException {
-		super("ECL TCP server");
+		super("ECL TCP server: " + port + " main");
 		this.socket = new ServerSocket(port);
 		this.port = port;
 		this.useJobs = useJobs;
@@ -56,12 +57,21 @@ public class EclTcpServer extends Thread {
 		try {
 			ExecutorService executor = null;
 			if (useFixedPool) {
-				executor = Executors.newFixedThreadPool(10);
+				executor = Executors.newFixedThreadPool(10, new ThreadFactory() {
+					int ind = 0;
+
+					@Override
+					public Thread newThread(Runnable arg0) {
+						ind++;
+						return new Thread(arg0, "ECL TCP server: " + port
+								+ " runner:" + ind);
+					}
+				});
 			}
 			while (!isInterrupted()) {
 				Socket client = socket.accept();
 				if (executor != null) {
-					executor.execute(new SessionRequestHandler(client, useJobs));
+					executor.submit(new SessionRequestHandler(client, useJobs));
 				} else {
 					new SessionRequestHandler(client, useJobs).start();
 				}
@@ -83,7 +93,7 @@ public class EclTcpServer extends Thread {
 		SessionRequestHandler(Socket socket, boolean useJobs) {
 			super("ECL tcp session:" + socket.getPort());
 			this.socket = socket;
-			this.session = EclRuntime.createSession(useJobs);			
+			this.session = EclRuntime.createSession(useJobs);
 		}
 
 		public void run() {
