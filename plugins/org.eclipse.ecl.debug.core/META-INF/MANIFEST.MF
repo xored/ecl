@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ECL Debug Core
+Bundle-SymbolicName: org.eclipse.ecl.debug.core;singleton:=true
+Bundle-ClassPath: .
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: xored software, Inc.
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.debug.core,
+ org.eclipse.emf.ecore,
+ org.eclipse.ecl.debug.runtime
+Export-Package: org.eclipse.ecl.debug.core
+Bundle-ActivationPolicy: lazy
