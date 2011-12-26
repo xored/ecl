@@ -15,5 +15,8 @@
    <feature url="features/org.eclipse.ecl.platform_1.0.0.qualifier.jar" id="org.eclipse.ecl.platform" version="1.0.0.qualifier">
       <category name="ecl"/>
    </feature>
+   <feature url="features/org.eclipse.ecl.ide_1.0.0.qualifier.jar" id="org.eclipse.ecl.ide" version="1.0.0.qualifier">
+      <category name="ecl"/>
+   </feature>
    <category-def name="ecl" label="Eclipse Command Language"/>
 </site>
