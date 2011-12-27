@@ -17,6 +17,7 @@ import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.model.IDebugElement;
+import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.ecl.debug.core.EclDebug;
 
 public abstract class EclDebugElement extends PlatformObject implements
@@ -48,6 +49,12 @@ public abstract class EclDebugElement extends PlatformObject implements
 	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		if (adapter == IDebugElement.class) {
 			return this;
+		}
+		if (adapter == IDebugTarget.class) {
+			return getDebugTarget();
+		}
+		if (adapter == ILaunch.class) {
+			return getLaunch();
 		}
 		return super.getAdapter(adapter);
 	}
