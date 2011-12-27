@@ -42,7 +42,8 @@ public abstract class Session extends Job {
 		writer.flush();
 	}
 
-	public void close() {
+	public void terminate() {
+		terminated = true;
 		try {
 			socket.close();
 		} catch (IOException e) {
@@ -57,6 +58,7 @@ public abstract class Session extends Job {
 	private final Socket socket;
 	private final PrintWriter writer;
 	private final BufferedReader reader;
+	private volatile boolean terminated = false;
 
 	protected IStatus run(IProgressMonitor monitor) {
 		String line;
@@ -65,7 +67,10 @@ public abstract class Session extends Job {
 				handle(Event.fromString(line));
 			}
 		} catch (Exception e) {
-			handle(e);
+			// exception on termination is OK
+			if (!terminated) {
+				handle(e);
+			}
 		}
 		return Status.OK_STATUS;
 	}

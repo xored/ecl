@@ -13,11 +13,9 @@ package org.eclipse.ecl.debug.core;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.debug.core.model.LineBreakpoint;
 import org.eclipse.ecl.internal.debug.core.EclBreakpoint;
-import org.eclipse.ecl.internal.debug.core.EclDebugTarget;
 import org.eclipse.ecl.internal.debug.core.Plugin;
 
 public class EclDebug {
@@ -31,7 +29,7 @@ public class EclDebug {
 		return new EclBreakpoint(resource, lineNumber);
 	}
 
-	public static IDebugTarget createDebugTarget(IProcess process, int port)
+	public static EclDebugTarget createDebugTarget(IProcess process, int port)
 			throws CoreException {
 		return new EclDebugTarget(process, port);
 	}

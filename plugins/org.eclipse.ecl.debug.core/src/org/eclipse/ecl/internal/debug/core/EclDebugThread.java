@@ -16,6 +16,7 @@ import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
+import org.eclipse.ecl.debug.core.EclDebugTarget;
 
 public class EclDebugThread extends EclDebugElement implements IThread {
 
@@ -33,12 +34,12 @@ public class EclDebugThread extends EclDebugElement implements IThread {
 
 	@Override
 	public boolean canResume() {
-		return isSuspended();
+		return !isTerminated() && isSuspended();
 	}
 
 	@Override
 	public boolean canSuspend() {
-		return !isSuspended();
+		return !isTerminated() && !isSuspended();
 	}
 
 	@Override
@@ -63,7 +64,7 @@ public class EclDebugThread extends EclDebugElement implements IThread {
 
 	@Override
 	public boolean canStepOver() {
-		return isSuspended();
+		return !isTerminated() && isSuspended();
 	}
 
 	@Override

@@ -39,9 +39,7 @@ public class DebugServer {
 		} catch (IOException e) {
 			// safe close
 		}
-		if (transport != null) {
-			transport.close();
-		}
+		terminate();
 	}
 
 	private DebugServer() throws IOException {
@@ -56,6 +54,9 @@ public class DebugServer {
 
 	private void accept() {
 		try {
+			if (isTerminated()) {
+				return;
+			}
 			transport = new ServerSession(socket.accept(),
 					Integer.toString(getPort()));
 		} catch (Exception e) {
@@ -63,10 +64,23 @@ public class DebugServer {
 		}
 	}
 
+	private synchronized void terminate() {
+		terminated = true;
+		if (transport != null) {
+			transport.terminate();
+		}
+	}
+
+	private synchronized boolean isTerminated() {
+		return terminated;
+	}
+
 	private final static Map<Integer, DebugServer> servers = new ConcurrentHashMap<Integer, DebugServer>();
 
 	private final ServerSocket socket;
 
+	// synchronized with "this"
 	private ServerSession transport;
+	private boolean terminated;
 
 }

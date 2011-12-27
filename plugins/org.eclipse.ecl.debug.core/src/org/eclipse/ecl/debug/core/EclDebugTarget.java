@@ -9,7 +9,7 @@
  * Contributors:
  *     xored software, Inc. - initial API and Implementation (Yuri Strot)
  *******************************************************************************/
-package org.eclipse.ecl.internal.debug.core;
+package org.eclipse.ecl.debug.core;
 
 import java.net.Socket;
 
@@ -30,7 +30,6 @@ import org.eclipse.debug.core.model.IMemoryBlock;
 import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
-import org.eclipse.ecl.debug.core.EclDebug;
 import org.eclipse.ecl.debug.runtime.Session;
 import org.eclipse.ecl.debug.runtime.StackFrame;
 import org.eclipse.ecl.debug.runtime.events.BreakpointAddEvent;
@@ -41,22 +40,26 @@ import org.eclipse.ecl.debug.runtime.events.EventType;
 import org.eclipse.ecl.debug.runtime.events.StackEvent;
 import org.eclipse.ecl.debug.runtime.events.StepEndEvent;
 import org.eclipse.ecl.debug.runtime.events.SuspendEvent;
+import org.eclipse.ecl.internal.debug.core.EclDebugElement;
+import org.eclipse.ecl.internal.debug.core.EclDebugThread;
+import org.eclipse.ecl.internal.debug.core.EclStackFrame;
+import org.eclipse.ecl.internal.debug.core.Plugin;
 
 public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
 
 	private final IProcess process;
-
-	private EclDebugThread thread;
-	private IThread[] threads;
-	private IStackFrame[] frames = new IStackFrame[0];
-
 	private final Session transport;
+	private final EclDebugThread thread;
+	private final IThread[] threads;
+	private final int port;
 
-	private boolean suspended = true;
-	private boolean stepping = false;
+	private volatile IStackFrame[] frames = new IStackFrame[0];
+	private volatile boolean suspended = true;
+	private volatile boolean stepping = false;
 
 	public EclDebugTarget(IProcess process, int port) throws CoreException {
 		this.process = process;
+		this.port = port;
 		thread = new EclDebugThread(this);
 		threads = new IThread[] { thread };
 
@@ -82,6 +85,10 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
 				.addBreakpointListener(this);
 	}
 
+	public int getPort() {
+		return port;
+	}
+
 	@Override
 	public ILaunch getLaunch() {
 		return process.getLaunch();
@@ -93,17 +100,17 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
 	}
 
 	@Override
+	public boolean hasThreads() throws DebugException {
+		return true;
+	}
+
+	@Override
 	public IThread[] getThreads() throws DebugException {
 		return threads;
 	}
 
 	public IStackFrame[] getFrames() {
 		return frames;
-	}
-
-	@Override
-	public boolean hasThreads() throws DebugException {
-		return true;
 	}
 
 	@Override
@@ -128,7 +135,13 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
 
 	@Override
 	public void terminate() throws DebugException {
-		getProcess().terminate();
+		if (process.canTerminate()) {
+			DebugPlugin.getDefault().getBreakpointManager()
+					.removeBreakpointListener(this);
+			frames = new IStackFrame[0];
+			process.terminate();
+			fireTerminateEvent();
+		}
 	}
 
 	@Override
@@ -177,6 +190,7 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
 				request(new BreakpointAddEvent(path, line));
 			}
 		} catch (CoreException e) {
+			Plugin.log(e);
 		}
 	}
 
@@ -189,6 +203,7 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
 						.getFullPath().toString();
 				request(new BreakpointRemoveEvent(path, line));
 			} catch (CoreException e) {
+				Plugin.log(e);
 			}
 		}
 	}
@@ -203,6 +218,7 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
 					breakpointRemoved(breakpoint, null);
 				}
 			} catch (CoreException e) {
+				Plugin.log(e);
 			}
 		}
 	}
@@ -277,9 +293,6 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
 		case RESUMED:
 			resumed();
 			break;
-		case TERMINATED:
-			terminated();
-			break;
 		}
 	}
 
@@ -287,13 +300,6 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
 		fireCreationEvent();
 		installDeferredBreakpoints();
 		resume();
-	}
-
-	private void terminated() {
-		suspended = false;
-		DebugPlugin.getDefault().getBreakpointManager()
-				.removeBreakpointListener(this);
-		fireTerminateEvent();
 	}
 
 	private void suspended(SuspendEvent event) {
@@ -362,11 +368,12 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
 	}
 
 	private void updateStack(StackEvent event) {
-		StackFrame[] frames = event.getFrames();
-		this.frames = new IStackFrame[frames.length];
-		for (int i = 0; i < frames.length; i++) {
-			this.frames[i] = new EclStackFrame(thread, frames[i]);
+		StackFrame[] eventFrames = event.getFrames();
+		IStackFrame[] newFrames = new IStackFrame[eventFrames.length];
+		for (int i = 0; i < eventFrames.length; i++) {
+			newFrames[i] = new EclStackFrame(thread, eventFrames[i]);
 		}
+		frames = newFrames;
 	}
 
 }

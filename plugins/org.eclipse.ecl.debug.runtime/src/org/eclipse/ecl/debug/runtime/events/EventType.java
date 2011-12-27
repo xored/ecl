@@ -31,9 +31,7 @@ public enum EventType {
 
 	BREAKPOINT_HIT(true),
 
-	RESUMED,
-
-	TERMINATED;
+	RESUMED;
 
 	public boolean isExtended() {
 		return extended;

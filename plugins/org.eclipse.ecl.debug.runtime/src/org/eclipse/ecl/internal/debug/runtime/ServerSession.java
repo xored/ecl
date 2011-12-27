@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.CountDownLatch;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.ecl.core.Command;
@@ -44,9 +43,11 @@ public class ServerSession extends Session implements ISessionListener {
 		request(new Event(EventType.STARTED));
 	}
 
-	public void close() {
+	@Override
+	public void terminate() {
 		SessionListenerManager.removeListener(this);
-		super.close();
+		super.terminate();
+		latch.unlock();
 	}
 
 	@Override
@@ -54,8 +55,7 @@ public class ServerSession extends Session implements ISessionListener {
 		try {
 			StackFrame[] frames = getStack(command);
 			if (frames != null) {
-				CountDownLatch latch = getIfLocked();
-				if (latch != null) {
+				if (latch.isLocked()) {
 					if (step) {
 						request(new StepEndEvent(frames));
 					} else {
@@ -63,9 +63,9 @@ public class ServerSession extends Session implements ISessionListener {
 					}
 					latch.await();
 				} else if (isHitBreakpoint(frames[0])) {
-					this.latch = new CountDownLatch(1);
+					latch.lock();
 					request(new BreakpointHitEvent(frames));
-					this.latch.await();
+					latch.await();
 				}
 			}
 		} catch (InterruptedException e) {
@@ -156,21 +156,18 @@ public class ServerSession extends Session implements ISessionListener {
 	}
 
 	private synchronized void suspend() {
-		if (getIfLocked() == null) {
-			latch = new CountDownLatch(1);
-		}
+		latch.lock();
 	}
 
 	private synchronized void resume() {
 		step = false;
-		latch.countDown();
+		latch.unlock();
 		request(new Event(EventType.RESUMED));
 	}
 
-	private synchronized void step() {
+	private void step() {
 		step = true;
-		latch.countDown();
-		latch = new CountDownLatch(1);
+		latch.lockAfterUnlock();
 	}
 
 	private void addBreakpoint(BreakpointEvent event) {
@@ -192,17 +189,10 @@ public class ServerSession extends Session implements ISessionListener {
 		}
 	}
 
-	private synchronized CountDownLatch getIfLocked() {
-		if (latch.getCount() > 0) {
-			return latch;
-		}
-		return null;
-	}
-
 	private boolean step = false;
+	private final MultiLatch latch = new MultiLatch();
 
 	private final String id;
-	private CountDownLatch latch = new CountDownLatch(1);
 	private final Map<String, Set<Integer>> breakpoints = new HashMap<String, Set<Integer>>();
 
 }
