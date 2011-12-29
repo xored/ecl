@@ -120,7 +120,7 @@ public class EclStackFrame extends EclDebugElement implements IStackFrame {
 
 	@Override
 	public IVariable[] getVariables() throws DebugException {
-		return null;
+		return new IVariable[0];
 	}
 
 	@Override
@@ -154,7 +154,7 @@ public class EclStackFrame extends EclDebugElement implements IStackFrame {
 
 	@Override
 	public IRegisterGroup[] getRegisterGroups() throws DebugException {
-		return null;
+		return new IRegisterGroup[0];
 	}
 
 	@Override
