@@ -11,42 +11,26 @@
  *******************************************************************************/
 package org.eclipse.ecl.debug.runtime.events;
 
-public enum EventType {
+public class SkipAllEvent extends Event {
 
-	SUSPEND,
-
-	RESUME,
-
-	STEP,
-
-	BREAKPOINT_ADD(true),
-
-	BREAKPOINT_REMOVE(true),
-
-	SKIP_ALL(true),
-
-	STARTED,
-
-	SUSPENDED(true),
-
-	STEP_ENDED(true),
-
-	BREAKPOINT_HIT(true),
-
-	RESUMED;
-
-	public boolean isExtended() {
-		return extended;
+	public SkipAllEvent(boolean skip) {
+		super(EventType.SKIP_ALL);
+		this.skip = skip;
 	}
 
-	private EventType() {
-		this(false);
+	public SkipAllEvent(String data) {
+		this(Boolean.valueOf(data));
 	}
 
-	private EventType(boolean extended) {
-		this.extended = extended;
+	public boolean isSkip() {
+		return skip;
 	}
 
-	private boolean extended;
+	@Override
+	public String toString() {
+		return super.toString() + TYPE_SEP + skip;
+	}
+
+	private final boolean skip;
 
 }

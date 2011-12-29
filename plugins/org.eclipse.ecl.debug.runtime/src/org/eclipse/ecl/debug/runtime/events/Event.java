@@ -40,6 +40,9 @@ public class Event {
 		if (EventType.BREAKPOINT_HIT.toString().equals(type)) {
 			return new BreakpointHitEvent(data);
 		}
+		if (EventType.SKIP_ALL.toString().equals(type)) {
+			return new SkipAllEvent(data);
+		}
 		throw new IllegalArgumentException("Unknown type: " + type);
 	}
 

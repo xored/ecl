@@ -29,6 +29,7 @@ import org.eclipse.ecl.debug.runtime.events.BreakpointEvent;
 import org.eclipse.ecl.debug.runtime.events.BreakpointHitEvent;
 import org.eclipse.ecl.debug.runtime.events.Event;
 import org.eclipse.ecl.debug.runtime.events.EventType;
+import org.eclipse.ecl.debug.runtime.events.SkipAllEvent;
 import org.eclipse.ecl.debug.runtime.events.StepEndEvent;
 import org.eclipse.ecl.debug.runtime.events.SuspendEvent;
 import org.eclipse.ecl.gen.ast.AstExec;
@@ -74,6 +75,10 @@ public class ServerSession extends Session implements ISessionListener {
 	}
 
 	private boolean isHitBreakpoint(StackFrame data) {
+		if (skip) {
+			// skip all breakpoints
+			return false;
+		}
 		String file = data.getFile();
 		Set<Integer> lines = breakpoints.get(file);
 		if (lines != null) {
@@ -103,6 +108,9 @@ public class ServerSession extends Session implements ISessionListener {
 			break;
 		case BREAKPOINT_REMOVE:
 			removeBreakpoint((BreakpointEvent) event);
+			break;
+		case SKIP_ALL:
+			skip = ((SkipAllEvent) event).isSkip();
 			break;
 		default:
 			throw new IllegalArgumentException("Unexpected request: " + event);
@@ -189,7 +197,8 @@ public class ServerSession extends Session implements ISessionListener {
 		}
 	}
 
-	private boolean step = false;
+	private volatile boolean step = false;
+	private volatile boolean skip = false;
 	private final MultiLatch latch = new MultiLatch();
 
 	private final String id;

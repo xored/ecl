@@ -22,6 +22,8 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.debug.core.DebugEvent;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.DebugPlugin;
+import org.eclipse.debug.core.IBreakpointManager;
+import org.eclipse.debug.core.IBreakpointManagerListener;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IDebugTarget;
@@ -37,6 +39,7 @@ import org.eclipse.ecl.debug.runtime.events.BreakpointHitEvent;
 import org.eclipse.ecl.debug.runtime.events.BreakpointRemoveEvent;
 import org.eclipse.ecl.debug.runtime.events.Event;
 import org.eclipse.ecl.debug.runtime.events.EventType;
+import org.eclipse.ecl.debug.runtime.events.SkipAllEvent;
 import org.eclipse.ecl.debug.runtime.events.StackEvent;
 import org.eclipse.ecl.debug.runtime.events.StepEndEvent;
 import org.eclipse.ecl.debug.runtime.events.SuspendEvent;
@@ -45,7 +48,8 @@ import org.eclipse.ecl.internal.debug.core.EclDebugThread;
 import org.eclipse.ecl.internal.debug.core.EclStackFrame;
 import org.eclipse.ecl.internal.debug.core.Plugin;
 
-public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
+public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
+		IBreakpointManagerListener {
 
 	private final IProcess process;
 	private final Session transport;
@@ -81,8 +85,7 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
 			throw new CoreException(Plugin.status(
 					"Couldn't connect to debugger", e));
 		}
-		DebugPlugin.getDefault().getBreakpointManager()
-				.addBreakpointListener(this);
+		getBreakpointManager().addBreakpointListener(this);
 	}
 
 	public int getPort() {
@@ -136,8 +139,8 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
 	@Override
 	public void terminate() throws DebugException {
 		if (process.canTerminate()) {
-			DebugPlugin.getDefault().getBreakpointManager()
-					.removeBreakpointListener(this);
+			getBreakpointManager().removeBreakpointListener(this);
+			getBreakpointManager().removeBreakpointManagerListener(this);
 			frames = new IStackFrame[0];
 			process.terminate();
 			fireTerminateEvent();
@@ -224,6 +227,11 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
 	}
 
 	@Override
+	public void breakpointManagerEnablementChanged(boolean enabled) {
+		request(new SkipAllEvent(!enabled));
+	}
+
+	@Override
 	public boolean canDisconnect() {
 		return false;
 	}
@@ -271,6 +279,10 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
 		return false;
 	}
 
+	private IBreakpointManager getBreakpointManager() {
+		return DebugPlugin.getDefault().getBreakpointManager();
+	}
+
 	private void request(Event event) {
 		transport.request(event);
 	}
@@ -299,6 +311,10 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget {
 	private void started() {
 		fireCreationEvent();
 		installDeferredBreakpoints();
+		getBreakpointManager().addBreakpointManagerListener(this);
+		if (!getBreakpointManager().isEnabled()) {
+			request(new SkipAllEvent(true));
+		}
 		resume();
 	}
 
