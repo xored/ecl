@@ -320,6 +320,15 @@ public interface AstPackage extends EPackage {
 	int SCRIPT_PROCESS_STATUS__SEVERITY = CorePackage.PROCESS_STATUS__SEVERITY;
 
 	/**
+	 * The feature id for the '<em><b>Exception</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_PROCESS_STATUS__EXCEPTION = CorePackage.PROCESS_STATUS__EXCEPTION;
+
+	/**
 	 * The feature id for the '<em><b>Column</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

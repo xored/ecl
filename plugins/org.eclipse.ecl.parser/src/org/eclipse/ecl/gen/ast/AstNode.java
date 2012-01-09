@@ -48,7 +48,7 @@ public interface AstNode extends EObject {
 	 * @return the value of the '<em>Column</em>' attribute.
 	 * @see #setColumn(int)
 	 * @see org.eclipse.ecl.gen.ast.AstPackage#getAstNode_Column()
-	 * @model derived="true"
+	 * @model
 	 * @generated
 	 */
 	int getColumn();
@@ -74,7 +74,7 @@ public interface AstNode extends EObject {
 	 * @return the value of the '<em>Line</em>' attribute.
 	 * @see #setLine(int)
 	 * @see org.eclipse.ecl.gen.ast.AstPackage#getAstNode_Line()
-	 * @model derived="true"
+	 * @model
 	 * @generated
 	 */
 	int getLine();
@@ -100,7 +100,7 @@ public interface AstNode extends EObject {
 	 * @return the value of the '<em>Length</em>' attribute.
 	 * @see #setLength(int)
 	 * @see org.eclipse.ecl.gen.ast.AstPackage#getAstNode_Length()
-	 * @model derived="true"
+	 * @model
 	 * @generated
 	 */
 	int getLength();
