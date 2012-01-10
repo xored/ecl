@@ -16,7 +16,7 @@ import org.eclipse.ecl.core.Command;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.ecl.debug.commands.StopServer#getPort <em>Port</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.commands.StopServer#getId <em>Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,29 +26,29 @@ import org.eclipse.ecl.core.Command;
  */
 public interface StopServer extends Command {
 	/**
-	 * Returns the value of the '<em><b>Port</b></em>' attribute.
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Port</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Port</em>' attribute.
-	 * @see #setPort(int)
-	 * @see org.eclipse.ecl.debug.commands.CommandsPackage#getStopServer_Port()
+	 * @return the value of the '<em>Id</em>' attribute.
+	 * @see #setId(String)
+	 * @see org.eclipse.ecl.debug.commands.CommandsPackage#getStopServer_Id()
 	 * @model
 	 * @generated
 	 */
-	int getPort();
+	String getId();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.ecl.debug.commands.StopServer#getPort <em>Port</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.ecl.debug.commands.StopServer#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Port</em>' attribute.
-	 * @see #getPort()
+	 * @param value the new value of the '<em>Id</em>' attribute.
+	 * @see #getId()
 	 * @generated
 	 */
-	void setPort(int value);
+	void setId(String value);
 
 } // StopServer

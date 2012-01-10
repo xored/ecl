@@ -18,14 +18,18 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class DebugServer {
 
-	public static DebugServer start() throws IOException {
-		DebugServer server = new DebugServer();
-		servers.put(server.getPort(), server);
+	public static DebugServer start(String id) throws IOException {
+		DebugServer server = new DebugServer(id);
+		servers.put(id, server);
 		return server;
 	}
 
-	public static DebugServer get(int port) {
-		return servers.get(port);
+	public static DebugServer get(String id) {
+		return servers.get(id);
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public int getPort() {
@@ -33,7 +37,7 @@ public class DebugServer {
 	}
 
 	public void stop() {
-		servers.remove(getPort());
+		servers.remove(getId());
 		try {
 			socket.close();
 		} catch (IOException e) {
@@ -42,7 +46,8 @@ public class DebugServer {
 		terminate();
 	}
 
-	private DebugServer() throws IOException {
+	private DebugServer(String id) throws IOException {
+		this.id = id;
 		socket = new ServerSocket(0);
 
 		new Thread() {
@@ -57,8 +62,7 @@ public class DebugServer {
 			if (isTerminated()) {
 				return;
 			}
-			transport = new ServerSession(socket.accept(),
-					Integer.toString(getPort()));
+			transport = new ServerSession(socket.accept(), id);
 		} catch (Exception e) {
 			Log.log(e);
 		}
@@ -75,9 +79,10 @@ public class DebugServer {
 		return terminated;
 	}
 
-	private final static Map<Integer, DebugServer> servers = new ConcurrentHashMap<Integer, DebugServer>();
+	private final static Map<String, DebugServer> servers = new ConcurrentHashMap<String, DebugServer>();
 
 	private final ServerSocket socket;
+	private final String id;
 
 	// synchronized with "this"
 	private ServerSession transport;

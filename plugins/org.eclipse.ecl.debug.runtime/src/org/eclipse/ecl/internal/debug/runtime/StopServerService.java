@@ -25,7 +25,7 @@ public class StopServerService implements ICommandService {
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		StopServer stopCommand = (StopServer) command;
-		DebugServer server = DebugServer.get(stopCommand.getPort());
+		DebugServer server = DebugServer.get(stopCommand.getId());
 		if (server != null) {
 			server.stop();
 		}

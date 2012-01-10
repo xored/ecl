@@ -90,13 +90,22 @@ public interface CommandsPackage extends EPackage {
 	int START_SERVER__BINDINGS = CorePackage.COMMAND__BINDINGS;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START_SERVER__ID = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Start Server</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int START_SERVER_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+	int START_SERVER_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.debug.commands.impl.StopServerImpl <em>Stop Server</em>}' class.
@@ -127,13 +136,13 @@ public interface CommandsPackage extends EPackage {
 	int STOP_SERVER__BINDINGS = CorePackage.COMMAND__BINDINGS;
 
 	/**
-	 * The feature id for the '<em><b>Port</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STOP_SERVER__PORT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+	int STOP_SERVER__ID = CorePackage.COMMAND_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Stop Server</em>' class.
@@ -312,6 +321,17 @@ public interface CommandsPackage extends EPackage {
 	EClass getStartServer();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.commands.StartServer#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.eclipse.ecl.debug.commands.StartServer#getId()
+	 * @see #getStartServer()
+	 * @generated
+	 */
+	EAttribute getStartServer_Id();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.debug.commands.StopServer <em>Stop Server</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -322,15 +342,15 @@ public interface CommandsPackage extends EPackage {
 	EClass getStopServer();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.commands.StopServer#getPort <em>Port</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.commands.StopServer#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Port</em>'.
-	 * @see org.eclipse.ecl.debug.commands.StopServer#getPort()
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.eclipse.ecl.debug.commands.StopServer#getId()
 	 * @see #getStopServer()
 	 * @generated
 	 */
-	EAttribute getStopServer_Port();
+	EAttribute getStopServer_Id();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.debug.commands.ServerInfo <em>Server Info</em>}'.
@@ -461,6 +481,14 @@ public interface CommandsPackage extends EPackage {
 		EClass START_SERVER = eINSTANCE.getStartServer();
 
 		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute START_SERVER__ID = eINSTANCE.getStartServer_Id();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.debug.commands.impl.StopServerImpl <em>Stop Server</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -471,12 +499,12 @@ public interface CommandsPackage extends EPackage {
 		EClass STOP_SERVER = eINSTANCE.getStopServer();
 
 		/**
-		 * The meta object literal for the '<em><b>Port</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STOP_SERVER__PORT = eINSTANCE.getStopServer_Port();
+		EAttribute STOP_SERVER__ID = eINSTANCE.getStopServer_Id();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.debug.commands.impl.ServerInfoImpl <em>Server Info</em>}' class.

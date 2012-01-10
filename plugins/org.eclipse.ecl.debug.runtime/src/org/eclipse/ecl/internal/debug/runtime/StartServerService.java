@@ -19,8 +19,8 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.debug.commands.CommandsFactory;
 import org.eclipse.ecl.debug.commands.ServerInfo;
+import org.eclipse.ecl.debug.commands.StartServer;
 import org.eclipse.ecl.runtime.ICommandService;
-import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 
 public class StartServerService implements ICommandService {
@@ -28,13 +28,12 @@ public class StartServerService implements ICommandService {
 	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
-		IPipe output = context.getOutput();
-		DebugServer server;
 		try {
-			server = DebugServer.start();
+			StartServer startCommand = ((StartServer) command);
+			DebugServer server = DebugServer.start(startCommand.getId());
 			ServerInfo info = CommandsFactory.eINSTANCE.createServerInfo();
 			info.setPort(server.getPort());
-			output.write(info);
+			context.getOutput().write(info);
 		} catch (IOException e) {
 			throw new CoreException(Log.status(e));
 		}

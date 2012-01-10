@@ -144,6 +144,15 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getStartServer_Id() {
+		return (EAttribute)startServerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getStopServer() {
 		return stopServerEClass;
 	}
@@ -153,7 +162,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStopServer_Port() {
+	public EAttribute getStopServer_Id() {
 		return (EAttribute)stopServerEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -267,9 +276,10 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		// Create classes and their features
 		startServerEClass = createEClass(START_SERVER);
+		createEAttribute(startServerEClass, START_SERVER__ID);
 
 		stopServerEClass = createEClass(STOP_SERVER);
-		createEAttribute(stopServerEClass, STOP_SERVER__PORT);
+		createEAttribute(stopServerEClass, STOP_SERVER__ID);
 
 		serverInfoEClass = createEClass(SERVER_INFO);
 		createEAttribute(serverInfoEClass, SERVER_INFO__PORT);
@@ -323,9 +333,10 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(startServerEClass, StartServer.class, "StartServer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStartServer_Id(), theEcorePackage.getEString(), "id", null, 0, 1, StartServer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stopServerEClass, StopServer.class, "StopServer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStopServer_Port(), ecorePackage.getEInt(), "port", null, 0, 1, StopServer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStopServer_Id(), theEcorePackage.getEString(), "id", null, 0, 1, StopServer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(serverInfoEClass, ServerInfo.class, "ServerInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getServerInfo_Port(), ecorePackage.getEInt(), "port", null, 0, 1, ServerInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

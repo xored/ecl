@@ -9,9 +9,9 @@
  * Contributors:
  *     xored software, Inc. - initial API and Implementation (Yuri Strot)
  *******************************************************************************/
-package org.eclipse.ecl.debug.core;
+package org.eclipse.ecl.internal.debug.core;
 
-import java.net.Socket;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IMarkerDelta;
@@ -32,7 +32,10 @@ import org.eclipse.debug.core.model.IMemoryBlock;
 import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
-import org.eclipse.ecl.debug.runtime.Session;
+import org.eclipse.ecl.debug.core.Debugger;
+import org.eclipse.ecl.debug.core.DebuggerCallback;
+import org.eclipse.ecl.debug.core.DebuggerTransport;
+import org.eclipse.ecl.debug.core.EclDebug;
 import org.eclipse.ecl.debug.runtime.StackFrame;
 import org.eclipse.ecl.debug.runtime.events.BreakpointAddEvent;
 import org.eclipse.ecl.debug.runtime.events.BreakpointHitEvent;
@@ -43,53 +46,33 @@ import org.eclipse.ecl.debug.runtime.events.SkipAllEvent;
 import org.eclipse.ecl.debug.runtime.events.StackEvent;
 import org.eclipse.ecl.debug.runtime.events.StepEndEvent;
 import org.eclipse.ecl.debug.runtime.events.SuspendEvent;
-import org.eclipse.ecl.internal.debug.core.EclDebugElement;
-import org.eclipse.ecl.internal.debug.core.EclDebugThread;
-import org.eclipse.ecl.internal.debug.core.EclStackFrame;
-import org.eclipse.ecl.internal.debug.core.Plugin;
 
 public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
-		IBreakpointManagerListener {
+		IBreakpointManagerListener, Debugger, DebuggerCallback {
 
 	private final IProcess process;
-	private final Session transport;
 	private final EclDebugThread thread;
 	private final IThread[] threads;
-	private final int port;
 
+	private volatile DebuggerTransport transport;
 	private volatile IStackFrame[] frames = new IStackFrame[0];
 	private volatile boolean suspended = true;
 	private volatile boolean stepping = false;
+	private volatile AtomicBoolean initialized = new AtomicBoolean();
 
-	public EclDebugTarget(IProcess process, int port) throws CoreException {
+	public EclDebugTarget(IProcess process) throws CoreException {
 		this.process = process;
-		this.port = port;
 		thread = new EclDebugThread(this);
 		threads = new IThread[] { thread };
-
-		try {
-			Socket socket = new Socket("localhost", port);
-			transport = new Session(socket) {
-
-				@Override
-				protected void handle(Event event) {
-					handleEvent(event);
-				}
-
-				@Override
-				protected void handle(Exception e) {
-					Plugin.log(e);
-				}
-			};
-		} catch (Exception e) {
-			throw new CoreException(Plugin.status(
-					"Couldn't connect to debugger", e));
-		}
-		getBreakpointManager().addBreakpointListener(this);
 	}
 
-	public int getPort() {
-		return port;
+	@Override
+	public void setTransport(DebuggerTransport transport) {
+		if (this.transport != null) {
+			this.transport.setCallback(null);
+		}
+		this.transport = transport;
+		transport.setCallback(this);
 	}
 
 	@Override
@@ -287,7 +270,8 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		transport.request(event);
 	}
 
-	private void handleEvent(Event event) {
+	@Override
+	public void handleResponse(Event event) {
 		thread.setBreakpoints(null);
 		switch (event.getType()) {
 		case STARTED:
@@ -309,13 +293,22 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 	}
 
 	private void started() {
-		fireCreationEvent();
+		if (initialized.compareAndSet(false, true)) {
+			getBreakpointManager().addBreakpointManagerListener(this);
+			getBreakpointManager().addBreakpointListener(this);
+			fireCreationEvent();
+		}
 		installDeferredBreakpoints();
-		getBreakpointManager().addBreakpointManagerListener(this);
 		if (!getBreakpointManager().isEnabled()) {
 			request(new SkipAllEvent(true));
 		}
-		resume();
+		if (isStepping()) {
+			request(new Event(EventType.STEP));
+		} else if (isSuspended()) {
+			request(new Event(EventType.SUSPEND));
+		} else {
+			resume();
+		}
 	}
 
 	private void suspended(SuspendEvent event) {
