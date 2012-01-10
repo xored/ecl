@@ -304,8 +304,6 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		}
 		if (isStepping()) {
 			request(new Event(EventType.STEP));
-		} else if (isSuspended()) {
-			request(new Event(EventType.SUSPEND));
 		} else {
 			resume();
 		}
