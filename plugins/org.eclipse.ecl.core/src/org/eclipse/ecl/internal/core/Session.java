@@ -23,7 +23,7 @@ import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.ISession;
 
-public class Session extends AbstractSession implements ISession {
+public class Session extends AbstractRootSession implements ISession {
 
 	public static abstract class EclJob extends Job {
 

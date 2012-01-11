@@ -19,7 +19,7 @@ import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.ISession;
 
-public class ThreadSession extends AbstractSession implements ISession {
+public class ThreadSession extends AbstractRootSession implements ISession {
 	public static abstract class EclJob extends Job {
 
 		private EclJob(Command scriptlet) {

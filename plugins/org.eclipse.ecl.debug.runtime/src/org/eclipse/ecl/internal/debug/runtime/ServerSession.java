@@ -13,15 +13,16 @@ package org.eclipse.ecl.internal.debug.runtime;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.ecl.core.Command;
-import org.eclipse.ecl.core.ISessionListener;
-import org.eclipse.ecl.core.SessionListenerManager;
+import org.eclipse.ecl.core.CommandStack;
+import org.eclipse.ecl.core.IStackListener;
 import org.eclipse.ecl.debug.commands.DebugCommand;
 import org.eclipse.ecl.debug.runtime.Session;
 import org.eclipse.ecl.debug.runtime.StackFrame;
@@ -33,28 +34,28 @@ import org.eclipse.ecl.debug.runtime.events.SkipAllEvent;
 import org.eclipse.ecl.debug.runtime.events.StepEndEvent;
 import org.eclipse.ecl.debug.runtime.events.SuspendEvent;
 import org.eclipse.ecl.gen.ast.AstExec;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.ecl.gen.ast.AstNode;
 
-public class ServerSession extends Session implements ISessionListener {
+public class ServerSession extends Session implements IStackListener {
 
 	public ServerSession(Socket socket, String id) throws IOException {
 		super(socket);
 		this.id = id;
-		SessionListenerManager.addListener(this);
+		CommandStack.addListener(this);
 		request(new Event(EventType.STARTED));
 	}
 
 	@Override
 	public void terminate() {
-		SessionListenerManager.removeListener(this);
+		CommandStack.removeListener(this);
 		super.terminate();
 		latch.unlock();
 	}
 
 	@Override
-	public void beginCommand(Command command) {
+	public void enter(CommandStack stack) {
 		try {
-			StackFrame[] frames = getStack(command);
+			StackFrame[] frames = getFrames(stack);
 			if (frames != null) {
 				if (latch.isLocked()) {
 					if (step) {
@@ -88,7 +89,7 @@ public class ServerSession extends Session implements ISessionListener {
 	}
 
 	@Override
-	public void endCommand(Command command, IStatus status) {
+	public void exit(CommandStack stack) {
 	}
 
 	@Override
@@ -122,44 +123,52 @@ public class ServerSession extends Session implements ISessionListener {
 		Log.log(e);
 	}
 
-	private StackFrame[] getStack(Command command) {
-		AstExec source = getSourceInfo(command);
-		// looking only for command with source info
-		if (source == null) {
+	private StackFrame[] getFrames(CommandStack stack) {
+		if (getSource(stack) == null) {
+			// no source information for this command stack
 			return null;
 		}
-		DebugCommand debug = getRoot(command);
+		DebugCommand debug = getRoot(stack);
 		if (debug == null || !id.equals(debug.getSession())) {
 			// another session
 			return null;
 		}
-		StackFrame frame = new StackFrame(debug.getPath(), source.getName(),
-				source.getLine());
-		return new StackFrame[] { frame };
+		String path = debug.getPath();
+		List<StackFrame> frames = new ArrayList<StackFrame>();
+		do {
+			Command command = stack.getCommand();
+			if (command instanceof AstExec) {
+				AstExec exec = (AstExec) command;
+				StackFrame frame = new StackFrame(path, exec.getName(),
+						exec.getLine());
+				frames.add(frame);
+			}
+			stack = stack.getParent();
+		} while (stack != null);
+		if (frames.size() == 0)
+			return null;
+		return frames.toArray(new StackFrame[0]);
 	}
 
-	private AstExec getSourceInfo(Command command) {
-		if (command instanceof AstExec) {
-			return (AstExec) command;
+	private AstNode getSource(CommandStack stack) {
+		stack = stack.getParent();
+		if (stack != null) {
+			Command command = stack.getCommand();
+			if (command instanceof AstExec) {
+				return (AstExec) command;
+			}
 		}
 		return null;
 	}
 
-	private static DebugCommand getRoot(Command command) {
+	private static DebugCommand getRoot(CommandStack stack) {
 		do {
+			Command command = stack.getCommand();
 			if (command instanceof DebugCommand) {
 				return (DebugCommand) command;
 			}
-			command = getParent(command);
-		} while (command != null);
-		return null;
-	}
-
-	private static Command getParent(Command command) {
-		EObject container = command.eContainer();
-		if (container instanceof Command) {
-			return (Command) container;
-		}
+			stack = stack.getParent();
+		} while (stack != null);
 		return null;
 	}
 
