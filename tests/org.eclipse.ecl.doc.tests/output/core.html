@@ -1,98 +1,4612 @@
-<html>
-<head>
-<title>Ecl Documentation</title>
-<style>
-
-</style>
-</head>
-<body>
-<h1>Packages</h1><ul>
-<li><a href="#core">core</a></li>
-<li><a href="#commands">commands</a></li>
-</ul>
-<h1 id="core">Package core</h1><span class="commandName">Command</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span><br/>
-<br/>
-
-<span class="commandName">Binding</span>   <span class="paramName">-feature</span>[0..1]:<span class="paramType">EStructuralFeature</span>   <span class="paramName">-command</span>[0..1]:<span class="paramType">Command</span><br/>
-<br/>
-
-<span class="commandName">Block</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span>   <span class="paramName">-commands</span>[1..-1]:<span class="paramType">Command</span><br/>
-<br/>
-
-<span class="commandName">Pipeline</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span>   <span class="paramName">-commands</span>[1..-1]:<span class="paramType">Command</span><br/>
-<br/>
-
-<span class="commandName">Sequence</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span>   <span class="paramName">-commands</span>[1..-1]:<span class="paramType">Command</span><br/>
-<br/>
-
-<span class="commandName">Parallel</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span>   <span class="paramName">-commands</span>[1..-1]:<span class="paramType">Command</span><br/>
-<br/>
-
-<span class="commandName">With</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span>   <span class="paramName">-object</span>[1..1]:<span class="paramType">EObject</span>   <span class="paramName">-do</span>[1..1]:<span class="paramType">Command</span><br/>
-<br/>
-
-<span class="commandName">Exec</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span>   <span class="paramName">-namespace</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-name</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-parameters</span>[0..-1]:<span class="paramType">Parameter</span><br/>
-<br/>
-
-<span class="commandName">Parameter</span>   <span class="paramName">-name</span>[0..1]:<span class="paramType">EString</span><br/>
-<br/>
-
-<span class="commandName">ExecutableParameter</span>   <span class="paramName">-name</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-command</span>[1..1]:<span class="paramType">Command</span><br/>
-<br/>
-
-<span class="commandName">LiteralParameter</span>   <span class="paramName">-name</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-literal</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-format</span>[0..1]:<span class="paramType">EString</span><br/>
-<br/>
-
-<span class="commandName">Foreach</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span>   <span class="paramName">-do</span>[0..1]:<span class="paramType">Command</span>   <span class="paramName">-input</span>[0..-1]:<span class="paramType">EObject</span><br/>
-<br/>
-
-<span class="commandName">Script</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span>   <span class="paramName">-content</span>[0..1]:<span class="paramType">EString</span><br/>
-<br/>
-
-<span class="commandName">ProcessStatus</span>   <span class="paramName">-pluginId</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-code</span>[0..1]:<span class="paramType">EInt</span>   <span class="paramName">-message</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-severity</span>[0..1]:<span class="paramType">EInt</span>   <span class="paramName">-exception</span>[0..1]:<span class="paramType">Throwable</span><br/>
-<br/>
-
-<span class="commandName">ConvertedToEMFPipe</span>   <span class="paramName">-object</span>[0..1]:<span class="paramType">EObject</span><br/>
-<br/>
-
-<span class="commandName">Serialized</span>   <span class="paramName">-bytes</span>[0..1]:<span class="paramType">EByteArray</span><br/>
-<br/>
-
-<span class="commandName">Nullable</span>   <span class="paramName">-value</span>[0..1]:<span class="paramType">EObject</span>   <span class="paramName">-type</span>[0..1]:<span class="paramType">EString</span><br/>
-<br/>
-
-<h1 id="commands">Package commands</h1><span class="commandName">ListPlugins</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span><br/>
-<br/>
-
-<span class="commandName">ListFeatures</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span><br/>
-<br/>
-
-<span class="commandName">ListRepositories</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span><br/>
-<br/>
-
-<span class="commandName">AddRepository</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span>   <span class="paramName">-uri</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-name</span>[0..1]:<span class="paramType">EString</span><br/>
-<br/>
-
-<span class="commandName">RemoveRepository</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span>   <span class="paramName">-uri</span>[0..1]:<span class="paramType">EString</span><br/>
-<br/>
-
-<span class="commandName">UpdateFeature</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span>   <span class="paramName">-id</span>[0..1]:<span class="paramType">EString</span><br/>
-<br/>
-
-<span class="commandName">UpdateAll</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span><br/>
-<br/>
-
-<span class="commandName">Print</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span><br/>
-<br/>
-
-<span class="commandName">SortBy</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span>   <span class="paramName">-field</span>[0..1]:<span class="paramType">EString</span><br/>
-<br/>
-
-<span class="commandName">ListInstallUnits</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span><br/>
-<br/>
-
-<span class="commandName">GetLog</span>   <span class="paramName">-host</span>[0..1]:<span class="paramType">EString</span>   <span class="paramName">-bindings</span>[0..-1]:<span class="paramType">Binding</span>   <span class="paramName">-limit</span>[0..1]:<span class="paramType">EInt</span>   <span class="paramName">-skipInfo</span>[0..1]:<span class="paramType">EBoolean</span><br/>
-<br/>
-
-</body>
+<html lang="en">
+  <head>
+    <title>ECL Documentation</title>
+    <style>
+      .paramName {
+        font-family: monospace;
+      }
+            
+      .paramType {
+        font-weight: bold;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <a name="top" />
+    <h2>Commands</h2>
+    <ul>
+      <li>
+        <a href="#activate-cell-edit">
+          activate-cell-edit
+        </a>
+      </li>
+      <li>
+        <a href="#activate-direct-edit">
+          activate-direct-edit
+        </a>
+      </li>
+      <li>
+        <a href="#apply-cell-edit">
+          apply-cell-edit
+        </a>
+      </li>
+      <li>
+        <a href="#cancel-cell-edit">
+          cancel-cell-edit
+        </a>
+      </li>
+      <li>
+        <a href="#cancel-direct-edit">
+          cancel-direct-edit
+        </a>
+      </li>
+      <li>
+        <a href="#check">
+          check
+        </a>
+      </li>
+      <li>
+        <a href="#click">
+          click
+        </a>
+      </li>
+      <li>
+        <a href="#click-link">
+          click-link
+        </a>
+      </li>
+      <li>
+        <a href="#close">
+          close
+        </a>
+      </li>
+      <li>
+        <a href="#commit-direct-edit">
+          commit-direct-edit
+        </a>
+      </li>
+      <li>
+        <a href="#contains">
+          contains
+        </a>
+      </li>
+      <li>
+        <a href="#contains-image">
+          contains-image
+        </a>
+      </li>
+      <li>
+        <a href="#control-command">
+          control-command
+        </a>
+      </li>
+      <li>
+        <a href="#control-not-found">
+          control-not-found
+        </a>
+      </li>
+      <li>
+        <a href="#double-click">
+          double-click
+        </a>
+      </li>
+      <li>
+        <a href="#drag-accept">
+          drag-accept
+        </a>
+      </li>
+      <li>
+        <a href="#drag-action">
+          drag-action
+        </a>
+      </li>
+      <li>
+        <a href="#drag-detect">
+          drag-detect
+        </a>
+      </li>
+      <li>
+        <a href="#drag-end">
+          drag-end
+        </a>
+      </li>
+      <li>
+        <a href="#drag-enter">
+          drag-enter
+        </a>
+      </li>
+      <li>
+        <a href="#drag-exit">
+          drag-exit
+        </a>
+      </li>
+      <li>
+        <a href="#drag-over">
+          drag-over
+        </a>
+      </li>
+      <li>
+        <a href="#drag-set-data">
+          drag-set-data
+        </a>
+      </li>
+      <li>
+        <a href="#drag-start">
+          drag-start
+        </a>
+      </li>
+      <li>
+        <a href="#drop">
+          drop
+        </a>
+      </li>
+      <li>
+        <a href="#equals">
+          equals
+        </a>
+      </li>
+      <li>
+        <a href="#exec">
+          exec
+        </a>
+      </li>
+      <li>
+        <a href="#exec-with-options">
+          exec-with-options
+        </a>
+      </li>
+      <li>
+        <a href="#foreach">
+          foreach
+        </a>
+      </li>
+      <li>
+        <a href="#from-raw-key">
+          from-raw-key
+        </a>
+      </li>
+      <li>
+        <a href="#get-about-menu">
+          get-about-menu
+        </a>
+      </li>
+      <li>
+        <a href="#get-advanced-info">
+          get-advanced-info
+        </a>
+      </li>
+      <li>
+        <a href="#get-banner">
+          get-banner
+        </a>
+      </li>
+      <li>
+        <a href="#get-button">
+          get-button
+        </a>
+      </li>
+      <li>
+        <a href="#get-by-os">
+          get-by-os
+        </a>
+      </li>
+      <li>
+        <a href="#get-canvas">
+          get-canvas
+        </a>
+      </li>
+      <li>
+        <a href="#get-cell">
+          get-cell
+        </a>
+      </li>
+      <li>
+        <a href="#get-checkbox">
+          get-checkbox
+        </a>
+      </li>
+      <li>
+        <a href="#get-color-selector">
+          get-color-selector
+        </a>
+      </li>
+      <li>
+        <a href="#get-combo">
+          get-combo
+        </a>
+      </li>
+      <li>
+        <a href="#get-composite-ruler">
+          get-composite-ruler
+        </a>
+      </li>
+      <li>
+        <a href="#get-connection-handle">
+          get-connection-handle
+        </a>
+      </li>
+      <li>
+        <a href="#get-control">
+          get-control
+        </a>
+      </li>
+      <li>
+        <a href="#get-coolbar">
+          get-coolbar
+        </a>
+      </li>
+      <li>
+        <a href="#get-date-time">
+          get-date-time
+        </a>
+      </li>
+      <li>
+        <a href="#get-diagram">
+          get-diagram
+        </a>
+      </li>
+      <li>
+        <a href="#get-eclipse-window">
+          get-eclipse-window
+        </a>
+      </li>
+      <li>
+        <a href="#get-edit-part">
+          get-edit-part
+        </a>
+      </li>
+      <li>
+        <a href="#get-editbox">
+          get-editbox
+        </a>
+      </li>
+      <li>
+        <a href="#get-editor">
+          get-editor
+        </a>
+      </li>
+      <li>
+        <a href="#get-entry">
+          get-entry
+        </a>
+      </li>
+      <li>
+        <a href="#get-figure">
+          get-figure
+        </a>
+      </li>
+      <li>
+        <a href="#get-group">
+          get-group
+        </a>
+      </li>
+      <li>
+        <a href="#get-handle">
+          get-handle
+        </a>
+      </li>
+      <li>
+        <a href="#get-item">
+          get-item
+        </a>
+      </li>
+      <li>
+        <a href="#get-label">
+          get-label
+        </a>
+      </li>
+      <li>
+        <a href="#get-link">
+          get-link
+        </a>
+      </li>
+      <li>
+        <a href="#get-list">
+          get-list
+        </a>
+      </li>
+      <li>
+        <a href="#get-menu">
+          get-menu
+        </a>
+      </li>
+      <li>
+        <a href="#get-overview-ruler">
+          get-overview-ruler
+        </a>
+      </li>
+      <li>
+        <a href="#get-palette">
+          get-palette
+        </a>
+      </li>
+      <li>
+        <a href="#get-palette-entry">
+          get-palette-entry
+        </a>
+      </li>
+      <li>
+        <a href="#get-popup-bar-item">
+          get-popup-bar-item
+        </a>
+      </li>
+      <li>
+        <a href="#get-preferences-menu">
+          get-preferences-menu
+        </a>
+      </li>
+      <li>
+        <a href="#get-property">
+          get-property
+        </a>
+      </li>
+      <li>
+        <a href="#get-property-nodes">
+          get-property-nodes
+        </a>
+      </li>
+      <li>
+        <a href="#get-region">
+          get-region
+        </a>
+      </li>
+      <li>
+        <a href="#get-region-text">
+          get-region-text
+        </a>
+      </li>
+      <li>
+        <a href="#get-section">
+          get-section
+        </a>
+      </li>
+      <li>
+        <a href="#get-slider">
+          get-slider
+        </a>
+      </li>
+      <li>
+        <a href="#get-source-connection">
+          get-source-connection
+        </a>
+      </li>
+      <li>
+        <a href="#get-tab-folder">
+          get-tab-folder
+        </a>
+      </li>
+      <li>
+        <a href="#get-tab-item">
+          get-tab-item
+        </a>
+      </li>
+      <li>
+        <a href="#get-table">
+          get-table
+        </a>
+      </li>
+      <li>
+        <a href="#get-target-connection">
+          get-target-connection
+        </a>
+      </li>
+      <li>
+        <a href="#get-text">
+          get-text
+        </a>
+      </li>
+      <li>
+        <a href="#get-text-viewer">
+          get-text-viewer
+        </a>
+      </li>
+      <li>
+        <a href="#get-toolbar">
+          get-toolbar
+        </a>
+      </li>
+      <li>
+        <a href="#get-tree">
+          get-tree
+        </a>
+      </li>
+      <li>
+        <a href="#get-vertical-ruler">
+          get-vertical-ruler
+        </a>
+      </li>
+      <li>
+        <a href="#get-vertical-ruler-column">
+          get-vertical-ruler-column
+        </a>
+      </li>
+      <li>
+        <a href="#get-view">
+          get-view
+        </a>
+      </li>
+      <li>
+        <a href="#get-window">
+          get-window
+        </a>
+      </li>
+      <li>
+        <a href="#hover-at-text">
+          hover-at-text
+        </a>
+      </li>
+      <li>
+        <a href="#hover-at-text-offset">
+          hover-at-text-offset
+        </a>
+      </li>
+      <li>
+        <a href="#if">
+          if
+        </a>
+      </li>
+      <li>
+        <a href="#is-disabled">
+          is-disabled
+        </a>
+      </li>
+      <li>
+        <a href="#is-disposed">
+          is-disposed
+        </a>
+      </li>
+      <li>
+        <a href="#is-empty">
+          is-empty
+        </a>
+      </li>
+      <li>
+        <a href="#key-type">
+          key-type
+        </a>
+      </li>
+      <li>
+        <a href="#matches">
+          matches
+        </a>
+      </li>
+      <li>
+        <a href="#maximize">
+          maximize
+        </a>
+      </li>
+      <li>
+        <a href="#minimize">
+          minimize
+        </a>
+      </li>
+      <li>
+        <a href="#mouse-action">
+          mouse-action
+        </a>
+      </li>
+      <li>
+        <a href="#mouse-double-click">
+          mouse-double-click
+        </a>
+      </li>
+      <li>
+        <a href="#mouse-drag">
+          mouse-drag
+        </a>
+      </li>
+      <li>
+        <a href="#mouse-enter">
+          mouse-enter
+        </a>
+      </li>
+      <li>
+        <a href="#mouse-exit">
+          mouse-exit
+        </a>
+      </li>
+      <li>
+        <a href="#mouse-hover">
+          mouse-hover
+        </a>
+      </li>
+      <li>
+        <a href="#mouse-move">
+          mouse-move
+        </a>
+      </li>
+      <li>
+        <a href="#mouse-press">
+          mouse-press
+        </a>
+      </li>
+      <li>
+        <a href="#mouse-release">
+          mouse-release
+        </a>
+      </li>
+      <li>
+        <a href="#open-declaration">
+          open-declaration
+        </a>
+      </li>
+      <li>
+        <a href="#options">
+          options
+        </a>
+      </li>
+      <li>
+        <a href="#parallel">
+          parallel
+        </a>
+      </li>
+      <li>
+        <a href="#pipeline">
+          pipeline
+        </a>
+      </li>
+      <li>
+        <a href="#recognize">
+          recognize
+        </a>
+      </li>
+      <li>
+        <a href="#restore">
+          restore
+        </a>
+      </li>
+      <li>
+        <a href="#return-from-os-dialog">
+          return-from-os-dialog
+        </a>
+      </li>
+      <li>
+        <a href="#ruler-click">
+          ruler-click
+        </a>
+      </li>
+      <li>
+        <a href="#ruler-double-click">
+          ruler-double-click
+        </a>
+      </li>
+      <li>
+        <a href="#ruler-hover">
+          ruler-hover
+        </a>
+      </li>
+      <li>
+        <a href="#save">
+          save
+        </a>
+      </li>
+      <li>
+        <a href="#script">
+          script
+        </a>
+      </li>
+      <li>
+        <a href="#select">
+          select
+        </a>
+      </li>
+      <li>
+        <a href="#select-range">
+          select-range
+        </a>
+      </li>
+      <li>
+        <a href="#sequence">
+          sequence
+        </a>
+      </li>
+      <li>
+        <a href="#set-caret-pos">
+          set-caret-pos
+        </a>
+      </li>
+      <li>
+        <a href="#set-dialog-result">
+          set-dialog-result
+        </a>
+      </li>
+      <li>
+        <a href="#set-focus">
+          set-focus
+        </a>
+      </li>
+      <li>
+        <a href="#set-text">
+          set-text
+        </a>
+      </li>
+      <li>
+        <a href="#set-text-offset">
+          set-text-offset
+        </a>
+      </li>
+      <li>
+        <a href="#set-text-selection">
+          set-text-selection
+        </a>
+      </li>
+      <li>
+        <a href="#set-value">
+          set-value
+        </a>
+      </li>
+      <li>
+        <a href="#setup-player">
+          setup-player
+        </a>
+      </li>
+      <li>
+        <a href="#shoutdown-player">
+          shoutdown-player
+        </a>
+      </li>
+      <li>
+        <a href="#show-content-assist">
+          show-content-assist
+        </a>
+      </li>
+      <li>
+        <a href="#show-tab-list">
+          show-tab-list
+        </a>
+      </li>
+      <li>
+        <a href="#shutdown-aut">
+          shutdown-aut
+        </a>
+      </li>
+      <li>
+        <a href="#try">
+          try
+        </a>
+      </li>
+      <li>
+        <a href="#type-command-key">
+          type-command-key
+        </a>
+      </li>
+      <li>
+        <a href="#type-text">
+          type-text
+        </a>
+      </li>
+      <li>
+        <a href="#uncheck">
+          uncheck
+        </a>
+      </li>
+      <li>
+        <a href="#unsupported">
+          unsupported
+        </a>
+      </li>
+      <li>
+        <a href="#verify-error">
+          verify-error
+        </a>
+      </li>
+      <li>
+        <a href="#verify-false">
+          verify-false
+        </a>
+      </li>
+      <li>
+        <a href="#verify-true">
+          verify-true
+        </a>
+      </li>
+      <li>
+        <a href="#wait">
+          wait
+        </a>
+      </li>
+      <li>
+        <a href="#wait-until-eclipse-is-ready">
+          wait-until-eclipse-is-ready
+        </a>
+      </li>
+      <li>
+        <a href="#with">
+          with
+        </a>
+      </li>
+    </ul>
+    <a name="activate-cell-edit" />
+    <h2>activate-cell-edit</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Activates cell editing.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">column</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Item of table, list or tree.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="activate-direct-edit" />
+    <h2>activate-direct-edit</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Activates direct editing.</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Edit part or figure.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="apply-cell-edit" />
+    <h2>apply-cell-edit</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Applies cell editing.</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Item of table, list or tree.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="cancel-cell-edit" />
+    <h2>cancel-cell-edit</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Cancels cell editing.</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Item of table, list or tree.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="cancel-direct-edit" />
+    <h2>cancel-direct-edit</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Cancels direct editing.</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Edit part or figure.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="check" />
+    <h2>check</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Checks the control.</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Item of table, list or tree.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="click" />
+    <h2>click</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Clicks on a control.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Boolean</span> <span class="paramName">nowait</span>
+      </dd>
+      <dd>
+        <span class="paramType">Boolean</span> <span class="paramName">default</span> - Specifies if clicking causes default selection.
+      </dd>
+      <dd>
+        <span class="paramType">Boolean</span> <span class="paramName">arrow</span> - Specifies arrow button behavior.
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="click-link" />
+    <h2>click-link</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">ref</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="close" />
+    <h2>close</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Closes the control.</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Window, view or editor.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="commit-direct-edit" />
+    <h2>commit-direct-edit</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Commits direct editing.</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Edit part or figure.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="contains" />
+    <h2>contains</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">value</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">EObject</span> <span class="paramName">input</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="contains-image" />
+    <h2>contains-image</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">imageURI</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">rawImage</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+    </dl>
+    <hr />
+    <a name="control-command" />
+    <h2>control-command</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="control-not-found" />
+    <h2>control-not-found</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">id</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="double-click" />
+    <h2>double-click</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Double clicks on a control.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Boolean</span> <span class="paramName">nowait</span>
+      </dd>
+      <dd>
+        <span class="paramType">Boolean</span> <span class="paramName">default</span> - Specifies if clicking causes default selection.
+      </dd>
+      <dd>
+        <span class="paramType">Boolean</span> <span class="paramName">arrow</span> - Specifies arrow button behavior.
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="drag-accept" />
+    <h2>drag-accept</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates drag accept event.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3. Default value is none
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">detail</span>. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">operation</span>. Default value is 0
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="drag-action" />
+    <h2>drag-action</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3. Default value is none
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">detail</span>. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">operation</span>. Default value is 0
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+    </dl>
+    <hr />
+    <a name="drag-detect" />
+    <h2>drag-detect</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates drag detect event.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3. Default value is none
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">detail</span>. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">operation</span>. Default value is 0
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="drag-end" />
+    <h2>drag-end</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates drag end event.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3. Default value is none
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">detail</span>. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">operation</span>. Default value is 0
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="drag-enter" />
+    <h2>drag-enter</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates drag enter event.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3. Default value is none
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">detail</span>. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">operation</span>. Default value is 0
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="drag-exit" />
+    <h2>drag-exit</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates drag exit event.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3. Default value is none
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">detail</span>. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">operation</span>. Default value is 0
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="drag-over" />
+    <h2>drag-over</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates drag over event.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3. Default value is none
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">detail</span>. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">operation</span>. Default value is 0
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="drag-set-data" />
+    <h2>drag-set-data</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates drag set event.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3. Default value is none
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">detail</span>. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">operation</span>. Default value is 0
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="drag-start" />
+    <h2>drag-start</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates drag start event.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3. Default value is none
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">detail</span>. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">operation</span>. Default value is 0
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="drop" />
+    <h2>drop</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates drop event.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3. Default value is none
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">detail</span>. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">operation</span>. Default value is 0
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="equals" />
+    <h2>equals</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">value</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">EObject</span> <span class="paramName">input</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="exec" />
+    <h2>exec</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">namespace</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">name</span>
+      </dd>
+      <dd>
+        <span class="paramType">Parameter</span> <span class="paramName">parameters</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="exec-with-options" />
+    <h2>exec-with-options</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Boolean</span> <span class="paramName">allowStatusDialog</span>
+      </dd>
+      <dd>
+        <span class="paramType">Command</span> <span class="paramName">command</span> - Command to execute.
+      </dd>
+    </dl>
+    <hr />
+    <a name="foreach" />
+    <h2>foreach</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Command</span> <span class="paramName">do</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">EObject</span> <span class="paramName">input</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="from-raw-key" />
+    <h2>from-raw-key</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">keyCode</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">meta</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-about-menu" />
+    <h2>get-about-menu</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-advanced-info" />
+    <h2>get-advanced-info</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-banner" />
+    <h2>get-banner</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-button" />
+    <h2>get-button</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-by-os" />
+    <h2>get-by-os</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">default</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">win</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">linux</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">macosx</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-canvas" />
+    <h2>get-canvas</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-cell" />
+    <h2>get-cell</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">row</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">column</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-checkbox" />
+    <h2>get-checkbox</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-color-selector" />
+    <h2>get-color-selector</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-combo" />
+    <h2>get-combo</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-composite-ruler" />
+    <h2>get-composite-ruler</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-connection-handle" />
+    <h2>get-connection-handle</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">path</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-control" />
+    <h2>get-control</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">path</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">kind</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-coolbar" />
+    <h2>get-coolbar</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-date-time" />
+    <h2>get-date-time</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-diagram" />
+    <h2>get-diagram</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-eclipse-window" />
+    <h2>get-eclipse-window</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-edit-part" />
+    <h2>get-edit-part</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">path</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">name</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">feature</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">className</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-editbox" />
+    <h2>get-editbox</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-editor" />
+    <h2>get-editor</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-entry" />
+    <h2>get-entry</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-figure" />
+    <h2>get-figure</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">path</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-group" />
+    <h2>get-group</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-handle" />
+    <h2>get-handle</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-item" />
+    <h2>get-item</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">path</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-label" />
+    <h2>get-label</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-link" />
+    <h2>get-link</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-list" />
+    <h2>get-list</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-menu" />
+    <h2>get-menu</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">path</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-overview-ruler" />
+    <h2>get-overview-ruler</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-palette" />
+    <h2>get-palette</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-palette-entry" />
+    <h2>get-palette-entry</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-popup-bar-item" />
+    <h2>get-popup-bar-item</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">path</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-preferences-menu" />
+    <h2>get-preferences-menu</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-property" />
+    <h2>get-property</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">name</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">EObject</span> <span class="paramName">object</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-property-nodes" />
+    <h2>get-property-nodes</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Element</span> <span class="paramName">element</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">nodePath</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-region" />
+    <h2>get-region</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">imageURI</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">rawImage</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-region-text" />
+    <h2>get-region-text</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control. Default value is 0
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">sx</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">sy</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">width</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">height</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-section" />
+    <h2>get-section</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-slider" />
+    <h2>get-slider</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-source-connection" />
+    <h2>get-source-connection</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">path</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-tab-folder" />
+    <h2>get-tab-folder</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-tab-item" />
+    <h2>get-tab-item</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-table" />
+    <h2>get-table</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-target-connection" />
+    <h2>get-target-connection</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">path</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-text" />
+    <h2>get-text</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        text content of a control
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-text-viewer" />
+    <h2>get-text-viewer</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-toolbar" />
+    <h2>get-toolbar</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-tree" />
+    <h2>get-tree</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-vertical-ruler" />
+    <h2>get-vertical-ruler</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-vertical-ruler-column" />
+    <h2>get-vertical-ruler-column</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-view" />
+    <h2>get-view</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="get-window" />
+    <h2>get-window</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">after</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">index</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span>
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">from</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">parent</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="hover-at-text" />
+    <h2>hover-at-text</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Perform mouse hover at specific text position.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">line</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">column</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">stateMask</span>. Default value is 0
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Text control: editbox, editor or combo.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="hover-at-text-offset" />
+    <h2>hover-at-text-offset</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Perform mouse hover at specific text position.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">offset</span> - Value of offset to be set. Must not be less than 0 and greater than the number of characters in the text control. 
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">line</span> - Value of offset to be set. Must not be less than 0 and greater than the number of characters in the text control. 
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Text control: editbox, editor or combo.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="if" />
+    <h2>if</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Boolean</span> <span class="paramName">condition</span>
+      </dd>
+      <dd>
+        <span class="paramType">Command</span> <span class="paramName">then</span>
+      </dd>
+      <dd>
+        <span class="paramType">Command</span> <span class="paramName">else</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="is-disabled" />
+    <h2>is-disabled</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        true if the control is disabled or false otherwise
+      </dd>
+    </dl>
+    <hr />
+    <a name="is-disposed" />
+    <h2>is-disposed</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        true if the control is disposed or false otherwise
+      </dd>
+    </dl>
+    <hr />
+    <a name="is-empty" />
+    <h2>is-empty</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">EObject</span> <span class="paramName">input</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="key-type" />
+    <h2>key-type</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Type key to the control.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">key</span> - Key to type.
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">char</span> - Character that corresponds to the *key*.  In most cases this parameter is not necessary.
+      </dd>
+      <dd>
+        <span class="paramType">Boolean</span> <span class="paramName">display</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">times</span>. Default value is 1
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="matches" />
+    <h2>matches</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">value</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">EObject</span> <span class="paramName">input</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="maximize" />
+    <h2>maximize</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Maximize the tab folder.</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Window, view or editor.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="minimize" />
+    <h2>minimize</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Minimize the tab folder.</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Window, view or editor.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="mouse-action" />
+    <h2>mouse-action</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3.
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">height</span> - Height of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">width</span> - Width of the control.
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Canvas, edit part or figure.
+      </dd>
+    </dl>
+    <hr />
+    <a name="mouse-double-click" />
+    <h2>mouse-double-click</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates mouse double click on the control.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3.
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">height</span> - Height of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">width</span> - Width of the control.
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Canvas, edit part or figure.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="mouse-drag" />
+    <h2>mouse-drag</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates mouse drag on the control.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3.
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">height</span> - Height of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">width</span> - Width of the control.
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Canvas, edit part or figure.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="mouse-enter" />
+    <h2>mouse-enter</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates mouse entering to the control.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3.
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">height</span> - Height of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">width</span> - Width of the control.
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Canvas, edit part or figure.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="mouse-exit" />
+    <h2>mouse-exit</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates mouse leaving from the control.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3.
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">height</span> - Height of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">width</span> - Width of the control.
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Canvas, edit part or figure.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="mouse-hover" />
+    <h2>mouse-hover</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates mouse hovering over the control.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3.
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">height</span> - Height of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">width</span> - Width of the control.
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Canvas, edit part or figure.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="mouse-move" />
+    <h2>mouse-move</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates mouse move over the control.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3.
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">height</span> - Height of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">width</span> - Width of the control.
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Canvas, edit part or figure.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="mouse-press" />
+    <h2>mouse-press</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates mouse press on the control.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3.
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">height</span> - Height of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">width</span> - Width of the control.
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Canvas, edit part or figure.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="mouse-release" />
+    <h2>mouse-release</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates mouse release on the control.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span> - X coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span> - Y coordinate relative to left top corner of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span> - Mouse button pressed. Must be one of followings: none, button1, button2, button3.
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">mask</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">height</span> - Height of the control.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">width</span> - Width of the control.
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Canvas, edit part or figure.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="open-declaration" />
+    <h2>open-declaration</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Perform open declaration command in the current text position (CTRL+Left click)</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Text control: editbox, editor or combo.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="options" />
+    <h2>options</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Boolean</span> <span class="paramName">allowStatusDialog</span>
+      </dd>
+      <dd>
+        <span class="paramType">Command</span> <span class="paramName">command</span> - Command to execute.
+      </dd>
+    </dl>
+    <hr />
+    <a name="parallel" />
+    <h2>parallel</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Command</span> <span class="paramName">commands</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="pipeline" />
+    <h2>pipeline</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Command</span> <span class="paramName">commands</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="recognize" />
+    <h2>recognize</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">EByteArray</span> <span class="paramName">image</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">x</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">y</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">width</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">height</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="restore" />
+    <h2>restore</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Restore the tab folder.</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Window, view or editor.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="return-from-os-dialog" />
+    <h2>return-from-os-dialog</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates result returning from native dialog.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">kind</span> - Must be one of followings: FILE_SELECTOR, FOLDER_SELECTOR, MESSAGE_BOX, FONT_DIALOG, COLOR
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">result</span> - String presentation of returned value (platform specific).
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        nothing
+      </dd>
+    </dl>
+    <hr />
+    <a name="ruler-click" />
+    <h2>ruler-click</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Perform mouse hover at specific text position.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">line</span>
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span>. Default value is button1
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">stateMask</span>. Default value is 0
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Text control: editbox, editor or combo.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="ruler-double-click" />
+    <h2>ruler-double-click</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Perform mouse hover at specific text position.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">line</span>
+      </dd>
+      <dd>
+        <span class="paramType">Button</span> <span class="paramName">button</span>. Default value is button1
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">stateMask</span>. Default value is 0
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Text control: editbox, editor or combo.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="ruler-hover" />
+    <h2>ruler-hover</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Perform mouse hover at specific text position.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">line</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">stateMask</span>. Default value is 0
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Text control: editbox, editor or combo.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="save" />
+    <h2>save</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="script" />
+    <h2>script</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">content</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="select" />
+    <h2>select</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Selects items.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">EJavaObject</span> <span class="paramName">items</span> - Path of item to select.
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Table, list or tree.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="select-range" />
+    <h2>select-range</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Sets the selection to the range specified by the given offset and length. If specified four parameters sets the selection by start line, offset in start line, end line and offset in end line.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">line</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">column</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">endLine</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">endColumn</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Text control: editbox, editor or combo.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="sequence" />
+    <h2>sequence</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Command</span> <span class="paramName">commands</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="set-caret-pos" />
+    <h2>set-caret-pos</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Sets the text offset.</p>
+        <p>For specified line.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">line</span>
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">column</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Text control: editbox, editor or combo.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="set-dialog-result" />
+    <h2>set-dialog-result</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Emulates result returning from native dialog.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">kind</span> - Must be one of followings: File, Folder, MessageBox, Font, Color
+      </dd>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">result</span> - String presentation of returned value (platform specific).
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        nothing
+      </dd>
+    </dl>
+    <hr />
+    <a name="set-focus" />
+    <h2>set-focus</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="set-text" />
+    <h2>set-text</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Sets text content of the control.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span> - Text to set.
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Text control: editbox, editor or combo.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="set-text-offset" />
+    <h2>set-text-offset</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Sets the text offset.</p>
+        <p>For specified line.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">value</span> - Value of offset to be set. Must not be less than 0 and greater than the number of characters in the text control. 
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">line</span> - Value of offset to be set. Must not be less than 0 and greater than the number of characters in the text control. 
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Text control: editbox, editor or combo.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="set-text-selection" />
+    <h2>set-text-selection</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Sets the selection to the range specified by the given offset and length. If specified four parameters sets the selection by start line, offset in start line, end line and offset in end line.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">offset</span> - Must not be less than 0 and greater than the number of characters in the text control. 
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">length</span> - Length of selection. Must not be less that zero.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">startLine</span> - Length of selection. Must not be less that zero.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">endLine</span> - Must not be less than 0 and greater than the number of characters in the text control. 
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">endOffset</span> - Length of selection. Must not be less that zero.
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Text control: editbox, editor or combo.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="set-value" />
+    <h2>set-value</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">value</span> - Text to set.
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Text control: editbox, editor or combo.
+      </dd>
+    </dl>
+    <hr />
+    <a name="setup-player" />
+    <h2>setup-player</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+    </dl>
+    <hr />
+    <a name="shoutdown-player" />
+    <h2>shoutdown-player</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+    </dl>
+    <hr />
+    <a name="show-content-assist" />
+    <h2>show-content-assist</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Shows content assist.</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Must be editor.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="show-tab-list" />
+    <h2>show-tab-list</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Show the list of tabs from tab folder.</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Window, view or editor.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="shutdown-aut" />
+    <h2>shutdown-aut</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+    </dl>
+    <hr />
+    <a name="try" />
+    <h2>try</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Tries to execute *command* until it's succeed.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Command</span> <span class="paramName">command</span> - Command to execute.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">times</span> - Number of tries.
+      </dd>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">delay</span> - Delay between tries in milliseconds.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        result of *command* execution
+      </dd>
+    </dl>
+    <hr />
+    <a name="type-command-key" />
+    <h2>type-command-key</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Type key to the control.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">commandId</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="type-text" />
+    <h2>type-text</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Types text to the control.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">text</span> - Text to type.
+      </dd>
+      <dd>
+        <span class="paramType">Boolean</span> <span class="paramName">display</span>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Any control is appropriate.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="uncheck" />
+    <h2>uncheck</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Unchecks the control.</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">ControlHandler</span> <span class="paramName">control</span> - Item of table, list or tree.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        value of *control* parameter
+      </dd>
+    </dl>
+    <hr />
+    <a name="unsupported" />
+    <h2>unsupported</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">String</span> <span class="paramName">desc</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="verify-error" />
+    <h2>verify-error</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Command</span> <span class="paramName">command</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="verify-false" />
+    <h2>verify-false</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">EObject</span> <span class="paramName">condition</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="verify-true" />
+    <h2>verify-true</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Input</strong>
+      </dt>
+      <dd>
+        <span class="paramType">EObject</span> <span class="paramName">condition</span>
+      </dd>
+    </dl>
+    <hr />
+    <a name="wait" />
+    <h2>wait</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Suspend execution for a given number of milliseconds.</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">Integer</span> <span class="paramName">ms</span> - Number of milliseconds. Must be integer value greater than zero.
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        nothing
+      </dd>
+    </dl>
+    <hr />
+    <a name="wait-until-eclipse-is-ready" />
+    <h2>wait-until-eclipse-is-ready</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>Suspend execution until Eclipse is ready.</p>
+      </dd>
+      <dt>
+        <strong>Output</strong>
+      </dt>
+      <dd>
+        nothing
+      </dd>
+    </dl>
+    <hr />
+    <a name="with" />
+    <h2>with</h2>
+    <dl>
+      <dt>
+        <strong>Descrption</strong>
+      </dt>
+      <dd>
+        <p>To be described</p>
+      </dd>
+      <dt>
+        <strong>Parameters</strong>
+      </dt>
+      <dd>
+        <span class="paramType">EObject</span> <span class="paramName">object</span>
+      </dd>
+      <dd>
+        <span class="paramType">Command</span> <span class="paramName">do</span>
+      </dd>
+    </dl>
+    <hr />
+  </body>
 </html>
