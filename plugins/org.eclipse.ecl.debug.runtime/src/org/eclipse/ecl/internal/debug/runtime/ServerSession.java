@@ -26,6 +26,7 @@ import org.eclipse.ecl.core.IStackListener;
 import org.eclipse.ecl.debug.commands.DebugCommand;
 import org.eclipse.ecl.debug.runtime.Session;
 import org.eclipse.ecl.debug.runtime.StackFrame;
+import org.eclipse.ecl.debug.runtime.SuspendManager;
 import org.eclipse.ecl.debug.runtime.events.BreakpointEvent;
 import org.eclipse.ecl.debug.runtime.events.BreakpointHitEvent;
 import org.eclipse.ecl.debug.runtime.events.Event;
@@ -63,11 +64,11 @@ public class ServerSession extends Session implements IStackListener {
 					} else {
 						request(new SuspendEvent(frames));
 					}
-					latch.await();
+					await();
 				} else if (isHitBreakpoint(frames[0])) {
 					latch.lock();
 					request(new BreakpointHitEvent(frames));
-					latch.await();
+					await();
 				}
 			}
 		} catch (InterruptedException e) {
@@ -86,6 +87,15 @@ public class ServerSession extends Session implements IStackListener {
 			return lines.contains(data.getLine());
 		}
 		return false;
+	}
+
+	private void await() throws InterruptedException {
+		SuspendManager.INSTANCE.fireSuspend();
+		try {
+			latch.await();
+		} finally {
+			SuspendManager.INSTANCE.fireResume();
+		}
 	}
 
 	@Override
