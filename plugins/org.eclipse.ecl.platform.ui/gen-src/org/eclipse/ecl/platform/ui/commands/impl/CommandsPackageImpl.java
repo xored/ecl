@@ -12,6 +12,9 @@ import org.eclipse.ecl.platform.ui.commands.Alert;
 import org.eclipse.ecl.platform.ui.commands.CommandsFactory;
 import org.eclipse.ecl.platform.ui.commands.CommandsPackage;
 
+import org.eclipse.ecl.platform.ui.commands.CreateWorkingSet;
+import org.eclipse.ecl.platform.ui.commands.ListWorkingSets;
+import org.eclipse.ecl.platform.ui.commands.RemoveWorkingSet;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -32,6 +35,25 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass alertEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass listWorkingSetsEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass createWorkingSetEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass removeWorkingSetEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -120,6 +142,51 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getListWorkingSets() {
+		return listWorkingSetsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCreateWorkingSet() {
+		return createWorkingSetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCreateWorkingSet_Name() {
+		return (EAttribute)createWorkingSetEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRemoveWorkingSet() {
+		return removeWorkingSetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRemoveWorkingSet_Name() {
+		return (EAttribute)removeWorkingSetEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommandsFactory getCommandsFactory() {
 		return (CommandsFactory)getEFactoryInstance();
 	}
@@ -145,6 +212,14 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		// Create classes and their features
 		alertEClass = createEClass(ALERT);
 		createEAttribute(alertEClass, ALERT__MESSAGE);
+
+		listWorkingSetsEClass = createEClass(LIST_WORKING_SETS);
+
+		createWorkingSetEClass = createEClass(CREATE_WORKING_SET);
+		createEAttribute(createWorkingSetEClass, CREATE_WORKING_SET__NAME);
+
+		removeWorkingSetEClass = createEClass(REMOVE_WORKING_SET);
+		createEAttribute(removeWorkingSetEClass, REMOVE_WORKING_SET__NAME);
 	}
 
 	/**
@@ -180,10 +255,21 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		// Add supertypes to classes
 		alertEClass.getESuperTypes().add(theCorePackage.getCommand());
+		listWorkingSetsEClass.getESuperTypes().add(theCorePackage.getCommand());
+		createWorkingSetEClass.getESuperTypes().add(theCorePackage.getCommand());
+		removeWorkingSetEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(alertEClass, Alert.class, "Alert", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAlert_Message(), theEcorePackage.getEString(), "message", null, 0, 1, Alert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(listWorkingSetsEClass, ListWorkingSets.class, "ListWorkingSets", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(createWorkingSetEClass, CreateWorkingSet.class, "CreateWorkingSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCreateWorkingSet_Name(), theEcorePackage.getEString(), "name", null, 0, 1, CreateWorkingSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(removeWorkingSetEClass, RemoveWorkingSet.class, "RemoveWorkingSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRemoveWorkingSet_Name(), theEcorePackage.getEString(), "name", null, 0, 1, RemoveWorkingSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -23,6 +23,21 @@
             name="Alert"
             namespace="http://www.eclipse.org/ecl/platform.ui/commands.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.platform.internal.ui.commands.ListWorkingSetsService"
+            name="ListWorkingSets"
+            namespace="http://www.eclipse.org/ecl/platform.ui/commands.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.platform.internal.ui.commands.CreateWorkingSetService"
+            name="CreateWorkingSet"
+            namespace="http://www.eclipse.org/ecl/platform.ui/commands.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.platform.internal.ui.commands.DeleteWorkingSetService"
+            name="DeleteWorkingSet"
+            namespace="http://www.eclipse.org/ecl/platform.ui/commands.ecore">
+      </scriptlet>
    </extension>
 
 </plugin>

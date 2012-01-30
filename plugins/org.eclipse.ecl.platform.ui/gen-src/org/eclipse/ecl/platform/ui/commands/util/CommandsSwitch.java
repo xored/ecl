@@ -79,6 +79,27 @@ public class CommandsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CommandsPackage.LIST_WORKING_SETS: {
+				ListWorkingSets listWorkingSets = (ListWorkingSets)theEObject;
+				T result = caseListWorkingSets(listWorkingSets);
+				if (result == null) result = caseCommand(listWorkingSets);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommandsPackage.CREATE_WORKING_SET: {
+				CreateWorkingSet createWorkingSet = (CreateWorkingSet)theEObject;
+				T result = caseCreateWorkingSet(createWorkingSet);
+				if (result == null) result = caseCommand(createWorkingSet);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommandsPackage.REMOVE_WORKING_SET: {
+				RemoveWorkingSet removeWorkingSet = (RemoveWorkingSet)theEObject;
+				T result = caseRemoveWorkingSet(removeWorkingSet);
+				if (result == null) result = caseCommand(removeWorkingSet);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -95,6 +116,51 @@ public class CommandsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAlert(Alert object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>List Working Sets</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>List Working Sets</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseListWorkingSets(ListWorkingSets object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Create Working Set</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Create Working Set</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCreateWorkingSet(CreateWorkingSet object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Remove Working Set</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Remove Working Set</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRemoveWorkingSet(RemoveWorkingSet object) {
 		return null;
 	}
 

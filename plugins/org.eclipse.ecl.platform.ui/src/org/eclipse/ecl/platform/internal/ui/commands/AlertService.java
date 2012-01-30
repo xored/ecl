@@ -24,7 +24,7 @@ public class AlertService implements ICommandService {
 			
 			@Override
 			public void run() {
-				Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
+				Shell shell = PlatformUI.getWorkbench().getDisplay().getShells()[0];
 				MessageBox mb = new MessageBox(shell);
 				mb.setMessage(message);
 				mb.open();

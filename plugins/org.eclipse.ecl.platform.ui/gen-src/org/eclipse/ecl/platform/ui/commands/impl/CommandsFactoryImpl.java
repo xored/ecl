@@ -61,6 +61,9 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case CommandsPackage.ALERT: return createAlert();
+			case CommandsPackage.LIST_WORKING_SETS: return createListWorkingSets();
+			case CommandsPackage.CREATE_WORKING_SET: return createCreateWorkingSet();
+			case CommandsPackage.REMOVE_WORKING_SET: return createRemoveWorkingSet();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -74,6 +77,36 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public Alert createAlert() {
 		AlertImpl alert = new AlertImpl();
 		return alert;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ListWorkingSets createListWorkingSets() {
+		ListWorkingSetsImpl listWorkingSets = new ListWorkingSetsImpl();
+		return listWorkingSets;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CreateWorkingSet createCreateWorkingSet() {
+		CreateWorkingSetImpl createWorkingSet = new CreateWorkingSetImpl();
+		return createWorkingSet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RemoveWorkingSet createRemoveWorkingSet() {
+		RemoveWorkingSetImpl removeWorkingSet = new RemoveWorkingSetImpl();
+		return removeWorkingSet;
 	}
 
 	/**

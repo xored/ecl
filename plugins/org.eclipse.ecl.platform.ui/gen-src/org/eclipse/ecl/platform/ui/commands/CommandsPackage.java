@@ -108,6 +108,136 @@ public interface CommandsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.ListWorkingSetsImpl <em>List Working Sets</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.ListWorkingSetsImpl
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getListWorkingSets()
+	 * @generated
+	 */
+	int LIST_WORKING_SETS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_WORKING_SETS__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_WORKING_SETS__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The number of structural features of the '<em>List Working Sets</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_WORKING_SETS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.CreateWorkingSetImpl <em>Create Working Set</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.CreateWorkingSetImpl
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getCreateWorkingSet()
+	 * @generated
+	 */
+	int CREATE_WORKING_SET = 2;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_WORKING_SET__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_WORKING_SET__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_WORKING_SET__NAME = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Create Working Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_WORKING_SET_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.RemoveWorkingSetImpl <em>Remove Working Set</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.RemoveWorkingSetImpl
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getRemoveWorkingSet()
+	 * @generated
+	 */
+	int REMOVE_WORKING_SET = 3;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVE_WORKING_SET__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVE_WORKING_SET__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVE_WORKING_SET__NAME = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Remove Working Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVE_WORKING_SET_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.Alert <em>Alert</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -127,6 +257,58 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAlert_Message();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.ListWorkingSets <em>List Working Sets</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>List Working Sets</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.ListWorkingSets
+	 * @generated
+	 */
+	EClass getListWorkingSets();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.CreateWorkingSet <em>Create Working Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Create Working Set</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.CreateWorkingSet
+	 * @generated
+	 */
+	EClass getCreateWorkingSet();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.ui.commands.CreateWorkingSet#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.CreateWorkingSet#getName()
+	 * @see #getCreateWorkingSet()
+	 * @generated
+	 */
+	EAttribute getCreateWorkingSet_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.RemoveWorkingSet <em>Remove Working Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Remove Working Set</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.RemoveWorkingSet
+	 * @generated
+	 */
+	EClass getRemoveWorkingSet();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.ui.commands.RemoveWorkingSet#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.RemoveWorkingSet#getName()
+	 * @see #getRemoveWorkingSet()
+	 * @generated
+	 */
+	EAttribute getRemoveWorkingSet_Name();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -167,6 +349,52 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ALERT__MESSAGE = eINSTANCE.getAlert_Message();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.ui.commands.impl.ListWorkingSetsImpl <em>List Working Sets</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.ListWorkingSetsImpl
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getListWorkingSets()
+		 * @generated
+		 */
+		EClass LIST_WORKING_SETS = eINSTANCE.getListWorkingSets();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.ui.commands.impl.CreateWorkingSetImpl <em>Create Working Set</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.CreateWorkingSetImpl
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getCreateWorkingSet()
+		 * @generated
+		 */
+		EClass CREATE_WORKING_SET = eINSTANCE.getCreateWorkingSet();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CREATE_WORKING_SET__NAME = eINSTANCE.getCreateWorkingSet_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.ui.commands.impl.RemoveWorkingSetImpl <em>Remove Working Set</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.RemoveWorkingSetImpl
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getRemoveWorkingSet()
+		 * @generated
+		 */
+		EClass REMOVE_WORKING_SET = eINSTANCE.getRemoveWorkingSet();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REMOVE_WORKING_SET__NAME = eINSTANCE.getRemoveWorkingSet_Name();
 
 	}
 

@@ -30,6 +30,8 @@ public class PrintService implements ICommandService {
 		for(Object o : input) {
 			if(o instanceof EObject) {
 				objects.add((EObject) o);
+			} else {
+				context.getOutput().write(o.toString());
 			}
 		}
 		

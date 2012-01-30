@@ -78,6 +78,18 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 				return createAlertAdapter();
 			}
 			@Override
+			public Adapter caseListWorkingSets(ListWorkingSets object) {
+				return createListWorkingSetsAdapter();
+			}
+			@Override
+			public Adapter caseCreateWorkingSet(CreateWorkingSet object) {
+				return createCreateWorkingSetAdapter();
+			}
+			@Override
+			public Adapter caseRemoveWorkingSet(RemoveWorkingSet object) {
+				return createRemoveWorkingSetAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -112,6 +124,48 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAlertAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.platform.ui.commands.ListWorkingSets <em>List Working Sets</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.platform.ui.commands.ListWorkingSets
+	 * @generated
+	 */
+	public Adapter createListWorkingSetsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.platform.ui.commands.CreateWorkingSet <em>Create Working Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.platform.ui.commands.CreateWorkingSet
+	 * @generated
+	 */
+	public Adapter createCreateWorkingSetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.platform.ui.commands.RemoveWorkingSet <em>Remove Working Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.platform.ui.commands.RemoveWorkingSet
+	 * @generated
+	 */
+	public Adapter createRemoveWorkingSetAdapter() {
 		return null;
 	}
 

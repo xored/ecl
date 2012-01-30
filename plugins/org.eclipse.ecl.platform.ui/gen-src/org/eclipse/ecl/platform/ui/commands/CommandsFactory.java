@@ -35,6 +35,33 @@ public interface CommandsFactory extends EFactory {
 	Alert createAlert();
 
 	/**
+	 * Returns a new object of class '<em>List Working Sets</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>List Working Sets</em>'.
+	 * @generated
+	 */
+	ListWorkingSets createListWorkingSets();
+
+	/**
+	 * Returns a new object of class '<em>Create Working Set</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Create Working Set</em>'.
+	 * @generated
+	 */
+	CreateWorkingSet createCreateWorkingSet();
+
+	/**
+	 * Returns a new object of class '<em>Remove Working Set</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Remove Working Set</em>'.
+	 * @generated
+	 */
+	RemoveWorkingSet createRemoveWorkingSet();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
