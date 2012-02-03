@@ -12,6 +12,7 @@ package org.eclipse.ecl.client.tcp;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -58,7 +59,9 @@ public class EclTcpSession implements ISession {
 				Socket socket = null;
 				IPipe pipe = null;
 				try {
-					socket = new Socket(address, port);
+					socket = new Socket();
+					socket.setReuseAddress(true);
+					socket.connect(new InetSocketAddress(address, port));
 					pipe = CoreUtils.createEMFPipe(socket.getInputStream(),
 							socket.getOutputStream());
 					pipe.write(command);
@@ -82,6 +85,10 @@ public class EclTcpSession implements ISession {
 						if (pipe != null) {
 							pipe.close(Status.OK_STATUS);
 						}
+					} catch (Throwable e) {
+						CorePlugin.log(e);
+					}
+					try {
 						if (socket != null) {
 							socket.close();
 						}

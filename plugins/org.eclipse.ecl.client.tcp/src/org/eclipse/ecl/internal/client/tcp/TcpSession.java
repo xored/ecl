@@ -12,6 +12,7 @@ package org.eclipse.ecl.internal.client.tcp;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -63,7 +64,9 @@ public class TcpSession implements ISession {
 				Socket socket = null;
 				IPipe commandPipe = null;
 				try {
-					socket = new Socket(address, port);
+					socket = new Socket();
+					socket.setReuseAddress(true);
+					socket.connect(new InetSocketAddress(address, port));
 					commandPipe = CoreUtils.createEMFPipe(
 							socket.getInputStream(), socket.getOutputStream());
 					commandPipe.write(command);
@@ -86,6 +89,10 @@ public class TcpSession implements ISession {
 						if (commandPipe != null) {
 							commandPipe.close(Status.OK_STATUS);
 						}
+					} catch (Throwable e) {
+						CorePlugin.log(CorePlugin.err(e.getMessage(), e));
+					}
+					try {
 						if (socket != null) {
 							socket.close();
 						}
@@ -124,14 +131,20 @@ public class TcpSession implements ISession {
 	}
 
 	public void reconnect() throws CoreException {
+		Socket socket = null;
 		try {
-			Socket socket = new Socket(address, port);
-			if (socket != null && socket.isConnected()) {
-				socket.close();
-			}
+			socket = new Socket(address, port);
 		} catch (IOException e) {
 			throw new CoreException(new Status(IStatus.ERROR, PLUGIN_ID,
 					e.getMessage(), e));
+		} finally {
+			if (socket != null) {
+				try {
+					socket.close();
+				} catch (Throwable e) {
+					// ignore
+				}
+			}
 		}
 	}
 

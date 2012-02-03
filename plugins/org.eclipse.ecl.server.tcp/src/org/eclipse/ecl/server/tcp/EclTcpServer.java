@@ -57,16 +57,17 @@ public class EclTcpServer extends Thread {
 		try {
 			ExecutorService executor = null;
 			if (useFixedPool) {
-				executor = Executors.newFixedThreadPool(10, new ThreadFactory() {
-					int ind = 0;
+				executor = Executors.newFixedThreadPool(20,
+						new ThreadFactory() {
+							int ind = 0;
 
-					@Override
-					public Thread newThread(Runnable arg0) {
-						ind++;
-						return new Thread(arg0, "ECL TCP server: " + port
-								+ " runner:" + ind);
-					}
-				});
+							@Override
+							public Thread newThread(Runnable arg0) {
+								ind++;
+								return new Thread(arg0, "ECL TCP server: "
+										+ port + " runner:" + ind);
+							}
+						});
 			}
 			while (!isInterrupted()) {
 				Socket client = socket.accept();
@@ -76,7 +77,12 @@ public class EclTcpServer extends Thread {
 					new SessionRequestHandler(client, useJobs).start();
 				}
 			}
-			executor.shutdown();
+			if (socket != null) {
+				socket.close();
+			}
+			if (executor != null) {
+				executor.shutdown();
+			}
 		} catch (Exception e) {
 			CorePlugin.log(CorePlugin.err("Failed to start ECL TCP server", e));
 		}
@@ -114,8 +120,12 @@ public class EclTcpServer extends Thread {
 				CorePlugin.log(e);
 			} finally {
 				try {
-					session.close();
 					socket.close();
+				} catch (Exception e) {
+					CorePlugin.log(e);
+				}
+				try {
+					session.close();
 				} catch (Exception e) {
 					CorePlugin.log(e);
 				}

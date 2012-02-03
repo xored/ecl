@@ -74,6 +74,13 @@ public class EclTelnetServer {
 					ioEx.printStackTrace();
 				}
 			}
+			if (socServer != null) {
+				try {
+					socServer.close();
+				} catch (IOException e) {
+					// ignore
+				}
+			}
 		}
 	}
 
