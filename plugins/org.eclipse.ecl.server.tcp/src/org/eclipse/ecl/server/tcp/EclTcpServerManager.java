@@ -28,8 +28,7 @@ public enum EclTcpServerManager {
 			boolean useFixedPool) throws IOException {
 		EclTcpServer server = servers.get(port);
 		if (server == null) {
-			EclTcpServer newServer = new EclTcpServer(port, useJobs,
-					useFixedPool);
+			EclTcpServer newServer = new EclTcpServer(port);
 			newServer.start();
 			while (newServer.isStarting()) {
 				try {
