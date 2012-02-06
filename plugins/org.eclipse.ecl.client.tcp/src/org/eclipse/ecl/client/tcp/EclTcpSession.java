@@ -39,6 +39,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class EclTcpSession implements ISession {
 
+	private static final ExecutionNode CLOSE_NODE = new ExecutionNode();
+
 	private final AtomicBoolean closed = new AtomicBoolean(false);
 
 	private InetAddress address;
@@ -80,6 +82,9 @@ public class EclTcpSession implements ISession {
 						IMarkeredPipe pipe = null;
 						try {
 							node = commands.take();
+							if (CLOSE_NODE.equals(node)) {
+								return;
+							}
 							pipe = CoreUtils.createEMFPipe(
 									socket.getInputStream(),
 									socket.getOutputStream());
@@ -143,7 +148,7 @@ public class EclTcpSession implements ISession {
 
 	public IProcess execute(final Command command, IPipe in, IPipe out)
 			throws CoreException {
-		ExecutionNode node = new ExecutionNode();
+		ExecutionNode node = CLOSE_NODE;
 		node.command = EcoreUtil.copy(command);
 		node.input = in == null ? createPipe().close(Status.OK_STATUS) : in;
 		node.output = out == null ? createPipe() : out;
@@ -185,12 +190,13 @@ public class EclTcpSession implements ISession {
 	}
 
 	public void close() throws CoreException {
+		closed.compareAndSet(false, true);
 		try {
+			commands.put(CLOSE_NODE);
 			closeSocket();
 		} catch (Throwable e) {
 			CorePlugin.log(e);
 		}
-		closed.compareAndSet(false, true);
 	}
 
 	public boolean isClosed() {
