@@ -32,10 +32,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.BinaryResourceImpl;
 
-public class EMFStreamPipe implements IPipe {
+public class EMFStreamPipe implements IPipe, IMarkededPipe {
 
-	private static final String CLOSE_PIPE_ID = "close_pipe";
-	private static final String OBJECT_ID = "object";
+	private static final int CLOSE_PIPE_ID = 123;
+	private static final int OBJECT_ID = 121;
 	private final DataInputStream in;
 	private final DataOutputStream out;
 	private boolean closed = false;
@@ -45,16 +45,30 @@ public class EMFStreamPipe implements IPipe {
 		this.out = new DataOutputStream(out);
 	}
 
+	@Override
+	public void reinit() {
+		closed = false;
+	}
+
+	@Override
+	public void writeCloseMarker() throws CoreException {
+		writeStatus(CLOSE_PIPE_ID);
+	}
+
+	@Override
+	public void closeNoWait() {
+		closed = true;
+	}
+
 	public IPipe close(IStatus status) throws CoreException {
 		// Ignore status
 		// in.close();
 		// out.close();
 		if (!closed) {
-			writeStatus(CLOSE_PIPE_ID);
 			closed = true;
 			try {
-				String utf = this.in.readUTF();
-				if (!CLOSE_PIPE_ID.equals(utf)) {
+				int kind = this.in.readByte();
+				if (CLOSE_PIPE_ID != kind) {
 					Exception e = new Exception("Failed to close emf pipe");
 					throw new CoreException(new Status(IStatus.ERROR,
 							CorePlugin.PLUGIN_ID, e.getMessage() + "  ---- "
@@ -78,11 +92,11 @@ public class EMFStreamPipe implements IPipe {
 		int size = 0;
 		byte[] data = null;
 		try {
-			String utf = in.readUTF();
-			if (CLOSE_PIPE_ID.equals(utf)) {
+			int kind = in.readByte();
+			if (CLOSE_PIPE_ID == kind) {
 				closed = true;
 				return null;
-			} else if (!OBJECT_ID.equals(utf)) {
+			} else if (OBJECT_ID != kind) {
 				throw new IOException("Failed to read object from stream");
 			}
 			size = in.readInt();
@@ -92,7 +106,7 @@ public class EMFStreamPipe implements IPipe {
 			data = new byte[size];
 			in.readFully(data);
 			ByteArrayInputStream bin = new ByteArrayInputStream(data);
-			r.load(bin, null);
+			r.load(bin, getOptions());
 			EObject eObject = r.getContents().get(0);
 			if (eObject instanceof ConvertedToEMFPipe) {
 				return EMFConverterManager.INSTANCE
@@ -110,6 +124,11 @@ public class EMFStreamPipe implements IPipe {
 		}
 	}
 
+	private Map<String, Object> getOptions() {
+		Map<String, Object> opts = new HashMap<String, Object>();
+		return opts;
+	}
+
 	public IPipe write(Object object) throws CoreException {
 		EObject eObject;
 		if (object instanceof EObject) {
@@ -124,9 +143,8 @@ public class EMFStreamPipe implements IPipe {
 		r.getContents().add(eObject);
 		try {
 			ByteArrayOutputStream bout = new ByteArrayOutputStream();
-			Map<String, Object> options = new HashMap<String, Object>();
-			r.save(bout, options);
-			out.writeUTF(OBJECT_ID);
+			r.save(bout, getOptions());
+			out.writeByte(OBJECT_ID);
 			out.writeInt(bout.size());
 			bout.writeTo(out);
 		} catch (Throwable e) {
@@ -145,13 +163,18 @@ public class EMFStreamPipe implements IPipe {
 		return this;
 	}
 
-	private void writeStatus(String status) throws CoreException {
+	private void writeStatus(int status) throws CoreException {
 		try {
-			out.writeUTF(status);
+			out.writeByte(status);
 		} catch (IOException e) {
 			throw new CoreException(new Status(IStatus.ERROR,
 					CorePlugin.PLUGIN_ID, e.getMessage() + "  ---- " + status,
 					e));
 		}
+	}
+
+	@Override
+	public boolean isClosed() {
+		return closed;
 	}
 }

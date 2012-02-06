@@ -18,6 +18,7 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -27,6 +28,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.internal.core.CorePlugin;
+import org.eclipse.ecl.internal.core.IMarkededPipe;
 import org.eclipse.ecl.internal.core.Pipe;
 import org.eclipse.ecl.internal.core.Process;
 import org.eclipse.ecl.runtime.CoreUtils;
@@ -62,6 +64,11 @@ public class EclTcpSession implements ISession {
 
 		socket = new Socket();
 		socket.setReuseAddress(true);
+		try {
+			this.socket.setTcpNoDelay(true);
+		} catch (SocketException e) {
+			e.printStackTrace();
+		}
 		socket.connect(new InetSocketAddress(address, port));
 
 		initSessionId(socket);
@@ -70,15 +77,18 @@ public class EclTcpSession implements ISession {
 				try {
 					while (!closed.get()) {
 						ExecutionNode node = null;
-						IPipe pipe = null;
+						IMarkededPipe pipe = null;
 						try {
 							node = commands.take();
 							pipe = CoreUtils.createEMFPipe(
 									socket.getInputStream(),
 									socket.getOutputStream());
+
 							pipe.write(node.command);
 							readInput(node.input, pipe);
+							pipe.writeCloseMarker();
 							IStatus result = writeOutput(node.output, pipe);
+
 							node.process.setStatus(result);
 						} catch (CoreException e) {
 							try {
@@ -97,10 +107,8 @@ public class EclTcpSession implements ISession {
 								CorePlugin.log(e1);
 							}
 						} finally {
-							try {
-								pipe.close(null);
-							} catch (CoreException e) {
-								CorePlugin.log(e);
+							if (pipe != null) {
+								pipe.closeNoWait();
 							}
 						}
 					}

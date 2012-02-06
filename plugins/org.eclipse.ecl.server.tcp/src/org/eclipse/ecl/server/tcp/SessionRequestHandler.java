@@ -1,6 +1,7 @@
 package org.eclipse.ecl.server.tcp;
 
 import java.net.Socket;
+import java.net.SocketException;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -19,15 +20,21 @@ final class SessionRequestHandler extends Thread {
 	SessionRequestHandler(Socket socket) {
 		super("ECL tcp session:" + socket.getPort());
 		this.socket = socket;
-		this.session = EclRuntime.createSession();
+		try {
+			this.socket.setTcpNoDelay(true);
+		} catch (SocketException e) {
+			e.printStackTrace();
+		}
+		this.session = EclRuntime.createSession(false);
 	}
 
 	public void run() {
 		try {
+			IPipe pipe = CoreUtils.createEMFPipe(socket.getInputStream(),
+					socket.getOutputStream());
 			while (!isInterrupted() && !socket.isClosed()) {
 				try {
-					IPipe pipe = CoreUtils.createEMFPipe(
-							socket.getInputStream(), socket.getOutputStream());
+					pipe.reinit();
 					Object object = pipe.take(Long.MAX_VALUE);
 					if (!(object instanceof Command))
 						break;

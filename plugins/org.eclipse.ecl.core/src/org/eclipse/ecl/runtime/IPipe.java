@@ -52,4 +52,8 @@ public interface IPipe {
 	 */
 	IPipe close(IStatus status) throws CoreException;
 
+	void reinit();
+
+	boolean isClosed();
+
 }
