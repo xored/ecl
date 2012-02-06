@@ -60,6 +60,8 @@ public class EclTcpSession implements ISession {
 	private BlockingQueue<ExecutionNode> commands = new LinkedBlockingQueue<ExecutionNode>(
 			10);
 
+	private Thread processingThread;
+
 	public EclTcpSession(InetAddress address, int port) throws IOException {
 		this.address = address;
 		this.port = port;
@@ -74,7 +76,7 @@ public class EclTcpSession implements ISession {
 		socket.connect(new InetSocketAddress(address, port));
 
 		initSessionId(socket);
-		new Thread(new Runnable() {
+		processingThread = new Thread(new Runnable() {
 			public void run() {
 				try {
 					while (!closed.get()) {
@@ -126,7 +128,8 @@ public class EclTcpSession implements ISession {
 				}
 
 			}
-		}, "ECL TCP session execute: " + sessionID).start();
+		}, "ECL TCP session execute: " + sessionID);
+		processingThread.start();
 	}
 
 	private void initSessionId(Socket socket) throws IOException {
@@ -148,7 +151,7 @@ public class EclTcpSession implements ISession {
 
 	public IProcess execute(final Command command, IPipe in, IPipe out)
 			throws CoreException {
-		ExecutionNode node = CLOSE_NODE;
+		ExecutionNode node = new ExecutionNode();
 		node.command = EcoreUtil.copy(command);
 		node.input = in == null ? createPipe().close(Status.OK_STATUS) : in;
 		node.output = out == null ? createPipe() : out;
@@ -192,7 +195,11 @@ public class EclTcpSession implements ISession {
 	public void close() throws CoreException {
 		closed.compareAndSet(false, true);
 		try {
-			commands.put(CLOSE_NODE);
+			if (!Thread.currentThread().isInterrupted()) {
+				commands.put(CLOSE_NODE);
+			} else {
+				processingThread.interrupt();
+			}
 			closeSocket();
 		} catch (Throwable e) {
 			CorePlugin.log(e);
