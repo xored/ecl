@@ -44,10 +44,10 @@ public class CommandSession extends AbstractSession {
 		return stack;
 	}
 
-	@Override
-	public void reconnect() throws CoreException {
-		session.reconnect();
-	}
+//	@Override
+//	public void reconnect() throws CoreException {
+//		session.reconnect();
+	//}
 
 	@Override
 	public void close() throws CoreException {

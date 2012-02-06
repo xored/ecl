@@ -72,7 +72,7 @@ public class TcpSession implements ISession {
 					commandPipe.write(command);
 					Object result = null;
 					while (true) {
-						result = commandPipe.take(10000);
+						result = commandPipe.take(Long.MAX_VALUE);
 						if (result instanceof IStatus) {
 							break;
 						} else if (out != null) {

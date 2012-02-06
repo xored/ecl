@@ -41,7 +41,7 @@ public class Session extends Thread {
 			IPipe pipe = CoreUtils.createEMFPipe(socket.getInputStream(),
 					socket.getOutputStream());
 			while (!isInterrupted()) {
-				Command command = (Command) pipe.take(10000000);
+				Command command = (Command) pipe.take(Long.MAX_VALUE);
 				if (command == null)
 					break;
 				if (DEBUG_LOG) {

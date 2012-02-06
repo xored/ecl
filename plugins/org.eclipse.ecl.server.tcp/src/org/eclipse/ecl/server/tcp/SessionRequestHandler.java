@@ -24,17 +24,22 @@ final class SessionRequestHandler extends Thread {
 
 	public void run() {
 		try {
-			IPipe pipe = CoreUtils.createEMFPipe(socket.getInputStream(),
-					socket.getOutputStream());
-			while (!isInterrupted()) {
-				Object object = pipe.take(Long.MAX_VALUE);
-				if (!(object instanceof Command))
-					break;
-				Command command = (Command) object;
-				IPipe input = readInput(pipe);
-				IProcess process = session.execute(command, input, null);
-				IStatus status = writeOutput(pipe, process);
-				pipe.write(status);
+			while (!isInterrupted() && !socket.isClosed()) {
+				try {
+					IPipe pipe = CoreUtils.createEMFPipe(
+							socket.getInputStream(), socket.getOutputStream());
+					Object object = pipe.take(Long.MAX_VALUE);
+					if (!(object instanceof Command))
+						break;
+					Command command = (Command) object;
+					IPipe input = readInput(pipe);
+					IProcess process = session.execute(command, input, null);
+					IStatus status = writeOutput(pipe, process);
+					pipe.write(status);
+					pipe.close(status);
+				} catch (Exception e) {
+					CorePlugin.log(e);
+				}
 			}
 		} catch (Exception e) {
 			CorePlugin.log(e);

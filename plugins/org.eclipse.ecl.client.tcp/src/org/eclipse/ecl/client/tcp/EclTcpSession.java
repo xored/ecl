@@ -10,10 +10,16 @@
  ******************************************************************************/
 package org.eclipse.ecl.client.tcp;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.runtime.CoreException;
@@ -27,6 +33,7 @@ import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class EclTcpSession implements ISession {
 
@@ -35,9 +42,87 @@ public class EclTcpSession implements ISession {
 	private InetAddress address;
 	private int port;
 
+	private Socket socket;
+
+	private String sessionID;
+
+	private static class ExecutionNode {
+		Command command;
+		IPipe input;
+		IPipe output;
+		Process process;
+	}
+
+	private BlockingQueue<ExecutionNode> commands = new LinkedBlockingQueue<ExecutionNode>(
+			10);
+
 	public EclTcpSession(InetAddress address, int port) throws IOException {
 		this.address = address;
 		this.port = port;
+
+		socket = new Socket();
+		socket.setReuseAddress(true);
+		socket.connect(new InetSocketAddress(address, port));
+
+		initSessionId(socket);
+		new Thread(new Runnable() {
+			public void run() {
+				try {
+					while (!closed.get()) {
+						ExecutionNode node = null;
+						IPipe pipe = null;
+						try {
+							node = commands.take();
+							pipe = CoreUtils.createEMFPipe(
+									socket.getInputStream(),
+									socket.getOutputStream());
+							pipe.write(node.command);
+							readInput(node.input, pipe);
+							IStatus result = writeOutput(node.output, pipe);
+							node.process.setStatus(result);
+						} catch (CoreException e) {
+							try {
+								if (node != null) {
+									node.process.setStatus(e.getStatus());
+								}
+							} catch (CoreException e1) {
+								CorePlugin.log(e1);
+							}
+						} catch (Throwable t) {
+							try {
+								if (node != null) {
+									node.process.setStatus(CorePlugin.err(t));
+								}
+							} catch (CoreException e1) {
+								CorePlugin.log(e1);
+							}
+						} finally {
+							try {
+								pipe.close(null);
+							} catch (CoreException e) {
+								CorePlugin.log(e);
+							}
+						}
+					}
+				} finally {
+					try {
+						closeSocket();
+					} catch (Throwable e) {
+						CorePlugin.log(e);
+					}
+				}
+
+			}
+		}, "ECL TCP session execute: " + sessionID).start();
+	}
+
+	private void initSessionId(Socket socket) throws IOException {
+		OutputStream outputStream = socket.getOutputStream();
+		InputStream inputStream = socket.getInputStream();
+		DataOutputStream dout = new DataOutputStream(outputStream);
+		DataInputStream din = new DataInputStream(inputStream);
+		dout.writeUTF("newsession");
+		sessionID = din.readUTF();
 	}
 
 	public IPipe createPipe() {
@@ -50,55 +135,22 @@ public class EclTcpSession implements ISession {
 
 	public IProcess execute(final Command command, IPipe in, IPipe out)
 			throws CoreException {
-		final IPipe input = in == null ? createPipe().close(Status.OK_STATUS)
-				: in;
-		final IPipe output = out == null ? createPipe() : out;
-		final Process process = new Process(this, input, output);
-		new Thread(new Runnable() {
-			public void run() {
-				Socket socket = null;
-				IPipe pipe = null;
-				try {
-					socket = new Socket();
-					socket.setReuseAddress(true);
-					socket.connect(new InetSocketAddress(address, port));
-					pipe = CoreUtils.createEMFPipe(socket.getInputStream(),
-							socket.getOutputStream());
-					pipe.write(command);
-					readInput(input, pipe);
-					IStatus result = writeOutput(output, pipe);
-					process.setStatus(result);
-				} catch (CoreException e) {
-					try {
-						process.setStatus(e.getStatus());
-					} catch (CoreException e1) {
-						CorePlugin.log(e1);
-					}
-				} catch (Throwable t) {
-					try {
-						process.setStatus(CorePlugin.err(t));
-					} catch (CoreException e1) {
-						CorePlugin.log(e1);
-					}
-				} finally {
-					try {
-						if (pipe != null) {
-							pipe.close(Status.OK_STATUS);
-						}
-					} catch (Throwable e) {
-						CorePlugin.log(e);
-					}
-					try {
-						if (socket != null) {
-							socket.close();
-						}
-					} catch (Throwable e) {
-						CorePlugin.log(e);
-					}
-				}
-			}
-		}, "ECL TCP session execute: " + command.getClass().getName()).start();
-		return process;
+		ExecutionNode node = new ExecutionNode();
+		node.command = EcoreUtil.copy(command);
+		node.input = in == null ? createPipe().close(Status.OK_STATUS) : in;
+		node.output = out == null ? createPipe() : out;
+		node.process = new Process(this, node.input, node.output);
+
+		try {
+			commands.put(node);
+		} catch (InterruptedException e) {
+			throw new CoreException(new Status(Status.ERROR,
+					EclTcpClientPlugin.PLUGIN_ID,
+					"Failed to execute ecl command: "
+							+ command.getClass().getName(), e));
+		}
+
+		return node.process;
 	}
 
 	private void readInput(final IPipe input, IPipe pipe) throws CoreException {
@@ -124,26 +176,23 @@ public class EclTcpSession implements ISession {
 		}
 	}
 
-	public void reconnect() throws CoreException {
-		try {
-			Socket socket = null;
-			try {
-				socket = new Socket(address, port);
-			} finally {
-				if (socket != null) {
-					socket.close();
-				}
-			}
-		} catch (IOException e) {
-			throw new CoreException(CorePlugin.err(e));
-		}
-	}
-
 	public void close() throws CoreException {
+		try {
+			closeSocket();
+		} catch (Throwable e) {
+			CorePlugin.log(e);
+		}
 		closed.compareAndSet(false, true);
 	}
 
 	public boolean isClosed() {
 		return closed.get();
+	}
+
+	private void closeSocket() throws IOException {
+		if (socket != null) {
+			socket.close();
+			socket = null;
+		}
 	}
 }

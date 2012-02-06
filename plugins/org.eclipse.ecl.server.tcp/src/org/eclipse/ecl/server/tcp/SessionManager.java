@@ -22,10 +22,10 @@ public class SessionManager {
 					SessionRequestHandler handler = sessions.get(uuid);
 					if (handler == null) {
 						handler = new SessionRequestHandler(client);
+						handler.start();
 					} else {
 						handler.recover(client);
 					}
-					handler.start();
 				}
 			} else {
 				client.close();

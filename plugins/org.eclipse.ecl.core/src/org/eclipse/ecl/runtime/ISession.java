@@ -28,7 +28,7 @@ public interface ISession {
 	/**
 	 * FIXME This is temporary method. Need to rethink this
 	 */
-	void reconnect() throws CoreException;
+	//void reconnect() throws CoreException;
 
 	void close() throws CoreException;
 
