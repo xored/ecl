@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.BinaryResourceImpl;
 
-public class EMFStreamPipe implements IPipe, IMarkededPipe {
+public class EMFStreamPipe implements IPipe, IMarkeredPipe {
 
 	private static final int CLOSE_PIPE_ID = 123;
 	private static final int OBJECT_ID = 121;

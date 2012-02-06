@@ -26,7 +26,7 @@ import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.internal.core.EMFStreamPipe;
-import org.eclipse.ecl.internal.core.IMarkededPipe;
+import org.eclipse.ecl.internal.core.IMarkeredPipe;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -58,7 +58,7 @@ public class CoreUtils {
 		return CorePlugin.getScriptletManager().getFriendlyNames(ns, name);
 	}
 
-	public static IMarkededPipe createEMFPipe(InputStream in, OutputStream out) {
+	public static IMarkeredPipe createEMFPipe(InputStream in, OutputStream out) {
 		return new EMFStreamPipe(in, out);
 	}
 

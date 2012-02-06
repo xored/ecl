@@ -28,7 +28,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.internal.core.CorePlugin;
-import org.eclipse.ecl.internal.core.IMarkededPipe;
+import org.eclipse.ecl.internal.core.IMarkeredPipe;
 import org.eclipse.ecl.internal.core.Pipe;
 import org.eclipse.ecl.internal.core.Process;
 import org.eclipse.ecl.runtime.CoreUtils;
@@ -77,7 +77,7 @@ public class EclTcpSession implements ISession {
 				try {
 					while (!closed.get()) {
 						ExecutionNode node = null;
-						IMarkededPipe pipe = null;
+						IMarkeredPipe pipe = null;
 						try {
 							node = commands.take();
 							pipe = CoreUtils.createEMFPipe(
