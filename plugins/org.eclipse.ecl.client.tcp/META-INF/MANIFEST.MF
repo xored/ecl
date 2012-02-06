@@ -2,11 +2,10 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: ECL TCP Client
 Bundle-SymbolicName: org.eclipse.ecl.client.tcp
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.ecl.core,
  org.eclipse.core.runtime
-Export-Package: org.eclipse.ecl.client.tcp,
- org.eclipse.ecl.internal.client.tcp;x-internal:=true
+Export-Package: org.eclipse.ecl.client.tcp
 Bundle-Activator: org.eclipse.ecl.client.tcp.EclTcpClientPlugin
 Bundle-Vendor: xored software, Inc.
