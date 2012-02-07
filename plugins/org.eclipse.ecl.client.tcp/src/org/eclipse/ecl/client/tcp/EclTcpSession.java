@@ -210,7 +210,7 @@ public class EclTcpSession implements ISession {
 		return closed.get();
 	}
 
-	private void closeSocket() throws IOException {
+	private synchronized void closeSocket() throws IOException {
 		if (socket != null) {
 			socket.close();
 			socket = null;
