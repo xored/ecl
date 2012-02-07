@@ -45,7 +45,13 @@ final class SessionRequestHandler extends Thread {
 					pipe.write(status);
 					pipe.close(status);
 				} catch (Exception e) {
-					if (e instanceof SocketException) {
+					Throwable te = e; 
+					if (e instanceof CoreException) {
+						if (e.getCause() instanceof SocketException) {
+							te = e.getCause();
+						}
+					}
+					if (te instanceof SocketException) {
 						try {
 							socket.close();
 						} catch (Throwable e2) {
