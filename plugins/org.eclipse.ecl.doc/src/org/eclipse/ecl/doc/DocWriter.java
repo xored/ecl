@@ -3,6 +3,7 @@ package org.eclipse.ecl.doc;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -40,7 +41,7 @@ public class DocWriter {
 				if (classifier instanceof EClass) {
 					EClass clazz = (EClass) classifier;
 					if (clazz.getEAllSuperTypes().contains(command)
-							&& !clazz.isAbstract()) {
+							&& !clazz.isAbstract() && !skipCommand(clazz)) {
 						list.add(clazz);
 					}
 				}
@@ -55,6 +56,16 @@ public class DocWriter {
 		});
 
 		commands = list.toArray(new EClass[list.size()]);
+	}
+	
+	private static final List<String> SKIP_COMMANDS = 
+			Arrays.asList(new String[] { "if", "contains-image", "recognize", 
+					"get-region", "get-region-text", "parallel", "pipeline", "script",
+					"setup-player", "shoutdown-player", "unsupported", "options",
+					"get-advanced-info", "sequence", "check", "control-command", "control-not-found",
+					"exec", "foreach", "set-value"});
+	protected boolean skipCommand(EClass command) {
+		return SKIP_COMMANDS.contains(getCommandName(command));
 	}
 
 	private void write() throws IOException {
