@@ -49,6 +49,13 @@ public class TcpServer extends Thread {
 					.log(new Status(Status.ERROR, Activator.PLUGIN_ID, e
 							.getMessage(), e));
 		}
+		if (socket != null) {
+			try {
+				socket.close();
+			} catch (IOException e) {
+				// ignore
+			}
+		}
 	}
 
 	public int getPort() {

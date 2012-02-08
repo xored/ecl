@@ -19,6 +19,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -68,6 +69,9 @@ public enum EMFConverterManager implements IEMFConverter<Object, EObject> {
 		@SuppressWarnings("rawtypes")
 		IEMFConverter serializer = byJavaClass.get(object.getClass());
 		if (serializer == null) {
+			serializer = guessConverter(object.getClass());
+		}
+		if (serializer == null) {
 			if (object instanceof Serializable) {
 				return serializeObject(object);
 			}
@@ -77,6 +81,44 @@ public enum EMFConverterManager implements IEMFConverter<Object, EObject> {
 							+ object.getClass().getName()));
 		}
 		return serializer.toEObject(object);
+	}
+	
+	private IEMFConverter<?, ?> guessConverter(Class<?> clazz) {
+		IEMFConverter<?, ?> result = null;
+		int score = Integer.MAX_VALUE;
+		for(Entry<Class<?>, IEMFConverter<?, ?>> entry : byJavaClass.entrySet()) {
+			int tmp = getDistance(clazz, entry.getKey());
+			if(tmp < score) {
+				score = tmp;
+				result = entry.getValue();
+			}
+		}
+		return result;
+	}
+	
+	public static int getDistance(Class<?> from, Class<?> to) {
+		return getDistance(from, to, 0);
+	}
+
+	private static int getDistance(Class<?> from, Class<?> to, int level) {
+		if (from.equals(to)) {
+			return level;
+		}
+		if (!to.isAssignableFrom(from)) {
+			return Integer.MAX_VALUE;
+		}
+
+		int result = from.getSuperclass() == null ? Integer.MAX_VALUE
+				: getDistance(from.getSuperclass(), to, level + 1);
+
+		for (Class<?> iface : from.getInterfaces()) {
+			int tmp = getDistance(iface, to, level + 1);
+			if (tmp < result) {
+				result = tmp;
+			}
+		}
+
+		return result;
 	}
 
 	private EObject serializeObject(Object object) throws CoreException {

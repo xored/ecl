@@ -10,7 +10,6 @@
  ******************************************************************************/
 package org.eclipse.ecl.core.util;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -183,19 +182,8 @@ public class CommandToStringConverter {
 		}
 	}
 
-	private boolean isForced(String commandName, String paramName) {
-		// TODO ! need new presentation of set-text-selection command or nide
-		// args
-		if ("activate-cell-edit".equals(commandName)
-				&& "column".equals(paramName))
-			return true;
-		if ("set-text-selection".equals(commandName))
-			return true;
-		if ("hover-at-text".equals(commandName)
-				&& "stateMask".equals(paramName))
-			return true;
-		return Arrays.asList("index", "after", "height", "width", "detail",
-				"operation").contains(paramName);
+	protected boolean isForced(String commandName, String paramName) {
+		return false;
 	}
 
 	private static final Pattern id = Pattern.compile("[a-zA-Z][a-zA-Z0-9]*");

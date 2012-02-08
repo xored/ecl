@@ -73,6 +73,10 @@ public class Session extends Thread {
 		} finally {
 			try {
 				session.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			try {
 				socket.close();
 			} catch (Exception e) {
 				e.printStackTrace();

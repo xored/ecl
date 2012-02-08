@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.ecl.ide"
+      label="ECL IDE support"
+      version="1.0.0.qualifier"
+      provider-name="xored software, Inc.">
+
+   <description>
+      ECL IDE
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.ecl.core" version="1.0.0.qualifier"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.ecl.debug.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

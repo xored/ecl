@@ -1,13 +1,13 @@
 package org.eclipse.ecl.internal.core;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.core.CommandStack;
 import org.eclipse.ecl.core.SessionListenerManager;
 import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.ICommandService;
@@ -18,15 +18,17 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 public abstract class AbstractSession implements ISession {
 
-	private AtomicBoolean closed = new AtomicBoolean(false);
-
-	public AbstractSession() {
-		super();
-	}
-
 	protected abstract void doExecute(final Command scriptlet,
 			final ICommandService svc, final List<Object> inputContent,
 			final Process process);
+
+	protected abstract CommandStack getStack();
+
+	protected abstract AbstractRootSession getRoot();
+
+	public IProcess execute(Command command) throws CoreException {
+		return execute(command, null, null);
+	}
 
 	public IProcess execute(final Command scriptlet, IPipe in, IPipe out)
 			throws CoreException {
@@ -40,8 +42,10 @@ public abstract class AbstractSession implements ISession {
 		for (Object o : inputContent)
 			input.write(o);
 		input.close(Status.OK_STATUS);
-		final Process process = new Process(this, input, output);
 
+		CommandSession session = new CommandSession(getRoot(),
+				new CommandStack(scriptlet, getStack()));
+		final Process process = new Process(session, input, output);
 		doExecute(scriptlet, svc, inputContent, process);
 		return process;
 	}
@@ -50,10 +54,13 @@ public abstract class AbstractSession implements ISession {
 			final ICommandService svc, final List<Object> inputContent,
 			final Process process) {
 		IStatus s = null;
+		CommandStack stack = ((AbstractSession) process.getSession())
+				.getStack();
 		try {
 			resolveBindings(scriptlet, inputContent);
 			setupInputFeature(scriptlet, inputContent);
 			checkParams(scriptlet);
+			CommandStack.fireEnter(stack);
 			SessionListenerManager.beginCommand(scriptlet);
 			s = svc.service(scriptlet, process);
 		} catch (CoreException e) {
@@ -69,6 +76,7 @@ public abstract class AbstractSession implements ISession {
 			CorePlugin.getDefault().getLog().log(CorePlugin.err(t.getMessage(), t));
 		} finally {
 			SessionListenerManager.endCommand(scriptlet, s);
+			CommandStack.fireExit(stack);
 			try {
 				process.setStatus(s);
 			} catch (CoreException ioe) {
@@ -132,22 +140,6 @@ public abstract class AbstractSession implements ISession {
 
 	public IPipe createPipe() {
 		return new Pipe();
-	}
-
-	public IProcess execute(Command command) throws CoreException {
-		return execute(command, null, null);
-	}
-
-	public void reconnect() throws CoreException {
-		closed.compareAndSet(true, false);
-	}
-
-	public void close() throws CoreException {
-		closed.set(true);
-	}
-
-	public boolean isClosed() {
-		return closed.get();
 	}
 
 }

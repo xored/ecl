@@ -12,6 +12,7 @@ package org.eclipse.ecl.server.tcp;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 public enum EclTcpServerManager {
@@ -56,5 +57,16 @@ public enum EclTcpServerManager {
 
 	public synchronized EclTcpServer getServer(int port) {
 		return servers.get(port);
+	}
+
+	public synchronized void terminateAll() {
+		HashSet<Integer> ports = new HashSet<Integer>(servers.keySet());
+		for (int i : ports) {
+			try {
+				stopServer(i);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
