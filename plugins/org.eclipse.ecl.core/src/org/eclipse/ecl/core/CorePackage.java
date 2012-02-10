@@ -875,6 +875,146 @@ public interface CorePackage extends EPackage {
 	int IF_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 3;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclStringImpl <em>Ecl String</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EclStringImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclString()
+	 * @generated
+	 */
+	int ECL_STRING = 18;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_STRING__VALUE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Ecl String</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_STRING_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclBooleanImpl <em>Ecl Boolean</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EclBooleanImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclBoolean()
+	 * @generated
+	 */
+	int ECL_BOOLEAN = 19;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_BOOLEAN__VALUE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Ecl Boolean</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_BOOLEAN_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclIntegerImpl <em>Ecl Integer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EclIntegerImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclInteger()
+	 * @generated
+	 */
+	int ECL_INTEGER = 20;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_INTEGER__VALUE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Ecl Integer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_INTEGER_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclFloatImpl <em>Ecl Float</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EclFloatImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclFloat()
+	 * @generated
+	 */
+	int ECL_FLOAT = 21;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_FLOAT__VALUE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Ecl Float</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_FLOAT_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclLongImpl <em>Ecl Long</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EclLongImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclLong()
+	 * @generated
+	 */
+	int ECL_LONG = 22;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_LONG__VALUE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Ecl Long</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_LONG_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -882,7 +1022,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
 	 * @generated
 	 */
-	int THROWABLE = 18;
+	int THROWABLE = 23;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -1363,6 +1503,111 @@ public interface CorePackage extends EPackage {
 	EReference getIf_Else();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclString <em>Ecl String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ecl String</em>'.
+	 * @see org.eclipse.ecl.core.EclString
+	 * @generated
+	 */
+	EClass getEclString();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclString#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.ecl.core.EclString#getValue()
+	 * @see #getEclString()
+	 * @generated
+	 */
+	EAttribute getEclString_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclBoolean <em>Ecl Boolean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ecl Boolean</em>'.
+	 * @see org.eclipse.ecl.core.EclBoolean
+	 * @generated
+	 */
+	EClass getEclBoolean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclBoolean#isValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.ecl.core.EclBoolean#isValue()
+	 * @see #getEclBoolean()
+	 * @generated
+	 */
+	EAttribute getEclBoolean_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclInteger <em>Ecl Integer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ecl Integer</em>'.
+	 * @see org.eclipse.ecl.core.EclInteger
+	 * @generated
+	 */
+	EClass getEclInteger();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclInteger#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.ecl.core.EclInteger#getValue()
+	 * @see #getEclInteger()
+	 * @generated
+	 */
+	EAttribute getEclInteger_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclFloat <em>Ecl Float</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ecl Float</em>'.
+	 * @see org.eclipse.ecl.core.EclFloat
+	 * @generated
+	 */
+	EClass getEclFloat();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclFloat#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.ecl.core.EclFloat#getValue()
+	 * @see #getEclFloat()
+	 * @generated
+	 */
+	EAttribute getEclFloat_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclLong <em>Ecl Long</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ecl Long</em>'.
+	 * @see org.eclipse.ecl.core.EclLong
+	 * @generated
+	 */
+	EClass getEclLong();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclLong#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.ecl.core.EclLong#getValue()
+	 * @see #getEclLong()
+	 * @generated
+	 */
+	EAttribute getEclLong_Value();
+
+	/**
 	 * Returns the meta object for data type '{@link java.lang.Throwable <em>Throwable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1809,6 +2054,96 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference IF__ELSE = eINSTANCE.getIf_Else();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclStringImpl <em>Ecl String</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EclStringImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclString()
+		 * @generated
+		 */
+		EClass ECL_STRING = eINSTANCE.getEclString();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_STRING__VALUE = eINSTANCE.getEclString_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclBooleanImpl <em>Ecl Boolean</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EclBooleanImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclBoolean()
+		 * @generated
+		 */
+		EClass ECL_BOOLEAN = eINSTANCE.getEclBoolean();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_BOOLEAN__VALUE = eINSTANCE.getEclBoolean_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclIntegerImpl <em>Ecl Integer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EclIntegerImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclInteger()
+		 * @generated
+		 */
+		EClass ECL_INTEGER = eINSTANCE.getEclInteger();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_INTEGER__VALUE = eINSTANCE.getEclInteger_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclFloatImpl <em>Ecl Float</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EclFloatImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclFloat()
+		 * @generated
+		 */
+		EClass ECL_FLOAT = eINSTANCE.getEclFloat();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_FLOAT__VALUE = eINSTANCE.getEclFloat_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclLongImpl <em>Ecl Long</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EclLongImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclLong()
+		 * @generated
+		 */
+		EClass ECL_LONG = eINSTANCE.getEclLong();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_LONG__VALUE = eINSTANCE.getEclLong_Value();
 
 		/**
 		 * The meta object literal for the '<em>Throwable</em>' data type.

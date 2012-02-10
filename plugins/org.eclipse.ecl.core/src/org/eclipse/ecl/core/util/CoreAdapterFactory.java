@@ -144,6 +144,26 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 				return createIfAdapter();
 			}
 			@Override
+			public Adapter caseEclString(EclString object) {
+				return createEclStringAdapter();
+			}
+			@Override
+			public Adapter caseEclBoolean(EclBoolean object) {
+				return createEclBooleanAdapter();
+			}
+			@Override
+			public Adapter caseEclInteger(EclInteger object) {
+				return createEclIntegerAdapter();
+			}
+			@Override
+			public Adapter caseEclFloat(EclFloat object) {
+				return createEclFloatAdapter();
+			}
+			@Override
+			public Adapter caseEclLong(EclLong object) {
+				return createEclLongAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -412,6 +432,76 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIfAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EclString <em>Ecl String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.EclString
+	 * @generated
+	 */
+	public Adapter createEclStringAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EclBoolean <em>Ecl Boolean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.EclBoolean
+	 * @generated
+	 */
+	public Adapter createEclBooleanAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EclInteger <em>Ecl Integer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.EclInteger
+	 * @generated
+	 */
+	public Adapter createEclIntegerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EclFloat <em>Ecl Float</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.EclFloat
+	 * @generated
+	 */
+	public Adapter createEclFloatAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EclLong <em>Ecl Long</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.EclLong
+	 * @generated
+	 */
+	public Adapter createEclLongAdapter() {
 		return null;
 	}
 

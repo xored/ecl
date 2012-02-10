@@ -174,6 +174,51 @@ public interface CoreFactory extends EFactory {
 	If createIf();
 
 	/**
+	 * Returns a new object of class '<em>Ecl String</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ecl String</em>'.
+	 * @generated
+	 */
+	EclString createEclString();
+
+	/**
+	 * Returns a new object of class '<em>Ecl Boolean</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ecl Boolean</em>'.
+	 * @generated
+	 */
+	EclBoolean createEclBoolean();
+
+	/**
+	 * Returns a new object of class '<em>Ecl Integer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ecl Integer</em>'.
+	 * @generated
+	 */
+	EclInteger createEclInteger();
+
+	/**
+	 * Returns a new object of class '<em>Ecl Float</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ecl Float</em>'.
+	 * @generated
+	 */
+	EclFloat createEclFloat();
+
+	/**
+	 * Returns a new object of class '<em>Ecl Long</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ecl Long</em>'.
+	 * @generated
+	 */
+	EclLong createEclLong();
+
+	/**
 	 * Returns a new object of class '<em>Script</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

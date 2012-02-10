@@ -16,6 +16,11 @@ import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.ConvertedToEMFPipe;
 import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.core.CorePackage;
+import org.eclipse.ecl.core.EclBoolean;
+import org.eclipse.ecl.core.EclFloat;
+import org.eclipse.ecl.core.EclInteger;
+import org.eclipse.ecl.core.EclLong;
+import org.eclipse.ecl.core.EclString;
 import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.ExecutableParameter;
 import org.eclipse.ecl.core.Foreach;
@@ -147,6 +152,41 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	private EClass ifEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eclStringEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eclBooleanEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eclIntegerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eclFloatEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eclLongEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -600,6 +640,96 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getEclString() {
+		return eclStringEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEclString_Value() {
+		return (EAttribute)eclStringEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEclBoolean() {
+		return eclBooleanEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEclBoolean_Value() {
+		return (EAttribute)eclBooleanEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEclInteger() {
+		return eclIntegerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEclInteger_Value() {
+		return (EAttribute)eclIntegerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEclFloat() {
+		return eclFloatEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEclFloat_Value() {
+		return (EAttribute)eclFloatEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEclLong() {
+		return eclLongEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEclLong_Value() {
+		return (EAttribute)eclLongEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getThrowable() {
 		return throwableEDataType;
 	}
@@ -710,6 +840,21 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEAttribute(ifEClass, IF__CONDITION);
 		createEReference(ifEClass, IF__THEN);
 		createEReference(ifEClass, IF__ELSE);
+
+		eclStringEClass = createEClass(ECL_STRING);
+		createEAttribute(eclStringEClass, ECL_STRING__VALUE);
+
+		eclBooleanEClass = createEClass(ECL_BOOLEAN);
+		createEAttribute(eclBooleanEClass, ECL_BOOLEAN__VALUE);
+
+		eclIntegerEClass = createEClass(ECL_INTEGER);
+		createEAttribute(eclIntegerEClass, ECL_INTEGER__VALUE);
+
+		eclFloatEClass = createEClass(ECL_FLOAT);
+		createEAttribute(eclFloatEClass, ECL_FLOAT__VALUE);
+
+		eclLongEClass = createEClass(ECL_LONG);
+		createEAttribute(eclLongEClass, ECL_LONG__VALUE);
 
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
@@ -822,6 +967,21 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEAttribute(getIf_Condition(), ecorePackage.getEBoolean(), "condition", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIf_Then(), this.getCommand(), null, "then", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIf_Else(), this.getCommand(), null, "else", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eclStringEClass, EclString.class, "EclString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEclString_Value(), theEcorePackage.getEString(), "value", null, 0, 1, EclString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eclBooleanEClass, EclBoolean.class, "EclBoolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEclBoolean_Value(), theEcorePackage.getEBoolean(), "value", null, 0, 1, EclBoolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eclIntegerEClass, EclInteger.class, "EclInteger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEclInteger_Value(), theEcorePackage.getEInt(), "value", null, 0, 1, EclInteger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eclFloatEClass, EclFloat.class, "EclFloat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEclFloat_Value(), theEcorePackage.getEFloat(), "value", null, 0, 1, EclFloat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eclLongEClass, EclLong.class, "EclLong", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEclLong_Value(), theEcorePackage.getELong(), "value", null, 0, 1, EclLong.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

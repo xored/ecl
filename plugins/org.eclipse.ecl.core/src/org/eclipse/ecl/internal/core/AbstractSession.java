@@ -96,7 +96,7 @@ public abstract class AbstractSession implements ISession {
 		EStructuralFeature inputFeature = null;
 		for (EStructuralFeature feature : CoreUtils.getFeatures(scriptlet
 				.eClass())) {
-			if (feature.getEAnnotation("http://www.eclipse.org/ecl/input") != null) {
+			if (feature.getEAnnotation(CoreUtils.INPUT_ANN) != null) {
 				if (inputFeature == null) {
 					inputFeature = feature;
 				} else {
