@@ -10,7 +10,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="CreateWorkingSet" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RemoveWorkingSet" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+  <eClassifiers xsi:type="ecore:EClass" name="DeleteWorkingSet" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

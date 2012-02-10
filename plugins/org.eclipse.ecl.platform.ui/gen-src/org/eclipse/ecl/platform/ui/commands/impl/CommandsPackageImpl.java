@@ -11,10 +11,10 @@ import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.platform.ui.commands.Alert;
 import org.eclipse.ecl.platform.ui.commands.CommandsFactory;
 import org.eclipse.ecl.platform.ui.commands.CommandsPackage;
-
 import org.eclipse.ecl.platform.ui.commands.CreateWorkingSet;
+import org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet;
 import org.eclipse.ecl.platform.ui.commands.ListWorkingSets;
-import org.eclipse.ecl.platform.ui.commands.RemoveWorkingSet;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -42,18 +42,20 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass listWorkingSetsEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass createWorkingSetEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass removeWorkingSetEClass = null;
+	private EClass deleteWorkingSetEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -169,8 +171,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getRemoveWorkingSet() {
-		return removeWorkingSetEClass;
+	public EClass getDeleteWorkingSet() {
+		return deleteWorkingSetEClass;
 	}
 
 	/**
@@ -178,8 +180,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRemoveWorkingSet_Name() {
-		return (EAttribute)removeWorkingSetEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDeleteWorkingSet_Name() {
+		return (EAttribute)deleteWorkingSetEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -218,8 +220,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		createWorkingSetEClass = createEClass(CREATE_WORKING_SET);
 		createEAttribute(createWorkingSetEClass, CREATE_WORKING_SET__NAME);
 
-		removeWorkingSetEClass = createEClass(REMOVE_WORKING_SET);
-		createEAttribute(removeWorkingSetEClass, REMOVE_WORKING_SET__NAME);
+		deleteWorkingSetEClass = createEClass(DELETE_WORKING_SET);
+		createEAttribute(deleteWorkingSetEClass, DELETE_WORKING_SET__NAME);
 	}
 
 	/**
@@ -257,7 +259,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		alertEClass.getESuperTypes().add(theCorePackage.getCommand());
 		listWorkingSetsEClass.getESuperTypes().add(theCorePackage.getCommand());
 		createWorkingSetEClass.getESuperTypes().add(theCorePackage.getCommand());
-		removeWorkingSetEClass.getESuperTypes().add(theCorePackage.getCommand());
+		deleteWorkingSetEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(alertEClass, Alert.class, "Alert", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -268,8 +270,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		initEClass(createWorkingSetEClass, CreateWorkingSet.class, "CreateWorkingSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCreateWorkingSet_Name(), theEcorePackage.getEString(), "name", null, 0, 1, CreateWorkingSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(removeWorkingSetEClass, RemoveWorkingSet.class, "RemoveWorkingSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRemoveWorkingSet_Name(), theEcorePackage.getEString(), "name", null, 0, 1, RemoveWorkingSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(deleteWorkingSetEClass, DeleteWorkingSet.class, "DeleteWorkingSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDeleteWorkingSet_Name(), theEcorePackage.getEString(), "name", null, 0, 1, DeleteWorkingSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

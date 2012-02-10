@@ -86,8 +86,8 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 				return createCreateWorkingSetAdapter();
 			}
 			@Override
-			public Adapter caseRemoveWorkingSet(RemoveWorkingSet object) {
-				return createRemoveWorkingSetAdapter();
+			public Adapter caseDeleteWorkingSet(DeleteWorkingSet object) {
+				return createDeleteWorkingSetAdapter();
 			}
 			@Override
 			public Adapter caseCommand(Command object) {
@@ -156,16 +156,16 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.platform.ui.commands.RemoveWorkingSet <em>Remove Working Set</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet <em>Delete Working Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.ecl.platform.ui.commands.RemoveWorkingSet
+	 * @see org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet
 	 * @generated
 	 */
-	public Adapter createRemoveWorkingSetAdapter() {
+	public Adapter createDeleteWorkingSetAdapter() {
 		return null;
 	}
 

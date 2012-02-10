@@ -106,7 +106,6 @@ public interface CommandsPackage extends EPackage {
 	 */
 	int ALERT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
-
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.ListWorkingSetsImpl <em>List Working Sets</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -191,14 +190,14 @@ public interface CommandsPackage extends EPackage {
 	int CREATE_WORKING_SET_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.RemoveWorkingSetImpl <em>Remove Working Set</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.DeleteWorkingSetImpl <em>Delete Working Set</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.platform.ui.commands.impl.RemoveWorkingSetImpl
-	 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getRemoveWorkingSet()
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.DeleteWorkingSetImpl
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getDeleteWorkingSet()
 	 * @generated
 	 */
-	int REMOVE_WORKING_SET = 3;
+	int DELETE_WORKING_SET = 3;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -207,7 +206,7 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REMOVE_WORKING_SET__HOST = CorePackage.COMMAND__HOST;
+	int DELETE_WORKING_SET__HOST = CorePackage.COMMAND__HOST;
 
 	/**
 	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
@@ -216,7 +215,7 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REMOVE_WORKING_SET__BINDINGS = CorePackage.COMMAND__BINDINGS;
+	int DELETE_WORKING_SET__BINDINGS = CorePackage.COMMAND__BINDINGS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -225,16 +224,16 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REMOVE_WORKING_SET__NAME = CorePackage.COMMAND_FEATURE_COUNT + 0;
+	int DELETE_WORKING_SET__NAME = CorePackage.COMMAND_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Remove Working Set</em>' class.
+	 * The number of structural features of the '<em>Delete Working Set</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REMOVE_WORKING_SET_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+	int DELETE_WORKING_SET_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 
 	/**
@@ -290,25 +289,25 @@ public interface CommandsPackage extends EPackage {
 	EAttribute getCreateWorkingSet_Name();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.RemoveWorkingSet <em>Remove Working Set</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet <em>Delete Working Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Remove Working Set</em>'.
-	 * @see org.eclipse.ecl.platform.ui.commands.RemoveWorkingSet
+	 * @return the meta object for class '<em>Delete Working Set</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet
 	 * @generated
 	 */
-	EClass getRemoveWorkingSet();
+	EClass getDeleteWorkingSet();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.ui.commands.RemoveWorkingSet#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.ecl.platform.ui.commands.RemoveWorkingSet#getName()
-	 * @see #getRemoveWorkingSet()
+	 * @see org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet#getName()
+	 * @see #getDeleteWorkingSet()
 	 * @generated
 	 */
-	EAttribute getRemoveWorkingSet_Name();
+	EAttribute getDeleteWorkingSet_Name();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -379,14 +378,14 @@ public interface CommandsPackage extends EPackage {
 		EAttribute CREATE_WORKING_SET__NAME = eINSTANCE.getCreateWorkingSet_Name();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.ecl.platform.ui.commands.impl.RemoveWorkingSetImpl <em>Remove Working Set</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.ui.commands.impl.DeleteWorkingSetImpl <em>Delete Working Set</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.platform.ui.commands.impl.RemoveWorkingSetImpl
-		 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getRemoveWorkingSet()
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.DeleteWorkingSetImpl
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getDeleteWorkingSet()
 		 * @generated
 		 */
-		EClass REMOVE_WORKING_SET = eINSTANCE.getRemoveWorkingSet();
+		EClass DELETE_WORKING_SET = eINSTANCE.getDeleteWorkingSet();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -394,7 +393,7 @@ public interface CommandsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute REMOVE_WORKING_SET__NAME = eINSTANCE.getRemoveWorkingSet_Name();
+		EAttribute DELETE_WORKING_SET__NAME = eINSTANCE.getDeleteWorkingSet_Name();
 
 	}
 

@@ -93,10 +93,10 @@ public class CommandsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CommandsPackage.REMOVE_WORKING_SET: {
-				RemoveWorkingSet removeWorkingSet = (RemoveWorkingSet)theEObject;
-				T result = caseRemoveWorkingSet(removeWorkingSet);
-				if (result == null) result = caseCommand(removeWorkingSet);
+			case CommandsPackage.DELETE_WORKING_SET: {
+				DeleteWorkingSet deleteWorkingSet = (DeleteWorkingSet)theEObject;
+				T result = caseDeleteWorkingSet(deleteWorkingSet);
+				if (result == null) result = caseCommand(deleteWorkingSet);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -150,17 +150,17 @@ public class CommandsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Remove Working Set</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Delete Working Set</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Remove Working Set</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Delete Working Set</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRemoveWorkingSet(RemoveWorkingSet object) {
+	public T caseDeleteWorkingSet(DeleteWorkingSet object) {
 		return null;
 	}
 

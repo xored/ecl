@@ -53,13 +53,13 @@ public interface CommandsFactory extends EFactory {
 	CreateWorkingSet createCreateWorkingSet();
 
 	/**
-	 * Returns a new object of class '<em>Remove Working Set</em>'.
+	 * Returns a new object of class '<em>Delete Working Set</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Remove Working Set</em>'.
+	 * @return a new object of class '<em>Delete Working Set</em>'.
 	 * @generated
 	 */
-	RemoveWorkingSet createRemoveWorkingSet();
+	DeleteWorkingSet createDeleteWorkingSet();
 
 	/**
 	 * Returns the package supported by this factory.
