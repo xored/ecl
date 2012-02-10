@@ -2,7 +2,7 @@
 <feature 
 	id="org.eclipse.ecl.server.ui" 
 	label="ECL Server UI" 
-	version="1.0.1.qualifier"
+	version="1.1.0.qualifier"
 	provider-name="xored software, Inc.">
 	
 	<description url="http://www.xored.com/q7/discover/ecl">
@@ -20,7 +20,7 @@
 	<plugin id="org.eclipse.ecl.server.tcp.ui" unpack="false" version="0.0.0"/>
 
     <requires>
-      <import feature="org.eclipse.ecl.server" version="1.0.1.qualifier"/>
+      <import feature="org.eclipse.ecl.server" version="1.1.0.qualifier"/>
     </requires>
     
 </feature>

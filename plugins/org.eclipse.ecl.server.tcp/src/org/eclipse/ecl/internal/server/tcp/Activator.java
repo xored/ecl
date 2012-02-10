@@ -24,9 +24,6 @@ public class Activator extends Plugin {
 	// The shared instance
 	private static Activator plugin;
 
-	@Deprecated
-	private TcpServer server;
-
 	/**
 	 * The constructor
 	 */
@@ -52,8 +49,6 @@ public class Activator extends Plugin {
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
-		if (server != null)
-			server.interrupt();
 		super.stop(context);
 	}
 
@@ -64,23 +59,5 @@ public class Activator extends Plugin {
 	 */
 	public static Activator getDefault() {
 		return plugin;
-	}
-
-	/**
-	 * @deprecated Use {@link org.eclipse.ecl.server.tcp.EclTcpServerManager} to
-	 *             manage servers
-	 */
-	@Deprecated
-	public TcpServer getServer() {
-		return server;
-	}
-
-	/**
-	 * @deprecated Use {@link org.eclipse.ecl.server.tcp.EclTcpServerManager} to
-	 *             manage servers
-	 */
-	@Deprecated
-	public void setServer(TcpServer tcpServer) {
-		this.server = tcpServer;
 	}
 }

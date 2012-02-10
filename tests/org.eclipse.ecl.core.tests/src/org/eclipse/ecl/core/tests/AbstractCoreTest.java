@@ -41,7 +41,7 @@ public abstract class AbstractCoreTest extends TestCase {
 
 	private final static String TEST_NS = "http://www.eclipse.org/ecl/tests/model.ecore";
 
-	private ISession session;
+	protected ISession session;
 
 	private static int count;
 

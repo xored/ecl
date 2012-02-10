@@ -32,32 +32,73 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.BinaryResourceImpl;
 
-public class EMFStreamPipe implements IPipe {
+public class EMFStreamPipe implements IPipe, IMarkeredPipe {
 
+	private static final int CLOSE_PIPE_ID = 123;
+	private static final int OBJECT_ID = 121;
 	private final DataInputStream in;
 	private final DataOutputStream out;
+	private boolean closed = false;
 
 	public EMFStreamPipe(InputStream in, OutputStream out) {
 		this.in = new DataInputStream(in);
 		this.out = new DataOutputStream(out);
 	}
 
+	@Override
+	public void reinit() {
+		closed = false;
+	}
+
+	@Override
+	public void writeCloseMarker() throws CoreException {
+		writeStatus(CLOSE_PIPE_ID);
+	}
+
+	@Override
+	public void closeNoWait() {
+		closed = true;
+	}
+
 	public IPipe close(IStatus status) throws CoreException {
-		try {
-			// Ignore status
-			in.close();
-			out.close();
-		} catch (IOException e) {
-			throw new CoreException(new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, e.getMessage(), e));
+		// Ignore status
+		// in.close();
+		// out.close();
+		if (!closed) {
+			closed = true;
+			try {
+				int kind = this.in.readByte();
+				if (CLOSE_PIPE_ID != kind) {
+					Exception e = new Exception("Failed to close emf pipe");
+					throw new CoreException(new Status(IStatus.ERROR,
+							CorePlugin.PLUGIN_ID, e.getMessage() + "  ---- "
+									+ "close", e));
+
+				}
+			} catch (IOException e) {
+				throw new CoreException(new Status(IStatus.ERROR,
+						CorePlugin.PLUGIN_ID, e.getMessage() + "  ---- "
+								+ "close", e));
+			}
 		}
 		return this;
 	}
 
 	public Object take(long timeout) throws CoreException {
+		if (closed) {
+			return null;
+		}
 		Resource r = new BinaryResourceImpl();
 		int size = 0;
 		byte[] data = null;
 		try {
+			int kind = in.readByte();
+			if (CLOSE_PIPE_ID == kind) {
+				closed = true;
+				return null;
+			} else if (OBJECT_ID != kind) {
+				throw new IOException("Failed to read object from stream");
+			}
 			size = in.readInt();
 			if (size <= 0) {
 				throw new IOException("Failed to read from stream");
@@ -65,19 +106,27 @@ public class EMFStreamPipe implements IPipe {
 			data = new byte[size];
 			in.readFully(data);
 			ByteArrayInputStream bin = new ByteArrayInputStream(data);
-			r.load(bin, null);
+			r.load(bin, getOptions());
 			EObject eObject = r.getContents().get(0);
 			if (eObject instanceof ConvertedToEMFPipe) {
-				return EMFConverterManager.INSTANCE.fromEObject(((ConvertedToEMFPipe) eObject).getObject());
+				return EMFConverterManager.INSTANCE
+						.fromEObject(((ConvertedToEMFPipe) eObject).getObject());
 			} else {
 				return eObject;
 			}
 		} catch (Throwable e) {
 			if (!(e instanceof EOFException)) {
-				throw new CoreException(new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, e.getMessage(), e));
+				throw new CoreException(new Status(IStatus.ERROR,
+						CorePlugin.PLUGIN_ID, e.getMessage(), e));
 			}
-			return new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, "Connection is not Available", e);
+			return new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
+					"Connection is not Available", e);
 		}
+	}
+
+	private Map<String, Object> getOptions() {
+		Map<String, Object> opts = new HashMap<String, Object>();
+		return opts;
 	}
 
 	public IPipe write(Object object) throws CoreException {
@@ -85,7 +134,8 @@ public class EMFStreamPipe implements IPipe {
 		if (object instanceof EObject) {
 			eObject = (EObject) object;
 		} else {
-			ConvertedToEMFPipe converted = CoreFactory.eINSTANCE.createConvertedToEMFPipe();
+			ConvertedToEMFPipe converted = CoreFactory.eINSTANCE
+					.createConvertedToEMFPipe();
 			converted.setObject(EMFConverterManager.INSTANCE.toEObject(object));
 			eObject = converted;
 		}
@@ -93,20 +143,38 @@ public class EMFStreamPipe implements IPipe {
 		r.getContents().add(eObject);
 		try {
 			ByteArrayOutputStream bout = new ByteArrayOutputStream();
-			Map<String, Object> options = new HashMap<String, Object>();
-			r.save(bout, options);
+			r.save(bout, getOptions());
+			out.writeByte(OBJECT_ID);
 			out.writeInt(bout.size());
 			bout.writeTo(out);
 		} catch (Throwable e) {
 			if (e instanceof SocketException) {
-				if (e.getMessage().contains("Connection reset by peer: socket write error")) {
-					throw new CoreException(new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, e.getMessage() + "  ---- "
-							+ object));
+				if (e.getMessage().contains(
+						"Connection reset by peer: socket write error")) {
+					throw new CoreException(new Status(IStatus.ERROR,
+							CorePlugin.PLUGIN_ID, e.getMessage() + "  ---- "
+									+ object));
 				}
 			}
-			throw new CoreException(new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
-					e.getMessage() + "  ---- " + object, e));
+			throw new CoreException(new Status(IStatus.ERROR,
+					CorePlugin.PLUGIN_ID, e.getMessage() + "  ---- " + object,
+					e));
 		}
 		return this;
+	}
+
+	private void writeStatus(int status) throws CoreException {
+		try {
+			out.writeByte(status);
+		} catch (IOException e) {
+			throw new CoreException(new Status(IStatus.ERROR,
+					CorePlugin.PLUGIN_ID, e.getMessage() + "  ---- " + status,
+					e));
+		}
+	}
+
+	@Override
+	public boolean isClosed() {
+		return closed;
 	}
 }

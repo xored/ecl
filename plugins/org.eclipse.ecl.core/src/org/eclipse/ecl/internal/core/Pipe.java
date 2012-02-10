@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.runtime.IPipe;
 
 public class Pipe implements IPipe {
+	private static Object CLOSE_OBJECT = new Object();
 	private static final int DELTA = 100;
 	private final LinkedBlockingQueue<Object> queue;
 	private boolean closed = false;
@@ -26,6 +27,10 @@ public class Pipe implements IPipe {
 
 	public Pipe() {
 		queue = new LinkedBlockingQueue<Object>();
+	}
+	@Override
+	public boolean isClosed() {
+		return closed;
 	}
 
 	public Object take(long timeout) throws CoreException {
@@ -42,6 +47,9 @@ public class Pipe implements IPipe {
 					if (closed && queue.isEmpty())
 						return this.status;
 					Object o = queue.poll(DELTA, TimeUnit.MILLISECONDS);
+					if (CLOSE_OBJECT.equals(o)) {
+						return this.status;
+					}
 					if (o != null)
 						return o;
 				}
@@ -75,6 +83,17 @@ public class Pipe implements IPipe {
 					CorePlugin.err("Pipe was closed without status specified"));
 		}
 		closed = true;
+		try {
+			queue.put(CLOSE_OBJECT);
+		} catch (InterruptedException e) {
+			throw new CoreException(CorePlugin.err(e.getMessage(), e));
+		}
 		return this;
+	}
+
+	@Override
+	public void reinit() {
+		status = null;
+		closed = false;
 	}
 }

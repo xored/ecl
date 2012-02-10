@@ -66,9 +66,10 @@ public class EclTelnetServerPlugin extends Plugin {
 		return plugin;
 	}
 
-	public void startServer(int port) throws IOException {
+	public EclTelnetServer startServer(int port) throws IOException {
 		server = new EclTelnetServer(port);
 		server.start();
+		return server;
 	}
 	
 	public EclTelnetServer getServer() {
