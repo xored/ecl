@@ -202,7 +202,7 @@ public class CoreUtils {
 	 * Performs {@link #box(Object)} or {@link #unbox(Object)} operations on
 	 * every object in given list of values based on feature type. Thus, if
 	 * feature is {@link EReference}, values are boxed, if feature is
-	 * {@link EAttribute}, values are unboxed. 
+	 * {@link EAttribute}, values are unboxed.
 	 * 
 	 * @param values
 	 * @param feature
@@ -265,6 +265,12 @@ public class CoreUtils {
 				.getEclString().getName());
 		TO_BOXED_TYPE.put(Boolean.class.getName(), CorePackage.eINSTANCE
 				.getEclBoolean().getName());
+		TO_BOXED_TYPE.put(Integer.class.getName(), CorePackage.eINSTANCE
+				.getEclInteger().getName());
+		TO_BOXED_TYPE.put(Long.class.getName(), CorePackage.eINSTANCE
+				.getEclLong().getName());
+		TO_BOXED_TYPE.put(Float.class.getName(), CorePackage.eINSTANCE
+				.getEclFloat().getName());
 
 		for (Entry<String, String> entry : TO_BOXED_TYPE.entrySet()) {
 			FROM_BOXED_TYPE.put(entry.getValue(), entry.getKey());
