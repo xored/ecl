@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipse.ecl.internal.commands;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -194,16 +195,7 @@ public class ExecService implements ICommandService {
 			throw new RuntimeException("Invalid parameter");
 		}
 		try {
-			if (feature.getUpperBound() == 1) {
-				target.eSet(feature, value);
-			} else {
-				@SuppressWarnings("unchecked")
-				List<Object> list = (List<Object>) target.eGet(feature);
-				if (value instanceof List)
-					list.addAll((List<?>) value);
-				else
-					list.add(value);
-			}
+			CoreUtils.featureSafeSet(target, feature, Arrays.asList(value));
 		} catch (ClassCastException cce) {
 			IStatus status = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
 					"Can't assign value " + value + " to parameter "

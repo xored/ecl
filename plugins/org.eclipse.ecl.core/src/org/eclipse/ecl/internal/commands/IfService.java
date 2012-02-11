@@ -12,18 +12,19 @@ import org.eclipse.ecl.runtime.ISession;
 public class IfService implements ICommandService {
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
-		if(!(command instanceof If)) {
+		if (!(command instanceof If)) {
 			return Status.CANCEL_STATUS;
 		}
-		
+
 		If iff = (If) command;
 		ISession session = context.getSession();
-		
+
 		Command branch = iff.isCondition() ? iff.getThen() : iff.getElse();
-		if(branch == null) {
-			return Status.OK_STATUS; //nothing to do
+		if (branch == null) {
+			return Status.OK_STATUS; // nothing to do
 		}
-		return session.execute(branch).waitFor();
+		return session.execute(branch, context.getInput(), context.getOutput())
+				.waitFor();
 	}
 
 }

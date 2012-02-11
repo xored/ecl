@@ -11,6 +11,7 @@ import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -384,13 +385,22 @@ public interface CommandsPackage extends EPackage {
 	int PRINT__BINDINGS = CorePackage.COMMAND__BINDINGS;
 
 	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINT__INPUT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Print</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRINT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+	int PRINT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.SortByImpl <em>Sort By</em>}' class.
@@ -596,6 +606,53 @@ public interface CommandsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.EchoImpl <em>Echo</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.commands.impl.EchoImpl
+	 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getEcho()
+	 * @generated
+	 */
+	int ECHO = 12;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECHO__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECHO__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Str</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECHO__STR = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Echo</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECHO_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.ListPlugins <em>List Plugins</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -720,6 +777,17 @@ public interface CommandsPackage extends EPackage {
 	EClass getPrint();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.platform.commands.Print#getInput <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Input</em>'.
+	 * @see org.eclipse.ecl.platform.commands.Print#getInput()
+	 * @see #getPrint()
+	 * @generated
+	 */
+	EReference getPrint_Input();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.SortBy <em>Sort By</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -824,6 +892,27 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLog_Plugin();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.Echo <em>Echo</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Echo</em>'.
+	 * @see org.eclipse.ecl.platform.commands.Echo
+	 * @generated
+	 */
+	EClass getEcho();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.Echo#getStr <em>Str</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Str</em>'.
+	 * @see org.eclipse.ecl.platform.commands.Echo#getStr()
+	 * @see #getEcho()
+	 * @generated
+	 */
+	EAttribute getEcho_Str();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -960,6 +1049,14 @@ public interface CommandsPackage extends EPackage {
 		EClass PRINT = eINSTANCE.getPrint();
 
 		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRINT__INPUT = eINSTANCE.getPrint_Input();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.platform.commands.impl.SortByImpl <em>Sort By</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1046,6 +1143,24 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LOG__PLUGIN = eINSTANCE.getLog_Plugin();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.commands.impl.EchoImpl <em>Echo</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.commands.impl.EchoImpl
+		 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getEcho()
+		 * @generated
+		 */
+		EClass ECHO = eINSTANCE.getEcho();
+
+		/**
+		 * The meta object literal for the '<em><b>Str</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECHO__STR = eINSTANCE.getEcho_Str();
 
 	}
 

@@ -80,11 +80,27 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="If" eSuperTypes="#//Command">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Based on a condition corresponds either command either from &lt;code>then&lt;/code> or &lt;code>else&lt;/code> branch. "/>
+      <details key="returns" value="Output of executed branch"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Single boolean value."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="then" eType="#//Command"
-        containment="true"/>
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Branch being executed on &lt;code>true&lt;/code> input. Can be omitted."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="else" eType="#//Command"
-        containment="true"/>
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Branch being executed on &lt;code>false&lt;/code> input. Can be omitted."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EclString">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>

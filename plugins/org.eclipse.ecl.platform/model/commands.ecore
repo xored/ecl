@@ -17,7 +17,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UpdateAll" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Print" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Print" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" upperBound="-1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SortBy" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="field" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
@@ -36,5 +41,14 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="plugin" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
         defaultValueLiteral="org.eclipse.ecl.platform"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Echo" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Takes a string argument and writes it into an output pipe. "/>
+      <details key="returns" value="value of &lt;code>str&lt;/code> argument"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="str" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
+    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

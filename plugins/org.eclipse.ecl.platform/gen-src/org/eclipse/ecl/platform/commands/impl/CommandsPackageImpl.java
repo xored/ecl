@@ -11,6 +11,7 @@ import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.platform.commands.AddRepository;
 import org.eclipse.ecl.platform.commands.CommandsFactory;
 import org.eclipse.ecl.platform.commands.CommandsPackage;
+import org.eclipse.ecl.platform.commands.Echo;
 import org.eclipse.ecl.platform.commands.GetLog;
 import org.eclipse.ecl.platform.commands.ListFeatures;
 import org.eclipse.ecl.platform.commands.ListInstallUnits;
@@ -30,6 +31,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -124,6 +126,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass logEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass echoEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -303,6 +312,15 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPrint_Input() {
+		return (EReference)printEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSortBy() {
 		return sortByEClass;
 	}
@@ -393,6 +411,24 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getEcho() {
+		return echoEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEcho_Str() {
+		return (EAttribute)echoEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommandsFactory getCommandsFactory() {
 		return (CommandsFactory)getEFactoryInstance();
 	}
@@ -435,6 +471,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		updateAllEClass = createEClass(UPDATE_ALL);
 
 		printEClass = createEClass(PRINT);
+		createEReference(printEClass, PRINT__INPUT);
 
 		sortByEClass = createEClass(SORT_BY);
 		createEAttribute(sortByEClass, SORT_BY__FIELD);
@@ -449,6 +486,9 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		createEAttribute(logEClass, LOG__SEVERITY);
 		createEAttribute(logEClass, LOG__MESSAGE);
 		createEAttribute(logEClass, LOG__PLUGIN);
+
+		echoEClass = createEClass(ECHO);
+		createEAttribute(echoEClass, ECHO__STR);
 	}
 
 	/**
@@ -495,6 +535,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		listInstallUnitsEClass.getESuperTypes().add(theCorePackage.getCommand());
 		getLogEClass.getESuperTypes().add(theCorePackage.getCommand());
 		logEClass.getESuperTypes().add(theCorePackage.getCommand());
+		echoEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(listPluginsEClass, ListPlugins.class, "ListPlugins", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -516,6 +557,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		initEClass(updateAllEClass, UpdateAll.class, "UpdateAll", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(printEClass, Print.class, "Print", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPrint_Input(), theEcorePackage.getEObject(), null, "input", null, 0, -1, Print.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sortByEClass, SortBy.class, "SortBy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSortBy_Field(), theEcorePackage.getEString(), "field", null, 0, 1, SortBy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -531,12 +573,17 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		initEAttribute(getLog_Message(), theEcorePackage.getEString(), "message", null, 0, 1, Log.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLog_Plugin(), theEcorePackage.getEString(), "plugin", "org.eclipse.ecl.platform", 0, 1, Log.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(echoEClass, Echo.class, "Echo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEcho_Str(), theEcorePackage.getEString(), "str", null, 0, 1, Echo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Create resource
 		createResource(eNS_URI);
 
 		// Create annotations
 		// http://www.eclipse.org/ecl/input
 		createInputAnnotations();
+		// http://www.eclipse.org/ecl/docs
+		createDocsAnnotations();
 	}
 
 	/**
@@ -548,13 +595,40 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	protected void createInputAnnotations() {
 		String source = "http://www.eclipse.org/ecl/input";		
 		addAnnotation
+		  (getPrint_Input(), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
 		  (getLog_Message(), 
 		   source, 
 		   new String[] {
 		   },
 		   new URI[] {
 			 URI.createURI(CorePackage.eNS_URI).appendFragment("//Foreach/input/%http:%2F%2Fwww.eclipse.org%2Fecl%2Finput%")
+		   });			
+		addAnnotation
+		  (getEcho_Str(), 
+		   source, 
+		   new String[] {
 		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/docs</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createDocsAnnotations() {
+		String source = "http://www.eclipse.org/ecl/docs";				
+		addAnnotation
+		  (echoEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Takes a string argument and writes it into an output pipe. ",
+			 "returns", "value of <code>str</code> argument"
+		   });	
 	}
 
 } //CommandsPackageImpl

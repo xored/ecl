@@ -994,6 +994,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createInternalAnnotations();
 		// http://www.eclipse.org/ecl/input
 		createInputAnnotations();
+		// http://www.eclipse.org/ecl/docs
+		createDocsAnnotations();
 	}
 
 	/**
@@ -1013,7 +1015,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (getCommand_Bindings(), 
 		   source, 
 		   new String[] {
-		   });	
+		   });					
 	}
 
 	/**
@@ -1027,6 +1029,41 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (getForeach_Input(), 
 		   source, 
 		   new String[] {
+		   });				
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/docs</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createDocsAnnotations() {
+		String source = "http://www.eclipse.org/ecl/docs";					
+		addAnnotation
+		  (ifEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Based on a condition corresponds either command either from <code>then</code> or <code>else</code> branch. ",
+			 "returns", "Output of executed branch"
+		   });		
+		addAnnotation
+		  (getIf_Condition(), 
+		   source, 
+		   new String[] {
+			 "description", "Single boolean value. Non-boolean values from input are interpreted as <code>false</code>"
+		   });		
+		addAnnotation
+		  (getIf_Then(), 
+		   source, 
+		   new String[] {
+			 "description", "Branch being executed on <code>true</code> input. Can be omitted."
+		   });		
+		addAnnotation
+		  (getIf_Else(), 
+		   source, 
+		   new String[] {
+			 "description", "Branch being executed on <code>false</code> input. Can be omitted."
 		   });
 	}
 

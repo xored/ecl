@@ -12,7 +12,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
-import org.eclipse.ecl.runtime.CoreUtils;
+import org.eclipse.ecl.platform.commands.Print;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.emf.ecore.EAttribute;
@@ -23,88 +23,87 @@ public class PrintService implements ICommandService {
 	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
-		List<Object> input = CoreUtils.readPipeContent(context.getInput());
-		//print table with attributes
-		
-		List<EObject> objects = new ArrayList<EObject>();
-		for(Object o : input) {
-			if(o instanceof EObject) {
-				objects.add((EObject) o);
-			} else {
-				context.getOutput().write(o.toString());
-			}
+		if (!(command instanceof Print)) {
+			return Status.CANCEL_STATUS;
 		}
-		
+		List<EObject> input = ((Print) command).getInput();
+		// print table with attributes
+
+		List<EObject> objects = new ArrayList<EObject>();
+		for (Object o : input) {
+			objects.add((EObject) o);
+		}
+
 		Set<String> columns = new TreeSet<String>();
-		List<Map<String, String>> rows = new ArrayList<Map<String,String>>();
-		for(Object o : input) {
-			if(!(o instanceof EObject)) {
+		List<Map<String, String>> rows = new ArrayList<Map<String, String>>();
+		for (Object o : input) {
+			if (!(o instanceof EObject)) {
 				continue;
 			}
 			Map<String, String> row = getRow((EObject) o);
 			rows.add(row);
 			columns.addAll(row.keySet());
 		}
-		
-		//define column width for each col
+
+		// define column width for each col
 		int[] widths = new int[columns.size()];
 		String[] colNames = columns.toArray(new String[columns.size()]);
-		
-		for(int i = 0; i < widths.length; i++) {
+
+		for (int i = 0; i < widths.length; i++) {
 			widths[i] = colNames[i].length();
 		}
-		
-		for(int i = 0; i < widths.length; i++) {
+
+		for (int i = 0; i < widths.length; i++) {
 			String col = colNames[i];
-			for(Map<String, String> row : rows) {
+			for (Map<String, String> row : rows) {
 				String strVal = row.get(col);
-				if(strVal != null && strVal.length() > widths[i]) {
+				if (strVal != null && strVal.length() > widths[i]) {
 					widths[i] = strVal.length();
 				}
 			}
 		}
-		
-		//print header
+
+		// print header
 		StringBuilder sb = new StringBuilder();
 		sb.append("|");
-		for(int i = 0; i < colNames.length; i++) {
-			sb.append(String.format("%-" + widths[i] + "s", colNames[i])).append("|");
+		for (int i = 0; i < colNames.length; i++) {
+			sb.append(String.format("%-" + widths[i] + "s", colNames[i]))
+					.append("|");
 		}
-		
+
 		context.getOutput().write(sb.toString());
-		
+
 		sb.setLength(0);
 		sb.append("+");
-		for(int i = 0; i < colNames.length; i++) {
+		for (int i = 0; i < colNames.length; i++) {
 			char[] sep = new char[widths[i]];
 			Arrays.fill(sep, '-');
 			sb.append(new String(sep));
 			sb.append("+");
 		}
-		
+
 		context.getOutput().write(sb.toString());
-		
-		for(Map<String, String> row : rows) {
+
+		for (Map<String, String> row : rows) {
 			sb.setLength(0);
 			sb.append("|");
-			for(int i = 0; i < colNames.length; i++) {
+			for (int i = 0; i < colNames.length; i++) {
 				String val = row.get(colNames[i]);
 				sb.append(String.format("%-" + widths[i] + "s", val));
 				sb.append("|");
 			}
 			context.getOutput().write(sb.toString());
 		}
-		
+
 		return Status.OK_STATUS;
 	}
-	
-	
+
 	private Map<String, String> getRow(EObject obj) {
 		Map<String, String> result = new HashMap<String, String>();
-		for(EAttribute attr : obj.eClass().getEAllAttributes()) {
+		for (EAttribute attr : obj.eClass().getEAllAttributes()) {
 			Object val = obj.eGet(attr);
 			String strVal = null;
-			if(val != null) {
+			if (val != null) {
 				strVal = val.toString();
 			}
 			result.put(attr.getName(), strVal);

@@ -134,6 +134,15 @@ public interface CommandsFactory extends EFactory {
 	Log createLog();
 
 	/**
+	 * Returns a new object of class '<em>Echo</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Echo</em>'.
+	 * @generated
+	 */
+	Echo createEcho();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

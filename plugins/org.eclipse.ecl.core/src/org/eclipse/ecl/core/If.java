@@ -22,7 +22,7 @@ package org.eclipse.ecl.core;
  * </p>
  *
  * @see org.eclipse.ecl.core.CorePackage#getIf()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Based on a condition corresponds either command either from <code>then</code> or <code>else</code> branch. ' returns='Output of executed branch'"
  * @generated
  */
 public interface If extends Command {
@@ -37,7 +37,7 @@ public interface If extends Command {
 	 * @return the value of the '<em>Condition</em>' attribute.
 	 * @see #setCondition(boolean)
 	 * @see org.eclipse.ecl.core.CorePackage#getIf_Condition()
-	 * @model
+	 * @model annotation="http://www.eclipse.org/ecl/docs description='Single boolean value. Non-boolean values from input are interpreted as <code>false</code>'"
 	 * @generated
 	 */
 	boolean isCondition();
@@ -64,6 +64,7 @@ public interface If extends Command {
 	 * @see #setThen(Command)
 	 * @see org.eclipse.ecl.core.CorePackage#getIf_Then()
 	 * @model containment="true"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='Branch being executed on <code>true</code> input. Can be omitted.'"
 	 * @generated
 	 */
 	Command getThen();
@@ -90,6 +91,7 @@ public interface If extends Command {
 	 * @see #setElse(Command)
 	 * @see org.eclipse.ecl.core.CorePackage#getIf_Else()
 	 * @model containment="true"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='Branch being executed on <code>false</code> input. Can be omitted.'"
 	 * @generated
 	 */
 	Command getElse();
