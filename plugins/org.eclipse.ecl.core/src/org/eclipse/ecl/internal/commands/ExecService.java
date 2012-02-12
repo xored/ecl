@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.osgi.util.NLS;
@@ -149,6 +150,10 @@ public class ExecService implements ICommandService {
 						value = converter.convert(literal);
 					}
 				}
+
+				if (value == null) {
+					value = getBoxedValue(literal, instanceClass);
+				}
 				// Type to converter thought EcoreUtil.createFromString
 				if (value == null && feature.getEType() instanceof EDataType) {
 					value = EcoreUtil.createFromString(
@@ -202,6 +207,21 @@ public class ExecService implements ICommandService {
 							+ feature.getName(), cce);
 			throw new CoreException(status);
 		}
+	}
+
+	private Object getBoxedValue(LiteralParameter literal,
+			Class<?> instanceClass) throws CoreException {
+		if (!instanceClass.equals(EObject.class)) {
+			return null;
+		}
+		Object val = literal.getLiteral();
+		IParamConverter<Object> converter = ParamConverterManager.getInstance()
+				.getConverter(Object.class);
+		if (converter != null) {
+			val = converter.convert(literal);
+		}
+
+		return val;
 	}
 
 	private boolean canProcessUnnamed(EClass targetClass) throws CoreException {

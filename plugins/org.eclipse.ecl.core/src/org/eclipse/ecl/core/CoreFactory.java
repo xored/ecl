@@ -219,6 +219,15 @@ public interface CoreFactory extends EFactory {
 	EclLong createEclLong();
 
 	/**
+	 * Returns a new object of class '<em>Eq</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Eq</em>'.
+	 * @generated
+	 */
+	Eq createEq();
+
+	/**
 	 * Returns a new object of class '<em>Script</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

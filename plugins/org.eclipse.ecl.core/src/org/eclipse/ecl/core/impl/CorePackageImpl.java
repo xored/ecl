@@ -21,6 +21,7 @@ import org.eclipse.ecl.core.EclFloat;
 import org.eclipse.ecl.core.EclInteger;
 import org.eclipse.ecl.core.EclLong;
 import org.eclipse.ecl.core.EclString;
+import org.eclipse.ecl.core.Eq;
 import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.ExecutableParameter;
 import org.eclipse.ecl.core.Foreach;
@@ -187,6 +188,13 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	private EClass eclLongEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eqEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -613,8 +621,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getIf_Condition() {
-		return (EAttribute)ifEClass.getEStructuralFeatures().get(0);
+	public EReference getIf_Condition() {
+		return (EReference)ifEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -730,6 +738,33 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getEq() {
+		return eqEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEq_Left() {
+		return (EReference)eqEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEq_Right() {
+		return (EReference)eqEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getThrowable() {
 		return throwableEDataType;
 	}
@@ -837,7 +872,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEAttribute(nullableEClass, NULLABLE__TYPE);
 
 		ifEClass = createEClass(IF);
-		createEAttribute(ifEClass, IF__CONDITION);
+		createEReference(ifEClass, IF__CONDITION);
 		createEReference(ifEClass, IF__THEN);
 		createEReference(ifEClass, IF__ELSE);
 
@@ -855,6 +890,10 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 
 		eclLongEClass = createEClass(ECL_LONG);
 		createEAttribute(eclLongEClass, ECL_LONG__VALUE);
+
+		eqEClass = createEClass(EQ);
+		createEReference(eqEClass, EQ__LEFT);
+		createEReference(eqEClass, EQ__RIGHT);
 
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
@@ -901,6 +940,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		foreachEClass.getESuperTypes().add(this.getCommand());
 		scriptEClass.getESuperTypes().add(this.getCommand());
 		ifEClass.getESuperTypes().add(this.getCommand());
+		eqEClass.getESuperTypes().add(this.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -964,7 +1004,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEAttribute(getNullable_Type(), theEcorePackage.getEString(), "type", null, 0, 1, Nullable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ifEClass, If.class, "If", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIf_Condition(), ecorePackage.getEBoolean(), "condition", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIf_Condition(), theEcorePackage.getEObject(), null, "condition", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIf_Then(), this.getCommand(), null, "then", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIf_Else(), this.getCommand(), null, "else", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -982,6 +1022,10 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 
 		initEClass(eclLongEClass, EclLong.class, "EclLong", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEclLong_Value(), theEcorePackage.getELong(), "value", null, 0, 1, EclLong.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEq_Left(), theEcorePackage.getEObject(), null, "left", null, 0, 1, Eq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEq_Right(), theEcorePackage.getEObject(), null, "right", null, 0, 1, Eq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -1015,7 +1059,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (getCommand_Bindings(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });									
 	}
 
 	/**
@@ -1029,7 +1073,12 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (getForeach_Input(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });							
+		addAnnotation
+		  (getEq_Left(), 
+		   source, 
+		   new String[] {
+		   });		
 	}
 
 	/**
@@ -1051,7 +1100,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (getIf_Condition(), 
 		   source, 
 		   new String[] {
-			 "description", "Single boolean value. Non-boolean values from input are interpreted as <code>false</code>"
+			 "description", "Accepted values are boolean, string (<code>true</code> when case-insensitive equals to <code>true</code>, <code>false</code> otherwise) and number (<code>0</code> for <code>false</code>, <code>true</code> otherwise). "
 		   });		
 		addAnnotation
 		  (getIf_Then(), 
@@ -1064,6 +1113,25 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		   source, 
 		   new String[] {
 			 "description", "Branch being executed on <code>false</code> input. Can be omitted."
+		   });		
+		addAnnotation
+		  (eqEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Compares arguments on equality",
+			 "returns", "<code>true</code> when args are equal, <code>false</code> otherwise."
+		   });			
+		addAnnotation
+		  (getEq_Left(), 
+		   source, 
+		   new String[] {
+			 "description", "Left argument"
+		   });		
+		addAnnotation
+		  (getEq_Right(), 
+		   source, 
+		   new String[] {
+			 "description", "Right argument"
 		   });
 	}
 

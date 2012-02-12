@@ -839,7 +839,7 @@ public interface CorePackage extends EPackage {
 	int IF__BINDINGS = COMMAND__BINDINGS;
 
 	/**
-	 * The feature id for the '<em><b>Condition</b></em>' attribute.
+	 * The feature id for the '<em><b>Condition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1015,6 +1015,61 @@ public interface CorePackage extends EPackage {
 	int ECL_LONG_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EqImpl <em>Eq</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EqImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEq()
+	 * @generated
+	 */
+	int EQ = 23;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQ__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQ__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQ__LEFT = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQ__RIGHT = COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Eq</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQ_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1022,7 +1077,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
 	 * @generated
 	 */
-	int THROWABLE = 23;
+	int THROWABLE = 24;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -1470,15 +1525,15 @@ public interface CorePackage extends EPackage {
 	EClass getIf();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.If#isCondition <em>Condition</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.If#getCondition <em>Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Condition</em>'.
-	 * @see org.eclipse.ecl.core.If#isCondition()
+	 * @return the meta object for the reference '<em>Condition</em>'.
+	 * @see org.eclipse.ecl.core.If#getCondition()
 	 * @see #getIf()
 	 * @generated
 	 */
-	EAttribute getIf_Condition();
+	EReference getIf_Condition();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.If#getThen <em>Then</em>}'.
@@ -1606,6 +1661,38 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getEclLong_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Eq <em>Eq</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Eq</em>'.
+	 * @see org.eclipse.ecl.core.Eq
+	 * @generated
+	 */
+	EClass getEq();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.Eq#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Left</em>'.
+	 * @see org.eclipse.ecl.core.Eq#getLeft()
+	 * @see #getEq()
+	 * @generated
+	 */
+	EReference getEq_Left();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.Eq#getRight <em>Right</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Right</em>'.
+	 * @see org.eclipse.ecl.core.Eq#getRight()
+	 * @see #getEq()
+	 * @generated
+	 */
+	EReference getEq_Right();
 
 	/**
 	 * Returns the meta object for data type '{@link java.lang.Throwable <em>Throwable</em>}'.
@@ -2032,12 +2119,12 @@ public interface CorePackage extends EPackage {
 		EClass IF = eINSTANCE.getIf();
 
 		/**
-		 * The meta object literal for the '<em><b>Condition</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Condition</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute IF__CONDITION = eINSTANCE.getIf_Condition();
+		EReference IF__CONDITION = eINSTANCE.getIf_Condition();
 
 		/**
 		 * The meta object literal for the '<em><b>Then</b></em>' containment reference feature.
@@ -2144,6 +2231,32 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ECL_LONG__VALUE = eINSTANCE.getEclLong_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EqImpl <em>Eq</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EqImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEq()
+		 * @generated
+		 */
+		EClass EQ = eINSTANCE.getEq();
+
+		/**
+		 * The meta object literal for the '<em><b>Left</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EQ__LEFT = eINSTANCE.getEq_Left();
+
+		/**
+		 * The meta object literal for the '<em><b>Right</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EQ__RIGHT = eINSTANCE.getEq_Right();
 
 		/**
 		 * The meta object literal for the '<em>Throwable</em>' data type.

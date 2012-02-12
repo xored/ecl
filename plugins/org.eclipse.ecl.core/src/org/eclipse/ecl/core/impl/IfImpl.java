@@ -14,6 +14,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -25,7 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.core.impl.IfImpl#isCondition <em>Condition</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.impl.IfImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.IfImpl#getThen <em>Then</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.IfImpl#getElse <em>Else</em>}</li>
  * </ul>
@@ -35,24 +36,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class IfImpl extends CommandImpl implements If {
 	/**
-	 * The default value of the '{@link #isCondition() <em>Condition</em>}' attribute.
+	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isCondition()
+	 * @see #getCondition()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean CONDITION_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isCondition() <em>Condition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isCondition()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean condition = CONDITION_EDEFAULT;
+	protected EObject condition;
 
 	/**
 	 * The cached value of the '{@link #getThen() <em>Then</em>}' containment reference.
@@ -98,7 +89,15 @@ public class IfImpl extends CommandImpl implements If {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isCondition() {
+	public EObject getCondition() {
+		if (condition != null && condition.eIsProxy()) {
+			InternalEObject oldCondition = (InternalEObject)condition;
+			condition = eResolveProxy(oldCondition);
+			if (condition != oldCondition) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CorePackage.IF__CONDITION, oldCondition, condition));
+			}
+		}
 		return condition;
 	}
 
@@ -107,8 +106,17 @@ public class IfImpl extends CommandImpl implements If {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCondition(boolean newCondition) {
-		boolean oldCondition = condition;
+	public EObject basicGetCondition() {
+		return condition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCondition(EObject newCondition) {
+		EObject oldCondition = condition;
 		condition = newCondition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.IF__CONDITION, oldCondition, condition));
@@ -225,7 +233,8 @@ public class IfImpl extends CommandImpl implements If {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CorePackage.IF__CONDITION:
-				return isCondition();
+				if (resolve) return getCondition();
+				return basicGetCondition();
 			case CorePackage.IF__THEN:
 				return getThen();
 			case CorePackage.IF__ELSE:
@@ -243,7 +252,7 @@ public class IfImpl extends CommandImpl implements If {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CorePackage.IF__CONDITION:
-				setCondition((Boolean)newValue);
+				setCondition((EObject)newValue);
 				return;
 			case CorePackage.IF__THEN:
 				setThen((Command)newValue);
@@ -264,7 +273,7 @@ public class IfImpl extends CommandImpl implements If {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case CorePackage.IF__CONDITION:
-				setCondition(CONDITION_EDEFAULT);
+				setCondition((EObject)null);
 				return;
 			case CorePackage.IF__THEN:
 				setThen((Command)null);
@@ -285,29 +294,13 @@ public class IfImpl extends CommandImpl implements If {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CorePackage.IF__CONDITION:
-				return condition != CONDITION_EDEFAULT;
+				return condition != null;
 			case CorePackage.IF__THEN:
 				return then != null;
 			case CorePackage.IF__ELSE:
 				return else_ != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (condition: ");
-		result.append(condition);
-		result.append(')');
-		return result.toString();
 	}
 
 } //IfImpl

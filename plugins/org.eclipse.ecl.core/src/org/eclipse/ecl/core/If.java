@@ -6,6 +6,8 @@
  */
 package org.eclipse.ecl.core;
 
+import org.eclipse.emf.ecore.EObject;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -15,7 +17,7 @@ package org.eclipse.ecl.core;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.ecl.core.If#isCondition <em>Condition</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.If#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.If#getThen <em>Then</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.If#getElse <em>Else</em>}</li>
  * </ul>
@@ -27,30 +29,30 @@ package org.eclipse.ecl.core;
  */
 public interface If extends Command {
 	/**
-	 * Returns the value of the '<em><b>Condition</b></em>' attribute.
+	 * Returns the value of the '<em><b>Condition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Condition</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Condition</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Condition</em>' attribute.
-	 * @see #setCondition(boolean)
+	 * @return the value of the '<em>Condition</em>' reference.
+	 * @see #setCondition(EObject)
 	 * @see org.eclipse.ecl.core.CorePackage#getIf_Condition()
-	 * @model annotation="http://www.eclipse.org/ecl/docs description='Single boolean value. Non-boolean values from input are interpreted as <code>false</code>'"
+	 * @model annotation="http://www.eclipse.org/ecl/docs description='Accepted values are boolean, string (<code>true</code> when case-insensitive equals to <code>true</code>, <code>false</code> otherwise) and number (<code>0</code> for <code>false</code>, <code>true</code> otherwise). '"
 	 * @generated
 	 */
-	boolean isCondition();
+	EObject getCondition();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.ecl.core.If#isCondition <em>Condition</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.ecl.core.If#getCondition <em>Condition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Condition</em>' attribute.
-	 * @see #isCondition()
+	 * @param value the new value of the '<em>Condition</em>' reference.
+	 * @see #getCondition()
 	 * @generated
 	 */
-	void setCondition(boolean value);
+	void setCondition(EObject value);
 
 	/**
 	 * Returns the value of the '<em><b>Then</b></em>' containment reference.
