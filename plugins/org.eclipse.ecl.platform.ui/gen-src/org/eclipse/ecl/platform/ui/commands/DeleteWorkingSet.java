@@ -8,6 +8,8 @@ package org.eclipse.ecl.platform.ui.commands;
 
 import org.eclipse.ecl.core.Command;
 
+import org.eclipse.ecl.platform.ui.objects.WorkingSet;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Delete Working Set</b></em>'.
@@ -16,39 +18,39 @@ import org.eclipse.ecl.core.Command;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet#getInput <em>Input</em>}</li>
  * </ul>
  * </p>
  *
  * @see org.eclipse.ecl.platform.ui.commands.CommandsPackage#getDeleteWorkingSet()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Deletes working set' returns='Nothing'"
  * @generated
  */
 public interface DeleteWorkingSet extends Command {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Input</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Input</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.eclipse.ecl.platform.ui.commands.CommandsPackage#getDeleteWorkingSet_Name()
-	 * @model
+	 * @return the value of the '<em>Input</em>' reference.
+	 * @see #setInput(WorkingSet)
+	 * @see org.eclipse.ecl.platform.ui.commands.CommandsPackage#getDeleteWorkingSet_Input()
+	 * @model annotation="http://www.eclipse.org/ecl/docs description='Working set object'"
 	 * @generated
 	 */
-	String getName();
+	WorkingSet getInput();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet#getInput <em>Input</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
+	 * @param value the new value of the '<em>Input</em>' reference.
+	 * @see #getInput()
 	 * @generated
 	 */
-	void setName(String value);
+	void setInput(WorkingSet value);
 
 } // DeleteWorkingSet

@@ -19,7 +19,7 @@ public class DeleteWorkingSetService implements ICommandService {
 		}
 		DeleteWorkingSet dws = (DeleteWorkingSet) command;
 		IWorkingSetManager m = PlatformUI.getWorkbench().getWorkingSetManager();
-		m.removeWorkingSet(m.getWorkingSet(dws.getName()));
+		m.removeWorkingSet(m.getWorkingSet(dws.getInput().getName()));
 		return Status.OK_STATUS;
 	}
 

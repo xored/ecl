@@ -4,34 +4,33 @@
  *
  * $Id$
  */
-package org.eclipse.ecl.platform.ui.commands.impl;
+package org.eclipse.ecl.platform.ui.objects.impl;
 
-import org.eclipse.ecl.core.impl.CommandImpl;
-
-import org.eclipse.ecl.platform.ui.commands.CommandsPackage;
-import org.eclipse.ecl.platform.ui.commands.CreateWorkingSet;
+import org.eclipse.ecl.platform.ui.objects.ObjectsPackage;
+import org.eclipse.ecl.platform.ui.objects.WorkingSet;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Create Working Set</b></em>'.
+ * An implementation of the model object '<em><b>Working Set</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.platform.ui.commands.impl.CreateWorkingSetImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.ecl.platform.ui.commands.impl.CreateWorkingSetImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.ecl.platform.ui.objects.impl.WorkingSetImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.ecl.platform.ui.objects.impl.WorkingSetImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CreateWorkingSetImpl extends CommandImpl implements CreateWorkingSet {
+public class WorkingSetImpl extends EObjectImpl implements WorkingSet {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -60,7 +59,7 @@ public class CreateWorkingSetImpl extends CommandImpl implements CreateWorkingSe
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TYPE_EDEFAULT = "org.eclipse.ui.resourceWorkingSetPage";
+	protected static final String TYPE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -77,7 +76,7 @@ public class CreateWorkingSetImpl extends CommandImpl implements CreateWorkingSe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CreateWorkingSetImpl() {
+	protected WorkingSetImpl() {
 		super();
 	}
 
@@ -88,7 +87,7 @@ public class CreateWorkingSetImpl extends CommandImpl implements CreateWorkingSe
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CommandsPackage.Literals.CREATE_WORKING_SET;
+		return ObjectsPackage.Literals.WORKING_SET;
 	}
 
 	/**
@@ -109,7 +108,7 @@ public class CreateWorkingSetImpl extends CommandImpl implements CreateWorkingSe
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommandsPackage.CREATE_WORKING_SET__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ObjectsPackage.WORKING_SET__NAME, oldName, name));
 	}
 
 	/**
@@ -130,7 +129,7 @@ public class CreateWorkingSetImpl extends CommandImpl implements CreateWorkingSe
 		String oldType = type;
 		type = newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommandsPackage.CREATE_WORKING_SET__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, ObjectsPackage.WORKING_SET__TYPE, oldType, type));
 	}
 
 	/**
@@ -141,9 +140,9 @@ public class CreateWorkingSetImpl extends CommandImpl implements CreateWorkingSe
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommandsPackage.CREATE_WORKING_SET__NAME:
+			case ObjectsPackage.WORKING_SET__NAME:
 				return getName();
-			case CommandsPackage.CREATE_WORKING_SET__TYPE:
+			case ObjectsPackage.WORKING_SET__TYPE:
 				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -157,10 +156,10 @@ public class CreateWorkingSetImpl extends CommandImpl implements CreateWorkingSe
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommandsPackage.CREATE_WORKING_SET__NAME:
+			case ObjectsPackage.WORKING_SET__NAME:
 				setName((String)newValue);
 				return;
-			case CommandsPackage.CREATE_WORKING_SET__TYPE:
+			case ObjectsPackage.WORKING_SET__TYPE:
 				setType((String)newValue);
 				return;
 		}
@@ -175,10 +174,10 @@ public class CreateWorkingSetImpl extends CommandImpl implements CreateWorkingSe
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommandsPackage.CREATE_WORKING_SET__NAME:
+			case ObjectsPackage.WORKING_SET__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case CommandsPackage.CREATE_WORKING_SET__TYPE:
+			case ObjectsPackage.WORKING_SET__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
 		}
@@ -193,9 +192,9 @@ public class CreateWorkingSetImpl extends CommandImpl implements CreateWorkingSe
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommandsPackage.CREATE_WORKING_SET__NAME:
+			case ObjectsPackage.WORKING_SET__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case CommandsPackage.CREATE_WORKING_SET__TYPE:
+			case ObjectsPackage.WORKING_SET__TYPE:
 				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
 		}
 		return super.eIsSet(featureID);
@@ -219,4 +218,4 @@ public class CreateWorkingSetImpl extends CommandImpl implements CreateWorkingSe
 		return result.toString();
 	}
 
-} //CreateWorkingSetImpl
+} //WorkingSetImpl

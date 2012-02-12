@@ -11,6 +11,7 @@ import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -181,13 +182,22 @@ public interface CommandsPackage extends EPackage {
 	int CREATE_WORKING_SET__NAME = CorePackage.COMMAND_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_WORKING_SET__TYPE = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Create Working Set</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CREATE_WORKING_SET_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+	int CREATE_WORKING_SET_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.DeleteWorkingSetImpl <em>Delete Working Set</em>}' class.
@@ -218,13 +228,13 @@ public interface CommandsPackage extends EPackage {
 	int DELETE_WORKING_SET__BINDINGS = CorePackage.COMMAND__BINDINGS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Input</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DELETE_WORKING_SET__NAME = CorePackage.COMMAND_FEATURE_COUNT + 0;
+	int DELETE_WORKING_SET__INPUT = CorePackage.COMMAND_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Delete Working Set</em>' class.
@@ -234,6 +244,34 @@ public interface CommandsPackage extends EPackage {
 	 * @ordered
 	 */
 	int DELETE_WORKING_SET_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.GetWorkingSetImpl <em>Get Working Set</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.GetWorkingSetImpl
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getGetWorkingSet()
+	 * @generated
+	 */
+	int GET_WORKING_SET = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_WORKING_SET__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Get Working Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_WORKING_SET_FEATURE_COUNT = 1;
 
 
 	/**
@@ -289,6 +327,17 @@ public interface CommandsPackage extends EPackage {
 	EAttribute getCreateWorkingSet_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.ui.commands.CreateWorkingSet#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.CreateWorkingSet#getType()
+	 * @see #getCreateWorkingSet()
+	 * @generated
+	 */
+	EAttribute getCreateWorkingSet_Type();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet <em>Delete Working Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -299,15 +348,36 @@ public interface CommandsPackage extends EPackage {
 	EClass getDeleteWorkingSet();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet#getName <em>Name</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet#getInput <em>Input</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet#getName()
+	 * @return the meta object for the reference '<em>Input</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet#getInput()
 	 * @see #getDeleteWorkingSet()
 	 * @generated
 	 */
-	EAttribute getDeleteWorkingSet_Name();
+	EReference getDeleteWorkingSet_Input();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.GetWorkingSet <em>Get Working Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Get Working Set</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.GetWorkingSet
+	 * @generated
+	 */
+	EClass getGetWorkingSet();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.ui.commands.GetWorkingSet#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.GetWorkingSet#getName()
+	 * @see #getGetWorkingSet()
+	 * @generated
+	 */
+	EAttribute getGetWorkingSet_Name();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -378,6 +448,14 @@ public interface CommandsPackage extends EPackage {
 		EAttribute CREATE_WORKING_SET__NAME = eINSTANCE.getCreateWorkingSet_Name();
 
 		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CREATE_WORKING_SET__TYPE = eINSTANCE.getCreateWorkingSet_Type();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.platform.ui.commands.impl.DeleteWorkingSetImpl <em>Delete Working Set</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -388,12 +466,30 @@ public interface CommandsPackage extends EPackage {
 		EClass DELETE_WORKING_SET = eINSTANCE.getDeleteWorkingSet();
 
 		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DELETE_WORKING_SET__INPUT = eINSTANCE.getDeleteWorkingSet_Input();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.ui.commands.impl.GetWorkingSetImpl <em>Get Working Set</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.GetWorkingSetImpl
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getGetWorkingSet()
+		 * @generated
+		 */
+		EClass GET_WORKING_SET = eINSTANCE.getGetWorkingSet();
+
+		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DELETE_WORKING_SET__NAME = eINSTANCE.getDeleteWorkingSet_Name();
+		EAttribute GET_WORKING_SET__NAME = eINSTANCE.getGetWorkingSet_Name();
 
 	}
 

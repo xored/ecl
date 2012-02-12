@@ -15,7 +15,7 @@ import org.eclipse.ecl.core.Command;
  *
  *
  * @see org.eclipse.ecl.platform.ui.commands.CommandsPackage#getListWorkingSets()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Returns a list of all working sets available' returns='Working set objects'"
  * @generated
  */
 public interface ListWorkingSets extends Command {

@@ -13,11 +13,15 @@ import org.eclipse.ecl.platform.ui.commands.CommandsFactory;
 import org.eclipse.ecl.platform.ui.commands.CommandsPackage;
 import org.eclipse.ecl.platform.ui.commands.CreateWorkingSet;
 import org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet;
+import org.eclipse.ecl.platform.ui.commands.GetWorkingSet;
 import org.eclipse.ecl.platform.ui.commands.ListWorkingSets;
+
+import org.eclipse.ecl.platform.ui.objects.ObjectsPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -56,6 +60,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass deleteWorkingSetEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass getWorkingSetEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -105,6 +116,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		// Initialize simple dependencies
 		CorePackage.eINSTANCE.eClass();
+		ObjectsPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theCommandsPackage.createPackageContents();
@@ -171,6 +183,15 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCreateWorkingSet_Type() {
+		return (EAttribute)createWorkingSetEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDeleteWorkingSet() {
 		return deleteWorkingSetEClass;
 	}
@@ -180,8 +201,26 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDeleteWorkingSet_Name() {
-		return (EAttribute)deleteWorkingSetEClass.getEStructuralFeatures().get(0);
+	public EReference getDeleteWorkingSet_Input() {
+		return (EReference)deleteWorkingSetEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGetWorkingSet() {
+		return getWorkingSetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGetWorkingSet_Name() {
+		return (EAttribute)getWorkingSetEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -219,9 +258,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		createWorkingSetEClass = createEClass(CREATE_WORKING_SET);
 		createEAttribute(createWorkingSetEClass, CREATE_WORKING_SET__NAME);
+		createEAttribute(createWorkingSetEClass, CREATE_WORKING_SET__TYPE);
 
 		deleteWorkingSetEClass = createEClass(DELETE_WORKING_SET);
-		createEAttribute(deleteWorkingSetEClass, DELETE_WORKING_SET__NAME);
+		createEReference(deleteWorkingSetEClass, DELETE_WORKING_SET__INPUT);
+
+		getWorkingSetEClass = createEClass(GET_WORKING_SET);
+		createEAttribute(getWorkingSetEClass, GET_WORKING_SET__NAME);
 	}
 
 	/**
@@ -250,6 +293,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		// Obtain other dependent packages
 		CorePackage theCorePackage = (CorePackage)EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		ObjectsPackage theObjectsPackage = (ObjectsPackage)EPackage.Registry.INSTANCE.getEPackage(ObjectsPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -269,12 +313,104 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		initEClass(createWorkingSetEClass, CreateWorkingSet.class, "CreateWorkingSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCreateWorkingSet_Name(), theEcorePackage.getEString(), "name", null, 0, 1, CreateWorkingSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCreateWorkingSet_Type(), theEcorePackage.getEString(), "type", "org.eclipse.ui.resourceWorkingSetPage", 0, 1, CreateWorkingSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(deleteWorkingSetEClass, DeleteWorkingSet.class, "DeleteWorkingSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDeleteWorkingSet_Name(), theEcorePackage.getEString(), "name", null, 0, 1, DeleteWorkingSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDeleteWorkingSet_Input(), theObjectsPackage.getWorkingSet(), null, "input", null, 0, 1, DeleteWorkingSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(getWorkingSetEClass, GetWorkingSet.class, "GetWorkingSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGetWorkingSet_Name(), theEcorePackage.getEString(), "name", null, 0, 1, GetWorkingSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/ecl/docs
+		createDocsAnnotations();
+		// http://www.eclipse.org/ecl/input
+		createInputAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/docs</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createDocsAnnotations() {
+		String source = "http://www.eclipse.org/ecl/docs";		
+		addAnnotation
+		  (listWorkingSetsEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Returns a list of all working sets available",
+			 "returns", "Working set objects"
+		   });		
+		addAnnotation
+		  (createWorkingSetEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Creates working set with a given name.",
+			 "returns", "Nothing"
+		   });			
+		addAnnotation
+		  (getCreateWorkingSet_Name(), 
+		   source, 
+		   new String[] {
+			 "description", "Working set name"
+		   });		
+		addAnnotation
+		  (getCreateWorkingSet_Type(), 
+		   source, 
+		   new String[] {
+			 "description", "Working set type id. Default value is <code>org.eclipse.ui.resourceWorkingSetPage</code>, which corresponds to Resource Working Set. The short name <code>java</code> can be used to identify type <code>org.eclipse.jdt.ui.JavaWorkingSetPage</code>"
+		   });		
+		addAnnotation
+		  (deleteWorkingSetEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Deletes working set",
+			 "returns", "Nothing"
+		   });			
+		addAnnotation
+		  (getDeleteWorkingSet_Input(), 
+		   source, 
+		   new String[] {
+			 "description", "Working set object"
+		   });		
+		addAnnotation
+		  (getWorkingSetEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Finds working set by name",
+			 "returns", "Working set object"
+		   });		
+		addAnnotation
+		  (getGetWorkingSet_Name(), 
+		   source, 
+		   new String[] {
+			 "description", "Working set name"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/input</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createInputAnnotations() {
+		String source = "http://www.eclipse.org/ecl/input";				
+		addAnnotation
+		  (getCreateWorkingSet_Name(), 
+		   source, 
+		   new String[] {
+		   });					
+		addAnnotation
+		  (getDeleteWorkingSet_Input(), 
+		   source, 
+		   new String[] {
+		   });			
 	}
 
 } //CommandsPackageImpl
