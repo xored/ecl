@@ -24,7 +24,8 @@ public interface IProcess {
 	ISession getSession();
 
 	IStatus waitFor() throws InterruptedException;
-	IStatus waitFor(IProgressMonitor monitor);
+
+	IStatus waitFor(long timeout, IProgressMonitor monitor);
 
 	boolean isAlive();
 }
