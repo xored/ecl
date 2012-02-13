@@ -197,30 +197,41 @@ public class CoreSwitch<T> extends Switch<T> {
 			case CorePackage.ECL_STRING: {
 				EclString eclString = (EclString)theEObject;
 				T result = caseEclString(eclString);
+				if (result == null) result = caseBoxedValue(eclString);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case CorePackage.ECL_BOOLEAN: {
 				EclBoolean eclBoolean = (EclBoolean)theEObject;
 				T result = caseEclBoolean(eclBoolean);
+				if (result == null) result = caseBoxedValue(eclBoolean);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case CorePackage.ECL_INTEGER: {
 				EclInteger eclInteger = (EclInteger)theEObject;
 				T result = caseEclInteger(eclInteger);
+				if (result == null) result = caseBoxedValue(eclInteger);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case CorePackage.ECL_FLOAT: {
 				EclFloat eclFloat = (EclFloat)theEObject;
 				T result = caseEclFloat(eclFloat);
+				if (result == null) result = caseBoxedValue(eclFloat);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case CorePackage.ECL_LONG: {
 				EclLong eclLong = (EclLong)theEObject;
 				T result = caseEclLong(eclLong);
+				if (result == null) result = caseBoxedValue(eclLong);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.BOXED_VALUE: {
+				BoxedValue boxedValue = (BoxedValue)theEObject;
+				T result = caseBoxedValue(boxedValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -570,6 +581,21 @@ public class CoreSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEclLong(EclLong object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Boxed Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Boxed Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBoxedValue(BoxedValue object) {
 		return null;
 	}
 

@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public class EclIntegerImpl extends EObjectImpl implements EclInteger {
+public class EclIntegerImpl extends BoxedValueImpl implements EclInteger {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->

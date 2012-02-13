@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public class EclFloatImpl extends EObjectImpl implements EclFloat {
+public class EclFloatImpl extends BoxedValueImpl implements EclFloat {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->

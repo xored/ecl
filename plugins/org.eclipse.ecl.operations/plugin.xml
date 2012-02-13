@@ -13,7 +13,7 @@
       <scriptlet
             class="org.eclipse.ecl.operations.internal.commands.EqService"
             name="Eq"
-            namespace="http://www.eclipse.org/ecl/core.ecore&#x0A;">
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
    </extension>
 

@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * @generated
  */
-public class EclBooleanImpl extends EObjectImpl implements EclBoolean {
+public class EclBooleanImpl extends BoxedValueImpl implements EclBoolean {
 	/**
 	 * The default value of the '{@link #isValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -875,6 +875,25 @@ public interface CorePackage extends EPackage {
 	int IF_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 3;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.BoxedValueImpl <em>Boxed Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.BoxedValueImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getBoxedValue()
+	 * @generated
+	 */
+	int BOXED_VALUE = 23;
+
+	/**
+	 * The number of structural features of the '<em>Boxed Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOXED_VALUE_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclStringImpl <em>Ecl String</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -891,7 +910,7 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_STRING__VALUE = 0;
+	int ECL_STRING__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Ecl String</em>' class.
@@ -900,7 +919,7 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_STRING_FEATURE_COUNT = 1;
+	int ECL_STRING_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclBooleanImpl <em>Ecl Boolean</em>}' class.
@@ -919,7 +938,7 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_BOOLEAN__VALUE = 0;
+	int ECL_BOOLEAN__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Ecl Boolean</em>' class.
@@ -928,7 +947,7 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_BOOLEAN_FEATURE_COUNT = 1;
+	int ECL_BOOLEAN_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclIntegerImpl <em>Ecl Integer</em>}' class.
@@ -947,7 +966,7 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_INTEGER__VALUE = 0;
+	int ECL_INTEGER__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Ecl Integer</em>' class.
@@ -956,7 +975,7 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_INTEGER_FEATURE_COUNT = 1;
+	int ECL_INTEGER_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclFloatImpl <em>Ecl Float</em>}' class.
@@ -975,7 +994,7 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_FLOAT__VALUE = 0;
+	int ECL_FLOAT__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Ecl Float</em>' class.
@@ -984,7 +1003,7 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_FLOAT_FEATURE_COUNT = 1;
+	int ECL_FLOAT_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclLongImpl <em>Ecl Long</em>}' class.
@@ -1003,7 +1022,7 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_LONG__VALUE = 0;
+	int ECL_LONG__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Ecl Long</em>' class.
@@ -1012,7 +1031,7 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_LONG_FEATURE_COUNT = 1;
+	int ECL_LONG_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
@@ -1022,7 +1041,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
 	 * @generated
 	 */
-	int THROWABLE = 23;
+	int THROWABLE = 24;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -1608,6 +1627,16 @@ public interface CorePackage extends EPackage {
 	EAttribute getEclLong_Value();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.BoxedValue <em>Boxed Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Boxed Value</em>'.
+	 * @see org.eclipse.ecl.core.BoxedValue
+	 * @generated
+	 */
+	EClass getBoxedValue();
+
+	/**
 	 * Returns the meta object for data type '{@link java.lang.Throwable <em>Throwable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2144,6 +2173,16 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ECL_LONG__VALUE = eINSTANCE.getEclLong_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.BoxedValueImpl <em>Boxed Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.BoxedValueImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getBoxedValue()
+		 * @generated
+		 */
+		EClass BOXED_VALUE = eINSTANCE.getBoxedValue();
 
 		/**
 		 * The meta object literal for the '<em>Throwable</em>' data type.

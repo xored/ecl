@@ -12,6 +12,7 @@ package org.eclipse.ecl.core.impl;
 
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Block;
+import org.eclipse.ecl.core.BoxedValue;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.ConvertedToEMFPipe;
 import org.eclipse.ecl.core.CoreFactory;
@@ -187,6 +188,13 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	private EClass eclLongEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass boxedValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -730,6 +738,15 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getBoxedValue() {
+		return boxedValueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getThrowable() {
 		return throwableEDataType;
 	}
@@ -856,6 +873,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		eclLongEClass = createEClass(ECL_LONG);
 		createEAttribute(eclLongEClass, ECL_LONG__VALUE);
 
+		boxedValueEClass = createEClass(BOXED_VALUE);
+
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
 	}
@@ -901,6 +920,11 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		foreachEClass.getESuperTypes().add(this.getCommand());
 		scriptEClass.getESuperTypes().add(this.getCommand());
 		ifEClass.getESuperTypes().add(this.getCommand());
+		eclStringEClass.getESuperTypes().add(this.getBoxedValue());
+		eclBooleanEClass.getESuperTypes().add(this.getBoxedValue());
+		eclIntegerEClass.getESuperTypes().add(this.getBoxedValue());
+		eclFloatEClass.getESuperTypes().add(this.getBoxedValue());
+		eclLongEClass.getESuperTypes().add(this.getBoxedValue());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -982,6 +1006,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 
 		initEClass(eclLongEClass, EclLong.class, "EclLong", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEclLong_Value(), theEcorePackage.getELong(), "value", null, 0, 1, EclLong.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(boxedValueEClass, BoxedValue.class, "BoxedValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
