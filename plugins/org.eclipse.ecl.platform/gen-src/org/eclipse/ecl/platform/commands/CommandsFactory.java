@@ -143,6 +143,15 @@ public interface CommandsFactory extends EFactory {
 	Echo createEcho();
 
 	/**
+	 * Returns a new object of class '<em>Clear Log</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Clear Log</em>'.
+	 * @generated
+	 */
+	ClearLog createClearLog();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -53,4 +53,10 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClearLogView" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Clears error log. If Error log is open, then it is closed before log clearing and then open again."/>
+      <details key="returns" value="Nothing"/>
+    </eAnnotations>
+  </eClassifiers>
 </ecore:EPackage>

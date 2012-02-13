@@ -275,6 +275,44 @@ public interface CommandsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.ClearLogViewImpl <em>Clear Log View</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.ClearLogViewImpl
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getClearLogView()
+	 * @generated
+	 */
+	int CLEAR_LOG_VIEW = 5;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLEAR_LOG_VIEW__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLEAR_LOG_VIEW__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The number of structural features of the '<em>Clear Log View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLEAR_LOG_VIEW_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.Alert <em>Alert</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -378,6 +416,16 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getGetWorkingSet_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.ClearLogView <em>Clear Log View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Clear Log View</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.ClearLogView
+	 * @generated
+	 */
+	EClass getClearLogView();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -490,6 +538,16 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GET_WORKING_SET__NAME = eINSTANCE.getGetWorkingSet_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.ui.commands.impl.ClearLogViewImpl <em>Clear Log View</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.ClearLogViewImpl
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getClearLogView()
+		 * @generated
+		 */
+		EClass CLEAR_LOG_VIEW = eINSTANCE.getClearLogView();
 
 	}
 

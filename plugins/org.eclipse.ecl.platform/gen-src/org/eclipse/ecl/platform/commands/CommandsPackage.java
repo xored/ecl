@@ -514,22 +514,22 @@ public interface CommandsPackage extends EPackage {
 	int GET_LOG__BINDINGS = CorePackage.COMMAND__BINDINGS;
 
 	/**
+	 * The feature id for the '<em><b>Levels</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_LOG__LEVELS = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Limit</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GET_LOG__LIMIT = CorePackage.COMMAND_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Skip Info</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GET_LOG__SKIP_INFO = CorePackage.COMMAND_FEATURE_COUNT + 1;
+	int GET_LOG__LIMIT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Get Log</em>' class.
@@ -569,22 +569,22 @@ public interface CommandsPackage extends EPackage {
 	int LOG__BINDINGS = CorePackage.COMMAND__BINDINGS;
 
 	/**
-	 * The feature id for the '<em><b>Severity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOG__SEVERITY = CorePackage.COMMAND_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Message</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOG__MESSAGE = CorePackage.COMMAND_FEATURE_COUNT + 1;
+	int LOG__MESSAGE = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Severity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOG__SEVERITY = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Plugin</b></em>' attribute.
@@ -650,6 +650,44 @@ public interface CommandsPackage extends EPackage {
 	 * @ordered
 	 */
 	int ECHO_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.ClearLogImpl <em>Clear Log</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.commands.impl.ClearLogImpl
+	 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getClearLog()
+	 * @generated
+	 */
+	int CLEAR_LOG = 13;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLEAR_LOG__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLEAR_LOG__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The number of structural features of the '<em>Clear Log</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLEAR_LOG_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
 
 
 	/**
@@ -840,15 +878,15 @@ public interface CommandsPackage extends EPackage {
 	EAttribute getGetLog_Limit();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.GetLog#isSkipInfo <em>Skip Info</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.eclipse.ecl.platform.commands.GetLog#getLevels <em>Levels</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Skip Info</em>'.
-	 * @see org.eclipse.ecl.platform.commands.GetLog#isSkipInfo()
+	 * @return the meta object for the attribute list '<em>Levels</em>'.
+	 * @see org.eclipse.ecl.platform.commands.GetLog#getLevels()
 	 * @see #getGetLog()
 	 * @generated
 	 */
-	EAttribute getGetLog_SkipInfo();
+	EAttribute getGetLog_Levels();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.Log <em>Log</em>}'.
@@ -913,6 +951,16 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getEcho_Str();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.ClearLog <em>Clear Log</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Clear Log</em>'.
+	 * @see org.eclipse.ecl.platform.commands.ClearLog
+	 * @generated
+	 */
+	EClass getClearLog();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1103,12 +1151,12 @@ public interface CommandsPackage extends EPackage {
 		EAttribute GET_LOG__LIMIT = eINSTANCE.getGetLog_Limit();
 
 		/**
-		 * The meta object literal for the '<em><b>Skip Info</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Levels</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute GET_LOG__SKIP_INFO = eINSTANCE.getGetLog_SkipInfo();
+		EAttribute GET_LOG__LEVELS = eINSTANCE.getGetLog_Levels();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.platform.commands.impl.LogImpl <em>Log</em>}' class.
@@ -1161,6 +1209,16 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ECHO__STR = eINSTANCE.getEcho_Str();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.commands.impl.ClearLogImpl <em>Clear Log</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.commands.impl.ClearLogImpl
+		 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getClearLog()
+		 * @generated
+		 */
+		EClass CLEAR_LOG = eINSTANCE.getClearLog();
 
 	}
 

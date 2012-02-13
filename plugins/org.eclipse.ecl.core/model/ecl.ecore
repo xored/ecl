@@ -117,21 +117,4 @@
   <eClassifiers xsi:type="ecore:EClass" name="EclLong">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Eq" eSuperTypes="#//Command">
-    <eAnnotations source="http://www.eclipse.org/ecl/docs">
-      <details key="description" value="Compares arguments on equality"/>
-      <details key="returns" value="&lt;code>true&lt;/code> when args are equal, &lt;code>false&lt;/code> otherwise."/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
-      <eAnnotations source="http://www.eclipse.org/ecl/docs">
-        <details key="description" value="Left argument"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-      <eAnnotations source="http://www.eclipse.org/ecl/docs">
-        <details key="description" value="Right argument"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-  </eClassifiers>
 </ecore:EPackage>

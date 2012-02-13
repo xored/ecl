@@ -65,6 +65,7 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 			case CommandsPackage.CREATE_WORKING_SET: return createCreateWorkingSet();
 			case CommandsPackage.DELETE_WORKING_SET: return createDeleteWorkingSet();
 			case CommandsPackage.GET_WORKING_SET: return createGetWorkingSet();
+			case CommandsPackage.CLEAR_LOG_VIEW: return createClearLogView();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -118,6 +119,16 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public GetWorkingSet createGetWorkingSet() {
 		GetWorkingSetImpl getWorkingSet = new GetWorkingSetImpl();
 		return getWorkingSet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClearLogView createClearLogView() {
+		ClearLogViewImpl clearLogView = new ClearLogViewImpl();
+		return clearLogView;
 	}
 
 	/**

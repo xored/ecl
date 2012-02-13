@@ -42,9 +42,14 @@
             name="DeleteWorkingSet"
             namespace="http://www.eclipse.org/ecl/platform.ui/commands.ecore">
       </scriptlet>
-            <scriptlet
+      <scriptlet
             class="org.eclipse.ecl.platform.internal.ui.commands.GetWorkingSetService"
             name="GetWorkingSet"
+            namespace="http://www.eclipse.org/ecl/platform.ui/commands.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.platform.internal.ui.commands.ClearLogViewService"
+            name="ClearLogView"
             namespace="http://www.eclipse.org/ecl/platform.ui/commands.ecore">
       </scriptlet>
    </extension>

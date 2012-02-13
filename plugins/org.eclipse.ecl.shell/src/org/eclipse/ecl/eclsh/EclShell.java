@@ -26,6 +26,7 @@ import org.eclipse.ecl.runtime.ISession;
 public class EclShell implements IEclShell {
 	ISession session;
 	private OutputStream outputStream;
+	private PrintStream printStream;
 
 	public EclShell() {
 		super();
@@ -48,20 +49,20 @@ public class EclShell implements IEclShell {
 			}
 			
 			//dump pipe
-			PrintStream os = new PrintStream(outputStream);
+			
 			for(Object o : CoreUtils.readPipeContent(process.getOutput())) {
-				os.println(o);
+				printStream.println(o);
 			}
-			os.flush();
+			printStream.flush();
 			
 		} catch (CoreException e) {
-			e.printStackTrace();
+			e.printStackTrace(printStream);
 			IStatus status = e.getStatus();
 			if(status != null) {
-				System.out.println(status.getMessage());
+				printStream.println(status.getMessage());
 				Throwable t = status.getException();
 				if(t != null) {
-					t.printStackTrace();
+					t.printStackTrace(printStream);
 				}
 			}
 		} catch (InterruptedException e) {
@@ -82,6 +83,7 @@ public class EclShell implements IEclShell {
 	public void connect(OutputStream stream) {
 		session = EclRuntime.createSession();
 		this.outputStream = stream;
+		this.printStream = new PrintStream(outputStream);
 	}
 
 	public void disconnect() {

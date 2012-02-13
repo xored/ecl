@@ -73,6 +73,7 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 			case CommandsPackage.GET_LOG: return createGetLog();
 			case CommandsPackage.LOG: return createLog();
 			case CommandsPackage.ECHO: return createEcho();
+			case CommandsPackage.CLEAR_LOG: return createClearLog();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -206,6 +207,16 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public Echo createEcho() {
 		EchoImpl echo = new EchoImpl();
 		return echo;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClearLog createClearLog() {
+		ClearLogImpl clearLog = new ClearLogImpl();
+		return clearLog;
 	}
 
 	/**

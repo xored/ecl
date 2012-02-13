@@ -9,6 +9,7 @@ package org.eclipse.ecl.platform.ui.commands.impl;
 import org.eclipse.ecl.core.CorePackage;
 
 import org.eclipse.ecl.platform.ui.commands.Alert;
+import org.eclipse.ecl.platform.ui.commands.ClearLogView;
 import org.eclipse.ecl.platform.ui.commands.CommandsFactory;
 import org.eclipse.ecl.platform.ui.commands.CommandsPackage;
 import org.eclipse.ecl.platform.ui.commands.CreateWorkingSet;
@@ -67,6 +68,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass getWorkingSetEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass clearLogViewEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -228,6 +236,15 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getClearLogView() {
+		return clearLogViewEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommandsFactory getCommandsFactory() {
 		return (CommandsFactory)getEFactoryInstance();
 	}
@@ -265,6 +282,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		getWorkingSetEClass = createEClass(GET_WORKING_SET);
 		createEAttribute(getWorkingSetEClass, GET_WORKING_SET__NAME);
+
+		clearLogViewEClass = createEClass(CLEAR_LOG_VIEW);
 	}
 
 	/**
@@ -304,6 +323,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		listWorkingSetsEClass.getESuperTypes().add(theCorePackage.getCommand());
 		createWorkingSetEClass.getESuperTypes().add(theCorePackage.getCommand());
 		deleteWorkingSetEClass.getESuperTypes().add(theCorePackage.getCommand());
+		clearLogViewEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(alertEClass, Alert.class, "Alert", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -320,6 +340,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		initEClass(getWorkingSetEClass, GetWorkingSet.class, "GetWorkingSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGetWorkingSet_Name(), theEcorePackage.getEString(), "name", null, 0, 1, GetWorkingSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(clearLogViewEClass, ClearLogView.class, "ClearLogView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -390,6 +412,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Working set name"
+		   });		
+		addAnnotation
+		  (clearLogViewEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Clears error log. If Error log is open, then it is closed before log clearing and then open again.",
+			 "returns", "Nothing"
 		   });
 	}
 
@@ -410,7 +439,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getDeleteWorkingSet_Input(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });				
 	}
 
 } //CommandsPackageImpl

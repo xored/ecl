@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.eclipse.org/ecl/operations.ecore"
+            class="org.eclipse.ecl.operations.OperationsPackage"
+            genModel="model/operations.genmodel"/>
+   </extension>
+   <extension
+         point="org.eclipse.ecl.core.scriptlet">
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.EqService"
+            name="Eq"
+            namespace="http://www.eclipse.org/ecl/core.ecore&#x0A;">
+      </scriptlet>
+   </extension>
+
+</plugin>

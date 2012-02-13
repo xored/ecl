@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="operations"
+    nsURI="http://www.eclipse.org/ecl/operations.ecore" nsPrefix="org.eclipse.ecl.core">
+  <eClassifiers xsi:type="ecore:EClass" name="Eq" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Compares arguments on equality"/>
+      <details key="returns" value="&lt;code>true&lt;/code> when args are equal, &lt;code>false&lt;/code> otherwise."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Left argument"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Right argument"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

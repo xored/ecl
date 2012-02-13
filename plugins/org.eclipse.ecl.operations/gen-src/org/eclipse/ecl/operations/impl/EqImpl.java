@@ -4,10 +4,12 @@
  *
  * $Id$
  */
-package org.eclipse.ecl.core.impl;
+package org.eclipse.ecl.operations.impl;
 
-import org.eclipse.ecl.core.CorePackage;
-import org.eclipse.ecl.core.Eq;
+import org.eclipse.ecl.core.impl.CommandImpl;
+
+import org.eclipse.ecl.operations.Eq;
+import org.eclipse.ecl.operations.OperationsPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -24,8 +26,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.core.impl.EqImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link org.eclipse.ecl.core.impl.EqImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link org.eclipse.ecl.operations.impl.EqImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link org.eclipse.ecl.operations.impl.EqImpl#getRight <em>Right</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,7 +70,7 @@ public class EqImpl extends CommandImpl implements Eq {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CorePackage.Literals.EQ;
+		return OperationsPackage.Literals.EQ;
 	}
 
 	/**
@@ -82,7 +84,7 @@ public class EqImpl extends CommandImpl implements Eq {
 			left = eResolveProxy(oldLeft);
 			if (left != oldLeft) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CorePackage.EQ__LEFT, oldLeft, left));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OperationsPackage.EQ__LEFT, oldLeft, left));
 			}
 		}
 		return left;
@@ -106,7 +108,7 @@ public class EqImpl extends CommandImpl implements Eq {
 		EObject oldLeft = left;
 		left = newLeft;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.EQ__LEFT, oldLeft, left));
+			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.EQ__LEFT, oldLeft, left));
 	}
 
 	/**
@@ -120,7 +122,7 @@ public class EqImpl extends CommandImpl implements Eq {
 			right = eResolveProxy(oldRight);
 			if (right != oldRight) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CorePackage.EQ__RIGHT, oldRight, right));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OperationsPackage.EQ__RIGHT, oldRight, right));
 			}
 		}
 		return right;
@@ -144,7 +146,7 @@ public class EqImpl extends CommandImpl implements Eq {
 		EObject oldRight = right;
 		right = newRight;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.EQ__RIGHT, oldRight, right));
+			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.EQ__RIGHT, oldRight, right));
 	}
 
 	/**
@@ -155,10 +157,10 @@ public class EqImpl extends CommandImpl implements Eq {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CorePackage.EQ__LEFT:
+			case OperationsPackage.EQ__LEFT:
 				if (resolve) return getLeft();
 				return basicGetLeft();
-			case CorePackage.EQ__RIGHT:
+			case OperationsPackage.EQ__RIGHT:
 				if (resolve) return getRight();
 				return basicGetRight();
 		}
@@ -173,10 +175,10 @@ public class EqImpl extends CommandImpl implements Eq {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CorePackage.EQ__LEFT:
+			case OperationsPackage.EQ__LEFT:
 				setLeft((EObject)newValue);
 				return;
-			case CorePackage.EQ__RIGHT:
+			case OperationsPackage.EQ__RIGHT:
 				setRight((EObject)newValue);
 				return;
 		}
@@ -191,10 +193,10 @@ public class EqImpl extends CommandImpl implements Eq {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CorePackage.EQ__LEFT:
+			case OperationsPackage.EQ__LEFT:
 				setLeft((EObject)null);
 				return;
-			case CorePackage.EQ__RIGHT:
+			case OperationsPackage.EQ__RIGHT:
 				setRight((EObject)null);
 				return;
 		}
@@ -209,9 +211,9 @@ public class EqImpl extends CommandImpl implements Eq {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CorePackage.EQ__LEFT:
+			case OperationsPackage.EQ__LEFT:
 				return left != null;
-			case CorePackage.EQ__RIGHT:
+			case OperationsPackage.EQ__RIGHT:
 				return right != null;
 		}
 		return super.eIsSet(featureID);

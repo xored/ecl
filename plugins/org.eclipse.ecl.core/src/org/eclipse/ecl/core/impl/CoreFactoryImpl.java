@@ -87,7 +87,6 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.ECL_INTEGER: return createEclInteger();
 			case CorePackage.ECL_FLOAT: return createEclFloat();
 			case CorePackage.ECL_LONG: return createEclLong();
-			case CorePackage.EQ: return createEq();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -331,16 +330,6 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public EclLong createEclLong() {
 		EclLongImpl eclLong = new EclLongImpl();
 		return eclLong;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Eq createEq() {
-		EqImpl eq = new EqImpl();
-		return eq;
 	}
 
 	/**

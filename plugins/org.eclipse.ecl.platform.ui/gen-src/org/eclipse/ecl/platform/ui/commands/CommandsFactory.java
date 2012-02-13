@@ -71,6 +71,15 @@ public interface CommandsFactory extends EFactory {
 	GetWorkingSet createGetWorkingSet();
 
 	/**
+	 * Returns a new object of class '<em>Clear Log View</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Clear Log View</em>'.
+	 * @generated
+	 */
+	ClearLogView createClearLogView();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
