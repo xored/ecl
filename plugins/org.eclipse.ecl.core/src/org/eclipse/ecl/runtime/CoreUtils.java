@@ -208,7 +208,7 @@ public class CoreUtils {
 	 * @param feature
 	 * @return
 	 */
-	private static List<Object> convert(List<Object> values,
+	public static List<Object> convert(List<Object> values,
 			EStructuralFeature feature) {
 		boolean box = feature instanceof EReference;
 		List<Object> result = new ArrayList<Object>();

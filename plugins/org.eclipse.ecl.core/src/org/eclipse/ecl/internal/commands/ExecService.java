@@ -200,7 +200,18 @@ public class ExecService implements ICommandService {
 			throw new RuntimeException("Invalid parameter");
 		}
 		try {
-			CoreUtils.featureSafeSet(target, feature, Arrays.asList(value));
+			//box or unbox
+			value = CoreUtils.convert(Arrays.asList(value), feature).get(0);
+			if (feature.getUpperBound() == 1) {
+				target.eSet(feature, value);
+			} else {
+				@SuppressWarnings("unchecked")
+				List<Object> list = (List<Object>) target.eGet(feature);
+				if (value instanceof List)
+					list.addAll((List<?>) value);
+				else
+					list.add(value);
+			}
 		} catch (ClassCastException cce) {
 			IStatus status = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
 					"Can't assign value " + value + " to parameter "
