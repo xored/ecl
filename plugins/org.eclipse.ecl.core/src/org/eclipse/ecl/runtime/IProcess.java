@@ -12,6 +12,7 @@
 
 package org.eclipse.ecl.runtime;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 
 public interface IProcess {
@@ -23,6 +24,7 @@ public interface IProcess {
 	ISession getSession();
 
 	IStatus waitFor() throws InterruptedException;
+	IStatus waitFor(IProgressMonitor monitor);
 
 	boolean isAlive();
 }

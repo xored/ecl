@@ -13,7 +13,9 @@
 package org.eclipse.ecl.internal.core;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
@@ -48,6 +50,22 @@ public class Process implements IProcess {
 	public synchronized IStatus waitFor() throws InterruptedException {
 		while (status == null) {
 			wait(100);
+		}
+		return status;
+	}
+
+	public synchronized IStatus waitFor(IProgressMonitor monitor) {
+		while (status == null) {
+			if (monitor.isCanceled()) {
+				status = new Status(IStatus.CANCEL, CorePlugin.PLUGIN_ID,
+						"Execution is canceled.", null);
+				break;
+			}
+			try {
+				wait(100);
+			} catch (InterruptedException e) {
+				break;
+			}
 		}
 		return status;
 	}

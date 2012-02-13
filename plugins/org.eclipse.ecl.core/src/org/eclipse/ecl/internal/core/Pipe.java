@@ -28,6 +28,7 @@ public class Pipe implements IPipe {
 	public Pipe() {
 		queue = new LinkedBlockingQueue<Object>();
 	}
+
 	@Override
 	public boolean isClosed() {
 		return closed;
@@ -57,7 +58,11 @@ public class Pipe implements IPipe {
 					return queue.poll(end, TimeUnit.MILLISECONDS);
 				return CorePlugin.err("Timeout");
 			}
-			return queue.poll(timeout, TimeUnit.MILLISECONDS);
+			Object result = queue.poll(timeout, TimeUnit.MILLISECONDS);
+			if (CLOSE_OBJECT.equals(result)) {
+				return this.status;
+			}
+			return result;
 		} catch (InterruptedException e) {
 			throw new CoreException(CorePlugin.err(e.getMessage(), e));
 		}
