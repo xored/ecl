@@ -201,7 +201,11 @@ public class ExecService implements ICommandService {
 		}
 		try {
 			//box or unbox
-			value = CoreUtils.convert(Arrays.asList(value), feature).get(0);
+			if(value instanceof List) {
+				value = CoreUtils.convert((List<Object>) value, feature);
+			} else {
+				value = CoreUtils.convert(Arrays.asList(value), feature).get(0);
+			}
 			if (feature.getUpperBound() == 1) {
 				target.eSet(feature, value);
 			} else {
