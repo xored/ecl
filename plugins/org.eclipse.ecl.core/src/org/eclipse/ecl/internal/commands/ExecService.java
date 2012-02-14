@@ -193,7 +193,7 @@ public class ExecService implements ICommandService {
 			List<Object> content = CoreUtils.readPipeContent(childOutput);
 			if (content.size() == 1) {
 				value = content.get(0);
-			} else if (content.size() > 1) {
+			} else {
 				value = content;
 			}
 		} else {
