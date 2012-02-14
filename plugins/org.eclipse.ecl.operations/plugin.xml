@@ -35,6 +35,12 @@
             name="AssertTrue"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.LengthService"
+            name="Length"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+      
       
    </extension>
 

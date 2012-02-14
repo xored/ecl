@@ -71,6 +71,15 @@ public interface OperationsFactory extends EFactory {
 	AssertTrue createAssertTrue();
 
 	/**
+	 * Returns a new object of class '<em>Length</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Length</em>'.
+	 * @generated
+	 */
+	Length createLength();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

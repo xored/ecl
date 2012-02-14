@@ -98,6 +98,10 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 				return createAssertTrueAdapter();
 			}
 			@Override
+			public Adapter caseLength(Length object) {
+				return createLengthAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -202,6 +206,20 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAssertTrueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.Length <em>Length</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.Length
+	 * @generated
+	 */
+	public Adapter createLengthAdapter() {
 		return null;
 	}
 

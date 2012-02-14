@@ -359,6 +359,53 @@ public interface OperationsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.LengthImpl <em>Length</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.LengthImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getLength()
+	 * @generated
+	 */
+	int LENGTH = 6;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENGTH__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENGTH__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENGTH__INPUT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Length</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LENGTH_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Eq <em>Eq</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -472,6 +519,27 @@ public interface OperationsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAssertTrue_Message();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Length <em>Length</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Length</em>'.
+	 * @see org.eclipse.ecl.operations.Length
+	 * @generated
+	 */
+	EClass getLength();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.operations.Length#getInput <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Input</em>'.
+	 * @see org.eclipse.ecl.operations.Length#getInput()
+	 * @see #getLength()
+	 * @generated
+	 */
+	EReference getLength_Input();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -594,6 +662,24 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ASSERT_TRUE__MESSAGE = eINSTANCE.getAssertTrue_Message();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.LengthImpl <em>Length</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.LengthImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getLength()
+		 * @generated
+		 */
+		EClass LENGTH = eINSTANCE.getLength();
+
+		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LENGTH__INPUT = eINSTANCE.getLength_Input();
 
 	}
 

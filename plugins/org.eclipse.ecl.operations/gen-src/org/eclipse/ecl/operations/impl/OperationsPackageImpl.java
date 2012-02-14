@@ -13,6 +13,7 @@ import org.eclipse.ecl.operations.Bool;
 import org.eclipse.ecl.operations.Convert;
 import org.eclipse.ecl.operations.Eq;
 import org.eclipse.ecl.operations.Int;
+import org.eclipse.ecl.operations.Length;
 import org.eclipse.ecl.operations.OperationsFactory;
 import org.eclipse.ecl.operations.OperationsPackage;
 
@@ -71,6 +72,13 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * @generated
 	 */
 	private EClass assertTrueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lengthEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -240,6 +248,24 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLength() {
+		return lengthEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLength_Input() {
+		return (EReference)lengthEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public OperationsFactory getOperationsFactory() {
 		return (OperationsFactory)getEFactoryInstance();
 	}
@@ -279,6 +305,9 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		assertTrueEClass = createEClass(ASSERT_TRUE);
 		createEAttribute(assertTrueEClass, ASSERT_TRUE__INPUT);
 		createEAttribute(assertTrueEClass, ASSERT_TRUE__MESSAGE);
+
+		lengthEClass = createEClass(LENGTH);
+		createEReference(lengthEClass, LENGTH__INPUT);
 	}
 
 	/**
@@ -319,6 +348,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		strEClass.getESuperTypes().add(this.getConvert());
 		convertEClass.getESuperTypes().add(theCorePackage.getCommand());
 		assertTrueEClass.getESuperTypes().add(theCorePackage.getCommand());
+		lengthEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -337,6 +367,9 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		initEClass(assertTrueEClass, AssertTrue.class, "AssertTrue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAssertTrue_Input(), theEcorePackage.getEBoolean(), "input", null, 0, 1, AssertTrue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAssertTrue_Message(), theEcorePackage.getEString(), "message", null, 0, 1, AssertTrue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(lengthEClass, Length.class, "Length", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLength_Input(), theEcorePackage.getEObject(), null, "input", null, 0, -1, Length.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -422,7 +455,20 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		   source, 
 		   new String[] {
 			 "description", "Message to fail with when input is not true"
-		   });
+		   });		
+		addAnnotation
+		  (lengthEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Returns count of objects got from input pipe",
+			 "returns", "Object count"
+		   });		
+		addAnnotation
+		  (getLength_Input(), 
+		   source, 
+		   new String[] {
+			 "description", "List of objects to get the length for"
+		   });	
 	}
 
 	/**
@@ -447,7 +493,12 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (getAssertTrue_Input(), 
 		   source, 
 		   new String[] {
-		   });	
+		   });					
+		addAnnotation
+		  (getLength_Input(), 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 	/**
@@ -462,7 +513,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });						
+		   });									
 	}
 
 } //OperationsPackageImpl
