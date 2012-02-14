@@ -117,6 +117,191 @@ public interface OperationsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.ConvertImpl <em>Convert</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.ConvertImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getConvert()
+	 * @generated
+	 */
+	int CONVERT = 4;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERT__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERT__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERT__INPUT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Convert</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVERT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.IntImpl <em>Int</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.IntImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getInt()
+	 * @generated
+	 */
+	int INT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INT__HOST = CONVERT__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INT__BINDINGS = CONVERT__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INT__INPUT = CONVERT__INPUT;
+
+	/**
+	 * The number of structural features of the '<em>Int</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INT_FEATURE_COUNT = CONVERT_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.BoolImpl <em>Bool</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.BoolImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getBool()
+	 * @generated
+	 */
+	int BOOL = 2;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOL__HOST = CONVERT__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOL__BINDINGS = CONVERT__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOL__INPUT = CONVERT__INPUT;
+
+	/**
+	 * The number of structural features of the '<em>Bool</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOL_FEATURE_COUNT = CONVERT_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.StrImpl <em>Str</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.StrImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getStr()
+	 * @generated
+	 */
+	int STR = 3;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STR__HOST = CONVERT__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STR__BINDINGS = CONVERT__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STR__INPUT = CONVERT__INPUT;
+
+	/**
+	 * The number of structural features of the '<em>Str</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STR_FEATURE_COUNT = CONVERT_FEATURE_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Eq <em>Eq</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -147,6 +332,57 @@ public interface OperationsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEq_Right();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Int <em>Int</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Int</em>'.
+	 * @see org.eclipse.ecl.operations.Int
+	 * @generated
+	 */
+	EClass getInt();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Bool <em>Bool</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Bool</em>'.
+	 * @see org.eclipse.ecl.operations.Bool
+	 * @generated
+	 */
+	EClass getBool();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Str <em>Str</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Str</em>'.
+	 * @see org.eclipse.ecl.operations.Str
+	 * @generated
+	 */
+	EClass getStr();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Convert <em>Convert</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Convert</em>'.
+	 * @see org.eclipse.ecl.operations.Convert
+	 * @generated
+	 */
+	EClass getConvert();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Convert#getInput <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Input</em>'.
+	 * @see org.eclipse.ecl.operations.Convert#getInput()
+	 * @see #getConvert()
+	 * @generated
+	 */
+	EReference getConvert_Input();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -195,6 +431,54 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EQ__RIGHT = eINSTANCE.getEq_Right();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.IntImpl <em>Int</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.IntImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getInt()
+		 * @generated
+		 */
+		EClass INT = eINSTANCE.getInt();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.BoolImpl <em>Bool</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.BoolImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getBool()
+		 * @generated
+		 */
+		EClass BOOL = eINSTANCE.getBool();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.StrImpl <em>Str</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.StrImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getStr()
+		 * @generated
+		 */
+		EClass STR = eINSTANCE.getStr();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.ConvertImpl <em>Convert</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.ConvertImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getConvert()
+		 * @generated
+		 */
+		EClass CONVERT = eINSTANCE.getConvert();
+
+		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONVERT__INPUT = eINSTANCE.getConvert_Input();
 
 	}
 

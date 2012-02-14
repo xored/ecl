@@ -1,30 +1,26 @@
 package org.eclipse.ecl.operations.internal;
 
-import org.osgi.framework.BundleActivator;
+import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 
-public class OperationsPlugin implements BundleActivator {
+public class OperationsPlugin extends Plugin {
 
-	private static BundleContext context;
-
-	static BundleContext getContext() {
-		return context;
+	private static OperationsPlugin plugin = null;
+	public static final String PLUGIN_ID = "org.eclipse.ecl.operations";
+	
+	@Override
+	public void start(BundleContext context) throws Exception {
+		super.start(context);
+		plugin = this;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
-	 */
-	public void start(BundleContext bundleContext) throws Exception {
-		OperationsPlugin.context = bundleContext;
+	@Override
+	public void stop(BundleContext context) throws Exception {
+		plugin = null;
+		super.stop(context);
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
-	 */
-	public void stop(BundleContext bundleContext) throws Exception {
-		OperationsPlugin.context = null;
+	
+	public static OperationsPlugin getDefault() {
+		return plugin;
 	}
-
 }

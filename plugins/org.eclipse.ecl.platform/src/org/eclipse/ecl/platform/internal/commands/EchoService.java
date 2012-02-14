@@ -16,7 +16,6 @@ public class EchoService implements ICommandService {
 			return Status.CANCEL_STATUS;
 		}
 		context.getOutput().write(((Echo) command).getStr());
-		context.getOutput().close(Status.OK_STATUS);
 		return Status.OK_STATUS;
 	}
 

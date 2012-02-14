@@ -35,6 +35,33 @@ public interface OperationsFactory extends EFactory {
 	Eq createEq();
 
 	/**
+	 * Returns a new object of class '<em>Int</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Int</em>'.
+	 * @generated
+	 */
+	Int createInt();
+
+	/**
+	 * Returns a new object of class '<em>Bool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Bool</em>'.
+	 * @generated
+	 */
+	Bool createBool();
+
+	/**
+	 * Returns a new object of class '<em>Str</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Str</em>'.
+	 * @generated
+	 */
+	Str createStr();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

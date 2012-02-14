@@ -8,10 +8,14 @@ package org.eclipse.ecl.operations.impl;
 
 import org.eclipse.ecl.core.CorePackage;
 
+import org.eclipse.ecl.operations.Bool;
+import org.eclipse.ecl.operations.Convert;
 import org.eclipse.ecl.operations.Eq;
+import org.eclipse.ecl.operations.Int;
 import org.eclipse.ecl.operations.OperationsFactory;
 import org.eclipse.ecl.operations.OperationsPackage;
 
+import org.eclipse.ecl.operations.Str;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -32,6 +36,32 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * @generated
 	 */
 	private EClass eqEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass intEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass boolEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass strEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass convertEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -129,6 +159,51 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getInt() {
+		return intEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBool() {
+		return boolEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStr() {
+		return strEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConvert() {
+		return convertEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConvert_Input() {
+		return (EReference)convertEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public OperationsFactory getOperationsFactory() {
 		return (OperationsFactory)getEFactoryInstance();
 	}
@@ -155,6 +230,15 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		eqEClass = createEClass(EQ);
 		createEReference(eqEClass, EQ__LEFT);
 		createEReference(eqEClass, EQ__RIGHT);
+
+		intEClass = createEClass(INT);
+
+		boolEClass = createEClass(BOOL);
+
+		strEClass = createEClass(STR);
+
+		convertEClass = createEClass(CONVERT);
+		createEReference(convertEClass, CONVERT__INPUT);
 	}
 
 	/**
@@ -190,11 +274,24 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 		// Add supertypes to classes
 		eqEClass.getESuperTypes().add(theCorePackage.getCommand());
+		intEClass.getESuperTypes().add(this.getConvert());
+		boolEClass.getESuperTypes().add(this.getConvert());
+		strEClass.getESuperTypes().add(this.getConvert());
+		convertEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEq_Left(), theEcorePackage.getEObject(), null, "left", null, 0, 1, Eq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEq_Right(), theEcorePackage.getEObject(), null, "right", null, 0, 1, Eq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(intEClass, Int.class, "Int", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(boolEClass, Bool.class, "Bool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(strEClass, Str.class, "Str", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(convertEClass, Convert.class, "Convert", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConvert_Input(), theEcorePackage.getEObject(), null, "input", null, 0, 1, Convert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -204,6 +301,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		createDocsAnnotations();
 		// http://www.eclipse.org/ecl/input
 		createInputAnnotations();
+		// http://www.eclipse.org/ecl/internal
+		createInternalAnnotations();
 	}
 
 	/**
@@ -232,7 +331,34 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		   source, 
 		   new String[] {
 			 "description", "Right argument"
-		   });
+		   });		
+		addAnnotation
+		  (intEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Converts its argument to int.",
+			 "returns", "Returns integer value or fails if value cannot be converted. <code>true</code> is converted to <code>1</code> and <code>false</code> is converted to <code>0</code>."
+		   });		
+		addAnnotation
+		  (boolEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Converts its argument to boolean.",
+			 "returns", "Returns boolean value or fails if value cannot be converted. "
+		   });		
+		addAnnotation
+		  (strEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Converts its argument to string.",
+			 "returns", "Returns string value or fails if value cannot be converted. "
+		   });			
+		addAnnotation
+		  (getConvert_Input(), 
+		   source, 
+		   new String[] {
+			 "description", "Argument to be converted to string."
+		   });	
 	}
 
 	/**
@@ -245,6 +371,26 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		String source = "http://www.eclipse.org/ecl/input";			
 		addAnnotation
 		  (getEq_Left(), 
+		   source, 
+		   new String[] {
+		   });									
+		addAnnotation
+		  (getConvert_Input(), 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/internal</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createInternalAnnotations() {
+		String source = "http://www.eclipse.org/ecl/internal";									
+		addAnnotation
+		  (convertEClass, 
 		   source, 
 		   new String[] {
 		   });		

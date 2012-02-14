@@ -61,6 +61,9 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case OperationsPackage.EQ: return createEq();
+			case OperationsPackage.INT: return createInt();
+			case OperationsPackage.BOOL: return createBool();
+			case OperationsPackage.STR: return createStr();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -74,6 +77,36 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	public Eq createEq() {
 		EqImpl eq = new EqImpl();
 		return eq;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Int createInt() {
+		IntImpl int_ = new IntImpl();
+		return int_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Bool createBool() {
+		BoolImpl bool = new BoolImpl();
+		return bool;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Str createStr() {
+		StrImpl str = new StrImpl();
+		return str;
 	}
 
 	/**

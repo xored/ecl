@@ -20,4 +20,31 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Int" eSuperTypes="#//Convert">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Converts its argument to int."/>
+      <details key="returns" value="Returns integer value or fails if value cannot be converted. &lt;code>true&lt;/code> is converted to &lt;code>1&lt;/code> and &lt;code>false&lt;/code> is converted to &lt;code>0&lt;/code>."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Bool" eSuperTypes="#//Convert">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Converts its argument to boolean."/>
+      <details key="returns" value="Returns boolean value or fails if value cannot be converted. "/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Str" eSuperTypes="#//Convert">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Converts its argument to string."/>
+      <details key="returns" value="Returns string value or fails if value cannot be converted. "/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Convert" abstract="true" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/internal"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Argument to be converted to string."/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
+    </eStructuralFeatures>
+  </eClassifiers>
 </ecore:EPackage>
