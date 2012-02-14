@@ -62,6 +62,15 @@ public interface OperationsFactory extends EFactory {
 	Str createStr();
 
 	/**
+	 * Returns a new object of class '<em>Assert True</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Assert True</em>'.
+	 * @generated
+	 */
+	AssertTrue createAssertTrue();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

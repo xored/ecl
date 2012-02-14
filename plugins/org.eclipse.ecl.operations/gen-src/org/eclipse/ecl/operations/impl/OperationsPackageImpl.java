@@ -8,6 +8,7 @@ package org.eclipse.ecl.operations.impl;
 
 import org.eclipse.ecl.core.CorePackage;
 
+import org.eclipse.ecl.operations.AssertTrue;
 import org.eclipse.ecl.operations.Bool;
 import org.eclipse.ecl.operations.Convert;
 import org.eclipse.ecl.operations.Eq;
@@ -16,6 +17,7 @@ import org.eclipse.ecl.operations.OperationsFactory;
 import org.eclipse.ecl.operations.OperationsPackage;
 
 import org.eclipse.ecl.operations.Str;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -62,6 +64,13 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * @generated
 	 */
 	private EClass convertEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass assertTrueEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -204,6 +213,33 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAssertTrue() {
+		return assertTrueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAssertTrue_Input() {
+		return (EAttribute)assertTrueEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAssertTrue_Message() {
+		return (EAttribute)assertTrueEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public OperationsFactory getOperationsFactory() {
 		return (OperationsFactory)getEFactoryInstance();
 	}
@@ -239,6 +275,10 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 		convertEClass = createEClass(CONVERT);
 		createEReference(convertEClass, CONVERT__INPUT);
+
+		assertTrueEClass = createEClass(ASSERT_TRUE);
+		createEAttribute(assertTrueEClass, ASSERT_TRUE__INPUT);
+		createEAttribute(assertTrueEClass, ASSERT_TRUE__MESSAGE);
 	}
 
 	/**
@@ -278,6 +318,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		boolEClass.getESuperTypes().add(this.getConvert());
 		strEClass.getESuperTypes().add(this.getConvert());
 		convertEClass.getESuperTypes().add(theCorePackage.getCommand());
+		assertTrueEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -292,6 +333,10 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 		initEClass(convertEClass, Convert.class, "Convert", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConvert_Input(), theEcorePackage.getEObject(), null, "input", null, 0, 1, Convert.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(assertTrueEClass, AssertTrue.class, "AssertTrue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAssertTrue_Input(), theEcorePackage.getEBoolean(), "input", null, 0, 1, AssertTrue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAssertTrue_Message(), theEcorePackage.getEString(), "message", null, 0, 1, AssertTrue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -358,7 +403,26 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		   source, 
 		   new String[] {
 			 "description", "Argument to be converted to string."
-		   });	
+		   });			
+		addAnnotation
+		  (assertTrueEClass, 
+		   source, 
+		   new String[] {
+			 "description", "If input is not true, fails",
+			 "returns", "Nothing"
+		   });		
+		addAnnotation
+		  (getAssertTrue_Input(), 
+		   source, 
+		   new String[] {
+			 "description", "Input value. Must be true."
+		   });			
+		addAnnotation
+		  (getAssertTrue_Message(), 
+		   source, 
+		   new String[] {
+			 "description", "Message to fail with when input is not true"
+		   });
 	}
 
 	/**
@@ -378,7 +442,12 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (getConvert_Input(), 
 		   source, 
 		   new String[] {
-		   });
+		   });				
+		addAnnotation
+		  (getAssertTrue_Input(), 
+		   source, 
+		   new String[] {
+		   });	
 	}
 
 	/**
@@ -393,7 +462,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });		
+		   });						
 	}
 
 } //OperationsPackageImpl

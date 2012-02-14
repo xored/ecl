@@ -30,6 +30,12 @@
             name="Str"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.AssertTrueService"
+            name="AssertTrue"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+      
    </extension>
 
 </plugin>

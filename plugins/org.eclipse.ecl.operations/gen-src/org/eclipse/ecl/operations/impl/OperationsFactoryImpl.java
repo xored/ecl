@@ -64,6 +64,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 			case OperationsPackage.INT: return createInt();
 			case OperationsPackage.BOOL: return createBool();
 			case OperationsPackage.STR: return createStr();
+			case OperationsPackage.ASSERT_TRUE: return createAssertTrue();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -107,6 +108,16 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	public Str createStr() {
 		StrImpl str = new StrImpl();
 		return str;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AssertTrue createAssertTrue() {
+		AssertTrueImpl assertTrue = new AssertTrueImpl();
+		return assertTrue;
 	}
 
 	/**

@@ -8,6 +8,7 @@ package org.eclipse.ecl.operations;
 
 import org.eclipse.ecl.core.CorePackage;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -302,6 +303,62 @@ public interface OperationsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.AssertTrueImpl <em>Assert True</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.AssertTrueImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertTrue()
+	 * @generated
+	 */
+	int ASSERT_TRUE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_TRUE__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_TRUE__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_TRUE__INPUT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_TRUE__MESSAGE = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Assert True</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_TRUE_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Eq <em>Eq</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -383,6 +440,38 @@ public interface OperationsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getConvert_Input();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.AssertTrue <em>Assert True</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Assert True</em>'.
+	 * @see org.eclipse.ecl.operations.AssertTrue
+	 * @generated
+	 */
+	EClass getAssertTrue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.operations.AssertTrue#isInput <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Input</em>'.
+	 * @see org.eclipse.ecl.operations.AssertTrue#isInput()
+	 * @see #getAssertTrue()
+	 * @generated
+	 */
+	EAttribute getAssertTrue_Input();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.operations.AssertTrue#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see org.eclipse.ecl.operations.AssertTrue#getMessage()
+	 * @see #getAssertTrue()
+	 * @generated
+	 */
+	EAttribute getAssertTrue_Message();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -479,6 +568,32 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONVERT__INPUT = eINSTANCE.getConvert_Input();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.AssertTrueImpl <em>Assert True</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.AssertTrueImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertTrue()
+		 * @generated
+		 */
+		EClass ASSERT_TRUE = eINSTANCE.getAssertTrue();
+
+		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ASSERT_TRUE__INPUT = eINSTANCE.getAssertTrue_Input();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ASSERT_TRUE__MESSAGE = eINSTANCE.getAssertTrue_Message();
 
 	}
 

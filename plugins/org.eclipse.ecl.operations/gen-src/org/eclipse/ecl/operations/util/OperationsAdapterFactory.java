@@ -94,6 +94,10 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 				return createConvertAdapter();
 			}
 			@Override
+			public Adapter caseAssertTrue(AssertTrue object) {
+				return createAssertTrueAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -184,6 +188,20 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConvertAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.AssertTrue <em>Assert True</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.AssertTrue
+	 * @generated
+	 */
+	public Adapter createAssertTrueAdapter() {
 		return null;
 	}
 
