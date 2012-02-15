@@ -100,7 +100,9 @@ public class EclTcpSession implements ISession {
 						} catch (CoreException e) {
 							try {
 								if (node != null) {
-									node.process.setStatus(e.getStatus());
+									IStatus status = e.getStatus();
+									node.process.setStatus(new EclTcpSocketStatus(
+											status));
 								}
 							} catch (CoreException e1) {
 								CorePlugin.log(e1);
@@ -108,7 +110,8 @@ public class EclTcpSession implements ISession {
 						} catch (Throwable t) {
 							try {
 								if (node != null) {
-									node.process.setStatus(CorePlugin.err(t));
+									node.process.setStatus(new EclTcpSocketStatus(
+											CorePlugin.err(t)));
 								}
 							} catch (CoreException e1) {
 								CorePlugin.log(e1);
