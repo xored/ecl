@@ -7,22 +7,36 @@ import java.io.InputStream;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class SessionManager {
 	private Map<String, SessionRequestHandler> sessions = new HashMap<String, SessionRequestHandler>();
+	private ExecutorService executor;
+	int count = 0;
+	private boolean useJobs = false;;
+
+	public SessionManager(boolean useJobs) {
+		executor = Executors.newCachedThreadPool();
+		this.useJobs = useJobs;
+	}
 
 	public void acceptNewConnection(Socket client) {
 		try {
+			count++;
+//			System.out.println("Connection: " + count + " from:"
+//					+ client.getInetAddress().toString());
 			String uuid = initRecover(client);
 			if (uuid != null) {
 				synchronized (sessions) {
 					SessionRequestHandler handler = sessions.get(uuid);
 					if (handler == null) {
-						handler = new SessionRequestHandler(client);
-						handler.start();
+						handler = new SessionRequestHandler(client, useJobs);
+						executor.execute(handler);
+						// handler.start();
 					} else {
 						handler.recover(client);
 					}

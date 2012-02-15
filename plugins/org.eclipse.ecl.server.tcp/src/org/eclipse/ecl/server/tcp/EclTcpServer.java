@@ -20,16 +20,17 @@ public class EclTcpServer extends Thread {
 	private final ServerSocket socket;
 	private final int port;
 	private volatile boolean starting = true;
-	private SessionManager manager = new SessionManager();
+	private SessionManager manager = null;
 
 	public boolean isStarting() {
 		return starting;
 	}
 
-	public EclTcpServer(int port) throws IOException {
+	public EclTcpServer(int port, boolean useJobs) throws IOException {
 		super("ECL TCP server: " + port + " main");
 		this.socket = new ServerSocket(port);
 		this.port = port;
+		manager = new SessionManager(useJobs);
 	}
 
 	@Override

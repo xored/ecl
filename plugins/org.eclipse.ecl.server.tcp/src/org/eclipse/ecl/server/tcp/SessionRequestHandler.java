@@ -17,7 +17,7 @@ final class SessionRequestHandler extends Thread {
 	private final Socket socket;
 	private final ISession session;
 
-	SessionRequestHandler(Socket socket) {
+	SessionRequestHandler(Socket socket, boolean useJobs) {
 		super("ECL tcp session:" + socket.getPort());
 		this.socket = socket;
 		try {
@@ -25,7 +25,7 @@ final class SessionRequestHandler extends Thread {
 		} catch (SocketException e) {
 			e.printStackTrace();
 		}
-		this.session = EclRuntime.createSession(false);
+		this.session = EclRuntime.createSession(useJobs);
 	}
 
 	public void run() {
@@ -45,7 +45,7 @@ final class SessionRequestHandler extends Thread {
 					pipe.write(status);
 					pipe.close(status);
 				} catch (Exception e) {
-					Throwable te = e; 
+					Throwable te = e;
 					if (e instanceof CoreException) {
 						if (e.getCause() instanceof SocketException) {
 							te = e.getCause();
