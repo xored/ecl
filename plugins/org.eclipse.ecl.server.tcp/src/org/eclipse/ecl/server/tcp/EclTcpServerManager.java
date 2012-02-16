@@ -21,7 +21,7 @@ public enum EclTcpServerManager {
 	private final Map<Integer, EclTcpServer> servers = new HashMap<Integer, EclTcpServer>();
 
 	public EclTcpServer startServer(int port) throws IOException {
-		return startServer(port, false, false);
+		return startServer(port, true, false);
 	}
 
 	public synchronized EclTcpServer startServer(int port, boolean useJobs,
