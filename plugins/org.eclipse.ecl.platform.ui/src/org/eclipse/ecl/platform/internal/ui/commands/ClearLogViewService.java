@@ -8,6 +8,7 @@ import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.platform.ui.PlatformUIPlugin;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
@@ -26,9 +27,15 @@ public class ClearLogViewService implements ICommandService {
 				try {
 					IWorkbenchPage page = PlatformUI.getWorkbench()
 							.getActiveWorkbenchWindow().getActivePage();
-					page.hideView(page.findView(LOG_ID));
+					IViewPart view = page.findView(LOG_ID);
+					boolean viewOpened = view != null;
+					if(viewOpened) {
+						page.hideView(view);
+					}
 					Platform.getLogFileLocation().toFile().delete();
-					page.showView(LOG_ID);
+					if(viewOpened) {
+						page.showView(LOG_ID);
+					}
 				} catch (PartInitException e) {
 					exceptions[0] = e;
 				}
