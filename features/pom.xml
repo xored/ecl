@@ -15,6 +15,7 @@
     <module>org.eclipse.ecl.ide-feature</module>
     <module>org.eclipse.ecl.shell-feature</module>
     <module>org.eclipse.ecl.platform-feature</module>
+    <module>org.eclipse.ecl.platform.ui-feature</module>
     <module>org.eclipse.ecl.server-feature</module>
     <module>org.eclipse.ecl.server.ui-feature</module>
   </modules>
