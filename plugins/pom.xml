@@ -19,6 +19,7 @@
     <module>org.eclipse.ecl.parser</module>
     <module>org.eclipse.ecl.perf</module>
     <module>org.eclipse.ecl.platform</module>
+    <module>org.eclipse.ecl.platform.ui</module>
     <module>org.eclipse.ecl.server.tcp</module>
     <module>org.eclipse.ecl.server.tcp.ui</module>
     <module>org.eclipse.ecl.shell</module>
