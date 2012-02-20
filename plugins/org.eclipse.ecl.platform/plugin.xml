@@ -78,7 +78,15 @@
             name="Log"
             namespace="http://www.eclipse.org/ecl/platform/commands.ecore">
       </scriptlet>
-      
+	  <scriptlet
+            class="org.eclipse.ecl.platform.internal.commands.EchoService"
+            name="Echo"
+            namespace="http://www.eclipse.org/ecl/platform/commands.ecore">
+      </scriptlet>
+   	  <scriptlet
+            class="org.eclipse.ecl.platform.internal.commands.ClearLogService"
+            name="ClearLog"
+            namespace="http://www.eclipse.org/ecl/platform/commands.ecore">
+      </scriptlet>
    </extension>
-
 </plugin>

@@ -82,6 +82,11 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.SERIALIZED: return createSerialized();
 			case CorePackage.NULLABLE: return createNullable();
 			case CorePackage.IF: return createIf();
+			case CorePackage.ECL_STRING: return createEclString();
+			case CorePackage.ECL_BOOLEAN: return createEclBoolean();
+			case CorePackage.ECL_INTEGER: return createEclInteger();
+			case CorePackage.ECL_FLOAT: return createEclFloat();
+			case CorePackage.ECL_LONG: return createEclLong();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -275,6 +280,56 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public If createIf() {
 		IfImpl if_ = new IfImpl();
 		return if_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EclString createEclString() {
+		EclStringImpl eclString = new EclStringImpl();
+		return eclString;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EclBoolean createEclBoolean() {
+		EclBooleanImpl eclBoolean = new EclBooleanImpl();
+		return eclBoolean;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EclInteger createEclInteger() {
+		EclIntegerImpl eclInteger = new EclIntegerImpl();
+		return eclInteger;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EclFloat createEclFloat() {
+		EclFloatImpl eclFloat = new EclFloatImpl();
+		return eclFloat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EclLong createEclLong() {
+		EclLongImpl eclLong = new EclLongImpl();
+		return eclLong;
 	}
 
 	/**

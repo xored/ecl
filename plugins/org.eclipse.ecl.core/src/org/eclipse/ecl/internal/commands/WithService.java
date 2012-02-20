@@ -31,7 +31,7 @@ public class WithService implements ICommandService {
 		IPipe pipe = session.createPipe();
 		pipe.write(with.getObject());
 		pipe.close(Status.OK_STATUS);
-		IProcess doProcess = session.execute(with.getDo(), pipe, null);
+		IProcess doProcess = session.execute(with.getDo(), pipe, process.getOutput());
 		return doProcess.waitFor();
 	}
 }

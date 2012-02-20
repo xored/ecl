@@ -11,6 +11,7 @@ import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,6 +107,210 @@ public interface CommandsPackage extends EPackage {
 	 */
 	int ALERT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.ListWorkingSetsImpl <em>List Working Sets</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.ListWorkingSetsImpl
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getListWorkingSets()
+	 * @generated
+	 */
+	int LIST_WORKING_SETS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_WORKING_SETS__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_WORKING_SETS__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The number of structural features of the '<em>List Working Sets</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_WORKING_SETS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.CreateWorkingSetImpl <em>Create Working Set</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.CreateWorkingSetImpl
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getCreateWorkingSet()
+	 * @generated
+	 */
+	int CREATE_WORKING_SET = 2;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_WORKING_SET__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_WORKING_SET__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_WORKING_SET__NAME = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_WORKING_SET__TYPE = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Create Working Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_WORKING_SET_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.DeleteWorkingSetImpl <em>Delete Working Set</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.DeleteWorkingSetImpl
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getDeleteWorkingSet()
+	 * @generated
+	 */
+	int DELETE_WORKING_SET = 3;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETE_WORKING_SET__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETE_WORKING_SET__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETE_WORKING_SET__INPUT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Delete Working Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETE_WORKING_SET_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.GetWorkingSetImpl <em>Get Working Set</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.GetWorkingSetImpl
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getGetWorkingSet()
+	 * @generated
+	 */
+	int GET_WORKING_SET = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_WORKING_SET__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Get Working Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_WORKING_SET_FEATURE_COUNT = 1;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.ClearLogViewImpl <em>Clear Log View</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.ClearLogViewImpl
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getClearLogView()
+	 * @generated
+	 */
+	int CLEAR_LOG_VIEW = 5;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLEAR_LOG_VIEW__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLEAR_LOG_VIEW__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The number of structural features of the '<em>Clear Log View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLEAR_LOG_VIEW_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.Alert <em>Alert</em>}'.
@@ -127,6 +332,100 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAlert_Message();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.ListWorkingSets <em>List Working Sets</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>List Working Sets</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.ListWorkingSets
+	 * @generated
+	 */
+	EClass getListWorkingSets();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.CreateWorkingSet <em>Create Working Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Create Working Set</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.CreateWorkingSet
+	 * @generated
+	 */
+	EClass getCreateWorkingSet();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.ui.commands.CreateWorkingSet#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.CreateWorkingSet#getName()
+	 * @see #getCreateWorkingSet()
+	 * @generated
+	 */
+	EAttribute getCreateWorkingSet_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.ui.commands.CreateWorkingSet#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.CreateWorkingSet#getType()
+	 * @see #getCreateWorkingSet()
+	 * @generated
+	 */
+	EAttribute getCreateWorkingSet_Type();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet <em>Delete Working Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Delete Working Set</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet
+	 * @generated
+	 */
+	EClass getDeleteWorkingSet();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet#getInput <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Input</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet#getInput()
+	 * @see #getDeleteWorkingSet()
+	 * @generated
+	 */
+	EReference getDeleteWorkingSet_Input();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.GetWorkingSet <em>Get Working Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Get Working Set</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.GetWorkingSet
+	 * @generated
+	 */
+	EClass getGetWorkingSet();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.ui.commands.GetWorkingSet#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.GetWorkingSet#getName()
+	 * @see #getGetWorkingSet()
+	 * @generated
+	 */
+	EAttribute getGetWorkingSet_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.ClearLogView <em>Clear Log View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Clear Log View</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.ClearLogView
+	 * @generated
+	 */
+	EClass getClearLogView();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -167,6 +466,88 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ALERT__MESSAGE = eINSTANCE.getAlert_Message();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.ui.commands.impl.ListWorkingSetsImpl <em>List Working Sets</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.ListWorkingSetsImpl
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getListWorkingSets()
+		 * @generated
+		 */
+		EClass LIST_WORKING_SETS = eINSTANCE.getListWorkingSets();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.ui.commands.impl.CreateWorkingSetImpl <em>Create Working Set</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.CreateWorkingSetImpl
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getCreateWorkingSet()
+		 * @generated
+		 */
+		EClass CREATE_WORKING_SET = eINSTANCE.getCreateWorkingSet();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CREATE_WORKING_SET__NAME = eINSTANCE.getCreateWorkingSet_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CREATE_WORKING_SET__TYPE = eINSTANCE.getCreateWorkingSet_Type();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.ui.commands.impl.DeleteWorkingSetImpl <em>Delete Working Set</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.DeleteWorkingSetImpl
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getDeleteWorkingSet()
+		 * @generated
+		 */
+		EClass DELETE_WORKING_SET = eINSTANCE.getDeleteWorkingSet();
+
+		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DELETE_WORKING_SET__INPUT = eINSTANCE.getDeleteWorkingSet_Input();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.ui.commands.impl.GetWorkingSetImpl <em>Get Working Set</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.GetWorkingSetImpl
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getGetWorkingSet()
+		 * @generated
+		 */
+		EClass GET_WORKING_SET = eINSTANCE.getGetWorkingSet();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GET_WORKING_SET__NAME = eINSTANCE.getGetWorkingSet_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.ui.commands.impl.ClearLogViewImpl <em>Clear Log View</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.ClearLogViewImpl
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getClearLogView()
+		 * @generated
+		 */
+		EClass CLEAR_LOG_VIEW = eINSTANCE.getClearLogView();
 
 	}
 

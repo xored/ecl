@@ -8,13 +8,14 @@
   <parent>
     <artifactId>ecl</artifactId>
     <groupId>org.eclipse.ecl</groupId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
   </parent>
   <modules>
     <module>org.eclipse.ecl.core-feature</module>
     <module>org.eclipse.ecl.ide-feature</module>
     <module>org.eclipse.ecl.shell-feature</module>
     <module>org.eclipse.ecl.platform-feature</module>
+    <module>org.eclipse.ecl.platform.ui-feature</module>
     <module>org.eclipse.ecl.server-feature</module>
     <module>org.eclipse.ecl.server.ui-feature</module>
   </modules>

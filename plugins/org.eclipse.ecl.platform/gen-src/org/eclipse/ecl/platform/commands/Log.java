@@ -16,14 +16,14 @@ import org.eclipse.ecl.core.Command;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.ecl.platform.commands.Log#getSeverity <em>Severity</em>}</li>
  *   <li>{@link org.eclipse.ecl.platform.commands.Log#getMessage <em>Message</em>}</li>
+ *   <li>{@link org.eclipse.ecl.platform.commands.Log#getSeverity <em>Severity</em>}</li>
  *   <li>{@link org.eclipse.ecl.platform.commands.Log#getPlugin <em>Plugin</em>}</li>
  * </ul>
  * </p>
  *
  * @see org.eclipse.ecl.platform.commands.CommandsPackage#getLog()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Writes an entry into Eclipse log' returns='Nothing'"
  * @generated
  */
 public interface Log extends Command {
@@ -40,6 +40,7 @@ public interface Log extends Command {
 	 * @see #setSeverity(String)
 	 * @see org.eclipse.ecl.platform.commands.CommandsPackage#getLog_Severity()
 	 * @model default="info"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='Log entry severity. Can be <code>info</code>, <code>warning</code>, <code>error</code>, <code>ok</code>, <code>cancel</code> in any letter case. Default value is <code>info</code>.'"
 	 * @generated
 	 */
 	String getSeverity();
@@ -65,7 +66,7 @@ public interface Log extends Command {
 	 * @return the value of the '<em>Message</em>' attribute.
 	 * @see #setMessage(String)
 	 * @see org.eclipse.ecl.platform.commands.CommandsPackage#getLog_Message()
-	 * @model
+	 * @model annotation="http://www.eclipse.org/ecl/docs description='Writes an entry into Eclipse log'"
 	 * @generated
 	 */
 	String getMessage();
@@ -93,6 +94,7 @@ public interface Log extends Command {
 	 * @see #setPlugin(String)
 	 * @see org.eclipse.ecl.platform.commands.CommandsPackage#getLog_Plugin()
 	 * @model default="org.eclipse.ecl.platform"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='ID of plugin adding log entry. Default value is <code>org.eclipse.ecl.platform</code>'"
 	 * @generated
 	 */
 	String getPlugin();

@@ -57,4 +57,10 @@ public class DebuggerBaseTransport implements DebuggerTransport {
 	private volatile DebuggerCallback callback;
 	private Session session;
 
+	public void terminate() {
+		if (session != null) {
+			session.terminate();
+		}
+	}
+
 }

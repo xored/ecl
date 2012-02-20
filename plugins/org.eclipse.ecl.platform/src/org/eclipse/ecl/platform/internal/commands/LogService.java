@@ -29,13 +29,15 @@ public class LogService implements ICommandService {
 		return Status.OK_STATUS;
 	}
 	
-	private static final Map<String, Integer> severities = new HashMap<String, Integer>();
+	public static final Map<String, Integer> severities = new HashMap<String, Integer>();
 	static {
 		severities.put("info", IStatus.INFO);
 		severities.put("warning", IStatus.WARNING);
 		severities.put("warn", IStatus.WARNING);
 		severities.put("error", IStatus.ERROR);
 		severities.put("err", IStatus.ERROR);
+		severities.put("ok", IStatus.ERROR);
+		severities.put("cancel", IStatus.ERROR);
 	}
 	private int getSeverity(String severityText) {
 		if(severityText == null) {

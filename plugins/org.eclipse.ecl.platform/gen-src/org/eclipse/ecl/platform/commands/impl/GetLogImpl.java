@@ -6,6 +6,7 @@
  */
 package org.eclipse.ecl.platform.commands.impl;
 
+import java.util.Collection;
 import org.eclipse.ecl.core.impl.CommandImpl;
 
 import org.eclipse.ecl.platform.commands.CommandsPackage;
@@ -13,9 +14,11 @@ import org.eclipse.ecl.platform.commands.GetLog;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,14 +27,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.ecl.platform.commands.impl.GetLogImpl#getLevels <em>Levels</em>}</li>
  *   <li>{@link org.eclipse.ecl.platform.commands.impl.GetLogImpl#getLimit <em>Limit</em>}</li>
- *   <li>{@link org.eclipse.ecl.platform.commands.impl.GetLogImpl#isSkipInfo <em>Skip Info</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class GetLogImpl extends CommandImpl implements GetLog {
+	/**
+	 * The cached value of the '{@link #getLevels() <em>Levels</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLevels()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> levels;
+
 	/**
 	 * The default value of the '{@link #getLimit() <em>Limit</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -51,26 +64,6 @@ public class GetLogImpl extends CommandImpl implements GetLog {
 	 * @ordered
 	 */
 	protected int limit = LIMIT_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isSkipInfo() <em>Skip Info</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSkipInfo()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean SKIP_INFO_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isSkipInfo() <em>Skip Info</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSkipInfo()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean skipInfo = SKIP_INFO_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,20 +110,11 @@ public class GetLogImpl extends CommandImpl implements GetLog {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSkipInfo() {
-		return skipInfo;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSkipInfo(boolean newSkipInfo) {
-		boolean oldSkipInfo = skipInfo;
-		skipInfo = newSkipInfo;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommandsPackage.GET_LOG__SKIP_INFO, oldSkipInfo, skipInfo));
+	public EList<String> getLevels() {
+		if (levels == null) {
+			levels = new EDataTypeUniqueEList<String>(String.class, this, CommandsPackage.GET_LOG__LEVELS);
+		}
+		return levels;
 	}
 
 	/**
@@ -141,10 +125,10 @@ public class GetLogImpl extends CommandImpl implements GetLog {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case CommandsPackage.GET_LOG__LEVELS:
+				return getLevels();
 			case CommandsPackage.GET_LOG__LIMIT:
 				return getLimit();
-			case CommandsPackage.GET_LOG__SKIP_INFO:
-				return isSkipInfo();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -154,14 +138,16 @@ public class GetLogImpl extends CommandImpl implements GetLog {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case CommandsPackage.GET_LOG__LEVELS:
+				getLevels().clear();
+				getLevels().addAll((Collection<? extends String>)newValue);
+				return;
 			case CommandsPackage.GET_LOG__LIMIT:
 				setLimit((Integer)newValue);
-				return;
-			case CommandsPackage.GET_LOG__SKIP_INFO:
-				setSkipInfo((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -175,11 +161,11 @@ public class GetLogImpl extends CommandImpl implements GetLog {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case CommandsPackage.GET_LOG__LEVELS:
+				getLevels().clear();
+				return;
 			case CommandsPackage.GET_LOG__LIMIT:
 				setLimit(LIMIT_EDEFAULT);
-				return;
-			case CommandsPackage.GET_LOG__SKIP_INFO:
-				setSkipInfo(SKIP_INFO_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -193,10 +179,10 @@ public class GetLogImpl extends CommandImpl implements GetLog {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case CommandsPackage.GET_LOG__LEVELS:
+				return levels != null && !levels.isEmpty();
 			case CommandsPackage.GET_LOG__LIMIT:
 				return limit != LIMIT_EDEFAULT;
-			case CommandsPackage.GET_LOG__SKIP_INFO:
-				return skipInfo != SKIP_INFO_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -211,10 +197,10 @@ public class GetLogImpl extends CommandImpl implements GetLog {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (limit: ");
+		result.append(" (levels: ");
+		result.append(levels);
+		result.append(", limit: ");
 		result.append(limit);
-		result.append(", skipInfo: ");
-		result.append(skipInfo);
 		result.append(')');
 		return result.toString();
 	}

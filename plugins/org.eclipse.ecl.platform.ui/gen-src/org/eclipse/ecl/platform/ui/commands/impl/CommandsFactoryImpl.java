@@ -61,6 +61,11 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case CommandsPackage.ALERT: return createAlert();
+			case CommandsPackage.LIST_WORKING_SETS: return createListWorkingSets();
+			case CommandsPackage.CREATE_WORKING_SET: return createCreateWorkingSet();
+			case CommandsPackage.DELETE_WORKING_SET: return createDeleteWorkingSet();
+			case CommandsPackage.GET_WORKING_SET: return createGetWorkingSet();
+			case CommandsPackage.CLEAR_LOG_VIEW: return createClearLogView();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -74,6 +79,56 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public Alert createAlert() {
 		AlertImpl alert = new AlertImpl();
 		return alert;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ListWorkingSets createListWorkingSets() {
+		ListWorkingSetsImpl listWorkingSets = new ListWorkingSetsImpl();
+		return listWorkingSets;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CreateWorkingSet createCreateWorkingSet() {
+		CreateWorkingSetImpl createWorkingSet = new CreateWorkingSetImpl();
+		return createWorkingSet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DeleteWorkingSet createDeleteWorkingSet() {
+		DeleteWorkingSetImpl deleteWorkingSet = new DeleteWorkingSetImpl();
+		return deleteWorkingSet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GetWorkingSet createGetWorkingSet() {
+		GetWorkingSetImpl getWorkingSet = new GetWorkingSetImpl();
+		return getWorkingSet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClearLogView createClearLogView() {
+		ClearLogViewImpl clearLogView = new ClearLogViewImpl();
+		return clearLogView;
 	}
 
 	/**

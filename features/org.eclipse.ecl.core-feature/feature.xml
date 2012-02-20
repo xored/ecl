@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.ecl.core"
       label="ECL Core"
-      version="1.0.0.qualifier"
+      version="1.1.0.qualifier"
       provider-name="xored software, Inc.">
 
    <description url="http://www.xored.com/q7/discover/ecl">
@@ -47,6 +47,13 @@
 
    <plugin
          id="org.eclipse.ecl.debug.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ecl.operations"
          download-size="0"
          install-size="0"
          version="0.0.0"

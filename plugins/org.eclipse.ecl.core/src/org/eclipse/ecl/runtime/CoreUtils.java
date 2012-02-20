@@ -26,10 +26,13 @@ import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.internal.core.EMFStreamPipe;
+import org.eclipse.ecl.internal.core.IMarkeredPipe;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 public class CoreUtils {
@@ -57,7 +60,7 @@ public class CoreUtils {
 		return CorePlugin.getScriptletManager().getFriendlyNames(ns, name);
 	}
 
-	public static IPipe createEMFPipe(InputStream in, OutputStream out) {
+	public static IMarkeredPipe createEMFPipe(InputStream in, OutputStream out) {
 		return new EMFStreamPipe(in, out);
 	}
 
@@ -176,15 +179,37 @@ public class CoreUtils {
 		return pipeContent;
 	}
 
+	@SuppressWarnings("unchecked")
 	public static void featureSafeSet(EObject object,
 			EStructuralFeature feature, List<?> value) throws CoreException {
 		checkBounds(feature, value);
 		if (value.size() > 0) {
+			value = convert((List<Object>) value, feature);
 			if (feature.getUpperBound() == 1)
 				object.eSet(feature, value.get(0));
 			else
 				object.eSet(feature, value);
 		}
+	}
+
+	/**
+	 * Performs {@link #box(Object)} or {@link #unbox(Object)} operations on
+	 * every object in given list of values based on feature type. Thus, if
+	 * feature is {@link EReference}, values are boxed, if feature is
+	 * {@link EAttribute}, values are unboxed.
+	 * 
+	 * @param values
+	 * @param feature
+	 * @return
+	 */
+	public static List<Object> convert(List<Object> values,
+			EStructuralFeature feature) {
+		boolean box = feature instanceof EReference;
+		List<Object> result = new ArrayList<Object>();
+		for (Object value : values) {
+			result.add(box ? BoxedValues.box(value) : BoxedValues.unbox(value));
+		}
+		return result;
 	}
 
 	public static void checkBounds(EStructuralFeature feature, Object value)

@@ -12,6 +12,8 @@
 package org.eclipse.ecl.internal.core;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.ecl.core.Command;
@@ -20,24 +22,27 @@ import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.ISession;
 
 public class ThreadSession extends AbstractRootSession implements ISession {
+	private static ExecutorService cachedPool;
+	static {
+		cachedPool = Executors.newCachedThreadPool();
+	}
+
 	public static abstract class EclJob extends Job {
 
 		private EclJob(Command scriptlet) {
 			super("ECL session execute: "
 					+ CoreUtils.getScriptletNameByClass(scriptlet.eClass()));
 		}
-
 	}
 
 	protected void doExecute(final Command scriptlet,
 			final ICommandService svc, final List<Object> inputContent,
 			final Process process) {
-		new Thread(new Runnable() {
+		cachedPool.execute(new Runnable() {
 			@Override
 			public void run() {
 				internalDoExecute(scriptlet, svc, inputContent, process);
 			}
-		}).start();
+		});
 	}
-
 }

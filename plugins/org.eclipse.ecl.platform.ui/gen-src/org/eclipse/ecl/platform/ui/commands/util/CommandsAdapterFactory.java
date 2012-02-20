@@ -78,6 +78,26 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 				return createAlertAdapter();
 			}
 			@Override
+			public Adapter caseListWorkingSets(ListWorkingSets object) {
+				return createListWorkingSetsAdapter();
+			}
+			@Override
+			public Adapter caseCreateWorkingSet(CreateWorkingSet object) {
+				return createCreateWorkingSetAdapter();
+			}
+			@Override
+			public Adapter caseDeleteWorkingSet(DeleteWorkingSet object) {
+				return createDeleteWorkingSetAdapter();
+			}
+			@Override
+			public Adapter caseGetWorkingSet(GetWorkingSet object) {
+				return createGetWorkingSetAdapter();
+			}
+			@Override
+			public Adapter caseClearLogView(ClearLogView object) {
+				return createClearLogViewAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -112,6 +132,76 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAlertAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.platform.ui.commands.ListWorkingSets <em>List Working Sets</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.platform.ui.commands.ListWorkingSets
+	 * @generated
+	 */
+	public Adapter createListWorkingSetsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.platform.ui.commands.CreateWorkingSet <em>Create Working Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.platform.ui.commands.CreateWorkingSet
+	 * @generated
+	 */
+	public Adapter createCreateWorkingSetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet <em>Delete Working Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet
+	 * @generated
+	 */
+	public Adapter createDeleteWorkingSetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.platform.ui.commands.GetWorkingSet <em>Get Working Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.platform.ui.commands.GetWorkingSet
+	 * @generated
+	 */
+	public Adapter createGetWorkingSetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.platform.ui.commands.ClearLogView <em>Clear Log View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.platform.ui.commands.ClearLogView
+	 * @generated
+	 */
+	public Adapter createClearLogViewAdapter() {
 		return null;
 	}
 
