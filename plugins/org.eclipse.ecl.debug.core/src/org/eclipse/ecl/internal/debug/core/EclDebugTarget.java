@@ -166,6 +166,11 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		request(new Event(EventType.STEP));
 	}
 
+	public void stepOver() {
+		stepOverStarted();
+		request(new Event(EventType.STEP_OVER));
+	}
+
 	@Override
 	public void breakpointAdded(IBreakpoint breakpoint) {
 		try {
@@ -321,6 +326,11 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 
 	private void stepStarted() {
 		stepping = true;
+		thread.fireResumeEvent(DebugEvent.STEP_INTO);
+	}
+
+	private void stepOverStarted() {
+		stepping = true;
 		thread.fireResumeEvent(DebugEvent.STEP_OVER);
 	}
 
@@ -382,5 +392,4 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		}
 		frames = newFrames;
 	}
-
 }

@@ -13,6 +13,7 @@ package org.eclipse.ecl.internal.debug.runtime;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.security.acl.LastOwnerException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -23,6 +24,10 @@ import java.util.Set;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CommandStack;
 import org.eclipse.ecl.core.IStackListener;
+import org.eclipse.ecl.core.Parallel;
+import org.eclipse.ecl.core.Pipeline;
+import org.eclipse.ecl.core.Sequence;
+import org.eclipse.ecl.core.With;
 import org.eclipse.ecl.debug.commands.DebugCommand;
 import org.eclipse.ecl.debug.runtime.Session;
 import org.eclipse.ecl.debug.runtime.StackFrame;
@@ -39,6 +44,7 @@ import org.eclipse.ecl.gen.ast.AstNode;
 
 public class ServerSession extends Session implements IStackListener {
 
+	private int lastLine = -1;
 	public ServerSession(Socket socket, String id) throws IOException {
 		super(socket);
 		this.id = id;
@@ -59,21 +65,49 @@ public class ServerSession extends Session implements IStackListener {
 			StackFrame[] frames = getFrames(stack);
 			if (frames != null) {
 				if (latch.isLocked()) {
-					if (step) {
-						request(new StepEndEvent(frames));
+					if (stepOver) {
+						Command commandParent = getCommandParent(stack);
+						if (((commandParent == null) || commandParent instanceof Sequence)
+								&& !(stack.getCommand() instanceof Pipeline)) {
+							request(new StepEndEvent(frames));
+							await();
+						}
 					} else {
-						request(new SuspendEvent(frames));
+						if (step) {
+							request(new StepEndEvent(frames));
+						} else {
+							request(new SuspendEvent(frames));
+						}
+						await();
 					}
-					await();
 				} else if (isHitBreakpoint(frames[0])) {
-					latch.lock();
-					request(new BreakpointHitEvent(frames));
-					await();
+					if (lastLine != frames[0].getLine()) {
+						lastLine  = frames[0].getLine();
+						latch.lock();
+						request(new BreakpointHitEvent(frames));
+						await();
+					}
 				}
 			}
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 		}
+	}
+
+	private Command getCommandParent(CommandStack stack) {
+		CommandStack parent = stack.getParent();
+		while (parent != null) {
+			Command cmd = parent.getCommand();
+			if (cmd instanceof Sequence) {
+				return cmd;
+			} else if (cmd instanceof Pipeline) {
+				return cmd;
+			} else if (cmd instanceof Parallel) {
+				return cmd;
+			}
+			parent = parent.getParent();
+		}
+		return null;
 	}
 
 	private boolean isHitBreakpoint(StackFrame data) {
@@ -113,6 +147,9 @@ public class ServerSession extends Session implements IStackListener {
 			break;
 		case STEP:
 			step();
+			break;
+		case STEP_OVER:
+			stepOver();
 			break;
 		case BREAKPOINT_ADD:
 			addBreakpoint((BreakpointEvent) event);
@@ -188,12 +225,18 @@ public class ServerSession extends Session implements IStackListener {
 
 	private synchronized void resume() {
 		step = false;
+		stepOver = false;
 		latch.unlock();
 		request(new Event(EventType.RESUMED));
 	}
 
 	private void step() {
 		step = true;
+		latch.lockAfterUnlock();
+	}
+
+	private void stepOver() {
+		stepOver = true;
 		latch.lockAfterUnlock();
 	}
 
@@ -217,6 +260,7 @@ public class ServerSession extends Session implements IStackListener {
 	}
 
 	private volatile boolean step = false;
+	private volatile boolean stepOver = false;
 	private volatile boolean skip = false;
 	private final MultiLatch latch = new MultiLatch();
 
