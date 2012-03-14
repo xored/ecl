@@ -70,7 +70,12 @@ public class EclShell implements IEclShell {
 	}
 
 	private void printStatus(IStatus status) {
-		printStream.println(status.getMessage());
+		if (status == null) {
+			return;
+		}
+		if (status.getMessage() != null) {
+			printStream.println(status.getMessage());
+		}
 		Throwable t = status.getException();
 		if (t != null) {
 			t.printStackTrace(printStream);
