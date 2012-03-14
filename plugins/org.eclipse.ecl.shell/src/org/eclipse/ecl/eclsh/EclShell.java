@@ -16,6 +16,7 @@ import java.io.PrintStream;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.parser.EclCoreParser;
 import org.eclipse.ecl.runtime.CoreUtils;
@@ -38,7 +39,7 @@ public class EclShell implements IEclShell {
 			return;
 		}
 		try {
-			Command cmd = EclCoreParser.newCommand(command); //CoreFactory.eINSTANCE.createScript();
+			Command cmd = EclCoreParser.newCommand(command); // CoreFactory.eINSTANCE.createScript();
 			if (cmd == null)
 				return;
 			IProcess process = session.execute(cmd);
@@ -47,28 +48,38 @@ public class EclShell implements IEclShell {
 				outputStream.write((status.getMessage()).getBytes());
 				outputStream.write("\r\n".getBytes());
 			}
-			
-			//dump pipe
-			
-			for(Object o : CoreUtils.readPipeContent(process.getOutput())) {
+
+			// dump pipe
+
+			for (Object o : CoreUtils.readPipeContent(process.getOutput())) {
 				printStream.println(o);
 			}
 			printStream.flush();
-			
+
 		} catch (CoreException e) {
 			e.printStackTrace(printStream);
 			IStatus status = e.getStatus();
-			if(status != null) {
-				printStream.println(status.getMessage());
-				Throwable t = status.getException();
-				if(t != null) {
-					t.printStackTrace(printStream);
-				}
+			if (status != null) {
+				printStatus(status);
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+
+	private void printStatus(IStatus status) {
+		printStream.println(status.getMessage());
+		Throwable t = status.getException();
+		if (t != null) {
+			t.printStackTrace(printStream);
+		}
+		if (status instanceof MultiStatus) {
+			IStatus[] childs = status.getChildren();
+			for (IStatus st : childs) {
+				printStatus(st);
+			}
 		}
 	}
 
