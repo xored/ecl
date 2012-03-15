@@ -30,6 +30,15 @@ public class EclDocTest extends TestCase {
 				EPackage.Registry.INSTANCE
 						.getEPackage("http://www.eclipse.org/ecl/core.ecore"),
 				EPackage.Registry.INSTANCE
+						.getEPackage("http://www.eclipse.org/ecl/operations.ecore"),
+				EPackage.Registry.INSTANCE
+						.getEPackage("http://www.eclipse.org/ecl/platform/commands.ecore"),
+				EPackage.Registry.INSTANCE
+						.getEPackage("http://www.eclipse.org/ecl/platform.ui/commands.ecore"),
+
+				EPackage.Registry.INSTANCE
+						.getEPackage("http://www.eclipse.org/ecl/core.ecore"),
+				EPackage.Registry.INSTANCE
 						.getEPackage("http://www.eclipse.org/ecl/tesla.ecore"),
 				EPackage.Registry.INSTANCE
 						.getEPackage("http://www.eclipse.org/ecl/tesla/diagram.ecore"),

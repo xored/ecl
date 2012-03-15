@@ -59,11 +59,11 @@ public class DocWriter {
 	}
 	
 	private static final List<String> SKIP_COMMANDS = 
-			Arrays.asList(new String[] { "if", "contains-image", "recognize", 
+			Arrays.asList(new String[] { "contains-image", "recognize", 
 					"get-region", "get-region-text", "parallel", "pipeline", "script",
 					"setup-player", "shoutdown-player", "unsupported", "options",
 					"get-advanced-info", "sequence", "check", "control-command", "control-not-found",
-					"exec", "foreach", "set-value"});
+					"exec", "foreach", "set-value", "get-property-nodes"});
 	protected boolean skipCommand(EClass command) {
 		return SKIP_COMMANDS.contains(getCommandName(command));
 	}
