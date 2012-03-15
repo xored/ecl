@@ -103,7 +103,7 @@ public class DocWriter {
 		h2(name);
 		openNode("dl");
 
-		strongDt("Descrption");
+		strongDt("Description");
 		String description = getDescription(command);
 		if (description == null) {
 			description = "To be described";
@@ -130,6 +130,12 @@ public class DocWriter {
 			dd(outputDescription);
 		}
 
+		String example = getExample(command);
+		if (example != null) {
+			strongDt("Example");
+			dd(example);
+		}
+		
 		closeNode(); // dl
 		hr();
 
@@ -183,20 +189,29 @@ public class DocWriter {
 
 		return null;
 	}
+	
+	private String getExample(EModelElement elem) {
+		EAnnotation docs = elem.getEAnnotation(DOC_SOURCE);
+		if (docs != null && docs.getDetails().containsKey(EXAMPLE)) {
+			return docs.getDetails().get(EXAMPLE);
+		}
+
+		return null;
+	}
 
 	private EStructuralFeature[] getParameters() {
 		return new EStructuralFeature[0];
 	}
 
-	private void pDd(String descrption) throws IOException {
+	private void pDd(String description) throws IOException {
 		openNode("dd");
-		writeParagraphs(descrption);
+		writeParagraphs(description);
 		closeNode(); // dd
 	}
 
-	private void dd(String descrption) throws IOException {
+	private void dd(String description) throws IOException {
 		openNode("dd");
-		writeText(descrption);
+		writeText(description);
 		closeNode(); // dd
 	}
 
@@ -222,6 +237,7 @@ public class DocWriter {
 	private static final String INPUT_SOURCE = "http://www.eclipse.org/ecl/input";
 	private static final String INTERNAL_SOURCE = "http://www.eclipse.org/ecl/internal";
 	private static final String DESCRIPTION = "description";
+	private static final String EXAMPLE = "example";
 	private static final String RETURNS = "returns";
 	// sorted by name
 	private EClass[] commands;
