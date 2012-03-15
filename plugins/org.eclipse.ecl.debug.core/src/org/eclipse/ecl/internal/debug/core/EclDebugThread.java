@@ -58,7 +58,7 @@ public class EclDebugThread extends EclDebugElement implements IThread {
 
 	@Override
 	public boolean canStepInto() {
-		return false;
+		return !isTerminated() && isSuspended();
 	}
 
 	@Override
@@ -78,11 +78,12 @@ public class EclDebugThread extends EclDebugElement implements IThread {
 
 	@Override
 	public void stepInto() throws DebugException {
+		target.step();
 	}
 
 	@Override
 	public void stepOver() throws DebugException {
-		target.step();
+		target.stepOver();
 	}
 
 	@Override

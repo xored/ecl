@@ -17,7 +17,7 @@ public enum EventType {
 
 	RESUME,
 
-	STEP,
+	STEP, STEP_OVER,
 
 	BREAKPOINT_ADD(true),
 
