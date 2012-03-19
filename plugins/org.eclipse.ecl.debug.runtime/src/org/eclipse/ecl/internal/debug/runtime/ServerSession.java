@@ -13,7 +13,6 @@ package org.eclipse.ecl.internal.debug.runtime;
 
 import java.io.IOException;
 import java.net.Socket;
-import java.security.acl.LastOwnerException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,7 +26,6 @@ import org.eclipse.ecl.core.IStackListener;
 import org.eclipse.ecl.core.Parallel;
 import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.core.Sequence;
-import org.eclipse.ecl.core.With;
 import org.eclipse.ecl.debug.commands.DebugCommand;
 import org.eclipse.ecl.debug.runtime.Session;
 import org.eclipse.ecl.debug.runtime.StackFrame;

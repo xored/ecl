@@ -66,6 +66,11 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 			case OperationsPackage.STR: return createStr();
 			case OperationsPackage.ASSERT_TRUE: return createAssertTrue();
 			case OperationsPackage.LENGTH: return createLength();
+			case OperationsPackage.NOT_EQ: return createNotEq();
+			case OperationsPackage.GT: return createGt();
+			case OperationsPackage.LT: return createLt();
+			case OperationsPackage.NOT: return createNot();
+			case OperationsPackage.TRY: return createTry();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -129,6 +134,56 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	public Length createLength() {
 		LengthImpl length = new LengthImpl();
 		return length;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotEq createNotEq() {
+		NotEqImpl notEq = new NotEqImpl();
+		return notEq;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Gt createGt() {
+		GtImpl gt = new GtImpl();
+		return gt;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Lt createLt() {
+		LtImpl lt = new LtImpl();
+		return lt;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Not createNot() {
+		NotImpl not = new NotImpl();
+		return not;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Try createTry() {
+		TryImpl try_ = new TryImpl();
+		return try_;
 	}
 
 	/**

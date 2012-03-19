@@ -12,12 +12,17 @@ import org.eclipse.ecl.operations.AssertTrue;
 import org.eclipse.ecl.operations.Bool;
 import org.eclipse.ecl.operations.Convert;
 import org.eclipse.ecl.operations.Eq;
+import org.eclipse.ecl.operations.Gt;
 import org.eclipse.ecl.operations.Int;
 import org.eclipse.ecl.operations.Length;
+import org.eclipse.ecl.operations.Lt;
+import org.eclipse.ecl.operations.Not;
+import org.eclipse.ecl.operations.NotEq;
 import org.eclipse.ecl.operations.OperationsFactory;
 import org.eclipse.ecl.operations.OperationsPackage;
 
 import org.eclipse.ecl.operations.Str;
+import org.eclipse.ecl.operations.Try;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -79,6 +84,41 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * @generated
 	 */
 	private EClass lengthEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass notEqEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass gtEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ltEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass notEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tryEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -266,6 +306,159 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getNotEq() {
+		return notEqEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNotEq_Left() {
+		return (EReference)notEqEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNotEq_Right() {
+		return (EReference)notEqEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGt() {
+		return gtEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGt_Left() {
+		return (EReference)gtEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGt_Right() {
+		return (EReference)gtEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLt() {
+		return ltEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLt_Left() {
+		return (EReference)ltEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLt_Right() {
+		return (EReference)ltEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getNot() {
+		return notEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNot_Left() {
+		return (EReference)notEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTry() {
+		return tryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTry_Command() {
+		return (EReference)tryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTry_Catch() {
+		return (EReference)tryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTry_Finally() {
+		return (EReference)tryEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTry_Times() {
+		return (EAttribute)tryEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTry_Delay() {
+		return (EAttribute)tryEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public OperationsFactory getOperationsFactory() {
 		return (OperationsFactory)getEFactoryInstance();
 	}
@@ -308,6 +501,28 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 		lengthEClass = createEClass(LENGTH);
 		createEReference(lengthEClass, LENGTH__INPUT);
+
+		notEqEClass = createEClass(NOT_EQ);
+		createEReference(notEqEClass, NOT_EQ__LEFT);
+		createEReference(notEqEClass, NOT_EQ__RIGHT);
+
+		gtEClass = createEClass(GT);
+		createEReference(gtEClass, GT__LEFT);
+		createEReference(gtEClass, GT__RIGHT);
+
+		ltEClass = createEClass(LT);
+		createEReference(ltEClass, LT__LEFT);
+		createEReference(ltEClass, LT__RIGHT);
+
+		notEClass = createEClass(NOT);
+		createEReference(notEClass, NOT__LEFT);
+
+		tryEClass = createEClass(TRY);
+		createEReference(tryEClass, TRY__COMMAND);
+		createEReference(tryEClass, TRY__CATCH);
+		createEReference(tryEClass, TRY__FINALLY);
+		createEAttribute(tryEClass, TRY__TIMES);
+		createEAttribute(tryEClass, TRY__DELAY);
 	}
 
 	/**
@@ -349,6 +564,11 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		convertEClass.getESuperTypes().add(theCorePackage.getCommand());
 		assertTrueEClass.getESuperTypes().add(theCorePackage.getCommand());
 		lengthEClass.getESuperTypes().add(theCorePackage.getCommand());
+		notEqEClass.getESuperTypes().add(theCorePackage.getCommand());
+		gtEClass.getESuperTypes().add(theCorePackage.getCommand());
+		ltEClass.getESuperTypes().add(theCorePackage.getCommand());
+		notEClass.getESuperTypes().add(theCorePackage.getCommand());
+		tryEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -370,6 +590,28 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 		initEClass(lengthEClass, Length.class, "Length", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLength_Input(), theEcorePackage.getEObject(), null, "input", null, 0, -1, Length.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(notEqEClass, NotEq.class, "NotEq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getNotEq_Left(), theEcorePackage.getEObject(), null, "left", null, 0, 1, NotEq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNotEq_Right(), theEcorePackage.getEObject(), null, "right", null, 0, 1, NotEq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(gtEClass, Gt.class, "Gt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGt_Left(), theEcorePackage.getEObject(), null, "left", null, 0, 1, Gt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGt_Right(), theEcorePackage.getEObject(), null, "right", null, 0, 1, Gt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(ltEClass, Lt.class, "Lt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLt_Left(), theEcorePackage.getEObject(), null, "left", null, 0, 1, Lt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLt_Right(), theEcorePackage.getEObject(), null, "right", null, 0, 1, Lt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(notEClass, Not.class, "Not", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getNot_Left(), theEcorePackage.getEObject(), null, "left", null, 0, 1, Not.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(tryEClass, Try.class, "Try", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTry_Command(), theCorePackage.getCommand(), null, "command", null, 0, 1, Try.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTry_Catch(), theCorePackage.getCommand(), null, "catch", null, 0, 1, Try.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTry_Finally(), theCorePackage.getCommand(), null, "finally", null, 0, 1, Try.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTry_Times(), theEcorePackage.getEIntegerObject(), "times", "1", 0, 1, Try.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTry_Delay(), theEcorePackage.getEIntegerObject(), "delay", "0", 0, 1, Try.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -468,7 +710,84 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		   source, 
 		   new String[] {
 			 "description", "List of objects to get the length for"
-		   });	
+		   });			
+		addAnnotation
+		  (notEqEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Compares arguments on equality",
+			 "returns", "<code>true</code> when args are equal, <code>false</code> otherwise."
+		   });			
+		addAnnotation
+		  (getNotEq_Left(), 
+		   source, 
+		   new String[] {
+			 "description", "Left argument"
+		   });		
+		addAnnotation
+		  (getNotEq_Right(), 
+		   source, 
+		   new String[] {
+			 "description", "Right argument"
+		   });		
+		addAnnotation
+		  (gtEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Compares arguments on equality",
+			 "returns", "<code>true</code> when args are equal, <code>false</code> otherwise."
+		   });			
+		addAnnotation
+		  (getGt_Left(), 
+		   source, 
+		   new String[] {
+			 "description", "Left argument"
+		   });		
+		addAnnotation
+		  (getGt_Right(), 
+		   source, 
+		   new String[] {
+			 "description", "Right argument"
+		   });		
+		addAnnotation
+		  (ltEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Compares arguments on equality",
+			 "returns", "<code>true</code> when args are equal, <code>false</code> otherwise."
+		   });			
+		addAnnotation
+		  (getLt_Left(), 
+		   source, 
+		   new String[] {
+			 "description", "Left argument"
+		   });		
+		addAnnotation
+		  (getLt_Right(), 
+		   source, 
+		   new String[] {
+			 "description", "Right argument"
+		   });		
+		addAnnotation
+		  (notEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Compares arguments on equality",
+			 "returns", "<code>true</code> when args are equal, <code>false</code> otherwise."
+		   });			
+		addAnnotation
+		  (getNot_Left(), 
+		   source, 
+		   new String[] {
+			 "description", "Left argument"
+		   });		
+		addAnnotation
+		  (tryEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Compares arguments on equality",
+			 "returns", "<code>true</code> when args are equal, <code>false</code> otherwise."
+		   });
 	}
 
 	/**
@@ -498,7 +817,27 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (getLength_Input(), 
 		   source, 
 		   new String[] {
-		   });
+		   });			
+		addAnnotation
+		  (getNotEq_Left(), 
+		   source, 
+		   new String[] {
+		   });					
+		addAnnotation
+		  (getGt_Left(), 
+		   source, 
+		   new String[] {
+		   });					
+		addAnnotation
+		  (getLt_Left(), 
+		   source, 
+		   new String[] {
+		   });					
+		addAnnotation
+		  (getNot_Left(), 
+		   source, 
+		   new String[] {
+		   });		
 	}
 
 	/**
@@ -513,7 +852,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });									
+		   });																									
 	}
 
 } //OperationsPackageImpl

@@ -80,6 +80,51 @@ public interface OperationsFactory extends EFactory {
 	Length createLength();
 
 	/**
+	 * Returns a new object of class '<em>Not Eq</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Not Eq</em>'.
+	 * @generated
+	 */
+	NotEq createNotEq();
+
+	/**
+	 * Returns a new object of class '<em>Gt</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Gt</em>'.
+	 * @generated
+	 */
+	Gt createGt();
+
+	/**
+	 * Returns a new object of class '<em>Lt</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Lt</em>'.
+	 * @generated
+	 */
+	Lt createLt();
+
+	/**
+	 * Returns a new object of class '<em>Not</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Not</em>'.
+	 * @generated
+	 */
+	Not createNot();
+
+	/**
+	 * Returns a new object of class '<em>Try</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Try</em>'.
+	 * @generated
+	 */
+	Try createTry();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

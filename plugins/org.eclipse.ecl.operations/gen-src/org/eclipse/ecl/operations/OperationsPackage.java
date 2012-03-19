@@ -406,6 +406,300 @@ public interface OperationsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.NotEqImpl <em>Not Eq</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.NotEqImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getNotEq()
+	 * @generated
+	 */
+	int NOT_EQ = 7;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT_EQ__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT_EQ__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT_EQ__LEFT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT_EQ__RIGHT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Not Eq</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT_EQ_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.GtImpl <em>Gt</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.GtImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getGt()
+	 * @generated
+	 */
+	int GT = 8;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GT__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GT__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GT__LEFT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GT__RIGHT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Gt</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.LtImpl <em>Lt</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.LtImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getLt()
+	 * @generated
+	 */
+	int LT = 9;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LT__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LT__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LT__LEFT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LT__RIGHT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Lt</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.NotImpl <em>Not</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.NotImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getNot()
+	 * @generated
+	 */
+	int NOT = 10;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT__LEFT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Not</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.TryImpl <em>Try</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.TryImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getTry()
+	 * @generated
+	 */
+	int TRY = 11;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRY__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRY__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Command</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRY__COMMAND = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Catch</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRY__CATCH = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Finally</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRY__FINALLY = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Times</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRY__TIMES = CorePackage.COMMAND_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Delay</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRY__DELAY = CorePackage.COMMAND_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Try</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRY_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 5;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Eq <em>Eq</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -540,6 +834,188 @@ public interface OperationsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLength_Input();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.NotEq <em>Not Eq</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Not Eq</em>'.
+	 * @see org.eclipse.ecl.operations.NotEq
+	 * @generated
+	 */
+	EClass getNotEq();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.NotEq#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Left</em>'.
+	 * @see org.eclipse.ecl.operations.NotEq#getLeft()
+	 * @see #getNotEq()
+	 * @generated
+	 */
+	EReference getNotEq_Left();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.NotEq#getRight <em>Right</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Right</em>'.
+	 * @see org.eclipse.ecl.operations.NotEq#getRight()
+	 * @see #getNotEq()
+	 * @generated
+	 */
+	EReference getNotEq_Right();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Gt <em>Gt</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Gt</em>'.
+	 * @see org.eclipse.ecl.operations.Gt
+	 * @generated
+	 */
+	EClass getGt();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Gt#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Left</em>'.
+	 * @see org.eclipse.ecl.operations.Gt#getLeft()
+	 * @see #getGt()
+	 * @generated
+	 */
+	EReference getGt_Left();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Gt#getRight <em>Right</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Right</em>'.
+	 * @see org.eclipse.ecl.operations.Gt#getRight()
+	 * @see #getGt()
+	 * @generated
+	 */
+	EReference getGt_Right();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Lt <em>Lt</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Lt</em>'.
+	 * @see org.eclipse.ecl.operations.Lt
+	 * @generated
+	 */
+	EClass getLt();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Lt#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Left</em>'.
+	 * @see org.eclipse.ecl.operations.Lt#getLeft()
+	 * @see #getLt()
+	 * @generated
+	 */
+	EReference getLt_Left();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Lt#getRight <em>Right</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Right</em>'.
+	 * @see org.eclipse.ecl.operations.Lt#getRight()
+	 * @see #getLt()
+	 * @generated
+	 */
+	EReference getLt_Right();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Not <em>Not</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Not</em>'.
+	 * @see org.eclipse.ecl.operations.Not
+	 * @generated
+	 */
+	EClass getNot();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Not#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Left</em>'.
+	 * @see org.eclipse.ecl.operations.Not#getLeft()
+	 * @see #getNot()
+	 * @generated
+	 */
+	EReference getNot_Left();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Try <em>Try</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Try</em>'.
+	 * @see org.eclipse.ecl.operations.Try
+	 * @generated
+	 */
+	EClass getTry();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Try#getCommand <em>Command</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Command</em>'.
+	 * @see org.eclipse.ecl.operations.Try#getCommand()
+	 * @see #getTry()
+	 * @generated
+	 */
+	EReference getTry_Command();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Try#getCatch <em>Catch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Catch</em>'.
+	 * @see org.eclipse.ecl.operations.Try#getCatch()
+	 * @see #getTry()
+	 * @generated
+	 */
+	EReference getTry_Catch();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Try#getFinally <em>Finally</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Finally</em>'.
+	 * @see org.eclipse.ecl.operations.Try#getFinally()
+	 * @see #getTry()
+	 * @generated
+	 */
+	EReference getTry_Finally();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.operations.Try#getTimes <em>Times</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Times</em>'.
+	 * @see org.eclipse.ecl.operations.Try#getTimes()
+	 * @see #getTry()
+	 * @generated
+	 */
+	EAttribute getTry_Times();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.operations.Try#getDelay <em>Delay</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Delay</em>'.
+	 * @see org.eclipse.ecl.operations.Try#getDelay()
+	 * @see #getTry()
+	 * @generated
+	 */
+	EAttribute getTry_Delay();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -680,6 +1156,152 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference LENGTH__INPUT = eINSTANCE.getLength_Input();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.NotEqImpl <em>Not Eq</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.NotEqImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getNotEq()
+		 * @generated
+		 */
+		EClass NOT_EQ = eINSTANCE.getNotEq();
+
+		/**
+		 * The meta object literal for the '<em><b>Left</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NOT_EQ__LEFT = eINSTANCE.getNotEq_Left();
+
+		/**
+		 * The meta object literal for the '<em><b>Right</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NOT_EQ__RIGHT = eINSTANCE.getNotEq_Right();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.GtImpl <em>Gt</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.GtImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getGt()
+		 * @generated
+		 */
+		EClass GT = eINSTANCE.getGt();
+
+		/**
+		 * The meta object literal for the '<em><b>Left</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GT__LEFT = eINSTANCE.getGt_Left();
+
+		/**
+		 * The meta object literal for the '<em><b>Right</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GT__RIGHT = eINSTANCE.getGt_Right();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.LtImpl <em>Lt</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.LtImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getLt()
+		 * @generated
+		 */
+		EClass LT = eINSTANCE.getLt();
+
+		/**
+		 * The meta object literal for the '<em><b>Left</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LT__LEFT = eINSTANCE.getLt_Left();
+
+		/**
+		 * The meta object literal for the '<em><b>Right</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LT__RIGHT = eINSTANCE.getLt_Right();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.NotImpl <em>Not</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.NotImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getNot()
+		 * @generated
+		 */
+		EClass NOT = eINSTANCE.getNot();
+
+		/**
+		 * The meta object literal for the '<em><b>Left</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NOT__LEFT = eINSTANCE.getNot_Left();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.TryImpl <em>Try</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.TryImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getTry()
+		 * @generated
+		 */
+		EClass TRY = eINSTANCE.getTry();
+
+		/**
+		 * The meta object literal for the '<em><b>Command</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRY__COMMAND = eINSTANCE.getTry_Command();
+
+		/**
+		 * The meta object literal for the '<em><b>Catch</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRY__CATCH = eINSTANCE.getTry_Catch();
+
+		/**
+		 * The meta object literal for the '<em><b>Finally</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRY__FINALLY = eINSTANCE.getTry_Finally();
+
+		/**
+		 * The meta object literal for the '<em><b>Times</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRY__TIMES = eINSTANCE.getTry_Times();
+
+		/**
+		 * The meta object literal for the '<em><b>Delay</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRY__DELAY = eINSTANCE.getTry_Delay();
 
 	}
 
