@@ -43,6 +43,7 @@ import org.eclipse.ecl.gen.ast.AstNode;
 public class ServerSession extends Session implements IStackListener {
 
 	private int lastLine = -1;
+
 	public ServerSession(Socket socket, String id) throws IOException {
 		super(socket);
 		this.id = id;
@@ -64,11 +65,15 @@ public class ServerSession extends Session implements IStackListener {
 			if (frames != null) {
 				if (latch.isLocked()) {
 					if (stepOver) {
-						Command commandParent = getCommandParent(stack);
-						if (((commandParent == null) || commandParent instanceof Sequence)
-								&& !(stack.getCommand() instanceof Pipeline)) {
+						if (lastLine != frames[0].getLine()) {
+							lastLine = frames[0].getLine();
+							// Command commandParent = getCommandParent(stack);
+							// if (((commandParent == null) || commandParent
+							// instanceof Sequence)
+							// && !(stack.getCommand() instanceof Pipeline)) {
 							request(new StepEndEvent(frames));
 							await();
+							// }
 						}
 					} else {
 						if (step) {
@@ -80,7 +85,7 @@ public class ServerSession extends Session implements IStackListener {
 					}
 				} else if (isHitBreakpoint(frames[0])) {
 					if (lastLine != frames[0].getLine()) {
-						lastLine  = frames[0].getLine();
+						lastLine = frames[0].getLine();
 						latch.lock();
 						request(new BreakpointHitEvent(frames));
 						await();
@@ -230,10 +235,12 @@ public class ServerSession extends Session implements IStackListener {
 
 	private void step() {
 		step = true;
+		stepOver = false;
 		latch.lockAfterUnlock();
 	}
 
 	private void stepOver() {
+		step = false;
 		stepOver = true;
 		latch.lockAfterUnlock();
 	}
