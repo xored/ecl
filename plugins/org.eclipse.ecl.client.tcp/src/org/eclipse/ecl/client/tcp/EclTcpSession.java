@@ -155,7 +155,7 @@ public class EclTcpSession implements ISession {
 	public IProcess execute(final Command command, IPipe in, IPipe out)
 			throws CoreException {
 		ExecutionNode node = new ExecutionNode();
-		node.command = EcoreUtil.copy(command);
+		node.command = (Command) EcoreUtil.copy(command);
 		node.input = in == null ? createPipe().close(Status.OK_STATUS) : in;
 		node.output = out == null ? createPipe() : out;
 		node.process = new Process(this, node.input, node.output);

@@ -253,7 +253,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		if (isInited) return (CorePackage)EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI);
 
 		// Obtain or create and register package
-		CorePackageImpl theCorePackage = (CorePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof CorePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new CorePackageImpl());
+		CorePackageImpl theCorePackage = (CorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof CorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new CorePackageImpl());
 
 		isInited = true;
 
@@ -269,9 +269,6 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		// Mark meta-data to indicate it can't be changed
 		theCorePackage.freeze();
 
-  
-		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(CorePackage.eNS_URI, theCorePackage);
 		return theCorePackage;
 	}
 

@@ -99,7 +99,7 @@ public class EclBooleanImpl extends BoxedValueImpl implements EclBoolean {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CorePackage.ECL_BOOLEAN__VALUE:
-				return isValue();
+				return isValue() ? Boolean.TRUE : Boolean.FALSE;
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -113,7 +113,7 @@ public class EclBooleanImpl extends BoxedValueImpl implements EclBoolean {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CorePackage.ECL_BOOLEAN__VALUE:
-				setValue((Boolean)newValue);
+				setValue(((Boolean)newValue).booleanValue());
 				return;
 		}
 		super.eSet(featureID, newValue);

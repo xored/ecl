@@ -53,21 +53,21 @@ public class FormatterTest extends TestCase {
 		Pipeline pipeline = CoreFactory.eINSTANCE.createPipeline();
 		SampleCommand test = ModelFactory.eINSTANCE.createSampleCommand();
 		test.setHello("value");
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
 		assertFormatter(
 				pipeline,
 				"sample value | sample value | sample value | sample value | sample value | sample value | sample value | sample value \n"
@@ -78,19 +78,19 @@ public class FormatterTest extends TestCase {
 		Pipeline pipeline = CoreFactory.eINSTANCE.createPipeline();
 		SampleCommand test = ModelFactory.eINSTANCE.createSampleCommand();
 		test.setHello("loooooooooooooong value");
-		pipeline.getCommands().add(EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
 
 		Sequence seq = CoreFactory.eINSTANCE.createSequence();
-		seq.getCommands().add(EcoreUtil.copy(pipeline));
+		seq.getCommands().add((Command) EcoreUtil.copy(pipeline));
 
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		pipeline.getCommands().add(EcoreUtil.copy(test));
-		seq.getCommands().add(EcoreUtil.copy(pipeline));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		pipeline.getCommands().add((Command) EcoreUtil.copy(test));
+		seq.getCommands().add((Command) EcoreUtil.copy(pipeline));
 
 		assertFormatter(
 				seq,

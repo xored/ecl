@@ -99,7 +99,7 @@ public class EclLongImpl extends BoxedValueImpl implements EclLong {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CorePackage.ECL_LONG__VALUE:
-				return getValue();
+				return new Long(getValue());
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -113,7 +113,7 @@ public class EclLongImpl extends BoxedValueImpl implements EclLong {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CorePackage.ECL_LONG__VALUE:
-				setValue((Long)newValue);
+				setValue(((Long)newValue).longValue());
 				return;
 		}
 		super.eSet(featureID, newValue);

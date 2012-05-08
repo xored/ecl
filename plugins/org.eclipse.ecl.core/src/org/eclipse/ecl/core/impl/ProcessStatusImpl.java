@@ -273,11 +273,11 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 			case CorePackage.PROCESS_STATUS__PLUGIN_ID:
 				return getPluginId();
 			case CorePackage.PROCESS_STATUS__CODE:
-				return getCode();
+				return new Integer(getCode());
 			case CorePackage.PROCESS_STATUS__MESSAGE:
 				return getMessage();
 			case CorePackage.PROCESS_STATUS__SEVERITY:
-				return getSeverity();
+				return new Integer(getSeverity());
 			case CorePackage.PROCESS_STATUS__EXCEPTION:
 				return getException();
 		}
@@ -296,13 +296,13 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 				setPluginId((String)newValue);
 				return;
 			case CorePackage.PROCESS_STATUS__CODE:
-				setCode((Integer)newValue);
+				setCode(((Integer)newValue).intValue());
 				return;
 			case CorePackage.PROCESS_STATUS__MESSAGE:
 				setMessage((String)newValue);
 				return;
 			case CorePackage.PROCESS_STATUS__SEVERITY:
-				setSeverity((Integer)newValue);
+				setSeverity(((Integer)newValue).intValue());
 				return;
 			case CorePackage.PROCESS_STATUS__EXCEPTION:
 				setException((Throwable)newValue);

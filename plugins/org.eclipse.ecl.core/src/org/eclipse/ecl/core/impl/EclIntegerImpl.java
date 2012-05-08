@@ -99,7 +99,7 @@ public class EclIntegerImpl extends BoxedValueImpl implements EclInteger {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CorePackage.ECL_INTEGER__VALUE:
-				return getValue();
+				return new Integer(getValue());
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -113,7 +113,7 @@ public class EclIntegerImpl extends BoxedValueImpl implements EclInteger {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CorePackage.ECL_INTEGER__VALUE:
-				setValue((Integer)newValue);
+				setValue(((Integer)newValue).intValue());
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -25,7 +25,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.operations.OperationsPackage#getTry()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Compares arguments on equality' returns='<code>true</code> when args are equal, <code>false</code> otherwise.'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Try to execute command, retry times with delay if command are failed.\nExecute catch if all operations is not succesfull. Execute finally in anyway.' returns='return\'s -command output if command is successed.'"
  * @generated
  */
 public interface Try extends Command {

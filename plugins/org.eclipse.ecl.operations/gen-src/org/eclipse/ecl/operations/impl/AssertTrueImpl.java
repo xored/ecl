@@ -142,7 +142,7 @@ public class AssertTrueImpl extends CommandImpl implements AssertTrue {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case OperationsPackage.ASSERT_TRUE__INPUT:
-				return isInput();
+				return isInput() ? Boolean.TRUE : Boolean.FALSE;
 			case OperationsPackage.ASSERT_TRUE__MESSAGE:
 				return getMessage();
 		}
@@ -158,7 +158,7 @@ public class AssertTrueImpl extends CommandImpl implements AssertTrue {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case OperationsPackage.ASSERT_TRUE__INPUT:
-				setInput((Boolean)newValue);
+				setInput(((Boolean)newValue).booleanValue());
 				return;
 			case OperationsPackage.ASSERT_TRUE__MESSAGE:
 				setMessage((String)newValue);

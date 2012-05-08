@@ -147,10 +147,20 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
-	 * <p>This method is used to initialize {@link OperationsPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
+	 * Creates, registers, and initializes the <b>Package</b> for this
+	 * model, and for any others upon which it depends.  Simple
+	 * dependencies are satisfied by calling this method on all
+	 * dependent packages before doing anything else.  This method drives
+	 * initialization for interdependent packages directly, in parallel
+	 * with this package, itself.
+	 * <p>Of this package and its interdependencies, all packages which
+	 * have not yet been registered by their URI values are first created
+	 * and registered.  The packages are then initialized in two steps:
+	 * meta-model objects for all of the packages are created before any
+	 * are initialized, since one package's meta-model objects may refer to
+	 * those of another.
+	 * <p>Invocation of this method will not affect any packages that have
+	 * already been initialized.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -162,7 +172,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		if (isInited) return (OperationsPackage)EPackage.Registry.INSTANCE.getEPackage(OperationsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		OperationsPackageImpl theOperationsPackage = (OperationsPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof OperationsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new OperationsPackageImpl());
+		OperationsPackageImpl theOperationsPackage = (OperationsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof OperationsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new OperationsPackageImpl());
 
 		isInited = true;
 
@@ -178,9 +188,6 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		// Mark meta-data to indicate it can't be changed
 		theOperationsPackage.freeze();
 
-  
-		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(OperationsPackage.eNS_URI, theOperationsPackage);
 		return theOperationsPackage;
 	}
 
@@ -715,8 +722,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (notEqEClass, 
 		   source, 
 		   new String[] {
-			 "description", "Compares arguments on equality",
-			 "returns", "<code>true</code> when args are equal, <code>false</code> otherwise."
+			 "description", "Compares arguments are different",
+			 "returns", "<code>false</code> when args are equal, <code>true</code> otherwise."
 		   });			
 		addAnnotation
 		  (getNotEq_Left(), 
@@ -734,8 +741,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (gtEClass, 
 		   source, 
 		   new String[] {
-			 "description", "Compares arguments on equality",
-			 "returns", "<code>true</code> when args are equal, <code>false</code> otherwise."
+			 "description", "Compares arguments on to one be greater then another",
+			 "returns", "<code>true</code> when left are greater then right, <code>false</code> otherwise."
 		   });			
 		addAnnotation
 		  (getGt_Left(), 
@@ -753,8 +760,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (ltEClass, 
 		   source, 
 		   new String[] {
-			 "description", "Compares arguments on equality",
-			 "returns", "<code>true</code> when args are equal, <code>false</code> otherwise."
+			 "description", "Compares arguments one are less then another",
+			 "returns", "<code>true</code> when left is less then right, <code>false</code> otherwise."
 		   });			
 		addAnnotation
 		  (getLt_Left(), 
@@ -772,8 +779,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (notEClass, 
 		   source, 
 		   new String[] {
-			 "description", "Compares arguments on equality",
-			 "returns", "<code>true</code> when args are equal, <code>false</code> otherwise."
+			 "description", "Return !value",
+			 "returns", "<code>true</code> when value is false, <code>false</code> otherwise."
 		   });			
 		addAnnotation
 		  (getNot_Left(), 
@@ -785,8 +792,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (tryEClass, 
 		   source, 
 		   new String[] {
-			 "description", "Compares arguments on equality",
-			 "returns", "<code>true</code> when args are equal, <code>false</code> otherwise."
+			 "description", "Try to execute command, retry times with delay if command are failed.\nExecute catch if all operations is not succesfull. Execute finally in anyway.",
+			 "returns", "return\'s -command output if command is successed."
 		   });
 	}
 

@@ -27,8 +27,6 @@ import org.eclipse.ecl.platform.commands.UpdateFeature;
 
 import org.eclipse.ecl.platform.objects.ObjectsPackage;
 
-import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -169,10 +167,20 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
-	 * <p>This method is used to initialize {@link CommandsPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
+	 * Creates, registers, and initializes the <b>Package</b> for this
+	 * model, and for any others upon which it depends.  Simple
+	 * dependencies are satisfied by calling this method on all
+	 * dependent packages before doing anything else.  This method drives
+	 * initialization for interdependent packages directly, in parallel
+	 * with this package, itself.
+	 * <p>Of this package and its interdependencies, all packages which
+	 * have not yet been registered by their URI values are first created
+	 * and registered.  The packages are then initialized in two steps:
+	 * meta-model objects for all of the packages are created before any
+	 * are initialized, since one package's meta-model objects may refer to
+	 * those of another.
+	 * <p>Invocation of this method will not affect any packages that have
+	 * already been initialized.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -184,7 +192,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		if (isInited) return (CommandsPackage)EPackage.Registry.INSTANCE.getEPackage(CommandsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		CommandsPackageImpl theCommandsPackage = (CommandsPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof CommandsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new CommandsPackageImpl());
+		CommandsPackageImpl theCommandsPackage = (CommandsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof CommandsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new CommandsPackageImpl());
 
 		isInited = true;
 
@@ -201,9 +209,6 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		// Mark meta-data to indicate it can't be changed
 		theCommandsPackage.freeze();
 
-  
-		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(CommandsPackage.eNS_URI, theCommandsPackage);
 		return theCommandsPackage;
 	}
 
@@ -365,8 +370,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGetLog_Limit() {
-		return (EAttribute)getLogEClass.getEStructuralFeatures().get(1);
+	public EAttribute getGetLog_Levels() {
+		return (EAttribute)getLogEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -374,8 +379,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getGetLog_Levels() {
-		return (EAttribute)getLogEClass.getEStructuralFeatures().get(0);
+	public EAttribute getGetLog_Limit() {
+		return (EAttribute)getLogEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -392,8 +397,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLog_Severity() {
-		return (EAttribute)logEClass.getEStructuralFeatures().get(1);
+	public EAttribute getLog_Message() {
+		return (EAttribute)logEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -401,8 +406,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLog_Message() {
-		return (EAttribute)logEClass.getEStructuralFeatures().get(0);
+	public EAttribute getLog_Severity() {
+		return (EAttribute)logEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -625,9 +630,6 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getLog_Message(), 
 		   source, 
 		   new String[] {
-		   },
-		   new URI[] {
-			 URI.createURI(CorePackage.eNS_URI).appendFragment("//Foreach/input/%http:%2F%2Fwww.eclipse.org%2Fecl%2Finput%")
 		   });						
 		addAnnotation
 		  (getEcho_Str(), 

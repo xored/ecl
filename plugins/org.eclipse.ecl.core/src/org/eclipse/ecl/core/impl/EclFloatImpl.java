@@ -99,7 +99,7 @@ public class EclFloatImpl extends BoxedValueImpl implements EclFloat {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CorePackage.ECL_FLOAT__VALUE:
-				return getValue();
+				return new Float(getValue());
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -113,7 +113,7 @@ public class EclFloatImpl extends BoxedValueImpl implements EclFloat {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CorePackage.ECL_FLOAT__VALUE:
-				setValue((Float)newValue);
+				setValue(((Float)newValue).floatValue());
 				return;
 		}
 		super.eSet(featureID, newValue);

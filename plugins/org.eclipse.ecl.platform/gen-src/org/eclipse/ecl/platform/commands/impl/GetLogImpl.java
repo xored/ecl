@@ -128,7 +128,7 @@ public class GetLogImpl extends CommandImpl implements GetLog {
 			case CommandsPackage.GET_LOG__LEVELS:
 				return getLevels();
 			case CommandsPackage.GET_LOG__LIMIT:
-				return getLimit();
+				return new Integer(getLimit());
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -147,7 +147,7 @@ public class GetLogImpl extends CommandImpl implements GetLog {
 				getLevels().addAll((Collection<? extends String>)newValue);
 				return;
 			case CommandsPackage.GET_LOG__LIMIT:
-				setLimit((Integer)newValue);
+				setLimit(((Integer)newValue).intValue());
 				return;
 		}
 		super.eSet(featureID, newValue);
