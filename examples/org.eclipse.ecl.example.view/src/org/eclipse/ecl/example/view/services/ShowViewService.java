@@ -27,7 +27,7 @@ public class ShowViewService implements ICommandService {
 	public IStatus service(Command command, IProcess context) throws InterruptedException, CoreException {
 		ShowView view = (ShowView) command;
 		final String id = view.getId();
-		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
 
 			@Override
 			public void run() {
