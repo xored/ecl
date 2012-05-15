@@ -1,0 +1,370 @@
+package org.eclipse.ecl.popup.ui.internal;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.ecl.popup.EclPopupSession.EclResult;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.layout.GridDataFactory;
+import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.swt.widgets.TreeItem;
+
+class ResultRow extends DialogRow {
+
+	public ResultRow(Composite parent, String title) {
+		super(parent, title);
+	}
+
+	private TreeViewer viewer;
+	private Tree control;
+
+	public void setResults(EclResult[] results) {
+		viewer.setInput(results);
+		if (results.length == 1) {
+			viewer.expandToLevel(2);
+		}
+	}
+
+	@Override
+	protected void createContent() {
+		viewer = new TreeViewer(this, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+		control = viewer.getTree();
+		viewer.setContentProvider(new ResultContentProvider());
+		GridDataFactory.swtDefaults().align(SWT.FILL, SWT.FILL)
+				.grab(true, true).applyTo(viewer.getControl());
+		control.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (control.getSelection().length != 1) {
+					return;
+				}
+
+				TreeItem selection = control.getSelection()[0];
+
+				if (isLast(selection) && e.keyCode == SWT.ARROW_DOWN) {
+					focusReceiver.receiveBottomFocus();
+					return;
+				}
+
+				if (isFirst(selection) && e.keyCode == SWT.ARROW_UP) {
+					focusReceiver.receiveTopFocus();
+				}
+			}
+		});
+	}
+
+	/**
+	 * True when this is a root tree item and it is the first
+	 * 
+	 * @param item
+	 * @return
+	 */
+	private static boolean isFirst(TreeItem item) {
+		if (item.getParentItem() != null) {
+			return false;
+		}
+
+		return getSiblings(item)[0] == item;
+	}
+
+	private static boolean isLast(TreeItem item) {
+		return isLast(item, true);
+	}
+
+	/**
+	 * Returns true when there's no tree item below this one
+	 * 
+	 * @param item
+	 * @return
+	 */
+	private static boolean isLast(TreeItem item, boolean checkExpansion) {
+		TreeItem[] siblings = getSiblings(item);
+		if (siblings[siblings.length - 1] != item) {
+			return false;
+		}
+
+		if (checkExpansion && item.getExpanded() && item.getItemCount() > 0) {
+			return false;
+		}
+		TreeItem parent = item.getParentItem();
+		if (parent == null) {
+			return true;
+		}
+
+		return isLast(parent, false);
+
+	}
+
+	private static TreeItem getLast(TreeItem item) {
+		if (!item.getExpanded()) {
+			return item;
+		}
+
+		TreeItem[] children = item.getItems();
+		return getLast(children[children.length - 1]);
+	}
+
+	private static TreeItem[] getSiblings(TreeItem item) {
+		return item.getParentItem() == null ? item.getParent().getItems()
+				: item.getParentItem().getItems();
+	}
+
+	public void receiveTopFocus() {
+		if (control.getItemCount() == 0) {
+			focusReceiver.receiveBottomFocus();
+			return;
+		}
+
+		control.setSelection(control.getItem(0));
+		control.forceFocus();
+	}
+
+	@Override
+	public void receiveBottomFocus() {
+		if (control.getItemCount() == 0) {
+			focusReceiver.receiveTopFocus();
+			return;
+		}
+
+		control.setSelection(getLast(control.getItem(control.getItemCount() - 1)));
+		control.forceFocus();
+	}
+
+	private static class ResultContentProvider implements ITreeContentProvider {
+
+		@Override
+		public void dispose() {
+			// do nothing
+		}
+
+		@Override
+		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+			// do nothing
+		}
+
+		@Override
+		public Object[] getElements(Object inputElement) {
+			if (inputElement instanceof EclResult[]) {
+				EclResult[] results = (EclResult[]) inputElement;
+				Object[] elements = new Object[results.length];
+				for (int i = 0; i < results.length; i++) {
+					elements[i] = new ResultEntry(results[i]);
+				}
+				return elements;
+			}
+			return null;
+		}
+
+		@Override
+		public Object[] getChildren(Object parent) {
+			if (parent instanceof Entry) {
+				return ((Entry) parent).getChildren();
+			}
+
+			return new Object[0];
+		}
+
+		@Override
+		public Object getParent(Object element) {
+			if (element instanceof Entry) {
+				return ((Entry) element).parent;
+			}
+			return null;
+		}
+
+		@Override
+		public boolean hasChildren(Object element) {
+			if (element instanceof Entry) {
+				return ((Entry) element).getChildren().length > 0;
+			}
+			return false;
+		}
+
+	}
+
+	private static final Map<Integer, String> severities = new HashMap<Integer, String>();
+	static {
+		severities.put(IStatus.CANCEL, "CANCEL");
+		severities.put(IStatus.ERROR, "ERROR");
+		severities.put(IStatus.INFO, "INFO");
+		severities.put(IStatus.OK, "OK");
+		severities.put(IStatus.WARNING, "WARNING");
+	}
+
+	private static abstract class Entry {
+		public Entry(Object parent, String name) {
+			this.parent = parent;
+			this.name = name;
+		}
+
+		public final Object parent;
+		public final String name;
+
+		public abstract Object[] getChildren();
+	}
+
+	private static class ResultEntry extends Entry {
+		public final EclResult value;
+
+		public ResultEntry(EclResult result) {
+			super(null, result.command);
+			this.value = result;
+		}
+
+		@Override
+		public Object[] getChildren() {
+			return new Object[] {
+					new StatusEntry(this, "status", value.status),
+					new ArrayEntry(this, "pipe", value.pipe) };
+		}
+
+		@Override
+		public String toString() {
+			return String.format("%s %s", name,
+					severities.get(value.status.getSeverity()));
+		}
+	}
+
+	private static class StatusEntry extends Entry {
+		public StatusEntry(Object parent, String name, IStatus status) {
+			super(parent, name);
+			this.status = status;
+		}
+
+		public final IStatus status;
+
+		@Override
+		public Object[] getChildren() {
+			List<Object> result = new ArrayList<Object>();
+			result.add(new SimpleEntry(this, "severity", severities.get(status
+					.getSeverity())));
+			result.add(new SimpleEntry(this, "message", status.getMessage()));
+			result.add(new SimpleEntry(this, "pluginId", status.getPlugin()));
+			result.add(new SimpleEntry(this, "code", Integer.toString(status
+					.getCode())));
+			if (status.getException() != null) {
+				result.add(new ExceptionEntry(this, "exception", status
+						.getException()));
+			}
+			if (status.getChildren() != null && status.getChildren().length > 0) {
+				result.add(new ArrayEntry(this, name, status.getChildren()));
+			}
+			return result.toArray();
+		}
+
+		@Override
+		public String toString() {
+			return String.format("%s %s", name,
+					severities.get(status.getSeverity()));
+		}
+	}
+
+	private static class ArrayEntry extends Entry {
+		public ArrayEntry(Object parent, String name, Object[] children) {
+			super(parent, name);
+			this.children = children;
+		}
+
+		public final Object[] children;
+
+		@Override
+		public Object[] getChildren() {
+			List<Object> result = new ArrayList<Object>();
+			for (int i = 0; i < children.length; i++) {
+				Object child = children[i];
+				String name = String.format("[%d]", i);
+				if (child instanceof Throwable) {
+					result.add(new ExceptionEntry(this, name, (Throwable) child));
+				} else if (child instanceof IStatus) {
+					result.add(new StatusEntry(this, name, (IStatus) child));
+				} else if (child instanceof EObject) {
+					result.add(new EObjectEntry(this, name, (EObject) child));
+				} else {
+					result.add(new SimpleEntry(this, name, child));
+				}
+
+			}
+			return result.toArray();
+		}
+
+		@Override
+		public String toString() {
+			return name;
+		}
+	}
+
+	private static class EObjectEntry extends Entry {
+		public EObjectEntry(Object parent, String name, EObject value) {
+			super(parent, name);
+			this.value = value;
+		}
+
+		public final EObject value;
+
+		@Override
+		public Object[] getChildren() {
+			return new Object[0];
+		}
+
+		@Override
+		public String toString() {
+			return String.format("%s %s", name, value.eClass().getName());
+		}
+	}
+
+	private static class ExceptionEntry extends Entry {
+		public ExceptionEntry(Object parent, String name, Throwable value) {
+			super(parent, name);
+			this.value = value;
+		}
+
+		public final Throwable value;
+
+		@Override
+		public Object[] getChildren() {
+			List<Object> result = new ArrayList<Object>();
+			result.add(new SimpleEntry(this, "class", value.getClass()
+					.getName()));
+			result.add(new SimpleEntry(this, "message", value.getMessage()));
+			if (value.getCause() != null) {
+				result.add(new ExceptionEntry(this, "cause", value.getCause()));
+			}
+			return result.toArray();
+		}
+
+	}
+
+	private static class SimpleEntry extends Entry {
+		public SimpleEntry(Object parent, String name, Object value) {
+			super(parent, name);
+			this.value = value;
+		}
+
+		public final Object value;
+
+		@Override
+		public Object[] getChildren() {
+			return new Object[0];
+		}
+
+		@Override
+		public String toString() {
+			return String.format("%s = %s", name, value);
+		}
+	}
+}
