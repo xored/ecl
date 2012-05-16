@@ -24,6 +24,7 @@ public class ListPluginsService implements ICommandService {
 			Plugin plugin = ObjectsFactory.eINSTANCE.createPlugin();
 			plugin.setId(bundle.getSymbolicName());
 			plugin.setVersion(bundle.getVersion().toString());
+			plugin.setName(bundle.getHeaders().get("Bundle-Name"));
 			PluginState state = pluginStateLookup.get(bundle.getState());
 			if (state != null) {
 				plugin.setState(state);
