@@ -13,6 +13,7 @@
   <modules>
     <module>org.eclipse.ecl.client.tcp</module>
     <module>org.eclipse.ecl.core</module>
+    <module>org.eclipse.ecl.data</module>
     <module>org.eclipse.ecl.debug.core</module>
     <module>org.eclipse.ecl.debug.runtime</module>
     <module>org.eclipse.ecl.doc</module>
