@@ -7,7 +7,10 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.ecl.popup.EclPopupSession.EclResult;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
@@ -317,7 +320,33 @@ class ResultRow extends DialogRow {
 
 		@Override
 		public Object[] getChildren() {
-			return new Object[0];
+			List<Object> result = new ArrayList<Object>();
+			for (EStructuralFeature feature : value.eClass()
+					.getEAllStructuralFeatures()) {
+				if (feature.isTransient()) {
+					continue;
+				}
+
+				Object val = value.eGet(feature);
+				if (val == null) {
+					result.add(new SimpleEntry(this, feature.getName(), "null"));
+					continue;
+				}
+				if (feature.isMany()) {
+					List<?> list = (List<?>) value;
+					result.add(new ArrayEntry(this, feature.getName(), list
+							.toArray()));
+				} else {
+					if (feature instanceof EAttribute) {
+						result.add(new SimpleEntry(this, feature.getName(), val));
+					} else if (feature instanceof EReference
+							&& val instanceof EObject) {
+						result.add(new EObjectEntry(this, feature.getName(),
+								(EObject) val));
+					}
+				}
+			}
+			return result.toArray();
 		}
 
 		@Override
