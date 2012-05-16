@@ -3,6 +3,7 @@ package org.eclipse.ecl.popup.ui.internal;
 import org.eclipse.ecl.popup.EclPopupPlugin;
 import org.eclipse.ecl.popup.EclPopupSession;
 import org.eclipse.ecl.popup.EclPopupSession.EclResult;
+import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.dialogs.PopupDialog;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.swt.SWT;
@@ -16,7 +17,9 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.internal.WorkbenchPlugin;
 
+@SuppressWarnings("restriction")
 public class EclPopupDialog extends PopupDialog {
 	private EclPopupSession session;
 
@@ -62,7 +65,7 @@ public class EclPopupDialog extends PopupDialog {
 					history.receiveBottomFocus();
 					break;
 				case SWT.ARROW_DOWN:
-					if(!result.isHidden()) {
+					if (!result.isHidden()) {
 						result.receiveTopFocus();
 					} else {
 						proposals.receiveTopFocus();
@@ -84,6 +87,7 @@ public class EclPopupDialog extends PopupDialog {
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		final Composite area = (Composite) super.createDialogArea(parent);
+		GridDataFactory.swtDefaults().align(SWT.FILL, SWT.FILL).grab(true, true).applyTo(area);
 		result = new ResultRow(area, "Result");
 		result.hide();
 		result.setFocusReceiver(new IFocusReceiver() {
@@ -132,12 +136,17 @@ public class EclPopupDialog extends PopupDialog {
 		getShell().addControlListener(new ControlAdapter() {
 			@Override
 			public void controlResized(ControlEvent e) {
+				int height = area.getSize().y / 2;
+				proposals.setHeightHint(height);
+				history.setHeightHint(height);
+				result.setHeightHint(height);
 				area.layout();
+				
 			}
 		});
 		return area;
 	}
-	
+
 	private ResultRow history;
 	private ProposalRow proposals;
 	private ResultRow result;
@@ -153,7 +162,7 @@ public class EclPopupDialog extends PopupDialog {
 		updateAfterExec = true;
 		filterText.setText("");
 	}
-	
+
 	private void updateLayout() {
 		result.getParent().layout();
 	}
@@ -163,25 +172,39 @@ public class EclPopupDialog extends PopupDialog {
 		return filterText;
 	}
 
+	protected IDialogSettings getDialogSettings() {
+		final IDialogSettings workbenchDialogSettings = WorkbenchPlugin
+				.getDefault().getDialogSettings();
+		IDialogSettings result = workbenchDialogSettings.getSection(getId());
+		if (result == null) {
+			result = workbenchDialogSettings.addNewSection(getId());
+		}
+		return result;
+	}
+
+	protected String getId() {
+		return "org.eclipse.ecl.popup.EclPopup"; //$NON-NLS-1$
+	}
+
 	protected void refresh(String text) {
-		if(result == null) {
+		if (result == null) {
 			return;
 		}
-		if(afterExec) {
+		if (afterExec) {
 			history.setResults(session.getHistory());
 			afterExec = false;
 			return;
 		}
-		
-		if(updateAfterExec) {
+
+		if (updateAfterExec) {
 			result.hide();
 			proposals.show();
 			updateLayout();
 			updateAfterExec = false;
 		}
-		
+
 		proposals.setCommand(text);
-		
+
 	}
 
 	public void focusFilterText() {

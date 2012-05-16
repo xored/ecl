@@ -7,7 +7,6 @@ import java.util.Set;
 import org.eclipse.ecl.core.util.EclCommandNameConvention;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.runtime.FQName;
-import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
@@ -15,6 +14,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Table;
 
 public class ProposalRow extends ResultRow {
@@ -27,12 +27,10 @@ public class ProposalRow extends ResultRow {
 	private TableViewer table;
 
 	@Override
-	protected void createContent() {
+	protected Control createContent() {
 		table = new TableViewer(this, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		control = table.getTable();
 		table.setContentProvider(new ProposalContentProvider());
-		GridDataFactory.swtDefaults().align(SWT.FILL, SWT.FILL)
-				.grab(true, true).applyTo(table.getControl());
 		table.getControl().addKeyListener(new KeyListener() {
 			
 			@Override
@@ -54,6 +52,8 @@ public class ProposalRow extends ResultRow {
 				}
 			}
 		});
+		
+		return control;
 
 	}
 

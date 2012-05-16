@@ -5,6 +5,7 @@ import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 
 class DialogRow extends Composite implements IFocusReceiver {
@@ -13,42 +14,64 @@ class DialogRow extends Composite implements IFocusReceiver {
 		super(parent, SWT.NONE);
 		GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(false)
 				.applyTo(this);
+		
+		getGridData().applyTo(this);
 		Label titleLabel = new Label(this, SWT.NONE);
 		titleLabel.setText(title);
+
 		GridDataFactory.swtDefaults().grab(false, false)
 				.align(SWT.BEGINNING, SWT.BEGINNING).applyTo(titleLabel);
 		titleLabel.setFont(JFaceResources.getFontRegistry().getBold(
 				JFaceResources.TEXT_FONT));
-		createContent();
+		GridDataFactory.swtDefaults().grab(true, true)
+				.align(SWT.FILL, SWT.FILL).applyTo(createContent());
 	}
-	
+
 	protected IFocusReceiver focusReceiver;
+
 	public void setFocusReceiver(IFocusReceiver focusReceiver) {
 		this.focusReceiver = focusReceiver;
 	}
 
 	private boolean hidden = false;
+
 	public boolean isHidden() {
 		return hidden;
 	}
+
 	public void hide() {
 		GridDataFactory.swtDefaults().hint(0, 0).applyTo(this);
 		hidden = true;
 	}
 
 	public void show() {
-		GridDataFactory.swtDefaults().grab(true, false)
-				.align(SWT.FILL, SWT.FILL).applyTo(this);
+		getGridData().applyTo(this);
 		hidden = false;
 	}
+
+	private int heightHint = SWT.DEFAULT;
+
+	public void setHeightHint(int heightHint) {
+		this.heightHint = heightHint;
+		if(!isHidden()) {
+			getGridData().applyTo(this);
+		}
+	}
 	
-	protected void createContent() {
+	private GridDataFactory getGridData() {
+		return GridDataFactory.swtDefaults().grab(true, false)
+			.align(SWT.FILL, SWT.FILL).hint(SWT.DEFAULT, heightHint);
+	}
+	protected Control createContent() {
 		Label result = new Label(this, SWT.NONE);
 		result.setText("content goes here");
+		return result;
 	}
+
 	@Override
 	public void receiveTopFocus() {
 	}
+
 	@Override
 	public void receiveBottomFocus() {
 	}

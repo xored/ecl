@@ -8,7 +8,6 @@ import java.util.Map;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.ecl.popup.EclPopupSession.EclResult;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
@@ -16,6 +15,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 
@@ -36,12 +36,10 @@ class ResultRow extends DialogRow {
 	}
 
 	@Override
-	protected void createContent() {
+	protected Control createContent() {
 		viewer = new TreeViewer(this, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		control = viewer.getTree();
 		viewer.setContentProvider(new ResultContentProvider());
-		GridDataFactory.swtDefaults().align(SWT.FILL, SWT.FILL)
-				.grab(true, true).applyTo(viewer.getControl());
 		control.addKeyListener(new KeyListener() {
 
 			@Override
@@ -66,6 +64,7 @@ class ResultRow extends DialogRow {
 				}
 			}
 		});
+		return control;
 	}
 
 	/**
