@@ -1,5 +1,9 @@
 package org.eclipse.ecl.popup.ui.internal;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.ecl.popup.EclPopupPlugin;
 import org.eclipse.ecl.popup.EclPopupSession;
 import org.eclipse.ecl.popup.EclPopupSession.EclResult;
@@ -87,16 +91,17 @@ public class EclPopupDialog extends PopupDialog {
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		final Composite area = (Composite) super.createDialogArea(parent);
-		GridDataFactory.swtDefaults().align(SWT.FILL, SWT.FILL).grab(true, true).applyTo(area);
+		GridDataFactory.swtDefaults().align(SWT.FILL, SWT.FILL)
+				.grab(true, true).applyTo(area);
 		result = new ResultRow(area, "Result");
 		result.hide();
 		result.setFocusReceiver(new IFocusReceiver() {
-			
+
 			@Override
 			public void receiveTopFocus() {
 				focusFilterText();
 			}
-			
+
 			@Override
 			public void receiveBottomFocus() {
 				history.receiveTopFocus();
@@ -113,10 +118,10 @@ public class EclPopupDialog extends PopupDialog {
 			public void receiveBottomFocus() {
 				history.receiveTopFocus();
 			}
-			
+
 		});
 		proposals.setCommandReceiver(new ICommandReceiver() {
-			
+
 			@Override
 			public void commandSelected(String command) {
 				setFilterText(command);
@@ -125,23 +130,23 @@ public class EclPopupDialog extends PopupDialog {
 		history = new ResultRow(area, "History");
 		history.setResults(session.getHistory());
 		history.setFocusReceiver(new IFocusReceiver() {
-			
+
 			@Override
 			public void receiveTopFocus() {
-				if(result.isHidden()) {
+				if (result.isHidden()) {
 					proposals.receiveBottomFocus();
 				} else {
 					result.receiveBottomFocus();
 				}
 			}
-			
+
 			@Override
 			public void receiveBottomFocus() {
 				focusFilterText();
 			}
 		});
 		history.setCommandReceiver(new ICommandReceiver() {
-			
+
 			@Override
 			public void commandSelected(String command) {
 				setFilterText(command);
@@ -155,7 +160,7 @@ public class EclPopupDialog extends PopupDialog {
 				history.setHeightHint(height);
 				result.setHeightHint(height);
 				area.layout();
-				
+
 			}
 		});
 		return area;
@@ -167,21 +172,40 @@ public class EclPopupDialog extends PopupDialog {
 
 	private void execCommand() {
 		final String command = filterText.getText().trim();
-		final EclResult[] r = new EclResult[1];
-		getShell().getDisplay().syncExec(new Runnable() {
-			
+		filterText.setEnabled(false);
+		Job job = new Job("command") {
 			@Override
-			public void run() {
-				r[0] = session.exec(command);
+			protected IStatus run(IProgressMonitor monitor) {
+
+				final EclResult result = session.exec(command);
+				if (getShell() != null && !getShell().isDisposed()) {
+					getShell().getDisplay().asyncExec(new Runnable() {
+						@Override
+						public void run() {
+							executionDone(result);
+						}
+					});
+				}
+				return Status.OK_STATUS;
 			}
-		});
-		result.setResults(r);
+		};
+		job.setSystem(true);
+		job.schedule();
+	}
+
+	private void executionDone(EclResult r) {
+		if (getShell() == null || getShell().isDisposed()) {
+			return;
+		}
+		filterText.setEnabled(true);
+		result.setResults(new EclResult[] { r });
 		result.show();
 		proposals.hide();
 		updateLayout();
 		afterExec = true;
 		updateAfterExec = true;
 		filterText.setText("");
+		filterText.setFocus();
 	}
 
 	private void updateLayout() {
@@ -232,6 +256,7 @@ public class EclPopupDialog extends PopupDialog {
 		filterText.setText(text);
 		focusFilterText();
 	}
+
 	private void focusFilterText() {
 		filterText.setFocus();
 		filterText.setCaretOffset(filterText.getText().length());
