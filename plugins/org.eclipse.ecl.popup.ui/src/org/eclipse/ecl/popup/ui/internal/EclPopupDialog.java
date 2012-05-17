@@ -115,6 +115,13 @@ public class EclPopupDialog extends PopupDialog {
 			}
 			
 		});
+		proposals.setCommandReceiver(new ICommandReceiver() {
+			
+			@Override
+			public void commandSelected(String command) {
+				setFilterText(command);
+			}
+		});
 		history = new ResultRow(area, "History");
 		history.setResults(session.getHistory());
 		history.setFocusReceiver(new IFocusReceiver() {
@@ -131,6 +138,13 @@ public class EclPopupDialog extends PopupDialog {
 			@Override
 			public void receiveBottomFocus() {
 				focusFilterText();
+			}
+		});
+		history.setCommandReceiver(new ICommandReceiver() {
+			
+			@Override
+			public void commandSelected(String command) {
+				setFilterText(command);
 			}
 		});
 		getShell().addControlListener(new ControlAdapter() {
@@ -152,9 +166,16 @@ public class EclPopupDialog extends PopupDialog {
 	private ResultRow result;
 
 	private void execCommand() {
-		String command = filterText.getText();
-		EclResult r = session.exec(command);
-		result.setResults(new EclResult[] { r });
+		final String command = filterText.getText().trim();
+		final EclResult[] r = new EclResult[1];
+		getShell().getDisplay().syncExec(new Runnable() {
+			
+			@Override
+			public void run() {
+				r[0] = session.exec(command);
+			}
+		});
+		result.setResults(r);
 		result.show();
 		proposals.hide();
 		updateLayout();
@@ -207,7 +228,11 @@ public class EclPopupDialog extends PopupDialog {
 
 	}
 
-	public void focusFilterText() {
+	private void setFilterText(String text) {
+		filterText.setText(text);
+		focusFilterText();
+	}
+	private void focusFilterText() {
 		filterText.setFocus();
 		filterText.setCaretOffset(filterText.getText().length());
 	}

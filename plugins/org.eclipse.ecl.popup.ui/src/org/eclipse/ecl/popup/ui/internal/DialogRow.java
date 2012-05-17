@@ -32,6 +32,17 @@ class DialogRow extends Composite implements IFocusReceiver {
 	public void setFocusReceiver(IFocusReceiver focusReceiver) {
 		this.focusReceiver = focusReceiver;
 	}
+	
+	protected ICommandReceiver commandReceiver = new ICommandReceiver() {
+		
+		@Override
+		public void commandSelected(String command) {
+			
+		}
+	};
+	public void setCommandReceiver(ICommandReceiver commandReceiver) {
+		this.commandReceiver = commandReceiver;
+	}
 
 	private boolean hidden = false;
 

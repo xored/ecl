@@ -51,19 +51,37 @@ class ResultRow extends DialogRow {
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if (control.getSelection().length != 1) {
-					return;
-				}
+				switch (e.keyCode) {
+				case SWT.ARROW_DOWN:
+					if (control.getSelectionCount() != 1) {
+						return;
+					}
 
-				TreeItem selection = control.getSelection()[0];
-
-				if (isLast(selection) && e.keyCode == SWT.ARROW_DOWN) {
-					focusReceiver.receiveBottomFocus();
-					return;
-				}
-
-				if (isFirst(selection) && e.keyCode == SWT.ARROW_UP) {
-					focusReceiver.receiveTopFocus();
+					if (isLast(control.getSelection()[0])) {
+						focusReceiver.receiveBottomFocus();
+						return;
+					}
+					break;
+				case SWT.ARROW_UP:
+					if (control.getSelectionCount() != 1) {
+						return;
+					}
+					if (isFirst(control.getSelection()[0])) {
+						focusReceiver.receiveTopFocus();
+					}
+					break;
+				case SWT.CR:
+				case SWT.KEYPAD_CR:
+					if (control.getSelectionCount() == 0) {
+						return;
+					}
+					if (control.getSelection()[0].getParentItem() != null) {
+						return;
+					}
+					ResultEntry entry = (ResultEntry) control.getSelection()[0]
+							.getData();
+					commandReceiver.commandSelected(entry.value.command);
+					break;
 				}
 			}
 		});

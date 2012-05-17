@@ -32,27 +32,35 @@ public class ProposalRow extends ResultRow {
 		control = table.getTable();
 		table.setContentProvider(new ProposalContentProvider());
 		table.getControl().addKeyListener(new KeyListener() {
-			
+
 			@Override
 			public void keyReleased(KeyEvent e) {
 			}
-			
+
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if(control.getSelectionIndex() == -1) {
-					return;
-				}
-				if(e.keyCode == SWT.ARROW_DOWN && control.getSelectionIndex() == control.getItemCount() - 1) {
-					focusReceiver.receiveBottomFocus();
-					return;
-				}
-				
-				if(e.keyCode == SWT.ARROW_UP && control.getSelectionIndex() == 0) {
-					focusReceiver.receiveTopFocus();
+
+				switch (e.keyCode) {
+				case SWT.ARROW_DOWN:
+					if (control.getSelectionIndex() == control.getItemCount() - 1) {
+						focusReceiver.receiveBottomFocus();
+					}
+					break;
+				case SWT.ARROW_UP:
+					if (control.getSelectionIndex() == 0) {
+						focusReceiver.receiveTopFocus();
+					}
+					break;
+				case SWT.KEYPAD_CR:
+				case SWT.CR:
+					if (control.getSelectionIndex() != -1) {
+						commandReceiver.commandSelected(control.getSelection()[0]
+								.getText());
+					}
 				}
 			}
 		});
-		
+
 		return control;
 
 	}
