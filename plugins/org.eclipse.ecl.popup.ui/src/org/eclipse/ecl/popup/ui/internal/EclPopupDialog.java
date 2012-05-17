@@ -178,7 +178,7 @@ public class EclPopupDialog extends PopupDialog {
 			protected IStatus run(IProgressMonitor monitor) {
 
 				final EclResult result = session.exec(command);
-				if (getShell() != null && !getShell().isDisposed()) {
+				if (!closed) {
 					getShell().getDisplay().asyncExec(new Runnable() {
 						@Override
 						public void run() {
@@ -194,7 +194,7 @@ public class EclPopupDialog extends PopupDialog {
 	}
 
 	private void executionDone(EclResult r) {
-		if (getShell() == null || getShell().isDisposed()) {
+		if (closed) {
 			return;
 		}
 		filterText.setEnabled(true);
@@ -260,5 +260,13 @@ public class EclPopupDialog extends PopupDialog {
 	private void focusFilterText() {
 		filterText.setFocus();
 		filterText.setCaretOffset(filterText.getText().length());
+	}
+
+	private boolean closed = false;
+
+	@Override
+	public boolean close() {
+		closed = true;
+		return super.close();
 	}
 }
