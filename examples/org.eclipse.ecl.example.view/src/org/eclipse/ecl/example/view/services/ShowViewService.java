@@ -24,20 +24,26 @@ import org.eclipse.ui.PlatformUI;
 public class ShowViewService implements ICommandService {
 
 	@Override
-	public IStatus service(Command command, IProcess context) throws InterruptedException, CoreException {
+	public IStatus service(Command command, IProcess context)
+			throws InterruptedException, CoreException {
 		ShowView view = (ShowView) command;
 		final String id = view.getId();
-		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+		final Exception[] exceptions = new Exception[1];
+		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 
 			@Override
 			public void run() {
 				try {
-					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(id);
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+							.getActivePage().showView(id);
 				} catch (PartInitException e) {
-					throw new RuntimeException(e.getMessage(), e);
+					exceptions[0] = e;
 				}
 			}
 		});
+		if (exceptions[0] != null) {
+			return ((CoreException) exceptions[0]).getStatus();
+		}
 		return Status.OK_STATUS;
 	}
 
