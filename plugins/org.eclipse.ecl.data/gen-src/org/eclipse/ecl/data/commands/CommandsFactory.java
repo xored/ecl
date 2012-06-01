@@ -44,6 +44,24 @@ public interface CommandsFactory extends EFactory {
 	WriteCsvFile createWriteCsvFile();
 
 	/**
+	 * Returns a new object of class '<em>Exclude Columns</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Exclude Columns</em>'.
+	 * @generated
+	 */
+	ExcludeColumns createExcludeColumns();
+
+	/**
+	 * Returns a new object of class '<em>Select Columns</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Select Columns</em>'.
+	 * @generated
+	 */
+	SelectColumns createSelectColumns();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

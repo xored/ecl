@@ -86,6 +86,20 @@ public class CommandsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CommandsPackage.EXCLUDE_COLUMNS: {
+				ExcludeColumns excludeColumns = (ExcludeColumns)theEObject;
+				T result = caseExcludeColumns(excludeColumns);
+				if (result == null) result = caseCommand(excludeColumns);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommandsPackage.SELECT_COLUMNS: {
+				SelectColumns selectColumns = (SelectColumns)theEObject;
+				T result = caseSelectColumns(selectColumns);
+				if (result == null) result = caseCommand(selectColumns);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -117,6 +131,36 @@ public class CommandsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseWriteCsvFile(WriteCsvFile object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Exclude Columns</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Exclude Columns</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExcludeColumns(ExcludeColumns object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Select Columns</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Select Columns</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSelectColumns(SelectColumns object) {
 		return null;
 	}
 

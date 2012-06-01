@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.ecl.data.objects.Table#getRows <em>Rows</em>}</li>
+ *   <li>{@link org.eclipse.ecl.data.objects.Table#getColumns <em>Columns</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,5 +43,21 @@ public interface Table extends EObject {
 	 * @generated
 	 */
 	EList<Row> getRows();
+
+	/**
+	 * Returns the value of the '<em><b>Columns</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Columns</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Columns</em>' attribute list.
+	 * @see org.eclipse.ecl.data.objects.ObjectsPackage#getTable_Columns()
+	 * @model unique="false"
+	 * @generated
+	 */
+	EList<String> getColumns();
 
 } // Table

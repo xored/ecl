@@ -79,13 +79,22 @@ public interface ObjectsPackage extends EPackage {
 	int TABLE__ROWS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Columns</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE__COLUMNS = 1;
+
+	/**
 	 * The number of structural features of the '<em>Table</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TABLE_FEATURE_COUNT = 1;
+	int TABLE_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.data.objects.impl.RowImpl <em>Row</em>}' class.
@@ -107,13 +116,22 @@ public interface ObjectsPackage extends EPackage {
 	int ROW__VALUES = 0;
 
 	/**
+	 * The feature id for the '<em><b>Children</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROW__CHILDREN = 1;
+
+	/**
 	 * The number of structural features of the '<em>Row</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROW_FEATURE_COUNT = 1;
+	int ROW_FEATURE_COUNT = 2;
 
 
 	/**
@@ -138,6 +156,17 @@ public interface ObjectsPackage extends EPackage {
 	EReference getTable_Rows();
 
 	/**
+	 * Returns the meta object for the attribute list '{@link org.eclipse.ecl.data.objects.Table#getColumns <em>Columns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Columns</em>'.
+	 * @see org.eclipse.ecl.data.objects.Table#getColumns()
+	 * @see #getTable()
+	 * @generated
+	 */
+	EAttribute getTable_Columns();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.data.objects.Row <em>Row</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -157,6 +186,17 @@ public interface ObjectsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getRow_Values();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.data.objects.Row#getChildren <em>Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Children</em>'.
+	 * @see org.eclipse.ecl.data.objects.Row#getChildren()
+	 * @see #getRow()
+	 * @generated
+	 */
+	EReference getRow_Children();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -199,6 +239,14 @@ public interface ObjectsPackage extends EPackage {
 		EReference TABLE__ROWS = eINSTANCE.getTable_Rows();
 
 		/**
+		 * The meta object literal for the '<em><b>Columns</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TABLE__COLUMNS = eINSTANCE.getTable_Columns();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.data.objects.impl.RowImpl <em>Row</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -215,6 +263,14 @@ public interface ObjectsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ROW__VALUES = eINSTANCE.getRow_Values();
+
+		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ROW__CHILDREN = eINSTANCE.getRow_Children();
 
 	}
 

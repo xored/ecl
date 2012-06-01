@@ -164,6 +164,117 @@ public interface CommandsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.impl.ExcludeColumnsImpl <em>Exclude Columns</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.data.commands.impl.ExcludeColumnsImpl
+	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getExcludeColumns()
+	 * @generated
+	 */
+	int EXCLUDE_COLUMNS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCLUDE_COLUMNS__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCLUDE_COLUMNS__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Table</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCLUDE_COLUMNS__TABLE = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Columns</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCLUDE_COLUMNS__COLUMNS = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Exclude Columns</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCLUDE_COLUMNS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.impl.SelectColumnsImpl <em>Select Columns</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.data.commands.impl.SelectColumnsImpl
+	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getSelectColumns()
+	 * @generated
+	 */
+	int SELECT_COLUMNS = 3;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_COLUMNS__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_COLUMNS__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Table</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_COLUMNS__TABLE = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Columns</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_COLUMNS__COLUMNS = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Select Columns</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_COLUMNS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.data.commands.ReadCsvFile <em>Read Csv File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -215,6 +326,70 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getWriteCsvFile_Uri();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.data.commands.ExcludeColumns <em>Exclude Columns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Exclude Columns</em>'.
+	 * @see org.eclipse.ecl.data.commands.ExcludeColumns
+	 * @generated
+	 */
+	EClass getExcludeColumns();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.data.commands.ExcludeColumns#getTable <em>Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Table</em>'.
+	 * @see org.eclipse.ecl.data.commands.ExcludeColumns#getTable()
+	 * @see #getExcludeColumns()
+	 * @generated
+	 */
+	EReference getExcludeColumns_Table();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.eclipse.ecl.data.commands.ExcludeColumns#getColumns <em>Columns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Columns</em>'.
+	 * @see org.eclipse.ecl.data.commands.ExcludeColumns#getColumns()
+	 * @see #getExcludeColumns()
+	 * @generated
+	 */
+	EAttribute getExcludeColumns_Columns();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.data.commands.SelectColumns <em>Select Columns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Select Columns</em>'.
+	 * @see org.eclipse.ecl.data.commands.SelectColumns
+	 * @generated
+	 */
+	EClass getSelectColumns();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.data.commands.SelectColumns#getTable <em>Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Table</em>'.
+	 * @see org.eclipse.ecl.data.commands.SelectColumns#getTable()
+	 * @see #getSelectColumns()
+	 * @generated
+	 */
+	EReference getSelectColumns_Table();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.eclipse.ecl.data.commands.SelectColumns#getColumns <em>Columns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Columns</em>'.
+	 * @see org.eclipse.ecl.data.commands.SelectColumns#getColumns()
+	 * @see #getSelectColumns()
+	 * @generated
+	 */
+	EAttribute getSelectColumns_Columns();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -281,6 +456,58 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute WRITE_CSV_FILE__URI = eINSTANCE.getWriteCsvFile_Uri();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.impl.ExcludeColumnsImpl <em>Exclude Columns</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.data.commands.impl.ExcludeColumnsImpl
+		 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getExcludeColumns()
+		 * @generated
+		 */
+		EClass EXCLUDE_COLUMNS = eINSTANCE.getExcludeColumns();
+
+		/**
+		 * The meta object literal for the '<em><b>Table</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXCLUDE_COLUMNS__TABLE = eINSTANCE.getExcludeColumns_Table();
+
+		/**
+		 * The meta object literal for the '<em><b>Columns</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXCLUDE_COLUMNS__COLUMNS = eINSTANCE.getExcludeColumns_Columns();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.impl.SelectColumnsImpl <em>Select Columns</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.data.commands.impl.SelectColumnsImpl
+		 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getSelectColumns()
+		 * @generated
+		 */
+		EClass SELECT_COLUMNS = eINSTANCE.getSelectColumns();
+
+		/**
+		 * The meta object literal for the '<em><b>Table</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SELECT_COLUMNS__TABLE = eINSTANCE.getSelectColumns_Table();
+
+		/**
+		 * The meta object literal for the '<em><b>Columns</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SELECT_COLUMNS__COLUMNS = eINSTANCE.getSelectColumns_Columns();
 
 	}
 

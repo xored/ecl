@@ -82,6 +82,14 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 				return createWriteCsvFileAdapter();
 			}
 			@Override
+			public Adapter caseExcludeColumns(ExcludeColumns object) {
+				return createExcludeColumnsAdapter();
+			}
+			@Override
+			public Adapter caseSelectColumns(SelectColumns object) {
+				return createSelectColumnsAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -130,6 +138,34 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createWriteCsvFileAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.data.commands.ExcludeColumns <em>Exclude Columns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.data.commands.ExcludeColumns
+	 * @generated
+	 */
+	public Adapter createExcludeColumnsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.data.commands.SelectColumns <em>Select Columns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.data.commands.SelectColumns
+	 * @generated
+	 */
+	public Adapter createSelectColumnsAdapter() {
 		return null;
 	}
 

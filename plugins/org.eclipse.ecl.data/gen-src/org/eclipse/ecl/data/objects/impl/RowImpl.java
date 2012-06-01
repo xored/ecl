@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
@@ -27,6 +29,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.ecl.data.objects.impl.RowImpl#getValues <em>Values</em>}</li>
+ *   <li>{@link org.eclipse.ecl.data.objects.impl.RowImpl#getChildren <em>Children</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,6 +45,16 @@ public class RowImpl extends EObjectImpl implements Row {
 	 * @ordered
 	 */
 	protected EList<String> values;
+
+	/**
+	 * The cached value of the '{@link #getChildren() <em>Children</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getChildren()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Row> children;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -69,9 +82,21 @@ public class RowImpl extends EObjectImpl implements Row {
 	 */
 	public EList<String> getValues() {
 		if (values == null) {
-			values = new EDataTypeUniqueEList<String>(String.class, this, ObjectsPackage.ROW__VALUES);
+			values = new EDataTypeEList<String>(String.class, this, ObjectsPackage.ROW__VALUES);
 		}
 		return values;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Row> getChildren() {
+		if (children == null) {
+			children = new EObjectResolvingEList<Row>(Row.class, this, ObjectsPackage.ROW__CHILDREN);
+		}
+		return children;
 	}
 
 	/**
@@ -84,6 +109,8 @@ public class RowImpl extends EObjectImpl implements Row {
 		switch (featureID) {
 			case ObjectsPackage.ROW__VALUES:
 				return getValues();
+			case ObjectsPackage.ROW__CHILDREN:
+				return getChildren();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -101,6 +128,10 @@ public class RowImpl extends EObjectImpl implements Row {
 				getValues().clear();
 				getValues().addAll((Collection<? extends String>)newValue);
 				return;
+			case ObjectsPackage.ROW__CHILDREN:
+				getChildren().clear();
+				getChildren().addAll((Collection<? extends Row>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -116,6 +147,9 @@ public class RowImpl extends EObjectImpl implements Row {
 			case ObjectsPackage.ROW__VALUES:
 				getValues().clear();
 				return;
+			case ObjectsPackage.ROW__CHILDREN:
+				getChildren().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -130,6 +164,8 @@ public class RowImpl extends EObjectImpl implements Row {
 		switch (featureID) {
 			case ObjectsPackage.ROW__VALUES:
 				return values != null && !values.isEmpty();
+			case ObjectsPackage.ROW__CHILDREN:
+				return children != null && !children.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

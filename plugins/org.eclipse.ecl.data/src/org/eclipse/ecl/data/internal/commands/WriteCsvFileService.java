@@ -3,6 +3,8 @@ package org.eclipse.ecl.data.internal.commands;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -18,6 +20,7 @@ import org.eclipse.ecl.runtime.IProcess;
 import au.com.bytecode.opencsv.CSVWriter;
 
 public class WriteCsvFileService implements ICommandService {
+	static final String INDENT_COLUMN = "_indent";
 
 	@Override
 	public IStatus service(Command command, IProcess context)
@@ -29,11 +32,20 @@ public class WriteCsvFileService implements ICommandService {
 		File file = FileResolver.resolve(wcf.getUri());
 		file.getParentFile().mkdirs();
 		Table table = wcf.getTable();
+
+		List<String> columns = new ArrayList<String>();
+		boolean haveChildren = haveChildren(table);
+
+		if (haveChildren) {
+			columns.add(INDENT_COLUMN); // first column is going to be 'indent'
+		}
+		columns.addAll(table.getColumns());
+
 		try {
 			CSVWriter writer = new CSVWriter(new FileWriter(file));
+			writer.writeNext(columns.toArray(new String[columns.size()]));
 			for (Row row : table.getRows()) {
-				writer.writeNext(row.getValues().toArray(
-						new String[row.getValues().size()]));
+				writeRow(writer, row, 0, haveChildren);
 			}
 			writer.close();
 			FileResolver.refresh(file);
@@ -46,4 +58,25 @@ public class WriteCsvFileService implements ICommandService {
 		return Status.OK_STATUS;
 	}
 
+	private void writeRow(CSVWriter writer, Row row, int indent,
+			boolean haveChildren) {
+		List<String> values = new ArrayList<String>();
+		if (haveChildren) {
+			values.add(Integer.toString(indent));
+		}
+		values.addAll(row.getValues());
+		writer.writeNext(values.toArray(new String[values.size()]));
+		for (Row child : row.getChildren()) {
+			writeRow(writer, child, indent + 1, haveChildren);
+		}
+	}
+
+	private static boolean haveChildren(Table table) {
+		for (Row row : table.getRows()) {
+			if (row.getChildren().size() > 0) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

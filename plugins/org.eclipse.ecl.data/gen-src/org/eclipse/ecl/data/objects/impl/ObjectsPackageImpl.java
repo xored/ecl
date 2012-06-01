@@ -123,6 +123,15 @@ public class ObjectsPackageImpl extends EPackageImpl implements ObjectsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTable_Columns() {
+		return (EAttribute)tableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRow() {
 		return rowEClass;
 	}
@@ -134,6 +143,15 @@ public class ObjectsPackageImpl extends EPackageImpl implements ObjectsPackage {
 	 */
 	public EAttribute getRow_Values() {
 		return (EAttribute)rowEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRow_Children() {
+		return (EReference)rowEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -166,9 +184,11 @@ public class ObjectsPackageImpl extends EPackageImpl implements ObjectsPackage {
 		// Create classes and their features
 		tableEClass = createEClass(TABLE);
 		createEReference(tableEClass, TABLE__ROWS);
+		createEAttribute(tableEClass, TABLE__COLUMNS);
 
 		rowEClass = createEClass(ROW);
 		createEAttribute(rowEClass, ROW__VALUES);
+		createEReference(rowEClass, ROW__CHILDREN);
 	}
 
 	/**
@@ -202,10 +222,12 @@ public class ObjectsPackageImpl extends EPackageImpl implements ObjectsPackage {
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(tableEClass, Table.class, "Table", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTable_Rows(), this.getRow(), null, "rows", null, 0, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTable_Rows(), this.getRow(), null, "rows", null, 0, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTable_Columns(), ecorePackage.getEString(), "columns", null, 0, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(rowEClass, Row.class, "Row", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRow_Values(), ecorePackage.getEString(), "values", null, 0, -1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRow_Values(), ecorePackage.getEString(), "values", null, 0, -1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRow_Children(), this.getRow(), null, "children", null, 0, -1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

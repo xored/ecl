@@ -62,6 +62,8 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 		switch (eClass.getClassifierID()) {
 			case CommandsPackage.READ_CSV_FILE: return createReadCsvFile();
 			case CommandsPackage.WRITE_CSV_FILE: return createWriteCsvFile();
+			case CommandsPackage.EXCLUDE_COLUMNS: return createExcludeColumns();
+			case CommandsPackage.SELECT_COLUMNS: return createSelectColumns();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -85,6 +87,26 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public WriteCsvFile createWriteCsvFile() {
 		WriteCsvFileImpl writeCsvFile = new WriteCsvFileImpl();
 		return writeCsvFile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExcludeColumns createExcludeColumns() {
+		ExcludeColumnsImpl excludeColumns = new ExcludeColumnsImpl();
+		return excludeColumns;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SelectColumns createSelectColumns() {
+		SelectColumnsImpl selectColumns = new SelectColumnsImpl();
+		return selectColumns;
 	}
 
 	/**

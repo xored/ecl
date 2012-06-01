@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.LinkedList;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -40,19 +40,67 @@ public class ReadCsvFileService implements ICommandService {
 		}
 
 		Table result = ObjectsFactory.eINSTANCE.createTable();
-		for (String[] vals : reader) {
-			Row row = ObjectsFactory.eINSTANCE.createRow();
-			row.getValues().addAll(Arrays.asList(vals));
-			result.getRows().add(row);
-		}
 		try {
-			reader.close();
+			String[] headers = reader.readNext();
+			if (headers.length == 0) {
+				return createErr("File %s does not contain any rows",
+						file.getAbsolutePath());
+			}
+
+			boolean haveIndent = headers[0]
+					.equals(WriteCsvFileService.INDENT_COLUMN);
+			for (int i = haveIndent ? 1 : 0; i < headers.length; i++) {
+				result.getColumns().add(headers[i]);
+			}
+
+			LinkedList<Row> stack = new LinkedList<Row>();
+			String[] line = null;
+			int lineNum = 0;
+
+			while ((line = reader.readNext()) != null) {
+				lineNum++;
+				if (line.length != headers.length) {
+					return createErr(
+							"Value count in line %d differs from column counti in file %s ",
+							lineNum, file.getAbsolutePath());
+				}
+
+				int indent = haveIndent ? Integer.parseInt(line[0]) : 0;
+				while (indent < stack.size()) {
+					stack.pop(); // throwing rows until falling on required
+									// level
+				}
+
+				Row row = ObjectsFactory.eINSTANCE.createRow();
+				for (int i = haveIndent ? 1 : 0; i < line.length; i++) {
+					row.getValues().add(line[i]);
+				}
+
+				if (indent != stack.size() && (indent - stack.size()) > 1) {
+					return createErr(
+							"Error on line %d - indent level too high, can't determine parent row in file %s",
+							lineNum, file.getAbsolutePath());
+				}
+
+				if (stack.size() > 0) {
+					stack.peek().getChildren().add(row);
+				} else {
+					result.getRows().add(row);
+				}
+
+				stack.push(row);
+			}
 		} catch (IOException e) {
-			// Don't care
+			return createErr(e, "Error reading file %s", file.getAbsolutePath());
+		} finally {
+			try {
+				reader.close();
+			} catch (IOException e) {
+				// nothing to do
+			}
 		}
 
 		context.getOutput().write(result);
 		return Status.OK_STATUS;
 	}
-
 }

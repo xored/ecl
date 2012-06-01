@@ -26,6 +26,16 @@
             name="WriteCsvFile"
             namespace="http://www.eclipse.org/ecl/data/commands.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.data.internal.commands.ExcludeColumnsService"
+            name="ExcludeColumns"
+            namespace="http://www.eclipse.org/ecl/data/commands.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.data.internal.commands.SelectColumnsService"
+            name="SelectColumns"
+            namespace="http://www.eclipse.org/ecl/data/commands.ecore">
+      </scriptlet>
    </extension>
 
 </plugin>
