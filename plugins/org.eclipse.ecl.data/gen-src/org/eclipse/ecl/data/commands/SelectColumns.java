@@ -7,11 +7,10 @@
 package org.eclipse.ecl.data.commands;
 
 import org.eclipse.ecl.core.Command;
+
 import org.eclipse.ecl.data.objects.Table;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

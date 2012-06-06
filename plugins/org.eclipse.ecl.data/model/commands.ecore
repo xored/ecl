@@ -67,4 +67,29 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AssertTablesMatch" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Compares contents of two tables. If contents are not the same, fails with a descriptive message"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="ecore:EClass objects.ecore#//Table"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="ecore:EClass objects.ecore#//Table"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ignoreColumnOrder" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="When true, column order is not taken into account"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ignoreMissingColumns" eType="#//IgnoreColumnsMode"
+        defaultValueLiteral="NONE">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Describes the comparison behaviour in case when one of tables contains a column which is not present in other table:&#xA;&lt;ul>&#xA;&lt;li>&lt;b>NONE&lt;/b> – all columns must be present in both tables&lt;/li>&#xA;&lt;li>&lt;b>LEFT&lt;/b> – columns from right table which are not present in left, are ignored&lt;/li>&#xA;&lt;li>&lt;b>RIGHT&lt;/b> – columns from left table which are not present in right, are ignored&lt;/li>&#xA;&lt;li>&lt;b>BOTH&lt;/b> – comparison performed only on columns present in both tables&lt;/li>&#xA;&lt;p>Another way to interpret this argument is that it is an answer on question &amp;quot;Which column can have less columns?&amp;quot;&lt;/p>&#xA;&lt;p>The primary reasoning for this argument is to provide smooth migration when presentation is changed – consider this scenario: we have a CSV file with table data, and we have UI table. If we add or remove extra columns in the UI, we can keep existing sample data file and just correct the &lt;code>ignoreMissingColumns&lt;/code> argument&lt;/p>&#xA;"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="IgnoreColumnsMode">
+    <eLiterals name="NONE"/>
+    <eLiterals name="LEFT" value="1"/>
+    <eLiterals name="RIGHT" value="2"/>
+    <eLiterals name="BOTH" value="3"/>
+  </eClassifiers>
 </ecore:EPackage>

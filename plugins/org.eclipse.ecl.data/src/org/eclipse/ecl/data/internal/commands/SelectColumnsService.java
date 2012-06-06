@@ -53,9 +53,9 @@ public class SelectColumnsService implements ICommandService {
 		Row result = ObjectsFactory.eINSTANCE.createRow();
 		for (int index : indices) {
 			result.getValues().add(src.getValues().get(index));
-			for (Row child : src.getChildren()) {
-				result.getChildren().add(extractSubrow(child, indices));
-			}
+		}
+		for (Row child : src.getChildren()) {
+			result.getChildren().add(extractSubrow(child, indices));
 		}
 		return result;
 	}

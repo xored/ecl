@@ -8,9 +8,11 @@ package org.eclipse.ecl.data.commands.impl;
 
 import org.eclipse.ecl.core.CorePackage;
 
+import org.eclipse.ecl.data.commands.AssertTablesMatch;
 import org.eclipse.ecl.data.commands.CommandsFactory;
 import org.eclipse.ecl.data.commands.CommandsPackage;
 import org.eclipse.ecl.data.commands.ExcludeColumns;
+import org.eclipse.ecl.data.commands.IgnoreColumnsMode;
 import org.eclipse.ecl.data.commands.ReadCsvFile;
 import org.eclipse.ecl.data.commands.SelectColumns;
 import org.eclipse.ecl.data.commands.WriteCsvFile;
@@ -19,6 +21,7 @@ import org.eclipse.ecl.data.objects.ObjectsPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -59,6 +62,20 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass selectColumnsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass assertTablesMatchEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum ignoreColumnsModeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -229,6 +246,60 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAssertTablesMatch() {
+		return assertTablesMatchEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAssertTablesMatch_Left() {
+		return (EReference)assertTablesMatchEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAssertTablesMatch_Right() {
+		return (EReference)assertTablesMatchEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAssertTablesMatch_IgnoreColumnOrder() {
+		return (EAttribute)assertTablesMatchEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAssertTablesMatch_IgnoreMissingColumns() {
+		return (EAttribute)assertTablesMatchEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getIgnoreColumnsMode() {
+		return ignoreColumnsModeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommandsFactory getCommandsFactory() {
 		return (CommandsFactory)getEFactoryInstance();
 	}
@@ -266,6 +337,15 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		selectColumnsEClass = createEClass(SELECT_COLUMNS);
 		createEReference(selectColumnsEClass, SELECT_COLUMNS__TABLE);
 		createEAttribute(selectColumnsEClass, SELECT_COLUMNS__COLUMNS);
+
+		assertTablesMatchEClass = createEClass(ASSERT_TABLES_MATCH);
+		createEReference(assertTablesMatchEClass, ASSERT_TABLES_MATCH__LEFT);
+		createEReference(assertTablesMatchEClass, ASSERT_TABLES_MATCH__RIGHT);
+		createEAttribute(assertTablesMatchEClass, ASSERT_TABLES_MATCH__IGNORE_COLUMN_ORDER);
+		createEAttribute(assertTablesMatchEClass, ASSERT_TABLES_MATCH__IGNORE_MISSING_COLUMNS);
+
+		// Create enums
+		ignoreColumnsModeEEnum = createEEnum(IGNORE_COLUMNS_MODE);
 	}
 
 	/**
@@ -305,6 +385,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		writeCsvFileEClass.getESuperTypes().add(theCorePackage.getCommand());
 		excludeColumnsEClass.getESuperTypes().add(theCorePackage.getCommand());
 		selectColumnsEClass.getESuperTypes().add(theCorePackage.getCommand());
+		assertTablesMatchEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(readCsvFileEClass, ReadCsvFile.class, "ReadCsvFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -321,6 +402,19 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		initEClass(selectColumnsEClass, SelectColumns.class, "SelectColumns", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSelectColumns_Table(), theObjectsPackage.getTable(), null, "table", null, 0, 1, SelectColumns.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSelectColumns_Columns(), theEcorePackage.getEString(), "columns", null, 0, -1, SelectColumns.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(assertTablesMatchEClass, AssertTablesMatch.class, "AssertTablesMatch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAssertTablesMatch_Left(), theObjectsPackage.getTable(), null, "left", null, 0, 1, AssertTablesMatch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAssertTablesMatch_Right(), theObjectsPackage.getTable(), null, "right", null, 0, 1, AssertTablesMatch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAssertTablesMatch_IgnoreColumnOrder(), theEcorePackage.getEBoolean(), "ignoreColumnOrder", "false", 0, 1, AssertTablesMatch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAssertTablesMatch_IgnoreMissingColumns(), this.getIgnoreColumnsMode(), "ignoreMissingColumns", "NONE", 0, 1, AssertTablesMatch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(ignoreColumnsModeEEnum, IgnoreColumnsMode.class, "IgnoreColumnsMode");
+		addEEnumLiteral(ignoreColumnsModeEEnum, IgnoreColumnsMode.NONE);
+		addEEnumLiteral(ignoreColumnsModeEEnum, IgnoreColumnsMode.LEFT);
+		addEEnumLiteral(ignoreColumnsModeEEnum, IgnoreColumnsMode.RIGHT);
+		addEEnumLiteral(ignoreColumnsModeEEnum, IgnoreColumnsMode.BOTH);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -409,6 +503,24 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Column names to take from table. If given column name is not present in input table, command fails"
+		   });		
+		addAnnotation
+		  (assertTablesMatchEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Compares contents of two tables. If contents are not the same, fails with a descriptive message"
+		   });		
+		addAnnotation
+		  (getAssertTablesMatch_IgnoreColumnOrder(), 
+		   source, 
+		   new String[] {
+			 "description", "When true, column order is not taken into account"
+		   });		
+		addAnnotation
+		  (getAssertTablesMatch_IgnoreMissingColumns(), 
+		   source, 
+		   new String[] {
+			 "description", "Describes the comparison behaviour in case when one of tables contains a column which is not present in other table:\n<ul>\n<li><b>NONE</b> \u2013 all columns must be present in both tables</li>\n<li><b>LEFT</b> \u2013 columns from right table which are not present in left, are ignored</li>\n<li><b>RIGHT</b> \u2013 columns from left table which are not present in right, are ignored</li>\n<li><b>BOTH</b> \u2013 comparison performed only on columns present in both tables</li>\n<p>Another way to interpret this argument is that it is an answer on question &quot;Which column can have less columns?&quot;</p>\n<p>The primary reasoning for this argument is to provide smooth migration when presentation is changed \u2013 consider this scenario: we have a CSV file with table data, and we have UI table. If we add or remove extra columns in the UI, we can keep existing sample data file and just correct the <code>ignoreMissingColumns</code> argument</p>\n"
 		   });
 	}
 
@@ -434,7 +546,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getSelectColumns_Table(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });					
 	}
 
 } //CommandsPackageImpl

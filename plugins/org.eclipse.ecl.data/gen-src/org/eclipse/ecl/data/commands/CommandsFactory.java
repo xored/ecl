@@ -62,6 +62,15 @@ public interface CommandsFactory extends EFactory {
 	SelectColumns createSelectColumns();
 
 	/**
+	 * Returns a new object of class '<em>Assert Tables Match</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Assert Tables Match</em>'.
+	 * @generated
+	 */
+	AssertTablesMatch createAssertTablesMatch();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

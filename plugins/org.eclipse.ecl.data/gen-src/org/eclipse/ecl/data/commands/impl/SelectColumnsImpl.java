@@ -9,6 +9,7 @@ package org.eclipse.ecl.data.commands.impl;
 import java.util.Collection;
 
 import org.eclipse.ecl.core.impl.CommandImpl;
+
 import org.eclipse.ecl.data.commands.CommandsPackage;
 import org.eclipse.ecl.data.commands.SelectColumns;
 
@@ -22,7 +23,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 

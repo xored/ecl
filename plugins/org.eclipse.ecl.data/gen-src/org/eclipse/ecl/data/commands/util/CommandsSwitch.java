@@ -100,6 +100,13 @@ public class CommandsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CommandsPackage.ASSERT_TABLES_MATCH: {
+				AssertTablesMatch assertTablesMatch = (AssertTablesMatch)theEObject;
+				T result = caseAssertTablesMatch(assertTablesMatch);
+				if (result == null) result = caseCommand(assertTablesMatch);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -161,6 +168,21 @@ public class CommandsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSelectColumns(SelectColumns object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Assert Tables Match</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Assert Tables Match</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAssertTablesMatch(AssertTablesMatch object) {
 		return null;
 	}
 

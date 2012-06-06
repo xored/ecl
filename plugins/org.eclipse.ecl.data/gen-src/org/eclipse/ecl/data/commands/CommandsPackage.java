@@ -10,6 +10,7 @@ import org.eclipse.ecl.core.CorePackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -162,7 +163,6 @@ public interface CommandsPackage extends EPackage {
 	 */
 	int WRITE_CSV_FILE_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
 
-
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.impl.ExcludeColumnsImpl <em>Exclude Columns</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -272,6 +272,89 @@ public interface CommandsPackage extends EPackage {
 	 * @ordered
 	 */
 	int SELECT_COLUMNS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.impl.AssertTablesMatchImpl <em>Assert Tables Match</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.data.commands.impl.AssertTablesMatchImpl
+	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getAssertTablesMatch()
+	 * @generated
+	 */
+	int ASSERT_TABLES_MATCH = 4;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_TABLES_MATCH__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_TABLES_MATCH__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_TABLES_MATCH__LEFT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_TABLES_MATCH__RIGHT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Column Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_TABLES_MATCH__IGNORE_COLUMN_ORDER = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Missing Columns</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_TABLES_MATCH__IGNORE_MISSING_COLUMNS = CorePackage.COMMAND_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Assert Tables Match</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_TABLES_MATCH_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.IgnoreColumnsMode <em>Ignore Columns Mode</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.data.commands.IgnoreColumnsMode
+	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getIgnoreColumnsMode()
+	 * @generated
+	 */
+	int IGNORE_COLUMNS_MODE = 5;
 
 
 	/**
@@ -392,6 +475,70 @@ public interface CommandsPackage extends EPackage {
 	EAttribute getSelectColumns_Columns();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.data.commands.AssertTablesMatch <em>Assert Tables Match</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Assert Tables Match</em>'.
+	 * @see org.eclipse.ecl.data.commands.AssertTablesMatch
+	 * @generated
+	 */
+	EClass getAssertTablesMatch();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.data.commands.AssertTablesMatch#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Left</em>'.
+	 * @see org.eclipse.ecl.data.commands.AssertTablesMatch#getLeft()
+	 * @see #getAssertTablesMatch()
+	 * @generated
+	 */
+	EReference getAssertTablesMatch_Left();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.data.commands.AssertTablesMatch#getRight <em>Right</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Right</em>'.
+	 * @see org.eclipse.ecl.data.commands.AssertTablesMatch#getRight()
+	 * @see #getAssertTablesMatch()
+	 * @generated
+	 */
+	EReference getAssertTablesMatch_Right();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.data.commands.AssertTablesMatch#isIgnoreColumnOrder <em>Ignore Column Order</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ignore Column Order</em>'.
+	 * @see org.eclipse.ecl.data.commands.AssertTablesMatch#isIgnoreColumnOrder()
+	 * @see #getAssertTablesMatch()
+	 * @generated
+	 */
+	EAttribute getAssertTablesMatch_IgnoreColumnOrder();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.data.commands.AssertTablesMatch#getIgnoreMissingColumns <em>Ignore Missing Columns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ignore Missing Columns</em>'.
+	 * @see org.eclipse.ecl.data.commands.AssertTablesMatch#getIgnoreMissingColumns()
+	 * @see #getAssertTablesMatch()
+	 * @generated
+	 */
+	EAttribute getAssertTablesMatch_IgnoreMissingColumns();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.ecl.data.commands.IgnoreColumnsMode <em>Ignore Columns Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Ignore Columns Mode</em>'.
+	 * @see org.eclipse.ecl.data.commands.IgnoreColumnsMode
+	 * @generated
+	 */
+	EEnum getIgnoreColumnsMode();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -508,6 +655,58 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SELECT_COLUMNS__COLUMNS = eINSTANCE.getSelectColumns_Columns();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.impl.AssertTablesMatchImpl <em>Assert Tables Match</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.data.commands.impl.AssertTablesMatchImpl
+		 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getAssertTablesMatch()
+		 * @generated
+		 */
+		EClass ASSERT_TABLES_MATCH = eINSTANCE.getAssertTablesMatch();
+
+		/**
+		 * The meta object literal for the '<em><b>Left</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ASSERT_TABLES_MATCH__LEFT = eINSTANCE.getAssertTablesMatch_Left();
+
+		/**
+		 * The meta object literal for the '<em><b>Right</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ASSERT_TABLES_MATCH__RIGHT = eINSTANCE.getAssertTablesMatch_Right();
+
+		/**
+		 * The meta object literal for the '<em><b>Ignore Column Order</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ASSERT_TABLES_MATCH__IGNORE_COLUMN_ORDER = eINSTANCE.getAssertTablesMatch_IgnoreColumnOrder();
+
+		/**
+		 * The meta object literal for the '<em><b>Ignore Missing Columns</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ASSERT_TABLES_MATCH__IGNORE_MISSING_COLUMNS = eINSTANCE.getAssertTablesMatch_IgnoreMissingColumns();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.IgnoreColumnsMode <em>Ignore Columns Mode</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.data.commands.IgnoreColumnsMode
+		 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getIgnoreColumnsMode()
+		 * @generated
+		 */
+		EEnum IGNORE_COLUMNS_MODE = eINSTANCE.getIgnoreColumnsMode();
 
 	}
 

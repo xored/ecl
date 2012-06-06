@@ -9,6 +9,7 @@ package org.eclipse.ecl.data.commands.impl;
 import org.eclipse.ecl.data.commands.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -64,8 +65,39 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 			case CommandsPackage.WRITE_CSV_FILE: return createWriteCsvFile();
 			case CommandsPackage.EXCLUDE_COLUMNS: return createExcludeColumns();
 			case CommandsPackage.SELECT_COLUMNS: return createSelectColumns();
+			case CommandsPackage.ASSERT_TABLES_MATCH: return createAssertTablesMatch();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case CommandsPackage.IGNORE_COLUMNS_MODE:
+				return createIgnoreColumnsModeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case CommandsPackage.IGNORE_COLUMNS_MODE:
+				return convertIgnoreColumnsModeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -107,6 +139,36 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public SelectColumns createSelectColumns() {
 		SelectColumnsImpl selectColumns = new SelectColumnsImpl();
 		return selectColumns;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AssertTablesMatch createAssertTablesMatch() {
+		AssertTablesMatchImpl assertTablesMatch = new AssertTablesMatchImpl();
+		return assertTablesMatch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IgnoreColumnsMode createIgnoreColumnsModeFromString(EDataType eDataType, String initialValue) {
+		IgnoreColumnsMode result = IgnoreColumnsMode.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertIgnoreColumnsModeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
