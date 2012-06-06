@@ -71,6 +71,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 			case OperationsPackage.LT: return createLt();
 			case OperationsPackage.NOT: return createNot();
 			case OperationsPackage.TRY: return createTry();
+			case OperationsPackage.FORMAT: return createFormat();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -184,6 +185,16 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	public Try createTry() {
 		TryImpl try_ = new TryImpl();
 		return try_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Format createFormat() {
+		FormatImpl format = new FormatImpl();
+		return format;
 	}
 
 	/**

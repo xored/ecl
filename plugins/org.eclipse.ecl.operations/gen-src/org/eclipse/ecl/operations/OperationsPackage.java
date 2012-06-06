@@ -700,6 +700,62 @@ public interface OperationsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.FormatImpl <em>Format</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.FormatImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getFormat()
+	 * @generated
+	 */
+	int FORMAT = 12;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORMAT__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORMAT__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORMAT__FORMAT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Args</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORMAT__ARGS = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Format</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORMAT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Eq <em>Eq</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1018,6 +1074,38 @@ public interface OperationsPackage extends EPackage {
 	EAttribute getTry_Delay();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Format <em>Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Format</em>'.
+	 * @see org.eclipse.ecl.operations.Format
+	 * @generated
+	 */
+	EClass getFormat();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.operations.Format#getFormat <em>Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Format</em>'.
+	 * @see org.eclipse.ecl.operations.Format#getFormat()
+	 * @see #getFormat()
+	 * @generated
+	 */
+	EAttribute getFormat_Format();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.operations.Format#getArgs <em>Args</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Args</em>'.
+	 * @see org.eclipse.ecl.operations.Format#getArgs()
+	 * @see #getFormat()
+	 * @generated
+	 */
+	EReference getFormat_Args();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1302,6 +1390,32 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TRY__DELAY = eINSTANCE.getTry_Delay();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.FormatImpl <em>Format</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.FormatImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getFormat()
+		 * @generated
+		 */
+		EClass FORMAT = eINSTANCE.getFormat();
+
+		/**
+		 * The meta object literal for the '<em><b>Format</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FORMAT__FORMAT = eINSTANCE.getFormat_Format();
+
+		/**
+		 * The meta object literal for the '<em><b>Args</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FORMAT__ARGS = eINSTANCE.getFormat_Args();
 
 	}
 

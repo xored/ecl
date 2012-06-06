@@ -12,6 +12,7 @@ import org.eclipse.ecl.operations.AssertTrue;
 import org.eclipse.ecl.operations.Bool;
 import org.eclipse.ecl.operations.Convert;
 import org.eclipse.ecl.operations.Eq;
+import org.eclipse.ecl.operations.Format;
 import org.eclipse.ecl.operations.Gt;
 import org.eclipse.ecl.operations.Int;
 import org.eclipse.ecl.operations.Length;
@@ -121,6 +122,13 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	private EClass tryEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass formatEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -147,20 +155,10 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link OperationsPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -172,7 +170,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		if (isInited) return (OperationsPackage)EPackage.Registry.INSTANCE.getEPackage(OperationsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		OperationsPackageImpl theOperationsPackage = (OperationsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof OperationsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new OperationsPackageImpl());
+		OperationsPackageImpl theOperationsPackage = (OperationsPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof OperationsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new OperationsPackageImpl());
 
 		isInited = true;
 
@@ -188,6 +186,9 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		// Mark meta-data to indicate it can't be changed
 		theOperationsPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(OperationsPackage.eNS_URI, theOperationsPackage);
 		return theOperationsPackage;
 	}
 
@@ -466,6 +467,33 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getFormat() {
+		return formatEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFormat_Format() {
+		return (EAttribute)formatEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getFormat_Args() {
+		return (EReference)formatEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public OperationsFactory getOperationsFactory() {
 		return (OperationsFactory)getEFactoryInstance();
 	}
@@ -530,6 +558,10 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		createEReference(tryEClass, TRY__FINALLY);
 		createEAttribute(tryEClass, TRY__TIMES);
 		createEAttribute(tryEClass, TRY__DELAY);
+
+		formatEClass = createEClass(FORMAT);
+		createEAttribute(formatEClass, FORMAT__FORMAT);
+		createEReference(formatEClass, FORMAT__ARGS);
 	}
 
 	/**
@@ -576,6 +608,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		ltEClass.getESuperTypes().add(theCorePackage.getCommand());
 		notEClass.getESuperTypes().add(theCorePackage.getCommand());
 		tryEClass.getESuperTypes().add(theCorePackage.getCommand());
+		formatEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -619,6 +652,10 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		initEReference(getTry_Finally(), theCorePackage.getCommand(), null, "finally", null, 0, 1, Try.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTry_Times(), theEcorePackage.getEIntegerObject(), "times", "1", 0, 1, Try.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTry_Delay(), theEcorePackage.getEIntegerObject(), "delay", "0", 0, 1, Try.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(formatEClass, Format.class, "Format", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFormat_Format(), theEcorePackage.getEString(), "format", null, 0, 1, Format.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFormat_Args(), theEcorePackage.getEObject(), null, "args", null, 0, -1, Format.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -794,6 +831,26 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		   new String[] {
 			 "description", "Try to execute command, retry times with delay if command are failed.\nExecute catch if all operations is not succesfull. Execute finally in anyway.",
 			 "returns", "return\'s -command output if command is successed."
+		   });		
+		addAnnotation
+		  (formatEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Writes a formatted string to output pipe",
+			 "returns", "Formatted string",
+			 "example", "format \"string: %s, int: %d\" \"foo\" 5 | log"
+		   });		
+		addAnnotation
+		  (getFormat_Format(), 
+		   source, 
+		   new String[] {
+			 "description", "Format string as in Java\'s <a href=\"http://docs.oracle.com/javase/6/docs/api/java/util/Formatter.html\">String.format</a>"
+		   });		
+		addAnnotation
+		  (getFormat_Args(), 
+		   source, 
+		   new String[] {
+			 "description", "Arguments for format string"
 		   });
 	}
 
@@ -844,7 +901,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (getNot_Left(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });					
 	}
 
 	/**
@@ -859,7 +916,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });																									
+		   });																												
 	}
 
 } //OperationsPackageImpl

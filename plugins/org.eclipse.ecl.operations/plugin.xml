@@ -65,6 +65,11 @@
             name="Try"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.FormatService"
+            name="Format"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
       
       
    </extension>

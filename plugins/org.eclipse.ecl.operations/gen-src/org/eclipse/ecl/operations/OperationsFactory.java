@@ -125,6 +125,15 @@ public interface OperationsFactory extends EFactory {
 	Try createTry();
 
 	/**
+	 * Returns a new object of class '<em>Format</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Format</em>'.
+	 * @generated
+	 */
+	Format createFormat();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
