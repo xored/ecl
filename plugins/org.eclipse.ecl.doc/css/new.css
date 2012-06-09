@@ -1,0 +1,8 @@
+.paramName {
+  font-family: monospace;
+}
+      
+.paramType {
+  font-weight: bold;
+  font-family: monospace;
+}

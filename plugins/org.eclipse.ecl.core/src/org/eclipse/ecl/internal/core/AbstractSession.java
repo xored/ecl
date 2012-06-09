@@ -73,7 +73,7 @@ public abstract class AbstractSession implements ISession {
 		} catch (Throwable t) {
 			s = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, t.getMessage(),
 					t);
-			CorePlugin.err(t.getMessage(), t);
+			CorePlugin.getDefault().getLog().log(CorePlugin.err(t.getMessage(), t));
 		} finally {
 			SessionListenerManager.endCommand(scriptlet, s);
 			CommandStack.fireExit(stack);
