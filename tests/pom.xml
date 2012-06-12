@@ -13,7 +13,6 @@
   <modules>
     <module>org.eclipse.ecl.client.tcp.tests</module>
     <module>org.eclipse.ecl.core.tests</module>
-    <module>org.eclipse.ecl.doc.tests</module>
     <module>org.eclipse.ecl.parser.test</module>
     <module>org.eclipse.ecl.perf.tests</module>
   </modules>
