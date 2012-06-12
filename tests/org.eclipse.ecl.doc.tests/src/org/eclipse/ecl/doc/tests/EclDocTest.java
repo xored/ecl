@@ -21,12 +21,10 @@ import junit.framework.TestCase;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.ecl.doc.DocWriter;
 import org.eclipse.emf.ecore.EPackage;
-import org.junit.Ignore;
 
 public class EclDocTest extends TestCase {
 
-	@Ignore
-	public void test01() throws Exception {
+	public void generateDocs() throws Exception {
 		EPackage[] ePackages = new EPackage[] {
 				EPackage.Registry.INSTANCE
 						.getEPackage("http://www.eclipse.org/ecl/core.ecore"),
