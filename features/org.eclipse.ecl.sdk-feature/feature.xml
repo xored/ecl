@@ -5,8 +5,8 @@
       version="1.1.0.qualifier"
       provider-name="xored software, Inc.">
 
-   <description url="http://www.example.com/description">
-      ECL SDK
+   <description url="http://www.xored.com/ecl/">
+      Eclipse Command Language SDK
    </description>
 
    <copyright url="%copyrightURL">
