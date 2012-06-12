@@ -15,16 +15,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.net.URL;
-import java.util.Map.Entry;
 
 import junit.framework.TestCase;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.ecl.doc.DocWriter;
 import org.eclipse.emf.ecore.EPackage;
+import org.junit.Ignore;
 
 public class EclDocTest extends TestCase {
 
+	@Ignore
 	public void test01() throws Exception {
 		EPackage[] ePackages = new EPackage[] {
 				EPackage.Registry.INSTANCE
@@ -36,17 +37,8 @@ public class EclDocTest extends TestCase {
 		// EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/ecl/platform/commands.ecore")
 		};
 
-//		EclDocPlugin.genPackagesInfo(ePackages, getOutput());
+		// EclDocPlugin.genPackagesInfo(ePackages, getOutput());
 		DocWriter.writePackages(ePackages, getOutput());
-	}
-
-	public void test02() {
-		for (Entry<String, Object> entry : EPackage.Registry.INSTANCE
-				.entrySet()) {
-			System.out.println(String.format("%-50s: %s", entry.getKey(), entry
-					.getValue().getClass().getName()));
-		}
-
 	}
 
 	private File getOutputFile() throws IOException {
@@ -56,6 +48,7 @@ public class EclDocTest extends TestCase {
 		String file = entry.getFile();
 		return new File(file);
 	}
+
 	private Writer getOutput() throws IOException {
 		return new FileWriter(getOutputFile());
 	}
