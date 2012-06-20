@@ -116,7 +116,6 @@ public interface OperationsPackage extends EPackage {
 	 */
 	int EQ_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
 
-
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.ConvertImpl <em>Convert</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -301,7 +300,6 @@ public interface OperationsPackage extends EPackage {
 	 */
 	int STR_FEATURE_COUNT = CONVERT_FEATURE_COUNT + 0;
 
-
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.AssertTrueImpl <em>Assert True</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -357,7 +355,6 @@ public interface OperationsPackage extends EPackage {
 	 */
 	int ASSERT_TRUE_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
 
-
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.LengthImpl <em>Length</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -403,7 +400,6 @@ public interface OperationsPackage extends EPackage {
 	 * @ordered
 	 */
 	int LENGTH_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
-
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.NotEqImpl <em>Not Eq</em>}' class.
@@ -698,7 +694,6 @@ public interface OperationsPackage extends EPackage {
 	 */
 	int TRY_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 5;
 
-
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.FormatImpl <em>Format</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -753,6 +748,107 @@ public interface OperationsPackage extends EPackage {
 	 * @ordered
 	 */
 	int FORMAT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.EmitImpl <em>Emit</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.EmitImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getEmit()
+	 * @generated
+	 */
+	int EMIT = 13;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMIT__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMIT__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMIT__VALUES = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Emit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMIT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.RepeatWithImpl <em>Repeat With</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.RepeatWithImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getRepeatWith()
+	 * @generated
+	 */
+	int REPEAT_WITH = 14;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPEAT_WITH__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPEAT_WITH__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Commands</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPEAT_WITH__COMMANDS = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Command</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPEAT_WITH__COMMAND = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Repeat With</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPEAT_WITH_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
 
 
 	/**
@@ -1106,6 +1202,59 @@ public interface OperationsPackage extends EPackage {
 	EReference getFormat_Args();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Emit <em>Emit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Emit</em>'.
+	 * @see org.eclipse.ecl.operations.Emit
+	 * @generated
+	 */
+	EClass getEmit();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.operations.Emit#getValues <em>Values</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Values</em>'.
+	 * @see org.eclipse.ecl.operations.Emit#getValues()
+	 * @see #getEmit()
+	 * @generated
+	 */
+	EReference getEmit_Values();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.RepeatWith <em>Repeat With</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Repeat With</em>'.
+	 * @see org.eclipse.ecl.operations.RepeatWith
+	 * @generated
+	 */
+	EClass getRepeatWith();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.operations.RepeatWith#getCommands <em>Commands</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Commands</em>'.
+	 * @see org.eclipse.ecl.operations.RepeatWith#getCommands()
+	 * @see #getRepeatWith()
+	 * @generated
+	 */
+	EReference getRepeatWith_Commands();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.RepeatWith#getCommand <em>Command</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Command</em>'.
+	 * @see org.eclipse.ecl.operations.RepeatWith#getCommand()
+	 * @see #getRepeatWith()
+	 * @generated
+	 */
+	EReference getRepeatWith_Command();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1416,6 +1565,50 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference FORMAT__ARGS = eINSTANCE.getFormat_Args();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.EmitImpl <em>Emit</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.EmitImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getEmit()
+		 * @generated
+		 */
+		EClass EMIT = eINSTANCE.getEmit();
+
+		/**
+		 * The meta object literal for the '<em><b>Values</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EMIT__VALUES = eINSTANCE.getEmit_Values();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.RepeatWithImpl <em>Repeat With</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.RepeatWithImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getRepeatWith()
+		 * @generated
+		 */
+		EClass REPEAT_WITH = eINSTANCE.getRepeatWith();
+
+		/**
+		 * The meta object literal for the '<em><b>Commands</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REPEAT_WITH__COMMANDS = eINSTANCE.getRepeatWith_Commands();
+
+		/**
+		 * The meta object literal for the '<em><b>Command</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REPEAT_WITH__COMMAND = eINSTANCE.getRepeatWith_Command();
 
 	}
 

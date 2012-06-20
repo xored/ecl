@@ -126,6 +126,14 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 				return createFormatAdapter();
 			}
 			@Override
+			public Adapter caseEmit(Emit object) {
+				return createEmitAdapter();
+			}
+			@Override
+			public Adapter caseRepeatWith(RepeatWith object) {
+				return createRepeatWithAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -328,6 +336,34 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createFormatAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.Emit <em>Emit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.Emit
+	 * @generated
+	 */
+	public Adapter createEmitAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.RepeatWith <em>Repeat With</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.RepeatWith
+	 * @generated
+	 */
+	public Adapter createRepeatWithAdapter() {
 		return null;
 	}
 

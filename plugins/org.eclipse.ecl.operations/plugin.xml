@@ -70,8 +70,15 @@
             name="Format"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
-      
-      
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.EmitService"
+            name="Emit"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.RepeatWithService"
+            name="RepeatWith"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
    </extension>
-
 </plugin>

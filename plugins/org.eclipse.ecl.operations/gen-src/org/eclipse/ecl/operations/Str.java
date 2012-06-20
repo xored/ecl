@@ -6,9 +6,6 @@
  */
 package org.eclipse.ecl.operations;
 
-import org.eclipse.ecl.core.Command;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,5 +18,4 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Str extends Convert {
-
 } // Str

@@ -11,6 +11,7 @@ import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.operations.AssertTrue;
 import org.eclipse.ecl.operations.Bool;
 import org.eclipse.ecl.operations.Convert;
+import org.eclipse.ecl.operations.Emit;
 import org.eclipse.ecl.operations.Eq;
 import org.eclipse.ecl.operations.Format;
 import org.eclipse.ecl.operations.Gt;
@@ -21,9 +22,10 @@ import org.eclipse.ecl.operations.Not;
 import org.eclipse.ecl.operations.NotEq;
 import org.eclipse.ecl.operations.OperationsFactory;
 import org.eclipse.ecl.operations.OperationsPackage;
-
+import org.eclipse.ecl.operations.RepeatWith;
 import org.eclipse.ecl.operations.Str;
 import org.eclipse.ecl.operations.Try;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -52,12 +54,14 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * @generated
 	 */
 	private EClass intEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass boolEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -127,6 +131,20 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * @generated
 	 */
 	private EClass formatEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass emitEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass repeatWithEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -494,6 +512,51 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getEmit() {
+		return emitEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEmit_Values() {
+		return (EReference)emitEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRepeatWith() {
+		return repeatWithEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRepeatWith_Commands() {
+		return (EReference)repeatWithEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRepeatWith_Command() {
+		return (EReference)repeatWithEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public OperationsFactory getOperationsFactory() {
 		return (OperationsFactory)getEFactoryInstance();
 	}
@@ -562,6 +625,13 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		formatEClass = createEClass(FORMAT);
 		createEAttribute(formatEClass, FORMAT__FORMAT);
 		createEReference(formatEClass, FORMAT__ARGS);
+
+		emitEClass = createEClass(EMIT);
+		createEReference(emitEClass, EMIT__VALUES);
+
+		repeatWithEClass = createEClass(REPEAT_WITH);
+		createEReference(repeatWithEClass, REPEAT_WITH__COMMANDS);
+		createEReference(repeatWithEClass, REPEAT_WITH__COMMAND);
 	}
 
 	/**
@@ -609,6 +679,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		notEClass.getESuperTypes().add(theCorePackage.getCommand());
 		tryEClass.getESuperTypes().add(theCorePackage.getCommand());
 		formatEClass.getESuperTypes().add(theCorePackage.getCommand());
+		emitEClass.getESuperTypes().add(theCorePackage.getCommand());
+		repeatWithEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -656,6 +728,13 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		initEClass(formatEClass, Format.class, "Format", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFormat_Format(), theEcorePackage.getEString(), "format", null, 0, 1, Format.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFormat_Args(), theEcorePackage.getEObject(), null, "args", null, 0, -1, Format.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(emitEClass, Emit.class, "Emit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEmit_Values(), theEcorePackage.getEObject(), null, "values", null, 0, -1, Emit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(repeatWithEClass, RepeatWith.class, "RepeatWith", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRepeatWith_Commands(), theEcorePackage.getEObject(), null, "commands", null, 0, -1, RepeatWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRepeatWith_Command(), theCorePackage.getCommand(), null, "command", null, 0, 1, RepeatWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -851,7 +930,23 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		   source, 
 		   new String[] {
 			 "description", "Arguments for format string"
-		   });
+		   });		
+		addAnnotation
+		  (emitEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Writes its arguments into output pipe. ",
+			 "returns", "List of arguments",
+			 "example", "emit \"hello\" \"world\" | foreach { log }"
+		   });		
+		addAnnotation
+		  (repeatWithEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Takes list of commands from input pipe and single command as argument and executes them in following order: \n<pre>\ncommand-from-input-1 | command-from-arg\ncommand-from-input-2 | command-from-arg\n...\n</pre>",
+			 "returns", "Aggregated output of command from argument",
+			 "example", "// executes commands:\n// echo 1 | gt 2\n// echo 2 | gt 2\n// echo 3 | gt 2\n// output: false, false, true\nemit { echo 1}, { echo 2}, { echo 3} | repeat-with { gt 2 } "
+		   });	
 	}
 
 	/**
@@ -901,7 +996,12 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (getNot_Left(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });									
+		addAnnotation
+		  (getRepeatWith_Commands(), 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 	/**
@@ -916,7 +1016,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });																												
+		   });																															
 	}
 
 } //OperationsPackageImpl

@@ -6,15 +6,13 @@
  */
 package org.eclipse.ecl.operations.util;
 
-import java.util.List;
-
 import org.eclipse.ecl.core.Command;
 
 import org.eclipse.ecl.operations.*;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.util.Switch;
 
 /**
@@ -165,6 +163,20 @@ public class OperationsSwitch<T> extends Switch<T> {
 				Format format = (Format)theEObject;
 				T result = caseFormat(format);
 				if (result == null) result = caseCommand(format);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.EMIT: {
+				Emit emit = (Emit)theEObject;
+				T result = caseEmit(emit);
+				if (result == null) result = caseCommand(emit);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.REPEAT_WITH: {
+				RepeatWith repeatWith = (RepeatWith)theEObject;
+				T result = caseRepeatWith(repeatWith);
+				if (result == null) result = caseCommand(repeatWith);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -364,6 +376,36 @@ public class OperationsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseFormat(Format object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Emit</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Emit</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEmit(Emit object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Repeat With</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Repeat With</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRepeatWith(RepeatWith object) {
 		return null;
 	}
 

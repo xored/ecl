@@ -134,6 +134,24 @@ public interface OperationsFactory extends EFactory {
 	Format createFormat();
 
 	/**
+	 * Returns a new object of class '<em>Emit</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Emit</em>'.
+	 * @generated
+	 */
+	Emit createEmit();
+
+	/**
+	 * Returns a new object of class '<em>Repeat With</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Repeat With</em>'.
+	 * @generated
+	 */
+	RepeatWith createRepeatWith();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

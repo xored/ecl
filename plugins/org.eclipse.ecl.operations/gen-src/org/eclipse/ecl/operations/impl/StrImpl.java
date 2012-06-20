@@ -6,18 +6,10 @@
  */
 package org.eclipse.ecl.operations.impl;
 
-import org.eclipse.ecl.core.impl.CommandImpl;
-
 import org.eclipse.ecl.operations.OperationsPackage;
 import org.eclipse.ecl.operations.Str;
 
-import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->

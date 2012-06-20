@@ -12,5 +12,6 @@ Export-Package: org.eclipse.ecl.operations,
  org.eclipse.ecl.operations.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.ecl.core;visibility:=reexport
+ org.eclipse.ecl.core;visibility:=reexport,
+ org.eclipse.ecl.parser;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
