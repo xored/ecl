@@ -41,6 +41,21 @@
             name="AssertTablesMatch"
             namespace="http://www.eclipse.org/ecl/data/commands.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.data.internal.commands.PrintService"
+            name="Print"
+            namespace="http://www.eclipse.org/ecl/data/commands.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.data.internal.commands.WriteLinesService"
+            name="WriteLines"
+            namespace="http://www.eclipse.org/ecl/data/commands.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.data.internal.commands.ReadLinesService"
+            name="ReadLines"
+            namespace="http://www.eclipse.org/ecl/data/commands.ecore">
+      </scriptlet>
    </extension>
 
 </plugin>

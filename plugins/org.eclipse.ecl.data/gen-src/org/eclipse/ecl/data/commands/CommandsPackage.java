@@ -109,6 +109,52 @@ public interface CommandsPackage extends EPackage {
 	int READ_CSV_FILE_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.impl.PrintImpl <em>Print</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.data.commands.impl.PrintImpl
+	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getPrint()
+	 * @generated
+	 */
+	int PRINT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINT__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINT__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINT__INPUT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Print</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.impl.WriteCsvFileImpl <em>Write Csv File</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -116,7 +162,7 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getWriteCsvFile()
 	 * @generated
 	 */
-	int WRITE_CSV_FILE = 1;
+	int WRITE_CSV_FILE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -171,7 +217,7 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getExcludeColumns()
 	 * @generated
 	 */
-	int EXCLUDE_COLUMNS = 2;
+	int EXCLUDE_COLUMNS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -226,7 +272,7 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getSelectColumns()
 	 * @generated
 	 */
-	int SELECT_COLUMNS = 3;
+	int SELECT_COLUMNS = 4;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -281,7 +327,7 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getAssertTablesMatch()
 	 * @generated
 	 */
-	int ASSERT_TABLES_MATCH = 4;
+	int ASSERT_TABLES_MATCH = 5;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -347,6 +393,107 @@ public interface CommandsPackage extends EPackage {
 	int ASSERT_TABLES_MATCH_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.impl.WriteLinesImpl <em>Write Lines</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.data.commands.impl.WriteLinesImpl
+	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getWriteLines()
+	 * @generated
+	 */
+	int WRITE_LINES = 6;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WRITE_LINES__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WRITE_LINES__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WRITE_LINES__URI = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Append</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WRITE_LINES__APPEND = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Write Lines</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WRITE_LINES_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.impl.ReadLinesImpl <em>Read Lines</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.data.commands.impl.ReadLinesImpl
+	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getReadLines()
+	 * @generated
+	 */
+	int READ_LINES = 7;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_LINES__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_LINES__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_LINES__URI = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Read Lines</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_LINES_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.IgnoreColumnsMode <em>Ignore Columns Mode</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -354,7 +501,7 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getIgnoreColumnsMode()
 	 * @generated
 	 */
-	int IGNORE_COLUMNS_MODE = 5;
+	int IGNORE_COLUMNS_MODE = 8;
 
 
 	/**
@@ -377,6 +524,27 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getReadCsvFile_Uri();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.data.commands.Print <em>Print</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Print</em>'.
+	 * @see org.eclipse.ecl.data.commands.Print
+	 * @generated
+	 */
+	EClass getPrint();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.data.commands.Print#getInput <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Input</em>'.
+	 * @see org.eclipse.ecl.data.commands.Print#getInput()
+	 * @see #getPrint()
+	 * @generated
+	 */
+	EReference getPrint_Input();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.data.commands.WriteCsvFile <em>Write Csv File</em>}'.
@@ -529,6 +697,59 @@ public interface CommandsPackage extends EPackage {
 	EAttribute getAssertTablesMatch_IgnoreMissingColumns();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.data.commands.WriteLines <em>Write Lines</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Write Lines</em>'.
+	 * @see org.eclipse.ecl.data.commands.WriteLines
+	 * @generated
+	 */
+	EClass getWriteLines();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.data.commands.WriteLines#getUri <em>Uri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Uri</em>'.
+	 * @see org.eclipse.ecl.data.commands.WriteLines#getUri()
+	 * @see #getWriteLines()
+	 * @generated
+	 */
+	EAttribute getWriteLines_Uri();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.data.commands.WriteLines#isAppend <em>Append</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Append</em>'.
+	 * @see org.eclipse.ecl.data.commands.WriteLines#isAppend()
+	 * @see #getWriteLines()
+	 * @generated
+	 */
+	EAttribute getWriteLines_Append();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.data.commands.ReadLines <em>Read Lines</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Read Lines</em>'.
+	 * @see org.eclipse.ecl.data.commands.ReadLines
+	 * @generated
+	 */
+	EClass getReadLines();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.data.commands.ReadLines#getUri <em>Uri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Uri</em>'.
+	 * @see org.eclipse.ecl.data.commands.ReadLines#getUri()
+	 * @see #getReadLines()
+	 * @generated
+	 */
+	EAttribute getReadLines_Uri();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.ecl.data.commands.IgnoreColumnsMode <em>Ignore Columns Mode</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -577,6 +798,24 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute READ_CSV_FILE__URI = eINSTANCE.getReadCsvFile_Uri();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.impl.PrintImpl <em>Print</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.data.commands.impl.PrintImpl
+		 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getPrint()
+		 * @generated
+		 */
+		EClass PRINT = eINSTANCE.getPrint();
+
+		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRINT__INPUT = eINSTANCE.getPrint_Input();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.impl.WriteCsvFileImpl <em>Write Csv File</em>}' class.
@@ -697,6 +936,50 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ASSERT_TABLES_MATCH__IGNORE_MISSING_COLUMNS = eINSTANCE.getAssertTablesMatch_IgnoreMissingColumns();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.impl.WriteLinesImpl <em>Write Lines</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.data.commands.impl.WriteLinesImpl
+		 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getWriteLines()
+		 * @generated
+		 */
+		EClass WRITE_LINES = eINSTANCE.getWriteLines();
+
+		/**
+		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WRITE_LINES__URI = eINSTANCE.getWriteLines_Uri();
+
+		/**
+		 * The meta object literal for the '<em><b>Append</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WRITE_LINES__APPEND = eINSTANCE.getWriteLines_Append();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.impl.ReadLinesImpl <em>Read Lines</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.data.commands.impl.ReadLinesImpl
+		 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getReadLines()
+		 * @generated
+		 */
+		EClass READ_LINES = eINSTANCE.getReadLines();
+
+		/**
+		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute READ_LINES__URI = eINSTANCE.getReadLines_Uri();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.IgnoreColumnsMode <em>Ignore Columns Mode</em>}' enum.

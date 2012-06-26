@@ -14,6 +14,12 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Print" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" upperBound="-1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WriteCsvFile" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
       <details key="description" value="Writes given table into csv file. Fails if file is not accessible"/>
@@ -91,5 +97,31 @@
     <eLiterals name="LEFT" value="1"/>
     <eLiterals name="RIGHT" value="2"/>
     <eLiterals name="BOTH" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WriteLines" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Reads objects from input pipe and writes them into file line-by-line as strings"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="URI to write lines to. Currently supported schemes are workspace:/ for files in workspace and file:/ for files on local file system"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="append" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Whether to append given lines into file. Default value is false"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReadLines" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Reads lines from file identified by uri and writes them one-by-one into output pipe"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="URI to read lines from. Currently supported schemes are workspace:/ for files in workspace and file:/ for files on local file system"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

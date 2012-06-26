@@ -13,10 +13,13 @@ import org.eclipse.ecl.data.commands.CommandsFactory;
 import org.eclipse.ecl.data.commands.CommandsPackage;
 import org.eclipse.ecl.data.commands.ExcludeColumns;
 import org.eclipse.ecl.data.commands.IgnoreColumnsMode;
+import org.eclipse.ecl.data.commands.Print;
 import org.eclipse.ecl.data.commands.ReadCsvFile;
+import org.eclipse.ecl.data.commands.ReadLines;
 import org.eclipse.ecl.data.commands.SelectColumns;
 import org.eclipse.ecl.data.commands.WriteCsvFile;
 
+import org.eclipse.ecl.data.commands.WriteLines;
 import org.eclipse.ecl.data.objects.ObjectsPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -47,6 +50,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass printEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass writeCsvFileEClass = null;
 
 	/**
@@ -69,6 +79,20 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass assertTablesMatchEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass writeLinesEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass readLinesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -158,6 +182,24 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 */
 	public EAttribute getReadCsvFile_Uri() {
 		return (EAttribute)readCsvFileEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPrint() {
+		return printEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPrint_Input() {
+		return (EReference)printEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -291,6 +333,51 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getWriteLines() {
+		return writeLinesEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getWriteLines_Uri() {
+		return (EAttribute)writeLinesEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getWriteLines_Append() {
+		return (EAttribute)writeLinesEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getReadLines() {
+		return readLinesEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getReadLines_Uri() {
+		return (EAttribute)readLinesEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getIgnoreColumnsMode() {
 		return ignoreColumnsModeEEnum;
 	}
@@ -326,6 +413,9 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		readCsvFileEClass = createEClass(READ_CSV_FILE);
 		createEAttribute(readCsvFileEClass, READ_CSV_FILE__URI);
 
+		printEClass = createEClass(PRINT);
+		createEReference(printEClass, PRINT__INPUT);
+
 		writeCsvFileEClass = createEClass(WRITE_CSV_FILE);
 		createEReference(writeCsvFileEClass, WRITE_CSV_FILE__TABLE);
 		createEAttribute(writeCsvFileEClass, WRITE_CSV_FILE__URI);
@@ -343,6 +433,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		createEReference(assertTablesMatchEClass, ASSERT_TABLES_MATCH__RIGHT);
 		createEAttribute(assertTablesMatchEClass, ASSERT_TABLES_MATCH__IGNORE_COLUMN_ORDER);
 		createEAttribute(assertTablesMatchEClass, ASSERT_TABLES_MATCH__IGNORE_MISSING_COLUMNS);
+
+		writeLinesEClass = createEClass(WRITE_LINES);
+		createEAttribute(writeLinesEClass, WRITE_LINES__URI);
+		createEAttribute(writeLinesEClass, WRITE_LINES__APPEND);
+
+		readLinesEClass = createEClass(READ_LINES);
+		createEAttribute(readLinesEClass, READ_LINES__URI);
 
 		// Create enums
 		ignoreColumnsModeEEnum = createEEnum(IGNORE_COLUMNS_MODE);
@@ -373,8 +470,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		// Obtain other dependent packages
 		CorePackage theCorePackage = (CorePackage)EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI);
-		ObjectsPackage theObjectsPackage = (ObjectsPackage)EPackage.Registry.INSTANCE.getEPackage(ObjectsPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		ObjectsPackage theObjectsPackage = (ObjectsPackage)EPackage.Registry.INSTANCE.getEPackage(ObjectsPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -382,14 +479,20 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		// Add supertypes to classes
 		readCsvFileEClass.getESuperTypes().add(theCorePackage.getCommand());
+		printEClass.getESuperTypes().add(theCorePackage.getCommand());
 		writeCsvFileEClass.getESuperTypes().add(theCorePackage.getCommand());
 		excludeColumnsEClass.getESuperTypes().add(theCorePackage.getCommand());
 		selectColumnsEClass.getESuperTypes().add(theCorePackage.getCommand());
 		assertTablesMatchEClass.getESuperTypes().add(theCorePackage.getCommand());
+		writeLinesEClass.getESuperTypes().add(theCorePackage.getCommand());
+		readLinesEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(readCsvFileEClass, ReadCsvFile.class, "ReadCsvFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getReadCsvFile_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, ReadCsvFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(printEClass, Print.class, "Print", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPrint_Input(), theEcorePackage.getEObject(), null, "input", null, 0, -1, Print.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(writeCsvFileEClass, WriteCsvFile.class, "WriteCsvFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getWriteCsvFile_Table(), theObjectsPackage.getTable(), null, "table", null, 0, 1, WriteCsvFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -408,6 +511,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		initEReference(getAssertTablesMatch_Right(), theObjectsPackage.getTable(), null, "right", null, 0, 1, AssertTablesMatch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAssertTablesMatch_IgnoreColumnOrder(), theEcorePackage.getEBoolean(), "ignoreColumnOrder", "false", 0, 1, AssertTablesMatch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAssertTablesMatch_IgnoreMissingColumns(), this.getIgnoreColumnsMode(), "ignoreMissingColumns", "NONE", 0, 1, AssertTablesMatch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(writeLinesEClass, WriteLines.class, "WriteLines", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWriteLines_Uri(), theEcorePackage.getEString(), "uri", null, 0, 1, WriteLines.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWriteLines_Append(), theEcorePackage.getEBoolean(), "append", "false", 0, 1, WriteLines.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(readLinesEClass, ReadLines.class, "ReadLines", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getReadLines_Uri(), theEcorePackage.getEString(), "uri", null, 0, 1, ReadLines.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(ignoreColumnsModeEEnum, IgnoreColumnsMode.class, "IgnoreColumnsMode");
@@ -446,7 +556,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "URI to a file to read. Currently supported schemes are workspace:/ for files in workspace and file:/ for files on local file system"
-		   });		
+		   });			
 		addAnnotation
 		  (writeCsvFileEClass, 
 		   source, 
@@ -521,6 +631,36 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Describes the comparison behaviour in case when one of tables contains a column which is not present in other table:\n<ul>\n<li><b>NONE</b> \u2013 all columns must be present in both tables</li>\n<li><b>LEFT</b> \u2013 columns from right table which are not present in left, are ignored</li>\n<li><b>RIGHT</b> \u2013 columns from left table which are not present in right, are ignored</li>\n<li><b>BOTH</b> \u2013 comparison performed only on columns present in both tables</li>\n<p>Another way to interpret this argument is that it is an answer on question &quot;Which column can have less columns?&quot;</p>\n<p>The primary reasoning for this argument is to provide smooth migration when presentation is changed \u2013 consider this scenario: we have a CSV file with table data, and we have UI table. If we add or remove extra columns in the UI, we can keep existing sample data file and just correct the <code>ignoreMissingColumns</code> argument</p>\n"
+		   });		
+		addAnnotation
+		  (writeLinesEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Reads objects from input pipe and writes them into file line-by-line as strings"
+		   });		
+		addAnnotation
+		  (getWriteLines_Uri(), 
+		   source, 
+		   new String[] {
+			 "description", "URI to write lines to. Currently supported schemes are workspace:/ for files in workspace and file:/ for files on local file system"
+		   });		
+		addAnnotation
+		  (getWriteLines_Append(), 
+		   source, 
+		   new String[] {
+			 "description", "Whether to append given lines into file. Default value is false"
+		   });		
+		addAnnotation
+		  (readLinesEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Reads lines from file identified by uri and writes them one-by-one into output pipe"
+		   });		
+		addAnnotation
+		  (getReadLines_Uri(), 
+		   source, 
+		   new String[] {
+			 "description", "URI to read lines from. Currently supported schemes are workspace:/ for files in workspace and file:/ for files on local file system"
 		   });
 	}
 
@@ -531,7 +671,12 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	protected void createInputAnnotations() {
-		String source = "http://www.eclipse.org/ecl/input";					
+		String source = "http://www.eclipse.org/ecl/input";				
+		addAnnotation
+		  (getPrint_Input(), 
+		   source, 
+		   new String[] {
+		   });			
 		addAnnotation
 		  (getWriteCsvFile_Table(), 
 		   source, 
@@ -546,7 +691,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getSelectColumns_Table(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });										
 	}
 
 } //CommandsPackageImpl

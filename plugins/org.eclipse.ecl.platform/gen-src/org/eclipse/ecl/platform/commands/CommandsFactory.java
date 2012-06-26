@@ -89,15 +89,6 @@ public interface CommandsFactory extends EFactory {
 	UpdateAll createUpdateAll();
 
 	/**
-	 * Returns a new object of class '<em>Print</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Print</em>'.
-	 * @generated
-	 */
-	Print createPrint();
-
-	/**
 	 * Returns a new object of class '<em>Sort By</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

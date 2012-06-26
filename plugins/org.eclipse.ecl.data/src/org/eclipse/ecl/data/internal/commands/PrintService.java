@@ -1,4 +1,4 @@
-package org.eclipse.ecl.platform.internal.commands;
+package org.eclipse.ecl.data.internal.commands;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,8 +12,9 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
-import org.eclipse.ecl.platform.commands.Print;
+import org.eclipse.ecl.data.commands.Print;
 import org.eclipse.ecl.runtime.ICommandService;
+import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -29,11 +30,12 @@ public class PrintService implements ICommandService {
 		List<EObject> input = ((Print) command).getInput();
 		// print table with attributes
 
-		List<EObject> objects = new ArrayList<EObject>();
-		for (Object o : input) {
-			objects.add((EObject) o);
-		}
+		printTable(context.getOutput(), input);
+		return Status.OK_STATUS;
+	}
 
+	private void printTable(IPipe out, List<EObject> input)
+			throws CoreException {
 		Set<String> columns = new TreeSet<String>();
 		List<Map<String, String>> rows = new ArrayList<Map<String, String>>();
 		for (Object o : input) {
@@ -71,7 +73,7 @@ public class PrintService implements ICommandService {
 					.append("|");
 		}
 
-		context.getOutput().write(sb.toString());
+		out.write(sb.toString());
 
 		sb.setLength(0);
 		sb.append("+");
@@ -82,7 +84,7 @@ public class PrintService implements ICommandService {
 			sb.append("+");
 		}
 
-		context.getOutput().write(sb.toString());
+		out.write(sb.toString());
 
 		for (Map<String, String> row : rows) {
 			sb.setLength(0);
@@ -92,10 +94,8 @@ public class PrintService implements ICommandService {
 				sb.append(String.format("%-" + widths[i] + "s", val));
 				sb.append("|");
 			}
-			context.getOutput().write(sb.toString());
+			out.write(sb.toString());
 		}
-
-		return Status.OK_STATUS;
 	}
 
 	private Map<String, String> getRow(EObject obj) {
@@ -110,5 +110,4 @@ public class PrintService implements ICommandService {
 		}
 		return result;
 	}
-
 }

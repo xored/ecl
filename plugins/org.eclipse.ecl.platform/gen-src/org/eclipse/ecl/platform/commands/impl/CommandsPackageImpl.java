@@ -19,7 +19,6 @@ import org.eclipse.ecl.platform.commands.ListInstallUnits;
 import org.eclipse.ecl.platform.commands.ListPlugins;
 import org.eclipse.ecl.platform.commands.ListRepositories;
 import org.eclipse.ecl.platform.commands.Log;
-import org.eclipse.ecl.platform.commands.Print;
 import org.eclipse.ecl.platform.commands.RemoveRepository;
 import org.eclipse.ecl.platform.commands.SortBy;
 import org.eclipse.ecl.platform.commands.UpdateAll;
@@ -27,10 +26,11 @@ import org.eclipse.ecl.platform.commands.UpdateFeature;
 
 import org.eclipse.ecl.platform.objects.ObjectsPackage;
 
+import org.eclipse.emf.common.util.URI;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -90,13 +90,6 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass updateAllEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass printEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -167,20 +160,10 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link CommandsPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -192,7 +175,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		if (isInited) return (CommandsPackage)EPackage.Registry.INSTANCE.getEPackage(CommandsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		CommandsPackageImpl theCommandsPackage = (CommandsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof CommandsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new CommandsPackageImpl());
+		CommandsPackageImpl theCommandsPackage = (CommandsPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof CommandsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new CommandsPackageImpl());
 
 		isInited = true;
 
@@ -209,6 +192,9 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		// Mark meta-data to indicate it can't be changed
 		theCommandsPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(CommandsPackage.eNS_URI, theCommandsPackage);
 		return theCommandsPackage;
 	}
 
@@ -309,24 +295,6 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 */
 	public EClass getUpdateAll() {
 		return updateAllEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getPrint() {
-		return printEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPrint_Input() {
-		return (EReference)printEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -492,9 +460,6 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		updateAllEClass = createEClass(UPDATE_ALL);
 
-		printEClass = createEClass(PRINT);
-		createEReference(printEClass, PRINT__INPUT);
-
 		sortByEClass = createEClass(SORT_BY);
 		createEAttribute(sortByEClass, SORT_BY__FIELD);
 
@@ -554,7 +519,6 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		removeRepositoryEClass.getESuperTypes().add(theCorePackage.getCommand());
 		updateFeatureEClass.getESuperTypes().add(theCorePackage.getCommand());
 		updateAllEClass.getESuperTypes().add(theCorePackage.getCommand());
-		printEClass.getESuperTypes().add(theCorePackage.getCommand());
 		sortByEClass.getESuperTypes().add(theCorePackage.getCommand());
 		listInstallUnitsEClass.getESuperTypes().add(theCorePackage.getCommand());
 		getLogEClass.getESuperTypes().add(theCorePackage.getCommand());
@@ -581,9 +545,6 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		initEClass(updateAllEClass, UpdateAll.class, "UpdateAll", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(printEClass, Print.class, "Print", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPrint_Input(), theEcorePackage.getEObject(), null, "input", null, 0, -1, Print.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(sortByEClass, SortBy.class, "SortBy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSortBy_Field(), theEcorePackage.getEString(), "field", null, 0, 1, SortBy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -607,35 +568,10 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://www.eclipse.org/ecl/input
-		createInputAnnotations();
 		// http://www.eclipse.org/ecl/docs
 		createDocsAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/input</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createInputAnnotations() {
-		String source = "http://www.eclipse.org/ecl/input";		
-		addAnnotation
-		  (getPrint_Input(), 
-		   source, 
-		   new String[] {
-		   });						
-		addAnnotation
-		  (getLog_Message(), 
-		   source, 
-		   new String[] {
-		   });						
-		addAnnotation
-		  (getEcho_Str(), 
-		   source, 
-		   new String[] {
-		   });	
+		// http://www.eclipse.org/ecl/input
+		createInputAnnotations();
 	}
 
 	/**
@@ -645,7 +581,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	protected void createDocsAnnotations() {
-		String source = "http://www.eclipse.org/ecl/docs";			
+		String source = "http://www.eclipse.org/ecl/docs";		
 		addAnnotation
 		  (getLogEClass, 
 		   source, 
@@ -704,6 +640,29 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 			 "description", "Removes log file. Note that if log view is open, it may enter into inconsistent state. If it is important, use <code>clear-log-view</code> instead",
 			 "returns", "Nothing"
 		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/input</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createInputAnnotations() {
+		String source = "http://www.eclipse.org/ecl/input";						
+		addAnnotation
+		  (getLog_Message(), 
+		   source, 
+		   new String[] {
+		   },
+		   new URI[] {
+			 URI.createURI(CorePackage.eNS_URI).appendFragment("//Foreach/input/%http:%2F%2Fwww.eclipse.org%2Fecl%2Finput%")
+		   });						
+		addAnnotation
+		  (getEcho_Str(), 
+		   source, 
+		   new String[] {
+		   });	
 	}
 
 } //CommandsPackageImpl

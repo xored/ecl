@@ -79,6 +79,13 @@ public class CommandsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CommandsPackage.PRINT: {
+				Print print = (Print)theEObject;
+				T result = casePrint(print);
+				if (result == null) result = caseCommand(print);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case CommandsPackage.WRITE_CSV_FILE: {
 				WriteCsvFile writeCsvFile = (WriteCsvFile)theEObject;
 				T result = caseWriteCsvFile(writeCsvFile);
@@ -107,6 +114,20 @@ public class CommandsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CommandsPackage.WRITE_LINES: {
+				WriteLines writeLines = (WriteLines)theEObject;
+				T result = caseWriteLines(writeLines);
+				if (result == null) result = caseCommand(writeLines);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommandsPackage.READ_LINES: {
+				ReadLines readLines = (ReadLines)theEObject;
+				T result = caseReadLines(readLines);
+				if (result == null) result = caseCommand(readLines);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -123,6 +144,21 @@ public class CommandsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseReadCsvFile(ReadCsvFile object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Print</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Print</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePrint(Print object) {
 		return null;
 	}
 
@@ -183,6 +219,36 @@ public class CommandsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAssertTablesMatch(AssertTablesMatch object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Write Lines</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Write Lines</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWriteLines(WriteLines object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Read Lines</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Read Lines</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReadLines(ReadLines object) {
 		return null;
 	}
 

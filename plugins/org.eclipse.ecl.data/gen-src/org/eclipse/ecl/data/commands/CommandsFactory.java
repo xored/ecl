@@ -35,6 +35,15 @@ public interface CommandsFactory extends EFactory {
 	ReadCsvFile createReadCsvFile();
 
 	/**
+	 * Returns a new object of class '<em>Print</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Print</em>'.
+	 * @generated
+	 */
+	Print createPrint();
+
+	/**
 	 * Returns a new object of class '<em>Write Csv File</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -69,6 +78,24 @@ public interface CommandsFactory extends EFactory {
 	 * @generated
 	 */
 	AssertTablesMatch createAssertTablesMatch();
+
+	/**
+	 * Returns a new object of class '<em>Write Lines</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Write Lines</em>'.
+	 * @generated
+	 */
+	WriteLines createWriteLines();
+
+	/**
+	 * Returns a new object of class '<em>Read Lines</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Read Lines</em>'.
+	 * @generated
+	 */
+	ReadLines createReadLines();
 
 	/**
 	 * Returns the package supported by this factory.

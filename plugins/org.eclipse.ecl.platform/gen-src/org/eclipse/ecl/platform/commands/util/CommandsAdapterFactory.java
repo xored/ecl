@@ -102,10 +102,6 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 				return createUpdateAllAdapter();
 			}
 			@Override
-			public Adapter casePrint(Print object) {
-				return createPrintAdapter();
-			}
-			@Override
 			public Adapter caseSortBy(SortBy object) {
 				return createSortByAdapter();
 			}
@@ -248,20 +244,6 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createUpdateAllAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.platform.commands.Print <em>Print</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.ecl.platform.commands.Print
-	 * @generated
-	 */
-	public Adapter createPrintAdapter() {
 		return null;
 	}
 

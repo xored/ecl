@@ -357,52 +357,6 @@ public interface CommandsPackage extends EPackage {
 	int UPDATE_ALL_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.PrintImpl <em>Print</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.platform.commands.impl.PrintImpl
-	 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getPrint()
-	 * @generated
-	 */
-	int PRINT = 7;
-
-	/**
-	 * The feature id for the '<em><b>Host</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRINT__HOST = CorePackage.COMMAND__HOST;
-
-	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRINT__BINDINGS = CorePackage.COMMAND__BINDINGS;
-
-	/**
-	 * The feature id for the '<em><b>Input</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRINT__INPUT = CorePackage.COMMAND_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Print</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRINT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.SortByImpl <em>Sort By</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -410,7 +364,7 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getSortBy()
 	 * @generated
 	 */
-	int SORT_BY = 8;
+	int SORT_BY = 7;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -456,7 +410,7 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getListInstallUnits()
 	 * @generated
 	 */
-	int LIST_INSTALL_UNITS = 9;
+	int LIST_INSTALL_UNITS = 8;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -493,7 +447,7 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getGetLog()
 	 * @generated
 	 */
-	int GET_LOG = 10;
+	int GET_LOG = 9;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -548,7 +502,7 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getLog()
 	 * @generated
 	 */
-	int LOG = 11;
+	int LOG = 10;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -613,7 +567,7 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getEcho()
 	 * @generated
 	 */
-	int ECHO = 12;
+	int ECHO = 11;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -660,7 +614,7 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getClearLog()
 	 * @generated
 	 */
-	int CLEAR_LOG = 13;
+	int CLEAR_LOG = 12;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -803,27 +757,6 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getUpdateAll();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.Print <em>Print</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Print</em>'.
-	 * @see org.eclipse.ecl.platform.commands.Print
-	 * @generated
-	 */
-	EClass getPrint();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.platform.commands.Print#getInput <em>Input</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Input</em>'.
-	 * @see org.eclipse.ecl.platform.commands.Print#getInput()
-	 * @see #getPrint()
-	 * @generated
-	 */
-	EReference getPrint_Input();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.SortBy <em>Sort By</em>}'.
@@ -1085,24 +1018,6 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass UPDATE_ALL = eINSTANCE.getUpdateAll();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.ecl.platform.commands.impl.PrintImpl <em>Print</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.platform.commands.impl.PrintImpl
-		 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getPrint()
-		 * @generated
-		 */
-		EClass PRINT = eINSTANCE.getPrint();
-
-		/**
-		 * The meta object literal for the '<em><b>Input</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PRINT__INPUT = eINSTANCE.getPrint_Input();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.platform.commands.impl.SortByImpl <em>Sort By</em>}' class.

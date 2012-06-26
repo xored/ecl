@@ -9,6 +9,7 @@ package org.eclipse.ecl.operations;
 import org.eclipse.ecl.core.Command;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**

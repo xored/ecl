@@ -62,10 +62,13 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case CommandsPackage.READ_CSV_FILE: return createReadCsvFile();
+			case CommandsPackage.PRINT: return createPrint();
 			case CommandsPackage.WRITE_CSV_FILE: return createWriteCsvFile();
 			case CommandsPackage.EXCLUDE_COLUMNS: return createExcludeColumns();
 			case CommandsPackage.SELECT_COLUMNS: return createSelectColumns();
 			case CommandsPackage.ASSERT_TABLES_MATCH: return createAssertTablesMatch();
+			case CommandsPackage.WRITE_LINES: return createWriteLines();
+			case CommandsPackage.READ_LINES: return createReadLines();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -116,6 +119,16 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Print createPrint() {
+		PrintImpl print = new PrintImpl();
+		return print;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public WriteCsvFile createWriteCsvFile() {
 		WriteCsvFileImpl writeCsvFile = new WriteCsvFileImpl();
 		return writeCsvFile;
@@ -149,6 +162,26 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public AssertTablesMatch createAssertTablesMatch() {
 		AssertTablesMatchImpl assertTablesMatch = new AssertTablesMatchImpl();
 		return assertTablesMatch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WriteLines createWriteLines() {
+		WriteLinesImpl writeLines = new WriteLinesImpl();
+		return writeLines;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReadLines createReadLines() {
+		ReadLinesImpl readLines = new ReadLinesImpl();
+		return readLines;
 	}
 
 	/**

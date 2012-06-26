@@ -67,7 +67,6 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 			case CommandsPackage.REMOVE_REPOSITORY: return createRemoveRepository();
 			case CommandsPackage.UPDATE_FEATURE: return createUpdateFeature();
 			case CommandsPackage.UPDATE_ALL: return createUpdateAll();
-			case CommandsPackage.PRINT: return createPrint();
 			case CommandsPackage.SORT_BY: return createSortBy();
 			case CommandsPackage.LIST_INSTALL_UNITS: return createListInstallUnits();
 			case CommandsPackage.GET_LOG: return createGetLog();
@@ -147,16 +146,6 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public UpdateAll createUpdateAll() {
 		UpdateAllImpl updateAll = new UpdateAllImpl();
 		return updateAll;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Print createPrint() {
-		PrintImpl print = new PrintImpl();
-		return print;
 	}
 
 	/**

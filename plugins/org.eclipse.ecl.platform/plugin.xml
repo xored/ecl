@@ -53,11 +53,6 @@
             namespace="http://www.eclipse.org/ecl/platform/commands.ecore">
       </scriptlet>
       <scriptlet
-            class="org.eclipse.ecl.platform.internal.commands.PrintService"
-            name="Print"
-            namespace="http://www.eclipse.org/ecl/platform/commands.ecore">
-      </scriptlet>
-      <scriptlet
             class="org.eclipse.ecl.platform.internal.commands.SortByService"
             name="SortBy"
             namespace="http://www.eclipse.org/ecl/platform/commands.ecore">

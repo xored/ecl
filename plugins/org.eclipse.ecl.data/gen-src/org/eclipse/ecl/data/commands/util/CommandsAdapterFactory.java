@@ -78,6 +78,10 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 				return createReadCsvFileAdapter();
 			}
 			@Override
+			public Adapter casePrint(Print object) {
+				return createPrintAdapter();
+			}
+			@Override
 			public Adapter caseWriteCsvFile(WriteCsvFile object) {
 				return createWriteCsvFileAdapter();
 			}
@@ -92,6 +96,14 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAssertTablesMatch(AssertTablesMatch object) {
 				return createAssertTablesMatchAdapter();
+			}
+			@Override
+			public Adapter caseWriteLines(WriteLines object) {
+				return createWriteLinesAdapter();
+			}
+			@Override
+			public Adapter caseReadLines(ReadLines object) {
+				return createReadLinesAdapter();
 			}
 			@Override
 			public Adapter caseCommand(Command object) {
@@ -128,6 +140,20 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createReadCsvFileAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.data.commands.Print <em>Print</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.data.commands.Print
+	 * @generated
+	 */
+	public Adapter createPrintAdapter() {
 		return null;
 	}
 
@@ -184,6 +210,34 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAssertTablesMatchAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.data.commands.WriteLines <em>Write Lines</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.data.commands.WriteLines
+	 * @generated
+	 */
+	public Adapter createWriteLinesAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.data.commands.ReadLines <em>Read Lines</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.data.commands.ReadLines
+	 * @generated
+	 */
+	public Adapter createReadLinesAdapter() {
 		return null;
 	}
 

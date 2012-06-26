@@ -4,17 +4,24 @@
  *
  * $Id$
  */
-package org.eclipse.ecl.platform.commands.impl;
+package org.eclipse.ecl.data.commands.impl;
 
 import java.util.Collection;
+
 import org.eclipse.ecl.core.impl.CommandImpl;
 
-import org.eclipse.ecl.platform.commands.CommandsPackage;
-import org.eclipse.ecl.platform.commands.Print;
+import org.eclipse.ecl.data.commands.CommandsPackage;
+import org.eclipse.ecl.data.commands.Print;
+
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -24,7 +31,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.platform.commands.impl.PrintImpl#getInput <em>Input</em>}</li>
+ *   <li>{@link org.eclipse.ecl.data.commands.impl.PrintImpl#getInput <em>Input</em>}</li>
  * </ul>
  * </p>
  *
