@@ -27,6 +27,7 @@ import org.eclipse.ecl.core.Command;
 public interface Echo extends Command {
 	/**
 	 * Returns the value of the '<em><b>Str</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Str</em>' attribute isn't clear,
@@ -36,7 +37,7 @@ public interface Echo extends Command {
 	 * @return the value of the '<em>Str</em>' attribute.
 	 * @see #setStr(String)
 	 * @see org.eclipse.ecl.platform.commands.CommandsPackage#getEcho_Str()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	String getStr();

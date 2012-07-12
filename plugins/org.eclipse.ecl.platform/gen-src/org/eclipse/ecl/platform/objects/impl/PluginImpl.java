@@ -6,16 +6,19 @@
  */
 package org.eclipse.ecl.platform.objects.impl;
 
+import java.util.Collection;
 import org.eclipse.ecl.platform.objects.ObjectsPackage;
 import org.eclipse.ecl.platform.objects.Plugin;
 import org.eclipse.ecl.platform.objects.PluginState;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,6 +31,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link org.eclipse.ecl.platform.objects.impl.PluginImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link org.eclipse.ecl.platform.objects.impl.PluginImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.ecl.platform.objects.impl.PluginImpl#getState <em>State</em>}</li>
+ *   <li>{@link org.eclipse.ecl.platform.objects.impl.PluginImpl#getRequiredBundles <em>Required Bundles</em>}</li>
+ *   <li>{@link org.eclipse.ecl.platform.objects.impl.PluginImpl#getImportedPackages <em>Imported Packages</em>}</li>
  * </ul>
  * </p>
  *
@@ -113,6 +118,26 @@ public class PluginImpl extends EObjectImpl implements Plugin {
 	 * @ordered
 	 */
 	protected PluginState state = STATE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getRequiredBundles() <em>Required Bundles</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRequiredBundles()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> requiredBundles;
+
+	/**
+	 * The cached value of the '{@link #getImportedPackages() <em>Imported Packages</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImportedPackages()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> importedPackages;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -222,6 +247,30 @@ public class PluginImpl extends EObjectImpl implements Plugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<String> getRequiredBundles() {
+		if (requiredBundles == null) {
+			requiredBundles = new EDataTypeUniqueEList<String>(String.class, this, ObjectsPackage.PLUGIN__REQUIRED_BUNDLES);
+		}
+		return requiredBundles;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<String> getImportedPackages() {
+		if (importedPackages == null) {
+			importedPackages = new EDataTypeUniqueEList<String>(String.class, this, ObjectsPackage.PLUGIN__IMPORTED_PACKAGES);
+		}
+		return importedPackages;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -233,6 +282,10 @@ public class PluginImpl extends EObjectImpl implements Plugin {
 				return getName();
 			case ObjectsPackage.PLUGIN__STATE:
 				return getState();
+			case ObjectsPackage.PLUGIN__REQUIRED_BUNDLES:
+				return getRequiredBundles();
+			case ObjectsPackage.PLUGIN__IMPORTED_PACKAGES:
+				return getImportedPackages();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -242,6 +295,7 @@ public class PluginImpl extends EObjectImpl implements Plugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -256,6 +310,14 @@ public class PluginImpl extends EObjectImpl implements Plugin {
 				return;
 			case ObjectsPackage.PLUGIN__STATE:
 				setState((PluginState)newValue);
+				return;
+			case ObjectsPackage.PLUGIN__REQUIRED_BUNDLES:
+				getRequiredBundles().clear();
+				getRequiredBundles().addAll((Collection<? extends String>)newValue);
+				return;
+			case ObjectsPackage.PLUGIN__IMPORTED_PACKAGES:
+				getImportedPackages().clear();
+				getImportedPackages().addAll((Collection<? extends String>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -281,6 +343,12 @@ public class PluginImpl extends EObjectImpl implements Plugin {
 			case ObjectsPackage.PLUGIN__STATE:
 				setState(STATE_EDEFAULT);
 				return;
+			case ObjectsPackage.PLUGIN__REQUIRED_BUNDLES:
+				getRequiredBundles().clear();
+				return;
+			case ObjectsPackage.PLUGIN__IMPORTED_PACKAGES:
+				getImportedPackages().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -301,6 +369,10 @@ public class PluginImpl extends EObjectImpl implements Plugin {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ObjectsPackage.PLUGIN__STATE:
 				return state != STATE_EDEFAULT;
+			case ObjectsPackage.PLUGIN__REQUIRED_BUNDLES:
+				return requiredBundles != null && !requiredBundles.isEmpty();
+			case ObjectsPackage.PLUGIN__IMPORTED_PACKAGES:
+				return importedPackages != null && !importedPackages.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -323,6 +395,10 @@ public class PluginImpl extends EObjectImpl implements Plugin {
 		result.append(name);
 		result.append(", state: ");
 		result.append(state);
+		result.append(", requiredBundles: ");
+		result.append(requiredBundles);
+		result.append(", importedPackages: ");
+		result.append(importedPackages);
 		result.append(')');
 		return result.toString();
 	}

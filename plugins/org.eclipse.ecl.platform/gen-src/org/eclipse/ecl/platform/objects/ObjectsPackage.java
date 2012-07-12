@@ -161,13 +161,31 @@ public interface ObjectsPackage extends EPackage {
 	int PLUGIN__STATE = 3;
 
 	/**
+	 * The feature id for the '<em><b>Required Bundles</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUGIN__REQUIRED_BUNDLES = 4;
+
+	/**
+	 * The feature id for the '<em><b>Imported Packages</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUGIN__IMPORTED_PACKAGES = 5;
+
+	/**
 	 * The number of structural features of the '<em>Plugin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLUGIN_FEATURE_COUNT = 4;
+	int PLUGIN_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.platform.objects.impl.RepositoryImpl <em>Repository</em>}' class.
@@ -372,6 +390,34 @@ public interface ObjectsPackage extends EPackage {
 	int LOG_MESSAGE_FEATURE_COUNT = 4;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.objects.impl.LaunchConfigurationImpl <em>Launch Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.objects.impl.LaunchConfigurationImpl
+	 * @see org.eclipse.ecl.platform.objects.impl.ObjectsPackageImpl#getLaunchConfiguration()
+	 * @generated
+	 */
+	int LAUNCH_CONFIGURATION = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUNCH_CONFIGURATION__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Launch Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUNCH_CONFIGURATION_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.platform.objects.PluginState <em>Plugin State</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -379,7 +425,7 @@ public interface ObjectsPackage extends EPackage {
 	 * @see org.eclipse.ecl.platform.objects.impl.ObjectsPackageImpl#getPluginState()
 	 * @generated
 	 */
-	int PLUGIN_STATE = 6;
+	int PLUGIN_STATE = 7;
 
 
 	/**
@@ -489,6 +535,28 @@ public interface ObjectsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPlugin_State();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.eclipse.ecl.platform.objects.Plugin#getRequiredBundles <em>Required Bundles</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Required Bundles</em>'.
+	 * @see org.eclipse.ecl.platform.objects.Plugin#getRequiredBundles()
+	 * @see #getPlugin()
+	 * @generated
+	 */
+	EAttribute getPlugin_RequiredBundles();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.eclipse.ecl.platform.objects.Plugin#getImportedPackages <em>Imported Packages</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Imported Packages</em>'.
+	 * @see org.eclipse.ecl.platform.objects.Plugin#getImportedPackages()
+	 * @see #getPlugin()
+	 * @generated
+	 */
+	EAttribute getPlugin_ImportedPackages();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.objects.Repository <em>Repository</em>}'.
@@ -685,6 +753,27 @@ public interface ObjectsPackage extends EPackage {
 	EAttribute getLogMessage_PluginId();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.objects.LaunchConfiguration <em>Launch Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Launch Configuration</em>'.
+	 * @see org.eclipse.ecl.platform.objects.LaunchConfiguration
+	 * @generated
+	 */
+	EClass getLaunchConfiguration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.objects.LaunchConfiguration#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.ecl.platform.objects.LaunchConfiguration#getName()
+	 * @see #getLaunchConfiguration()
+	 * @generated
+	 */
+	EAttribute getLaunchConfiguration_Name();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.ecl.platform.objects.PluginState <em>Plugin State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -799,6 +888,22 @@ public interface ObjectsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PLUGIN__STATE = eINSTANCE.getPlugin_State();
+
+		/**
+		 * The meta object literal for the '<em><b>Required Bundles</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLUGIN__REQUIRED_BUNDLES = eINSTANCE.getPlugin_RequiredBundles();
+
+		/**
+		 * The meta object literal for the '<em><b>Imported Packages</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLUGIN__IMPORTED_PACKAGES = eINSTANCE.getPlugin_ImportedPackages();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.platform.objects.impl.RepositoryImpl <em>Repository</em>}' class.
@@ -951,6 +1056,24 @@ public interface ObjectsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LOG_MESSAGE__PLUGIN_ID = eINSTANCE.getLogMessage_PluginId();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.objects.impl.LaunchConfigurationImpl <em>Launch Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.objects.impl.LaunchConfigurationImpl
+		 * @see org.eclipse.ecl.platform.objects.impl.ObjectsPackageImpl#getLaunchConfiguration()
+		 * @generated
+		 */
+		EClass LAUNCH_CONFIGURATION = eINSTANCE.getLaunchConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LAUNCH_CONFIGURATION__NAME = eINSTANCE.getLaunchConfiguration_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.platform.objects.PluginState <em>Plugin State</em>}' enum.

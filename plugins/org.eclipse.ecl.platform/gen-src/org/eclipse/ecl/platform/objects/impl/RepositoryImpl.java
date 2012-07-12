@@ -229,9 +229,9 @@ public class RepositoryImpl extends EObjectImpl implements Repository {
 			case ObjectsPackage.REPOSITORY__LOCATION:
 				return getLocation();
 			case ObjectsPackage.REPOSITORY__IS_METADATA:
-				return isIsMetadata() ? Boolean.TRUE : Boolean.FALSE;
+				return isIsMetadata();
 			case ObjectsPackage.REPOSITORY__IS_ARTIFACT:
-				return isIsArtifact() ? Boolean.TRUE : Boolean.FALSE;
+				return isIsArtifact();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -251,10 +251,10 @@ public class RepositoryImpl extends EObjectImpl implements Repository {
 				setLocation((String)newValue);
 				return;
 			case ObjectsPackage.REPOSITORY__IS_METADATA:
-				setIsMetadata(((Boolean)newValue).booleanValue());
+				setIsMetadata((Boolean)newValue);
 				return;
 			case ObjectsPackage.REPOSITORY__IS_ARTIFACT:
-				setIsArtifact(((Boolean)newValue).booleanValue());
+				setIsArtifact((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

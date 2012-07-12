@@ -80,6 +80,15 @@ public interface ObjectsFactory extends EFactory {
 	LogMessage createLogMessage();
 
 	/**
+	 * Returns a new object of class '<em>Launch Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Launch Configuration</em>'.
+	 * @generated
+	 */
+	LaunchConfiguration createLaunchConfiguration();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

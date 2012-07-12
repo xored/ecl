@@ -6,6 +6,7 @@
  */
 package org.eclipse.ecl.platform.objects;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -20,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.ecl.platform.objects.Plugin#getVersion <em>Version</em>}</li>
  *   <li>{@link org.eclipse.ecl.platform.objects.Plugin#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.ecl.platform.objects.Plugin#getState <em>State</em>}</li>
+ *   <li>{@link org.eclipse.ecl.platform.objects.Plugin#getRequiredBundles <em>Required Bundles</em>}</li>
+ *   <li>{@link org.eclipse.ecl.platform.objects.Plugin#getImportedPackages <em>Imported Packages</em>}</li>
  * </ul>
  * </p>
  *
@@ -134,5 +137,37 @@ public interface Plugin extends EObject {
 	 * @generated
 	 */
 	void setState(PluginState value);
+
+	/**
+	 * Returns the value of the '<em><b>Required Bundles</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Required Bundles</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Required Bundles</em>' attribute list.
+	 * @see org.eclipse.ecl.platform.objects.ObjectsPackage#getPlugin_RequiredBundles()
+	 * @model default=""
+	 * @generated
+	 */
+	EList<String> getRequiredBundles();
+
+	/**
+	 * Returns the value of the '<em><b>Imported Packages</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Imported Packages</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Imported Packages</em>' attribute list.
+	 * @see org.eclipse.ecl.platform.objects.ObjectsPackage#getPlugin_ImportedPackages()
+	 * @model default=""
+	 * @generated
+	 */
+	EList<String> getImportedPackages();
 
 } // Plugin

@@ -3,7 +3,18 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="commands"
     nsURI="http://www.eclipse.org/ecl/platform/commands.ecore" nsPrefix="platformCommands">
-  <eClassifiers xsi:type="ecore:EClass" name="ListPlugins" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ListPlugins" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Lists all available plugins."/>
+      <details key="returns" value="Returns list of all plugins."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="includeDependencies" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="When true, returned plugins includes information about imported packages and bundle dependencies."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ListFeatures" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command"/>
   <eClassifiers xsi:type="ecore:EClass" name="ListRepositories" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command"/>
   <eClassifiers xsi:type="ecore:EClass" name="AddRepository" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
@@ -69,7 +80,8 @@
       <details key="description" value="Takes a string argument and writes it into an output pipe. "/>
       <details key="returns" value="value of &lt;code>str&lt;/code> argument"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="str" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="str" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
+        defaultValueLiteral="">
       <eAnnotations source="http://www.eclipse.org/ecl/input"/>
     </eStructuralFeatures>
   </eClassifiers>
@@ -78,5 +90,19 @@
       <details key="description" value="Removes log file. Note that if log view is open, it may enter into inconsistent state. If it is important, use &lt;code>clear-log-view&lt;/code> instead"/>
       <details key="returns" value="Nothing"/>
     </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ListLaunchConfigurations" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Returns list of launch configurations."/>
+      <details key="returns" value="List of launch configurations."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Launch" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="descriprion" value="Launches a configuration in specified mode. "/>
+      <details key="returns" value="Nothing."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mode" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

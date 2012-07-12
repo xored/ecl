@@ -14,8 +14,10 @@ import org.eclipse.ecl.platform.commands.CommandsFactory;
 import org.eclipse.ecl.platform.commands.CommandsPackage;
 import org.eclipse.ecl.platform.commands.Echo;
 import org.eclipse.ecl.platform.commands.GetLog;
+import org.eclipse.ecl.platform.commands.Launch;
 import org.eclipse.ecl.platform.commands.ListFeatures;
 import org.eclipse.ecl.platform.commands.ListInstallUnits;
+import org.eclipse.ecl.platform.commands.ListLaunchConfigurations;
 import org.eclipse.ecl.platform.commands.ListPlugins;
 import org.eclipse.ecl.platform.commands.ListRepositories;
 import org.eclipse.ecl.platform.commands.Log;
@@ -134,6 +136,20 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	private EClass clearLogEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass listLaunchConfigurationsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass launchEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -205,6 +221,15 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 */
 	public EClass getListPlugins() {
 		return listPluginsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getListPlugins_IncludeDependencies() {
+		return (EAttribute)listPluginsEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -419,6 +444,42 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getListLaunchConfigurations() {
+		return listLaunchConfigurationsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLaunch() {
+		return launchEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLaunch_Mode() {
+		return (EAttribute)launchEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLaunch_Name() {
+		return (EAttribute)launchEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommandsFactory getCommandsFactory() {
 		return (CommandsFactory)getEFactoryInstance();
 	}
@@ -443,6 +504,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		// Create classes and their features
 		listPluginsEClass = createEClass(LIST_PLUGINS);
+		createEAttribute(listPluginsEClass, LIST_PLUGINS__INCLUDE_DEPENDENCIES);
 
 		listFeaturesEClass = createEClass(LIST_FEATURES);
 
@@ -478,6 +540,12 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		createEAttribute(echoEClass, ECHO__STR);
 
 		clearLogEClass = createEClass(CLEAR_LOG);
+
+		listLaunchConfigurationsEClass = createEClass(LIST_LAUNCH_CONFIGURATIONS);
+
+		launchEClass = createEClass(LAUNCH);
+		createEAttribute(launchEClass, LAUNCH__MODE);
+		createEAttribute(launchEClass, LAUNCH__NAME);
 	}
 
 	/**
@@ -525,9 +593,12 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		logEClass.getESuperTypes().add(theCorePackage.getCommand());
 		echoEClass.getESuperTypes().add(theCorePackage.getCommand());
 		clearLogEClass.getESuperTypes().add(theCorePackage.getCommand());
+		listLaunchConfigurationsEClass.getESuperTypes().add(theCorePackage.getCommand());
+		launchEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(listPluginsEClass, ListPlugins.class, "ListPlugins", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getListPlugins_IncludeDependencies(), theEcorePackage.getEBoolean(), "includeDependencies", "false", 0, 1, ListPlugins.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(listFeaturesEClass, ListFeatures.class, "ListFeatures", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -560,9 +631,15 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		initEAttribute(getLog_Plugin(), theEcorePackage.getEString(), "plugin", "org.eclipse.ecl.platform", 0, 1, Log.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(echoEClass, Echo.class, "Echo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEcho_Str(), theEcorePackage.getEString(), "str", null, 0, 1, Echo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEcho_Str(), theEcorePackage.getEString(), "str", "", 0, 1, Echo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(clearLogEClass, ClearLog.class, "ClearLog", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(listLaunchConfigurationsEClass, ListLaunchConfigurations.class, "ListLaunchConfigurations", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(launchEClass, Launch.class, "Launch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLaunch_Mode(), theEcorePackage.getEString(), "mode", null, 0, 1, Launch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLaunch_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Launch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -582,6 +659,19 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 */
 	protected void createDocsAnnotations() {
 		String source = "http://www.eclipse.org/ecl/docs";		
+		addAnnotation
+		  (listPluginsEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Lists all available plugins.",
+			 "returns", "Returns list of all plugins."
+		   });		
+		addAnnotation
+		  (getListPlugins_IncludeDependencies(), 
+		   source, 
+		   new String[] {
+			 "description", "When true, returned plugins includes information about imported packages and bundle dependencies."
+		   });		
 		addAnnotation
 		  (getLogEClass, 
 		   source, 
@@ -639,6 +729,20 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   new String[] {
 			 "description", "Removes log file. Note that if log view is open, it may enter into inconsistent state. If it is important, use <code>clear-log-view</code> instead",
 			 "returns", "Nothing"
+		   });		
+		addAnnotation
+		  (listLaunchConfigurationsEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Returns list of launch configurations.",
+			 "returns", "List of launch configurations."
+		   });		
+		addAnnotation
+		  (launchEClass, 
+		   source, 
+		   new String[] {
+			 "descriprion", "Launches a configuration in specified mode. ",
+			 "returns", "Nothing."
 		   });
 	}
 
@@ -649,7 +753,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	protected void createInputAnnotations() {
-		String source = "http://www.eclipse.org/ecl/input";						
+		String source = "http://www.eclipse.org/ecl/input";								
 		addAnnotation
 		  (getLog_Message(), 
 		   source, 
@@ -662,7 +766,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getEcho_Str(), 
 		   source, 
 		   new String[] {
-		   });	
+		   });			
 	}
 
 } //CommandsPackageImpl

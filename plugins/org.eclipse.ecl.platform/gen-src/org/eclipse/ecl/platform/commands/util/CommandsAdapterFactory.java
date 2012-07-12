@@ -126,6 +126,14 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 				return createClearLogAdapter();
 			}
 			@Override
+			public Adapter caseListLaunchConfigurations(ListLaunchConfigurations object) {
+				return createListLaunchConfigurationsAdapter();
+			}
+			@Override
+			public Adapter caseLaunch(Launch object) {
+				return createLaunchAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -328,6 +336,34 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createClearLogAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.platform.commands.ListLaunchConfigurations <em>List Launch Configurations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.platform.commands.ListLaunchConfigurations
+	 * @generated
+	 */
+	public Adapter createListLaunchConfigurationsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.platform.commands.Launch <em>Launch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.platform.commands.Launch
+	 * @generated
+	 */
+	public Adapter createLaunchAdapter() {
 		return null;
 	}
 

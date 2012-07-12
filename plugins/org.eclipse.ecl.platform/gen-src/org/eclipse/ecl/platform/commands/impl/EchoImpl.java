@@ -39,7 +39,7 @@ public class EchoImpl extends CommandImpl implements Echo {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String STR_EDEFAULT = null;
+	protected static final String STR_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getStr() <em>Str</em>}' attribute.

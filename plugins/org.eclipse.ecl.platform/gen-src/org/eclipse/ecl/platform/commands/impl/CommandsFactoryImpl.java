@@ -73,6 +73,8 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 			case CommandsPackage.LOG: return createLog();
 			case CommandsPackage.ECHO: return createEcho();
 			case CommandsPackage.CLEAR_LOG: return createClearLog();
+			case CommandsPackage.LIST_LAUNCH_CONFIGURATIONS: return createListLaunchConfigurations();
+			case CommandsPackage.LAUNCH: return createLaunch();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -206,6 +208,26 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public ClearLog createClearLog() {
 		ClearLogImpl clearLog = new ClearLogImpl();
 		return clearLog;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ListLaunchConfigurations createListLaunchConfigurations() {
+		ListLaunchConfigurationsImpl listLaunchConfigurations = new ListLaunchConfigurationsImpl();
+		return listLaunchConfigurations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Launch createLaunch() {
+		LaunchImpl launch = new LaunchImpl();
+		return launch;
 	}
 
 	/**

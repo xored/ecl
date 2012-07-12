@@ -143,6 +143,24 @@ public interface CommandsFactory extends EFactory {
 	ClearLog createClearLog();
 
 	/**
+	 * Returns a new object of class '<em>List Launch Configurations</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>List Launch Configurations</em>'.
+	 * @generated
+	 */
+	ListLaunchConfigurations createListLaunchConfigurations();
+
+	/**
+	 * Returns a new object of class '<em>Launch</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Launch</em>'.
+	 * @generated
+	 */
+	Launch createLaunch();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

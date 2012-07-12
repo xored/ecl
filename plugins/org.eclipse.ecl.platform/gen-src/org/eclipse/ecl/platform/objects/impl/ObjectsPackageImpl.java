@@ -8,6 +8,7 @@ package org.eclipse.ecl.platform.objects.impl;
 
 import org.eclipse.ecl.platform.objects.Feature;
 import org.eclipse.ecl.platform.objects.InstallUnit;
+import org.eclipse.ecl.platform.objects.LaunchConfiguration;
 import org.eclipse.ecl.platform.objects.LogMessage;
 import org.eclipse.ecl.platform.objects.ObjectsFactory;
 import org.eclipse.ecl.platform.objects.ObjectsPackage;
@@ -77,6 +78,13 @@ public class ObjectsPackageImpl extends EPackageImpl implements ObjectsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass launchConfigurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum pluginStateEEnum = null;
 
 	/**
@@ -106,20 +114,10 @@ public class ObjectsPackageImpl extends EPackageImpl implements ObjectsPackage {
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link ObjectsPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -131,7 +129,7 @@ public class ObjectsPackageImpl extends EPackageImpl implements ObjectsPackage {
 		if (isInited) return (ObjectsPackage)EPackage.Registry.INSTANCE.getEPackage(ObjectsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ObjectsPackageImpl theObjectsPackage = (ObjectsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof ObjectsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new ObjectsPackageImpl());
+		ObjectsPackageImpl theObjectsPackage = (ObjectsPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ObjectsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ObjectsPackageImpl());
 
 		isInited = true;
 
@@ -144,6 +142,9 @@ public class ObjectsPackageImpl extends EPackageImpl implements ObjectsPackage {
 		// Mark meta-data to indicate it can't be changed
 		theObjectsPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(ObjectsPackage.eNS_URI, theObjectsPackage);
 		return theObjectsPackage;
 	}
 
@@ -235,6 +236,24 @@ public class ObjectsPackageImpl extends EPackageImpl implements ObjectsPackage {
 	 */
 	public EAttribute getPlugin_State() {
 		return (EAttribute)pluginEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPlugin_RequiredBundles() {
+		return (EAttribute)pluginEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPlugin_ImportedPackages() {
+		return (EAttribute)pluginEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -404,6 +423,24 @@ public class ObjectsPackageImpl extends EPackageImpl implements ObjectsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLaunchConfiguration() {
+		return launchConfigurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLaunchConfiguration_Name() {
+		return (EAttribute)launchConfigurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getPluginState() {
 		return pluginStateEEnum;
 	}
@@ -447,6 +484,8 @@ public class ObjectsPackageImpl extends EPackageImpl implements ObjectsPackage {
 		createEAttribute(pluginEClass, PLUGIN__VERSION);
 		createEAttribute(pluginEClass, PLUGIN__NAME);
 		createEAttribute(pluginEClass, PLUGIN__STATE);
+		createEAttribute(pluginEClass, PLUGIN__REQUIRED_BUNDLES);
+		createEAttribute(pluginEClass, PLUGIN__IMPORTED_PACKAGES);
 
 		repositoryEClass = createEClass(REPOSITORY);
 		createEAttribute(repositoryEClass, REPOSITORY__NAME);
@@ -469,6 +508,9 @@ public class ObjectsPackageImpl extends EPackageImpl implements ObjectsPackage {
 		createEAttribute(logMessageEClass, LOG_MESSAGE__MESSAGE);
 		createEAttribute(logMessageEClass, LOG_MESSAGE__DATE_TEXT);
 		createEAttribute(logMessageEClass, LOG_MESSAGE__PLUGIN_ID);
+
+		launchConfigurationEClass = createEClass(LAUNCH_CONFIGURATION);
+		createEAttribute(launchConfigurationEClass, LAUNCH_CONFIGURATION__NAME);
 
 		// Create enums
 		pluginStateEEnum = createEEnum(PLUGIN_STATE);
@@ -515,6 +557,8 @@ public class ObjectsPackageImpl extends EPackageImpl implements ObjectsPackage {
 		initEAttribute(getPlugin_Version(), ecorePackage.getEString(), "version", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlugin_Name(), ecorePackage.getEString(), "name", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlugin_State(), this.getPluginState(), "state", null, 0, 1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlugin_RequiredBundles(), ecorePackage.getEString(), "requiredBundles", "", 0, -1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlugin_ImportedPackages(), ecorePackage.getEString(), "importedPackages", "", 0, -1, Plugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(repositoryEClass, Repository.class, "Repository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRepository_Name(), ecorePackage.getEString(), "name", null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -537,6 +581,9 @@ public class ObjectsPackageImpl extends EPackageImpl implements ObjectsPackage {
 		initEAttribute(getLogMessage_Message(), ecorePackage.getEString(), "message", null, 0, 1, LogMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLogMessage_DateText(), ecorePackage.getEString(), "dateText", null, 0, 1, LogMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLogMessage_PluginId(), ecorePackage.getEString(), "pluginId", null, 0, 1, LogMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(launchConfigurationEClass, LaunchConfiguration.class, "LaunchConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLaunchConfiguration_Name(), ecorePackage.getEString(), "name", "", 0, 1, LaunchConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(pluginStateEEnum, PluginState.class, "PluginState");

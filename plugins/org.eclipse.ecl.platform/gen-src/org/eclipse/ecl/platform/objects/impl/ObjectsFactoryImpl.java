@@ -67,6 +67,7 @@ public class ObjectsFactoryImpl extends EFactoryImpl implements ObjectsFactory {
 			case ObjectsPackage.INSTALL_UNIT: return createInstallUnit();
 			case ObjectsPackage.UPDATE_RESULT: return createUpdateResult();
 			case ObjectsPackage.LOG_MESSAGE: return createLogMessage();
+			case ObjectsPackage.LAUNCH_CONFIGURATION: return createLaunchConfiguration();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -160,6 +161,16 @@ public class ObjectsFactoryImpl extends EFactoryImpl implements ObjectsFactory {
 	public LogMessage createLogMessage() {
 		LogMessageImpl logMessage = new LogMessageImpl();
 		return logMessage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LaunchConfiguration createLaunchConfiguration() {
+		LaunchConfigurationImpl launchConfiguration = new LaunchConfigurationImpl();
+		return launchConfiguration;
 	}
 
 	/**

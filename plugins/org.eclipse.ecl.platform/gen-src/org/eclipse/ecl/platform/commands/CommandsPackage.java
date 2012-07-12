@@ -90,13 +90,22 @@ public interface CommandsPackage extends EPackage {
 	int LIST_PLUGINS__BINDINGS = CorePackage.COMMAND__BINDINGS;
 
 	/**
+	 * The feature id for the '<em><b>Include Dependencies</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_PLUGINS__INCLUDE_DEPENDENCIES = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>List Plugins</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIST_PLUGINS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+	int LIST_PLUGINS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.ListFeaturesImpl <em>List Features</em>}' class.
@@ -645,6 +654,100 @@ public interface CommandsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.ListLaunchConfigurationsImpl <em>List Launch Configurations</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.commands.impl.ListLaunchConfigurationsImpl
+	 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getListLaunchConfigurations()
+	 * @generated
+	 */
+	int LIST_LAUNCH_CONFIGURATIONS = 13;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LAUNCH_CONFIGURATIONS__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LAUNCH_CONFIGURATIONS__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The number of structural features of the '<em>List Launch Configurations</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_LAUNCH_CONFIGURATIONS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.LaunchImpl <em>Launch</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.commands.impl.LaunchImpl
+	 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getLaunch()
+	 * @generated
+	 */
+	int LAUNCH = 14;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUNCH__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUNCH__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUNCH__MODE = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUNCH__NAME = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Launch</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAUNCH_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.ListPlugins <em>List Plugins</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -653,6 +756,17 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getListPlugins();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.ListPlugins#isIncludeDependencies <em>Include Dependencies</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Include Dependencies</em>'.
+	 * @see org.eclipse.ecl.platform.commands.ListPlugins#isIncludeDependencies()
+	 * @see #getListPlugins()
+	 * @generated
+	 */
+	EAttribute getListPlugins_IncludeDependencies();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.ListFeatures <em>List Features</em>}'.
@@ -896,6 +1010,48 @@ public interface CommandsPackage extends EPackage {
 	EClass getClearLog();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.ListLaunchConfigurations <em>List Launch Configurations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>List Launch Configurations</em>'.
+	 * @see org.eclipse.ecl.platform.commands.ListLaunchConfigurations
+	 * @generated
+	 */
+	EClass getListLaunchConfigurations();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.Launch <em>Launch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Launch</em>'.
+	 * @see org.eclipse.ecl.platform.commands.Launch
+	 * @generated
+	 */
+	EClass getLaunch();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.Launch#getMode <em>Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Mode</em>'.
+	 * @see org.eclipse.ecl.platform.commands.Launch#getMode()
+	 * @see #getLaunch()
+	 * @generated
+	 */
+	EAttribute getLaunch_Mode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.Launch#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.ecl.platform.commands.Launch#getName()
+	 * @see #getLaunch()
+	 * @generated
+	 */
+	EAttribute getLaunch_Name();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -926,6 +1082,14 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass LIST_PLUGINS = eINSTANCE.getListPlugins();
+
+		/**
+		 * The meta object literal for the '<em><b>Include Dependencies</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LIST_PLUGINS__INCLUDE_DEPENDENCIES = eINSTANCE.getListPlugins_IncludeDependencies();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.platform.commands.impl.ListFeaturesImpl <em>List Features</em>}' class.
@@ -1134,6 +1298,42 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CLEAR_LOG = eINSTANCE.getClearLog();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.commands.impl.ListLaunchConfigurationsImpl <em>List Launch Configurations</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.commands.impl.ListLaunchConfigurationsImpl
+		 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getListLaunchConfigurations()
+		 * @generated
+		 */
+		EClass LIST_LAUNCH_CONFIGURATIONS = eINSTANCE.getListLaunchConfigurations();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.commands.impl.LaunchImpl <em>Launch</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.commands.impl.LaunchImpl
+		 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getLaunch()
+		 * @generated
+		 */
+		EClass LAUNCH = eINSTANCE.getLaunch();
+
+		/**
+		 * The meta object literal for the '<em><b>Mode</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LAUNCH__MODE = eINSTANCE.getLaunch_Mode();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LAUNCH__NAME = eINSTANCE.getLaunch_Name();
 
 	}
 
