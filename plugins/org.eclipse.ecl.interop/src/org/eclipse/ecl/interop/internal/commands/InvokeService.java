@@ -1,16 +1,19 @@
 package org.eclipse.ecl.interop.internal.commands;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.RunnableFuture;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.interop.commands.Invoke;
 import org.eclipse.ecl.interop.internal.EclInteropPlugin;
 import org.eclipse.ecl.runtime.ICommandService;
+import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.swt.widgets.Widget;
 
@@ -18,7 +21,7 @@ public class InvokeService implements ICommandService {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public IStatus service(Command command, IProcess context) {
+	public IStatus service(Command command, IProcess context) throws CoreException {
 		
 		final Invoke cmd = (Invoke) command;
 		
@@ -30,12 +33,19 @@ public class InvokeService implements ICommandService {
 		if (name == null || name.length() == 0) return error("Empty method name.");
 		
 		final Object[] args = cmd.getArgs().toArray();
+
+		// --
 		
+		if (class_.isArray()) return processArrayMethod(object, name, args,
+				context.getOutput()); 
+
+		// --
+		
+		Object result = null;		
 		try {
 			final Method method = matchMethod(class_, name, args);
 			if (method == null) return error("Method not found.");
 			
-			Object result = null;
 			if (object instanceof Widget) {
 				Widget widget = (Widget) object;
 				
@@ -49,8 +59,6 @@ public class InvokeService implements ICommandService {
 				widget.getDisplay().syncExec(future);
 				result = future.get();
 			} else result = method.invoke(object, args);
-
-			if (result != null) context.getOutput().write(result);
 			
 		} catch (Exception e) {
 			return error(
@@ -60,14 +68,41 @@ public class InvokeService implements ICommandService {
 					)
 			);
 		}
-		
+
+		if (result != null) context.getOutput().write(result);
 		return Status.OK_STATUS;
+	}
+	
+	private static IStatus processArrayMethod(Object array, String name,
+			Object[] args, IPipe out) throws CoreException {
+		if (name.equals("get")) {
+			if (args.length != 1) return error("Invalid number of arguments.");
+			if (args[0].getClass() != Integer.class && args[0].getClass() != int.class)
+				return error("Invalid index type.");
+			
+			Object result = Array.get(array, (Integer) args[0]);
+			if (result != null) out.write(result);
+
+			return Status.OK_STATUS;
+		} else if (name.equals("set")) {
+			if (args.length != 2) return error("Invalid number of arguments.");
+			if (args[0].getClass() != Integer.class && args[0].getClass() != int.class)
+				return error("Invalid index type.");
+			
+			Array.set(array, (Integer) args[0], args[1]);
+			
+			return Status.OK_STATUS;
+		} else if (name.equals("length")) {
+			if (args.length != 0) return error("Invalid number of arguments.");
+			
+			out.write(Array.getLength(array));
+			return Status.OK_STATUS;
+		} else return error("Unknown array pseudo-method name.");
 	}
 	
 	private static Status error(String message) {
 		return new Status(Status.ERROR, EclInteropPlugin.PLUGIN_ID, message);
 	}
-
 	
 	/* TODO:
 	 * 
