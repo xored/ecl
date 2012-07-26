@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.eclipse.org/ecl/interop/commands.ecore"
+            class="org.eclipse.ecl.interop.commands.CommandsPackage"
+            genModel="model/commands.genmodel"/>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ecl.core.scriptlet">
+      <scriptlet
+            class="org.eclipse.ecl.interop.internal.commands.InvokeService"
+            name="Invoke"
+            namespace="http://www.eclipse.org/ecl/interop/commands.ecore">
+      </scriptlet>
+   </extension>
+
+</plugin>

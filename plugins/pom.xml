@@ -27,5 +27,6 @@
     <module>org.eclipse.ecl.telnet.server</module>
     <module>org.eclipse.ecl.telnet.server.ui</module>
     <module>org.eclipse.ecl.operations</module>
+    <module>org.eclipse.ecl.interop</module>
   </modules>
 </project>

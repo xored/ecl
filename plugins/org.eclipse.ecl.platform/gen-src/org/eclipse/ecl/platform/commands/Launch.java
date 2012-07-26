@@ -37,7 +37,7 @@ public interface Launch extends Command {
 	 * @return the value of the '<em>Mode</em>' attribute.
 	 * @see #setMode(String)
 	 * @see org.eclipse.ecl.platform.commands.CommandsPackage#getLaunch_Mode()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getMode();
@@ -63,7 +63,7 @@ public interface Launch extends Command {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.ecl.platform.commands.CommandsPackage#getLaunch_Name()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
