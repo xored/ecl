@@ -144,28 +144,44 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 				return createIfAdapter();
 			}
 			@Override
-			public Adapter caseEclString(EclString object) {
-				return createEclStringAdapter();
+			public Adapter caseBoxedValue(BoxedValue object) {
+				return createBoxedValueAdapter();
 			}
 			@Override
-			public Adapter caseEclBoolean(EclBoolean object) {
-				return createEclBooleanAdapter();
+			public Adapter caseEclByte(EclByte object) {
+				return createEclByteAdapter();
+			}
+			@Override
+			public Adapter caseEclShort(EclShort object) {
+				return createEclShortAdapter();
 			}
 			@Override
 			public Adapter caseEclInteger(EclInteger object) {
 				return createEclIntegerAdapter();
 			}
 			@Override
-			public Adapter caseEclFloat(EclFloat object) {
-				return createEclFloatAdapter();
-			}
-			@Override
 			public Adapter caseEclLong(EclLong object) {
 				return createEclLongAdapter();
 			}
 			@Override
-			public Adapter caseBoxedValue(BoxedValue object) {
-				return createBoxedValueAdapter();
+			public Adapter caseEclDouble(EclDouble object) {
+				return createEclDoubleAdapter();
+			}
+			@Override
+			public Adapter caseEclFloat(EclFloat object) {
+				return createEclFloatAdapter();
+			}
+			@Override
+			public Adapter caseEclBoolean(EclBoolean object) {
+				return createEclBooleanAdapter();
+			}
+			@Override
+			public Adapter caseEclChar(EclChar object) {
+				return createEclCharAdapter();
+			}
+			@Override
+			public Adapter caseEclString(EclString object) {
+				return createEclStringAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -468,6 +484,20 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EclChar <em>Ecl Char</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.EclChar
+	 * @generated
+	 */
+	public Adapter createEclCharAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EclInteger <em>Ecl Integer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -510,6 +540,20 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EclDouble <em>Ecl Double</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.EclDouble
+	 * @generated
+	 */
+	public Adapter createEclDoubleAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.BoxedValue <em>Boxed Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -520,6 +564,34 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBoxedValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EclByte <em>Ecl Byte</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.EclByte
+	 * @generated
+	 */
+	public Adapter createEclByteAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EclShort <em>Ecl Short</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.EclShort
+	 * @generated
+	 */
+	public Adapter createEclShortAdapter() {
 		return null;
 	}
 

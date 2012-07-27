@@ -174,6 +174,24 @@ public interface CoreFactory extends EFactory {
 	If createIf();
 
 	/**
+	 * Returns a new object of class '<em>Ecl Byte</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ecl Byte</em>'.
+	 * @generated
+	 */
+	EclByte createEclByte();
+
+	/**
+	 * Returns a new object of class '<em>Ecl Short</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ecl Short</em>'.
+	 * @generated
+	 */
+	EclShort createEclShort();
+
+	/**
 	 * Returns a new object of class '<em>Ecl String</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -190,6 +208,15 @@ public interface CoreFactory extends EFactory {
 	 * @generated
 	 */
 	EclBoolean createEclBoolean();
+
+	/**
+	 * Returns a new object of class '<em>Ecl Char</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ecl Char</em>'.
+	 * @generated
+	 */
+	EclChar createEclChar();
 
 	/**
 	 * Returns a new object of class '<em>Ecl Integer</em>'.
@@ -217,6 +244,15 @@ public interface CoreFactory extends EFactory {
 	 * @generated
 	 */
 	EclLong createEclLong();
+
+	/**
+	 * Returns a new object of class '<em>Ecl Double</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ecl Double</em>'.
+	 * @generated
+	 */
+	EclDouble createEclDouble();
 
 	/**
 	 * Returns a new object of class '<em>Script</em>'.

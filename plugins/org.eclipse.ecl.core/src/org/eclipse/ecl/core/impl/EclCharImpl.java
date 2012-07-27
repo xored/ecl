@@ -7,29 +7,28 @@
 package org.eclipse.ecl.core.impl;
 
 import org.eclipse.ecl.core.CorePackage;
-import org.eclipse.ecl.core.EclLong;
+import org.eclipse.ecl.core.EclChar;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Ecl Long</b></em>'.
+ * An implementation of the model object '<em><b>Ecl Char</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.core.impl.EclLongImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.impl.EclCharImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class EclLongImpl extends BoxedValueImpl implements EclLong {
+public class EclCharImpl extends BoxedValueImpl implements EclChar {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -38,7 +37,7 @@ public class EclLongImpl extends BoxedValueImpl implements EclLong {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final long VALUE_EDEFAULT = 0L;
+	protected static final char VALUE_EDEFAULT = '\u0000';
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -48,14 +47,14 @@ public class EclLongImpl extends BoxedValueImpl implements EclLong {
 	 * @generated
 	 * @ordered
 	 */
-	protected long value = VALUE_EDEFAULT;
+	protected char value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EclLongImpl() {
+	protected EclCharImpl() {
 		super();
 	}
 
@@ -66,7 +65,7 @@ public class EclLongImpl extends BoxedValueImpl implements EclLong {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CorePackage.Literals.ECL_LONG;
+		return CorePackage.Literals.ECL_CHAR;
 	}
 
 	/**
@@ -74,7 +73,7 @@ public class EclLongImpl extends BoxedValueImpl implements EclLong {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public long getValue() {
+	public char getValue() {
 		return value;
 	}
 
@@ -83,11 +82,11 @@ public class EclLongImpl extends BoxedValueImpl implements EclLong {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(long newValue) {
-		long oldValue = value;
+	public void setValue(char newValue) {
+		char oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.ECL_LONG__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.ECL_CHAR__VALUE, oldValue, value));
 	}
 
 	/**
@@ -98,7 +97,7 @@ public class EclLongImpl extends BoxedValueImpl implements EclLong {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CorePackage.ECL_LONG__VALUE:
+			case CorePackage.ECL_CHAR__VALUE:
 				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -112,8 +111,8 @@ public class EclLongImpl extends BoxedValueImpl implements EclLong {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CorePackage.ECL_LONG__VALUE:
-				setValue((Long)newValue);
+			case CorePackage.ECL_CHAR__VALUE:
+				setValue((Character)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -127,7 +126,7 @@ public class EclLongImpl extends BoxedValueImpl implements EclLong {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CorePackage.ECL_LONG__VALUE:
+			case CorePackage.ECL_CHAR__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -142,7 +141,7 @@ public class EclLongImpl extends BoxedValueImpl implements EclLong {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CorePackage.ECL_LONG__VALUE:
+			case CorePackage.ECL_CHAR__VALUE:
 				return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -164,4 +163,4 @@ public class EclLongImpl extends BoxedValueImpl implements EclLong {
 		return result.toString();
 	}
 
-} //EclLongImpl
+} //EclCharImpl

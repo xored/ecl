@@ -882,7 +882,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getBoxedValue()
 	 * @generated
 	 */
-	int BOXED_VALUE = 23;
+	int BOXED_VALUE = 18;
 
 	/**
 	 * The number of structural features of the '<em>Boxed Value</em>' class.
@@ -894,14 +894,14 @@ public interface CorePackage extends EPackage {
 	int BOXED_VALUE_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclStringImpl <em>Ecl String</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclByteImpl <em>Ecl Byte</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.core.impl.EclStringImpl
-	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclString()
+	 * @see org.eclipse.ecl.core.impl.EclByteImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclByte()
 	 * @generated
 	 */
-	int ECL_STRING = 18;
+	int ECL_BYTE = 19;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -910,16 +910,54 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_STRING__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
+	int ECL_BYTE__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Ecl String</em>' class.
+	 * The number of structural features of the '<em>Ecl Byte</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_STRING_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
+	int ECL_BYTE_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclShortImpl <em>Ecl Short</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EclShortImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclShort()
+	 * @generated
+	 */
+	int ECL_SHORT = 20;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_SHORT__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Ecl Short</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_SHORT_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclStringImpl <em>Ecl String</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EclStringImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclString()
+	 * @generated
+	 */
+	int ECL_STRING = 27;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclBooleanImpl <em>Ecl Boolean</em>}' class.
@@ -929,25 +967,17 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclBoolean()
 	 * @generated
 	 */
-	int ECL_BOOLEAN = 19;
+	int ECL_BOOLEAN = 25;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclCharImpl <em>Ecl Char</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EclCharImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclChar()
 	 * @generated
-	 * @ordered
 	 */
-	int ECL_BOOLEAN__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Ecl Boolean</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_BOOLEAN_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
+	int ECL_CHAR = 26;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclIntegerImpl <em>Ecl Integer</em>}' class.
@@ -957,7 +987,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclInteger()
 	 * @generated
 	 */
-	int ECL_INTEGER = 20;
+	int ECL_INTEGER = 21;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -985,25 +1015,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclFloat()
 	 * @generated
 	 */
-	int ECL_FLOAT = 21;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_FLOAT__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Ecl Float</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ECL_FLOAT_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
+	int ECL_FLOAT = 24;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclLongImpl <em>Ecl Long</em>}' class.
@@ -1034,6 +1046,106 @@ public interface CorePackage extends EPackage {
 	int ECL_LONG_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclDoubleImpl <em>Ecl Double</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EclDoubleImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclDouble()
+	 * @generated
+	 */
+	int ECL_DOUBLE = 23;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_DOUBLE__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Ecl Double</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_DOUBLE_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_FLOAT__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Ecl Float</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_FLOAT_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_BOOLEAN__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Ecl Boolean</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_BOOLEAN_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_CHAR__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Ecl Char</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_CHAR_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_STRING__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Ecl String</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_STRING_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1041,7 +1153,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
 	 * @generated
 	 */
-	int THROWABLE = 24;
+	int THROWABLE = 28;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -1564,6 +1676,27 @@ public interface CorePackage extends EPackage {
 	EAttribute getEclBoolean_Value();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclChar <em>Ecl Char</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ecl Char</em>'.
+	 * @see org.eclipse.ecl.core.EclChar
+	 * @generated
+	 */
+	EClass getEclChar();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclChar#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.ecl.core.EclChar#getValue()
+	 * @see #getEclChar()
+	 * @generated
+	 */
+	EAttribute getEclChar_Value();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclInteger <em>Ecl Integer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1627,6 +1760,27 @@ public interface CorePackage extends EPackage {
 	EAttribute getEclLong_Value();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclDouble <em>Ecl Double</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ecl Double</em>'.
+	 * @see org.eclipse.ecl.core.EclDouble
+	 * @generated
+	 */
+	EClass getEclDouble();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclDouble#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.ecl.core.EclDouble#getValue()
+	 * @see #getEclDouble()
+	 * @generated
+	 */
+	EAttribute getEclDouble_Value();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.BoxedValue <em>Boxed Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1635,6 +1789,48 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getBoxedValue();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclByte <em>Ecl Byte</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ecl Byte</em>'.
+	 * @see org.eclipse.ecl.core.EclByte
+	 * @generated
+	 */
+	EClass getEclByte();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclByte#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.ecl.core.EclByte#getValue()
+	 * @see #getEclByte()
+	 * @generated
+	 */
+	EAttribute getEclByte_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclShort <em>Ecl Short</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ecl Short</em>'.
+	 * @see org.eclipse.ecl.core.EclShort
+	 * @generated
+	 */
+	EClass getEclShort();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclShort#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.ecl.core.EclShort#getValue()
+	 * @see #getEclShort()
+	 * @generated
+	 */
+	EAttribute getEclShort_Value();
 
 	/**
 	 * Returns the meta object for data type '{@link java.lang.Throwable <em>Throwable</em>}'.
@@ -2121,6 +2317,24 @@ public interface CorePackage extends EPackage {
 		EAttribute ECL_BOOLEAN__VALUE = eINSTANCE.getEclBoolean_Value();
 
 		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclCharImpl <em>Ecl Char</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EclCharImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclChar()
+		 * @generated
+		 */
+		EClass ECL_CHAR = eINSTANCE.getEclChar();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_CHAR__VALUE = eINSTANCE.getEclChar_Value();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclIntegerImpl <em>Ecl Integer</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2175,6 +2389,24 @@ public interface CorePackage extends EPackage {
 		EAttribute ECL_LONG__VALUE = eINSTANCE.getEclLong_Value();
 
 		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclDoubleImpl <em>Ecl Double</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EclDoubleImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclDouble()
+		 * @generated
+		 */
+		EClass ECL_DOUBLE = eINSTANCE.getEclDouble();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_DOUBLE__VALUE = eINSTANCE.getEclDouble_Value();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.BoxedValueImpl <em>Boxed Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2183,6 +2415,42 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass BOXED_VALUE = eINSTANCE.getBoxedValue();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclByteImpl <em>Ecl Byte</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EclByteImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclByte()
+		 * @generated
+		 */
+		EClass ECL_BYTE = eINSTANCE.getEclByte();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_BYTE__VALUE = eINSTANCE.getEclByte_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclShortImpl <em>Ecl Short</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EclShortImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclShort()
+		 * @generated
+		 */
+		EClass ECL_SHORT = eINSTANCE.getEclShort();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_SHORT__VALUE = eINSTANCE.getEclShort_Value();
 
 		/**
 		 * The meta object literal for the '<em>Throwable</em>' data type.

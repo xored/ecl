@@ -12,6 +12,8 @@ import org.eclipse.ecl.core.*;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see org.eclipse.ecl.core.CorePackage
  * @generated
  */
-public class CoreSwitch<T> {
+public class CoreSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -48,14 +50,16 @@ public class CoreSwitch<T> {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @parameter ePackage the package in question.
+	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
-	public T doSwitch(EObject theEObject) {
-		return doSwitch(theEObject.eClass(), theEObject);
+	@Override
+	protected boolean isSwitchFor(EPackage ePackage) {
+		return ePackage == modelPackage;
 	}
 
 	/**
@@ -65,26 +69,7 @@ public class CoreSwitch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected T doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage) {
-			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
-			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch(eSuperTypes.get(0), theEObject);
-		}
-	}
-
-	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
+	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case CorePackage.COMMAND: {
@@ -209,17 +194,23 @@ public class CoreSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CorePackage.ECL_STRING: {
-				EclString eclString = (EclString)theEObject;
-				T result = caseEclString(eclString);
-				if (result == null) result = caseBoxedValue(eclString);
+			case CorePackage.BOXED_VALUE: {
+				BoxedValue boxedValue = (BoxedValue)theEObject;
+				T result = caseBoxedValue(boxedValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CorePackage.ECL_BOOLEAN: {
-				EclBoolean eclBoolean = (EclBoolean)theEObject;
-				T result = caseEclBoolean(eclBoolean);
-				if (result == null) result = caseBoxedValue(eclBoolean);
+			case CorePackage.ECL_BYTE: {
+				EclByte eclByte = (EclByte)theEObject;
+				T result = caseEclByte(eclByte);
+				if (result == null) result = caseBoxedValue(eclByte);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.ECL_SHORT: {
+				EclShort eclShort = (EclShort)theEObject;
+				T result = caseEclShort(eclShort);
+				if (result == null) result = caseBoxedValue(eclShort);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -230,13 +221,6 @@ public class CoreSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CorePackage.ECL_FLOAT: {
-				EclFloat eclFloat = (EclFloat)theEObject;
-				T result = caseEclFloat(eclFloat);
-				if (result == null) result = caseBoxedValue(eclFloat);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case CorePackage.ECL_LONG: {
 				EclLong eclLong = (EclLong)theEObject;
 				T result = caseEclLong(eclLong);
@@ -244,9 +228,38 @@ public class CoreSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CorePackage.BOXED_VALUE: {
-				BoxedValue boxedValue = (BoxedValue)theEObject;
-				T result = caseBoxedValue(boxedValue);
+			case CorePackage.ECL_DOUBLE: {
+				EclDouble eclDouble = (EclDouble)theEObject;
+				T result = caseEclDouble(eclDouble);
+				if (result == null) result = caseBoxedValue(eclDouble);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.ECL_FLOAT: {
+				EclFloat eclFloat = (EclFloat)theEObject;
+				T result = caseEclFloat(eclFloat);
+				if (result == null) result = caseBoxedValue(eclFloat);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.ECL_BOOLEAN: {
+				EclBoolean eclBoolean = (EclBoolean)theEObject;
+				T result = caseEclBoolean(eclBoolean);
+				if (result == null) result = caseBoxedValue(eclBoolean);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.ECL_CHAR: {
+				EclChar eclChar = (EclChar)theEObject;
+				T result = caseEclChar(eclChar);
+				if (result == null) result = caseBoxedValue(eclChar);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.ECL_STRING: {
+				EclString eclString = (EclString)theEObject;
+				T result = caseEclString(eclString);
+				if (result == null) result = caseBoxedValue(eclString);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -555,6 +568,21 @@ public class CoreSwitch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ecl Char</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ecl Char</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEclChar(EclChar object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Ecl Integer</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -600,6 +628,21 @@ public class CoreSwitch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ecl Double</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ecl Double</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEclDouble(EclDouble object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Boxed Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -615,6 +658,36 @@ public class CoreSwitch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ecl Byte</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ecl Byte</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEclByte(EclByte object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ecl Short</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ecl Short</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEclShort(EclShort object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -625,6 +698,7 @@ public class CoreSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
+	@Override
 	public T defaultCase(EObject object) {
 		return null;
 	}

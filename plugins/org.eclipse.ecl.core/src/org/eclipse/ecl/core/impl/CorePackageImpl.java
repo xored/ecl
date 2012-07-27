@@ -18,9 +18,13 @@ import org.eclipse.ecl.core.ConvertedToEMFPipe;
 import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.EclBoolean;
+import org.eclipse.ecl.core.EclByte;
+import org.eclipse.ecl.core.EclChar;
+import org.eclipse.ecl.core.EclDouble;
 import org.eclipse.ecl.core.EclFloat;
 import org.eclipse.ecl.core.EclInteger;
 import org.eclipse.ecl.core.EclLong;
+import org.eclipse.ecl.core.EclShort;
 import org.eclipse.ecl.core.EclString;
 import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.ExecutableParameter;
@@ -173,6 +177,13 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass eclCharEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass eclIntegerEClass = null;
 
 	/**
@@ -194,7 +205,28 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass eclDoubleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass boxedValueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eclByteEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eclShortEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -253,7 +285,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		if (isInited) return (CorePackage)EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI);
 
 		// Obtain or create and register package
-		CorePackageImpl theCorePackage = (CorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof CorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new CorePackageImpl());
+		CorePackageImpl theCorePackage = (CorePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof CorePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new CorePackageImpl());
 
 		isInited = true;
 
@@ -269,6 +301,9 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		// Mark meta-data to indicate it can't be changed
 		theCorePackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(CorePackage.eNS_URI, theCorePackage);
 		return theCorePackage;
 	}
 
@@ -681,6 +716,24 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getEclChar() {
+		return eclCharEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEclChar_Value() {
+		return (EAttribute)eclCharEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEclInteger() {
 		return eclIntegerEClass;
 	}
@@ -735,8 +788,62 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getEclDouble() {
+		return eclDoubleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEclDouble_Value() {
+		return (EAttribute)eclDoubleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getBoxedValue() {
 		return boxedValueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEclByte() {
+		return eclByteEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEclByte_Value() {
+		return (EAttribute)eclByteEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEclShort() {
+		return eclShortEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEclShort_Value() {
+		return (EAttribute)eclShortEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -855,22 +962,34 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEReference(ifEClass, IF__THEN);
 		createEReference(ifEClass, IF__ELSE);
 
-		eclStringEClass = createEClass(ECL_STRING);
-		createEAttribute(eclStringEClass, ECL_STRING__VALUE);
+		boxedValueEClass = createEClass(BOXED_VALUE);
 
-		eclBooleanEClass = createEClass(ECL_BOOLEAN);
-		createEAttribute(eclBooleanEClass, ECL_BOOLEAN__VALUE);
+		eclByteEClass = createEClass(ECL_BYTE);
+		createEAttribute(eclByteEClass, ECL_BYTE__VALUE);
+
+		eclShortEClass = createEClass(ECL_SHORT);
+		createEAttribute(eclShortEClass, ECL_SHORT__VALUE);
 
 		eclIntegerEClass = createEClass(ECL_INTEGER);
 		createEAttribute(eclIntegerEClass, ECL_INTEGER__VALUE);
 
-		eclFloatEClass = createEClass(ECL_FLOAT);
-		createEAttribute(eclFloatEClass, ECL_FLOAT__VALUE);
-
 		eclLongEClass = createEClass(ECL_LONG);
 		createEAttribute(eclLongEClass, ECL_LONG__VALUE);
 
-		boxedValueEClass = createEClass(BOXED_VALUE);
+		eclDoubleEClass = createEClass(ECL_DOUBLE);
+		createEAttribute(eclDoubleEClass, ECL_DOUBLE__VALUE);
+
+		eclFloatEClass = createEClass(ECL_FLOAT);
+		createEAttribute(eclFloatEClass, ECL_FLOAT__VALUE);
+
+		eclBooleanEClass = createEClass(ECL_BOOLEAN);
+		createEAttribute(eclBooleanEClass, ECL_BOOLEAN__VALUE);
+
+		eclCharEClass = createEClass(ECL_CHAR);
+		createEAttribute(eclCharEClass, ECL_CHAR__VALUE);
+
+		eclStringEClass = createEClass(ECL_STRING);
+		createEAttribute(eclStringEClass, ECL_STRING__VALUE);
 
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
@@ -917,11 +1036,15 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		foreachEClass.getESuperTypes().add(this.getCommand());
 		scriptEClass.getESuperTypes().add(this.getCommand());
 		ifEClass.getESuperTypes().add(this.getCommand());
-		eclStringEClass.getESuperTypes().add(this.getBoxedValue());
-		eclBooleanEClass.getESuperTypes().add(this.getBoxedValue());
+		eclByteEClass.getESuperTypes().add(this.getBoxedValue());
+		eclShortEClass.getESuperTypes().add(this.getBoxedValue());
 		eclIntegerEClass.getESuperTypes().add(this.getBoxedValue());
-		eclFloatEClass.getESuperTypes().add(this.getBoxedValue());
 		eclLongEClass.getESuperTypes().add(this.getBoxedValue());
+		eclDoubleEClass.getESuperTypes().add(this.getBoxedValue());
+		eclFloatEClass.getESuperTypes().add(this.getBoxedValue());
+		eclBooleanEClass.getESuperTypes().add(this.getBoxedValue());
+		eclCharEClass.getESuperTypes().add(this.getBoxedValue());
+		eclStringEClass.getESuperTypes().add(this.getBoxedValue());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -989,22 +1112,34 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEReference(getIf_Then(), this.getCommand(), null, "then", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getIf_Else(), this.getCommand(), null, "else", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(eclStringEClass, EclString.class, "EclString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEclString_Value(), theEcorePackage.getEString(), "value", null, 0, 1, EclString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(boxedValueEClass, BoxedValue.class, "BoxedValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(eclBooleanEClass, EclBoolean.class, "EclBoolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEclBoolean_Value(), theEcorePackage.getEBoolean(), "value", null, 0, 1, EclBoolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(eclByteEClass, EclByte.class, "EclByte", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEclByte_Value(), theEcorePackage.getEByte(), "value", null, 0, 1, EclByte.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eclShortEClass, EclShort.class, "EclShort", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEclShort_Value(), theEcorePackage.getEShort(), "value", null, 0, 1, EclShort.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eclIntegerEClass, EclInteger.class, "EclInteger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEclInteger_Value(), theEcorePackage.getEInt(), "value", null, 0, 1, EclInteger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(eclFloatEClass, EclFloat.class, "EclFloat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEclFloat_Value(), theEcorePackage.getEFloat(), "value", null, 0, 1, EclFloat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(eclLongEClass, EclLong.class, "EclLong", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEclLong_Value(), theEcorePackage.getELong(), "value", null, 0, 1, EclLong.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(boxedValueEClass, BoxedValue.class, "BoxedValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(eclDoubleEClass, EclDouble.class, "EclDouble", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEclDouble_Value(), theEcorePackage.getEDouble(), "value", null, 0, 1, EclDouble.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eclFloatEClass, EclFloat.class, "EclFloat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEclFloat_Value(), theEcorePackage.getEFloat(), "value", null, 0, 1, EclFloat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eclBooleanEClass, EclBoolean.class, "EclBoolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEclBoolean_Value(), theEcorePackage.getEBoolean(), "value", null, 0, 1, EclBoolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eclCharEClass, EclChar.class, "EclChar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEclChar_Value(), theEcorePackage.getEChar(), "value", null, 0, 1, EclChar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eclStringEClass, EclString.class, "EclString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEclString_Value(), theEcorePackage.getEString(), "value", null, 0, 1, EclString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

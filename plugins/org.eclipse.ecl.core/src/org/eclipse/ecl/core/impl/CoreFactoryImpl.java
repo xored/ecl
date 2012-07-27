@@ -82,11 +82,15 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.SERIALIZED: return createSerialized();
 			case CorePackage.NULLABLE: return createNullable();
 			case CorePackage.IF: return createIf();
-			case CorePackage.ECL_STRING: return createEclString();
-			case CorePackage.ECL_BOOLEAN: return createEclBoolean();
+			case CorePackage.ECL_BYTE: return createEclByte();
+			case CorePackage.ECL_SHORT: return createEclShort();
 			case CorePackage.ECL_INTEGER: return createEclInteger();
-			case CorePackage.ECL_FLOAT: return createEclFloat();
 			case CorePackage.ECL_LONG: return createEclLong();
+			case CorePackage.ECL_DOUBLE: return createEclDouble();
+			case CorePackage.ECL_FLOAT: return createEclFloat();
+			case CorePackage.ECL_BOOLEAN: return createEclBoolean();
+			case CorePackage.ECL_CHAR: return createEclChar();
+			case CorePackage.ECL_STRING: return createEclString();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -287,6 +291,26 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EclByte createEclByte() {
+		EclByteImpl eclByte = new EclByteImpl();
+		return eclByte;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EclShort createEclShort() {
+		EclShortImpl eclShort = new EclShortImpl();
+		return eclShort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EclString createEclString() {
 		EclStringImpl eclString = new EclStringImpl();
 		return eclString;
@@ -300,6 +324,16 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public EclBoolean createEclBoolean() {
 		EclBooleanImpl eclBoolean = new EclBooleanImpl();
 		return eclBoolean;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EclChar createEclChar() {
+		EclCharImpl eclChar = new EclCharImpl();
+		return eclChar;
 	}
 
 	/**
@@ -330,6 +364,16 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public EclLong createEclLong() {
 		EclLongImpl eclLong = new EclLongImpl();
 		return eclLong;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EclDouble createEclDouble() {
+		EclDoubleImpl eclDouble = new EclDoubleImpl();
+		return eclDouble;
 	}
 
 	/**

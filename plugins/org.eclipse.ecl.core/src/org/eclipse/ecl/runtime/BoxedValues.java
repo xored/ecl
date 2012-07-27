@@ -11,9 +11,13 @@ import org.eclipse.ecl.core.BoxedValue;
 import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.EclBoolean;
+import org.eclipse.ecl.core.EclByte;
+import org.eclipse.ecl.core.EclChar;
+import org.eclipse.ecl.core.EclDouble;
 import org.eclipse.ecl.core.EclFloat;
 import org.eclipse.ecl.core.EclInteger;
 import org.eclipse.ecl.core.EclLong;
+import org.eclipse.ecl.core.EclShort;
 import org.eclipse.ecl.core.EclString;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.emf.ecore.EClass;
@@ -27,16 +31,27 @@ public class BoxedValues {
 	private static final Map<String, String> TO_BOXED_TYPE = new HashMap<String, String>();
 	private static final Map<String, String> FROM_BOXED_TYPE = new HashMap<String, String>();
 	static {
-		TO_BOXED_TYPE.put(String.class.getName(), CorePackage.eINSTANCE
-				.getEclString().getName());
-		TO_BOXED_TYPE.put(Boolean.class.getName(), CorePackage.eINSTANCE
-				.getEclBoolean().getName());
+		TO_BOXED_TYPE.put(Byte.class.getName(), CorePackage.eINSTANCE
+				.getEclByte().getName());
+		TO_BOXED_TYPE.put(Short.class.getName(), CorePackage.eINSTANCE
+				.getEclShort().getName());
 		TO_BOXED_TYPE.put(Integer.class.getName(), CorePackage.eINSTANCE
 				.getEclInteger().getName());
 		TO_BOXED_TYPE.put(Long.class.getName(), CorePackage.eINSTANCE
 				.getEclLong().getName());
+
 		TO_BOXED_TYPE.put(Float.class.getName(), CorePackage.eINSTANCE
 				.getEclFloat().getName());
+		TO_BOXED_TYPE.put(Double.class.getName(), CorePackage.eINSTANCE
+				.getEclDouble().getName());
+		
+		TO_BOXED_TYPE.put(Boolean.class.getName(), CorePackage.eINSTANCE
+				.getEclBoolean().getName());
+
+		TO_BOXED_TYPE.put(Character.class.getName(), CorePackage.eINSTANCE
+				.getEclChar().getName());
+		TO_BOXED_TYPE.put(String.class.getName(), CorePackage.eINSTANCE
+				.getEclString().getName());
 
 		for (Entry<String, String> entry : TO_BOXED_TYPE.entrySet()) {
 			FROM_BOXED_TYPE.put(entry.getValue(), entry.getKey());
@@ -104,17 +119,28 @@ public class BoxedValues {
 
 	public static Boolean toBoolean(BoxedValue boxed) {
 		switch (boxed.eClass().getClassifierID()) {
-		case CorePackage.ECL_BOOLEAN:
-			return ((EclBoolean) boxed).isValue();
-		case CorePackage.ECL_STRING:
-			return Boolean.toString(true).equalsIgnoreCase(
-					((EclString) boxed).getValue());
+		case CorePackage.ECL_BYTE:
+			return ((EclByte) boxed).getValue() != 0;
+		case CorePackage.ECL_SHORT:
+			return ((EclShort) boxed).getValue() != 0;
 		case CorePackage.ECL_INTEGER:
 			return ((EclInteger) boxed).getValue() != 0;
 		case CorePackage.ECL_LONG:
 			return ((EclLong) boxed).getValue() != 0;
+
 		case CorePackage.ECL_FLOAT:
 			return ((EclFloat) boxed).getValue() != 0;
+		case CorePackage.ECL_DOUBLE:
+			return ((EclDouble) boxed).getValue() != 0;
+
+		case CorePackage.ECL_BOOLEAN:
+			return ((EclBoolean) boxed).isValue();
+
+		case CorePackage.ECL_CHAR:
+			return ((EclChar) boxed).getValue() != 0;
+		case CorePackage.ECL_STRING:
+			return Boolean.toString(true).equalsIgnoreCase(
+					((EclString) boxed).getValue());
 		}
 		throw new IllegalArgumentException(String.format(
 				"Cannot convert value of type '%s' to Boolean", boxed.eClass()
@@ -128,8 +154,10 @@ public class BoxedValues {
 
 	public static Integer toInteger(BoxedValue boxed) throws CoreException {
 		switch (boxed.eClass().getClassifierID()) {
-		case CorePackage.ECL_BOOLEAN:
-			return ((EclBoolean) boxed).isValue() ? 1 : 0;
+		case CorePackage.ECL_BYTE:
+			return (int) ((EclByte) boxed).getValue();
+		case CorePackage.ECL_SHORT:
+			return (int) ((EclShort) boxed).getValue();
 		case CorePackage.ECL_INTEGER:
 			return ((EclInteger) boxed).getValue();
 		case CorePackage.ECL_LONG:
@@ -139,6 +167,17 @@ public class BoxedValues {
 						"Long", "Integer"));
 			}
 			return (int) val;
+			
+		case CorePackage.ECL_FLOAT:
+			return new Float(((EclFloat) boxed).getValue()).intValue();
+		case CorePackage.ECL_DOUBLE:
+			return new Double(((EclDouble) boxed).getValue()).intValue();
+			
+		case CorePackage.ECL_BOOLEAN:
+			return ((EclBoolean) boxed).isValue() ? 1 : 0;
+
+		case CorePackage.ECL_CHAR:
+			return (int) ((EclChar) boxed).getValue();
 		case CorePackage.ECL_STRING:
 			try {
 				return Integer.parseInt(((EclString) boxed).getValue());
@@ -146,8 +185,6 @@ public class BoxedValues {
 				throw new CoreException(createConversionError(toString(boxed),
 						"String", "Integer"));
 			}
-		case CorePackage.ECL_FLOAT:
-			return new Float(((EclFloat) boxed).getValue()).intValue();
 		}
 		throw new IllegalArgumentException(String.format(
 				"Cannot convert value of type '%s' to Integer", boxed.eClass()
@@ -156,12 +193,25 @@ public class BoxedValues {
 
 	public static Long toLong(BoxedValue boxed) throws CoreException {
 		switch (boxed.eClass().getClassifierID()) {
-		case CorePackage.ECL_BOOLEAN:
-			return ((EclBoolean) boxed).isValue() ? 1L : 0L;
+		case CorePackage.ECL_BYTE:
+			return (long) ((EclByte) boxed).getValue();
+		case CorePackage.ECL_SHORT:
+			return (long) ((EclShort) boxed).getValue();
 		case CorePackage.ECL_INTEGER:
 			return (long) ((EclInteger) boxed).getValue();
 		case CorePackage.ECL_LONG:
 			return ((EclLong) boxed).getValue();
+
+		case CorePackage.ECL_FLOAT:
+			return new Float(((EclFloat) boxed).getValue()).longValue();
+		case CorePackage.ECL_DOUBLE:
+			return new Double(((EclDouble) boxed).getValue()).longValue();
+
+		case CorePackage.ECL_BOOLEAN:
+			return ((EclBoolean) boxed).isValue() ? 1L : 0L;
+
+		case CorePackage.ECL_CHAR:
+			return (long) ((EclChar) boxed).getValue();
 		case CorePackage.ECL_STRING:
 			try {
 				return Long.parseLong(((EclString) boxed).getValue());
@@ -169,8 +219,6 @@ public class BoxedValues {
 				throw new CoreException(createConversionError(toString(boxed),
 						"String", "Long"));
 			}
-		case CorePackage.ECL_FLOAT:
-			return new Float(((EclFloat) boxed).getValue()).longValue();
 		}
 		throw new IllegalArgumentException(String.format(
 				"Cannot convert value of type '%s' to Long", boxed.eClass()
@@ -179,13 +227,31 @@ public class BoxedValues {
 
 	public static Float toFloat(BoxedValue boxed) throws CoreException {
 		switch (boxed.eClass().getClassifierID()) {
-		case CorePackage.ECL_BOOLEAN:
-			throw new CoreException(createConversionError(toString(boxed),
-					"Boolean", "Float"));
+		case CorePackage.ECL_BYTE:
+			return (float) ((EclByte) boxed).getValue();
+		case CorePackage.ECL_SHORT:
+			return (float) ((EclShort) boxed).getValue();
 		case CorePackage.ECL_INTEGER:
 			return (float) ((EclInteger) boxed).getValue();
 		case CorePackage.ECL_LONG:
 			return (float) ((EclLong) boxed).getValue();
+
+		case CorePackage.ECL_FLOAT:
+			return ((EclFloat) boxed).getValue();
+		case CorePackage.ECL_DOUBLE:
+			double d = ((EclDouble) boxed).getValue();
+			if (d >= Float.MIN_VALUE && d <= Float.MIN_VALUE) 
+				return new Float((float) d);
+			else throw new CoreException(createConversionError(toString(boxed),
+					"Double", "Float"));
+
+			
+		case CorePackage.ECL_BOOLEAN:
+			throw new CoreException(createConversionError(toString(boxed),
+					"Boolean", "Float"));
+
+		case CorePackage.ECL_CHAR:
+			return (float) ((EclChar) boxed).getValue();
 		case CorePackage.ECL_STRING:
 			try {
 				return Float.parseFloat(((EclString) boxed).getValue());
@@ -193,8 +259,6 @@ public class BoxedValues {
 				throw new CoreException(createConversionError(toString(boxed),
 						"String", "Float"));
 			}
-		case CorePackage.ECL_FLOAT:
-			return ((EclFloat) boxed).getValue();
 		}
 		throw new IllegalArgumentException(String.format(
 				"Cannot convert value of type '%s' to boolean", boxed.eClass()
