@@ -18,6 +18,8 @@ import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.swt.widgets.Widget;
 
 public class InvokeService implements ICommandService {
+	
+	private static final Object NOT_CONVERTIBLE = new Object();
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
@@ -77,19 +79,23 @@ public class InvokeService implements ICommandService {
 			Object[] args, IPipe out) throws CoreException {
 		if (name.equals("get")) {
 			if (args.length != 1) return error("Invalid number of arguments.");
-			if (args[0].getClass() != Integer.class && args[0].getClass() != int.class)
-				return error("Invalid index type.");
+			Object index = convert(int.class, args[0], true, true);
+			if (index == NOT_CONVERTIBLE) return error("Invalid index type.");
 			
-			Object result = Array.get(array, (Integer) args[0]);
+			Object result = Array.get(array, (Integer) index);
 			if (result != null) out.write(result);
 
 			return Status.OK_STATUS;
 		} else if (name.equals("set")) {
 			if (args.length != 2) return error("Invalid number of arguments.");
-			if (args[0].getClass() != Integer.class && args[0].getClass() != int.class)
-				return error("Invalid index type.");
+
+			Object index = convert(int.class, args[0], true, true);
+			if (index == NOT_CONVERTIBLE) return error("Invalid index type.");
+
+			Object value = convert(array.getClass().getComponentType(), args[1], true, true);
+			if (value == NOT_CONVERTIBLE) return error("Invalid value type.");
 			
-			Array.set(array, (Integer) args[0], args[1]);
+			Array.set(array, (Integer) index, value);
 			
 			return Status.OK_STATUS;
 		} else if (name.equals("length")) {
@@ -102,6 +108,14 @@ public class InvokeService implements ICommandService {
 	
 	private static Status error(String message) {
 		return new Status(Status.ERROR, EclInteropPlugin.PLUGIN_ID, message);
+	}
+	
+	@SuppressWarnings("rawtypes")
+	private static Method matchMethod(Class class_, String name, Object[] args) {
+		Method result = matchMethod(class_, name, args, false, false);
+		if (result == null) result = matchMethod(class_, name, args, true, false);
+		if (result == null) result = matchMethod(class_, name, args, false, true);
+		return result;
 	}
 	
 	/* TODO:
@@ -117,7 +131,7 @@ public class InvokeService implements ICommandService {
 	 *   http://geekexplains.blogspot.com/2009/06/choosing-most-specific-method-tricky.html
 	 */
 	@SuppressWarnings({ "rawtypes" })
-	private static Method matchMethod(Class class_, String name, Object[] args) {
+	private static Method matchMethod(Class class_, String name, Object[] args, boolean doWiden, boolean doNarrow) {
 		final Method[] methods = class_.getMethods();
 		
 		for (Method m : methods) {
@@ -128,10 +142,7 @@ public class InvokeService implements ICommandService {
 
 			boolean done = true;
 			for (int i = 0; i < paramTypes.length; ++i) {
-				final Class argType = args[i].getClass();
-				final Class paramType = paramTypes[i];
-				
-				if (!isAssignableFrom(paramType, argType)) {
+				if (convert(paramTypes[i], args[i], doWiden, doNarrow) == NOT_CONVERTIBLE) {
 					done = false;
 					break;
 				}
@@ -144,26 +155,207 @@ public class InvokeService implements ICommandService {
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private static boolean isAssignableFrom(Class to, Class from) {
-		if (to.isAssignableFrom(from)) return true;
-		if (to.isPrimitive() && isPrimitiveAssignableFrom(to, from)) return true;
+	private static Object convert(Class to, Object value, boolean doWiden, boolean doNarrow) {
+
+		Class from = value.getClass();
 		
-		return false;
+		// if Java tells us it is convertible, let it go
+		if (to.isAssignableFrom(from)) return value;
+		
+		to = toPrimitive(to);
+		from = toPrimitive(from);
+		
+		// always self assignable
+		if (to == from) return value;
+		
+		// if one of the types or both are not convertible to primitive,
+		// we can not do anything about it
+		if (to == null || from == null) return NOT_CONVERTIBLE;
+		
+		if (doWiden) {
+			// try to widen
+			Object converted = widden(to, value); 
+			if (converted != NOT_CONVERTIBLE) return converted;
+		}
+
+		if (doNarrow)
+		{
+			// try to narrow
+			Object converted = narrow(to, value);
+			if (converted != NOT_CONVERTIBLE) return converted;			
+		}
+		
+		return NOT_CONVERTIBLE;
 	}
 	
 	@SuppressWarnings("rawtypes")
-	private static boolean isPrimitiveAssignableFrom(Class to, Class from) {
-		// assumes that there is only one Class instance for every type-class
+	private static Object widden(Class to, Object value) {
 		
-		if (to == Boolean.TYPE && from == Boolean.class) return true;
-		if (to == Character.TYPE && from == Character.class) return true;
-		if (to == Byte.TYPE && from == Byte.class) return true;
-		if (to == Short.TYPE && from == Short.class) return true;
-		if (to == Integer.TYPE && from == Integer.class) return true;
-		if (to == Long.TYPE && from == Long.class) return true;
-		if (to == Float.TYPE && from == Float.class) return true;
-		if (to == Double.TYPE && from == Double.class) return true;
+		if (to == value.getClass()) return value;
+		if (to == toPrimitive(value.getClass())) return value;
 		
-		return false;
+		Number number = null;
+		Character character = null;
+
+		if (value instanceof Number) number = (Number) value;
+		if (value instanceof Character) character = (Character) value;
+		
+		if (to == long.class) {
+			if (value instanceof Byte || value instanceof Short ||
+					value instanceof Integer) return new Long(number.longValue());
+			else if (value instanceof Character) return new Long(character.charValue());
+			else return NOT_CONVERTIBLE;
+		}
+		
+		if (to == int.class) {
+			if (value instanceof Byte || value instanceof Short)
+				return new Integer(number.intValue());
+			else if (value instanceof Character) return new Integer(character.charValue());
+			else return NOT_CONVERTIBLE;
+		}
+		
+		if (to == short.class) {
+			if (value instanceof Byte)
+				return new Short(number.shortValue());
+			else return NOT_CONVERTIBLE;
+		}
+		
+		if (to == byte.class) {
+			return NOT_CONVERTIBLE; // nothing can be widened to byte
+		}
+		
+		if (to == double.class) {
+			if (value instanceof Byte || value instanceof Short ||
+					value instanceof Integer || value instanceof Long ||
+					value instanceof Float)
+				return new Double(number.doubleValue());
+			else if (value instanceof Character) return new Double(character.charValue());
+			else return NOT_CONVERTIBLE;
+		}
+		
+		if (to == float.class) {
+			if (value instanceof Byte || value instanceof Short ||
+					value instanceof Integer || value instanceof Long)
+				return new Float(number.floatValue());
+			else if (value instanceof Character) return new Float(character.charValue());
+			else return NOT_CONVERTIBLE;
+		}
+		
+		if (to == char.class) {
+			return NOT_CONVERTIBLE; // nothing can be widened to char
+		}
+		
+		return NOT_CONVERTIBLE;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	private static Object narrow(Class to, Object value) {
+		if (to == value.getClass()) return value;
+		if (to == toPrimitive(value.getClass())) return value;
+		
+		Number number = null;
+		Character character = null;
+
+		if (value instanceof Number) number = (Number) value;
+		if (value instanceof Character) character = (Character) value;
+
+		if (to == long.class) {
+			if (value instanceof Number) {
+				long l = number.longValue();
+				double d = number.doubleValue();
+				if (l == d && d >= Long.MIN_VALUE && d <= Long.MAX_VALUE)
+					return new Long(l);
+				else return NOT_CONVERTIBLE;
+			}
+			else return NOT_CONVERTIBLE;
+		}
+		
+		if (to == int.class) {
+			if (value instanceof Number) {
+				long l = number.longValue();
+				double d = number.doubleValue();
+				if (l == d && l >= Integer.MIN_VALUE && l <= Integer.MAX_VALUE)
+					return new Integer((int) l);
+				else return NOT_CONVERTIBLE;
+			}
+			else return NOT_CONVERTIBLE;
+		}
+
+		if (to == short.class) {
+			if (value instanceof Number) {
+				long l = number.longValue();
+				double d = number.doubleValue();
+				if (l == d && l >= Short.MIN_VALUE && l <= Short.MAX_VALUE)
+					return new Short((short) l);
+				else return NOT_CONVERTIBLE;
+			}
+			else if (value instanceof Character) {
+				char c = character.charValue();
+				if (c >= Short.MIN_VALUE && c <= Short.MAX_VALUE)
+					return new Short((short) c);
+				else return NOT_CONVERTIBLE;
+			}
+			else return NOT_CONVERTIBLE;
+		}
+		
+		if (to == byte.class) {
+			if (value instanceof Number) {
+				long l = number.longValue();
+				double d = number.doubleValue();
+				if (l == d && l >= Byte.MIN_VALUE && l <= Byte.MAX_VALUE)
+					return new Byte((byte) l);
+				else return NOT_CONVERTIBLE;
+			}
+			else if (value instanceof Character) {
+				char c = character.charValue();
+				if (c >= Byte.MIN_VALUE && c <= Byte.MAX_VALUE)
+					return new Byte((byte) c);
+				else return NOT_CONVERTIBLE;
+			}
+			else return NOT_CONVERTIBLE;
+		}
+		
+		if (to == double.class) {
+			return NOT_CONVERTIBLE; // double is the widest type in the world
+		}
+		
+		if (to == float.class) {
+			if (value instanceof Double) {
+				double d = number.doubleValue();
+				if (d >= Float.MIN_VALUE && d <= Float.MAX_VALUE)
+					return new Float((float) d);
+				else return NOT_CONVERTIBLE;
+			}
+			else return NOT_CONVERTIBLE;
+		}
+		
+		if (to == char.class) {
+			if (value instanceof Number) {
+				long l = number.longValue();
+				double d = number.doubleValue();
+				if (l == d && l >= Character.MIN_VALUE && l <= Character.MAX_VALUE)
+					return new Character((char) l);
+				else return NOT_CONVERTIBLE;
+			}
+			else return NOT_CONVERTIBLE;
+		}
+		
+		return NOT_CONVERTIBLE;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	private static Class toPrimitive(Class boxed) {
+		if (boxed.isPrimitive()) return boxed;
+		
+		if (boxed == Boolean.class) return boolean.class;
+		if (boxed == Character.class) return char.class;
+		if (boxed == Byte.class) return byte.class;
+		if (boxed == Short.class) return short.class;
+		if (boxed == Integer.class) return int.class;
+		if (boxed == Long.class) return long.class;
+		if (boxed == Float.class) return float.class;
+		if (boxed == Double.class) return double.class;
+		
+		return null;
 	}
 }

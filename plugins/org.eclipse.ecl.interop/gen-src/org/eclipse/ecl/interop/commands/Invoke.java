@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.ecl.interop.commands.CommandsPackage#getInvoke()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Invokes method on Java object.' returns='Value returned by method.'"
  * @generated
  */
 public interface Invoke extends Command {
@@ -41,6 +41,7 @@ public interface Invoke extends Command {
 	 * @see #setObject(Object)
 	 * @see org.eclipse.ecl.interop.commands.CommandsPackage#getInvoke_Object()
 	 * @model required="true"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='Object to call method on.'"
 	 * @generated
 	 */
 	Object getObject();
@@ -67,6 +68,7 @@ public interface Invoke extends Command {
 	 * @see #setName(String)
 	 * @see org.eclipse.ecl.interop.commands.CommandsPackage#getInvoke_Name()
 	 * @model required="true"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='Name of the method to call. As a useful addtion, there are three pseudo-methods for arrays: \"get index\", \"set index value\" and \"length\".'"
 	 * @generated
 	 */
 	String getName();
@@ -92,7 +94,7 @@ public interface Invoke extends Command {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Args</em>' attribute list.
 	 * @see org.eclipse.ecl.interop.commands.CommandsPackage#getInvoke_Args()
-	 * @model
+	 * @model annotation="http://www.eclipse.org/ecl/docs description='Variable number of arguments to the method.'"
 	 * @generated
 	 */
 	EList<Object> getArgs();

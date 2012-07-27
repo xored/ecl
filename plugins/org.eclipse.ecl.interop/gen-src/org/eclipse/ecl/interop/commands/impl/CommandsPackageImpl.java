@@ -212,8 +212,45 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		createResource(eNS_URI);
 
 		// Create annotations
+		// http://www.eclipse.org/ecl/docs
+		createDocsAnnotations();
 		// http://www.eclipse.org/ecl/input
 		createInputAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/docs</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createDocsAnnotations() {
+		String source = "http://www.eclipse.org/ecl/docs";		
+		addAnnotation
+		  (invokeEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Invokes method on Java object.",
+			 "returns", "Value returned by method."
+		   });			
+		addAnnotation
+		  (getInvoke_Object(), 
+		   source, 
+		   new String[] {
+			 "description", "Object to call method on."
+		   });		
+		addAnnotation
+		  (getInvoke_Name(), 
+		   source, 
+		   new String[] {
+			 "description", "Name of the method to call. As a useful addtion, there are three pseudo-methods for arrays: \"get index\", \"set index value\" and \"length\"."
+		   });		
+		addAnnotation
+		  (getInvoke_Args(), 
+		   source, 
+		   new String[] {
+			 "description", "Variable number of arguments to the method."
+		   });
 	}
 
 	/**
@@ -223,12 +260,12 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	protected void createInputAnnotations() {
-		String source = "http://www.eclipse.org/ecl/input";		
+		String source = "http://www.eclipse.org/ecl/input";			
 		addAnnotation
 		  (getInvoke_Object(), 
 		   source, 
 		   new String[] {
-		   });
+		   });			
 	}
 
 } //CommandsPackageImpl
