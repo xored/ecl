@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EPackage;
 
 public class EclDocTest extends TestCase {
 
-	public void generateDocs() throws Exception {
+	public void test01() throws Exception {
 		EPackage[] ePackages = new EPackage[] {
 				EPackage.Registry.INSTANCE
 						.getEPackage("http://www.eclipse.org/ecl/core.ecore"),
@@ -32,8 +32,12 @@ public class EclDocTest extends TestCase {
 						.getEPackage("http://www.eclipse.org/ecl/tesla.ecore"),
 				EPackage.Registry.INSTANCE
 						.getEPackage("http://www.eclipse.org/ecl/tesla/diagram.ecore"),
-		// EPackage.Registry.INSTANCE.getEPackage("http://www.eclipse.org/ecl/platform/commands.ecore")
-		};
+				EPackage.Registry.INSTANCE
+						.getEPackage("http://www.eclipse.org/ecl/platform/commands.ecore"),
+				EPackage.Registry.INSTANCE
+						.getEPackage("http://www.eclipse.org/ecl/data/commands.ecore"),
+				EPackage.Registry.INSTANCE
+						.getEPackage("http://www.eclipse.org/ecl/operations.ecore") };
 
 		// EclDocPlugin.genPackagesInfo(ePackages, getOutput());
 		DocWriter.writePackages(ePackages, getOutput());

@@ -3,6 +3,7 @@ package org.eclipse.ecl.doc;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -33,6 +34,15 @@ public class DocWriter {
 		extractCommands();
 	}
 
+	private static List<String> excludedCommands = Arrays
+			.asList("recognize", "contains-image", "sequence", "parallel",
+					"get-advanced-info", "control-not-found", "pipeline",
+					"setup-player", "shoutdown-player");
+
+	private static boolean isExcluded(EClass clazz) {
+		return excludedCommands.contains(getCommandName(clazz));
+	}
+
 	private void extractCommands() {
 		List<EClass> list = new ArrayList<EClass>();
 		for (EPackage p : packages) {
@@ -40,7 +50,7 @@ public class DocWriter {
 				if (classifier instanceof EClass) {
 					EClass clazz = (EClass) classifier;
 					if (clazz.getEAllSuperTypes().contains(command)
-							&& !clazz.isAbstract()) {
+							&& !clazz.isAbstract() && !isExcluded(clazz)) {
 						list.add(clazz);
 					}
 				}
@@ -100,9 +110,9 @@ public class DocWriter {
 		pDd(description);
 
 		EStructuralFeature[] params = getParameters(command);
-		if(params.length > 0) {
+		if (params.length > 0) {
 			strongDt("Parameters");
-			for(EStructuralFeature param : params) {
+			for (EStructuralFeature param : params) {
 				writeFeature(param);
 			}
 		}
@@ -119,6 +129,12 @@ public class DocWriter {
 			dd(outputDescription);
 		}
 
+		String example = getExample(command);
+		// if (example != null) {
+		// strongDt("Example");
+		// dd(String.format("<pre>%s</pre>", example));
+		// }
+
 		closeNode(); // dl
 		hr();
 
@@ -129,16 +145,17 @@ public class DocWriter {
 		StringBuilder result = new StringBuilder();
 		result.append(String
 				.format("<span class=\"paramType\">%s</span> <span class=\"paramName\">%s</span>",
-						mapType(feature.getEType().getName()), feature.getName()));
-		
+						mapType(feature.getEType().getName()),
+						feature.getName()));
+
 		EAnnotation docs = feature.getEAnnotation(DOC_SOURCE);
 		if (docs != null && docs.getDetails().containsKey(DESCRIPTION)) {
 			result.append(" - ").append(docs.getDetails().get(DESCRIPTION));
 		}
-		
+
 		String defaultVal = feature.getDefaultValueLiteral();
-		if(defaultVal != null && defaultVal.length() > 0) {
-			if(result.charAt(result.length() - 1) != '.') {
+		if (defaultVal != null && defaultVal.length() > 0) {
+			if (result.charAt(result.length() - 1) != '.') {
 				result.append(".");
 			}
 			result.append(String.format(" Default value is %s", defaultVal));
@@ -155,15 +172,17 @@ public class DocWriter {
 		typeToDisplay.put("EBoolean", "Boolean");
 		typeToDisplay.put("EBooleanObject", "Boolean");
 		typeToDisplay.put("EString", "String");
-		
+
 	}
+
 	private static String mapType(String name) {
 		String result = typeToDisplay.get(name);
-		if(result == null) {
+		if (result == null) {
 			result = name;
 		}
 		return result;
 	}
+
 	private String getDescription(EModelElement elem) {
 		EAnnotation docs = elem.getEAnnotation(DOC_SOURCE);
 		if (docs != null && docs.getDetails().containsKey(DESCRIPTION)) {
@@ -212,6 +231,7 @@ public class DocWriter {
 	private static final String INTERNAL_SOURCE = "http://www.eclipse.org/ecl/internal";
 	private static final String DESCRIPTION = "description";
 	private static final String RETURNS = "returns";
+	private static final String EXAMPLE = "example";
 	// sorted by name
 	private EClass[] commands;
 
@@ -264,7 +284,15 @@ public class DocWriter {
 
 	}
 
-	private String getCommandName(EClass command) {
+	private String getExample(EClass command) {
+		EAnnotation doc = command.getEAnnotation(DOC_SOURCE);
+		if (doc == null || !doc.getDetails().containsKey(EXAMPLE)) {
+			return null;
+		}
+		return doc.getDetails().get(EXAMPLE);
+	}
+
+	private static String getCommandName(EClass command) {
 		return EclCommandNameConvention.toCommandName(command.getName());
 	}
 
@@ -281,7 +309,7 @@ public class DocWriter {
 			writeText(FileUtil.readFileAsString("css/new.css"));
 		} catch (Exception e) {
 		}
-		closeNode(); //style
+		closeNode(); // style
 		closeNode();
 	}
 
