@@ -8,9 +8,9 @@ import org.eclipse.equinox.p2.engine.IProfileRegistry;
 import org.eclipse.equinox.p2.operations.ProvisioningSession;
 import org.eclipse.equinox.p2.repository.artifact.IArtifactRepositoryManager;
 import org.eclipse.equinox.p2.repository.metadata.IMetadataRepositoryManager;
-import org.eclipse.pde.internal.core.PDECore;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
 
 @SuppressWarnings("restriction")
 public class PlatformPlugin extends Plugin {
@@ -48,8 +48,16 @@ public class PlatformPlugin extends Plugin {
 	}
 
 	public static IProvisioningAgent getProvisioningAgent() {
-		return (IProvisioningAgent) PDECore.getDefault().acquireService(
-				IProvisioningAgent.SERVICE_NAME);
+		BundleContext bc = getDefault().bundleContext;
+		ServiceReference<?> reference = bc
+				.getServiceReference(IProvisioningAgent.SERVICE_NAME);
+		if (reference == null)
+			return null;
+		Object service = bc.getService(reference);
+		if (service != null) {
+			bc.ungetService(reference);
+		}
+		return (IProvisioningAgent) service;
 	}
 
 	public static IMetadataRepositoryManager getMetadataMgr() {
