@@ -34,10 +34,10 @@ public class DocWriter {
 		extractCommands();
 	}
 
-	private static List<String> excludedCommands = Arrays
-			.asList("recognize", "contains-image", "sequence", "parallel",
-					"get-advanced-info", "control-not-found", "pipeline",
-					"setup-player", "shoutdown-player");
+	private static List<String> excludedCommands = Arrays.asList("recognize",
+			"contains-image", "sequence", "parallel", "get-advanced-info",
+			"control-not-found", "pipeline", "setup-player",
+			"shoutdown-player", "get-global", "set-global");
 
 	private static boolean isExcluded(EClass clazz) {
 		return excludedCommands.contains(getCommandName(clazz));
