@@ -27,10 +27,10 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.ConvertedToEMFPipe;
 import org.eclipse.ecl.core.CoreFactory;
+import org.eclipse.ecl.core.util.ECLBinaryResourceImpl;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.impl.BinaryResourceImpl;
 
 public class EMFStreamPipe implements IPipe, IMarkeredPipe {
 
@@ -88,7 +88,7 @@ public class EMFStreamPipe implements IPipe, IMarkeredPipe {
 		if (closed) {
 			return null;
 		}
-		Resource r = new BinaryResourceImpl();
+		Resource r = new ECLBinaryResourceImpl();
 		int size = 0;
 		byte[] data = null;
 		try {
@@ -139,7 +139,7 @@ public class EMFStreamPipe implements IPipe, IMarkeredPipe {
 			converted.setObject(EMFConverterManager.INSTANCE.toEObject(object));
 			eObject = converted;
 		}
-		Resource r = new BinaryResourceImpl();
+		Resource r = new ECLBinaryResourceImpl();
 		r.getContents().add(eObject);
 		try {
 			ByteArrayOutputStream bout = new ByteArrayOutputStream();
