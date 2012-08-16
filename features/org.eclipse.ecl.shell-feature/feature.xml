@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <feature 
 	id="org.eclipse.ecl.shell" 
 	label="ECL Telnet Shell" 
@@ -21,6 +22,6 @@
     <import feature="org.eclipse.ecl.server" version="1.1.0.qualifier"/>
   </requires>
   
-  <plugin unpack="false" id="org.eclipse.ecl.telnet.server" install-size="0" version="0.0.0" download-size="0"/>
-  <plugin unpack="false" id="org.eclipse.ecl.shell" install-size="0" version="0.0.0" download-size="0"/>
+  <plugin unpack="false" id="org.eclipse.ecl.telnet.server"  version="0.0.0"/>
+  <plugin unpack="false" id="org.eclipse.ecl.shell"  version="0.0.0"/>
 </feature>
