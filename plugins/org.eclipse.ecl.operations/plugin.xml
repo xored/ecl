@@ -80,5 +80,10 @@
             name="RepeatWith"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.RepeatService"
+            name="Repeat"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
    </extension>
 </plugin>

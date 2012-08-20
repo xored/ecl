@@ -74,6 +74,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 			case OperationsPackage.FORMAT: return createFormat();
 			case OperationsPackage.EMIT: return createEmit();
 			case OperationsPackage.REPEAT_WITH: return createRepeatWith();
+			case OperationsPackage.REPEAT: return createRepeat();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -217,6 +218,16 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	public RepeatWith createRepeatWith() {
 		RepeatWithImpl repeatWith = new RepeatWithImpl();
 		return repeatWith;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Repeat createRepeat() {
+		RepeatImpl repeat = new RepeatImpl();
+		return repeat;
 	}
 
 	/**

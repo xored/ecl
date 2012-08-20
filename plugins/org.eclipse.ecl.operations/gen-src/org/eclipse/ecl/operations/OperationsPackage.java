@@ -852,6 +852,71 @@ public interface OperationsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.RepeatImpl <em>Repeat</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.RepeatImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getRepeat()
+	 * @generated
+	 */
+	int REPEAT = 15;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPEAT__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPEAT__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Times</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPEAT__TIMES = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Command</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPEAT__COMMAND = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Delay</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPEAT__DELAY = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Repeat</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPEAT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 3;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Eq <em>Eq</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1255,6 +1320,49 @@ public interface OperationsPackage extends EPackage {
 	EReference getRepeatWith_Command();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Repeat <em>Repeat</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Repeat</em>'.
+	 * @see org.eclipse.ecl.operations.Repeat
+	 * @generated
+	 */
+	EClass getRepeat();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.operations.Repeat#getTimes <em>Times</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Times</em>'.
+	 * @see org.eclipse.ecl.operations.Repeat#getTimes()
+	 * @see #getRepeat()
+	 * @generated
+	 */
+	EAttribute getRepeat_Times();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Repeat#getCommand <em>Command</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Command</em>'.
+	 * @see org.eclipse.ecl.operations.Repeat#getCommand()
+	 * @see #getRepeat()
+	 * @generated
+	 */
+	EReference getRepeat_Command();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.operations.Repeat#getDelay <em>Delay</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Delay</em>'.
+	 * @see org.eclipse.ecl.operations.Repeat#getDelay()
+	 * @see #getRepeat()
+	 * @generated
+	 */
+	EAttribute getRepeat_Delay();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1609,6 +1717,40 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference REPEAT_WITH__COMMAND = eINSTANCE.getRepeatWith_Command();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.RepeatImpl <em>Repeat</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.RepeatImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getRepeat()
+		 * @generated
+		 */
+		EClass REPEAT = eINSTANCE.getRepeat();
+
+		/**
+		 * The meta object literal for the '<em><b>Times</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REPEAT__TIMES = eINSTANCE.getRepeat_Times();
+
+		/**
+		 * The meta object literal for the '<em><b>Command</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REPEAT__COMMAND = eINSTANCE.getRepeat_Command();
+
+		/**
+		 * The meta object literal for the '<em><b>Delay</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REPEAT__DELAY = eINSTANCE.getRepeat_Delay();
 
 	}
 

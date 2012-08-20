@@ -47,7 +47,9 @@ public class TryService implements ICommandService {
 					// return status;
 					break;
 				}
-				Thread.sleep(delay);
+				if (delay > 0) {
+					Thread.sleep(delay);
+				}
 			}
 			// Do catch
 			if (!status.isOK()) {
@@ -62,7 +64,7 @@ public class TryService implements ICommandService {
 					IStatus status2 = doProcess.waitFor();
 					if (status2.isOK()) {
 						CoreUtils.readPipeContent(output);
-						status = status2;	
+						status = status2;
 					} else {
 						status = status2;
 					}

@@ -152,6 +152,15 @@ public interface OperationsFactory extends EFactory {
 	RepeatWith createRepeatWith();
 
 	/**
+	 * Returns a new object of class '<em>Repeat</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Repeat</em>'.
+	 * @generated
+	 */
+	Repeat createRepeat();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

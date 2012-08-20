@@ -134,6 +134,10 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 				return createRepeatWithAdapter();
 			}
 			@Override
+			public Adapter caseRepeat(Repeat object) {
+				return createRepeatAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -364,6 +368,20 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRepeatWithAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.Repeat <em>Repeat</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.Repeat
+	 * @generated
+	 */
+	public Adapter createRepeatAdapter() {
 		return null;
 	}
 

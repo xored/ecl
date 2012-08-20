@@ -22,6 +22,7 @@ import org.eclipse.ecl.operations.Not;
 import org.eclipse.ecl.operations.NotEq;
 import org.eclipse.ecl.operations.OperationsFactory;
 import org.eclipse.ecl.operations.OperationsPackage;
+import org.eclipse.ecl.operations.Repeat;
 import org.eclipse.ecl.operations.RepeatWith;
 import org.eclipse.ecl.operations.Str;
 import org.eclipse.ecl.operations.Try;
@@ -145,6 +146,13 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * @generated
 	 */
 	private EClass repeatWithEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass repeatEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -557,6 +565,42 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getRepeat() {
+		return repeatEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRepeat_Times() {
+		return (EAttribute)repeatEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRepeat_Command() {
+		return (EReference)repeatEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRepeat_Delay() {
+		return (EAttribute)repeatEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public OperationsFactory getOperationsFactory() {
 		return (OperationsFactory)getEFactoryInstance();
 	}
@@ -632,6 +676,11 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		repeatWithEClass = createEClass(REPEAT_WITH);
 		createEReference(repeatWithEClass, REPEAT_WITH__COMMANDS);
 		createEReference(repeatWithEClass, REPEAT_WITH__COMMAND);
+
+		repeatEClass = createEClass(REPEAT);
+		createEAttribute(repeatEClass, REPEAT__TIMES);
+		createEReference(repeatEClass, REPEAT__COMMAND);
+		createEAttribute(repeatEClass, REPEAT__DELAY);
 	}
 
 	/**
@@ -681,6 +730,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		formatEClass.getESuperTypes().add(theCorePackage.getCommand());
 		emitEClass.getESuperTypes().add(theCorePackage.getCommand());
 		repeatWithEClass.getESuperTypes().add(theCorePackage.getCommand());
+		repeatEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -735,6 +785,11 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		initEClass(repeatWithEClass, RepeatWith.class, "RepeatWith", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRepeatWith_Commands(), theEcorePackage.getEObject(), null, "commands", null, 0, -1, RepeatWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRepeatWith_Command(), theCorePackage.getCommand(), null, "command", null, 0, 1, RepeatWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(repeatEClass, Repeat.class, "Repeat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRepeat_Times(), theEcorePackage.getEIntegerObject(), "times", "1", 1, 1, Repeat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRepeat_Command(), theCorePackage.getCommand(), null, "command", null, 1, 1, Repeat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRepeat_Delay(), theEcorePackage.getEIntegerObject(), "delay", "0", 0, 1, Repeat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -946,7 +1001,14 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 			 "description", "Takes list of commands from input pipe and single command as argument and executes them in following order: \n<pre>\ncommand-from-input-1 | command-from-arg\ncommand-from-input-2 | command-from-arg\n...\n</pre>",
 			 "returns", "Aggregated output of command from argument",
 			 "example", "// executes commands:\n// echo 1 | gt 2\n// echo 2 | gt 2\n// echo 3 | gt 2\n// output: false, false, true\nemit { echo 1}, { echo 2}, { echo 3} | repeat-with { gt 2 } "
-		   });	
+		   });			
+		addAnnotation
+		  (repeatEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Execute specified command multiple times.",
+			 "returns", "return\'s -command output if command is successed."
+		   });
 	}
 
 	/**
@@ -1001,7 +1063,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (getRepeatWith_Commands(), 
 		   source, 
 		   new String[] {
-		   });
+		   });	
 	}
 
 	/**
@@ -1016,7 +1078,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });																															
+		   });																																
 	}
 
 } //OperationsPackageImpl
