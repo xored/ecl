@@ -13,6 +13,7 @@
 package org.eclipse.ecl.internal.core;
 
 import java.text.MessageFormat;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -25,8 +26,12 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.core.util.EclCommandNameConvention;
+import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.FQName;
 import org.eclipse.ecl.runtime.ICommandService;
+import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -41,13 +46,44 @@ public class ScriptletManager {
 			Platform.getDebugOption(CorePlugin.PLUGIN_ID
 					+ "/traceRegisteredCommands")).booleanValue();
 
-	final static class ScriptletDefinition {
+	private final static class Documentation {
+
+		private EMap<String, String> details = null;
+
+		public Documentation(EClass class_) {
+			EAnnotation ann = class_.getEAnnotation(CoreUtils.DOCS_ANN);
+			if (ann == null)
+				return;
+			this.details = ann.getDetails();
+		}
+
+		public String get(String key) {
+			if (details == null || !details.containsKey(key))
+				return null;
+			return details.get(key);
+		}
+	}
+
+	public final static class ScriptletDocumentation {
+		private Documentation docs;
+
+		public ScriptletDocumentation(ScriptletDefinition def) {
+			docs = new Documentation(def.getParametersClass());
+		}
+
+		public String getDescription() {
+			return docs.get(CoreUtils.DESCRIPTION_DET);
+		}
+	}
+
+	public final static class ScriptletDefinition {
 
 		private final String name;
 		private final String namespace;
 		private final IConfigurationElement config;
 		private Set<String> friendlyNames;
 		private ICommandService service;
+		private ScriptletDocumentation docs;
 
 		ScriptletDefinition(String ns, String name, IConfigurationElement config) {
 			this.namespace = ns;
@@ -76,10 +112,25 @@ public class ScriptletManager {
 			return service;
 		}
 
-		EClass getParametersClass() {
+		public EClass getParametersClass() {
 			EPackage epackage = EPackage.Registry.INSTANCE
 					.getEPackage(namespace);
 			return (EClass) epackage.getEClassifier(name);
+		}
+
+		public String getCommandName() {
+			return EclCommandNameConvention.toCommandName(getParametersClass()
+					.getName());
+		}
+
+		public boolean isInternal() {
+			return getParametersClass().getEAnnotation(CoreUtils.INTERNAL_ANN) != null;
+		}
+
+		public ScriptletDocumentation getDocumentation() {
+			if (docs == null)
+				docs = new ScriptletDocumentation(this);
+			return docs;
 		}
 	}
 
@@ -170,6 +221,12 @@ public class ScriptletManager {
 			throws CoreException {
 		ScriptletDefinition def = getScriptletDefinition(ns, name);
 		return def == null ? null : def.getFriendlyNames();
+	}
+
+	synchronized public Collection<ScriptletDefinition> getAllScriptlets() {
+		if (scriptlets == null)
+			loadScriptlets();
+		return scriptlets.values();
 	}
 
 	private void loadScriptlets() {
