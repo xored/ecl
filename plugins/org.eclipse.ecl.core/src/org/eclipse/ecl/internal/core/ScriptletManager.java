@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -28,214 +27,21 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
-import org.eclipse.ecl.core.util.EclCommandNameConvention;
-import org.eclipse.ecl.core.util.EclTypeNameConvention;
-import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.FQName;
 import org.eclipse.ecl.runtime.ICommandService;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
-import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 public class ScriptletManager {
 
 	private final static String SCRIPTLET_EXTPT = "org.eclipse.ecl.core.scriptlet";
 	private final static String SCRIPTLET_NAME_ATTR = "name";
 	private final static String SCRIPTLET_NAMESPACE_ATTR = "namespace";
-	private final static String SCRIPTLET_CLASS_ATTR = "class";
+	final static String SCRIPTLET_CLASS_ATTR = "class";
 
 	public static final boolean TRACE_REGISTERED_COMMANDS = Boolean.valueOf(
 			Platform.getDebugOption(CorePlugin.PLUGIN_ID
 					+ "/traceRegisteredCommands")).booleanValue();
-
-	private final static class Documentation {
-
-		private EMap<String, String> details = null;
-
-		public Documentation(EModelElement element) {
-			EAnnotation ann = element.getEAnnotation(CoreUtils.DOCS_ANN);
-			if (ann == null)
-				return;
-			this.details = ann.getDetails();
-		}
-
-		public String get(String key) {
-			if (details == null || !details.containsKey(key))
-				return null;
-			return details.get(key);
-		}
-	}
-
-	public final static class ParameterDocumentation {
-		private Documentation docs;
-
-		public ParameterDocumentation(ParameterDefinition def) {
-			docs = new Documentation(def.getEFeature());
-		}
-
-		public String getDescription() {
-			return docs.get(CoreUtils.DESCRIPTION_DET);
-		}
-	}
-
-	public final static class ScriptletDocumentation {
-		private Documentation docs;
-
-		public ScriptletDocumentation(ScriptletDefinition def) {
-			docs = new Documentation(def.getEClass());
-		}
-
-		public String getDescription() {
-			return docs.get(CoreUtils.DESCRIPTION_DET);
-		}
-
-		public String getReturns() {
-			return docs.get(CoreUtils.RETURNS_DET);
-		}
-
-		public String getExample() {
-			return docs.get(CoreUtils.EXAMPLE_DET);
-		}
-	}
-
-	public final static class ParameterDefinition {
-		private EStructuralFeature feature;
-		private ParameterDocumentation docs;
-
-		public ParameterDefinition(EStructuralFeature feature) {
-			this.feature = feature;
-		}
-
-		public String getName() {
-			return feature.getName();
-		}
-
-		public boolean isInternal() {
-			return feature.getEAnnotation(CoreUtils.INTERNAL_ANN) != null;
-		}
-
-		public boolean isInput() {
-			return feature.getEAnnotation(CoreUtils.INPUT_ANN) != null;
-		}
-
-		public boolean isOptional() {
-			return !feature.isRequired();
-		}
-
-		public String getTypeName() {
-			return feature.getEType().getName();
-		}
-
-		public String getFriendlyTypeName() {
-			return EclTypeNameConvention.toTypeName(getTypeName());
-		}
-
-		public String getFriendlyDefaultLiteral() {
-			String result = feature.getDefaultValueLiteral();
-			if (!getFriendlyTypeName().equals("String"))
-				return result;
-
-			if (result == null || result.length() == 0)
-				return "\"\"";
-			else
-				return '"' + result + '"';
-		}
-
-		public ParameterDocumentation getDocumentation() {
-
-			if (docs == null)
-				docs = new ParameterDocumentation(this);
-			return docs;
-		}
-
-		public EStructuralFeature getEFeature() {
-			return feature;
-		}
-
-		public int getLowerBound() {
-			return feature.getLowerBound();
-		}
-
-		public int getUpperBound() {
-			return feature.getUpperBound();
-		}
-	}
-
-	public final static class ScriptletDefinition {
-
-		private final String name;
-		private final String namespace;
-		private final IConfigurationElement config;
-		private Set<String> friendlyNames;
-		private ICommandService service;
-		private ScriptletDocumentation docs;
-		private ArrayList<ParameterDefinition> params;
-
-		ScriptletDefinition(String ns, String name, IConfigurationElement config) {
-			this.namespace = ns;
-			this.name = name;
-			this.config = config;
-		}
-
-		Set<String> getFriendlyNames() {
-			if (friendlyNames == null) {
-				friendlyNames = new HashSet<String>();
-				IConfigurationElement[] elements = config
-						.getChildren("friendly_name");
-				for (IConfigurationElement e : elements) {
-					String name = e.getAttribute("value");
-					friendlyNames.add(name);
-				}
-			}
-			return friendlyNames;
-		}
-
-		ICommandService getService() throws CoreException {
-			if (service == null) {
-				service = (ICommandService) config
-						.createExecutableExtension(SCRIPTLET_CLASS_ATTR);
-			}
-			return service;
-		}
-
-		public EClass getEClass() {
-			EPackage epackage = EPackage.Registry.INSTANCE
-					.getEPackage(namespace);
-			return (EClass) epackage.getEClassifier(name);
-		}
-
-		public String getCommandName() {
-			return EclCommandNameConvention
-					.toCommandName(getEClass().getName());
-		}
-
-		public boolean isInternal() {
-			return getEClass().getEAnnotation(CoreUtils.INTERNAL_ANN) != null;
-		}
-
-		public ScriptletDocumentation getDocumentation() {
-			if (docs == null)
-				docs = new ScriptletDocumentation(this);
-			return docs;
-		}
-
-		public List<ParameterDefinition> getParameters() {
-			if (params != null)
-				return params;
-
-			params = new ArrayList<ParameterDefinition>();
-			EList<EStructuralFeature> features = getEClass()
-					.getEAllStructuralFeatures();
-			for (EStructuralFeature f : features)
-				params.add(new ParameterDefinition(f));
-
-			return params;
-		}
-	}
 
 	private Map<FQName, ScriptletDefinition> scriptlets;
 
@@ -330,6 +136,14 @@ public class ScriptletManager {
 		if (scriptlets == null)
 			loadScriptlets();
 		return scriptlets.values();
+	}
+
+	synchronized public Collection<ScriptletDefinition> getPublicScriptlets() {
+		ArrayList<ScriptletDefinition> result = new ArrayList<ScriptletDefinition>();
+		for (ScriptletDefinition s : getAllScriptlets())
+			if (!s.isInternal())
+				result.add(s);
+		return result;
 	}
 
 	private void loadScriptlets() {

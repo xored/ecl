@@ -41,7 +41,7 @@ public interface Invoke extends Command {
 	 * @see #setObject(Object)
 	 * @see org.eclipse.ecl.interop.commands.CommandsPackage#getInvoke_Object()
 	 * @model required="true"
-	 *        annotation="http://www.eclipse.org/ecl/docs description='Object to call method on.'"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='Object to call the method on.'"
 	 * @generated
 	 */
 	Object getObject();
@@ -68,7 +68,7 @@ public interface Invoke extends Command {
 	 * @see #setName(String)
 	 * @see org.eclipse.ecl.interop.commands.CommandsPackage#getInvoke_Name()
 	 * @model required="true"
-	 *        annotation="http://www.eclipse.org/ecl/docs description='Name of the method to call. As a useful addtion, there are three pseudo-methods for arrays: \"get index\", \"set index value\" and \"length\".'"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='Name of the method to call. As a useful addtion, there are three pseudo-methods for arrays: <code>get <i>index</i></code>, <code>set <i>index value</i></code> and <code>length</code>.'"
 	 * @generated
 	 */
 	String getName();

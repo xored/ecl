@@ -237,13 +237,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getInvoke_Object(), 
 		   source, 
 		   new String[] {
-			 "description", "Object to call method on."
+			 "description", "Object to call the method on."
 		   });		
 		addAnnotation
 		  (getInvoke_Name(), 
 		   source, 
 		   new String[] {
-			 "description", "Name of the method to call. As a useful addtion, there are three pseudo-methods for arrays: \"get index\", \"set index value\" and \"length\"."
+			 "description", "Name of the method to call. As a useful addtion, there are three pseudo-methods for arrays: <code>get <i>index</i></code>, <code>set <i>index value</i></code> and <code>length</code>."
 		   });		
 		addAnnotation
 		  (getInvoke_Args(), 

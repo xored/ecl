@@ -238,4 +238,12 @@ public class CoreUtils {
 	private CoreUtils() {
 		throw new AssertionError();
 	}
+
+	public static boolean isBlank(String string) {
+		// TODO: there is no reason to create new string on trimming just to
+		// check it is empty, but who cares
+		return string == null || string.length() == 0
+				|| string.trim().length() == 0;
+	}
+
 }
