@@ -38,6 +38,8 @@ public class CoreUtils {
 	public static final String DOCS_ANN = "http://www.eclipse.org/ecl/docs";
 
 	public static final String DESCRIPTION_DET = "description";
+	public static final String RETURNS_DET = "returns";
+	public static final String EXAMPLE_DET = "example";
 
 	/**
 	 * Creates command parameters class using namespace and name specified

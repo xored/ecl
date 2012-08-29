@@ -13,9 +13,11 @@
 package org.eclipse.ecl.internal.core;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -30,10 +32,12 @@ import org.eclipse.ecl.core.util.EclCommandNameConvention;
 import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.FQName;
 import org.eclipse.ecl.runtime.ICommandService;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 public class ScriptletManager {
 
@@ -64,15 +68,75 @@ public class ScriptletManager {
 		}
 	}
 
+	public final static class ParameterDocumentation {
+		private Documentation docs;
+
+		/*
+		 * public ParameterDocumentation(ParameterDefinition def) { docs = new
+		 * Documentation(); }
+		 */
+	}
+
 	public final static class ScriptletDocumentation {
 		private Documentation docs;
 
 		public ScriptletDocumentation(ScriptletDefinition def) {
-			docs = new Documentation(def.getParametersClass());
+			docs = new Documentation(def.getEClass());
 		}
 
 		public String getDescription() {
 			return docs.get(CoreUtils.DESCRIPTION_DET);
+		}
+
+		public String getReturns() {
+			return docs.get(CoreUtils.RETURNS_DET);
+		}
+
+		public String getExample() {
+			return docs.get(CoreUtils.EXAMPLE_DET);
+		}
+	}
+
+	public final static class ParameterDefinition {
+		private EStructuralFeature feature;
+		private ParameterDocumentation docs;
+
+		public ParameterDefinition(EStructuralFeature feature) {
+			this.feature = feature;
+		}
+
+		public String getName() {
+			return feature.getName();
+		}
+
+		public boolean isInternal() {
+			return feature.getEAnnotation(CoreUtils.INTERNAL_ANN) != null;
+		}
+
+		public boolean isOptional() {
+			return !feature.isRequired();
+		}
+
+		public String getTypeName() {
+			return feature.getEType().getName();
+		}
+
+		public String getFriendlyTypeName() {
+			String name = getTypeName();
+			if (name.length() > 1 && name.charAt(0) == 'E'
+					&& Character.isUpperCase(name.charAt(1)))
+				return name.substring(1);
+			return name;
+		}
+
+		public String getDefaultLiteral() {
+			return feature.getDefaultValueLiteral();
+		}
+
+		public ParameterDocumentation getDocumentation() {
+			/*
+			 * if (docs == null) docs = new ParameterDocumentation(this);
+			 */return docs;
 		}
 	}
 
@@ -84,6 +148,7 @@ public class ScriptletManager {
 		private Set<String> friendlyNames;
 		private ICommandService service;
 		private ScriptletDocumentation docs;
+		private ArrayList<ParameterDefinition> params;
 
 		ScriptletDefinition(String ns, String name, IConfigurationElement config) {
 			this.namespace = ns;
@@ -112,25 +177,38 @@ public class ScriptletManager {
 			return service;
 		}
 
-		public EClass getParametersClass() {
+		public EClass getEClass() {
 			EPackage epackage = EPackage.Registry.INSTANCE
 					.getEPackage(namespace);
 			return (EClass) epackage.getEClassifier(name);
 		}
 
 		public String getCommandName() {
-			return EclCommandNameConvention.toCommandName(getParametersClass()
-					.getName());
+			return EclCommandNameConvention
+					.toCommandName(getEClass().getName());
 		}
 
 		public boolean isInternal() {
-			return getParametersClass().getEAnnotation(CoreUtils.INTERNAL_ANN) != null;
+			return getEClass().getEAnnotation(CoreUtils.INTERNAL_ANN) != null;
 		}
 
 		public ScriptletDocumentation getDocumentation() {
 			if (docs == null)
 				docs = new ScriptletDocumentation(this);
 			return docs;
+		}
+
+		public List<ParameterDefinition> getParameters() {
+			if (params != null)
+				return params;
+
+			params = new ArrayList<ParameterDefinition>();
+			EList<EStructuralFeature> features = getEClass()
+					.getEAllStructuralFeatures();
+			for (EStructuralFeature f : features)
+				params.add(new ParameterDefinition(f));
+
+			return params;
 		}
 	}
 
@@ -145,12 +223,12 @@ public class ScriptletManager {
 
 	synchronized public EClass findCommand(String ns, String name)
 			throws CoreException {
-		return getScriptletDefinition(ns, name).getParametersClass();
+		return getScriptletDefinition(ns, name).getEClass();
 	}
 
 	synchronized public Command createCommand(String ns, String name)
 			throws CoreException {
-		EClass clazz = getScriptletDefinition(ns, name).getParametersClass();
+		EClass clazz = getScriptletDefinition(ns, name).getEClass();
 		return (Command) clazz.getEPackage().getEFactoryInstance()
 				.create(clazz);
 	}
