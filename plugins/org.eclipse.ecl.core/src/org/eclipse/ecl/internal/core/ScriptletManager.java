@@ -29,6 +29,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.util.EclCommandNameConvention;
+import org.eclipse.ecl.core.util.EclTypeNameConvention;
 import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.FQName;
 import org.eclipse.ecl.runtime.ICommandService;
@@ -36,6 +37,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -54,8 +56,8 @@ public class ScriptletManager {
 
 		private EMap<String, String> details = null;
 
-		public Documentation(EClass class_) {
-			EAnnotation ann = class_.getEAnnotation(CoreUtils.DOCS_ANN);
+		public Documentation(EModelElement element) {
+			EAnnotation ann = element.getEAnnotation(CoreUtils.DOCS_ANN);
 			if (ann == null)
 				return;
 			this.details = ann.getDetails();
@@ -71,10 +73,13 @@ public class ScriptletManager {
 	public final static class ParameterDocumentation {
 		private Documentation docs;
 
-		/*
-		 * public ParameterDocumentation(ParameterDefinition def) { docs = new
-		 * Documentation(); }
-		 */
+		public ParameterDocumentation(ParameterDefinition def) {
+			docs = new Documentation(def.getEFeature());
+		}
+
+		public String getDescription() {
+			return docs.get(CoreUtils.DESCRIPTION_DET);
+		}
 	}
 
 	public final static class ScriptletDocumentation {
@@ -113,6 +118,10 @@ public class ScriptletManager {
 			return feature.getEAnnotation(CoreUtils.INTERNAL_ANN) != null;
 		}
 
+		public boolean isInput() {
+			return feature.getEAnnotation(CoreUtils.INPUT_ANN) != null;
+		}
+
 		public boolean isOptional() {
 			return !feature.isRequired();
 		}
@@ -122,21 +131,37 @@ public class ScriptletManager {
 		}
 
 		public String getFriendlyTypeName() {
-			String name = getTypeName();
-			if (name.length() > 1 && name.charAt(0) == 'E'
-					&& Character.isUpperCase(name.charAt(1)))
-				return name.substring(1);
-			return name;
+			return EclTypeNameConvention.toTypeName(getTypeName());
 		}
 
-		public String getDefaultLiteral() {
-			return feature.getDefaultValueLiteral();
+		public String getFriendlyDefaultLiteral() {
+			String result = feature.getDefaultValueLiteral();
+			if (!getFriendlyTypeName().equals("String"))
+				return result;
+
+			if (result == null || result.length() == 0)
+				return "\"\"";
+			else
+				return '"' + result + '"';
 		}
 
 		public ParameterDocumentation getDocumentation() {
-			/*
-			 * if (docs == null) docs = new ParameterDocumentation(this);
-			 */return docs;
+
+			if (docs == null)
+				docs = new ParameterDocumentation(this);
+			return docs;
+		}
+
+		public EStructuralFeature getEFeature() {
+			return feature;
+		}
+
+		public int getLowerBound() {
+			return feature.getLowerBound();
+		}
+
+		public int getUpperBound() {
+			return feature.getUpperBound();
 		}
 	}
 

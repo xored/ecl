@@ -6,12 +6,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Stack;
 
 import org.eclipse.ecl.core.util.EclCommandNameConvention;
+import org.eclipse.ecl.core.util.EclTypeNameConvention;
 import org.eclipse.ecl.internal.doc.FileUtil;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
@@ -145,8 +144,8 @@ public class DocWriter {
 		StringBuilder result = new StringBuilder();
 		result.append(String
 				.format("<span class=\"paramType\">%s</span> <span class=\"paramName\">%s</span>",
-						mapType(feature.getEType().getName()),
-						feature.getName()));
+						EclTypeNameConvention.toTypeName(feature.getEType()
+								.getName()), feature.getName()));
 
 		EAnnotation docs = feature.getEAnnotation(DOC_SOURCE);
 		if (docs != null && docs.getDetails().containsKey(DESCRIPTION)) {
@@ -163,24 +162,6 @@ public class DocWriter {
 		writeText(result.toString());
 		closeNode();
 
-	}
-
-	private static final Map<String, String> typeToDisplay = new HashMap<String, String>();
-	static {
-		typeToDisplay.put("EInt", "Integer");
-		typeToDisplay.put("EIntegerObject", "Integer");
-		typeToDisplay.put("EBoolean", "Boolean");
-		typeToDisplay.put("EBooleanObject", "Boolean");
-		typeToDisplay.put("EString", "String");
-
-	}
-
-	private static String mapType(String name) {
-		String result = typeToDisplay.get(name);
-		if (result == null) {
-			result = name;
-		}
-		return result;
 	}
 
 	private String getDescription(EModelElement elem) {
