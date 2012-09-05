@@ -73,7 +73,8 @@ public abstract class AbstractSession implements ISession {
 		} catch (Throwable t) {
 			s = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, t.getMessage(),
 					t);
-			CorePlugin.getDefault().getLog().log(CorePlugin.err(t.getMessage(), t));
+			CorePlugin.getDefault().getLog()
+					.log(CorePlugin.err(t.getMessage(), t));
 		} finally {
 			SessionListenerManager.endCommand(scriptlet, s);
 			CommandStack.fireExit(stack);
@@ -96,7 +97,8 @@ public abstract class AbstractSession implements ISession {
 		EStructuralFeature inputFeature = null;
 		for (EStructuralFeature feature : CoreUtils.getFeatures(scriptlet
 				.eClass())) {
-			if (feature.getEAnnotation(CoreUtils.INPUT_ANN) != null) {
+			if (feature.getEAnnotation(CoreUtils.INPUT_ANN) != null
+					&& !scriptlet.eIsSet(feature)) {
 				if (inputFeature == null) {
 					inputFeature = feature;
 				} else {
