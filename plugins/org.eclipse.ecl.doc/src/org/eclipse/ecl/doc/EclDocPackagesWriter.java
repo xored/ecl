@@ -19,12 +19,12 @@ import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-public class DocWriter {
+public class EclDocPackagesWriter {
 	private Writer out;
 	private EPackage[] packages;
 	private EClass command;
 
-	private DocWriter(EPackage[] packages, Writer out) {
+	private EclDocPackagesWriter(EPackage[] packages, Writer out) {
 		this.out = out;
 		this.packages = packages;
 		this.command = (EClass) EPackage.Registry.INSTANCE.getEPackage(
@@ -338,7 +338,7 @@ public class DocWriter {
 
 	public static void writePackages(EPackage[] packages, Writer out)
 			throws IOException {
-		DocWriter w = new DocWriter(packages, out);
+		EclDocPackagesWriter w = new EclDocPackagesWriter(packages, out);
 		w.write();
 		w.close();
 	}

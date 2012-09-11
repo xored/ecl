@@ -19,7 +19,7 @@ import java.net.URL;
 import junit.framework.TestCase;
 
 import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.ecl.doc.DocWriter;
+import org.eclipse.ecl.doc.EclDocPackagesWriter;
 import org.eclipse.emf.ecore.EPackage;
 
 public class EclDocTest extends TestCase {
@@ -40,7 +40,7 @@ public class EclDocTest extends TestCase {
 						.getEPackage("http://www.eclipse.org/ecl/operations.ecore") };
 
 		// EclDocPlugin.genPackagesInfo(ePackages, getOutput());
-		DocWriter.writePackages(ePackages, getOutput());
+		EclDocPackagesWriter.writePackages(ePackages, getOutput());
 	}
 
 	private File getOutputFile() throws IOException {
