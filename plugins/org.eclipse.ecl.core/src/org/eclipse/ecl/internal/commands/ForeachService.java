@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.Foreach;
+import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
@@ -33,13 +34,16 @@ public class ForeachService implements ICommandService {
 			in.write(o);
 			in.close(Status.OK_STATUS);
 
+			IPipe out = session.createPipe();
 			Command doCommand = foreach.getDo();
-			status = session.execute(doCommand, in, null).waitFor();
+			status = session.execute(doCommand, in, out).waitFor();
 			if (status.getSeverity() != IStatus.OK) {
 				break;
+			}
+			for (Object outObj : CoreUtils.readPipeContent(out)) {
+				context.getOutput().write(outObj);
 			}
 		}
 		return status;
 	}
-
 }
