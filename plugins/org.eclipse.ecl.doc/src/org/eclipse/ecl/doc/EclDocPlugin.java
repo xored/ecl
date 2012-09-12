@@ -10,14 +10,9 @@
  ******************************************************************************/
 package org.eclipse.ecl.doc;
 
-import java.io.IOException;
-import java.io.Writer;
-
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.ecl.internal.doc.HtmlDocWriter;
-import org.eclipse.emf.ecore.EPackage;
 import org.osgi.framework.BundleContext;
 
 public class EclDocPlugin extends Plugin {
@@ -75,11 +70,6 @@ public class EclDocPlugin extends Plugin {
 
 	public static void log(IStatus status) {
 		getDefault().getLog().log(status);
-	}
-
-	public static void genPackagesInfo(EPackage[] packages, Writer writer)
-			throws IOException {
-		new HtmlDocWriter().packages(packages, writer);
 	}
 
 }

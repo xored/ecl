@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -95,47 +94,33 @@ public class EclDocCommand implements IEclDocProvider {
 		commands = new ArrayList<EclDocCommand>();
 		commandsByName = new HashMap<String, EclDocCommand>();
 
-		// XXX while we are resolving EPackage.Descriptors to EPackages,
-		// collection is modified, that is it -- coding horror
-		boolean doCollection = true;
-		while (doCollection) {
-			commands.clear();
-			commandsByName.clear();
-			doCollection = false;
+		for (Object o : EPackage.Registry.INSTANCE.values().toArray()) {
 
-			try {
-				for (Object o : EPackage.Registry.INSTANCE.values()) {
+			if (o instanceof EPackage.Descriptor)
+				o = ((EPackage.Descriptor) o).getEPackage();
 
-					if (o instanceof EPackage.Descriptor)
-						o = ((EPackage.Descriptor) o).getEPackage();
+			if (!(o instanceof EPackage))
+				continue;
 
-					if (!(o instanceof EPackage))
-						continue;
+			EPackage p = (EPackage) o;
+			for (EClassifier classifier : p.getEClassifiers()) {
+				if (!(classifier instanceof EClass))
+					continue;
 
-					EPackage p = (EPackage) o;
-					for (EClassifier classifier : p.getEClassifiers()) {
-						if (!(classifier instanceof EClass))
-							continue;
+				EClass class_ = (EClass) classifier;
+				if (class_.isAbstract()
+						|| !class_.getEAllSuperTypes().contains(COMMAND))
+					continue;
 
-						EClass class_ = (EClass) classifier;
-						if (class_.isAbstract()
-								|| !class_.getEAllSuperTypes()
-										.contains(COMMAND))
-							continue;
+				EclDocCommand command = new EclDocCommand(class_);
+				if (command.isInternal() || command.isExcluded())
+					continue;
 
-						EclDocCommand command = new EclDocCommand(class_);
-						if (command.isExcluded() || command.isInternal())
-							continue;
+				if (commandsByName.containsKey(command.getName()))
+					continue;
 
-						if (commandsByName.containsKey(command.getName()))
-							continue;
-
-						commands.add(command);
-						commandsByName.put(command.getName(), command);
-					}
-				}
-			} catch (ConcurrentModificationException e) {
-				doCollection = true;
+				commands.add(command);
+				commandsByName.put(command.getName(), command);
 			}
 		}
 
@@ -150,10 +135,8 @@ public class EclDocCommand implements IEclDocProvider {
 	}
 
 	public static synchronized EclDocCommand get(String name) {
-		if (commandsByName != null)
-			return commandsByName.get(name);
-
-		getAllPublicCommands();
+		if (commandsByName == null)
+			getAllPublicCommands();
 		return commandsByName.get(name);
 	}
 
@@ -170,50 +153,50 @@ public class EclDocCommand implements IEclDocProvider {
 
 			if (upper != lower) {
 				if (lower == 0 && upper == 1) {
-					w.write(" optional");
+					w.raw(" optional");
 				} else {
-					w.write(" (");
+					w.raw(" (");
 					if (upper >= lower) {
-						w.write(lower);
-						w.write(", ");
-						w.write(upper);
+						w.raw(lower);
+						w.raw(", ");
+						w.raw(upper);
 					} else {
-						w.write(lower);
-						w.write(", ");
-						w.write("∞");
+						w.raw(lower);
+						w.raw(", ");
+						w.raw("∞");
 					}
-					w.write(")");
+					w.raw(")");
 				}
 			} else if (lower != 1) {
-				w.write(" ");
-				w.write(lower);
+				w.raw(" ");
+				w.raw(lower);
 			}
 
-			w.write(" ");
-			w.write(param.getFriendlyTypeName());
+			w.raw(" ");
+			w.raw(param.getFriendlyTypeName());
 
 			if (param.isOptional()) {
 				String literal = param.getFriendlyDefaultLiteral();
 				if (!CoreUtils.isBlank(literal)) {
-					w.write(" = ");
-					w.write(literal);
+					w.raw(" = ");
+					w.raw(literal);
 				}
 			}
 
 			String paramDesc = param.getDocumentation().getDescription();
 			if (!CoreUtils.isBlank(paramDesc)) {
-				w.write(": ");
-				w.write(paramDesc);
+				w.raw(": ");
+				w.raw(paramDesc);
 			}
 		}
-		w.closeTag();
+		w.close();
 	}
 
 	@Override
 	public void writeEclDoc(EclDocWriter w) throws IOException {
 		String desc = getDocumentation().getDescription();
 		desc = CoreUtils.isBlank(desc) ? getName() : desc;
-		w.writeText(desc);
+		w.text(desc);
 
 		// --
 
@@ -236,7 +219,7 @@ public class EclDocCommand implements IEclDocProvider {
 				w.dt("Input:");
 				writeParam(inputParam, w);
 			}
-			w.closeTag();
+			w.close();
 		}
 
 		if (params.size() > 0) {
@@ -246,7 +229,7 @@ public class EclDocCommand implements IEclDocProvider {
 				for (EclDocParameter p : params)
 					writeParam(p, w);
 			}
-			w.closeTag();
+			w.close();
 		}
 
 		// --
@@ -258,7 +241,7 @@ public class EclDocCommand implements IEclDocProvider {
 				w.dt("Output:");
 				w.dd(returns);
 			}
-			w.closeTag();
+			w.close();
 		}
 
 		String example = getDocumentation().getExample();
@@ -270,15 +253,9 @@ public class EclDocCommand implements IEclDocProvider {
 				{
 					w.pre(example);
 				}
-				w.closeTag();
+				w.close();
 			}
-			w.closeTag();
+			w.close();
 		}
-		// String.format(
-		// "<dl><dt>Example:</dt><dd><pre>%s</pre></dd></dl>", example);
-		//
-		// return String.format("%s%s%s%s%s", descBlock, inputBlock,
-		// paramsBlock,
-		// returnsBlock, exampleBlock);
 	}
 }

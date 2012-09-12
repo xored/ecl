@@ -1,10 +1,24 @@
 package org.eclipse.ecl.doc;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Stack;
 
 public class EclDocWriter {
+
+	public static String writeToString(IEclDocProvider provider,
+			String errorMessage) {
+		try {
+			StringWriter buffer = new StringWriter();
+			EclDocWriter w = new EclDocWriter(buffer);
+			provider.writeEclDoc(w);
+			w.finish();
+			return buffer.toString();
+		} catch (IOException e) {
+			return errorMessage;
+		}
+	}
 
 	private Writer out;
 
@@ -12,72 +26,78 @@ public class EclDocWriter {
 		this.out = out;
 	}
 
-	public void close() throws IOException {
+	public void finish() throws IOException {
 		while (!openNodes.isEmpty()) {
-			closeTag();
+			close();
 		}
 		out.flush();
 		out.close();
 	}
 
 	public void dl() throws IOException {
-		openTag("dl");
+		open("dl");
 	}
 
 	public void dt(String innerHtml) throws IOException {
-		openTag("dt");
-		writeText(innerHtml);
-		closeTag();
+		open("dt");
+		text(innerHtml);
+		close();
 	}
 
 	public void b(String innerHtml) throws IOException {
-		openTag("b");
-		writeText(innerHtml);
-		closeTag();
+		open("b");
+		text(innerHtml);
+		close();
 	}
 
 	public void dd() throws IOException {
-		openTag("dd");
+		open("dd");
 	}
 
 	public void dd(String innerHtml) throws IOException {
 		dd();
-		writeText(innerHtml);
-		closeTag();
+		text(innerHtml);
+		close();
 	}
 
 	public void pre(String innerHtml) throws IOException {
-		openTag("pre");
+		open("pre");
 		closeOpenTag();
 		out.append(innerHtml);
-		closeTag();
+		close();
 	}
 
-	public void writeText(String text) throws IOException {
+	public void anchor(String anchor) throws IOException {
+		open("a").attr("name", anchor).close();
+	}
+
+	public EclDocWriter text(String text) throws IOException {
 		closeOpenTag();
 
 		for (String line : text.split("(\r)?\n")) {
 			writeIndent();
 			out.append(line).append(NEWLINE);
 		}
+
+		return this;
 	}
 
-	public void write(String text) throws IOException {
+	public void raw(String text) throws IOException {
 		out.append(text);
 	}
 
-	public void write(Integer text) throws IOException {
-		write(text.toString());
+	public void raw(Integer number) throws IOException {
+		raw(number.toString());
 	}
 
-	private void writeOneLiner(String node, String text) throws IOException {
+	public void tag(String node, String text) throws IOException {
 		closeOpenTag();
 		writeIndent();
 		out.append(String.format("<%s>", node)).append(text)
 				.append(String.format("</%s>", node)).append(NEWLINE);
 	}
 
-	public void closeTag() throws IOException {
+	public void close() throws IOException {
 		level--;
 		if (!openNodeClosed) {
 			out.append(" />").append(NEWLINE);
@@ -98,7 +118,7 @@ public class EclDocWriter {
 
 	}
 
-	public void openTag(String node) throws IOException {
+	public EclDocWriter open(String node) throws IOException {
 		if (!openNodeClosed) {
 			out.append(">").append(NEWLINE);
 		}
@@ -108,10 +128,13 @@ public class EclDocWriter {
 		openNodes.push(node);
 		openNodeClosed = false;
 		level++;
+
+		return this;
 	}
 
-	private void writeAttribute(String name, String value) throws IOException {
+	public EclDocWriter attr(String name, String value) throws IOException {
 		out.append(String.format(" %s=\"%s\"", name, value));
+		return this;
 	}
 
 	private void writeIndent() throws IOException {

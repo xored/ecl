@@ -19,28 +19,15 @@ import java.net.URL;
 import junit.framework.TestCase;
 
 import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.ecl.doc.EclDocPackagesWriter;
-import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.ecl.doc.EclDocAllCommandsWriter;
+import org.eclipse.ecl.doc.EclDocWriter;
 
 public class EclDocTest extends TestCase {
 
 	public void test01() throws Exception {
-		EPackage[] ePackages = new EPackage[] {
-				EPackage.Registry.INSTANCE
-						.getEPackage("http://www.eclipse.org/ecl/core.ecore"),
-				EPackage.Registry.INSTANCE
-						.getEPackage("http://www.eclipse.org/ecl/tesla.ecore"),
-				EPackage.Registry.INSTANCE
-						.getEPackage("http://www.eclipse.org/ecl/tesla/diagram.ecore"),
-				EPackage.Registry.INSTANCE
-						.getEPackage("http://www.eclipse.org/ecl/platform/commands.ecore"),
-				EPackage.Registry.INSTANCE
-						.getEPackage("http://www.eclipse.org/ecl/data/commands.ecore"),
-				EPackage.Registry.INSTANCE
-						.getEPackage("http://www.eclipse.org/ecl/operations.ecore") };
-
-		// EclDocPlugin.genPackagesInfo(ePackages, getOutput());
-		EclDocPackagesWriter.writePackages(ePackages, getOutput());
+		EclDocWriter w = new EclDocWriter(getOutput());
+		new EclDocAllCommandsWriter().write(w);
+		w.finish();
 	}
 
 	private File getOutputFile() throws IOException {

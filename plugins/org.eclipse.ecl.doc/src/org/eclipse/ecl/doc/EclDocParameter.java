@@ -72,14 +72,14 @@ public class EclDocParameter implements IEclDocProvider {
 	public void writeEclDoc(EclDocWriter w) throws IOException {
 		String desc = getDocumentation().getDescription();
 		desc = CoreUtils.isBlank(desc) ? getName() : desc;
-		w.writeText(desc);
+		w.text(desc);
 
 		w.dl();
 		{
 			w.dt("Type:");
 			w.dd(String.format("%s (%s)", getFriendlyTypeName(), getTypeName()));
 		}
-		w.closeTag();
+		w.close();
 
 		int lower = getLowerBound();
 		int upper = getUpperBound();
@@ -102,7 +102,7 @@ public class EclDocParameter implements IEclDocProvider {
 				w.dt("Quantity:");
 				w.dd(quantity);
 			}
-			w.closeTag();
+			w.close();
 		}
 
 		String literal = isOptional() ? getFriendlyDefaultLiteral() : null;
@@ -112,11 +112,11 @@ public class EclDocParameter implements IEclDocProvider {
 				w.dt("Default value:");
 				w.dd(literal);
 			}
-			w.closeTag();
+			w.close();
 		}
 
 		if (isInput())
-			w.writeText("<p>This parameter is marked as <i>input</i> parameter and may be omited. In this case, actual argument value will be taken from the pipe. Typically, that will be a result of the previous command execution.</p>");
+			w.text("<p>This parameter is marked as <i>input</i> parameter and may be omited. In this case, actual argument value will be taken from the pipe. Typically, that will be a result of the previous command execution.</p>");
 	}
 
 }
