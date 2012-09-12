@@ -1,7 +1,5 @@
 package org.eclipse.ecl.doc;
 
-import org.eclipse.ecl.runtime.CoreUtils;
-
 public final class EclDocCommandDocumentation {
 	private EclDocDocumentation docs;
 
@@ -10,14 +8,14 @@ public final class EclDocCommandDocumentation {
 	}
 
 	public String getDescription() {
-		return docs.get(CoreUtils.DESCRIPTION_DET);
+		return docs.get(EclDocConstants.DESCRIPTION_DET);
 	}
 
 	public String getReturns() {
-		return docs.get(CoreUtils.RETURNS_DET);
+		return docs.get(EclDocConstants.RETURNS_DET);
 	}
 
 	public String getExample() {
-		return docs.get(CoreUtils.EXAMPLE_DET);
+		return docs.get(EclDocConstants.EXAMPLE_DET);
 	}
 }

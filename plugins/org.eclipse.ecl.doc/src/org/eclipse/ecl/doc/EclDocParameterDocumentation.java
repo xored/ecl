@@ -1,6 +1,5 @@
 package org.eclipse.ecl.doc;
 
-import org.eclipse.ecl.runtime.CoreUtils;
 
 public class EclDocParameterDocumentation {
 	private EclDocDocumentation docs;
@@ -10,6 +9,6 @@ public class EclDocParameterDocumentation {
 	}
 
 	public String getDescription() {
-		return docs.get(CoreUtils.DESCRIPTION_DET);
+		return docs.get(EclDocConstants.DESCRIPTION_DET);
 	}
 }

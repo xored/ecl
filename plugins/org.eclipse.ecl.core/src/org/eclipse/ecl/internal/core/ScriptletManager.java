@@ -13,8 +13,6 @@
 package org.eclipse.ecl.internal.core;
 
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -130,20 +128,6 @@ public class ScriptletManager {
 			throws CoreException {
 		ScriptletDefinition def = getScriptletDefinition(ns, name);
 		return def == null ? null : def.getFriendlyNames();
-	}
-
-	synchronized public Collection<ScriptletDefinition> getAllScriptlets() {
-		if (scriptlets == null)
-			loadScriptlets();
-		return scriptlets.values();
-	}
-
-	synchronized public Collection<ScriptletDefinition> getPublicScriptlets() {
-		ArrayList<ScriptletDefinition> result = new ArrayList<ScriptletDefinition>();
-		for (ScriptletDefinition s : getAllScriptlets())
-			if (!s.isInternal())
-				result.add(s);
-		return result;
 	}
 
 	private void loadScriptlets() {
