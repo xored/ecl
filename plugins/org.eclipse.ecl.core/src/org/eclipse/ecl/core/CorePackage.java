@@ -590,7 +590,7 @@ public interface CorePackage extends EPackage {
 	int FOREACH__DO = COMMAND_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Input</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Input</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1441,10 +1441,10 @@ public interface CorePackage extends EPackage {
 	EReference getForeach_Do();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.core.Foreach#getInput <em>Input</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.core.Foreach#getInput <em>Input</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Input</em>'.
+	 * @return the meta object for the reference list '<em>Input</em>'.
 	 * @see org.eclipse.ecl.core.Foreach#getInput()
 	 * @see #getForeach()
 	 * @generated
@@ -2127,7 +2127,7 @@ public interface CorePackage extends EPackage {
 		EReference FOREACH__DO = eINSTANCE.getForeach_Do();
 
 		/**
-		 * The meta object literal for the '<em><b>Input</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Input</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

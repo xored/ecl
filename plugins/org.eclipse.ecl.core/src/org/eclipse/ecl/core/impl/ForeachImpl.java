@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -56,7 +57,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	protected Command do_;
 
 	/**
-	 * The cached value of the '{@link #getInput() <em>Input</em>}' containment reference list.
+	 * The cached value of the '{@link #getInput() <em>Input</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getInput()
@@ -134,7 +135,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	 */
 	public EList<EObject> getInput() {
 		if (input == null) {
-			input = new EObjectContainmentEList<EObject>(EObject.class, this, CorePackage.FOREACH__INPUT);
+			input = new EObjectResolvingEList<EObject>(EObject.class, this, CorePackage.FOREACH__INPUT);
 		}
 		return input;
 	}
@@ -149,8 +150,6 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 		switch (featureID) {
 			case CorePackage.FOREACH__DO:
 				return basicSetDo(null, msgs);
-			case CorePackage.FOREACH__INPUT:
-				return ((InternalEList<?>)getInput()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

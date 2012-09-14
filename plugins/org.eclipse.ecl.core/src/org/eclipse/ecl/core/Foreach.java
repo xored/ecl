@@ -59,7 +59,7 @@ public interface Foreach extends Command {
 	void setDo(Command value);
 
 	/**
-	 * Returns the value of the '<em><b>Input</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Input</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -67,9 +67,9 @@ public interface Foreach extends Command {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Input</em>' containment reference list.
+	 * @return the value of the '<em>Input</em>' reference list.
 	 * @see org.eclipse.ecl.core.CorePackage#getForeach_Input()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	EList<EObject> getInput();
