@@ -700,7 +700,7 @@ public interface CorePackage extends EPackage {
 	int PROCESS_STATUS__SEVERITY = 3;
 
 	/**
-	 * The feature id for the '<em><b>Exception</b></em>' attribute.
+	 * The feature id for the '<em><b>Exception</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1146,6 +1146,125 @@ public interface CorePackage extends EPackage {
 	int ECL_STRING_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclExceptionImpl <em>Ecl Exception</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EclExceptionImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclException()
+	 * @generated
+	 */
+	int ECL_EXCEPTION = 28;
+
+	/**
+	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_EXCEPTION__CLASS_NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_EXCEPTION__MESSAGE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Stack Trace</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_EXCEPTION__STACK_TRACE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Throwable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_EXCEPTION__THROWABLE = 3;
+
+	/**
+	 * The number of structural features of the '<em>Ecl Exception</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_EXCEPTION_FEATURE_COUNT = 4;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclStackTraceEntryImpl <em>Ecl Stack Trace Entry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EclStackTraceEntryImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclStackTraceEntry()
+	 * @generated
+	 */
+	int ECL_STACK_TRACE_ENTRY = 29;
+
+	/**
+	 * The feature id for the '<em><b>Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_STACK_TRACE_ENTRY__INDEX = 0;
+
+	/**
+	 * The feature id for the '<em><b>Declaring Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_STACK_TRACE_ENTRY__DECLARING_CLASS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Method Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_STACK_TRACE_ENTRY__METHOD_NAME = 2;
+
+	/**
+	 * The feature id for the '<em><b>File Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_STACK_TRACE_ENTRY__FILE_NAME = 3;
+
+	/**
+	 * The feature id for the '<em><b>Line Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_STACK_TRACE_ENTRY__LINE_NUMBER = 4;
+
+	/**
+	 * The number of structural features of the '<em>Ecl Stack Trace Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_STACK_TRACE_ENTRY_FEATURE_COUNT = 5;
+
+	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1153,7 +1272,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
 	 * @generated
 	 */
-	int THROWABLE = 28;
+	int THROWABLE = 30;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -1506,15 +1625,15 @@ public interface CorePackage extends EPackage {
 	EAttribute getProcessStatus_Severity();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.ProcessStatus#getException <em>Exception</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.ProcessStatus#getException <em>Exception</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Exception</em>'.
+	 * @return the meta object for the containment reference '<em>Exception</em>'.
 	 * @see org.eclipse.ecl.core.ProcessStatus#getException()
 	 * @see #getProcessStatus()
 	 * @generated
 	 */
-	EAttribute getProcessStatus_Exception();
+	EReference getProcessStatus_Exception();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.ConvertedToEMFPipe <em>Converted To EMF Pipe</em>}'.
@@ -1653,6 +1772,125 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getEclString_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclException <em>Ecl Exception</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ecl Exception</em>'.
+	 * @see org.eclipse.ecl.core.EclException
+	 * @generated
+	 */
+	EClass getEclException();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclException#getClassName <em>Class Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Class Name</em>'.
+	 * @see org.eclipse.ecl.core.EclException#getClassName()
+	 * @see #getEclException()
+	 * @generated
+	 */
+	EAttribute getEclException_ClassName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclException#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see org.eclipse.ecl.core.EclException#getMessage()
+	 * @see #getEclException()
+	 * @generated
+	 */
+	EAttribute getEclException_Message();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.core.EclException#getStackTrace <em>Stack Trace</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Stack Trace</em>'.
+	 * @see org.eclipse.ecl.core.EclException#getStackTrace()
+	 * @see #getEclException()
+	 * @generated
+	 */
+	EReference getEclException_StackTrace();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclException#getThrowable <em>Throwable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Throwable</em>'.
+	 * @see org.eclipse.ecl.core.EclException#getThrowable()
+	 * @see #getEclException()
+	 * @generated
+	 */
+	EAttribute getEclException_Throwable();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclStackTraceEntry <em>Ecl Stack Trace Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ecl Stack Trace Entry</em>'.
+	 * @see org.eclipse.ecl.core.EclStackTraceEntry
+	 * @generated
+	 */
+	EClass getEclStackTraceEntry();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclStackTraceEntry#getIndex <em>Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Index</em>'.
+	 * @see org.eclipse.ecl.core.EclStackTraceEntry#getIndex()
+	 * @see #getEclStackTraceEntry()
+	 * @generated
+	 */
+	EAttribute getEclStackTraceEntry_Index();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclStackTraceEntry#getDeclaringClass <em>Declaring Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Declaring Class</em>'.
+	 * @see org.eclipse.ecl.core.EclStackTraceEntry#getDeclaringClass()
+	 * @see #getEclStackTraceEntry()
+	 * @generated
+	 */
+	EAttribute getEclStackTraceEntry_DeclaringClass();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclStackTraceEntry#getMethodName <em>Method Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Method Name</em>'.
+	 * @see org.eclipse.ecl.core.EclStackTraceEntry#getMethodName()
+	 * @see #getEclStackTraceEntry()
+	 * @generated
+	 */
+	EAttribute getEclStackTraceEntry_MethodName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclStackTraceEntry#getFileName <em>File Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>File Name</em>'.
+	 * @see org.eclipse.ecl.core.EclStackTraceEntry#getFileName()
+	 * @see #getEclStackTraceEntry()
+	 * @generated
+	 */
+	EAttribute getEclStackTraceEntry_FileName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclStackTraceEntry#getLineNumber <em>Line Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Line Number</em>'.
+	 * @see org.eclipse.ecl.core.EclStackTraceEntry#getLineNumber()
+	 * @see #getEclStackTraceEntry()
+	 * @generated
+	 */
+	EAttribute getEclStackTraceEntry_LineNumber();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclBoolean <em>Ecl Boolean</em>}'.
@@ -2177,12 +2415,12 @@ public interface CorePackage extends EPackage {
 		EAttribute PROCESS_STATUS__SEVERITY = eINSTANCE.getProcessStatus_Severity();
 
 		/**
-		 * The meta object literal for the '<em><b>Exception</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Exception</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROCESS_STATUS__EXCEPTION = eINSTANCE.getProcessStatus_Exception();
+		EReference PROCESS_STATUS__EXCEPTION = eINSTANCE.getProcessStatus_Exception();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ConvertedToEMFPipeImpl <em>Converted To EMF Pipe</em>}' class.
@@ -2297,6 +2535,98 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ECL_STRING__VALUE = eINSTANCE.getEclString_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclExceptionImpl <em>Ecl Exception</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EclExceptionImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclException()
+		 * @generated
+		 */
+		EClass ECL_EXCEPTION = eINSTANCE.getEclException();
+
+		/**
+		 * The meta object literal for the '<em><b>Class Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_EXCEPTION__CLASS_NAME = eINSTANCE.getEclException_ClassName();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_EXCEPTION__MESSAGE = eINSTANCE.getEclException_Message();
+
+		/**
+		 * The meta object literal for the '<em><b>Stack Trace</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ECL_EXCEPTION__STACK_TRACE = eINSTANCE.getEclException_StackTrace();
+
+		/**
+		 * The meta object literal for the '<em><b>Throwable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_EXCEPTION__THROWABLE = eINSTANCE.getEclException_Throwable();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclStackTraceEntryImpl <em>Ecl Stack Trace Entry</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EclStackTraceEntryImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclStackTraceEntry()
+		 * @generated
+		 */
+		EClass ECL_STACK_TRACE_ENTRY = eINSTANCE.getEclStackTraceEntry();
+
+		/**
+		 * The meta object literal for the '<em><b>Index</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_STACK_TRACE_ENTRY__INDEX = eINSTANCE.getEclStackTraceEntry_Index();
+
+		/**
+		 * The meta object literal for the '<em><b>Declaring Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_STACK_TRACE_ENTRY__DECLARING_CLASS = eINSTANCE.getEclStackTraceEntry_DeclaringClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Method Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_STACK_TRACE_ENTRY__METHOD_NAME = eINSTANCE.getEclStackTraceEntry_MethodName();
+
+		/**
+		 * The meta object literal for the '<em><b>File Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_STACK_TRACE_ENTRY__FILE_NAME = eINSTANCE.getEclStackTraceEntry_FileName();
+
+		/**
+		 * The meta object literal for the '<em><b>Line Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_STACK_TRACE_ENTRY__LINE_NUMBER = eINSTANCE.getEclStackTraceEntry_LineNumber();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclBooleanImpl <em>Ecl Boolean</em>}' class.
