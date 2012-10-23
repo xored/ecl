@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.ecl.core.EclException#getMessage <em>Message</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.EclException#getStackTrace <em>Stack Trace</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.EclException#getThrowable <em>Throwable</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.EclException#getCause <em>Cause</em>}</li>
  * </ul>
  * </p>
  *
@@ -122,5 +123,31 @@ public interface EclException extends EObject {
 	 * @generated
 	 */
 	void setThrowable(Throwable value);
+
+	/**
+	 * Returns the value of the '<em><b>Cause</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cause</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cause</em>' containment reference.
+	 * @see #setCause(EclException)
+	 * @see org.eclipse.ecl.core.CorePackage#getEclException_Cause()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EclException getCause();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.ecl.core.EclException#getCause <em>Cause</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cause</em>' containment reference.
+	 * @see #getCause()
+	 * @generated
+	 */
+	void setCause(EclException value);
 
 } // EclException

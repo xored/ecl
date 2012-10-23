@@ -37,39 +37,44 @@ public class ProcessStatusConverter implements
 		Throwable th = null;
 		EclException exception = ps.getException();
 		if (exception != null) {
+			th = getThrowable(exception);
+		}
+		return new Status(ps.getSeverity(), ps.getPluginId(), ps.getCode(),
+				ps.getMessage(), th);
+	}
+
+	private Throwable getThrowable(EclException exception) {
+		Throwable th = null;
+		try {
+			// Try to restore stored exception.
+			th = exception.getThrowable();
+		} catch (Throwable ee) {
+			// Failed to restore exception, try to construct new one
 			try {
-				// Try to restore stored exception.
-				th = exception.getThrowable();
-			} catch (Throwable ee) {
-				// Failed to restore exception, try to construct new one
-				try {
-					String className = exception.getClassName();
-					Class<?> forName = this.getClass().forName(className);
-					if (forName != null) {
-						Constructor<?> constructor = forName.getConstructor(
-								String.class, Throwable.class);
-						if (constructor != null) {
-							Throwable newInstance = (Throwable) constructor
-									.newInstance(exception.getMessage(), null);
-							if (newInstance != null) {
-								EList<EclStackTraceEntry> list = exception
-										.getStackTrace();
-								if (list.size() > 0) {
-									newInstance
-											.setStackTrace(constructStack(list));
-									th = newInstance;
-								}
+				String className = exception.getClassName();
+				Class<?> forName = this.getClass().forName(className);
+				if (forName != null) {
+					Constructor<?> constructor = forName.getConstructor(
+							String.class, Throwable.class);
+					if (constructor != null) {
+						Throwable newInstance = (Throwable) constructor
+								.newInstance(exception.getMessage(), null);
+						if (newInstance != null) {
+							EList<EclStackTraceEntry> list = exception
+									.getStackTrace();
+							if (list.size() > 0) {
+								newInstance.setStackTrace(constructStack(list));
+								th = newInstance;
 							}
 						}
 					}
-				} catch (Throwable eee) {
-					Exception newex = new Exception(exception.getMessage(),
-							null);
-					EList<EclStackTraceEntry> list = exception.getStackTrace();
-					if (list.size() > 0) {
-						newex.setStackTrace(constructStack(list));
-						th = newex;
-					}
+				}
+			} catch (Throwable eee) {
+				Exception newex = new Exception(exception.getMessage(), null);
+				EList<EclStackTraceEntry> list = exception.getStackTrace();
+				if (list.size() > 0) {
+					newex.setStackTrace(constructStack(list));
+					th = newex;
 				}
 			}
 		}
@@ -79,8 +84,10 @@ public class ProcessStatusConverter implements
 				th.setStackTrace(constructStack(list));
 			}
 		}
-		return new Status(ps.getSeverity(), ps.getPluginId(), ps.getCode(),
-				ps.getMessage(), th);
+		if (exception.getCause() != null) {
+			th.initCause(getThrowable(exception.getCause()));
+		}
+		return th;
 	}
 
 	private StackTraceElement[] constructStack(EList<EclStackTraceEntry> list) {
@@ -102,25 +109,34 @@ public class ProcessStatusConverter implements
 		ps.setSeverity(status.getSeverity());
 		Throwable exception = status.getException();
 		if (exception != null) {
-			EclException ex = CoreFactory.eINSTANCE.createEclException();
-			ex.setClassName(exception.getClass().getName());
-			ex.setMessage(exception.getMessage());
-			ex.setThrowable(exception);
-			StackTraceElement[] elements = exception.getStackTrace();
-			int index = 0;
-			for (StackTraceElement ee : elements) {
-				EclStackTraceEntry e = CoreFactory.eINSTANCE
-						.createEclStackTraceEntry();
-				e.setDeclaringClass(ee.getClassName());
-				e.setFileName(ee.getFileName());
-				e.setLineNumber(ee.getLineNumber());
-				e.setMethodName(ee.getMethodName());
-				e.setIndex(index++);
-				ex.getStackTrace().add(e);
-			}
-			ps.setException(ex);
+			ps.setException(toException(exception));
 		}
 		return ps;
+	}
+
+	private EclException toException(Throwable exception) {
+		EclException ex = CoreFactory.eINSTANCE.createEclException();
+		ex.setClassName(exception.getClass().getName());
+		ex.setMessage(exception.getMessage());
+		ex.setThrowable(exception);
+		StackTraceElement[] elements = exception.getStackTrace();
+		int index = 0;
+		for (StackTraceElement ee : elements) {
+			EclStackTraceEntry e = CoreFactory.eINSTANCE
+					.createEclStackTraceEntry();
+			e.setDeclaringClass(ee.getClassName());
+			e.setFileName(ee.getFileName());
+			e.setLineNumber(ee.getLineNumber());
+			e.setMethodName(ee.getMethodName());
+			e.setIndex(index++);
+			e.setNativeMethod(ee.isNativeMethod());
+			ex.getStackTrace().add(e);
+		}
+		Throwable cause = exception.getCause();
+		if (cause != null) {
+			ex.setCause(toException(cause));
+		}
+		return ex;
 	}
 
 }

@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.ecl.core.impl.EclExceptionImpl#getMessage <em>Message</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.EclExceptionImpl#getStackTrace <em>Stack Trace</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.EclExceptionImpl#getThrowable <em>Throwable</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.impl.EclExceptionImpl#getCause <em>Cause</em>}</li>
  * </ul>
  * </p>
  *
@@ -109,6 +110,16 @@ public class EclExceptionImpl extends EObjectImpl implements EclException {
 	 * @ordered
 	 */
 	protected Throwable throwable = THROWABLE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getCause() <em>Cause</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCause()
+	 * @generated
+	 * @ordered
+	 */
+	protected EclException cause;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -209,11 +220,56 @@ public class EclExceptionImpl extends EObjectImpl implements EclException {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EclException getCause() {
+		return cause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCause(EclException newCause, NotificationChain msgs) {
+		EclException oldCause = cause;
+		cause = newCause;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CorePackage.ECL_EXCEPTION__CAUSE, oldCause, newCause);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCause(EclException newCause) {
+		if (newCause != cause) {
+			NotificationChain msgs = null;
+			if (cause != null)
+				msgs = ((InternalEObject)cause).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CorePackage.ECL_EXCEPTION__CAUSE, null, msgs);
+			if (newCause != null)
+				msgs = ((InternalEObject)newCause).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CorePackage.ECL_EXCEPTION__CAUSE, null, msgs);
+			msgs = basicSetCause(newCause, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.ECL_EXCEPTION__CAUSE, newCause, newCause));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CorePackage.ECL_EXCEPTION__STACK_TRACE:
 				return ((InternalEList<?>)getStackTrace()).basicRemove(otherEnd, msgs);
+			case CorePackage.ECL_EXCEPTION__CAUSE:
+				return basicSetCause(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -234,6 +290,8 @@ public class EclExceptionImpl extends EObjectImpl implements EclException {
 				return getStackTrace();
 			case CorePackage.ECL_EXCEPTION__THROWABLE:
 				return getThrowable();
+			case CorePackage.ECL_EXCEPTION__CAUSE:
+				return getCause();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -260,6 +318,9 @@ public class EclExceptionImpl extends EObjectImpl implements EclException {
 			case CorePackage.ECL_EXCEPTION__THROWABLE:
 				setThrowable((Throwable)newValue);
 				return;
+			case CorePackage.ECL_EXCEPTION__CAUSE:
+				setCause((EclException)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -284,6 +345,9 @@ public class EclExceptionImpl extends EObjectImpl implements EclException {
 			case CorePackage.ECL_EXCEPTION__THROWABLE:
 				setThrowable(THROWABLE_EDEFAULT);
 				return;
+			case CorePackage.ECL_EXCEPTION__CAUSE:
+				setCause((EclException)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -304,6 +368,8 @@ public class EclExceptionImpl extends EObjectImpl implements EclException {
 				return stackTrace != null && !stackTrace.isEmpty();
 			case CorePackage.ECL_EXCEPTION__THROWABLE:
 				return THROWABLE_EDEFAULT == null ? throwable != null : !THROWABLE_EDEFAULT.equals(throwable);
+			case CorePackage.ECL_EXCEPTION__CAUSE:
+				return cause != null;
 		}
 		return super.eIsSet(featureID);
 	}

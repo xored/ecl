@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.ecl.core.EclStackTraceEntry#getMethodName <em>Method Name</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.EclStackTraceEntry#getFileName <em>File Name</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.EclStackTraceEntry#getLineNumber <em>Line Number</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.EclStackTraceEntry#isNativeMethod <em>Native Method</em>}</li>
  * </ul>
  * </p>
  *
@@ -158,5 +159,31 @@ public interface EclStackTraceEntry extends EObject {
 	 * @generated
 	 */
 	void setLineNumber(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Native Method</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Native Method</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Native Method</em>' attribute.
+	 * @see #setNativeMethod(boolean)
+	 * @see org.eclipse.ecl.core.CorePackage#getEclStackTraceEntry_NativeMethod()
+	 * @model
+	 * @generated
+	 */
+	boolean isNativeMethod();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.ecl.core.EclStackTraceEntry#isNativeMethod <em>Native Method</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Native Method</em>' attribute.
+	 * @see #isNativeMethod()
+	 * @generated
+	 */
+	void setNativeMethod(boolean value);
 
 } // EclStackTraceEntry

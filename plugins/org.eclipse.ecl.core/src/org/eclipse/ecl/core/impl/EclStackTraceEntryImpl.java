@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link org.eclipse.ecl.core.impl.EclStackTraceEntryImpl#getMethodName <em>Method Name</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.EclStackTraceEntryImpl#getFileName <em>File Name</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.EclStackTraceEntryImpl#getLineNumber <em>Line Number</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.impl.EclStackTraceEntryImpl#isNativeMethod <em>Native Method</em>}</li>
  * </ul>
  * </p>
  *
@@ -133,6 +134,26 @@ public class EclStackTraceEntryImpl extends EObjectImpl implements EclStackTrace
 	 * @ordered
 	 */
 	protected int lineNumber = LINE_NUMBER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isNativeMethod() <em>Native Method</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isNativeMethod()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean NATIVE_METHOD_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isNativeMethod() <em>Native Method</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isNativeMethod()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean nativeMethod = NATIVE_METHOD_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -263,6 +284,27 @@ public class EclStackTraceEntryImpl extends EObjectImpl implements EclStackTrace
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isNativeMethod() {
+		return nativeMethod;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNativeMethod(boolean newNativeMethod) {
+		boolean oldNativeMethod = nativeMethod;
+		nativeMethod = newNativeMethod;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.ECL_STACK_TRACE_ENTRY__NATIVE_METHOD, oldNativeMethod, nativeMethod));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -276,6 +318,8 @@ public class EclStackTraceEntryImpl extends EObjectImpl implements EclStackTrace
 				return getFileName();
 			case CorePackage.ECL_STACK_TRACE_ENTRY__LINE_NUMBER:
 				return getLineNumber();
+			case CorePackage.ECL_STACK_TRACE_ENTRY__NATIVE_METHOD:
+				return isNativeMethod();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -302,6 +346,9 @@ public class EclStackTraceEntryImpl extends EObjectImpl implements EclStackTrace
 				return;
 			case CorePackage.ECL_STACK_TRACE_ENTRY__LINE_NUMBER:
 				setLineNumber((Integer)newValue);
+				return;
+			case CorePackage.ECL_STACK_TRACE_ENTRY__NATIVE_METHOD:
+				setNativeMethod((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -330,6 +377,9 @@ public class EclStackTraceEntryImpl extends EObjectImpl implements EclStackTrace
 			case CorePackage.ECL_STACK_TRACE_ENTRY__LINE_NUMBER:
 				setLineNumber(LINE_NUMBER_EDEFAULT);
 				return;
+			case CorePackage.ECL_STACK_TRACE_ENTRY__NATIVE_METHOD:
+				setNativeMethod(NATIVE_METHOD_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -352,6 +402,8 @@ public class EclStackTraceEntryImpl extends EObjectImpl implements EclStackTrace
 				return FILE_NAME_EDEFAULT == null ? fileName != null : !FILE_NAME_EDEFAULT.equals(fileName);
 			case CorePackage.ECL_STACK_TRACE_ENTRY__LINE_NUMBER:
 				return lineNumber != LINE_NUMBER_EDEFAULT;
+			case CorePackage.ECL_STACK_TRACE_ENTRY__NATIVE_METHOD:
+				return nativeMethod != NATIVE_METHOD_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -376,6 +428,8 @@ public class EclStackTraceEntryImpl extends EObjectImpl implements EclStackTrace
 		result.append(fileName);
 		result.append(", lineNumber: ");
 		result.append(lineNumber);
+		result.append(", nativeMethod: ");
+		result.append(nativeMethod);
 		result.append(')');
 		return result.toString();
 	}

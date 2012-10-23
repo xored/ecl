@@ -1192,13 +1192,22 @@ public interface CorePackage extends EPackage {
 	int ECL_EXCEPTION__THROWABLE = 3;
 
 	/**
+	 * The feature id for the '<em><b>Cause</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_EXCEPTION__CAUSE = 4;
+
+	/**
 	 * The number of structural features of the '<em>Ecl Exception</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_EXCEPTION_FEATURE_COUNT = 4;
+	int ECL_EXCEPTION_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclStackTraceEntryImpl <em>Ecl Stack Trace Entry</em>}' class.
@@ -1256,13 +1265,22 @@ public interface CorePackage extends EPackage {
 	int ECL_STACK_TRACE_ENTRY__LINE_NUMBER = 4;
 
 	/**
+	 * The feature id for the '<em><b>Native Method</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_STACK_TRACE_ENTRY__NATIVE_METHOD = 5;
+
+	/**
 	 * The number of structural features of the '<em>Ecl Stack Trace Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ECL_STACK_TRACE_ENTRY_FEATURE_COUNT = 5;
+	int ECL_STACK_TRACE_ENTRY_FEATURE_COUNT = 6;
 
 	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
@@ -1828,6 +1846,17 @@ public interface CorePackage extends EPackage {
 	EAttribute getEclException_Throwable();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.EclException#getCause <em>Cause</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Cause</em>'.
+	 * @see org.eclipse.ecl.core.EclException#getCause()
+	 * @see #getEclException()
+	 * @generated
+	 */
+	EReference getEclException_Cause();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclStackTraceEntry <em>Ecl Stack Trace Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1891,6 +1920,17 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getEclStackTraceEntry_LineNumber();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclStackTraceEntry#isNativeMethod <em>Native Method</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Native Method</em>'.
+	 * @see org.eclipse.ecl.core.EclStackTraceEntry#isNativeMethod()
+	 * @see #getEclStackTraceEntry()
+	 * @generated
+	 */
+	EAttribute getEclStackTraceEntry_NativeMethod();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclBoolean <em>Ecl Boolean</em>}'.
@@ -2579,6 +2619,14 @@ public interface CorePackage extends EPackage {
 		EAttribute ECL_EXCEPTION__THROWABLE = eINSTANCE.getEclException_Throwable();
 
 		/**
+		 * The meta object literal for the '<em><b>Cause</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ECL_EXCEPTION__CAUSE = eINSTANCE.getEclException_Cause();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclStackTraceEntryImpl <em>Ecl Stack Trace Entry</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2627,6 +2675,14 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ECL_STACK_TRACE_ENTRY__LINE_NUMBER = eINSTANCE.getEclStackTraceEntry_LineNumber();
+
+		/**
+		 * The meta object literal for the '<em><b>Native Method</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_STACK_TRACE_ENTRY__NATIVE_METHOD = eINSTANCE.getEclStackTraceEntry_NativeMethod();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclBooleanImpl <em>Ecl Boolean</em>}' class.

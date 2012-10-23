@@ -759,6 +759,15 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getEclException_Cause() {
+		return (EReference)eclExceptionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEclStackTraceEntry() {
 		return eclStackTraceEntryEClass;
 	}
@@ -806,6 +815,15 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 */
 	public EAttribute getEclStackTraceEntry_LineNumber() {
 		return (EAttribute)eclStackTraceEntryEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEclStackTraceEntry_NativeMethod() {
+		return (EAttribute)eclStackTraceEntryEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1111,6 +1129,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEAttribute(eclExceptionEClass, ECL_EXCEPTION__MESSAGE);
 		createEReference(eclExceptionEClass, ECL_EXCEPTION__STACK_TRACE);
 		createEAttribute(eclExceptionEClass, ECL_EXCEPTION__THROWABLE);
+		createEReference(eclExceptionEClass, ECL_EXCEPTION__CAUSE);
 
 		eclStackTraceEntryEClass = createEClass(ECL_STACK_TRACE_ENTRY);
 		createEAttribute(eclStackTraceEntryEClass, ECL_STACK_TRACE_ENTRY__INDEX);
@@ -1118,6 +1137,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEAttribute(eclStackTraceEntryEClass, ECL_STACK_TRACE_ENTRY__METHOD_NAME);
 		createEAttribute(eclStackTraceEntryEClass, ECL_STACK_TRACE_ENTRY__FILE_NAME);
 		createEAttribute(eclStackTraceEntryEClass, ECL_STACK_TRACE_ENTRY__LINE_NUMBER);
+		createEAttribute(eclStackTraceEntryEClass, ECL_STACK_TRACE_ENTRY__NATIVE_METHOD);
 
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
@@ -1274,6 +1294,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEAttribute(getEclException_Message(), theEcorePackage.getEString(), "message", null, 0, 1, EclException.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEclException_StackTrace(), this.getEclStackTraceEntry(), null, "stackTrace", null, 0, -1, EclException.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEclException_Throwable(), this.getThrowable(), "throwable", null, 0, 1, EclException.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEclException_Cause(), this.getEclException(), null, "cause", null, 0, 1, EclException.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eclStackTraceEntryEClass, EclStackTraceEntry.class, "EclStackTraceEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEclStackTraceEntry_Index(), theEcorePackage.getEInt(), "index", null, 0, 1, EclStackTraceEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1281,6 +1302,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEAttribute(getEclStackTraceEntry_MethodName(), theEcorePackage.getEString(), "methodName", null, 0, 1, EclStackTraceEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEclStackTraceEntry_FileName(), theEcorePackage.getEString(), "fileName", null, 0, 1, EclStackTraceEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEclStackTraceEntry_LineNumber(), ecorePackage.getEInt(), "lineNumber", null, 0, 1, EclStackTraceEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEclStackTraceEntry_NativeMethod(), theEcorePackage.getEBoolean(), "nativeMethod", null, 0, 1, EclStackTraceEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
