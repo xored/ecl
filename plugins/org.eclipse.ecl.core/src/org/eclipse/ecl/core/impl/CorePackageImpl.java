@@ -21,12 +21,10 @@ import org.eclipse.ecl.core.EclBoolean;
 import org.eclipse.ecl.core.EclByte;
 import org.eclipse.ecl.core.EclChar;
 import org.eclipse.ecl.core.EclDouble;
-import org.eclipse.ecl.core.EclException;
 import org.eclipse.ecl.core.EclFloat;
 import org.eclipse.ecl.core.EclInteger;
 import org.eclipse.ecl.core.EclLong;
 import org.eclipse.ecl.core.EclShort;
-import org.eclipse.ecl.core.EclStackTraceEntry;
 import org.eclipse.ecl.core.EclString;
 import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.ExecutableParameter;
@@ -166,20 +164,6 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	private EClass eclStringEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass eclExceptionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass eclStackTraceEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -592,8 +576,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProcessStatus_Exception() {
-		return (EReference)processStatusEClass.getEStructuralFeatures().get(4);
+	public EAttribute getProcessStatus_Exception() {
+		return (EAttribute)processStatusEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -707,105 +691,6 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 */
 	public EAttribute getEclString_Value() {
 		return (EAttribute)eclStringEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getEclException() {
-		return eclExceptionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getEclException_ClassName() {
-		return (EAttribute)eclExceptionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getEclException_Message() {
-		return (EAttribute)eclExceptionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getEclException_StackTrace() {
-		return (EReference)eclExceptionEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getEclException_Throwable() {
-		return (EAttribute)eclExceptionEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getEclStackTraceEntry() {
-		return eclStackTraceEntryEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getEclStackTraceEntry_Index() {
-		return (EAttribute)eclStackTraceEntryEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getEclStackTraceEntry_DeclaringClass() {
-		return (EAttribute)eclStackTraceEntryEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getEclStackTraceEntry_MethodName() {
-		return (EAttribute)eclStackTraceEntryEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getEclStackTraceEntry_FileName() {
-		return (EAttribute)eclStackTraceEntryEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getEclStackTraceEntry_LineNumber() {
-		return (EAttribute)eclStackTraceEntryEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1060,7 +945,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEAttribute(processStatusEClass, PROCESS_STATUS__CODE);
 		createEAttribute(processStatusEClass, PROCESS_STATUS__MESSAGE);
 		createEAttribute(processStatusEClass, PROCESS_STATUS__SEVERITY);
-		createEReference(processStatusEClass, PROCESS_STATUS__EXCEPTION);
+		createEAttribute(processStatusEClass, PROCESS_STATUS__EXCEPTION);
 
 		convertedToEMFPipeEClass = createEClass(CONVERTED_TO_EMF_PIPE);
 		createEReference(convertedToEMFPipeEClass, CONVERTED_TO_EMF_PIPE__OBJECT);
@@ -1105,19 +990,6 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 
 		eclStringEClass = createEClass(ECL_STRING);
 		createEAttribute(eclStringEClass, ECL_STRING__VALUE);
-
-		eclExceptionEClass = createEClass(ECL_EXCEPTION);
-		createEAttribute(eclExceptionEClass, ECL_EXCEPTION__CLASS_NAME);
-		createEAttribute(eclExceptionEClass, ECL_EXCEPTION__MESSAGE);
-		createEReference(eclExceptionEClass, ECL_EXCEPTION__STACK_TRACE);
-		createEAttribute(eclExceptionEClass, ECL_EXCEPTION__THROWABLE);
-
-		eclStackTraceEntryEClass = createEClass(ECL_STACK_TRACE_ENTRY);
-		createEAttribute(eclStackTraceEntryEClass, ECL_STACK_TRACE_ENTRY__INDEX);
-		createEAttribute(eclStackTraceEntryEClass, ECL_STACK_TRACE_ENTRY__DECLARING_CLASS);
-		createEAttribute(eclStackTraceEntryEClass, ECL_STACK_TRACE_ENTRY__METHOD_NAME);
-		createEAttribute(eclStackTraceEntryEClass, ECL_STACK_TRACE_ENTRY__FILE_NAME);
-		createEAttribute(eclStackTraceEntryEClass, ECL_STACK_TRACE_ENTRY__LINE_NUMBER);
 
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
@@ -1223,7 +1095,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEAttribute(getProcessStatus_Code(), ecorePackage.getEInt(), "code", null, 0, 1, ProcessStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProcessStatus_Message(), ecorePackage.getEString(), "message", null, 0, 1, ProcessStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProcessStatus_Severity(), ecorePackage.getEInt(), "severity", null, 0, 1, ProcessStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProcessStatus_Exception(), this.getEclException(), null, "exception", null, 0, 1, ProcessStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcessStatus_Exception(), this.getThrowable(), "exception", null, 0, 1, ProcessStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(convertedToEMFPipeEClass, ConvertedToEMFPipe.class, "ConvertedToEMFPipe", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConvertedToEMFPipe_Object(), theEcorePackage.getEObject(), null, "object", null, 0, 1, ConvertedToEMFPipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1268,19 +1140,6 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 
 		initEClass(eclStringEClass, EclString.class, "EclString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEclString_Value(), theEcorePackage.getEString(), "value", null, 0, 1, EclString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(eclExceptionEClass, EclException.class, "EclException", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEclException_ClassName(), theEcorePackage.getEString(), "className", null, 0, 1, EclException.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEclException_Message(), theEcorePackage.getEString(), "message", null, 0, 1, EclException.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEclException_StackTrace(), this.getEclStackTraceEntry(), null, "stackTrace", null, 0, -1, EclException.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEclException_Throwable(), this.getThrowable(), "throwable", null, 0, 1, EclException.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(eclStackTraceEntryEClass, EclStackTraceEntry.class, "EclStackTraceEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEclStackTraceEntry_Index(), theEcorePackage.getEInt(), "index", null, 0, 1, EclStackTraceEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEclStackTraceEntry_DeclaringClass(), theEcorePackage.getEString(), "declaringClass", null, 0, 1, EclStackTraceEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEclStackTraceEntry_MethodName(), theEcorePackage.getEString(), "methodName", null, 0, 1, EclStackTraceEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEclStackTraceEntry_FileName(), theEcorePackage.getEString(), "fileName", null, 0, 1, EclStackTraceEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEclStackTraceEntry_LineNumber(), ecorePackage.getEInt(), "lineNumber", null, 0, 1, EclStackTraceEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

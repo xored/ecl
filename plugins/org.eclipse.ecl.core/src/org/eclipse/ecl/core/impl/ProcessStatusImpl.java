@@ -11,15 +11,12 @@
 package org.eclipse.ecl.core.impl;
 
 import org.eclipse.ecl.core.CorePackage;
-import org.eclipse.ecl.core.EclException;
 import org.eclipse.ecl.core.ProcessStatus;
 
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
@@ -122,14 +119,24 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 	protected int severity = SEVERITY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getException() <em>Exception</em>}' containment reference.
+	 * The default value of the '{@link #getException() <em>Exception</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getException()
 	 * @generated
 	 * @ordered
 	 */
-	protected EclException exception;
+	protected static final Throwable EXCEPTION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getException() <em>Exception</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getException()
+	 * @generated
+	 * @ordered
+	 */
+	protected Throwable exception = EXCEPTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -239,7 +246,7 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EclException getException() {
+	public Throwable getException() {
 		return exception;
 	}
 
@@ -248,47 +255,11 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetException(EclException newException, NotificationChain msgs) {
-		EclException oldException = exception;
+	public void setException(Throwable newException) {
+		Throwable oldException = exception;
 		exception = newException;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CorePackage.PROCESS_STATUS__EXCEPTION, oldException, newException);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setException(EclException newException) {
-		if (newException != exception) {
-			NotificationChain msgs = null;
-			if (exception != null)
-				msgs = ((InternalEObject)exception).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CorePackage.PROCESS_STATUS__EXCEPTION, null, msgs);
-			if (newException != null)
-				msgs = ((InternalEObject)newException).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CorePackage.PROCESS_STATUS__EXCEPTION, null, msgs);
-			msgs = basicSetException(newException, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.PROCESS_STATUS__EXCEPTION, newException, newException));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CorePackage.PROCESS_STATUS__EXCEPTION:
-				return basicSetException(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.PROCESS_STATUS__EXCEPTION, oldException, exception));
 	}
 
 	/**
@@ -334,7 +305,7 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 				setSeverity((Integer)newValue);
 				return;
 			case CorePackage.PROCESS_STATUS__EXCEPTION:
-				setException((EclException)newValue);
+				setException((Throwable)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -361,7 +332,7 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 				setSeverity(SEVERITY_EDEFAULT);
 				return;
 			case CorePackage.PROCESS_STATUS__EXCEPTION:
-				setException((EclException)null);
+				setException(EXCEPTION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -384,7 +355,7 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 			case CorePackage.PROCESS_STATUS__SEVERITY:
 				return severity != SEVERITY_EDEFAULT;
 			case CorePackage.PROCESS_STATUS__EXCEPTION:
-				return exception != null;
+				return EXCEPTION_EDEFAULT == null ? exception != null : !EXCEPTION_EDEFAULT.equals(exception);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -407,6 +378,8 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 		result.append(message);
 		result.append(", severity: ");
 		result.append(severity);
+		result.append(", exception: ");
+		result.append(exception);
 		result.append(')');
 		return result.toString();
 	}

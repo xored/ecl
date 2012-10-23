@@ -7,40 +7,12 @@
 package org.eclipse.ecl.core.util;
 
 import org.eclipse.ecl.core.*;
-import org.eclipse.ecl.core.Binding;
-import org.eclipse.ecl.core.Block;
-import org.eclipse.ecl.core.BoxedValue;
-import org.eclipse.ecl.core.Command;
-import org.eclipse.ecl.core.ConvertedToEMFPipe;
-import org.eclipse.ecl.core.CorePackage;
-import org.eclipse.ecl.core.EclBoolean;
-import org.eclipse.ecl.core.EclByte;
-import org.eclipse.ecl.core.EclChar;
-import org.eclipse.ecl.core.EclDouble;
-import org.eclipse.ecl.core.EclException;
-import org.eclipse.ecl.core.EclFloat;
-import org.eclipse.ecl.core.EclInteger;
-import org.eclipse.ecl.core.EclLong;
-import org.eclipse.ecl.core.EclShort;
-import org.eclipse.ecl.core.EclStackTraceEntry;
-import org.eclipse.ecl.core.EclString;
-import org.eclipse.ecl.core.Exec;
-import org.eclipse.ecl.core.ExecutableParameter;
-import org.eclipse.ecl.core.Foreach;
-import org.eclipse.ecl.core.If;
-import org.eclipse.ecl.core.LiteralParameter;
-import org.eclipse.ecl.core.Nullable;
-import org.eclipse.ecl.core.Parallel;
-import org.eclipse.ecl.core.Parameter;
-import org.eclipse.ecl.core.Pipeline;
-import org.eclipse.ecl.core.ProcessStatus;
-import org.eclipse.ecl.core.Script;
-import org.eclipse.ecl.core.Sequence;
-import org.eclipse.ecl.core.Serialized;
-import org.eclipse.ecl.core.With;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -210,14 +182,6 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEclString(EclString object) {
 				return createEclStringAdapter();
-			}
-			@Override
-			public Adapter caseEclException(EclException object) {
-				return createEclExceptionAdapter();
-			}
-			@Override
-			public Adapter caseEclStackTraceEntry(EclStackTraceEntry object) {
-				return createEclStackTraceEntryAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -502,34 +466,6 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEclStringAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EclException <em>Ecl Exception</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.ecl.core.EclException
-	 * @generated
-	 */
-	public Adapter createEclExceptionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EclStackTraceEntry <em>Ecl Stack Trace Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.ecl.core.EclStackTraceEntry
-	 * @generated
-	 */
-	public Adapter createEclStackTraceEntryAdapter() {
 		return null;
 	}
 
