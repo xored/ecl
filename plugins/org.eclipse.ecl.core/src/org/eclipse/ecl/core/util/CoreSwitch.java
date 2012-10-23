@@ -9,7 +9,37 @@ package org.eclipse.ecl.core.util;
 import java.util.List;
 
 import org.eclipse.ecl.core.*;
-
+import org.eclipse.ecl.core.Binding;
+import org.eclipse.ecl.core.Block;
+import org.eclipse.ecl.core.BoxedValue;
+import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.core.ConvertedToEMFPipe;
+import org.eclipse.ecl.core.CorePackage;
+import org.eclipse.ecl.core.EclBoolean;
+import org.eclipse.ecl.core.EclByte;
+import org.eclipse.ecl.core.EclChar;
+import org.eclipse.ecl.core.EclDouble;
+import org.eclipse.ecl.core.EclException;
+import org.eclipse.ecl.core.EclFloat;
+import org.eclipse.ecl.core.EclInteger;
+import org.eclipse.ecl.core.EclLong;
+import org.eclipse.ecl.core.EclShort;
+import org.eclipse.ecl.core.EclStackTraceEntry;
+import org.eclipse.ecl.core.EclString;
+import org.eclipse.ecl.core.Exec;
+import org.eclipse.ecl.core.ExecutableParameter;
+import org.eclipse.ecl.core.Foreach;
+import org.eclipse.ecl.core.If;
+import org.eclipse.ecl.core.LiteralParameter;
+import org.eclipse.ecl.core.Nullable;
+import org.eclipse.ecl.core.Parallel;
+import org.eclipse.ecl.core.Parameter;
+import org.eclipse.ecl.core.Pipeline;
+import org.eclipse.ecl.core.ProcessStatus;
+import org.eclipse.ecl.core.Script;
+import org.eclipse.ecl.core.Sequence;
+import org.eclipse.ecl.core.Serialized;
+import org.eclipse.ecl.core.With;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
@@ -275,6 +305,18 @@ public class CoreSwitch<T> {
 				EclString eclString = (EclString)theEObject;
 				T result = caseEclString(eclString);
 				if (result == null) result = caseBoxedValue(eclString);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.ECL_EXCEPTION: {
+				EclException eclException = (EclException)theEObject;
+				T result = caseEclException(eclException);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.ECL_STACK_TRACE_ENTRY: {
+				EclStackTraceEntry eclStackTraceEntry = (EclStackTraceEntry)theEObject;
+				T result = caseEclStackTraceEntry(eclStackTraceEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -699,6 +741,36 @@ public class CoreSwitch<T> {
 	 * @generated
 	 */
 	public T caseEclString(EclString object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ecl Exception</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ecl Exception</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEclException(EclException object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ecl Stack Trace Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ecl Stack Trace Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEclStackTraceEntry(EclStackTraceEntry object) {
 		return null;
 	}
 

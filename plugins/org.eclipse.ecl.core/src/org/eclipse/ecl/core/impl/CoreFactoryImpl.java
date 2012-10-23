@@ -11,14 +11,41 @@
 package org.eclipse.ecl.core.impl;
 
 import org.eclipse.ecl.core.*;
-
+import org.eclipse.ecl.core.Binding;
+import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.core.ConvertedToEMFPipe;
+import org.eclipse.ecl.core.CoreFactory;
+import org.eclipse.ecl.core.CorePackage;
+import org.eclipse.ecl.core.EclBoolean;
+import org.eclipse.ecl.core.EclByte;
+import org.eclipse.ecl.core.EclChar;
+import org.eclipse.ecl.core.EclDouble;
+import org.eclipse.ecl.core.EclException;
+import org.eclipse.ecl.core.EclFloat;
+import org.eclipse.ecl.core.EclInteger;
+import org.eclipse.ecl.core.EclLong;
+import org.eclipse.ecl.core.EclShort;
+import org.eclipse.ecl.core.EclStackTraceEntry;
+import org.eclipse.ecl.core.EclString;
+import org.eclipse.ecl.core.Exec;
+import org.eclipse.ecl.core.ExecutableParameter;
+import org.eclipse.ecl.core.Foreach;
+import org.eclipse.ecl.core.If;
+import org.eclipse.ecl.core.LiteralParameter;
+import org.eclipse.ecl.core.Nullable;
+import org.eclipse.ecl.core.Parallel;
+import org.eclipse.ecl.core.Parameter;
+import org.eclipse.ecl.core.Pipeline;
+import org.eclipse.ecl.core.ProcessStatus;
+import org.eclipse.ecl.core.Script;
+import org.eclipse.ecl.core.Sequence;
+import org.eclipse.ecl.core.Serialized;
+import org.eclipse.ecl.core.With;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
@@ -91,6 +118,8 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.ECL_BOOLEAN: return createEclBoolean();
 			case CorePackage.ECL_CHAR: return createEclChar();
 			case CorePackage.ECL_STRING: return createEclString();
+			case CorePackage.ECL_EXCEPTION: return createEclException();
+			case CorePackage.ECL_STACK_TRACE_ENTRY: return createEclStackTraceEntry();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -314,6 +343,26 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public EclString createEclString() {
 		EclStringImpl eclString = new EclStringImpl();
 		return eclString;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EclException createEclException() {
+		EclExceptionImpl eclException = new EclExceptionImpl();
+		return eclException;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EclStackTraceEntry createEclStackTraceEntry() {
+		EclStackTraceEntryImpl eclStackTraceEntry = new EclStackTraceEntryImpl();
+		return eclStackTraceEntry;
 	}
 
 	/**

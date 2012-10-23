@@ -138,29 +138,29 @@ public interface ProcessStatus extends EObject {
 	void setSeverity(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Exception</b></em>' attribute.
+	 * Returns the value of the '<em><b>Exception</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Exception</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exception</em>' attribute.
-	 * @see #setException(Throwable)
+	 * @return the value of the '<em>Exception</em>' containment reference.
+	 * @see #setException(EclException)
 	 * @see org.eclipse.ecl.core.CorePackage#getProcessStatus_Exception()
-	 * @model dataType="org.eclipse.ecl.core.Throwable"
+	 * @model containment="true"
 	 * @generated
 	 */
-	Throwable getException();
+	EclException getException();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.ecl.core.ProcessStatus#getException <em>Exception</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.ecl.core.ProcessStatus#getException <em>Exception</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Exception</em>' attribute.
+	 * @param value the new value of the '<em>Exception</em>' containment reference.
 	 * @see #getException()
 	 * @generated
 	 */
-	void setException(Throwable value);
+	void setException(EclException value);
 
 } // ProcessStatus

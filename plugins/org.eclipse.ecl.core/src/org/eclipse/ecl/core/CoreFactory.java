@@ -201,6 +201,24 @@ public interface CoreFactory extends EFactory {
 	EclString createEclString();
 
 	/**
+	 * Returns a new object of class '<em>Ecl Exception</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ecl Exception</em>'.
+	 * @generated
+	 */
+	EclException createEclException();
+
+	/**
+	 * Returns a new object of class '<em>Ecl Stack Trace Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ecl Stack Trace Entry</em>'.
+	 * @generated
+	 */
+	EclStackTraceEntry createEclStackTraceEntry();
+
+	/**
 	 * Returns a new object of class '<em>Ecl Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
