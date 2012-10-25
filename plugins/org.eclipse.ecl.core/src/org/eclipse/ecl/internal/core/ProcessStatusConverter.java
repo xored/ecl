@@ -12,6 +12,7 @@ package org.eclipse.ecl.internal.core;
 
 import java.lang.reflect.Constructor;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.core.CorePackage;
@@ -102,6 +103,10 @@ public class ProcessStatusConverter implements
 	}
 
 	public ProcessStatus toEObject(Status status) {
+		return toEObject((IStatus) status);
+	}
+
+	public ProcessStatus toEObject(IStatus status) {
 		ProcessStatus ps = CoreFactory.eINSTANCE.createProcessStatus();
 		ps.setCode(status.getCode());
 		ps.setMessage(status.getMessage());
