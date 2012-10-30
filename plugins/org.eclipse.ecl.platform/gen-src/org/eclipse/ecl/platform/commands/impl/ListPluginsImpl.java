@@ -12,7 +12,9 @@ import org.eclipse.ecl.platform.commands.CommandsPackage;
 import org.eclipse.ecl.platform.commands.ListPlugins;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -38,6 +40,7 @@ public class ListPluginsImpl extends CommandImpl implements ListPlugins {
 	 * @ordered
 	 */
 	protected static final boolean INCLUDE_DEPENDENCIES_EDEFAULT = false;
+
 	/**
 	 * The cached value of the '{@link #isIncludeDependencies() <em>Include Dependencies</em>}' attribute.
 	 * <!-- begin-user-doc -->

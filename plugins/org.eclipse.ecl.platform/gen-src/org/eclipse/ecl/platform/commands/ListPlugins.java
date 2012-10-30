@@ -25,7 +25,6 @@ import org.eclipse.ecl.core.Command;
  * @generated
  */
 public interface ListPlugins extends Command {
-
 	/**
 	 * Returns the value of the '<em><b>Include Dependencies</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
@@ -53,4 +52,5 @@ public interface ListPlugins extends Command {
 	 * @generated
 	 */
 	void setIncludeDependencies(boolean value);
+
 } // ListPlugins

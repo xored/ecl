@@ -7,6 +7,7 @@
 package org.eclipse.ecl.platform.commands.impl;
 
 import java.util.Collection;
+
 import org.eclipse.ecl.core.impl.CommandImpl;
 
 import org.eclipse.ecl.platform.commands.CommandsPackage;
@@ -15,9 +16,11 @@ import org.eclipse.ecl.platform.commands.GetLog;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
@@ -89,6 +92,18 @@ public class GetLogImpl extends CommandImpl implements GetLog {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<String> getLevels() {
+		if (levels == null) {
+			levels = new EDataTypeUniqueEList<String>(String.class, this, CommandsPackage.GET_LOG__LEVELS);
+		}
+		return levels;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public int getLimit() {
 		return limit;
 	}
@@ -103,18 +118,6 @@ public class GetLogImpl extends CommandImpl implements GetLog {
 		limit = newLimit;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CommandsPackage.GET_LOG__LIMIT, oldLimit, limit));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<String> getLevels() {
-		if (levels == null) {
-			levels = new EDataTypeUniqueEList<String>(String.class, this, CommandsPackage.GET_LOG__LEVELS);
-		}
-		return levels;
 	}
 
 	/**

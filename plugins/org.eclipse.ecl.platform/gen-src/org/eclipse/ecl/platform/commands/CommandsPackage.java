@@ -11,7 +11,6 @@ import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -567,7 +566,6 @@ public interface CommandsPackage extends EPackage {
 	 */
 	int LOG_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 3;
 
-
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.EchoImpl <em>Echo</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -614,7 +612,6 @@ public interface CommandsPackage extends EPackage {
 	 */
 	int ECHO_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
-
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.ClearLogImpl <em>Clear Log</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -652,7 +649,6 @@ public interface CommandsPackage extends EPackage {
 	 */
 	int CLEAR_LOG_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
 
-
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.ListLaunchConfigurationsImpl <em>List Launch Configurations</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -689,7 +685,6 @@ public interface CommandsPackage extends EPackage {
 	 * @ordered
 	 */
 	int LIST_LAUNCH_CONFIGURATIONS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
-
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.LaunchImpl <em>Launch</em>}' class.
@@ -745,6 +740,61 @@ public interface CommandsPackage extends EPackage {
 	 * @ordered
 	 */
 	int LAUNCH_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.SubstituteVariablesImpl <em>Substitute Variables</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.commands.impl.SubstituteVariablesImpl
+	 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getSubstituteVariables()
+	 * @generated
+	 */
+	int SUBSTITUTE_VARIABLES = 15;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBSTITUTE_VARIABLES__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBSTITUTE_VARIABLES__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBSTITUTE_VARIABLES__EXPRESSION = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Undefined</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBSTITUTE_VARIABLES__IGNORE_UNDEFINED = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Substitute Variables</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUBSTITUTE_VARIABLES_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
 
 
 	/**
@@ -914,17 +964,6 @@ public interface CommandsPackage extends EPackage {
 	EClass getGetLog();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.GetLog#getLimit <em>Limit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Limit</em>'.
-	 * @see org.eclipse.ecl.platform.commands.GetLog#getLimit()
-	 * @see #getGetLog()
-	 * @generated
-	 */
-	EAttribute getGetLog_Limit();
-
-	/**
 	 * Returns the meta object for the attribute list '{@link org.eclipse.ecl.platform.commands.GetLog#getLevels <em>Levels</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -934,6 +973,17 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getGetLog_Levels();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.GetLog#getLimit <em>Limit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Limit</em>'.
+	 * @see org.eclipse.ecl.platform.commands.GetLog#getLimit()
+	 * @see #getGetLog()
+	 * @generated
+	 */
+	EAttribute getGetLog_Limit();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.Log <em>Log</em>}'.
@@ -946,17 +996,6 @@ public interface CommandsPackage extends EPackage {
 	EClass getLog();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.Log#getSeverity <em>Severity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Severity</em>'.
-	 * @see org.eclipse.ecl.platform.commands.Log#getSeverity()
-	 * @see #getLog()
-	 * @generated
-	 */
-	EAttribute getLog_Severity();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.Log#getMessage <em>Message</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -966,6 +1005,17 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLog_Message();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.Log#getSeverity <em>Severity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Severity</em>'.
+	 * @see org.eclipse.ecl.platform.commands.Log#getSeverity()
+	 * @see #getLog()
+	 * @generated
+	 */
+	EAttribute getLog_Severity();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.Log#getPlugin <em>Plugin</em>}'.
@@ -1050,6 +1100,38 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLaunch_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.SubstituteVariables <em>Substitute Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Substitute Variables</em>'.
+	 * @see org.eclipse.ecl.platform.commands.SubstituteVariables
+	 * @generated
+	 */
+	EClass getSubstituteVariables();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.SubstituteVariables#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Expression</em>'.
+	 * @see org.eclipse.ecl.platform.commands.SubstituteVariables#getExpression()
+	 * @see #getSubstituteVariables()
+	 * @generated
+	 */
+	EAttribute getSubstituteVariables_Expression();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.SubstituteVariables#isIgnoreUndefined <em>Ignore Undefined</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ignore Undefined</em>'.
+	 * @see org.eclipse.ecl.platform.commands.SubstituteVariables#isIgnoreUndefined()
+	 * @see #getSubstituteVariables()
+	 * @generated
+	 */
+	EAttribute getSubstituteVariables_IgnoreUndefined();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1222,20 +1304,20 @@ public interface CommandsPackage extends EPackage {
 		EClass GET_LOG = eINSTANCE.getGetLog();
 
 		/**
-		 * The meta object literal for the '<em><b>Limit</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GET_LOG__LIMIT = eINSTANCE.getGetLog_Limit();
-
-		/**
 		 * The meta object literal for the '<em><b>Levels</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute GET_LOG__LEVELS = eINSTANCE.getGetLog_Levels();
+
+		/**
+		 * The meta object literal for the '<em><b>Limit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GET_LOG__LIMIT = eINSTANCE.getGetLog_Limit();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.platform.commands.impl.LogImpl <em>Log</em>}' class.
@@ -1248,20 +1330,20 @@ public interface CommandsPackage extends EPackage {
 		EClass LOG = eINSTANCE.getLog();
 
 		/**
-		 * The meta object literal for the '<em><b>Severity</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LOG__SEVERITY = eINSTANCE.getLog_Severity();
-
-		/**
 		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute LOG__MESSAGE = eINSTANCE.getLog_Message();
+
+		/**
+		 * The meta object literal for the '<em><b>Severity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LOG__SEVERITY = eINSTANCE.getLog_Severity();
 
 		/**
 		 * The meta object literal for the '<em><b>Plugin</b></em>' attribute feature.
@@ -1334,6 +1416,32 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LAUNCH__NAME = eINSTANCE.getLaunch_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.commands.impl.SubstituteVariablesImpl <em>Substitute Variables</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.commands.impl.SubstituteVariablesImpl
+		 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getSubstituteVariables()
+		 * @generated
+		 */
+		EClass SUBSTITUTE_VARIABLES = eINSTANCE.getSubstituteVariables();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUBSTITUTE_VARIABLES__EXPRESSION = eINSTANCE.getSubstituteVariables_Expression();
+
+		/**
+		 * The meta object literal for the '<em><b>Ignore Undefined</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SUBSTITUTE_VARIABLES__IGNORE_UNDEFINED = eINSTANCE.getSubstituteVariables_IgnoreUndefined();
 
 	}
 

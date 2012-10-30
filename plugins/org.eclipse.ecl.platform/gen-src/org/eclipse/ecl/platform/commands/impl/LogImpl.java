@@ -117,27 +117,6 @@ public class LogImpl extends CommandImpl implements Log {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getSeverity() {
-		return severity;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSeverity(String newSeverity) {
-		String oldSeverity = severity;
-		severity = newSeverity;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommandsPackage.LOG__SEVERITY, oldSeverity, severity));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getMessage() {
 		return message;
 	}
@@ -152,6 +131,27 @@ public class LogImpl extends CommandImpl implements Log {
 		message = newMessage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CommandsPackage.LOG__MESSAGE, oldMessage, message));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSeverity() {
+		return severity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSeverity(String newSeverity) {
+		String oldSeverity = severity;
+		severity = newSeverity;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CommandsPackage.LOG__SEVERITY, oldSeverity, severity));
 	}
 
 	/**

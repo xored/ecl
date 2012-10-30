@@ -28,6 +28,32 @@ import org.eclipse.ecl.core.Command;
  */
 public interface Log extends Command {
 	/**
+	 * Returns the value of the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Message</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Message</em>' attribute.
+	 * @see #setMessage(String)
+	 * @see org.eclipse.ecl.platform.commands.CommandsPackage#getLog_Message()
+	 * @model annotation="http://www.eclipse.org/ecl/docs description='Writes an entry into Eclipse log'"
+	 * @generated
+	 */
+	String getMessage();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.ecl.platform.commands.Log#getMessage <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Message</em>' attribute.
+	 * @see #getMessage()
+	 * @generated
+	 */
+	void setMessage(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Severity</b></em>' attribute.
 	 * The default value is <code>"info"</code>.
 	 * <!-- begin-user-doc -->
@@ -54,32 +80,6 @@ public interface Log extends Command {
 	 * @generated
 	 */
 	void setSeverity(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Message</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Message</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Message</em>' attribute.
-	 * @see #setMessage(String)
-	 * @see org.eclipse.ecl.platform.commands.CommandsPackage#getLog_Message()
-	 * @model annotation="http://www.eclipse.org/ecl/docs description='Writes an entry into Eclipse log'"
-	 * @generated
-	 */
-	String getMessage();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.ecl.platform.commands.Log#getMessage <em>Message</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Message</em>' attribute.
-	 * @see #getMessage()
-	 * @generated
-	 */
-	void setMessage(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Plugin</b></em>' attribute.

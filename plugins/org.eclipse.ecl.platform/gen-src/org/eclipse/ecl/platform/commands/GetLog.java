@@ -7,6 +7,7 @@
 package org.eclipse.ecl.platform.commands;
 
 import org.eclipse.ecl.core.Command;
+
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -27,6 +28,23 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface GetLog extends Command {
+	/**
+	 * Returns the value of the '<em><b>Levels</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Levels</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Levels</em>' attribute list.
+	 * @see org.eclipse.ecl.platform.commands.CommandsPackage#getGetLog_Levels()
+	 * @model default="false"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='Log entry severities to show. Any of <code>error</code>, <code>warning</code>, <code>info</code>, <code>OK</code>, <code>Cancel</code> in any letter case.'"
+	 * @generated
+	 */
+	EList<String> getLevels();
+
 	/**
 	 * Returns the value of the '<em><b>Limit</b></em>' attribute.
 	 * The default value is <code>"100"</code>.
@@ -54,22 +72,5 @@ public interface GetLog extends Command {
 	 * @generated
 	 */
 	void setLimit(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Levels</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Levels</em>' attribute list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Levels</em>' attribute list.
-	 * @see org.eclipse.ecl.platform.commands.CommandsPackage#getGetLog_Levels()
-	 * @model default="false"
-	 *        annotation="http://www.eclipse.org/ecl/docs description='Log entry severities to show. Any of <code>error</code>, <code>warning</code>, <code>info</code>, <code>OK</code>, <code>Cancel</code> in any letter case.'"
-	 * @generated
-	 */
-	EList<String> getLevels();
 
 } // GetLog

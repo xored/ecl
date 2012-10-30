@@ -23,6 +23,7 @@ import org.eclipse.ecl.platform.commands.ListRepositories;
 import org.eclipse.ecl.platform.commands.Log;
 import org.eclipse.ecl.platform.commands.RemoveRepository;
 import org.eclipse.ecl.platform.commands.SortBy;
+import org.eclipse.ecl.platform.commands.SubstituteVariables;
 import org.eclipse.ecl.platform.commands.UpdateAll;
 import org.eclipse.ecl.platform.commands.UpdateFeature;
 
@@ -148,6 +149,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass launchEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass substituteVariablesEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -480,6 +488,33 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSubstituteVariables() {
+		return substituteVariablesEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSubstituteVariables_Expression() {
+		return (EAttribute)substituteVariablesEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSubstituteVariables_IgnoreUndefined() {
+		return (EAttribute)substituteVariablesEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommandsFactory getCommandsFactory() {
 		return (CommandsFactory)getEFactoryInstance();
 	}
@@ -546,6 +581,10 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		launchEClass = createEClass(LAUNCH);
 		createEAttribute(launchEClass, LAUNCH__MODE);
 		createEAttribute(launchEClass, LAUNCH__NAME);
+
+		substituteVariablesEClass = createEClass(SUBSTITUTE_VARIABLES);
+		createEAttribute(substituteVariablesEClass, SUBSTITUTE_VARIABLES__EXPRESSION);
+		createEAttribute(substituteVariablesEClass, SUBSTITUTE_VARIABLES__IGNORE_UNDEFINED);
 	}
 
 	/**
@@ -595,6 +634,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		clearLogEClass.getESuperTypes().add(theCorePackage.getCommand());
 		listLaunchConfigurationsEClass.getESuperTypes().add(theCorePackage.getCommand());
 		launchEClass.getESuperTypes().add(theCorePackage.getCommand());
+		substituteVariablesEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(listPluginsEClass, ListPlugins.class, "ListPlugins", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -640,6 +680,10 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		initEClass(launchEClass, Launch.class, "Launch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLaunch_Mode(), theEcorePackage.getEString(), "mode", null, 1, 1, Launch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLaunch_Name(), theEcorePackage.getEString(), "name", null, 1, 1, Launch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(substituteVariablesEClass, SubstituteVariables.class, "SubstituteVariables", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSubstituteVariables_Expression(), theEcorePackage.getEString(), "expression", null, 0, 1, SubstituteVariables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSubstituteVariables_IgnoreUndefined(), theEcorePackage.getEBoolean(), "ignoreUndefined", "false", 0, 1, SubstituteVariables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -743,6 +787,25 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   new String[] {
 			 "descriprion", "Launches a configuration in specified mode. ",
 			 "returns", "Nothing."
+		   });		
+		addAnnotation
+		  (substituteVariablesEClass, 
+		   source, 
+		   new String[] {
+			 "descriprion", "Recursively resolves and replaces all variable references in the given expression with their corresponding values. Allows the client to control whether references to undefined variables are reported as an error (i.e. an exception is thrown). See <a href=\'http://help.eclipse.org/indigo/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/core/variables/IStringVariableManager.html\'>IStringVariableManager</a>for more information.",
+			 "returns", "expression with variable references replaced with variable values"
+		   });		
+		addAnnotation
+		  (getSubstituteVariables_Expression(), 
+		   source, 
+		   new String[] {
+			 "description", "expression referencing variables"
+		   });		
+		addAnnotation
+		  (getSubstituteVariables_IgnoreUndefined(), 
+		   source, 
+		   new String[] {
+			 "description", "whether a reference to an undefined variable is to be considered an error (i.e. throw an exception)"
 		   });
 	}
 
@@ -766,7 +829,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getEcho_Str(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });						
 	}
 
 } //CommandsPackageImpl

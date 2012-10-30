@@ -161,6 +161,15 @@ public interface CommandsFactory extends EFactory {
 	Launch createLaunch();
 
 	/**
+	 * Returns a new object of class '<em>Substitute Variables</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Substitute Variables</em>'.
+	 * @generated
+	 */
+	SubstituteVariables createSubstituteVariables();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

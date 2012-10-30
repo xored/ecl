@@ -93,5 +93,10 @@
             name="Launch"
             namespace="http://www.eclipse.org/ecl/platform/commands.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.platform.internal.commands.SubstituteVariablesService"
+            name="SubstituteVariables"
+            namespace="http://www.eclipse.org/ecl/platform/commands.ecore">
+      </scriptlet>
    </extension>
 </plugin>
