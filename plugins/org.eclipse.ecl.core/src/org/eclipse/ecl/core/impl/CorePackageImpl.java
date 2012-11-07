@@ -1336,6 +1336,11 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (getCommand_Bindings(), 
 		   source, 
 		   new String[] {
+		   });		
+		addAnnotation
+		  (execEClass, 
+		   source, 
+		   new String[] {
 		   });					
 	}
 
@@ -1345,7 +1350,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	protected void createInputAnnotations() {
-		String source = "http://www.eclipse.org/ecl/input";				
+		String source = "http://www.eclipse.org/ecl/input";					
 		addAnnotation
 		  (getForeach_Input(), 
 		   source, 
@@ -1360,7 +1365,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	protected void createDocsAnnotations() {
-		String source = "http://www.eclipse.org/ecl/docs";					
+		String source = "http://www.eclipse.org/ecl/docs";						
 		addAnnotation
 		  (ifEClass, 
 		   source, 

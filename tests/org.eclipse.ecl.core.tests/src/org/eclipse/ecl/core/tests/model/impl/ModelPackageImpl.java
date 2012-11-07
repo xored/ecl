@@ -401,8 +401,60 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
+		// http://www.eclipse.org/ecl/internal
+		createInternalAnnotations();
 		// http://www.eclipse.org/ecl/input
 		createInputAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/internal</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createInternalAnnotations() {
+		String source = "http://www.eclipse.org/ecl/internal";		
+		addAnnotation
+		  (sampleCommandEClass, 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (slowCommandEClass, 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (incrementCommandEClass, 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  (emitDataEClass, 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (randomEClass, 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (isPipeEmptyEClass, 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (emitEMFDataEClass, 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (failEClass, 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 	/**
@@ -412,12 +464,12 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	protected void createInputAnnotations() {
-		String source = "http://www.eclipse.org/ecl/input";		
+		String source = "http://www.eclipse.org/ecl/input";					
 		addAnnotation
 		  (getIncrementCommand_Val(), 
 		   source, 
 		   new String[] {
-		   });
+		   });					
 	}
 
 } // ModelPackageImpl

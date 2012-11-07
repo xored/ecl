@@ -352,6 +352,40 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/ecl/internal
+		createInternalAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/internal</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createInternalAnnotations() {
+		String source = "http://www.eclipse.org/ecl/internal";		
+		addAnnotation
+		  (startServerEClass, 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (stopServerEClass, 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (debugScriptEClass, 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (debugCommandEClass, 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 } //CommandsPackageImpl

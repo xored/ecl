@@ -324,6 +324,11 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		  (getAstNode_Length(), 
 		   source, 
 		   new String[] {
+		   });		
+		addAnnotation
+		  (astExecEClass, 
+		   source, 
+		   new String[] {
 		   });
 	}
 
