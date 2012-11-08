@@ -9,6 +9,7 @@ package org.eclipse.ecl.interop.commands.impl;
 import org.eclipse.ecl.interop.commands.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -61,6 +62,8 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case CommandsPackage.INVOKE: return createInvoke();
+			case CommandsPackage.EXEC_PROCESS: return createExecProcess();
+			case CommandsPackage.EXEC_PROCESS_RESULT: return createExecProcessResult();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -74,6 +77,26 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public Invoke createInvoke() {
 		InvokeImpl invoke = new InvokeImpl();
 		return invoke;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecProcess createExecProcess() {
+		ExecProcessImpl execProcess = new ExecProcessImpl();
+		return execProcess;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecProcessResult createExecProcessResult() {
+		ExecProcessResultImpl execProcessResult = new ExecProcessResultImpl();
+		return execProcessResult;
 	}
 
 	/**

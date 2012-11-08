@@ -10,10 +10,14 @@ import org.eclipse.ecl.core.CorePackage;
 
 import org.eclipse.ecl.interop.commands.CommandsFactory;
 import org.eclipse.ecl.interop.commands.CommandsPackage;
+import org.eclipse.ecl.interop.commands.ExecProcess;
+import org.eclipse.ecl.interop.commands.ExecProcessResult;
+import org.eclipse.ecl.interop.commands.ExecProcessStatus;
 import org.eclipse.ecl.interop.commands.Invoke;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -33,6 +37,20 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass invokeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass execProcessEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass execProcessResultEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -139,6 +157,96 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getExecProcess() {
+		return execProcessEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExecProcess_Command() {
+		return (EAttribute)execProcessEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExecProcess_Args() {
+		return (EAttribute)execProcessEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExecProcess_Timeout() {
+		return (EAttribute)execProcessEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExecProcess_IgnoreExitCode() {
+		return (EAttribute)execProcessEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExecProcess_IgnoreStderr() {
+		return (EAttribute)execProcessEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExecProcessResult() {
+		return execProcessResultEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExecProcessResult_ExitCode() {
+		return (EAttribute)execProcessResultEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExecProcessResult_Stdout() {
+		return (EAttribute)execProcessResultEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExecProcessResult_Stderr() {
+		return (EAttribute)execProcessResultEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommandsFactory getCommandsFactory() {
 		return (CommandsFactory)getEFactoryInstance();
 	}
@@ -166,6 +274,18 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		createEAttribute(invokeEClass, INVOKE__OBJECT);
 		createEAttribute(invokeEClass, INVOKE__NAME);
 		createEAttribute(invokeEClass, INVOKE__ARGS);
+
+		execProcessEClass = createEClass(EXEC_PROCESS);
+		createEAttribute(execProcessEClass, EXEC_PROCESS__COMMAND);
+		createEAttribute(execProcessEClass, EXEC_PROCESS__ARGS);
+		createEAttribute(execProcessEClass, EXEC_PROCESS__TIMEOUT);
+		createEAttribute(execProcessEClass, EXEC_PROCESS__IGNORE_EXIT_CODE);
+		createEAttribute(execProcessEClass, EXEC_PROCESS__IGNORE_STDERR);
+
+		execProcessResultEClass = createEClass(EXEC_PROCESS_RESULT);
+		createEAttribute(execProcessResultEClass, EXEC_PROCESS_RESULT__EXIT_CODE);
+		createEAttribute(execProcessResultEClass, EXEC_PROCESS_RESULT__STDOUT);
+		createEAttribute(execProcessResultEClass, EXEC_PROCESS_RESULT__STDERR);
 	}
 
 	/**
@@ -201,12 +321,25 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		// Add supertypes to classes
 		invokeEClass.getESuperTypes().add(theCorePackage.getCommand());
+		execProcessEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(invokeEClass, Invoke.class, "Invoke", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInvoke_Object(), theEcorePackage.getEJavaObject(), "object", null, 1, 1, Invoke.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInvoke_Name(), theEcorePackage.getEString(), "name", null, 1, 1, Invoke.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInvoke_Args(), theEcorePackage.getEJavaObject(), "args", null, 0, -1, Invoke.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(execProcessEClass, ExecProcess.class, "ExecProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getExecProcess_Command(), theEcorePackage.getEString(), "command", null, 1, 1, ExecProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExecProcess_Args(), theEcorePackage.getEString(), "args", null, 0, -1, ExecProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExecProcess_Timeout(), theEcorePackage.getEInt(), "timeout", "60", 0, 1, ExecProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExecProcess_IgnoreExitCode(), theEcorePackage.getEBoolean(), "ignoreExitCode", "false", 0, 1, ExecProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExecProcess_IgnoreStderr(), theEcorePackage.getEBoolean(), "ignoreStderr", "false", 0, 1, ExecProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(execProcessResultEClass, ExecProcessResult.class, "ExecProcessResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getExecProcessResult_ExitCode(), theEcorePackage.getEInt(), "exitCode", null, 0, 1, ExecProcessResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExecProcessResult_Stdout(), theEcorePackage.getEString(), "stdout", null, 0, 1, ExecProcessResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExecProcessResult_Stderr(), theEcorePackage.getEString(), "stderr", null, 0, 1, ExecProcessResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -250,6 +383,43 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Variable number of arguments to the method."
+		   });		
+		addAnnotation
+		  (execProcessEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Executes shell command.",
+			 "returns", "Captured output from stdout."
+		   });		
+		addAnnotation
+		  (getExecProcess_Command(), 
+		   source, 
+		   new String[] {
+			 "description", "Shell command to execute."
+		   });		
+		addAnnotation
+		  (getExecProcess_Args(), 
+		   source, 
+		   new String[] {
+			 "description", "Arguments for the command."
+		   });		
+		addAnnotation
+		  (getExecProcess_Timeout(), 
+		   source, 
+		   new String[] {
+			 "description", "Timeout period in seconds. Use zero timeout (<code>-timeout 0</code>) for infinite timeout."
+		   });		
+		addAnnotation
+		  (getExecProcess_IgnoreExitCode(), 
+		   source, 
+		   new String[] {
+			 "description", "If set to true, command fails with error message if non-zero exit code returned."
+		   });		
+		addAnnotation
+		  (getExecProcess_IgnoreStderr(), 
+		   source, 
+		   new String[] {
+			 "description", "If set to true, command fails with error message if stderr is not empty."
 		   });
 	}
 
@@ -265,7 +435,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getInvoke_Object(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });									
 	}
 
 } //CommandsPackageImpl

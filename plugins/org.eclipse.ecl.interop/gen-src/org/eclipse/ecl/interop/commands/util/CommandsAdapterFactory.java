@@ -78,6 +78,14 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 				return createInvokeAdapter();
 			}
 			@Override
+			public Adapter caseExecProcess(ExecProcess object) {
+				return createExecProcessAdapter();
+			}
+			@Override
+			public Adapter caseExecProcessResult(ExecProcessResult object) {
+				return createExecProcessResultAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -112,6 +120,34 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInvokeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.interop.commands.ExecProcess <em>Exec Process</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.interop.commands.ExecProcess
+	 * @generated
+	 */
+	public Adapter createExecProcessAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.interop.commands.ExecProcessResult <em>Exec Process Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.interop.commands.ExecProcessResult
+	 * @generated
+	 */
+	public Adapter createExecProcessResultAdapter() {
 		return null;
 	}
 

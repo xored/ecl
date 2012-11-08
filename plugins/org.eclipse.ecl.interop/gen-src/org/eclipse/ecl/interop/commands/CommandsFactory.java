@@ -35,6 +35,24 @@ public interface CommandsFactory extends EFactory {
 	Invoke createInvoke();
 
 	/**
+	 * Returns a new object of class '<em>Exec Process</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Exec Process</em>'.
+	 * @generated
+	 */
+	ExecProcess createExecProcess();
+
+	/**
+	 * Returns a new object of class '<em>Exec Process Result</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Exec Process Result</em>'.
+	 * @generated
+	 */
+	ExecProcessResult createExecProcessResult();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
