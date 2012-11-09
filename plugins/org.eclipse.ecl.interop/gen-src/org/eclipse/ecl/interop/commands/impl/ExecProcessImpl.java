@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  *   <li>{@link org.eclipse.ecl.interop.commands.impl.ExecProcessImpl#getTimeout <em>Timeout</em>}</li>
  *   <li>{@link org.eclipse.ecl.interop.commands.impl.ExecProcessImpl#isIgnoreExitCode <em>Ignore Exit Code</em>}</li>
  *   <li>{@link org.eclipse.ecl.interop.commands.impl.ExecProcessImpl#isIgnoreStderr <em>Ignore Stderr</em>}</li>
+ *   <li>{@link org.eclipse.ecl.interop.commands.impl.ExecProcessImpl#getStdin <em>Stdin</em>}</li>
  * </ul>
  * </p>
  *
@@ -130,6 +131,26 @@ public class ExecProcessImpl extends CommandImpl implements ExecProcess {
 	 * @ordered
 	 */
 	protected boolean ignoreStderr = IGNORE_STDERR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getStdin() <em>Stdin</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStdin()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String STDIN_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getStdin() <em>Stdin</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStdin()
+	 * @generated
+	 * @ordered
+	 */
+	protected String stdin = STDIN_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -251,6 +272,27 @@ public class ExecProcessImpl extends CommandImpl implements ExecProcess {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getStdin() {
+		return stdin;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStdin(String newStdin) {
+		String oldStdin = stdin;
+		stdin = newStdin;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CommandsPackage.EXEC_PROCESS__STDIN, oldStdin, stdin));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -264,6 +306,8 @@ public class ExecProcessImpl extends CommandImpl implements ExecProcess {
 				return isIgnoreExitCode();
 			case CommandsPackage.EXEC_PROCESS__IGNORE_STDERR:
 				return isIgnoreStderr();
+			case CommandsPackage.EXEC_PROCESS__STDIN:
+				return getStdin();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -293,6 +337,9 @@ public class ExecProcessImpl extends CommandImpl implements ExecProcess {
 			case CommandsPackage.EXEC_PROCESS__IGNORE_STDERR:
 				setIgnoreStderr((Boolean)newValue);
 				return;
+			case CommandsPackage.EXEC_PROCESS__STDIN:
+				setStdin((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -320,6 +367,9 @@ public class ExecProcessImpl extends CommandImpl implements ExecProcess {
 			case CommandsPackage.EXEC_PROCESS__IGNORE_STDERR:
 				setIgnoreStderr(IGNORE_STDERR_EDEFAULT);
 				return;
+			case CommandsPackage.EXEC_PROCESS__STDIN:
+				setStdin(STDIN_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -342,6 +392,8 @@ public class ExecProcessImpl extends CommandImpl implements ExecProcess {
 				return ignoreExitCode != IGNORE_EXIT_CODE_EDEFAULT;
 			case CommandsPackage.EXEC_PROCESS__IGNORE_STDERR:
 				return ignoreStderr != IGNORE_STDERR_EDEFAULT;
+			case CommandsPackage.EXEC_PROCESS__STDIN:
+				return STDIN_EDEFAULT == null ? stdin != null : !STDIN_EDEFAULT.equals(stdin);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -366,6 +418,8 @@ public class ExecProcessImpl extends CommandImpl implements ExecProcess {
 		result.append(ignoreExitCode);
 		result.append(", ignoreStderr: ");
 		result.append(ignoreStderr);
+		result.append(", stdin: ");
+		result.append(stdin);
 		result.append(')');
 		return result.toString();
 	}

@@ -60,6 +60,12 @@
         <details key="description" value="If set to true, command will not fail with error message if stderr is not empty."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stdin" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="String to send to stdin of executed command."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExecProcessResult">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="exitCode" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>

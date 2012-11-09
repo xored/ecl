@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.ecl.interop.commands.ExecProcess#getTimeout <em>Timeout</em>}</li>
  *   <li>{@link org.eclipse.ecl.interop.commands.ExecProcess#isIgnoreExitCode <em>Ignore Exit Code</em>}</li>
  *   <li>{@link org.eclipse.ecl.interop.commands.ExecProcess#isIgnoreStderr <em>Ignore Stderr</em>}</li>
+ *   <li>{@link org.eclipse.ecl.interop.commands.ExecProcess#getStdin <em>Stdin</em>}</li>
  * </ul>
  * </p>
  *
@@ -157,5 +158,31 @@ public interface ExecProcess extends Command {
 	 * @generated
 	 */
 	void setIgnoreStderr(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Stdin</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Stdin</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Stdin</em>' attribute.
+	 * @see #setStdin(String)
+	 * @see org.eclipse.ecl.interop.commands.CommandsPackage#getExecProcess_Stdin()
+	 * @model annotation="http://www.eclipse.org/ecl/docs description='String to send to stdin of executed command.'"
+	 * @generated
+	 */
+	String getStdin();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.ecl.interop.commands.ExecProcess#getStdin <em>Stdin</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Stdin</em>' attribute.
+	 * @see #getStdin()
+	 * @generated
+	 */
+	void setStdin(String value);
 
 } // ExecProcess

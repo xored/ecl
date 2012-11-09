@@ -1,9 +1,12 @@
 package org.eclipse.ecl.interop.internal.commands;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
+import java.io.Writer;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -35,6 +38,13 @@ public class ExecProcessService implements ICommandService {
 		try {
 			Process process = runtime.exec(commandLine.toString(), null, null);
 
+			if (cmd.getStdin() != null && cmd.getStdin().length() > 0) {
+				Writer stdin = new BufferedWriter(new OutputStreamWriter(
+						process.getOutputStream()));
+				stdin.write(cmd.getStdin());
+				stdin.flush();
+			}
+
 			Executor executor = new Executor(process);
 			executor.start();
 			try {
@@ -61,7 +71,6 @@ public class ExecProcessService implements ICommandService {
 				}
 			} catch (InterruptedException e) {
 				executor.interrupt();
-				Thread.currentThread().interrupt();
 				return error(e.getMessage());
 			} finally {
 				process.destroy();

@@ -201,13 +201,22 @@ public interface CommandsPackage extends EPackage {
 	int EXEC_PROCESS__IGNORE_STDERR = CorePackage.COMMAND_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Stdin</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXEC_PROCESS__STDIN = CorePackage.COMMAND_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Exec Process</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXEC_PROCESS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 5;
+	int EXEC_PROCESS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 6;
 
 
 	/**
@@ -365,6 +374,17 @@ public interface CommandsPackage extends EPackage {
 	EAttribute getExecProcess_IgnoreStderr();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.interop.commands.ExecProcess#getStdin <em>Stdin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Stdin</em>'.
+	 * @see org.eclipse.ecl.interop.commands.ExecProcess#getStdin()
+	 * @see #getExecProcess()
+	 * @generated
+	 */
+	EAttribute getExecProcess_Stdin();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.interop.commands.ExecProcessResult <em>Exec Process Result</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -512,6 +532,14 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EXEC_PROCESS__IGNORE_STDERR = eINSTANCE.getExecProcess_IgnoreStderr();
+
+		/**
+		 * The meta object literal for the '<em><b>Stdin</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXEC_PROCESS__STDIN = eINSTANCE.getExecProcess_Stdin();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.interop.commands.impl.ExecProcessResultImpl <em>Exec Process Result</em>}' class.

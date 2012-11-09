@@ -211,6 +211,15 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getExecProcess_Stdin() {
+		return (EAttribute)execProcessEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getExecProcessResult() {
 		return execProcessResultEClass;
 	}
@@ -281,6 +290,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		createEAttribute(execProcessEClass, EXEC_PROCESS__TIMEOUT);
 		createEAttribute(execProcessEClass, EXEC_PROCESS__IGNORE_EXIT_CODE);
 		createEAttribute(execProcessEClass, EXEC_PROCESS__IGNORE_STDERR);
+		createEAttribute(execProcessEClass, EXEC_PROCESS__STDIN);
 
 		execProcessResultEClass = createEClass(EXEC_PROCESS_RESULT);
 		createEAttribute(execProcessResultEClass, EXEC_PROCESS_RESULT__EXIT_CODE);
@@ -335,6 +345,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		initEAttribute(getExecProcess_Timeout(), theEcorePackage.getEInt(), "timeout", "60", 0, 1, ExecProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExecProcess_IgnoreExitCode(), theEcorePackage.getEBoolean(), "ignoreExitCode", "false", 0, 1, ExecProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExecProcess_IgnoreStderr(), theEcorePackage.getEBoolean(), "ignoreStderr", "false", 0, 1, ExecProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExecProcess_Stdin(), theEcorePackage.getEString(), "stdin", null, 0, 1, ExecProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(execProcessResultEClass, ExecProcessResult.class, "ExecProcessResult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getExecProcessResult_ExitCode(), theEcorePackage.getEInt(), "exitCode", null, 0, 1, ExecProcessResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -420,6 +431,12 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "If set to true, command will not fail with error message if stderr is not empty."
+		   });			
+		addAnnotation
+		  (getExecProcess_Stdin(), 
+		   source, 
+		   new String[] {
+			 "description", "String to send to stdin of executed command."
 		   });
 	}
 
@@ -435,7 +452,12 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getInvoke_Object(), 
 		   source, 
 		   new String[] {
-		   });									
+		   });											
+		addAnnotation
+		  (getExecProcess_Stdin(), 
+		   source, 
+		   new String[] {
+		   });	
 	}
 
 } //CommandsPackageImpl
