@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.ecl.interop.commands.CommandsPackage#getExecProcess()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Executes shell command.' returns='Captured output from stdout.'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Executes shell command.' returns='ExecProcessResult filled with execution results: exit code, captured stdout and stderr.'"
  * @generated
  */
 public interface ExecProcess extends Command {
@@ -115,7 +115,7 @@ public interface ExecProcess extends Command {
 	 * @see #setIgnoreExitCode(boolean)
 	 * @see org.eclipse.ecl.interop.commands.CommandsPackage#getExecProcess_IgnoreExitCode()
 	 * @model default="false"
-	 *        annotation="http://www.eclipse.org/ecl/docs description='If set to true, command fails with error message if non-zero exit code returned.'"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='If set to true, command will not fail with error message if non-zero exit code returned.'"
 	 * @generated
 	 */
 	boolean isIgnoreExitCode();
@@ -143,7 +143,7 @@ public interface ExecProcess extends Command {
 	 * @see #setIgnoreStderr(boolean)
 	 * @see org.eclipse.ecl.interop.commands.CommandsPackage#getExecProcess_IgnoreStderr()
 	 * @model default="false"
-	 *        annotation="http://www.eclipse.org/ecl/docs description='If set to true, command fails with error message if stderr is not empty.'"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='If set to true, command will not fail with error message if stderr is not empty.'"
 	 * @generated
 	 */
 	boolean isIgnoreStderr();

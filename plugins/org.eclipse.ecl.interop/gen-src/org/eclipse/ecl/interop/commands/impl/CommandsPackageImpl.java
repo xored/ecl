@@ -389,7 +389,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Executes shell command.",
-			 "returns", "Captured output from stdout."
+			 "returns", "ExecProcessResult filled with execution results: exit code, captured stdout and stderr."
 		   });		
 		addAnnotation
 		  (getExecProcess_Command(), 
@@ -413,13 +413,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getExecProcess_IgnoreExitCode(), 
 		   source, 
 		   new String[] {
-			 "description", "If set to true, command fails with error message if non-zero exit code returned."
+			 "description", "If set to true, command will not fail with error message if non-zero exit code returned."
 		   });		
 		addAnnotation
 		  (getExecProcess_IgnoreStderr(), 
 		   source, 
 		   new String[] {
-			 "description", "If set to true, command fails with error message if stderr is not empty."
+			 "description", "If set to true, command will not fail with error message if stderr is not empty."
 		   });
 	}
 
