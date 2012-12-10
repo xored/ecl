@@ -20,7 +20,7 @@ import org.eclipse.ecl.internal.debug.core.Plugin;
 
 public class DebuggerBaseTransport implements DebuggerTransport {
 
-	public void create(int port, String host) throws CoreException {
+	public synchronized void create(int port, String host) throws CoreException {
 		try {
 			Socket socket = new Socket(host, port);
 			session = new Session(socket) {
@@ -45,12 +45,12 @@ public class DebuggerBaseTransport implements DebuggerTransport {
 	}
 
 	@Override
-	public void request(Event event) {
+	public synchronized void request(Event event) {
 		session.request(event);
 	}
 
 	@Override
-	public void setCallback(DebuggerCallback callback) {
+	public synchronized void setCallback(DebuggerCallback callback) {
 		this.callback = callback;
 	}
 
