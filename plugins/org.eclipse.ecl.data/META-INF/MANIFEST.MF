@@ -7,7 +7,8 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.eclipse.ecl.data.objects,
+Export-Package: org.eclipse.ecl.data.commands,
+ org.eclipse.ecl.data.objects,
  org.eclipse.ecl.data.objects.impl,
  org.eclipse.ecl.data.objects.util
 Require-Bundle: org.eclipse.core.runtime,

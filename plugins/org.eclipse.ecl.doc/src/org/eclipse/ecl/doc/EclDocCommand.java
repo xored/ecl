@@ -95,32 +95,35 @@ public class EclDocCommand implements IEclDocProvider {
 		commandsByName = new HashMap<String, EclDocCommand>();
 
 		for (Object o : EPackage.Registry.INSTANCE.values().toArray()) {
+			try {
+				if (o instanceof EPackage.Descriptor)
+					o = ((EPackage.Descriptor) o).getEPackage();
 
-			if (o instanceof EPackage.Descriptor)
-				o = ((EPackage.Descriptor) o).getEPackage();
-
-			if (!(o instanceof EPackage))
-				continue;
-
-			EPackage p = (EPackage) o;
-			for (EClassifier classifier : p.getEClassifiers()) {
-				if (!(classifier instanceof EClass))
+				if (!(o instanceof EPackage))
 					continue;
 
-				EClass class_ = (EClass) classifier;
-				if (class_.isAbstract()
-						|| !class_.getEAllSuperTypes().contains(COMMAND))
-					continue;
+				EPackage p = (EPackage) o;
+				for (EClassifier classifier : p.getEClassifiers()) {
+					if (!(classifier instanceof EClass))
+						continue;
 
-				EclDocCommand command = new EclDocCommand(class_);
-				if (command.isInternal() || command.isExcluded())
-					continue;
+					EClass class_ = (EClass) classifier;
+					if (class_.isAbstract()
+							|| !class_.getEAllSuperTypes().contains(COMMAND))
+						continue;
 
-				if (commandsByName.containsKey(command.getName()))
-					continue;
+					EclDocCommand command = new EclDocCommand(class_);
+					if (command.isInternal() || command.isExcluded())
+						continue;
 
-				commands.add(command);
-				commandsByName.put(command.getName(), command);
+					if (commandsByName.containsKey(command.getName()))
+						continue;
+
+					commands.add(command);
+					commandsByName.put(command.getName(), command);
+				}
+			} catch (Exception e) {
+				EclDocPlugin.err("Failed to load documentation from: " + o, e);
 			}
 		}
 
