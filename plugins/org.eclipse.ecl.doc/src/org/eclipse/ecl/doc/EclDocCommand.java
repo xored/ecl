@@ -167,7 +167,7 @@ public class EclDocCommand implements IEclDocProvider {
 					} else {
 						w.raw(lower);
 						w.raw(", ");
-						w.raw("∞");
+						w.raw("&infin;");
 					}
 					w.raw(")");
 				}
