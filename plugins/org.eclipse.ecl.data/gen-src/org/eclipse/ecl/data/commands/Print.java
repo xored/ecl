@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.ecl.data.commands.CommandsPackage#getPrint()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Takes a list of objects from input pipe and prints them as a plain-text table into output pipe.' returns='Series of string objects'"
  * @generated
  */
 public interface Print extends Command {

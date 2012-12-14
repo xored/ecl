@@ -556,6 +556,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "URI to a file to read. Currently supported schemes are workspace:/ for files in workspace and file:/ for files on local file system"
+		   });		
+		addAnnotation
+		  (printEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Takes a list of objects from input pipe and prints them as a plain-text table into output pipe.",
+			 "returns", "Series of string objects"
 		   });			
 		addAnnotation
 		  (writeCsvFileEClass, 
@@ -671,7 +678,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	protected void createInputAnnotations() {
-		String source = "http://www.eclipse.org/ecl/input";				
+		String source = "http://www.eclipse.org/ecl/input";					
 		addAnnotation
 		  (getPrint_Input(), 
 		   source, 
