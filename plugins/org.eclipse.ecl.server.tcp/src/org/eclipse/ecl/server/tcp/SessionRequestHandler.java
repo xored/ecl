@@ -23,7 +23,7 @@ final class SessionRequestHandler extends Thread {
 		try {
 			this.socket.setTcpNoDelay(true);
 		} catch (SocketException e) {
-			e.printStackTrace();
+			CorePlugin.log(e);
 		}
 		this.session = EclRuntime.createSession(useJobs);
 	}

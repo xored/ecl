@@ -38,8 +38,13 @@ public class EclTcpServer extends Thread {
 		starting = false;
 		try {
 			while (!isInterrupted()) {
-				Socket client = socket.accept();
-				manager.acceptNewConnection(client);
+				try {
+					Socket client = socket.accept();
+					manager.acceptNewConnection(client);
+				} catch (Exception e) {
+					CorePlugin.log(CorePlugin.err(
+							"Failed to accept connection", e));
+				}
 			}
 			if (socket != null) {
 				socket.close();
