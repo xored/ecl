@@ -78,6 +78,10 @@ public class ExecService implements ICommandService {
 		List<EStructuralFeature> features = CoreUtils.getFeatures(targetClass);
 		Map<String, EStructuralFeature> map = new HashMap<String, EStructuralFeature>();
 		for (EStructuralFeature feature : features) {
+			if (feature.getEAnnotation(CoreUtils.INTERNAL_ANN) != null) {
+				// Skipping internal parameter
+				continue;
+			}
 			String name = feature.getName();
 			if (map.containsKey(name)) {
 				return createErrorStatus(NLS.bind(
@@ -88,6 +92,7 @@ public class ExecService implements ICommandService {
 
 		int i = 0;
 		boolean processUnnamed = canProcessUnnamed(targetClass);
+		boolean fullSet = (params.size() == map.size());
 		for (Parameter param : params) {
 			if (param.eIsSet(CorePackage.eINSTANCE.getParameter_Name())) {
 				processUnnamed = false;
@@ -105,7 +110,7 @@ public class ExecService implements ICommandService {
 			}
 			if (processUnnamed
 					&& feature.getEAnnotation(CoreUtils.INPUT_ANN) != null
-					&& input.size() > 0) {
+					&& (input.size() > 0 && !fullSet)) {
 				// Skipping input parameter
 				feature = features.get(i++);
 			}
