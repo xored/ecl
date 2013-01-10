@@ -76,7 +76,9 @@ public class ExecService implements ICommandService {
 		EClass targetClass = target.eClass();
 
 		List<EStructuralFeature> features = CoreUtils.getFeatures(targetClass);
+		int cmdCommandSize = 0;
 		Map<String, EStructuralFeature> map = new HashMap<String, EStructuralFeature>();
+		boolean hasNonLimited = false;
 		for (EStructuralFeature feature : features) {
 			if (feature.getEAnnotation(CoreUtils.INTERNAL_ANN) != null) {
 				// Skipping internal parameter
@@ -88,11 +90,16 @@ public class ExecService implements ICommandService {
 						"Duplicate parameter name: {0}", name));
 			}
 			map.put(name, feature);
+			int upperBound = feature.getUpperBound();
+			if (upperBound == -1) {
+				hasNonLimited = true;
+			}
+			cmdCommandSize += upperBound;
 		}
 
 		int i = 0;
 		boolean processUnnamed = canProcessUnnamed(targetClass);
-		boolean fullSet = (params.size() == map.size());
+		boolean fullSet = (params.size() == cmdCommandSize) && !hasNonLimited;
 		for (Parameter param : params) {
 			if (param.eIsSet(CorePackage.eINSTANCE.getParameter_Name())) {
 				processUnnamed = false;
@@ -205,8 +212,8 @@ public class ExecService implements ICommandService {
 			throw new RuntimeException("Invalid parameter");
 		}
 		try {
-			//box or unbox
-			if(value instanceof List) {
+			// box or unbox
+			if (value instanceof List) {
 				value = CoreUtils.convert((List<Object>) value, feature);
 			} else {
 				value = CoreUtils.convert(Arrays.asList(value), feature).get(0);
