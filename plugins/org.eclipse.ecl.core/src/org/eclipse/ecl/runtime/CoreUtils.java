@@ -218,7 +218,7 @@ public class CoreUtils {
 		}
 		int lower = feature.getLowerBound();
 		int upper = feature.getUpperBound();
-		if (upper != -1 && actual > upper) {
+		if (upper != -1 && actual > upper && upper != 1) {
 			throw new CoreException(CorePlugin.err(MessageFormat.format(
 					"Parameter {2} is already assigned", actual, upper,
 					feature.getName())));
