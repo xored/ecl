@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipse.ecl.internal.commands;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -57,12 +58,14 @@ public class ExecService implements ICommandService {
 			List<Object> input) throws CoreException, InterruptedException {
 		Command target = CoreUtils.createCommand(fqn.ns, fqn.name);
 
-		IStatus status = evalParameters(target, params, process, input);
+		List<Object> inputList = new ArrayList<Object>(input);
+
+		IStatus status = evalParameters(target, params, process, inputList);
 		if (!status.isOK())
 			return status;
 
 		IPipe inputPipe = process.getSession().createPipe();
-		for (Object o : input)
+		for (Object o : inputList)
 			inputPipe.write(o);
 		inputPipe.close(Status.OK_STATUS);
 		IProcess targetProcess = process.getSession().execute(target,
@@ -80,7 +83,7 @@ public class ExecService implements ICommandService {
 		Map<String, EStructuralFeature> map = new HashMap<String, EStructuralFeature>();
 		boolean hasNonLimited = false;
 		for (EStructuralFeature feature : features) {
-			if (feature.getEAnnotation(CoreUtils.INTERNAL_ANN) != null) {
+			if (isInternalFeature(feature)) {
 				// Skipping internal parameter
 				continue;
 			}
@@ -115,23 +118,34 @@ public class ExecService implements ICommandService {
 				return createErrorStatus(NLS.bind(
 						"Invalid parameter name: {0}", param.getName()));
 			}
-			if (processUnnamed
-					&& feature.getEAnnotation(CoreUtils.INPUT_ANN) != null
+			if (processUnnamed && isInputFeature(feature)
 					&& (input.size() > 0 && !fullSet)) {
 				// Skipping input parameter
 				feature = features.get(i++);
 			}
-			if (feature.getEAnnotation(CoreUtils.INTERNAL_ANN) != null) {
+			if (isInternalFeature(feature)) {
 				// Skipping internal parameter
 				feature = features.get(i++);
 			}
 
 			evalParameterValue(target, param, feature, process, input);
+			if (isInputFeature(feature)) {
+				// Clear input
+				input.clear();
+			}
 			// TODO support any upper bound
 			if (feature.getUpperBound() == -1)
 				i--;
 		}
 		return Status.OK_STATUS;
+	}
+
+	private boolean isInternalFeature(EStructuralFeature feature) {
+		return feature.getEAnnotation(CoreUtils.INTERNAL_ANN) != null;
+	}
+
+	private boolean isInputFeature(EStructuralFeature feature) {
+		return feature.getEAnnotation(CoreUtils.INPUT_ANN) != null;
 	}
 
 	private void evalParameterValue(Command target, Parameter param,
@@ -143,24 +157,11 @@ public class ExecService implements ICommandService {
 			Class<?> instanceClass = feature.getEType().getInstanceClass();
 			try {
 				if (feature.getEType() instanceof EEnum) {
-					EEnum en = (EEnum) feature.getEType();
-					EEnumLiteral eEnumLiteral = en.getEEnumLiteral(literal
-							.getLiteral());
-					if (eEnumLiteral == null) {
-						IStatus status = new Status(IStatus.ERROR,
-								CorePlugin.PLUGIN_ID, "Invalid constant: "
-										+ literal.getLiteral());
-						throw new CoreException(status);
-					}
-					value = eEnumLiteral.getInstance();
+					value = processEnumValue(feature, literal);
 				}
 				// Type to converter thought IParamConverter
 				if (value == null) {
-					IParamConverter<?> converter = ParamConverterManager
-							.getInstance().getConverter(instanceClass);
-					if (converter != null) {
-						value = converter.convert(literal);
-					}
+					value = convertValue(value, literal, instanceClass);
 				}
 
 				if (value == null) {
@@ -191,33 +192,15 @@ public class ExecService implements ICommandService {
 				throw new CoreException(status);
 			}
 		} else if (param instanceof ExecutableParameter) {
-			ExecutableParameter execParam = (ExecutableParameter) param;
-			IPipe childInput = process.getSession().createPipe();
-			IPipe childOutput = process.getSession().createPipe();
-			for (Object o : input)
-				childInput.write(o);
-			childInput.close(Status.OK_STATUS);
-			IProcess childProcess = process.getSession().execute(
-					execParam.getCommand(), childInput, childOutput);
-			IStatus status = childProcess.waitFor();
-			if (!status.isOK())
-				throw new CoreException(status);
-			List<Object> content = CoreUtils.readPipeContent(childOutput);
-			if (content.size() == 1) {
-				value = content.get(0);
-			} else {
-				value = content;
-			}
+			value = processExecutableValue(param, process, input);
 		} else {
 			throw new RuntimeException("Invalid parameter");
 		}
+
 		try {
 			// box or unbox
-			if (value instanceof List) {
-				value = CoreUtils.convert((List<Object>) value, feature);
-			} else {
-				value = CoreUtils.convert(Arrays.asList(value), feature).get(0);
-			}
+			value = processBoxUnbox(feature, value);
+
 			if (feature.getUpperBound() == 1) {
 				target.eSet(feature, value);
 			} else {
@@ -234,6 +217,62 @@ public class ExecService implements ICommandService {
 							+ feature.getName(), cce);
 			throw new CoreException(status);
 		}
+	}
+
+	private Object processBoxUnbox(EStructuralFeature feature, Object value) {
+		if (value instanceof List) {
+			value = CoreUtils.convert((List<Object>) value, feature);
+		} else {
+			value = CoreUtils.convert(Arrays.asList(value), feature).get(0);
+		}
+		return value;
+	}
+
+	private Object processExecutableValue(Parameter param, IProcess process,
+			List<Object> input) throws CoreException, InterruptedException {
+		Object value;
+		ExecutableParameter execParam = (ExecutableParameter) param;
+		IPipe childInput = process.getSession().createPipe();
+		IPipe childOutput = process.getSession().createPipe();
+		for (Object o : input)
+			childInput.write(o);
+		childInput.close(Status.OK_STATUS);
+		IProcess childProcess = process.getSession().execute(
+				execParam.getCommand(), childInput, childOutput);
+		IStatus status = childProcess.waitFor();
+		if (!status.isOK())
+			throw new CoreException(status);
+		List<Object> content = CoreUtils.readPipeContent(childOutput);
+		if (content.size() == 1) {
+			value = content.get(0);
+		} else {
+			value = content;
+		}
+		return value;
+	}
+
+	private Object convertValue(Object value, LiteralParameter literal,
+			Class<?> instanceClass) throws CoreException {
+		IParamConverter<?> converter = ParamConverterManager.getInstance()
+				.getConverter(instanceClass);
+		if (converter != null) {
+			value = converter.convert(literal);
+		}
+		return value;
+	}
+
+	private Object processEnumValue(EStructuralFeature feature,
+			LiteralParameter literal) throws CoreException {
+		Object value;
+		EEnum en = (EEnum) feature.getEType();
+		EEnumLiteral eEnumLiteral = en.getEEnumLiteral(literal.getLiteral());
+		if (eEnumLiteral == null) {
+			IStatus status = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
+					"Invalid constant: " + literal.getLiteral());
+			throw new CoreException(status);
+		}
+		value = eEnumLiteral.getInstance();
+		return value;
 	}
 
 	private Object getBoxedValue(LiteralParameter literal,
