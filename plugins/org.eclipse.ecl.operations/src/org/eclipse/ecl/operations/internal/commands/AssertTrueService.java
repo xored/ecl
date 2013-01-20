@@ -10,7 +10,6 @@ import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
 
 public class AssertTrueService implements ICommandService {
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		if (!(command instanceof AssertTrue)) {

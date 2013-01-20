@@ -13,7 +13,6 @@ import org.eclipse.ecl.runtime.IProcess;
 
 public class LaunchService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		Launch cmd = (Launch) command;

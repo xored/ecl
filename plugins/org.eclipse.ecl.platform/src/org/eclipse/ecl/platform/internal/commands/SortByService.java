@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 
 public class SortByService implements ICommandService {
 
-	@Override
+	
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		SortBy sb = (SortBy) command;
@@ -26,7 +26,7 @@ public class SortByService implements ICommandService {
 		Collections.sort(pipe, new Comparator<Object>() {
 
 			@SuppressWarnings({ "rawtypes", "unchecked" })
-			@Override
+			
 			public int compare(Object o1, Object o2) {
 				if(!(o1 instanceof EObject) || !(o2 instanceof EObject)) {
 					return 0;

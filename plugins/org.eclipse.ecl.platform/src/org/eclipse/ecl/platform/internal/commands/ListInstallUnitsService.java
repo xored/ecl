@@ -11,7 +11,7 @@ import org.eclipse.ecl.runtime.IProcess;
 
 public class ListInstallUnitsService implements ICommandService {
 
-	@Override
+	
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		for (InstallUnit unit : EclPlatformUtil.getInstallUnits()) {

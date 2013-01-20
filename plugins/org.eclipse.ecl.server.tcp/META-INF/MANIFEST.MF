@@ -7,7 +7,7 @@ Bundle-Activator: org.eclipse.ecl.internal.server.tcp.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ecl.core
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.ecl.internal.server.tcp,
  org.eclipse.ecl.server.tcp
 Bundle-Vendor: xored software, Inc.

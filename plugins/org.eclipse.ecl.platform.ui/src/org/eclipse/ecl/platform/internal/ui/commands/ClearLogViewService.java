@@ -16,24 +16,22 @@ import org.eclipse.ui.PlatformUI;
 public class ClearLogViewService implements ICommandService {
 	private static final String LOG_ID = "org.eclipse.pde.runtime.LogView";
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		final Exception[] exceptions = new Exception[1];
 		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 
-			@Override
 			public void run() {
 				try {
 					IWorkbenchPage page = PlatformUI.getWorkbench()
 							.getActiveWorkbenchWindow().getActivePage();
 					IViewPart view = page.findView(LOG_ID);
 					boolean viewOpened = view != null;
-					if(viewOpened) {
+					if (viewOpened) {
 						page.hideView(view);
 					}
 					Platform.getLogFileLocation().toFile().delete();
-					if(viewOpened) {
+					if (viewOpened) {
 						page.showView(LOG_ID);
 					}
 				} catch (PartInitException e) {

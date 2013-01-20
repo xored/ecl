@@ -11,7 +11,6 @@ import org.eclipse.ui.IWorkingSetManager;
 import org.eclipse.ui.PlatformUI;
 
 public class DeleteWorkingSetService implements ICommandService {
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		if(!(command instanceof DeleteWorkingSet)) {

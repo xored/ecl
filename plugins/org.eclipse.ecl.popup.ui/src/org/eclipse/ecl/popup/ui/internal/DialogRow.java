@@ -35,7 +35,6 @@ class DialogRow extends Composite implements IFocusReceiver {
 	
 	protected ICommandReceiver commandReceiver = new ICommandReceiver() {
 		
-		@Override
 		public void commandSelected(String command) {
 			
 		}
@@ -79,11 +78,9 @@ class DialogRow extends Composite implements IFocusReceiver {
 		return result;
 	}
 
-	@Override
 	public void receiveTopFocus() {
 	}
 
-	@Override
 	public void receiveBottomFocus() {
 	}
 }

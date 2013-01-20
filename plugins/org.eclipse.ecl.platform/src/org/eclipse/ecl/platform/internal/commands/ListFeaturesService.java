@@ -14,7 +14,6 @@ import org.eclipse.ecl.runtime.IProcess;
 
 public class ListFeaturesService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		for(IBundleGroupProvider provider : Platform.getBundleGroupProviders()) {

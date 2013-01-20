@@ -24,7 +24,7 @@ import org.osgi.framework.Bundle;
 
 public class ListPluginsService implements ICommandService {
 
-	@Override
+	
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		ListPlugins cmd = (ListPlugins) command;

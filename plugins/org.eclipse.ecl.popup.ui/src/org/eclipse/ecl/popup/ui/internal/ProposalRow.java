@@ -33,11 +33,9 @@ public class ProposalRow extends ResultRow {
 		table.setContentProvider(new ProposalContentProvider());
 		table.getControl().addKeyListener(new KeyListener() {
 
-			@Override
 			public void keyReleased(KeyEvent e) {
 			}
 
-			@Override
 			public void keyPressed(KeyEvent e) {
 
 				switch (e.keyCode) {
@@ -104,17 +102,14 @@ public class ProposalRow extends ResultRow {
 			}
 		}
 
-		@Override
 		public void dispose() {
 		}
 
-		@Override
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
 
 		private static final int LIMIT = 20;
 
-		@Override
 		public Object[] getElements(Object inputElement) {
 			String[] input = splitCmd(inputElement.toString());
 			List<String> result = new ArrayList<String>();

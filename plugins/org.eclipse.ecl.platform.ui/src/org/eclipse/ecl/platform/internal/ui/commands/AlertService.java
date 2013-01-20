@@ -12,25 +12,23 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
 public class AlertService implements ICommandService {
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
-		if(!(command instanceof Alert)) {
+		if (!(command instanceof Alert)) {
 			return Status.CANCEL_STATUS;
 		}
-		
-		final String message = ((Alert) command).getMessage(); 
+
+		final String message = ((Alert) command).getMessage();
 		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-			
-			@Override
 			public void run() {
-				Shell shell = PlatformUI.getWorkbench().getDisplay().getShells()[0];
+				Shell shell = PlatformUI.getWorkbench().getDisplay()
+						.getShells()[0];
 				MessageBox mb = new MessageBox(shell);
 				mb.setMessage(message);
 				mb.open();
 			}
 		});
-		
+
 		return Status.OK_STATUS;
 	}
 

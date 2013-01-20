@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class AssertTablesMatchService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		AssertTablesMatch cmd = (AssertTablesMatch) command;

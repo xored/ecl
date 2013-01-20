@@ -49,12 +49,10 @@ public class CommandSession extends AbstractSession {
 //		session.reconnect();
 	//}
 
-	@Override
 	public void close() throws CoreException {
 		session.close();
 	}
 
-	@Override
 	public boolean isClosed() {
 		return session.isClosed();
 	}

@@ -11,7 +11,7 @@ import org.eclipse.ecl.runtime.IProcess;
 
 public class ListRepositoriesService implements ICommandService {
 
-	@Override
+	
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		for (Repository repo : EclPlatformUtil.listRepositories()) {

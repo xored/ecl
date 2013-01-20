@@ -13,7 +13,7 @@ import org.eclipse.ecl.platform.objects.ObjectsFactory;
 
 public class ListLaunchConfigurationsService implements ICommandService {
 
-	@Override
+	
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		for (ILaunchConfiguration c : DebugPlugin.getDefault().getLaunchManager().getLaunchConfigurations()) {

@@ -68,7 +68,6 @@ public class EclDocParameter implements IEclDocProvider {
 		return efeature.getUpperBound();
 	}
 
-	@Override
 	public void writeEclDoc(EclDocWriter w) throws IOException {
 		String desc = getDocumentation().getDescription();
 		desc = CoreUtils.isBlank(desc) ? getName() : desc;

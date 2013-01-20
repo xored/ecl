@@ -44,12 +44,10 @@ public class DebuggerBaseTransport implements DebuggerTransport {
 		}
 	}
 
-	@Override
 	public synchronized void request(Event event) {
 		session.request(event);
 	}
 
-	@Override
 	public synchronized void setCallback(DebuggerCallback callback) {
 		this.callback = callback;
 	}

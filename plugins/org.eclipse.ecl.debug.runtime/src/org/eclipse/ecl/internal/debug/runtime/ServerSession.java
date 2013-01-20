@@ -58,7 +58,6 @@ public class ServerSession extends Session implements IStackListener {
 		latch.unlock();
 	}
 
-	@Override
 	public void enter(CommandStack stack) {
 		try {
 			StackFrame[] frames = getFrames(stack);
@@ -135,7 +134,6 @@ public class ServerSession extends Session implements IStackListener {
 		}
 	}
 
-	@Override
 	public void exit(CommandStack stack) {
 	}
 

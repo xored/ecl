@@ -21,7 +21,6 @@ import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
 
 public class StopTimeMeasureService implements ICommandService {
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		PerfCounter result = EclPerfPlugin.getDefault().getPerfService()

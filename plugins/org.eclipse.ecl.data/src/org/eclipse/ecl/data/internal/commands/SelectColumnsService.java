@@ -16,7 +16,6 @@ import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
 
 public class SelectColumnsService implements ICommandService {
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws CoreException {
 		if (!(command instanceof SelectColumns)) {

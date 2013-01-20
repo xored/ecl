@@ -8,6 +8,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ecl.parser,
  org.eclipse.ecl.core
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.ecl.eclsh
 Bundle-Vendor: xored software, Inc.

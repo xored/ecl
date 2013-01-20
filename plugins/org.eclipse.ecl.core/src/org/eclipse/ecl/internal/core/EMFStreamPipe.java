@@ -45,17 +45,14 @@ public class EMFStreamPipe implements IPipe, IMarkeredPipe {
 		this.out = new DataOutputStream(out);
 	}
 
-	@Override
 	public void reinit() {
 		closed = false;
 	}
 
-	@Override
 	public void writeCloseMarker() throws CoreException {
 		writeStatus(CLOSE_PIPE_ID);
 	}
 
-	@Override
 	public void closeNoWait() {
 		closed = true;
 	}
@@ -173,7 +170,6 @@ public class EMFStreamPipe implements IPipe, IMarkeredPipe {
 		}
 	}
 
-	@Override
 	public boolean isClosed() {
 		return closed;
 	}

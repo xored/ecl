@@ -48,12 +48,10 @@ public class EclPopupDialog extends PopupDialog {
 				.grab(true, false).applyTo(filterText);
 		filterText.addKeyListener(new KeyListener() {
 
-			@Override
 			public void keyReleased(KeyEvent e) {
 				// do nothing
 			}
 
-			@Override
 			public void keyPressed(KeyEvent e) {
 				switch (e.keyCode) {
 				case SWT.TAB:
@@ -97,24 +95,20 @@ public class EclPopupDialog extends PopupDialog {
 		result.hide();
 		result.setFocusReceiver(new IFocusReceiver() {
 
-			@Override
 			public void receiveTopFocus() {
 				focusFilterText();
 			}
 
-			@Override
 			public void receiveBottomFocus() {
 				history.receiveTopFocus();
 			}
 		});
 		proposals = new ProposalRow(area);
 		proposals.setFocusReceiver(new IFocusReceiver() {
-			@Override
 			public void receiveTopFocus() {
 				focusFilterText();
 			}
 
-			@Override
 			public void receiveBottomFocus() {
 				history.receiveTopFocus();
 			}
@@ -122,7 +116,6 @@ public class EclPopupDialog extends PopupDialog {
 		});
 		proposals.setCommandReceiver(new ICommandReceiver() {
 
-			@Override
 			public void commandSelected(String command) {
 				setFilterText(command);
 			}
@@ -131,7 +124,6 @@ public class EclPopupDialog extends PopupDialog {
 		history.setResults(session.getHistory());
 		history.setFocusReceiver(new IFocusReceiver() {
 
-			@Override
 			public void receiveTopFocus() {
 				if (result.isHidden()) {
 					proposals.receiveBottomFocus();
@@ -140,14 +132,12 @@ public class EclPopupDialog extends PopupDialog {
 				}
 			}
 
-			@Override
 			public void receiveBottomFocus() {
 				focusFilterText();
 			}
 		});
 		history.setCommandReceiver(new ICommandReceiver() {
 
-			@Override
 			public void commandSelected(String command) {
 				setFilterText(command);
 			}
@@ -180,7 +170,6 @@ public class EclPopupDialog extends PopupDialog {
 				final EclResult result = session.exec(command);
 				if (!closed) {
 					getShell().getDisplay().asyncExec(new Runnable() {
-						@Override
 						public void run() {
 							executionDone(result);
 						}

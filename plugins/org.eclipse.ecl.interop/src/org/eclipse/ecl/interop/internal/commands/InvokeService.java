@@ -22,7 +22,6 @@ public class InvokeService implements ICommandService {
 	private static final Object NOT_CONVERTIBLE = new Object();
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@Override
 	public IStatus service(Command command, IProcess context) throws CoreException {
 
 		final Invoke cmd = (Invoke) command;

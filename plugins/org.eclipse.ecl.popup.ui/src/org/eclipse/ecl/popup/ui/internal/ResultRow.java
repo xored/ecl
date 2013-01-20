@@ -45,11 +45,9 @@ class ResultRow extends DialogRow {
 		viewer.setContentProvider(new ResultContentProvider());
 		control.addKeyListener(new KeyListener() {
 
-			@Override
 			public void keyReleased(KeyEvent e) {
 			}
 
-			@Override
 			public void keyPressed(KeyEvent e) {
 				switch (e.keyCode) {
 				case SWT.ARROW_DOWN:
@@ -167,17 +165,14 @@ class ResultRow extends DialogRow {
 
 	private static class ResultContentProvider implements ITreeContentProvider {
 
-		@Override
 		public void dispose() {
 			// do nothing
 		}
 
-		@Override
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 			// do nothing
 		}
 
-		@Override
 		public Object[] getElements(Object inputElement) {
 			if (inputElement instanceof EclResult[]) {
 				EclResult[] results = (EclResult[]) inputElement;
@@ -190,7 +185,6 @@ class ResultRow extends DialogRow {
 			return null;
 		}
 
-		@Override
 		public Object[] getChildren(Object parent) {
 			if (parent instanceof Entry) {
 				return ((Entry) parent).getChildren();
@@ -199,7 +193,6 @@ class ResultRow extends DialogRow {
 			return new Object[0];
 		}
 
-		@Override
 		public Object getParent(Object element) {
 			if (element instanceof Entry) {
 				return ((Entry) element).parent;
@@ -207,7 +200,6 @@ class ResultRow extends DialogRow {
 			return null;
 		}
 
-		@Override
 		public boolean hasChildren(Object element) {
 			if (element instanceof Entry) {
 				return ((Entry) element).getChildren().length > 0;

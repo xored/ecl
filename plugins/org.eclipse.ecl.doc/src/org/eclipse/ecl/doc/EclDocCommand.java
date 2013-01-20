@@ -129,7 +129,6 @@ public class EclDocCommand implements IEclDocProvider {
 		}
 
 		Collections.sort(commands, new Comparator<EclDocCommand>() {
-			@Override
 			public int compare(EclDocCommand a, EclDocCommand b) {
 				return a.getName().compareTo(b.getName());
 			}
@@ -196,7 +195,6 @@ public class EclDocCommand implements IEclDocProvider {
 		w.close();
 	}
 
-	@Override
 	public void writeEclDoc(EclDocWriter w) throws IOException {
 		String desc = getDocumentation().getDescription();
 		desc = CoreUtils.isBlank(desc) ? getName() : desc;

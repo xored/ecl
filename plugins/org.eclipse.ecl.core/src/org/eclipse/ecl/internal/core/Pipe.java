@@ -29,7 +29,6 @@ public class Pipe implements IPipe {
 		queue = new LinkedBlockingQueue<Object>();
 	}
 
-	@Override
 	public boolean isClosed() {
 		return closed;
 	}
@@ -96,7 +95,6 @@ public class Pipe implements IPipe {
 		return this;
 	}
 
-	@Override
 	public void reinit() {
 		status = null;
 		closed = false;

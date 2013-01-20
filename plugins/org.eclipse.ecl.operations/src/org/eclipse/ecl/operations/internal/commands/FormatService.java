@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
 
 public class FormatService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		Format format = (Format) command;

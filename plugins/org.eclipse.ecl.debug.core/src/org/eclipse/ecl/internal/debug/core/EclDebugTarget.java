@@ -66,7 +66,6 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		threads = new IThread[] { thread };
 	}
 
-	@Override
 	public void setTransport(DebuggerTransport transport) {
 		if (this.transport != null) {
 			this.transport.setCallback(null);
@@ -80,17 +79,14 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		return process.getLaunch();
 	}
 
-	@Override
 	public IProcess getProcess() {
 		return process;
 	}
 
-	@Override
 	public boolean hasThreads() throws DebugException {
 		return true;
 	}
 
-	@Override
 	public IThread[] getThreads() throws DebugException {
 		return threads;
 	}
@@ -99,27 +95,22 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		return frames;
 	}
 
-	@Override
 	public IDebugTarget getDebugTarget() {
 		return this;
 	}
 
-	@Override
 	public String getName() throws DebugException {
 		return getLaunch().getLaunchConfiguration().getName();
 	}
 
-	@Override
 	public boolean canTerminate() {
 		return getProcess().canTerminate();
 	}
 
-	@Override
 	public boolean isTerminated() {
 		return getProcess().isTerminated();
 	}
 
-	@Override
 	public void terminate() throws DebugException {
 		if (process.canTerminate()) {
 			getBreakpointManager().removeBreakpointListener(this);
@@ -130,17 +121,14 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		}
 	}
 
-	@Override
 	public boolean canResume() {
 		return !isTerminated() && isSuspended();
 	}
 
-	@Override
 	public boolean canSuspend() {
 		return !isTerminated() && !isSuspended();
 	}
 
-	@Override
 	public boolean isSuspended() {
 		return suspended;
 	}
@@ -149,12 +137,10 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		return stepping;
 	}
 
-	@Override
 	public void suspend() {
 		request(new Event(EventType.SUSPEND));
 	}
 
-	@Override
 	public void resume() {
 		request(new Event(EventType.RESUME));
 	}
@@ -171,7 +157,6 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		request(new Event(EventType.STEP_OVER));
 	}
 
-	@Override
 	public void breakpointAdded(IBreakpoint breakpoint) {
 		try {
 			if (supportsBreakpoint(breakpoint) && breakpoint.isEnabled()) {
@@ -185,7 +170,6 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		}
 	}
 
-	@Override
 	public void breakpointRemoved(IBreakpoint breakpoint, IMarkerDelta delta) {
 		if (supportsBreakpoint(breakpoint)) {
 			try {
@@ -199,7 +183,6 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		}
 	}
 
-	@Override
 	public void breakpointChanged(IBreakpoint breakpoint, IMarkerDelta delta) {
 		if (supportsBreakpoint(breakpoint)) {
 			try {
@@ -214,37 +197,30 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		}
 	}
 
-	@Override
 	public void breakpointManagerEnablementChanged(boolean enabled) {
 		request(new SkipAllEvent(!enabled));
 	}
 
-	@Override
 	public boolean canDisconnect() {
 		return false;
 	}
 
-	@Override
 	public void disconnect() throws DebugException {
 	}
 
-	@Override
 	public boolean isDisconnected() {
 		return false;
 	}
 
-	@Override
 	public boolean supportsStorageRetrieval() {
 		return false;
 	}
 
-	@Override
 	public IMemoryBlock getMemoryBlock(long startAddress, long length)
 			throws DebugException {
 		return null;
 	}
 
-	@Override
 	public boolean supportsBreakpoint(IBreakpoint breakpoint) {
 		if (breakpoint.getModelIdentifier().equals(EclDebug.MODEL)) {
 			try {
@@ -275,7 +251,6 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		transport.request(event);
 	}
 
-	@Override
 	public void handleResponse(Event event) {
 		thread.setBreakpoints(null);
 		switch (event.getType()) {

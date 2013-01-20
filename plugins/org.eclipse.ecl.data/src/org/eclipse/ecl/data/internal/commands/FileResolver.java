@@ -65,14 +65,12 @@ public class FileResolver {
 	private static Map<String, Resolver> resolvers = new HashMap<String, Resolver>();
 	static {
 		resolvers.put("file", new Resolver() {
-			@Override
 			public File resolve(URI uri) {
 				return new File(uri);
 			}
 
 		});
 		resolvers.put("workspace", new Resolver() {
-			@Override
 			public File resolve(URI uri) throws CoreException {
 				try {
 					return ResourcesPlugin.getWorkspace().getRoot()

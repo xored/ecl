@@ -13,7 +13,6 @@ import org.eclipse.ecl.runtime.IProcess;
 
 public class GtService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		if (!(command instanceof Gt)) {

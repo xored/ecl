@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EObject;
 
 public abstract class ConvertService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		if (!(command instanceof Convert)) {

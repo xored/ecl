@@ -26,101 +26,81 @@ public class EclDebugThread extends EclDebugElement implements IThread {
 		this.target = target;
 	}
 
-	@Override
 	public IDebugTarget getDebugTarget() {
 		return target;
 	}
 
-	@Override
 	public boolean canResume() {
 		return !isTerminated() && isSuspended();
 	}
 
-	@Override
 	public boolean canSuspend() {
 		return !isTerminated() && !isSuspended();
 	}
 
-	@Override
 	public boolean isSuspended() {
 		return getDebugTarget().isSuspended();
 	}
 
-	@Override
 	public void resume() throws DebugException {
 		getDebugTarget().resume();
 	}
 
-	@Override
 	public void suspend() throws DebugException {
 		getDebugTarget().suspend();
 	}
 
-	@Override
 	public boolean canStepInto() {
 		return !isTerminated() && isSuspended();
 	}
 
-	@Override
 	public boolean canStepOver() {
 		return !isTerminated() && isSuspended();
 	}
 
-	@Override
 	public boolean canStepReturn() {
 		return false;
 	}
 
-	@Override
 	public boolean isStepping() {
 		return target.isStepping();
 	}
 
-	@Override
 	public void stepInto() throws DebugException {
 		target.step();
 	}
 
-	@Override
 	public void stepOver() throws DebugException {
 		target.stepOver();
 	}
 
-	@Override
 	public void stepReturn() throws DebugException {
 	}
 
-	@Override
 	public boolean canTerminate() {
 		return !isTerminated();
 	}
 
-	@Override
 	public boolean isTerminated() {
 		return getDebugTarget().isTerminated();
 	}
 
-	@Override
 	public void terminate() throws DebugException {
 		getDebugTarget().terminate();
 	}
 
-	@Override
 	public IStackFrame[] getStackFrames() throws DebugException {
 		return target.getFrames();
 	}
 
-	@Override
 	public boolean hasStackFrames() throws DebugException {
 		return getStackFrames().length > 0;
 	}
 
-	@Override
 	public int getPriority() throws DebugException {
 		return 0;
 	}
 
-	@Override
 	public IStackFrame getTopStackFrame() throws DebugException {
 		IStackFrame[] frames = getStackFrames();
 		if (frames.length > 0) {
@@ -129,12 +109,10 @@ public class EclDebugThread extends EclDebugElement implements IThread {
 		return null;
 	}
 
-	@Override
 	public String getName() throws DebugException {
 		return "ECL Thread";
 	}
 
-	@Override
 	public IBreakpoint[] getBreakpoints() {
 		if (breakpoints == null) {
 			return new IBreakpoint[0];

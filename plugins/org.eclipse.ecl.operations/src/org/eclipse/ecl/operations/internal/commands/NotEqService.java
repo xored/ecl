@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class NotEqService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		if (!(command instanceof NotEq)) {

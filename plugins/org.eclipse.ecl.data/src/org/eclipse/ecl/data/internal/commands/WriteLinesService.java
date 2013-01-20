@@ -17,7 +17,6 @@ import org.eclipse.ecl.runtime.IProcess;
 
 public class WriteLinesService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		if (!(command instanceof WriteLines)) {

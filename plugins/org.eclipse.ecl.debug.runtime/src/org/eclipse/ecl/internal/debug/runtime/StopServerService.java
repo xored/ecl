@@ -21,7 +21,6 @@ import org.eclipse.ecl.runtime.IProcess;
 
 public class StopServerService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		StopServer stopCommand = (StopServer) command;

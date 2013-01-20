@@ -24,7 +24,6 @@ import org.eclipse.ecl.runtime.IProcess;
 
 public class DebugScriptService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		DebugScript s = (DebugScript) command;

@@ -12,7 +12,6 @@ import org.eclipse.ecl.runtime.IProcess;
 
 public class AddRepositoryService extends RepositoryService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		AddRepository addSite = (AddRepository) command;

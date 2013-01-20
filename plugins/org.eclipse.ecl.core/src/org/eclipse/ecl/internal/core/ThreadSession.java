@@ -39,7 +39,6 @@ public class ThreadSession extends AbstractRootSession implements ISession {
 			final ICommandService svc, final List<Object> inputContent,
 			final Process process) {
 		cachedPool.execute(new Runnable() {
-			@Override
 			public void run() {
 				internalDoExecute(scriptlet, svc, inputContent, process);
 			}

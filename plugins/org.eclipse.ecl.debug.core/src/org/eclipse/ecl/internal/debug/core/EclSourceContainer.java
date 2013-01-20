@@ -22,7 +22,6 @@ import org.eclipse.debug.core.sourcelookup.containers.AbstractSourceContainer;
 
 public class EclSourceContainer extends AbstractSourceContainer {
 
-	@Override
 	public Object[] findSourceElements(String name) throws CoreException {
 		IPath path = new Path(name);
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
@@ -33,12 +32,10 @@ public class EclSourceContainer extends AbstractSourceContainer {
 		return new Object[0];
 	}
 
-	@Override
 	public String getName() {
 		return "ECL Source Container";
 	}
 
-	@Override
 	public ISourceContainerType getType() {
 		return getSourceContainerType(EclSourceContainerType.ID);
 	}

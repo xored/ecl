@@ -15,7 +15,6 @@ import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
 
 public class RepeatWithService implements ICommandService {
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		if (!(command instanceof RepeatWith)) {

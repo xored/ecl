@@ -21,7 +21,7 @@ import org.eclipse.equinox.p2.query.QueryUtil;
 
 public class UpdateFeatureService implements ICommandService {
 
-	@Override
+	
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		UpdateFeature updateFeature = (UpdateFeature) command;

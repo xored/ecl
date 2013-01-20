@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: ECL Parser
 Bundle-SymbolicName: org.eclipse.ecl.parser;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ecl.core
 Bundle-ActivationPolicy: lazy
