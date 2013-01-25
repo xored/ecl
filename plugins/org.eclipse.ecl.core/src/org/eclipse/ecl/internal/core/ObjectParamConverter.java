@@ -18,19 +18,9 @@ public class ObjectParamConverter implements IParamConverter<Object> {
 
 	public Object convert(LiteralParameter parameter) throws CoreException {
 		String original = parameter.getLiteral();
-		try {
-			return Integer.decode(original);
-		} catch (NumberFormatException e0) {
-			try {
-				return Double.valueOf(original);
-			} catch (NumberFormatException e1) {
-				if (original.equalsIgnoreCase("true")
-						|| original.equalsIgnoreCase("false")) {
-					return Boolean.valueOf(original);
-				}
-				return original;
-			}
-		}
+
+		// current policy is just to return original string value
+		return original;
 	}
 
 	public Class<Object> forType() {
