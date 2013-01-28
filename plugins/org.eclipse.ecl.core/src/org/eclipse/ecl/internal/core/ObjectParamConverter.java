@@ -29,7 +29,6 @@ public class ObjectParamConverter implements IParamConverter<Object> {
 	private static final Map<String, IConverter> CONVERTERS = new HashMap<String, IConverter>();
 	static {
 		multiPut(CONVERTERS, new IConverter() {
-			@Override
 			public Object convert(String value) {
 				try {
 					return Integer.decode(value);
@@ -40,7 +39,6 @@ public class ObjectParamConverter implements IParamConverter<Object> {
 		}, "int", "Integer", Integer.class.getName());
 
 		multiPut(CONVERTERS, new IConverter() {
-			@Override
 			public Object convert(String value) {
 				try {
 					return Double.valueOf(value);
@@ -51,7 +49,6 @@ public class ObjectParamConverter implements IParamConverter<Object> {
 		}, "double", "Double", Double.class.getName());
 
 		multiPut(CONVERTERS, new IConverter() {
-			@Override
 			public Object convert(String value) {
 				return value.equalsIgnoreCase("true")
 						|| value.equalsIgnoreCase("false") ? Boolean
@@ -60,7 +57,6 @@ public class ObjectParamConverter implements IParamConverter<Object> {
 		}, "boolean", "Boolean", Boolean.class.getName());
 
 		multiPut(CONVERTERS, new IConverter() {
-			@Override
 			public Object convert(String value) {
 				return value;
 			}
