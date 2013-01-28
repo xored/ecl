@@ -12,6 +12,8 @@
 
 package org.eclipse.ecl.runtime;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ecl.core.LiteralParameter;
 
@@ -19,6 +21,7 @@ public interface IParamConverter<T> {
 
 	Class<T> forType();
 
-	T convert(LiteralParameter literal) throws CoreException;
+	T convert(LiteralParameter literal, List<String> allowedTypes)
+			throws CoreException;
 
 }

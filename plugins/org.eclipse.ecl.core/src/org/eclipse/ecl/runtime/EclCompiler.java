@@ -175,6 +175,7 @@ public class EclCompiler {
 		if (param instanceof LiteralParameter) {
 			LiteralParameter literal = (LiteralParameter) param;
 			Class<?> instanceClass = feature.getEType().getInstanceClass();
+			List<String> allowedTypes = CoreUtils.getMetaTypeList(feature);
 			try {
 				if (feature.getEType() instanceof EEnum) {
 					EEnum en = (EEnum) feature.getEType();
@@ -193,7 +194,7 @@ public class EclCompiler {
 					IParamConverter<?> converter = ParamConverterManager
 							.getInstance().getConverter(instanceClass);
 					if (converter != null) {
-						value = converter.convert(literal);
+						value = converter.convert(literal, allowedTypes);
 						if (value instanceof Command && inDepth) {
 							value = compile((Command) value, true);
 						}

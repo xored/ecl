@@ -155,17 +155,19 @@ public class ExecService implements ICommandService {
 		if (param instanceof LiteralParameter) {
 			LiteralParameter literal = (LiteralParameter) param;
 			Class<?> instanceClass = feature.getEType().getInstanceClass();
+			List<String> allowedTypes = CoreUtils.getMetaTypeList(feature);
 			try {
 				if (feature.getEType() instanceof EEnum) {
 					value = processEnumValue(feature, literal);
 				}
 				// Type to converter thought IParamConverter
 				if (value == null) {
-					value = convertValue(value, literal, instanceClass);
+					value = convertValue(value, literal, instanceClass,
+							allowedTypes);
 				}
 
 				if (value == null) {
-					value = getBoxedValue(literal, instanceClass);
+					value = getBoxedValue(literal, instanceClass, allowedTypes);
 				}
 				// Type to converter thought EcoreUtil.createFromString
 				if (value == null && feature.getEType() instanceof EDataType) {
@@ -252,11 +254,12 @@ public class ExecService implements ICommandService {
 	}
 
 	private Object convertValue(Object value, LiteralParameter literal,
-			Class<?> instanceClass) throws CoreException {
+			Class<?> instanceClass, List<String> allowedTypes)
+			throws CoreException {
 		IParamConverter<?> converter = ParamConverterManager.getInstance()
 				.getConverter(instanceClass);
 		if (converter != null) {
-			value = converter.convert(literal);
+			value = converter.convert(literal, allowedTypes);
 		}
 		return value;
 	}
@@ -276,7 +279,8 @@ public class ExecService implements ICommandService {
 	}
 
 	private Object getBoxedValue(LiteralParameter literal,
-			Class<?> instanceClass) throws CoreException {
+			Class<?> instanceClass, List<String> allowedTypes)
+			throws CoreException {
 		if (!instanceClass.equals(EObject.class)) {
 			return null;
 		}
@@ -284,7 +288,7 @@ public class ExecService implements ICommandService {
 		IParamConverter<Object> converter = ParamConverterManager.getInstance()
 				.getConverter(Object.class);
 		if (converter != null) {
-			val = converter.convert(literal);
+			val = converter.convert(literal, allowedTypes);
 		}
 
 		return val;

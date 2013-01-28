@@ -25,6 +25,8 @@ import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.internal.core.EMFStreamPipe;
 import org.eclipse.ecl.internal.core.IMarkeredPipe;
+import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -35,6 +37,36 @@ public class CoreUtils {
 
 	public static final String INPUT_ANN = "http://www.eclipse.org/ecl/input";
 	public static final String INTERNAL_ANN = "http://www.eclipse.org/ecl/internal";
+	public static final String META_ANN = "http://www.eclipse.org/ecl/meta";
+
+	public static final String TYPE_DET = "type";
+
+	public static List<String> getMetaTypeList(EStructuralFeature feature) {
+		EAnnotation annotation = feature.getEAnnotation(CoreUtils.META_ANN);
+		if (annotation == null)
+			return null;
+
+		EMap<String, String> details = annotation.getDetails();
+		if (details == null || !details.containsKey(CoreUtils.TYPE_DET))
+			return null;
+
+		String type = details.get(CoreUtils.TYPE_DET);
+		if (type == null || type.length() == 0)
+			return null;
+
+		String[] types = type.split("\\s*\\|\\s*");
+		List<String> result = new ArrayList<String>(types.length);
+		for (String t : types) {
+			if (t.length() == 0)
+				continue;
+			String trimmed = t.trim();
+			if (trimmed.length() == 0)
+				continue;
+			result.add(trimmed);
+		}
+
+		return result;
+	}
 
 	/**
 	 * Creates command parameters class using namespace and name specified

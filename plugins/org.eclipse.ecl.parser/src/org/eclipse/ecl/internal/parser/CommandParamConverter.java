@@ -10,6 +10,8 @@
  ******************************************************************************/
 package org.eclipse.ecl.internal.parser;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.LiteralParameter;
@@ -19,7 +21,8 @@ import org.eclipse.ecl.runtime.IParamConverter;
 
 public class CommandParamConverter implements IParamConverter<Command> {
 
-	public Command convert(LiteralParameter parameter) throws CoreException {
+	public Command convert(LiteralParameter parameter, List<String> allowedTypes)
+			throws CoreException {
 		if (parameter instanceof AstLiteral) {
 			AstLiteral astLiteral = (AstLiteral) parameter;
 			return EclCoreParser.newCommand(parameter.getLiteral(),
