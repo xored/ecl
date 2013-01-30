@@ -13,12 +13,12 @@ import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
 
-final class SessionRequestHandler extends Thread {
+final class SessionRequestHandler implements Runnable {
 	private final Socket socket;
 	private final ISession session;
 
 	SessionRequestHandler(Socket socket, boolean useJobs) {
-		super("ECL tcp session:" + socket.getPort());
+		// super("ECL tcp session:" + socket.getPort());
 		this.socket = socket;
 		try {
 			this.socket.setTcpNoDelay(true);
@@ -32,7 +32,8 @@ final class SessionRequestHandler extends Thread {
 		try {
 			IPipe pipe = CoreUtils.createEMFPipe(socket.getInputStream(),
 					socket.getOutputStream());
-			while (!isInterrupted() && !socket.isClosed()) {
+			while (!Thread.currentThread().isInterrupted()
+					&& !socket.isClosed()) {
 				try {
 					pipe.reinit();
 					Object object = pipe.take(Long.MAX_VALUE);
