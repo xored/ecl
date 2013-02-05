@@ -20,11 +20,12 @@ public class StackFrame {
 	private static final String SEP = ",";
 
 	public static StackFrame fromString(String text) {
-		String[] parts = text.split(SEP);
+		String[] parts = text.split("(?<!\\\\)" + SEP);
+		
 		if (parts.length != 3) {
 			throw new IllegalArgumentException("Invalid stack format: " + text);
 		}
-		String file = parts[0];
+		String file = decode(parts[0]);
 		String command = parts[1];
 		int line = Integer.valueOf(parts[2]);
 		return new StackFrame(file, command, line);
@@ -47,10 +48,19 @@ public class StackFrame {
 	public int getLine() {
 		return line;
 	}
+	
+	
+	private String encode(String s) {
+		return s.replace(",", "\\,");
+	}
+	
+	private static String decode(String s) {
+		return s.replace("\\,", ",");
+	}
 
 	@Override
 	public String toString() {
-		return file + SEP + command + SEP + line;
+		return encode(file) + SEP + command + SEP + line;
 	}
 
 	@Override
