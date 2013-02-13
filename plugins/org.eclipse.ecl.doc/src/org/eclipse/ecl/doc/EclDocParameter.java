@@ -76,7 +76,12 @@ public class EclDocParameter implements IEclDocProvider {
 		w.dl();
 		{
 			w.dt("Type:");
-			w.dd(String.format("%s (%s)", getFriendlyTypeName(), getTypeName()));
+			String typeName = getTypeName();
+			String friendlyTypeName = getFriendlyTypeName();
+			if (!friendlyTypeName.equals(typeName))
+				w.dd(String.format("%s (%s)", friendlyTypeName, typeName));
+			else
+				w.dd(String.format("%s", typeName));
 		}
 		w.close();
 
