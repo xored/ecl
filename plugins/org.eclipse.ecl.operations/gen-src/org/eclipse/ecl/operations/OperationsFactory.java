@@ -161,6 +161,24 @@ public interface OperationsFactory extends EFactory {
 	Repeat createRepeat();
 
 	/**
+	 * Returns a new object of class '<em>Assert Empty</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Assert Empty</em>'.
+	 * @generated
+	 */
+	AssertEmpty createAssertEmpty();
+
+	/**
+	 * Returns a new object of class '<em>Assert Non Empty</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Assert Non Empty</em>'.
+	 * @generated
+	 */
+	AssertNonEmpty createAssertNonEmpty();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

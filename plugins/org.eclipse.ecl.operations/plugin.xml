@@ -85,5 +85,15 @@
             name="Repeat"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.AssertEmptyService"
+            name="AssertEmpty"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.AssertNonEmptyService"
+            name="AssertNonEmpty"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
    </extension>
 </plugin>

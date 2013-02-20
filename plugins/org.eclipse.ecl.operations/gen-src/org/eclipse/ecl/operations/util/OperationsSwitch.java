@@ -204,6 +204,20 @@ public class OperationsSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case OperationsPackage.ASSERT_EMPTY: {
+				AssertEmpty assertEmpty = (AssertEmpty)theEObject;
+				T result = caseAssertEmpty(assertEmpty);
+				if (result == null) result = caseCommand(assertEmpty);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.ASSERT_NON_EMPTY: {
+				AssertNonEmpty assertNonEmpty = (AssertNonEmpty)theEObject;
+				T result = caseAssertNonEmpty(assertNonEmpty);
+				if (result == null) result = caseCommand(assertNonEmpty);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -445,6 +459,36 @@ public class OperationsSwitch<T> {
 	 * @generated
 	 */
 	public T caseRepeat(Repeat object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Assert Empty</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Assert Empty</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAssertEmpty(AssertEmpty object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Assert Non Empty</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Assert Non Empty</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAssertNonEmpty(AssertNonEmpty object) {
 		return null;
 	}
 

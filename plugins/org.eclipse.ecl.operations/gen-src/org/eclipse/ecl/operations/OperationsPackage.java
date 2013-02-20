@@ -917,6 +917,100 @@ public interface OperationsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.AssertEmptyImpl <em>Assert Empty</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.AssertEmptyImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertEmpty()
+	 * @generated
+	 */
+	int ASSERT_EMPTY = 16;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_EMPTY__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_EMPTY__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_EMPTY__MESSAGE = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Assert Empty</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_EMPTY_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.AssertNonEmptyImpl <em>Assert Non Empty</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.AssertNonEmptyImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertNonEmpty()
+	 * @generated
+	 */
+	int ASSERT_NON_EMPTY = 17;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_NON_EMPTY__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_NON_EMPTY__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_NON_EMPTY__MESSAGE = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Assert Non Empty</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSERT_NON_EMPTY_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Eq <em>Eq</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1363,6 +1457,48 @@ public interface OperationsPackage extends EPackage {
 	EAttribute getRepeat_Delay();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.AssertEmpty <em>Assert Empty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Assert Empty</em>'.
+	 * @see org.eclipse.ecl.operations.AssertEmpty
+	 * @generated
+	 */
+	EClass getAssertEmpty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.operations.AssertEmpty#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see org.eclipse.ecl.operations.AssertEmpty#getMessage()
+	 * @see #getAssertEmpty()
+	 * @generated
+	 */
+	EAttribute getAssertEmpty_Message();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.AssertNonEmpty <em>Assert Non Empty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Assert Non Empty</em>'.
+	 * @see org.eclipse.ecl.operations.AssertNonEmpty
+	 * @generated
+	 */
+	EClass getAssertNonEmpty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.operations.AssertNonEmpty#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see org.eclipse.ecl.operations.AssertNonEmpty#getMessage()
+	 * @see #getAssertNonEmpty()
+	 * @generated
+	 */
+	EAttribute getAssertNonEmpty_Message();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1751,6 +1887,42 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute REPEAT__DELAY = eINSTANCE.getRepeat_Delay();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.AssertEmptyImpl <em>Assert Empty</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.AssertEmptyImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertEmpty()
+		 * @generated
+		 */
+		EClass ASSERT_EMPTY = eINSTANCE.getAssertEmpty();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ASSERT_EMPTY__MESSAGE = eINSTANCE.getAssertEmpty_Message();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.AssertNonEmptyImpl <em>Assert Non Empty</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.AssertNonEmptyImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertNonEmpty()
+		 * @generated
+		 */
+		EClass ASSERT_NON_EMPTY = eINSTANCE.getAssertNonEmpty();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ASSERT_NON_EMPTY__MESSAGE = eINSTANCE.getAssertNonEmpty_Message();
 
 	}
 

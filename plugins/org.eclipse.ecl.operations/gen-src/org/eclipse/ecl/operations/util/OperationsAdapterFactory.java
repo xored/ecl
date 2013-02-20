@@ -138,6 +138,14 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 				return createRepeatAdapter();
 			}
 			@Override
+			public Adapter caseAssertEmpty(AssertEmpty object) {
+				return createAssertEmptyAdapter();
+			}
+			@Override
+			public Adapter caseAssertNonEmpty(AssertNonEmpty object) {
+				return createAssertNonEmptyAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -382,6 +390,34 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRepeatAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.AssertEmpty <em>Assert Empty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.AssertEmpty
+	 * @generated
+	 */
+	public Adapter createAssertEmptyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.AssertNonEmpty <em>Assert Non Empty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.AssertNonEmpty
+	 * @generated
+	 */
+	public Adapter createAssertNonEmptyAdapter() {
 		return null;
 	}
 

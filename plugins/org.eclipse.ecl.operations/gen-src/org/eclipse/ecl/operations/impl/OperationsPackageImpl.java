@@ -8,6 +8,8 @@ package org.eclipse.ecl.operations.impl;
 
 import org.eclipse.ecl.core.CorePackage;
 
+import org.eclipse.ecl.operations.AssertEmpty;
+import org.eclipse.ecl.operations.AssertNonEmpty;
 import org.eclipse.ecl.operations.AssertTrue;
 import org.eclipse.ecl.operations.Bool;
 import org.eclipse.ecl.operations.Convert;
@@ -153,6 +155,20 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * @generated
 	 */
 	private EClass repeatEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass assertEmptyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass assertNonEmptyEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -601,6 +617,42 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAssertEmpty() {
+		return assertEmptyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAssertEmpty_Message() {
+		return (EAttribute)assertEmptyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAssertNonEmpty() {
+		return assertNonEmptyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAssertNonEmpty_Message() {
+		return (EAttribute)assertNonEmptyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public OperationsFactory getOperationsFactory() {
 		return (OperationsFactory)getEFactoryInstance();
 	}
@@ -681,6 +733,12 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		createEAttribute(repeatEClass, REPEAT__TIMES);
 		createEReference(repeatEClass, REPEAT__COMMAND);
 		createEAttribute(repeatEClass, REPEAT__DELAY);
+
+		assertEmptyEClass = createEClass(ASSERT_EMPTY);
+		createEAttribute(assertEmptyEClass, ASSERT_EMPTY__MESSAGE);
+
+		assertNonEmptyEClass = createEClass(ASSERT_NON_EMPTY);
+		createEAttribute(assertNonEmptyEClass, ASSERT_NON_EMPTY__MESSAGE);
 	}
 
 	/**
@@ -731,6 +789,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		emitEClass.getESuperTypes().add(theCorePackage.getCommand());
 		repeatWithEClass.getESuperTypes().add(theCorePackage.getCommand());
 		repeatEClass.getESuperTypes().add(theCorePackage.getCommand());
+		assertEmptyEClass.getESuperTypes().add(theCorePackage.getCommand());
+		assertNonEmptyEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -790,6 +850,12 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		initEAttribute(getRepeat_Times(), theEcorePackage.getEIntegerObject(), "times", "1", 1, 1, Repeat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRepeat_Command(), theCorePackage.getCommand(), null, "command", null, 1, 1, Repeat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRepeat_Delay(), theEcorePackage.getEIntegerObject(), "delay", "0", 0, 1, Repeat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(assertEmptyEClass, AssertEmpty.class, "AssertEmpty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAssertEmpty_Message(), theEcorePackage.getEString(), "message", null, 0, 1, AssertEmpty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(assertNonEmptyEClass, AssertNonEmpty.class, "AssertNonEmpty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAssertNonEmpty_Message(), theEcorePackage.getEString(), "message", null, 0, 1, AssertNonEmpty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1008,6 +1074,32 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		   new String[] {
 			 "description", "Execute specified command multiple times.",
 			 "returns", "return\'s -command output if command is successed."
+		   });		
+		addAnnotation
+		  (assertEmptyEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Asserts that input pipe doesn\'t contain anything",
+			 "returns", "Nothing"
+		   });		
+		addAnnotation
+		  (getAssertEmpty_Message(), 
+		   source, 
+		   new String[] {
+			 "description", "Message to fail with when input is not empty"
+		   });		
+		addAnnotation
+		  (assertNonEmptyEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Asserts that input pipe contain something",
+			 "returns", "Nothing"
+		   });		
+		addAnnotation
+		  (getAssertNonEmpty_Message(), 
+		   source, 
+		   new String[] {
+			 "description", "Message to fail with when input is empty"
 		   });
 	}
 
@@ -1063,7 +1155,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (getRepeatWith_Commands(), 
 		   source, 
 		   new String[] {
-		   });	
+		   });					
 	}
 
 	/**
@@ -1078,7 +1170,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });																																
+		   });																																				
 	}
 
 } //OperationsPackageImpl
