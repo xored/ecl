@@ -12,6 +12,7 @@ import org.eclipse.ecl.interop.commands.CommandsFactory;
 import org.eclipse.ecl.interop.commands.CommandsPackage;
 import org.eclipse.ecl.interop.commands.ExecProcess;
 import org.eclipse.ecl.interop.commands.ExecProcessResult;
+import org.eclipse.ecl.interop.commands.Get;
 import org.eclipse.ecl.interop.commands.ExecProcessStatus;
 import org.eclipse.ecl.interop.commands.Invoke;
 
@@ -51,6 +52,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass execProcessResultEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass getEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -256,6 +264,33 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGet() {
+		return getEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGet_Object() {
+		return (EAttribute)getEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGet_PropertyName() {
+		return (EAttribute)getEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommandsFactory getCommandsFactory() {
 		return (CommandsFactory)getEFactoryInstance();
 	}
@@ -296,6 +331,10 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		createEAttribute(execProcessResultEClass, EXEC_PROCESS_RESULT__EXIT_CODE);
 		createEAttribute(execProcessResultEClass, EXEC_PROCESS_RESULT__STDOUT);
 		createEAttribute(execProcessResultEClass, EXEC_PROCESS_RESULT__STDERR);
+
+		getEClass = createEClass(GET);
+		createEAttribute(getEClass, GET__OBJECT);
+		createEAttribute(getEClass, GET__PROPERTY_NAME);
 	}
 
 	/**
@@ -332,6 +371,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		// Add supertypes to classes
 		invokeEClass.getESuperTypes().add(theCorePackage.getCommand());
 		execProcessEClass.getESuperTypes().add(theCorePackage.getCommand());
+		getEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(invokeEClass, Invoke.class, "Invoke", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -351,6 +391,10 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		initEAttribute(getExecProcessResult_ExitCode(), theEcorePackage.getEInt(), "exitCode", null, 0, 1, ExecProcessResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExecProcessResult_Stdout(), theEcorePackage.getEString(), "stdout", null, 0, 1, ExecProcessResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExecProcessResult_Stderr(), theEcorePackage.getEString(), "stderr", null, 0, 1, ExecProcessResult.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(getEClass, Get.class, "Get", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGet_Object(), theEcorePackage.getEJavaObject(), "object", null, 1, 1, Get.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGet_PropertyName(), theEcorePackage.getEString(), "propertyName", null, 1, 1, Get.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -437,7 +481,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "String to send to stdin of executed command."
-		   });
+		   });	
 	}
 
 	/**
@@ -457,7 +501,12 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getExecProcess_Stdin(), 
 		   source, 
 		   new String[] {
-		   });	
+		   });			
+		addAnnotation
+		  (getGet_Object(), 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 } //CommandsPackageImpl

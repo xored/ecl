@@ -86,6 +86,10 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 				return createExecProcessResultAdapter();
 			}
 			@Override
+			public Adapter caseGet(Get object) {
+				return createGetAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -148,6 +152,20 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createExecProcessResultAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.interop.commands.Get <em>Get</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.interop.commands.Get
+	 * @generated
+	 */
+	public Adapter createGetAdapter() {
 		return null;
 	}
 

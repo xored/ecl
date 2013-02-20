@@ -266,6 +266,61 @@ public interface CommandsPackage extends EPackage {
 	int EXEC_PROCESS_RESULT_FEATURE_COUNT = 3;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.interop.commands.impl.GetImpl <em>Get</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.interop.commands.impl.GetImpl
+	 * @see org.eclipse.ecl.interop.commands.impl.CommandsPackageImpl#getGet()
+	 * @generated
+	 */
+	int GET = 3;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Object</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET__OBJECT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Property Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET__PROPERTY_NAME = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Get</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.interop.commands.Invoke <em>Invoke</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -428,6 +483,38 @@ public interface CommandsPackage extends EPackage {
 	EAttribute getExecProcessResult_Stderr();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.interop.commands.Get <em>Get</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Get</em>'.
+	 * @see org.eclipse.ecl.interop.commands.Get
+	 * @generated
+	 */
+	EClass getGet();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.interop.commands.Get#getObject <em>Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Object</em>'.
+	 * @see org.eclipse.ecl.interop.commands.Get#getObject()
+	 * @see #getGet()
+	 * @generated
+	 */
+	EAttribute getGet_Object();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.interop.commands.Get#getPropertyName <em>Property Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Property Name</em>'.
+	 * @see org.eclipse.ecl.interop.commands.Get#getPropertyName()
+	 * @see #getGet()
+	 * @generated
+	 */
+	EAttribute getGet_PropertyName();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -574,6 +661,32 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EXEC_PROCESS_RESULT__STDERR = eINSTANCE.getExecProcessResult_Stderr();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.interop.commands.impl.GetImpl <em>Get</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.interop.commands.impl.GetImpl
+		 * @see org.eclipse.ecl.interop.commands.impl.CommandsPackageImpl#getGet()
+		 * @generated
+		 */
+		EClass GET = eINSTANCE.getGet();
+
+		/**
+		 * The meta object literal for the '<em><b>Object</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GET__OBJECT = eINSTANCE.getGet_Object();
+
+		/**
+		 * The meta object literal for the '<em><b>Property Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GET__PROPERTY_NAME = eINSTANCE.getGet_PropertyName();
 
 	}
 

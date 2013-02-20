@@ -64,6 +64,7 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 			case CommandsPackage.INVOKE: return createInvoke();
 			case CommandsPackage.EXEC_PROCESS: return createExecProcess();
 			case CommandsPackage.EXEC_PROCESS_RESULT: return createExecProcessResult();
+			case CommandsPackage.GET: return createGet();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -97,6 +98,16 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public ExecProcessResult createExecProcessResult() {
 		ExecProcessResultImpl execProcessResult = new ExecProcessResultImpl();
 		return execProcessResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Get createGet() {
+		GetImpl get = new GetImpl();
+		return get;
 	}
 
 	/**
