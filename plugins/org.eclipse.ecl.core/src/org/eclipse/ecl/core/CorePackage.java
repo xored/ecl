@@ -1283,6 +1283,61 @@ public interface CorePackage extends EPackage {
 	int ECL_STACK_TRACE_ENTRY_FEATURE_COUNT = 6;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.WatchImpl <em>Watch</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.WatchImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getWatch()
+	 * @generated
+	 */
+	int WATCH = 30;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WATCH__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WATCH__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WATCH__SOURCE = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>While</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WATCH__WHILE = COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Watch</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WATCH_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1290,7 +1345,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
 	 * @generated
 	 */
-	int THROWABLE = 30;
+	int THROWABLE = 31;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -1931,6 +1986,38 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getEclStackTraceEntry_NativeMethod();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Watch <em>Watch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Watch</em>'.
+	 * @see org.eclipse.ecl.core.Watch
+	 * @generated
+	 */
+	EClass getWatch();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Watch#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Source</em>'.
+	 * @see org.eclipse.ecl.core.Watch#getSource()
+	 * @see #getWatch()
+	 * @generated
+	 */
+	EAttribute getWatch_Source();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.Watch#getWhile <em>While</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>While</em>'.
+	 * @see org.eclipse.ecl.core.Watch#getWhile()
+	 * @see #getWatch()
+	 * @generated
+	 */
+	EReference getWatch_While();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclBoolean <em>Ecl Boolean</em>}'.
@@ -2683,6 +2770,32 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ECL_STACK_TRACE_ENTRY__NATIVE_METHOD = eINSTANCE.getEclStackTraceEntry_NativeMethod();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.WatchImpl <em>Watch</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.WatchImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getWatch()
+		 * @generated
+		 */
+		EClass WATCH = eINSTANCE.getWatch();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WATCH__SOURCE = eINSTANCE.getWatch_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>While</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WATCH__WHILE = eINSTANCE.getWatch_While();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclBooleanImpl <em>Ecl Boolean</em>}' class.

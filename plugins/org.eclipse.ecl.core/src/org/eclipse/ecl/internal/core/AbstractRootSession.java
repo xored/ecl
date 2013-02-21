@@ -45,5 +45,4 @@ public abstract class AbstractRootSession extends AbstractSession {
 	public boolean isClosed() {
 		return closed.get();
 	}
-
 }

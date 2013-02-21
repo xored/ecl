@@ -41,6 +41,7 @@ import org.eclipse.ecl.core.ProcessStatus;
 import org.eclipse.ecl.core.Script;
 import org.eclipse.ecl.core.Sequence;
 import org.eclipse.ecl.core.Serialized;
+import org.eclipse.ecl.core.Watch;
 import org.eclipse.ecl.core.With;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -180,6 +181,13 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	private EClass eclStackTraceEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass watchEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -831,6 +839,33 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getWatch() {
+		return watchEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getWatch_Source() {
+		return (EAttribute)watchEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getWatch_While() {
+		return (EReference)watchEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEclBoolean() {
 		return eclBooleanEClass;
 	}
@@ -1139,6 +1174,10 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEAttribute(eclStackTraceEntryEClass, ECL_STACK_TRACE_ENTRY__LINE_NUMBER);
 		createEAttribute(eclStackTraceEntryEClass, ECL_STACK_TRACE_ENTRY__NATIVE_METHOD);
 
+		watchEClass = createEClass(WATCH);
+		createEAttribute(watchEClass, WATCH__SOURCE);
+		createEReference(watchEClass, WATCH__WHILE);
+
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
 	}
@@ -1193,6 +1232,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		eclBooleanEClass.getESuperTypes().add(this.getBoxedValue());
 		eclCharEClass.getESuperTypes().add(this.getBoxedValue());
 		eclStringEClass.getESuperTypes().add(this.getBoxedValue());
+		watchEClass.getESuperTypes().add(this.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1304,6 +1344,10 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEAttribute(getEclStackTraceEntry_LineNumber(), ecorePackage.getEInt(), "lineNumber", null, 0, 1, EclStackTraceEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEclStackTraceEntry_NativeMethod(), theEcorePackage.getEBoolean(), "nativeMethod", null, 0, 1, EclStackTraceEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(watchEClass, Watch.class, "Watch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWatch_Source(), theEcorePackage.getEString(), "source", null, 1, 1, Watch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWatch_While(), this.getCommand(), null, "while", null, 1, 1, Watch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
@@ -1341,7 +1385,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (execEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });								
 	}
 
 	/**
@@ -1355,7 +1399,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (getForeach_Input(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });							
 	}
 
 	/**
@@ -1390,6 +1434,26 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		   source, 
 		   new String[] {
 			 "description", "Branch being executed on <code>false</code> input. Can be omitted."
+		   });		
+		addAnnotation
+		  (watchEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Watches the state while executing commands.",
+			 "returns", "State difference before and after execution.",
+			 "example", "// assert no new errors while clicking on the button\r\nwatch errorLog {\r\n\tget-button OK | click\r\n} | assert-empty"
+		   });		
+		addAnnotation
+		  (getWatch_Source(), 
+		   source, 
+		   new String[] {
+			 "description", "Data source to watch, for example, <code>errorLog</code>."
+		   });		
+		addAnnotation
+		  (getWatch_While(), 
+		   source, 
+		   new String[] {
+			 "description", "What to execute while watching."
 		   });
 	}
 

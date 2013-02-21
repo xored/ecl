@@ -11,7 +11,9 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.ecl.platform.internal.PlatformPlugin;
+import org.eclipse.ecl.platform.internal.log.LogEntry;
 import org.eclipse.ecl.platform.objects.InstallUnit;
+import org.eclipse.ecl.platform.objects.LogMessage;
 import org.eclipse.ecl.platform.objects.ObjectsFactory;
 import org.eclipse.ecl.platform.objects.Repository;
 import org.eclipse.ecl.platform.objects.UpdateResult;
@@ -197,5 +199,14 @@ public class EclPlatformUtil {
 		// for (int i = 0; i < selfTimestamps.length - 1; i++) {
 		// registry.removeProfile(selfId, selfTimestamps[i]);
 		// }
+	}
+
+	public static LogMessage createMessage(LogEntry entry) {
+		LogMessage result = ObjectsFactory.eINSTANCE.createLogMessage();
+		result.setDateText(entry.getFormattedDate());
+		result.setMessage(entry.getMessage());
+		result.setSeverity(entry.getSeverityText());
+		result.setPluginId(entry.getPluginId());
+		return result;
 	}
 }

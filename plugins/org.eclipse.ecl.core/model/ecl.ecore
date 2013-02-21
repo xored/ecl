@@ -149,4 +149,22 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lineNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nativeMethod" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Watch" eSuperTypes="#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Watches the state while executing commands."/>
+      <details key="returns" value="State difference before and after execution."/>
+      <details key="example" value="// assert no new errors while clicking on the button&#xD;&#xA;watch errorLog {&#xD;&#xA;&#x9;get-button OK | click&#xD;&#xA;} | assert-empty"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Data source to watch, for example, &lt;code>errorLog&lt;/code>."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="while" lowerBound="1" eType="#//Command">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="What to execute while watching."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
 </ecore:EPackage>

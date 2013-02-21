@@ -219,6 +219,15 @@ public interface CoreFactory extends EFactory {
 	EclStackTraceEntry createEclStackTraceEntry();
 
 	/**
+	 * Returns a new object of class '<em>Watch</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Watch</em>'.
+	 * @generated
+	 */
+	Watch createWatch();
+
+	/**
 	 * Returns a new object of class '<em>Ecl Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

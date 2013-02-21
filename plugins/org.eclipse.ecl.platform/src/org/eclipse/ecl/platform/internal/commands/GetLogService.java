@@ -13,8 +13,7 @@ import org.eclipse.ecl.platform.commands.GetLog;
 import org.eclipse.ecl.platform.internal.PlatformPlugin;
 import org.eclipse.ecl.platform.internal.log.LogEntry;
 import org.eclipse.ecl.platform.internal.log.LogReader;
-import org.eclipse.ecl.platform.objects.LogMessage;
-import org.eclipse.ecl.platform.objects.ObjectsFactory;
+import org.eclipse.ecl.platform.util.EclPlatformUtil;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
 
@@ -49,19 +48,10 @@ public class GetLogService implements ICommandService {
 				getLog.getLimit(), false, severitiesToLog);
 
 		for (LogEntry entry : entries) {
-			context.getOutput().write(createMessage(entry));
+			context.getOutput().write(EclPlatformUtil.createMessage(entry));
 		}
 		context.getOutput().close(Status.OK_STATUS);
 		return Status.OK_STATUS;
-	}
-
-	private static LogMessage createMessage(LogEntry entry) {
-		LogMessage result = ObjectsFactory.eINSTANCE.createLogMessage();
-		result.setDateText(entry.getFormattedDate());
-		result.setMessage(entry.getMessage());
-		result.setSeverity(entry.getSeverityText());
-		result.setPluginId(entry.getPluginId());
-		return result;
 	}
 
 }

@@ -99,4 +99,11 @@
             namespace="http://www.eclipse.org/ecl/platform/commands.ecore">
       </scriptlet>
    </extension>
+   <extension
+         point="org.eclipse.ecl.core.watchSource">
+      <watchSource
+            class="org.eclipse.ecl.platform.ErrorLogWatchSource"
+            name="errorLog">
+      </watchSource>
+   </extension>
 </plugin>
