@@ -481,7 +481,26 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "String to send to stdin of executed command."
-		   });	
+		   });		
+		addAnnotation
+		  (getEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Gets the property value of an object.",
+			 "returns", "Property value."
+		   });			
+		addAnnotation
+		  (getGet_Object(), 
+		   source, 
+		   new String[] {
+			 "description", "Object to the get property value from."
+		   });		
+		addAnnotation
+		  (getGet_PropertyName(), 
+		   source, 
+		   new String[] {
+			 "description", "Name of the property to get the value for."
+		   });
 	}
 
 	/**
@@ -501,12 +520,12 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getExecProcess_Stdin(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });				
 		addAnnotation
 		  (getGet_Object(), 
 		   source, 
 		   new String[] {
-		   });
+		   });		
 	}
 
 } //CommandsPackageImpl

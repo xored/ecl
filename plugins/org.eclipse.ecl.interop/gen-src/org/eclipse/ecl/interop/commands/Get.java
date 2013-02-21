@@ -22,7 +22,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.interop.commands.CommandsPackage#getGet()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Gets the property value of an object.' returns='Property value.'"
  * @generated
  */
 public interface Get extends Command {
@@ -38,6 +38,7 @@ public interface Get extends Command {
 	 * @see #setObject(Object)
 	 * @see org.eclipse.ecl.interop.commands.CommandsPackage#getGet_Object()
 	 * @model required="true"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='Object to the get property value from.'"
 	 * @generated
 	 */
 	Object getObject();
@@ -64,6 +65,7 @@ public interface Get extends Command {
 	 * @see #setPropertyName(String)
 	 * @see org.eclipse.ecl.interop.commands.CommandsPackage#getGet_PropertyName()
 	 * @model required="true"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='Name of the property to get the value for.'"
 	 * @generated
 	 */
 	String getPropertyName();
