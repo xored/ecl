@@ -145,6 +145,13 @@ public class CommandsSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CommandsPackage.AS_TABLE_DATA: {
+				AsTableData asTableData = (AsTableData)theEObject;
+				T result = caseAsTableData(asTableData);
+				if (result == null) result = caseCommand(asTableData);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -266,6 +273,21 @@ public class CommandsSwitch<T> {
 	 * @generated
 	 */
 	public T caseReadLines(ReadLines object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>As Table Data</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>As Table Data</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAsTableData(AsTableData object) {
 		return null;
 	}
 

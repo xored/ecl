@@ -494,6 +494,52 @@ public interface CommandsPackage extends EPackage {
 	int READ_LINES_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.impl.AsTableDataImpl <em>As Table Data</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.data.commands.impl.AsTableDataImpl
+	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getAsTableData()
+	 * @generated
+	 */
+	int AS_TABLE_DATA = 8;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AS_TABLE_DATA__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AS_TABLE_DATA__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AS_TABLE_DATA__INPUT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>As Table Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AS_TABLE_DATA_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.IgnoreColumnsMode <em>Ignore Columns Mode</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -501,7 +547,7 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getIgnoreColumnsMode()
 	 * @generated
 	 */
-	int IGNORE_COLUMNS_MODE = 8;
+	int IGNORE_COLUMNS_MODE = 9;
 
 
 	/**
@@ -750,6 +796,27 @@ public interface CommandsPackage extends EPackage {
 	EAttribute getReadLines_Uri();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.data.commands.AsTableData <em>As Table Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>As Table Data</em>'.
+	 * @see org.eclipse.ecl.data.commands.AsTableData
+	 * @generated
+	 */
+	EClass getAsTableData();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.data.commands.AsTableData#getInput <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Input</em>'.
+	 * @see org.eclipse.ecl.data.commands.AsTableData#getInput()
+	 * @see #getAsTableData()
+	 * @generated
+	 */
+	EReference getAsTableData_Input();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.ecl.data.commands.IgnoreColumnsMode <em>Ignore Columns Mode</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -980,6 +1047,24 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute READ_LINES__URI = eINSTANCE.getReadLines_Uri();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.impl.AsTableDataImpl <em>As Table Data</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.data.commands.impl.AsTableDataImpl
+		 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getAsTableData()
+		 * @generated
+		 */
+		EClass AS_TABLE_DATA = eINSTANCE.getAsTableData();
+
+		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference AS_TABLE_DATA__INPUT = eINSTANCE.getAsTableData_Input();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.IgnoreColumnsMode <em>Ignore Columns Mode</em>}' enum.

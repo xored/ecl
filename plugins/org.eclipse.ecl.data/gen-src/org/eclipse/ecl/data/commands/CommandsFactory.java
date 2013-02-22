@@ -98,6 +98,15 @@ public interface CommandsFactory extends EFactory {
 	ReadLines createReadLines();
 
 	/**
+	 * Returns a new object of class '<em>As Table Data</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>As Table Data</em>'.
+	 * @generated
+	 */
+	AsTableData createAsTableData();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

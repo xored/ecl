@@ -42,7 +42,7 @@ public class WriteCsvFileService implements ICommandService {
 
 		try {
 			CSVWriter writer = new CSVWriter(new FileWriter(file));
-			writer.writeNext(columns.toArray(new String[columns.size()]));
+			writer.writeNext(columns.toArray(new String[columns.size()]), false);
 			for (Row row : table.getRows()) {
 				writeRow(writer, row, 0, haveChildren);
 			}
@@ -64,7 +64,7 @@ public class WriteCsvFileService implements ICommandService {
 			values.add(Integer.toString(indent));
 		}
 		values.addAll(row.getValues());
-		writer.writeNext(values.toArray(new String[values.size()]));
+		writer.writeNext(values.toArray(new String[values.size()]), false);
 		for (Row child : row.getChildren()) {
 			writeRow(writer, child, indent + 1, haveChildren);
 		}

@@ -8,6 +8,7 @@ package org.eclipse.ecl.data.commands.impl;
 
 import org.eclipse.ecl.core.CorePackage;
 
+import org.eclipse.ecl.data.commands.AsTableData;
 import org.eclipse.ecl.data.commands.AssertTablesMatch;
 import org.eclipse.ecl.data.commands.CommandsFactory;
 import org.eclipse.ecl.data.commands.CommandsPackage;
@@ -93,6 +94,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass readLinesEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass asTableDataEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -378,6 +386,24 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAsTableData() {
+		return asTableDataEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAsTableData_Input() {
+		return (EReference)asTableDataEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getIgnoreColumnsMode() {
 		return ignoreColumnsModeEEnum;
 	}
@@ -441,6 +467,9 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		readLinesEClass = createEClass(READ_LINES);
 		createEAttribute(readLinesEClass, READ_LINES__URI);
 
+		asTableDataEClass = createEClass(AS_TABLE_DATA);
+		createEReference(asTableDataEClass, AS_TABLE_DATA__INPUT);
+
 		// Create enums
 		ignoreColumnsModeEEnum = createEEnum(IGNORE_COLUMNS_MODE);
 	}
@@ -486,6 +515,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		assertTablesMatchEClass.getESuperTypes().add(theCorePackage.getCommand());
 		writeLinesEClass.getESuperTypes().add(theCorePackage.getCommand());
 		readLinesEClass.getESuperTypes().add(theCorePackage.getCommand());
+		asTableDataEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(readCsvFileEClass, ReadCsvFile.class, "ReadCsvFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -518,6 +548,9 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		initEClass(readLinesEClass, ReadLines.class, "ReadLines", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getReadLines_Uri(), theEcorePackage.getEString(), "uri", null, 0, 1, ReadLines.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(asTableDataEClass, AsTableData.class, "AsTableData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAsTableData_Input(), theEcorePackage.getEObject(), null, "input", null, 1, -1, AsTableData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(ignoreColumnsModeEEnum, IgnoreColumnsMode.class, "IgnoreColumnsMode");
@@ -668,6 +701,19 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "URI to read lines from. Currently supported schemes are workspace:/ for files in workspace and file:/ for files on local file system"
+		   });		
+		addAnnotation
+		  (asTableDataEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Converts its input to table data format, exactly the same as <code>get-table-data</code> returns.",
+			 "returns", "Table data."
+		   });			
+		addAnnotation
+		  (getAsTableData_Input(), 
+		   source, 
+		   new String[] {
+			 "description", "Object(s) to convert from."
 		   });
 	}
 
@@ -698,7 +744,12 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getSelectColumns_Table(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });													
+		addAnnotation
+		  (getAsTableData_Input(), 
+		   source, 
+		   new String[] {
+		   });	
 	}
 
 } //CommandsPackageImpl

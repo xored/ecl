@@ -56,6 +56,11 @@
             name="ReadLines"
             namespace="http://www.eclipse.org/ecl/data/commands.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.data.internal.commands.AsTableDataService"
+            name="AsTableData"
+            namespace="http://www.eclipse.org/ecl/data/commands.ecore">
+      </scriptlet>
    </extension>
 
 </plugin>

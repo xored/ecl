@@ -69,6 +69,7 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 			case CommandsPackage.ASSERT_TABLES_MATCH: return createAssertTablesMatch();
 			case CommandsPackage.WRITE_LINES: return createWriteLines();
 			case CommandsPackage.READ_LINES: return createReadLines();
+			case CommandsPackage.AS_TABLE_DATA: return createAsTableData();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -182,6 +183,16 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public ReadLines createReadLines() {
 		ReadLinesImpl readLines = new ReadLinesImpl();
 		return readLines;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AsTableData createAsTableData() {
+		AsTableDataImpl asTableData = new AsTableDataImpl();
+		return asTableData;
 	}
 
 	/**
