@@ -8,7 +8,7 @@ package org.eclipse.ecl.core.impl;
 
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CorePackage;
-import org.eclipse.ecl.core.Watch;
+import org.eclipse.ecl.core.Listen;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -19,19 +19,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Watch</b></em>'.
+ * An implementation of the model object '<em><b>Listen</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.core.impl.WatchImpl#getSource <em>Source</em>}</li>
- *   <li>{@link org.eclipse.ecl.core.impl.WatchImpl#getWhile <em>While</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.impl.ListenImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.impl.ListenImpl#getWhile <em>While</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class WatchImpl extends CommandImpl implements Watch {
+public class ListenImpl extends CommandImpl implements Listen {
 	/**
 	 * The default value of the '{@link #getSource() <em>Source</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -67,7 +67,7 @@ public class WatchImpl extends CommandImpl implements Watch {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected WatchImpl() {
+	protected ListenImpl() {
 		super();
 	}
 
@@ -78,7 +78,7 @@ public class WatchImpl extends CommandImpl implements Watch {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CorePackage.Literals.WATCH;
+		return CorePackage.Literals.LISTEN;
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class WatchImpl extends CommandImpl implements Watch {
 		String oldSource = source;
 		source = newSource;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.WATCH__SOURCE, oldSource, source));
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.LISTEN__SOURCE, oldSource, source));
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class WatchImpl extends CommandImpl implements Watch {
 			while_ = (Command)eResolveProxy(oldWhile);
 			if (while_ != oldWhile) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CorePackage.WATCH__WHILE, oldWhile, while_));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CorePackage.LISTEN__WHILE, oldWhile, while_));
 			}
 		}
 		return while_;
@@ -137,7 +137,7 @@ public class WatchImpl extends CommandImpl implements Watch {
 		Command oldWhile = while_;
 		while_ = newWhile;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.WATCH__WHILE, oldWhile, while_));
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.LISTEN__WHILE, oldWhile, while_));
 	}
 
 	/**
@@ -148,9 +148,9 @@ public class WatchImpl extends CommandImpl implements Watch {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CorePackage.WATCH__SOURCE:
+			case CorePackage.LISTEN__SOURCE:
 				return getSource();
-			case CorePackage.WATCH__WHILE:
+			case CorePackage.LISTEN__WHILE:
 				if (resolve) return getWhile();
 				return basicGetWhile();
 		}
@@ -165,10 +165,10 @@ public class WatchImpl extends CommandImpl implements Watch {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CorePackage.WATCH__SOURCE:
+			case CorePackage.LISTEN__SOURCE:
 				setSource((String)newValue);
 				return;
-			case CorePackage.WATCH__WHILE:
+			case CorePackage.LISTEN__WHILE:
 				setWhile((Command)newValue);
 				return;
 		}
@@ -183,10 +183,10 @@ public class WatchImpl extends CommandImpl implements Watch {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CorePackage.WATCH__SOURCE:
+			case CorePackage.LISTEN__SOURCE:
 				setSource(SOURCE_EDEFAULT);
 				return;
-			case CorePackage.WATCH__WHILE:
+			case CorePackage.LISTEN__WHILE:
 				setWhile((Command)null);
 				return;
 		}
@@ -201,9 +201,9 @@ public class WatchImpl extends CommandImpl implements Watch {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CorePackage.WATCH__SOURCE:
+			case CorePackage.LISTEN__SOURCE:
 				return SOURCE_EDEFAULT == null ? source != null : !SOURCE_EDEFAULT.equals(source);
-			case CorePackage.WATCH__WHILE:
+			case CorePackage.LISTEN__WHILE:
 				return while_ != null;
 		}
 		return super.eIsSet(featureID);
@@ -225,4 +225,4 @@ public class WatchImpl extends CommandImpl implements Watch {
 		return result.toString();
 	}
 
-} //WatchImpl
+} //ListenImpl

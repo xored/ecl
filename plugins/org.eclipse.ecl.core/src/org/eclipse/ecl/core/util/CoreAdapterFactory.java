@@ -220,8 +220,8 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 				return createEclStackTraceEntryAdapter();
 			}
 			@Override
-			public Adapter caseWatch(Watch object) {
-				return createWatchAdapter();
+			public Adapter caseListen(Listen object) {
+				return createListenAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -538,16 +538,16 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.Watch <em>Watch</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.Listen <em>Listen</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.ecl.core.Watch
+	 * @see org.eclipse.ecl.core.Listen
 	 * @generated
 	 */
-	public Adapter createWatchAdapter() {
+	public Adapter createListenAdapter() {
 		return null;
 	}
 

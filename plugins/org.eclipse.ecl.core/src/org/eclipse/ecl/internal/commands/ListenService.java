@@ -11,23 +11,23 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
-import org.eclipse.ecl.core.IWatchSource;
-import org.eclipse.ecl.core.Watch;
+import org.eclipse.ecl.core.IListenSource;
+import org.eclipse.ecl.core.Listen;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
 
-public class WatchService implements ICommandService {
+public class ListenService implements ICommandService {
 
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
-		Watch watch = (Watch) command;
+		Listen watch = (Listen) command;
 		if (watch.getSource() == null || watch.getSource().length() == 0)
-			return error("Watch source name is not provided.");
+			return error("Listen source name is not provided.");
 
-		IWatchSource source = getSource(watch.getSource());
+		IListenSource source = getSource(watch.getSource());
 		if (source == null)
-			return error("Watch source is not found.");
+			return error("Listen source is not found.");
 
 		Object snapshotA = source.makeSnapshot();
 		context.getSession().execute(watch.getWhile()).waitFor();
@@ -39,25 +39,25 @@ public class WatchService implements ICommandService {
 		return Status.OK_STATUS;
 	}
 
-	private static Map<String, IWatchSource> sources = null;
+	private static Map<String, IListenSource> sources = null;
 
-	private static Map<String, IWatchSource> getSources() throws CoreException {
+	private static Map<String, IListenSource> getSources() throws CoreException {
 		if (sources == null) {
-			sources = new HashMap<String, IWatchSource>();
+			sources = new HashMap<String, IListenSource>();
 
 			IExtensionPoint point = Platform.getExtensionRegistry()
-					.getExtensionPoint("org.eclipse.ecl.core.watchSource");
+					.getExtensionPoint("org.eclipse.ecl.core.listenSource");
 			if (point != null)
 				for (IExtension e : point.getExtensions())
 					for (IConfigurationElement c : e.getConfigurationElements())
-						sources.put(c.getAttribute("name"), (IWatchSource) c
+						sources.put(c.getAttribute("name"), (IListenSource) c
 								.createExecutableExtension("class"));
 		}
 
 		return sources;
 	}
 
-	private static IWatchSource getSource(String name) throws CoreException {
+	private static IListenSource getSource(String name) throws CoreException {
 		return getSources().get(name);
 	}
 

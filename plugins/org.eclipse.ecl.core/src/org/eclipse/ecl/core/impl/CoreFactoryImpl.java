@@ -120,7 +120,7 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.ECL_STRING: return createEclString();
 			case CorePackage.ECL_EXCEPTION: return createEclException();
 			case CorePackage.ECL_STACK_TRACE_ENTRY: return createEclStackTraceEntry();
-			case CorePackage.WATCH: return createWatch();
+			case CorePackage.LISTEN: return createListen();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -371,9 +371,9 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Watch createWatch() {
-		WatchImpl watch = new WatchImpl();
-		return watch;
+	public Listen createListen() {
+		ListenImpl listen = new ListenImpl();
+		return listen;
 	}
 
 	/**

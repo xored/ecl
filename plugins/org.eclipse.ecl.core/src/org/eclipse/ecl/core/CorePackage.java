@@ -1283,14 +1283,14 @@ public interface CorePackage extends EPackage {
 	int ECL_STACK_TRACE_ENTRY_FEATURE_COUNT = 6;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.WatchImpl <em>Watch</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.ListenImpl <em>Listen</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.core.impl.WatchImpl
-	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getWatch()
+	 * @see org.eclipse.ecl.core.impl.ListenImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getListen()
 	 * @generated
 	 */
-	int WATCH = 30;
+	int LISTEN = 30;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1299,7 +1299,7 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WATCH__HOST = COMMAND__HOST;
+	int LISTEN__HOST = COMMAND__HOST;
 
 	/**
 	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
@@ -1308,7 +1308,7 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WATCH__BINDINGS = COMMAND__BINDINGS;
+	int LISTEN__BINDINGS = COMMAND__BINDINGS;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' attribute.
@@ -1317,7 +1317,7 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WATCH__SOURCE = COMMAND_FEATURE_COUNT + 0;
+	int LISTEN__SOURCE = COMMAND_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>While</b></em>' reference.
@@ -1326,16 +1326,16 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WATCH__WHILE = COMMAND_FEATURE_COUNT + 1;
+	int LISTEN__WHILE = COMMAND_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Watch</em>' class.
+	 * The number of structural features of the '<em>Listen</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WATCH_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
+	int LISTEN_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
@@ -1988,36 +1988,36 @@ public interface CorePackage extends EPackage {
 	EAttribute getEclStackTraceEntry_NativeMethod();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Watch <em>Watch</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Listen <em>Listen</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Watch</em>'.
-	 * @see org.eclipse.ecl.core.Watch
+	 * @return the meta object for class '<em>Listen</em>'.
+	 * @see org.eclipse.ecl.core.Listen
 	 * @generated
 	 */
-	EClass getWatch();
+	EClass getListen();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Watch#getSource <em>Source</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Listen#getSource <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Source</em>'.
-	 * @see org.eclipse.ecl.core.Watch#getSource()
-	 * @see #getWatch()
+	 * @see org.eclipse.ecl.core.Listen#getSource()
+	 * @see #getListen()
 	 * @generated
 	 */
-	EAttribute getWatch_Source();
+	EAttribute getListen_Source();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.Watch#getWhile <em>While</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.Listen#getWhile <em>While</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>While</em>'.
-	 * @see org.eclipse.ecl.core.Watch#getWhile()
-	 * @see #getWatch()
+	 * @see org.eclipse.ecl.core.Listen#getWhile()
+	 * @see #getListen()
 	 * @generated
 	 */
-	EReference getWatch_While();
+	EReference getListen_While();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclBoolean <em>Ecl Boolean</em>}'.
@@ -2772,14 +2772,14 @@ public interface CorePackage extends EPackage {
 		EAttribute ECL_STACK_TRACE_ENTRY__NATIVE_METHOD = eINSTANCE.getEclStackTraceEntry_NativeMethod();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.WatchImpl <em>Watch</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ListenImpl <em>Listen</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.core.impl.WatchImpl
-		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getWatch()
+		 * @see org.eclipse.ecl.core.impl.ListenImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getListen()
 		 * @generated
 		 */
-		EClass WATCH = eINSTANCE.getWatch();
+		EClass LISTEN = eINSTANCE.getListen();
 
 		/**
 		 * The meta object literal for the '<em><b>Source</b></em>' attribute feature.
@@ -2787,7 +2787,7 @@ public interface CorePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute WATCH__SOURCE = eINSTANCE.getWatch_Source();
+		EAttribute LISTEN__SOURCE = eINSTANCE.getListen_Source();
 
 		/**
 		 * The meta object literal for the '<em><b>While</b></em>' reference feature.
@@ -2795,7 +2795,7 @@ public interface CorePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WATCH__WHILE = eINSTANCE.getWatch_While();
+		EReference LISTEN__WHILE = eINSTANCE.getListen_While();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclBooleanImpl <em>Ecl Boolean</em>}' class.

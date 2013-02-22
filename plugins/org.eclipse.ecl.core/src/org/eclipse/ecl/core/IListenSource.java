@@ -2,7 +2,7 @@ package org.eclipse.ecl.core;
 
 import java.util.List;
 
-public interface IWatchSource {
+public interface IListenSource {
 
 	Object makeSnapshot();
 

@@ -5,12 +5,12 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.ecl.core.IWatchSource;
+import org.eclipse.ecl.core.IListenSource;
 import org.eclipse.ecl.platform.internal.log.LogEntry;
 import org.eclipse.ecl.platform.internal.log.LogReader;
 import org.eclipse.ecl.platform.util.EclPlatformUtil;
 
-public class ErrorLogWatchSource implements IWatchSource {
+public class ErrorLogListenSource implements IListenSource {
 
 	public Object makeSnapshot() {
 		List<LogEntry> entries = new ArrayList<LogEntry>();

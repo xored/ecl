@@ -320,10 +320,10 @@ public class CoreSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CorePackage.WATCH: {
-				Watch watch = (Watch)theEObject;
-				T result = caseWatch(watch);
-				if (result == null) result = caseCommand(watch);
+			case CorePackage.LISTEN: {
+				Listen listen = (Listen)theEObject;
+				T result = caseListen(listen);
+				if (result == null) result = caseCommand(listen);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -782,17 +782,17 @@ public class CoreSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Watch</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Listen</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Watch</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Listen</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseWatch(Watch object) {
+	public T caseListen(Listen object) {
 		return null;
 	}
 

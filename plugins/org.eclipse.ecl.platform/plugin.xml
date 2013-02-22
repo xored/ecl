@@ -100,9 +100,9 @@
       </scriptlet>
    </extension>
    <extension
-         point="org.eclipse.ecl.core.watchSource">
+         point="org.eclipse.ecl.core.listenSource">
       <watchSource
-            class="org.eclipse.ecl.platform.ErrorLogWatchSource"
+            class="org.eclipse.ecl.platform.ErrorLogListenSource"
             name="errorLog">
       </watchSource>
    </extension>
