@@ -32,12 +32,6 @@ public class GetService implements ICommandService {
 
 	private IStatus getFromEmfObject(EObject object, String propName,
 			IProcess context) throws CoreException {
-		// for (EAttribute attr : object.eClass().getEAllAttributes())
-		// if (attr.getName().equals(propName)) {
-		// context.getOutput().write(object.eGet(attr));
-		// return Status.OK_STATUS;
-		// }
-
 		EStructuralFeature feature = object.eClass().getEStructuralFeature(
 				propName);
 		if (feature == null)
