@@ -37,8 +37,9 @@ public class ScriptStatusConverter implements
 		if (ps.getCause() != null) {
 			IStatus cause = (IStatus) EMFConverterManager.INSTANCE
 					.fromEObject(ps.getCause());
-			return new ScriptErrorStatus(cause, ps.getLine(), ps.getColumn(),
-					ps.getLength());
+			return new ScriptErrorStatus(ps.getSeverity(), ps.getPluginId(),
+					ps.getMessage(), ps.getLine(), ps.getColumn(),
+					ps.getLength(), cause);
 		}
 		return new ScriptErrorStatus(ps.getSeverity(), ps.getPluginId(),
 				ps.getPluginId(), ps.getLine(), ps.getColumn(), ps.getLength());
