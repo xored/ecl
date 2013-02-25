@@ -4,7 +4,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
-import org.eclipse.ecl.interop.commands.Get;
+import org.eclipse.ecl.interop.Get;
 import org.eclipse.ecl.interop.internal.EclInteropPlugin;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;

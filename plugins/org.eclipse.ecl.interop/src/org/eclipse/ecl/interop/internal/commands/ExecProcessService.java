@@ -12,9 +12,9 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
-import org.eclipse.ecl.interop.commands.CommandsFactory;
-import org.eclipse.ecl.interop.commands.ExecProcess;
-import org.eclipse.ecl.interop.commands.ExecProcessResult;
+import org.eclipse.ecl.interop.ExecProcess;
+import org.eclipse.ecl.interop.ExecProcessResult;
+import org.eclipse.ecl.interop.InteropFactory;
 import org.eclipse.ecl.interop.internal.EclInteropPlugin;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
@@ -31,7 +31,7 @@ public class ExecProcessService implements ICommandService {
 			commandLine.append(" ").append(arg);
 
 		Runtime runtime = Runtime.getRuntime();
-		ExecProcessResult result = CommandsFactory.eINSTANCE
+		ExecProcessResult result = InteropFactory.eINSTANCE
 				.createExecProcessResult();
 
 		try {
