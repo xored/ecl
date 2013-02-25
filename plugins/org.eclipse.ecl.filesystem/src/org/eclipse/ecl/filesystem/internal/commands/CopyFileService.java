@@ -33,7 +33,7 @@ public class CopyFileService implements ICommandService {
 		try {
 			File srcFile = new File(src).getCanonicalFile();
 			if (!srcFile.exists())
-				return error("Source file/directory \"%s\" not exists.",
+				return error("Source file/directory \"%s\" does not exist.",
 						srcFile);
 
 			File dstFile = new File(dst).getCanonicalFile();
