@@ -5,8 +5,8 @@
     nsURI="http://www.eclipse.org/ecl/platform/commands.ecore" nsPrefix="platformCommands">
   <eClassifiers xsi:type="ecore:EClass" name="ListPlugins" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
-      <details key="description" value="Lists all available plugins."/>
-      <details key="returns" value="Returns list of all plugins."/>
+      <details key="description" value="Returns list of all plugins."/>
+      <details key="returns" value="Lists all available plugins. "/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="includeDependencies" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
         defaultValueLiteral="false">
@@ -15,8 +15,18 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ListFeatures" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ListRepositories" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ListFeatures" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Returns list of all features."/>
+      <details key="returns" value="Lists all available features. "/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ListRepositories" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value=""/>
+      <details key="returns" value=""/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AddRepository" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
@@ -31,7 +41,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="SortBy" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="field" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ListInstallUnits" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ListInstallUnits" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Returns list of all install units."/>
+      <details key="returns" value="Lists all install units."/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GetLog" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
       <details key="description" value="Returns log entries sorted by timestamp descending."/>

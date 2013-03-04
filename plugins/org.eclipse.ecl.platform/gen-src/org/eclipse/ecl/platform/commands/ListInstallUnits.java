@@ -15,7 +15,7 @@ import org.eclipse.ecl.core.Command;
  *
  *
  * @see org.eclipse.ecl.platform.commands.CommandsPackage#getListInstallUnits()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Returns list of all install units.' returns='Lists all install units.'"
  * @generated
  */
 public interface ListInstallUnits extends Command {

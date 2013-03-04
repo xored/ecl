@@ -21,7 +21,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.platform.commands.CommandsPackage#getListPlugins()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Lists all available plugins.' returns='Returns list of all plugins.'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Returns list of all plugins.' returns='Lists all available plugins. '"
  * @generated
  */
 public interface ListPlugins extends Command {

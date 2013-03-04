@@ -15,7 +15,7 @@ import org.eclipse.ecl.core.Command;
  *
  *
  * @see org.eclipse.ecl.platform.commands.CommandsPackage#getListFeatures()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Returns list of all features.' returns='Lists all available features. '"
  * @generated
  */
 public interface ListFeatures extends Command {

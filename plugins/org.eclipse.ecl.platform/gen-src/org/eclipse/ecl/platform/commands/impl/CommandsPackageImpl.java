@@ -707,14 +707,35 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (listPluginsEClass, 
 		   source, 
 		   new String[] {
-			 "description", "Lists all available plugins.",
-			 "returns", "Returns list of all plugins."
+			 "description", "Returns list of all plugins.",
+			 "returns", "Lists all available plugins. "
 		   });		
 		addAnnotation
 		  (getListPlugins_IncludeDependencies(), 
 		   source, 
 		   new String[] {
 			 "description", "When true, returned plugins includes information about imported packages and bundle dependencies."
+		   });		
+		addAnnotation
+		  (listFeaturesEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Returns list of all features.",
+			 "returns", "Lists all available features. "
+		   });		
+		addAnnotation
+		  (listRepositoriesEClass, 
+		   source, 
+		   new String[] {
+			 "description", "",
+			 "returns", ""
+		   });		
+		addAnnotation
+		  (listInstallUnitsEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Returns list of all install units.",
+			 "returns", "Lists all install units."
 		   });		
 		addAnnotation
 		  (getLogEClass, 
@@ -816,7 +837,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	protected void createInputAnnotations() {
-		String source = "http://www.eclipse.org/ecl/input";								
+		String source = "http://www.eclipse.org/ecl/input";											
 		addAnnotation
 		  (getLog_Message(), 
 		   source, 

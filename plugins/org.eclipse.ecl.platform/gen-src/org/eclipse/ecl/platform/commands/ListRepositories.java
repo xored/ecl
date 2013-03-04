@@ -15,7 +15,7 @@ import org.eclipse.ecl.core.Command;
  *
  *
  * @see org.eclipse.ecl.platform.commands.CommandsPackage#getListRepositories()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='' returns=''"
  * @generated
  */
 public interface ListRepositories extends Command {
