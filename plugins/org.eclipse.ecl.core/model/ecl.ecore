@@ -50,6 +50,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Foreach" eSuperTypes="#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Iterates a specified variable over all values of object's properties. &#xD;&#xA;For each distinct property, a specified statement is executed.&#xD;&#xA;&#xD;&#xA;Syntax&#xD;&#xA;foreach [variable in object] {&#xD;&#xA;  statement&#xD;&#xA;}"/>
+      <details key="returns" value="nothing"/>
+      <details key="example" value="list-launch-configurations | foreach {get name | log}"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="do" eType="#//Command"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="input" unique="false" upperBound="-1"
@@ -85,6 +90,7 @@
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
       <details key="description" value="Based on a condition corresponds either command either from &lt;code>then&lt;/code> or &lt;code>else&lt;/code> branch. "/>
       <details key="returns" value="Output of executed branch"/>
+      <details key="example" value="if [get-property caption -raw | not-eq &quot;Test&quot; ] {&#xD;&#xA;&#x9;select-item&#xD;&#xA;&#x9;get-menu Delete | click&#xD;&#xA;&#x9;get-window &quot;Delete Resources&quot; | get-button OK | click&#xD;&#xA;}"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
       <eAnnotations source="http://www.eclipse.org/ecl/docs">

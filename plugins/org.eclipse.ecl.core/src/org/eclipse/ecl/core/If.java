@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.ecl.core.CorePackage#getIf()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Based on a condition corresponds either command either from <code>then</code> or <code>else</code> branch. ' returns='Output of executed branch'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Based on a condition corresponds either command either from <code>then</code> or <code>else</code> branch. ' returns='Output of executed branch' example='if [get-property caption -raw | not-eq \"Test\" ] {\r\n\tselect-item\r\n\tget-menu Delete | click\r\n\tget-window \"Delete Resources\" | get-button OK | click\r\n}'"
  * @generated
  */
 public interface If extends Command {
