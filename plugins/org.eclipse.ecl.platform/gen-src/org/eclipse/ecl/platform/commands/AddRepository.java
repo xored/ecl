@@ -22,7 +22,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.platform.commands.CommandsPackage#getAddRepository()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Adds p2 repository.' returns='nothing'"
  * @generated
  */
 public interface AddRepository extends Command {

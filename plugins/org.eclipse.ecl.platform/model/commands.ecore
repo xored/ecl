@@ -23,22 +23,39 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ListRepositories" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
-      <details key="description" value=""/>
-      <details key="returns" value=""/>
+      <details key="description" value="Returns list of p2 repositories."/>
+      <details key="returns" value="List of p2 repositories"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AddRepository" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Adds p2 repository."/>
+      <details key="returns" value="nothing"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RemoveRepository" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Removes p2 repository."/>
+      <details key="returns" value="nothing"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UpdateFeature" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Updates feature with defined name."/>
+      <details key="returns" value="nothing"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UpdateAll" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command"/>
   <eClassifiers xsi:type="ecore:EClass" name="SortBy" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Sorts list of objects from input stream by defined field. "/>
+      <details key="returns" value="sorted list of objects"/>
+      <details key="example" value="list-working-sets | sort-by -field name | foreach {get name | log}"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="field" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ListInstallUnits" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">

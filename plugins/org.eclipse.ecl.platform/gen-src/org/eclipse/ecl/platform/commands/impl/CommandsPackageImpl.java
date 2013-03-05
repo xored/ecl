@@ -727,8 +727,37 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (listRepositoriesEClass, 
 		   source, 
 		   new String[] {
-			 "description", "",
-			 "returns", ""
+			 "description", "Returns list of p2 repositories.",
+			 "returns", "List of p2 repositories"
+		   });		
+		addAnnotation
+		  (addRepositoryEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Adds p2 repository.",
+			 "returns", "nothing"
+		   });		
+		addAnnotation
+		  (removeRepositoryEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Removes p2 repository.",
+			 "returns", "nothing"
+		   });		
+		addAnnotation
+		  (updateFeatureEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Updates feature with defined name.",
+			 "returns", "nothing"
+		   });		
+		addAnnotation
+		  (sortByEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Sorts list of objects from input stream by defined field. ",
+			 "returns", "sorted list of objects",
+			 "example", "list-working-sets | sort-by -field name | foreach {get name | log}"
 		   });		
 		addAnnotation
 		  (listInstallUnitsEClass, 
@@ -837,7 +866,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	protected void createInputAnnotations() {
-		String source = "http://www.eclipse.org/ecl/input";											
+		String source = "http://www.eclipse.org/ecl/input";															
 		addAnnotation
 		  (getLog_Message(), 
 		   source, 

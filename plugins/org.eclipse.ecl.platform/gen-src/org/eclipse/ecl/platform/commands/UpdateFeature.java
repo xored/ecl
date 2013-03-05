@@ -21,7 +21,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.platform.commands.CommandsPackage#getUpdateFeature()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Updates feature with defined name.' returns='nothing'"
  * @generated
  */
 public interface UpdateFeature extends Command {

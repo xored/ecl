@@ -21,7 +21,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.platform.commands.CommandsPackage#getSortBy()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Sorts list of objects from input stream by defined field. ' returns='sorted list of objects' example='list-working-sets | sort-by -field name | foreach {get name | log}'"
  * @generated
  */
 public interface SortBy extends Command {

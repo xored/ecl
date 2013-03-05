@@ -15,7 +15,7 @@ import org.eclipse.ecl.core.Command;
  *
  *
  * @see org.eclipse.ecl.platform.commands.CommandsPackage#getListRepositories()
- * @model annotation="http://www.eclipse.org/ecl/docs description='' returns=''"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Returns list of p2 repositories.' returns='List of p2 repositories'"
  * @generated
  */
 public interface ListRepositories extends Command {

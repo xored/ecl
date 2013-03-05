@@ -21,7 +21,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.platform.commands.CommandsPackage#getRemoveRepository()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Removes p2 repository.' returns='nothing'"
  * @generated
  */
 public interface RemoveRepository extends Command {
