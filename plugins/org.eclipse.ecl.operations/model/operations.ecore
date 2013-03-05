@@ -144,6 +144,7 @@
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
       <details key="description" value="Try to execute command, retry times with delay if command are failed.&#xA;Execute catch if all operations is not succesfull. Execute finally in anyway."/>
       <details key="returns" value="return's -command output if command is successed."/>
+      <details key="example" value="try -times 10 -delay 100 -command {&#xD;&#xA;&#x9;// some ECL scripts&#xD;&#xA;}"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="command" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//Command"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="catch" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//Command"/>
@@ -184,7 +185,7 @@
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
       <details key="description" value="Takes list of commands from input pipe and single command as argument and executes them in following order: &#xA;&lt;pre>&#xA;command-from-input-1 | command-from-arg&#xA;command-from-input-2 | command-from-arg&#xA;...&#xA;&lt;/pre>"/>
       <details key="returns" value="Aggregated output of command from argument"/>
-      <details key="example" value="// executes commands:&#xA;// echo 1 | gt 2&#xA;// echo 2 | gt 2&#xA;// echo 3 | gt 2&#xA;// output: false, false, true&#xA;emit { echo 1}, { echo 2}, { echo 3} | repeat-with { gt 2 } "/>
+      <details key="example" value="// executes commands:&#xD;&#xA;// echo 1 | gt 2&#xD;&#xA;// echo 2 | gt 2&#xD;&#xA;// echo 3 | gt 2&#xD;&#xA;// output: false, false, true&#xD;&#xA;emit { echo 1}, { echo 2}, { echo 3} | repeat-with { gt 2 } "/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="commands" unique="false"
         upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">

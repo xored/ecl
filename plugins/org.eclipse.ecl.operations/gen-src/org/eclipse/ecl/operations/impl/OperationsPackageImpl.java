@@ -1030,7 +1030,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		   source, 
 		   new String[] {
 			 "description", "Try to execute command, retry times with delay if command are failed.\nExecute catch if all operations is not succesfull. Execute finally in anyway.",
-			 "returns", "return\'s -command output if command is successed."
+			 "returns", "return\'s -command output if command is successed.",
+			 "example", "try -times 10 -delay 100 -command {\r\n\t// some ECL scripts\r\n}"
 		   });		
 		addAnnotation
 		  (formatEClass, 
@@ -1066,7 +1067,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		   new String[] {
 			 "description", "Takes list of commands from input pipe and single command as argument and executes them in following order: \n<pre>\ncommand-from-input-1 | command-from-arg\ncommand-from-input-2 | command-from-arg\n...\n</pre>",
 			 "returns", "Aggregated output of command from argument",
-			 "example", "// executes commands:\n// echo 1 | gt 2\n// echo 2 | gt 2\n// echo 3 | gt 2\n// output: false, false, true\nemit { echo 1}, { echo 2}, { echo 3} | repeat-with { gt 2 } "
+			 "example", "// executes commands:\r\n// echo 1 | gt 2\r\n// echo 2 | gt 2\r\n// echo 3 | gt 2\r\n// output: false, false, true\r\nemit { echo 1}, { echo 2}, { echo 3} | repeat-with { gt 2 } "
 		   });			
 		addAnnotation
 		  (repeatEClass, 

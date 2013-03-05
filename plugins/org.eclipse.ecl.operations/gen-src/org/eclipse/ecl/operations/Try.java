@@ -25,7 +25,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.operations.OperationsPackage#getTry()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Try to execute command, retry times with delay if command are failed.\nExecute catch if all operations is not succesfull. Execute finally in anyway.' returns='return\'s -command output if command is successed.'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Try to execute command, retry times with delay if command are failed.\nExecute catch if all operations is not succesfull. Execute finally in anyway.' returns='return\'s -command output if command is successed.' example='try -times 10 -delay 100 -command {\r\n\t// some ECL scripts\r\n}'"
  * @generated
  */
 public interface Try extends Command {
