@@ -375,8 +375,52 @@ public class PerfPackageImpl extends EPackageImpl implements PerfPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
+		// http://www.eclipse.org/ecl/docs
+		createDocsAnnotations();
 		// http://www.eclipse.org/ecl/input
 		createInputAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/docs</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createDocsAnnotations() {
+		String source = "http://www.eclipse.org/ecl/docs";		
+		addAnnotation
+		  (startTimeMeasureEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Start measuring time with a certain counter name.",
+			 "returns", "nothing",
+			 "example", "start-time-measure MyCounter\r\n//Some ECL script\r\nstop-time-measure MyCounter | constrain-max duration 2000"
+		   });		
+		addAnnotation
+		  (stopTimeMeasureEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Finishes measuring time. Writes to the output stream the object with fields name and duration, where the name is counterName, and duration - the execution in milliseconds.",
+			 "returns", "object with fields name and the duration of execution in milliseconds",
+			 "example", "start-time-measure MyCounter\r\n//Some ECL script\r\nstop-time-measure MyCounter | constrain-max duration 2000"
+		   });		
+		addAnnotation
+		  (measureTimeEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Takes the name of the counter and the command on execution. Writes to the output stream the object with fields name and duration, where the name is counterName, and duration - the execution in milliseconds.",
+			 "returns", "object with fields name and the duration of execution in milliseconds",
+			 "example", "measure-time \"MyCounterName\" {\r\n   // some ECL script\r\n} | constrain-max duration 2000 \r\n// fail if the operation was more than 2 seconds with a message \r\n//Max constraint violation: \'MyCounterName\' duration is 100500 which is greater than 2000."
+		   });		
+		addAnnotation
+		  (constrainMaxEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Takes a property name and a number. Reads from the input stream object, takes his property and compares with a defined value.",
+			 "returns", "True if received number is less or equal to defined value. False if number is greater than defined value.",
+			 "example", "measure-time \"MyCounterName\" {\r\n   // some ECL script\r\n} | constrain-max duration 2000 \r\n// fail if the operation was more than 2 seconds with a message \r\n//Max constraint violation: \'MyCounterName\' duration is 100500 which is greater than 2000."
+		   });	
 	}
 
 	/**
@@ -386,7 +430,7 @@ public class PerfPackageImpl extends EPackageImpl implements PerfPackage {
 	 * @generated
 	 */
 	protected void createInputAnnotations() {
-		String source = "http://www.eclipse.org/ecl/input";		
+		String source = "http://www.eclipse.org/ecl/input";						
 		addAnnotation
 		  (getConstrainMax_Counter(), 
 		   source, 

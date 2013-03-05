@@ -31,7 +31,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.perf.PerfPackage#getStartTimeMeasure()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Start measuring time with a certain counter name.' returns='nothing' example='start-time-measure MyCounter\r\n//Some ECL script\r\nstop-time-measure MyCounter | constrain-max duration 2000'"
  * @generated
  */
 public interface StartTimeMeasure extends Command {

@@ -32,7 +32,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.perf.PerfPackage#getMeasureTime()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Takes the name of the counter and the command on execution. Writes to the output stream the object with fields name and duration, where the name is counterName, and duration - the execution in milliseconds.' returns='object with fields name and the duration of execution in milliseconds' example='measure-time \"MyCounterName\" {\r\n   // some ECL script\r\n} | constrain-max duration 2000 \r\n// fail if the operation was more than 2 seconds with a message \r\n//Max constraint violation: \'MyCounterName\' duration is 100500 which is greater than 2000.'"
  * @generated
  */
 public interface MeasureTime extends Command {

@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.ecl.perf.PerfPackage#getConstrainMax()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Takes a property name and a number. Reads from the input stream object, takes his property and compares with a defined value.' returns='True if received number is less or equal to defined value. False if number is greater than defined value.' example='measure-time \"MyCounterName\" {\r\n   // some ECL script\r\n} | constrain-max duration 2000 \r\n// fail if the operation was more than 2 seconds with a message \r\n//Max constraint violation: \'MyCounterName\' duration is 100500 which is greater than 2000.'"
  * @generated
  */
 public interface ConstrainMax extends Command {

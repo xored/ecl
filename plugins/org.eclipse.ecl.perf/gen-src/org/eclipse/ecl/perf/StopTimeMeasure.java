@@ -31,7 +31,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.perf.PerfPackage#getStopTimeMeasure()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Finishes measuring time. Writes to the output stream the object with fields name and duration, where the name is counterName, and duration - the execution in milliseconds.' returns='object with fields name and the duration of execution in milliseconds' example='start-time-measure MyCounter\r\n//Some ECL script\r\nstop-time-measure MyCounter | constrain-max duration 2000'"
  * @generated
  */
 public interface StopTimeMeasure extends Command {
