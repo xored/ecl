@@ -128,6 +128,65 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectRows" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Takes a table from input and returns the table with rows filtered by column and criteria."/>
+      <details key="returns" value="Copy of input table object with filtered rows."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="ecore:EClass objects.ecore#//Table">
+      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Table to take columns from"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="column" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Column named to filter rows by."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Pattern to match rows to."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="match" eType="#//RowMatchMode">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Describes the matching behaviour for rows.&#xA;&lt;ul>&#xA;&lt;li>&lt;b>glob&lt;/b> &amp;ndash; wildcard matching&lt;/li>&#xA;&lt;li>&lt;b>exact&lt;/b> &amp;ndash; value should be equals to pattern&lt;/li>&#xA;&lt;li>&lt;b>regext&lt;/b> &amp;ndash; value must match java regular expression&lt;/li>&#xA;&lt;/ul>"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RowMatchMode">
+    <eLiterals name="exact"/>
+    <eLiterals name="glob" value="1"/>
+    <eLiterals name="regexp" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExcludeRows" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Takes a table from input and returns the table with rows filtered by column and criteria."/>
+      <details key="returns" value="Copy of input table object with filtered rows."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="ecore:EClass objects.ecore#//Table">
+      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Table to take columns from"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="column" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Column named to filter rows by."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Pattern to match rows to."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="match" eType="#//RowMatchMode">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Describes the matching behaviour for rows.&#xA;&lt;ul>&#xA;&lt;li>&lt;b>glob&lt;/b> &amp;ndash; wildcard matching&lt;/li>&#xA;&lt;li>&lt;b>exact&lt;/b> &amp;ndash; value should be equals to pattern&lt;/li>&#xA;&lt;li>&lt;b>regext&lt;/b> &amp;ndash; value must match java regular expression&lt;/li>&#xA;&lt;/ul>"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AsTableData" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
       <details key="description" value="Converts its input to table data format, exactly the same as &lt;code>get-table-data&lt;/code> returns."/>

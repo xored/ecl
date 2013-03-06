@@ -40,8 +40,7 @@ public interface AsTableData extends Command {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Input</em>' reference list.
 	 * @see org.eclipse.ecl.data.commands.CommandsPackage#getAsTableData_Input()
-	 * @model required="true"
-	 *        annotation="http://www.eclipse.org/ecl/docs description='Object(s) to convert from.'"
+	 * @model annotation="http://www.eclipse.org/ecl/docs description='Object(s) to convert from.'"
 	 * @generated
 	 */
 	EList<EObject> getInput();

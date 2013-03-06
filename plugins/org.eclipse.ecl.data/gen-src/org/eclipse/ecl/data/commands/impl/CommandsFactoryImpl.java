@@ -69,6 +69,8 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 			case CommandsPackage.ASSERT_TABLES_MATCH: return createAssertTablesMatch();
 			case CommandsPackage.WRITE_LINES: return createWriteLines();
 			case CommandsPackage.READ_LINES: return createReadLines();
+			case CommandsPackage.SELECT_ROWS: return createSelectRows();
+			case CommandsPackage.EXCLUDE_ROWS: return createExcludeRows();
 			case CommandsPackage.AS_TABLE_DATA: return createAsTableData();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -85,6 +87,8 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 		switch (eDataType.getClassifierID()) {
 			case CommandsPackage.IGNORE_COLUMNS_MODE:
 				return createIgnoreColumnsModeFromString(eDataType, initialValue);
+			case CommandsPackage.ROW_MATCH_MODE:
+				return createRowMatchModeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -100,6 +104,8 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 		switch (eDataType.getClassifierID()) {
 			case CommandsPackage.IGNORE_COLUMNS_MODE:
 				return convertIgnoreColumnsModeToString(eDataType, instanceValue);
+			case CommandsPackage.ROW_MATCH_MODE:
+				return convertRowMatchModeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -190,6 +196,26 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SelectRows createSelectRows() {
+		SelectRowsImpl selectRows = new SelectRowsImpl();
+		return selectRows;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExcludeRows createExcludeRows() {
+		ExcludeRowsImpl excludeRows = new ExcludeRowsImpl();
+		return excludeRows;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public AsTableData createAsTableData() {
 		AsTableDataImpl asTableData = new AsTableDataImpl();
 		return asTableData;
@@ -212,6 +238,26 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	 * @generated
 	 */
 	public String convertIgnoreColumnsModeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RowMatchMode createRowMatchModeFromString(EDataType eDataType, String initialValue) {
+		RowMatchMode result = RowMatchMode.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertRowMatchModeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

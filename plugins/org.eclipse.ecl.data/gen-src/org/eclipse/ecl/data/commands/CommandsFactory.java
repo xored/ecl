@@ -98,6 +98,24 @@ public interface CommandsFactory extends EFactory {
 	ReadLines createReadLines();
 
 	/**
+	 * Returns a new object of class '<em>Select Rows</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Select Rows</em>'.
+	 * @generated
+	 */
+	SelectRows createSelectRows();
+
+	/**
+	 * Returns a new object of class '<em>Exclude Rows</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Exclude Rows</em>'.
+	 * @generated
+	 */
+	ExcludeRows createExcludeRows();
+
+	/**
 	 * Returns a new object of class '<em>As Table Data</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

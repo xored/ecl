@@ -13,11 +13,14 @@ import org.eclipse.ecl.data.commands.AssertTablesMatch;
 import org.eclipse.ecl.data.commands.CommandsFactory;
 import org.eclipse.ecl.data.commands.CommandsPackage;
 import org.eclipse.ecl.data.commands.ExcludeColumns;
+import org.eclipse.ecl.data.commands.ExcludeRows;
 import org.eclipse.ecl.data.commands.IgnoreColumnsMode;
 import org.eclipse.ecl.data.commands.Print;
 import org.eclipse.ecl.data.commands.ReadCsvFile;
 import org.eclipse.ecl.data.commands.ReadLines;
+import org.eclipse.ecl.data.commands.RowMatchMode;
 import org.eclipse.ecl.data.commands.SelectColumns;
+import org.eclipse.ecl.data.commands.SelectRows;
 import org.eclipse.ecl.data.commands.WriteCsvFile;
 
 import org.eclipse.ecl.data.commands.WriteLines;
@@ -100,6 +103,20 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass selectRowsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass excludeRowsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass asTableDataEClass = null;
 
 	/**
@@ -108,6 +125,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EEnum ignoreColumnsModeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum rowMatchModeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -386,6 +410,96 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSelectRows() {
+		return selectRowsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSelectRows_Table() {
+		return (EReference)selectRowsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSelectRows_Column() {
+		return (EAttribute)selectRowsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSelectRows_Value() {
+		return (EAttribute)selectRowsEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSelectRows_Match() {
+		return (EAttribute)selectRowsEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExcludeRows() {
+		return excludeRowsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExcludeRows_Table() {
+		return (EReference)excludeRowsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExcludeRows_Column() {
+		return (EAttribute)excludeRowsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExcludeRows_Value() {
+		return (EAttribute)excludeRowsEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExcludeRows_Match() {
+		return (EAttribute)excludeRowsEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAsTableData() {
 		return asTableDataEClass;
 	}
@@ -406,6 +520,15 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 */
 	public EEnum getIgnoreColumnsMode() {
 		return ignoreColumnsModeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getRowMatchMode() {
+		return rowMatchModeEEnum;
 	}
 
 	/**
@@ -467,11 +590,24 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		readLinesEClass = createEClass(READ_LINES);
 		createEAttribute(readLinesEClass, READ_LINES__URI);
 
+		selectRowsEClass = createEClass(SELECT_ROWS);
+		createEReference(selectRowsEClass, SELECT_ROWS__TABLE);
+		createEAttribute(selectRowsEClass, SELECT_ROWS__COLUMN);
+		createEAttribute(selectRowsEClass, SELECT_ROWS__VALUE);
+		createEAttribute(selectRowsEClass, SELECT_ROWS__MATCH);
+
+		excludeRowsEClass = createEClass(EXCLUDE_ROWS);
+		createEReference(excludeRowsEClass, EXCLUDE_ROWS__TABLE);
+		createEAttribute(excludeRowsEClass, EXCLUDE_ROWS__COLUMN);
+		createEAttribute(excludeRowsEClass, EXCLUDE_ROWS__VALUE);
+		createEAttribute(excludeRowsEClass, EXCLUDE_ROWS__MATCH);
+
 		asTableDataEClass = createEClass(AS_TABLE_DATA);
 		createEReference(asTableDataEClass, AS_TABLE_DATA__INPUT);
 
 		// Create enums
 		ignoreColumnsModeEEnum = createEEnum(IGNORE_COLUMNS_MODE);
+		rowMatchModeEEnum = createEEnum(ROW_MATCH_MODE);
 	}
 
 	/**
@@ -515,6 +651,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		assertTablesMatchEClass.getESuperTypes().add(theCorePackage.getCommand());
 		writeLinesEClass.getESuperTypes().add(theCorePackage.getCommand());
 		readLinesEClass.getESuperTypes().add(theCorePackage.getCommand());
+		selectRowsEClass.getESuperTypes().add(theCorePackage.getCommand());
+		excludeRowsEClass.getESuperTypes().add(theCorePackage.getCommand());
 		asTableDataEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
@@ -549,8 +687,20 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		initEClass(readLinesEClass, ReadLines.class, "ReadLines", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getReadLines_Uri(), theEcorePackage.getEString(), "uri", null, 0, 1, ReadLines.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(selectRowsEClass, SelectRows.class, "SelectRows", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSelectRows_Table(), theObjectsPackage.getTable(), null, "table", null, 0, 1, SelectRows.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSelectRows_Column(), theEcorePackage.getEString(), "column", null, 0, 1, SelectRows.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSelectRows_Value(), theEcorePackage.getEString(), "value", null, 0, 1, SelectRows.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSelectRows_Match(), this.getRowMatchMode(), "match", null, 0, 1, SelectRows.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(excludeRowsEClass, ExcludeRows.class, "ExcludeRows", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExcludeRows_Table(), theObjectsPackage.getTable(), null, "table", null, 0, 1, ExcludeRows.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExcludeRows_Column(), theEcorePackage.getEString(), "column", null, 0, 1, ExcludeRows.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExcludeRows_Value(), theEcorePackage.getEString(), "value", null, 0, 1, ExcludeRows.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExcludeRows_Match(), this.getRowMatchMode(), "match", null, 0, 1, ExcludeRows.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(asTableDataEClass, AsTableData.class, "AsTableData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAsTableData_Input(), theEcorePackage.getEObject(), null, "input", null, 1, -1, AsTableData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAsTableData_Input(), theEcorePackage.getEObject(), null, "input", null, 0, -1, AsTableData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(ignoreColumnsModeEEnum, IgnoreColumnsMode.class, "IgnoreColumnsMode");
@@ -558,6 +708,11 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		addEEnumLiteral(ignoreColumnsModeEEnum, IgnoreColumnsMode.LEFT);
 		addEEnumLiteral(ignoreColumnsModeEEnum, IgnoreColumnsMode.RIGHT);
 		addEEnumLiteral(ignoreColumnsModeEEnum, IgnoreColumnsMode.BOTH);
+
+		initEEnum(rowMatchModeEEnum, RowMatchMode.class, "RowMatchMode");
+		addEEnumLiteral(rowMatchModeEEnum, RowMatchMode.EXACT);
+		addEEnumLiteral(rowMatchModeEEnum, RowMatchMode.GLOB);
+		addEEnumLiteral(rowMatchModeEEnum, RowMatchMode.REGEXP);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -703,6 +858,68 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 			 "description", "URI to read lines from. Currently supported schemes are workspace:/ for files in workspace and file:/ for files on local file system"
 		   });		
 		addAnnotation
+		  (selectRowsEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Takes a table from input and returns the table with rows filtered by column and criteria.",
+			 "returns", "Copy of input table object with filtered rows."
+		   });			
+		addAnnotation
+		  (getSelectRows_Table(), 
+		   source, 
+		   new String[] {
+			 "description", "Table to take columns from"
+		   });		
+		addAnnotation
+		  (getSelectRows_Column(), 
+		   source, 
+		   new String[] {
+			 "description", "Column named to filter rows by."
+		   });		
+		addAnnotation
+		  (getSelectRows_Value(), 
+		   source, 
+		   new String[] {
+			 "description", "Pattern to match rows to."
+		   });		
+		addAnnotation
+		  (getSelectRows_Match(), 
+		   source, 
+		   new String[] {
+			 "description", "Describes the matching behaviour for rows.\n<ul>\n<li><b>glob</b> &ndash; wildcard matching</li>\n<li><b>exact</b> &ndash; value should be equals to pattern</li>\n<li><b>regext</b> &ndash; value must match java regular expression</li>\n</ul>"
+		   });		
+		addAnnotation
+		  (excludeRowsEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Takes a table from input and returns the table with rows filtered by column and criteria.",
+			 "returns", "Copy of input table object with filtered rows."
+		   });			
+		addAnnotation
+		  (getExcludeRows_Table(), 
+		   source, 
+		   new String[] {
+			 "description", "Table to take columns from"
+		   });		
+		addAnnotation
+		  (getExcludeRows_Column(), 
+		   source, 
+		   new String[] {
+			 "description", "Column named to filter rows by."
+		   });		
+		addAnnotation
+		  (getExcludeRows_Value(), 
+		   source, 
+		   new String[] {
+			 "description", "Pattern to match rows to."
+		   });		
+		addAnnotation
+		  (getExcludeRows_Match(), 
+		   source, 
+		   new String[] {
+			 "description", "Describes the matching behaviour for rows.\n<ul>\n<li><b>glob</b> &ndash; wildcard matching</li>\n<li><b>exact</b> &ndash; value should be equals to pattern</li>\n<li><b>regext</b> &ndash; value must match java regular expression</li>\n</ul>"
+		   });		
+		addAnnotation
 		  (asTableDataEClass, 
 		   source, 
 		   new String[] {
@@ -745,6 +962,16 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 		   });													
+		addAnnotation
+		  (getSelectRows_Table(), 
+		   source, 
+		   new String[] {
+		   });							
+		addAnnotation
+		  (getExcludeRows_Table(), 
+		   source, 
+		   new String[] {
+		   });							
 		addAnnotation
 		  (getAsTableData_Input(), 
 		   source, 

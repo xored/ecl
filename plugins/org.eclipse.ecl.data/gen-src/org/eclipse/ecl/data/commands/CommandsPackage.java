@@ -494,6 +494,152 @@ public interface CommandsPackage extends EPackage {
 	int READ_LINES_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.impl.SelectRowsImpl <em>Select Rows</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.data.commands.impl.SelectRowsImpl
+	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getSelectRows()
+	 * @generated
+	 */
+	int SELECT_ROWS = 8;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_ROWS__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_ROWS__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Table</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_ROWS__TABLE = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Column</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_ROWS__COLUMN = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_ROWS__VALUE = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Match</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_ROWS__MATCH = CorePackage.COMMAND_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Select Rows</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_ROWS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.impl.ExcludeRowsImpl <em>Exclude Rows</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.data.commands.impl.ExcludeRowsImpl
+	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getExcludeRows()
+	 * @generated
+	 */
+	int EXCLUDE_ROWS = 9;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCLUDE_ROWS__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCLUDE_ROWS__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Table</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCLUDE_ROWS__TABLE = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Column</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCLUDE_ROWS__COLUMN = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCLUDE_ROWS__VALUE = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Match</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCLUDE_ROWS__MATCH = CorePackage.COMMAND_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Exclude Rows</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCLUDE_ROWS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 4;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.impl.AsTableDataImpl <em>As Table Data</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -501,7 +647,7 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getAsTableData()
 	 * @generated
 	 */
-	int AS_TABLE_DATA = 8;
+	int AS_TABLE_DATA = 10;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -547,7 +693,18 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getIgnoreColumnsMode()
 	 * @generated
 	 */
-	int IGNORE_COLUMNS_MODE = 9;
+	int IGNORE_COLUMNS_MODE = 11;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.RowMatchMode <em>Row Match Mode</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.data.commands.RowMatchMode
+	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getRowMatchMode()
+	 * @generated
+	 */
+	int ROW_MATCH_MODE = 12;
 
 
 	/**
@@ -796,6 +953,114 @@ public interface CommandsPackage extends EPackage {
 	EAttribute getReadLines_Uri();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.data.commands.SelectRows <em>Select Rows</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Select Rows</em>'.
+	 * @see org.eclipse.ecl.data.commands.SelectRows
+	 * @generated
+	 */
+	EClass getSelectRows();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.data.commands.SelectRows#getTable <em>Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Table</em>'.
+	 * @see org.eclipse.ecl.data.commands.SelectRows#getTable()
+	 * @see #getSelectRows()
+	 * @generated
+	 */
+	EReference getSelectRows_Table();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.data.commands.SelectRows#getColumn <em>Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Column</em>'.
+	 * @see org.eclipse.ecl.data.commands.SelectRows#getColumn()
+	 * @see #getSelectRows()
+	 * @generated
+	 */
+	EAttribute getSelectRows_Column();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.data.commands.SelectRows#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.ecl.data.commands.SelectRows#getValue()
+	 * @see #getSelectRows()
+	 * @generated
+	 */
+	EAttribute getSelectRows_Value();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.data.commands.SelectRows#getMatch <em>Match</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Match</em>'.
+	 * @see org.eclipse.ecl.data.commands.SelectRows#getMatch()
+	 * @see #getSelectRows()
+	 * @generated
+	 */
+	EAttribute getSelectRows_Match();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.data.commands.ExcludeRows <em>Exclude Rows</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Exclude Rows</em>'.
+	 * @see org.eclipse.ecl.data.commands.ExcludeRows
+	 * @generated
+	 */
+	EClass getExcludeRows();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.data.commands.ExcludeRows#getTable <em>Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Table</em>'.
+	 * @see org.eclipse.ecl.data.commands.ExcludeRows#getTable()
+	 * @see #getExcludeRows()
+	 * @generated
+	 */
+	EReference getExcludeRows_Table();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.data.commands.ExcludeRows#getColumn <em>Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Column</em>'.
+	 * @see org.eclipse.ecl.data.commands.ExcludeRows#getColumn()
+	 * @see #getExcludeRows()
+	 * @generated
+	 */
+	EAttribute getExcludeRows_Column();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.data.commands.ExcludeRows#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.ecl.data.commands.ExcludeRows#getValue()
+	 * @see #getExcludeRows()
+	 * @generated
+	 */
+	EAttribute getExcludeRows_Value();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.data.commands.ExcludeRows#getMatch <em>Match</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Match</em>'.
+	 * @see org.eclipse.ecl.data.commands.ExcludeRows#getMatch()
+	 * @see #getExcludeRows()
+	 * @generated
+	 */
+	EAttribute getExcludeRows_Match();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.data.commands.AsTableData <em>As Table Data</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -825,6 +1090,16 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getIgnoreColumnsMode();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.ecl.data.commands.RowMatchMode <em>Row Match Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Row Match Mode</em>'.
+	 * @see org.eclipse.ecl.data.commands.RowMatchMode
+	 * @generated
+	 */
+	EEnum getRowMatchMode();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1049,6 +1324,90 @@ public interface CommandsPackage extends EPackage {
 		EAttribute READ_LINES__URI = eINSTANCE.getReadLines_Uri();
 
 		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.impl.SelectRowsImpl <em>Select Rows</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.data.commands.impl.SelectRowsImpl
+		 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getSelectRows()
+		 * @generated
+		 */
+		EClass SELECT_ROWS = eINSTANCE.getSelectRows();
+
+		/**
+		 * The meta object literal for the '<em><b>Table</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SELECT_ROWS__TABLE = eINSTANCE.getSelectRows_Table();
+
+		/**
+		 * The meta object literal for the '<em><b>Column</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SELECT_ROWS__COLUMN = eINSTANCE.getSelectRows_Column();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SELECT_ROWS__VALUE = eINSTANCE.getSelectRows_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Match</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SELECT_ROWS__MATCH = eINSTANCE.getSelectRows_Match();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.impl.ExcludeRowsImpl <em>Exclude Rows</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.data.commands.impl.ExcludeRowsImpl
+		 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getExcludeRows()
+		 * @generated
+		 */
+		EClass EXCLUDE_ROWS = eINSTANCE.getExcludeRows();
+
+		/**
+		 * The meta object literal for the '<em><b>Table</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXCLUDE_ROWS__TABLE = eINSTANCE.getExcludeRows_Table();
+
+		/**
+		 * The meta object literal for the '<em><b>Column</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXCLUDE_ROWS__COLUMN = eINSTANCE.getExcludeRows_Column();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXCLUDE_ROWS__VALUE = eINSTANCE.getExcludeRows_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Match</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXCLUDE_ROWS__MATCH = eINSTANCE.getExcludeRows_Match();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.impl.AsTableDataImpl <em>As Table Data</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1075,6 +1434,16 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum IGNORE_COLUMNS_MODE = eINSTANCE.getIgnoreColumnsMode();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.RowMatchMode <em>Row Match Mode</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.data.commands.RowMatchMode
+		 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getRowMatchMode()
+		 * @generated
+		 */
+		EEnum ROW_MATCH_MODE = eINSTANCE.getRowMatchMode();
 
 	}
 

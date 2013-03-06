@@ -145,6 +145,20 @@ public class CommandsSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CommandsPackage.SELECT_ROWS: {
+				SelectRows selectRows = (SelectRows)theEObject;
+				T result = caseSelectRows(selectRows);
+				if (result == null) result = caseCommand(selectRows);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommandsPackage.EXCLUDE_ROWS: {
+				ExcludeRows excludeRows = (ExcludeRows)theEObject;
+				T result = caseExcludeRows(excludeRows);
+				if (result == null) result = caseCommand(excludeRows);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case CommandsPackage.AS_TABLE_DATA: {
 				AsTableData asTableData = (AsTableData)theEObject;
 				T result = caseAsTableData(asTableData);
@@ -273,6 +287,36 @@ public class CommandsSwitch<T> {
 	 * @generated
 	 */
 	public T caseReadLines(ReadLines object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Select Rows</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Select Rows</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSelectRows(SelectRows object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Exclude Rows</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Exclude Rows</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExcludeRows(ExcludeRows object) {
 		return null;
 	}
 
