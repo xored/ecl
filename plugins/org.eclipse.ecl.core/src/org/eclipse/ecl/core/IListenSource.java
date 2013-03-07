@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface IListenSource {
 
-	Object makeSnapshot();
+	Object begin();
 
-	List<Object> difference(Object snapshotA, Object snapshotB);
+	List<Object> finish(Object data);
 
 }

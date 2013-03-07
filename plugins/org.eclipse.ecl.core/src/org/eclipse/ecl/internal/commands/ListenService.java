@@ -1,6 +1,7 @@
 package org.eclipse.ecl.internal.commands;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.CoreException;
@@ -23,20 +24,34 @@ public class ListenService implements ICommandService {
 			throws InterruptedException, CoreException {
 		Listen watch = (Listen) command;
 		if (watch.getSource() == null || watch.getSource().length() == 0)
-			return error("Listen source name is not provided.");
+			return error("Listen source name attribute is not provided.");
 
 		IListenSource source = getSource(watch.getSource());
 		if (source == null)
-			return error("Listen source is not found.");
+			return error("Listen source attribute is not found.");
 
-		Object snapshotA = source.makeSnapshot();
-		context.getSession().execute(watch.getWhile()).waitFor();
-		Object snapshotB = source.makeSnapshot();
+		if (watch.getWhile() == null) {
+			return error("Listen while attribute is not found.");
+		}
 
-		for (Object o : source.difference(snapshotA, snapshotB))
-			context.getOutput().write(o);
-
-		return Status.OK_STATUS;
+		Object snapshot = source.begin();
+		IStatus waitFor = context.getSession().execute(watch.getWhile())
+				.waitFor();
+		try {
+			if (!waitFor.isOK()) {
+				return waitFor;
+			}
+			List<Object> result = source.finish(snapshot);
+			source = null;
+			for (Object o : result) {
+				context.getOutput().write(o);
+			}
+			return Status.OK_STATUS;
+		} finally {
+			if (source != null) {
+				source.finish(snapshot);
+			}
+		}
 	}
 
 	private static Map<String, IListenSource> sources = null;
