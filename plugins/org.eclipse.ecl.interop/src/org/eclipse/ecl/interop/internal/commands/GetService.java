@@ -1,5 +1,7 @@
 package org.eclipse.ecl.interop.internal.commands;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -36,8 +38,14 @@ public class GetService implements ICommandService {
 				propName);
 		if (feature == null)
 			return error(String.format("No such property \"%s\".", propName));
-
-		context.getOutput().write(object.eGet(feature));
+		Object result = object.eGet(feature);
+		if (result instanceof List) {
+			for (Object item : (List) result) {
+				context.getOutput().write(item);
+			}
+		} else {
+			context.getOutput().write(result);
+		}
 		return Status.OK_STATUS;
 	}
 
