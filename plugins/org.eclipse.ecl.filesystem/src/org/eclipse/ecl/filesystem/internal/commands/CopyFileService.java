@@ -72,10 +72,8 @@ public class CopyFileService implements ICommandService {
 
 		Files.copy(src, dst);
 		try {
-			if (src.canExecute()) {
-				if (!dst.setExecutable(true, false)) {
-					dst.setExecutable(true, true);
-				}
+			if (src.canExecute() && !dst.setExecutable(true, true)) {
+				EclFilesystemPlugin.logWarning(String.format("Can't set executable permissions for %s", dst.getAbsolutePath()), null);
 			}
 		} catch(SecurityException e) {
 			EclFilesystemPlugin.logWarning(String.format("Can't set executable permissions for %s", dst.getAbsolutePath()), e);
