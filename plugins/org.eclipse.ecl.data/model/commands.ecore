@@ -132,6 +132,7 @@
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
       <details key="description" value="Takes a table from input and returns the table with rows filtered by column and criteria."/>
       <details key="returns" value="Copy of input table object with filtered rows."/>
+      <details key="example" value="select-rows -column &quot;columnName&quot; -value &quot;value&quot; -match exact|glob|regex"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="ecore:EClass objects.ecore#//Table">
       <eAnnotations source="http://www.eclipse.org/ecl/input"/>
@@ -164,6 +165,7 @@
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
       <details key="description" value="Takes a table from input and returns the table with rows filtered by column and criteria."/>
       <details key="returns" value="Copy of input table object with filtered rows."/>
+      <details key="example" value="exclude-rows -column &quot;columnName&quot; -value &quot;value&quot; -match exact|glob|regex"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="ecore:EClass objects.ecore#//Table">
       <eAnnotations source="http://www.eclipse.org/ecl/input"/>

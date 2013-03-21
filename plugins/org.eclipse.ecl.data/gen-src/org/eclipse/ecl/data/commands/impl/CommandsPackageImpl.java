@@ -862,7 +862,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Takes a table from input and returns the table with rows filtered by column and criteria.",
-			 "returns", "Copy of input table object with filtered rows."
+			 "returns", "Copy of input table object with filtered rows.",
+			 "example", "select-rows -column \"columnName\" -value \"value\" -match exact|glob|regex"
 		   });			
 		addAnnotation
 		  (getSelectRows_Table(), 
@@ -893,7 +894,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Takes a table from input and returns the table with rows filtered by column and criteria.",
-			 "returns", "Copy of input table object with filtered rows."
+			 "returns", "Copy of input table object with filtered rows.",
+			 "example", "exclude-rows -column \"columnName\" -value \"value\" -match exact|glob|regex"
 		   });			
 		addAnnotation
 		  (getExcludeRows_Table(), 

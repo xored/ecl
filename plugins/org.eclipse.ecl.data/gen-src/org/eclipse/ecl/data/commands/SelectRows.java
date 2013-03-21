@@ -26,7 +26,7 @@ import org.eclipse.ecl.data.objects.Table;
  * </p>
  *
  * @see org.eclipse.ecl.data.commands.CommandsPackage#getSelectRows()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Takes a table from input and returns the table with rows filtered by column and criteria.' returns='Copy of input table object with filtered rows.'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Takes a table from input and returns the table with rows filtered by column and criteria.' returns='Copy of input table object with filtered rows.' example='select-rows -column \"columnName\" -value \"value\" -match exact|glob|regex'"
  * @generated
  */
 public interface SelectRows extends Command {
