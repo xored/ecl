@@ -29,14 +29,14 @@ import org.eclipse.ui.views.IViewDescriptor;
 
 public class ShowViewsService implements ICommandService {
 
-	@Override
-	public IStatus service(Command command, IProcess context) throws InterruptedException, CoreException {
+	public IStatus service(Command command, IProcess context)
+			throws InterruptedException, CoreException {
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		final List<View> views = new ArrayList<View>();
 		workbench.getDisplay().syncExec(new Runnable() {
-			@Override
 			public void run() {
-				for (IViewDescriptor descriptor : workbench.getViewRegistry().getViews()) {
+				for (IViewDescriptor descriptor : workbench.getViewRegistry()
+						.getViews()) {
 					View view = ViewFactory.eINSTANCE.createView();
 					view.setId(descriptor.getId());
 					view.setLabel(descriptor.getLabel());

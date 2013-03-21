@@ -23,7 +23,6 @@ import org.eclipse.ui.PlatformUI;
 
 public class ShowViewService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		ShowView view = (ShowView) command;
@@ -31,7 +30,6 @@ public class ShowViewService implements ICommandService {
 		final Exception[] exceptions = new Exception[1];
 		PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 
-			@Override
 			public void run() {
 				try {
 					PlatformUI.getWorkbench().getActiveWorkbenchWindow()
