@@ -70,16 +70,24 @@ public class CopyFileService implements ICommandService {
 			return error("Unable to create the destination directory \"%s\".",
 					parent);
 
+		doCopyFile(src, dst);
+		
+		return Status.OK_STATUS;
+	}
+
+	private static void doCopyFile(File src, File dst) throws IOException {
 		Files.copy(src, dst);
 		try {
 			if (src.canExecute() && !dst.setExecutable(true, true)) {
-				EclFilesystemPlugin.logWarning(String.format("Can't set executable permissions for %s", dst.getAbsolutePath()), null);
+				EclFilesystemPlugin.logWarning(String.format(
+						"Can't set executable permissions for %s",
+						dst.getAbsolutePath()), null);
 			}
-		} catch(SecurityException e) {
-			EclFilesystemPlugin.logWarning(String.format("Can't set executable permissions for %s", dst.getAbsolutePath()), e);
+		} catch (SecurityException e) {
+			EclFilesystemPlugin.logWarning(String.format(
+					"Can't set executable permissions for %s",
+					dst.getAbsolutePath()), e);
 		}
-		
-		return Status.OK_STATUS;
 	}
 
 	private static IStatus copyDirectory(File src, File dst) throws IOException {
@@ -113,7 +121,7 @@ public class CopyFileService implements ICommandService {
 			throws IOException {
 		for (File f : src.listFiles()) {
 			if (f.isFile())
-				Files.copy(f, new File(dst, f.getName()));
+				doCopyFile(f, new File(dst, f.getName()));
 			else if (f.isDirectory()) {
 				File dir = new File(dst, f.getName());
 				if (!dir.exists() && !dir.mkdirs())
