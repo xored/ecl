@@ -313,6 +313,52 @@ public interface CommandsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.GetHotkeyImpl <em>Get Hotkey</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.GetHotkeyImpl
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getGetHotkey()
+	 * @generated
+	 */
+	int GET_HOTKEY = 6;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_HOTKEY__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_HOTKEY__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Command Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_HOTKEY__COMMAND_ID = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Get Hotkey</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_HOTKEY_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.Alert <em>Alert</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -426,6 +472,27 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getClearLogView();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.GetHotkey <em>Get Hotkey</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Get Hotkey</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.GetHotkey
+	 * @generated
+	 */
+	EClass getGetHotkey();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.ui.commands.GetHotkey#getCommandId <em>Command Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Command Id</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.GetHotkey#getCommandId()
+	 * @see #getGetHotkey()
+	 * @generated
+	 */
+	EAttribute getGetHotkey_CommandId();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -548,6 +615,24 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CLEAR_LOG_VIEW = eINSTANCE.getClearLogView();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.ui.commands.impl.GetHotkeyImpl <em>Get Hotkey</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.GetHotkeyImpl
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getGetHotkey()
+		 * @generated
+		 */
+		EClass GET_HOTKEY = eINSTANCE.getGetHotkey();
+
+		/**
+		 * The meta object literal for the '<em><b>Command Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GET_HOTKEY__COMMAND_ID = eINSTANCE.getGetHotkey_CommandId();
 
 	}
 

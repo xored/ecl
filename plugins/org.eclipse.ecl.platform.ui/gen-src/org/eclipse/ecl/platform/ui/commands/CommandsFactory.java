@@ -80,6 +80,15 @@ public interface CommandsFactory extends EFactory {
 	ClearLogView createClearLogView();
 
 	/**
+	 * Returns a new object of class '<em>Get Hotkey</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Get Hotkey</em>'.
+	 * @generated
+	 */
+	GetHotkey createGetHotkey();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

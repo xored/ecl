@@ -14,6 +14,7 @@ import org.eclipse.ecl.platform.ui.commands.CommandsFactory;
 import org.eclipse.ecl.platform.ui.commands.CommandsPackage;
 import org.eclipse.ecl.platform.ui.commands.CreateWorkingSet;
 import org.eclipse.ecl.platform.ui.commands.DeleteWorkingSet;
+import org.eclipse.ecl.platform.ui.commands.GetHotkey;
 import org.eclipse.ecl.platform.ui.commands.GetWorkingSet;
 import org.eclipse.ecl.platform.ui.commands.ListWorkingSets;
 
@@ -77,6 +78,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	private EClass clearLogViewEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass getHotkeyEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -103,20 +111,10 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link CommandsPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -128,7 +126,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		if (isInited) return (CommandsPackage)EPackage.Registry.INSTANCE.getEPackage(CommandsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		CommandsPackageImpl theCommandsPackage = (CommandsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof CommandsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new CommandsPackageImpl());
+		CommandsPackageImpl theCommandsPackage = (CommandsPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof CommandsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new CommandsPackageImpl());
 
 		isInited = true;
 
@@ -145,6 +143,9 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		// Mark meta-data to indicate it can't be changed
 		theCommandsPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(CommandsPackage.eNS_URI, theCommandsPackage);
 		return theCommandsPackage;
 	}
 
@@ -252,6 +253,24 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGetHotkey() {
+		return getHotkeyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGetHotkey_CommandId() {
+		return (EAttribute)getHotkeyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommandsFactory getCommandsFactory() {
 		return (CommandsFactory)getEFactoryInstance();
 	}
@@ -291,6 +310,9 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		createEAttribute(getWorkingSetEClass, GET_WORKING_SET__NAME);
 
 		clearLogViewEClass = createEClass(CLEAR_LOG_VIEW);
+
+		getHotkeyEClass = createEClass(GET_HOTKEY);
+		createEAttribute(getHotkeyEClass, GET_HOTKEY__COMMAND_ID);
 	}
 
 	/**
@@ -331,6 +353,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		createWorkingSetEClass.getESuperTypes().add(theCorePackage.getCommand());
 		deleteWorkingSetEClass.getESuperTypes().add(theCorePackage.getCommand());
 		clearLogViewEClass.getESuperTypes().add(theCorePackage.getCommand());
+		getHotkeyEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(alertEClass, Alert.class, "Alert", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -349,6 +372,9 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		initEAttribute(getGetWorkingSet_Name(), theEcorePackage.getEString(), "name", null, 0, 1, GetWorkingSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(clearLogViewEClass, ClearLogView.class, "ClearLogView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(getHotkeyEClass, GetHotkey.class, "GetHotkey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGetHotkey_CommandId(), theEcorePackage.getEString(), "commandId", null, 0, 1, GetHotkey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
