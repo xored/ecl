@@ -77,6 +77,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 			case OperationsPackage.REPEAT: return createRepeat();
 			case OperationsPackage.ASSERT_EMPTY: return createAssertEmpty();
 			case OperationsPackage.ASSERT_NON_EMPTY: return createAssertNonEmpty();
+			case OperationsPackage.CONCAT: return createConcat();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -250,6 +251,16 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	public AssertNonEmpty createAssertNonEmpty() {
 		AssertNonEmptyImpl assertNonEmpty = new AssertNonEmptyImpl();
 		return assertNonEmpty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Concat createConcat() {
+		ConcatImpl concat = new ConcatImpl();
+		return concat;
 	}
 
 	/**

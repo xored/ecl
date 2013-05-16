@@ -95,5 +95,11 @@
             name="AssertNonEmpty"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.ConcatService"
+            name="Concat"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+     
    </extension>
 </plugin>

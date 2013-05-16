@@ -179,6 +179,15 @@ public interface OperationsFactory extends EFactory {
 	AssertNonEmpty createAssertNonEmpty();
 
 	/**
+	 * Returns a new object of class '<em>Concat</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Concat</em>'.
+	 * @generated
+	 */
+	Concat createConcat();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

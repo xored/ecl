@@ -146,6 +146,10 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 				return createAssertNonEmptyAdapter();
 			}
 			@Override
+			public Adapter caseConcat(Concat object) {
+				return createConcatAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -418,6 +422,20 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAssertNonEmptyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.Concat <em>Concat</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.Concat
+	 * @generated
+	 */
+	public Adapter createConcatAdapter() {
 		return null;
 	}
 

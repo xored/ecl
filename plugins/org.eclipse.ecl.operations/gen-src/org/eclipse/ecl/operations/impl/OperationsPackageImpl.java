@@ -12,6 +12,7 @@ import org.eclipse.ecl.operations.AssertEmpty;
 import org.eclipse.ecl.operations.AssertNonEmpty;
 import org.eclipse.ecl.operations.AssertTrue;
 import org.eclipse.ecl.operations.Bool;
+import org.eclipse.ecl.operations.Concat;
 import org.eclipse.ecl.operations.Convert;
 import org.eclipse.ecl.operations.Emit;
 import org.eclipse.ecl.operations.Eq;
@@ -169,6 +170,13 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * @generated
 	 */
 	private EClass assertNonEmptyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass concatEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -653,6 +661,24 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getConcat() {
+		return concatEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConcat_Strs() {
+		return (EAttribute)concatEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public OperationsFactory getOperationsFactory() {
 		return (OperationsFactory)getEFactoryInstance();
 	}
@@ -739,6 +765,9 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 		assertNonEmptyEClass = createEClass(ASSERT_NON_EMPTY);
 		createEAttribute(assertNonEmptyEClass, ASSERT_NON_EMPTY__MESSAGE);
+
+		concatEClass = createEClass(CONCAT);
+		createEAttribute(concatEClass, CONCAT__STRS);
 	}
 
 	/**
@@ -791,6 +820,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		repeatEClass.getESuperTypes().add(theCorePackage.getCommand());
 		assertEmptyEClass.getESuperTypes().add(theCorePackage.getCommand());
 		assertNonEmptyEClass.getESuperTypes().add(theCorePackage.getCommand());
+		concatEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -856,6 +886,9 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 		initEClass(assertNonEmptyEClass, AssertNonEmpty.class, "AssertNonEmpty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAssertNonEmpty_Message(), theEcorePackage.getEString(), "message", null, 0, 1, AssertNonEmpty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(concatEClass, Concat.class, "Concat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConcat_Strs(), theEcorePackage.getEString(), "strs", null, 0, -1, Concat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1101,6 +1134,13 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		   source, 
 		   new String[] {
 			 "description", "Message to fail with when input is empty"
+		   });		
+		addAnnotation
+		  (concatEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Concatenates strings passed as arguments",
+			 "returns", "Concatenated string value"
 		   });
 	}
 
@@ -1156,7 +1196,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (getRepeatWith_Commands(), 
 		   source, 
 		   new String[] {
-		   });					
+		   });						
 	}
 
 	/**
@@ -1171,7 +1211,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });																																				
+		   });																																					
 	}
 
 } //OperationsPackageImpl

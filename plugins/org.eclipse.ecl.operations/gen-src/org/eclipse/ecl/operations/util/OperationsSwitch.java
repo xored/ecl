@@ -218,6 +218,13 @@ public class OperationsSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case OperationsPackage.CONCAT: {
+				Concat concat = (Concat)theEObject;
+				T result = caseConcat(concat);
+				if (result == null) result = caseCommand(concat);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -489,6 +496,21 @@ public class OperationsSwitch<T> {
 	 * @generated
 	 */
 	public T caseAssertNonEmpty(AssertNonEmpty object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Concat</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Concat</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConcat(Concat object) {
 		return null;
 	}
 
