@@ -35,7 +35,6 @@ public class CommandParamConverter implements IParamConverter<Command> {
 		return Command.class;
 	}
 
-	@Override
 	public String convertToCode(Object value) {
 		throw new UnsupportedOperationException(
 				"Command should be converted using other mechanism");
