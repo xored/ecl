@@ -24,4 +24,5 @@ public interface IParamConverter<T> {
 	T convert(LiteralParameter literal, List<String> allowedTypes)
 			throws CoreException;
 
+	String convertToCode(Object value) throws CoreException;
 }

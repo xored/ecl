@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CorePackage;
@@ -24,7 +25,10 @@ import org.eclipse.ecl.core.LiteralParameter;
 import org.eclipse.ecl.core.Parameter;
 import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.core.Sequence;
+import org.eclipse.ecl.internal.core.CorePlugin;
+import org.eclipse.ecl.internal.core.ParamConverterManager;
 import org.eclipse.ecl.runtime.CoreUtils;
+import org.eclipse.ecl.runtime.IParamConverter;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
@@ -165,6 +169,19 @@ public class CommandToStringConverter {
 						doConvert((Command) val, formatter, true);
 						formatter.closeGroup(singleLine);
 						skippped = false;
+					} else {
+						IParamConverter<?> converter = ParamConverterManager
+								.getInstance().getConverter(
+										eclass.getInstanceClass());
+						if (converter != null) {
+							try {
+								String strVal = String.format("\"%s\"",
+										converter.convertToCode(val));
+								formatter.addAttrValue(strVal);
+							} catch (CoreException e) {
+								CorePlugin.log(e.getStatus());
+							}
+						}
 					}
 				}
 			} else {
