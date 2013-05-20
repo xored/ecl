@@ -101,9 +101,9 @@
    </extension>
    <extension
          point="org.eclipse.ecl.core.listenSource">
-      <watchSource
+      <listenSource
             class="org.eclipse.ecl.platform.ErrorLogListenSource"
             name="errorLog">
-      </watchSource>
+      </listenSource>
    </extension>
 </plugin>
