@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EObject;
 
 public class OrService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		Or or = (Or) command;

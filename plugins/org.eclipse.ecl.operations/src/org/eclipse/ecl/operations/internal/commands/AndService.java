@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EObject;
 
 public class AndService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		And and = (And) command;
