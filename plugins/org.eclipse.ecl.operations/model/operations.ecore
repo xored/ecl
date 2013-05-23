@@ -235,4 +235,28 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="strs" unique="false" upperBound="-1"
         eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Or" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Computes the result of logical Or operation for passed arguments."/>
+      <details key="returns" value="&lt;code>true&lt;/code> or &lt;code>false&lt;/code>."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="args" unique="false" lowerBound="2"
+        upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Arguments to compute on."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Computes the result of logical And operation for passed arguments."/>
+      <details key="returns" value="&lt;code>true&lt;/code> or &lt;code>false&lt;/code>."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="args" unique="false" lowerBound="2"
+        upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Arguments to compute on."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
 </ecore:EPackage>

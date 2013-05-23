@@ -78,6 +78,8 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 			case OperationsPackage.ASSERT_EMPTY: return createAssertEmpty();
 			case OperationsPackage.ASSERT_NON_EMPTY: return createAssertNonEmpty();
 			case OperationsPackage.CONCAT: return createConcat();
+			case OperationsPackage.OR: return createOr();
+			case OperationsPackage.AND: return createAnd();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -261,6 +263,26 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	public Concat createConcat() {
 		ConcatImpl concat = new ConcatImpl();
 		return concat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Or createOr() {
+		OrImpl or = new OrImpl();
+		return or;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public And createAnd() {
+		AndImpl and = new AndImpl();
+		return and;
 	}
 
 	/**

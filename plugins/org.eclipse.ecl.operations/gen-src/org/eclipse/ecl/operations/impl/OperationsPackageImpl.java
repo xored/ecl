@@ -8,6 +8,7 @@ package org.eclipse.ecl.operations.impl;
 
 import org.eclipse.ecl.core.CorePackage;
 
+import org.eclipse.ecl.operations.And;
 import org.eclipse.ecl.operations.AssertEmpty;
 import org.eclipse.ecl.operations.AssertNonEmpty;
 import org.eclipse.ecl.operations.AssertTrue;
@@ -25,6 +26,7 @@ import org.eclipse.ecl.operations.Not;
 import org.eclipse.ecl.operations.NotEq;
 import org.eclipse.ecl.operations.OperationsFactory;
 import org.eclipse.ecl.operations.OperationsPackage;
+import org.eclipse.ecl.operations.Or;
 import org.eclipse.ecl.operations.Repeat;
 import org.eclipse.ecl.operations.RepeatWith;
 import org.eclipse.ecl.operations.Str;
@@ -177,6 +179,20 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * @generated
 	 */
 	private EClass concatEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass andEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -679,6 +695,42 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOr() {
+		return orEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOr_Args() {
+		return (EReference)orEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAnd() {
+		return andEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAnd_Args() {
+		return (EReference)andEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public OperationsFactory getOperationsFactory() {
 		return (OperationsFactory)getEFactoryInstance();
 	}
@@ -768,6 +820,12 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 		concatEClass = createEClass(CONCAT);
 		createEAttribute(concatEClass, CONCAT__STRS);
+
+		orEClass = createEClass(OR);
+		createEReference(orEClass, OR__ARGS);
+
+		andEClass = createEClass(AND);
+		createEReference(andEClass, AND__ARGS);
 	}
 
 	/**
@@ -821,6 +879,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		assertEmptyEClass.getESuperTypes().add(theCorePackage.getCommand());
 		assertNonEmptyEClass.getESuperTypes().add(theCorePackage.getCommand());
 		concatEClass.getESuperTypes().add(theCorePackage.getCommand());
+		orEClass.getESuperTypes().add(theCorePackage.getCommand());
+		andEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -889,6 +949,12 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 		initEClass(concatEClass, Concat.class, "Concat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConcat_Strs(), theEcorePackage.getEString(), "strs", null, 0, -1, Concat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOr_Args(), theEcorePackage.getEObject(), null, "args", null, 2, -1, Or.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(andEClass, And.class, "And", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAnd_Args(), theEcorePackage.getEObject(), null, "args", null, 2, -1, And.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1141,6 +1207,32 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		   new String[] {
 			 "description", "Concatenates strings passed as arguments",
 			 "returns", "Concatenated string value"
+		   });		
+		addAnnotation
+		  (orEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Computes the result of logical Or operation for passed arguments.",
+			 "returns", "<code>true</code> or <code>false</code>."
+		   });		
+		addAnnotation
+		  (getOr_Args(), 
+		   source, 
+		   new String[] {
+			 "description", "Arguments to compute on."
+		   });		
+		addAnnotation
+		  (andEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Computes the result of logical And operation for passed arguments.",
+			 "returns", "<code>true</code> or <code>false</code>."
+		   });		
+		addAnnotation
+		  (getAnd_Args(), 
+		   source, 
+		   new String[] {
+			 "description", "Arguments to compute on."
 		   });
 	}
 
@@ -1196,7 +1288,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (getRepeatWith_Commands(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });										
 	}
 
 	/**
@@ -1211,7 +1303,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });																																					
+		   });																																									
 	}
 
 } //OperationsPackageImpl

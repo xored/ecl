@@ -100,6 +100,15 @@
             name="Concat"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
-     
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.OrService"
+            name="Or"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.AndService"
+            name="And"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
    </extension>
 </plugin>
