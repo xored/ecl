@@ -14,6 +14,7 @@ import org.eclipse.ecl.platform.commands.CommandsFactory;
 import org.eclipse.ecl.platform.commands.CommandsPackage;
 import org.eclipse.ecl.platform.commands.Echo;
 import org.eclipse.ecl.platform.commands.GetLog;
+import org.eclipse.ecl.platform.commands.GetWorkspaceLocation;
 import org.eclipse.ecl.platform.commands.Launch;
 import org.eclipse.ecl.platform.commands.ListFeatures;
 import org.eclipse.ecl.platform.commands.ListInstallUnits;
@@ -156,6 +157,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass substituteVariablesEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass getWorkspaceLocationEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -515,6 +523,15 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGetWorkspaceLocation() {
+		return getWorkspaceLocationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommandsFactory getCommandsFactory() {
 		return (CommandsFactory)getEFactoryInstance();
 	}
@@ -585,6 +602,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		substituteVariablesEClass = createEClass(SUBSTITUTE_VARIABLES);
 		createEAttribute(substituteVariablesEClass, SUBSTITUTE_VARIABLES__EXPRESSION);
 		createEAttribute(substituteVariablesEClass, SUBSTITUTE_VARIABLES__IGNORE_UNDEFINED);
+
+		getWorkspaceLocationEClass = createEClass(GET_WORKSPACE_LOCATION);
 	}
 
 	/**
@@ -635,6 +654,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		listLaunchConfigurationsEClass.getESuperTypes().add(theCorePackage.getCommand());
 		launchEClass.getESuperTypes().add(theCorePackage.getCommand());
 		substituteVariablesEClass.getESuperTypes().add(theCorePackage.getCommand());
+		getWorkspaceLocationEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(listPluginsEClass, ListPlugins.class, "ListPlugins", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -684,6 +704,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		initEClass(substituteVariablesEClass, SubstituteVariables.class, "SubstituteVariables", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSubstituteVariables_Expression(), theEcorePackage.getEString(), "expression", null, 0, 1, SubstituteVariables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSubstituteVariables_IgnoreUndefined(), theEcorePackage.getEBoolean(), "ignoreUndefined", "false", 0, 1, SubstituteVariables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(getWorkspaceLocationEClass, GetWorkspaceLocation.class, "GetWorkspaceLocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -856,6 +878,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "whether a reference to an undefined variable is to be considered an error (i.e. throw an exception)"
+		   });		
+		addAnnotation
+		  (getWorkspaceLocationEClass, 
+		   source, 
+		   new String[] {
+			 "descriprion", "Returns the path to workspace root.",
+			 "returns", "path to workspace root"
 		   });
 	}
 
@@ -879,7 +908,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getEcho_Str(), 
 		   source, 
 		   new String[] {
-		   });						
+		   });							
 	}
 
 } //CommandsPackageImpl

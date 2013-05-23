@@ -798,6 +798,44 @@ public interface CommandsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.GetWorkspaceLocationImpl <em>Get Workspace Location</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.commands.impl.GetWorkspaceLocationImpl
+	 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getGetWorkspaceLocation()
+	 * @generated
+	 */
+	int GET_WORKSPACE_LOCATION = 16;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_WORKSPACE_LOCATION__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_WORKSPACE_LOCATION__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The number of structural features of the '<em>Get Workspace Location</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_WORKSPACE_LOCATION_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.ListPlugins <em>List Plugins</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1134,6 +1172,16 @@ public interface CommandsPackage extends EPackage {
 	EAttribute getSubstituteVariables_IgnoreUndefined();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.GetWorkspaceLocation <em>Get Workspace Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Get Workspace Location</em>'.
+	 * @see org.eclipse.ecl.platform.commands.GetWorkspaceLocation
+	 * @generated
+	 */
+	EClass getGetWorkspaceLocation();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1442,6 +1490,16 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SUBSTITUTE_VARIABLES__IGNORE_UNDEFINED = eINSTANCE.getSubstituteVariables_IgnoreUndefined();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.commands.impl.GetWorkspaceLocationImpl <em>Get Workspace Location</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.commands.impl.GetWorkspaceLocationImpl
+		 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getGetWorkspaceLocation()
+		 * @generated
+		 */
+		EClass GET_WORKSPACE_LOCATION = eINSTANCE.getGetWorkspaceLocation();
 
 	}
 

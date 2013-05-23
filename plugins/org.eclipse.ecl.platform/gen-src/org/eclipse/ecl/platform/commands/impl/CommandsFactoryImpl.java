@@ -76,6 +76,7 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 			case CommandsPackage.LIST_LAUNCH_CONFIGURATIONS: return createListLaunchConfigurations();
 			case CommandsPackage.LAUNCH: return createLaunch();
 			case CommandsPackage.SUBSTITUTE_VARIABLES: return createSubstituteVariables();
+			case CommandsPackage.GET_WORKSPACE_LOCATION: return createGetWorkspaceLocation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -239,6 +240,16 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public SubstituteVariables createSubstituteVariables() {
 		SubstituteVariablesImpl substituteVariables = new SubstituteVariablesImpl();
 		return substituteVariables;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GetWorkspaceLocation createGetWorkspaceLocation() {
+		GetWorkspaceLocationImpl getWorkspaceLocation = new GetWorkspaceLocationImpl();
+		return getWorkspaceLocation;
 	}
 
 	/**

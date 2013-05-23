@@ -98,6 +98,11 @@
             name="SubstituteVariables"
             namespace="http://www.eclipse.org/ecl/platform/commands.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.platform.internal.commands.GetWorkspaceLocationService"
+            name="GetWorkspaceLocation"
+            namespace="http://www.eclipse.org/ecl/platform/commands.ecore">
+      </scriptlet>
    </extension>
    <extension
          point="org.eclipse.ecl.core.listenSource">

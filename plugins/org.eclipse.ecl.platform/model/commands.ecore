@@ -154,4 +154,10 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GetWorkspaceLocation" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="descriprion" value="Returns the path to workspace root."/>
+      <details key="returns" value="path to workspace root"/>
+    </eAnnotations>
+  </eClassifiers>
 </ecore:EPackage>

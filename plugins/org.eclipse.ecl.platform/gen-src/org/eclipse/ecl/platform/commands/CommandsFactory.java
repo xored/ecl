@@ -170,6 +170,15 @@ public interface CommandsFactory extends EFactory {
 	SubstituteVariables createSubstituteVariables();
 
 	/**
+	 * Returns a new object of class '<em>Get Workspace Location</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Get Workspace Location</em>'.
+	 * @generated
+	 */
+	GetWorkspaceLocation createGetWorkspaceLocation();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
