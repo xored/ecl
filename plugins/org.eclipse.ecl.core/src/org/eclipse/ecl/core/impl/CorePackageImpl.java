@@ -1361,8 +1361,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (foreachEClass, 
 		   source, 
 		   new String[] {
-			 "description", "Iterates a specified variable over all values of object\'s properties. \r\nFor each distinct property, a specified statement is executed.\r\n\r\nSyntax\r\nforeach [variable in object] {\r\n  statement\r\n}",
-			 "returns", "nothing",
+			 "description", "Reads objects from input pipe and for each object executes a given <code>do</code> command passing an object into its input pipe  ",
+			 "returns", "An aggregated output of <code>do</code> command",
 			 "example", "list-launch-configurations | foreach {get name | log}"
 		   });			
 		addAnnotation
