@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.ecl.core.CorePackage#getForeach()
- * @model annotation="http://www.eclipse.org/ecl/docs description='<p>Iterates a specified variable over all values of object\'s properties. \r\nFor each distinct property, a specified statement is executed. </p>\r\n<p>Syntax:</p>\r\n<pre>foreach [variable in object] {\r\n  statement\r\n} </pre>' returns='nothing' example='list-launch-configurations | foreach {get name | log}'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Iterates a specified variable over all values of object\'s properties. \r\nFor each distinct property, a specified statement is executed.\r\n\r\nSyntax\r\nforeach [variable in object] {\r\n  statement\r\n}' returns='nothing' example='list-launch-configurations | foreach {get name | log}'"
  * @generated
  */
 public interface Foreach extends Command {

@@ -25,6 +25,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="Sequence" eSuperTypes="#//Block"/>
   <eClassifiers xsi:type="ecore:EClass" name="Parallel" eSuperTypes="#//Block"/>
   <eClassifiers xsi:type="ecore:EClass" name="With" eSuperTypes="#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Writes an &lt;code>object&lt;/code> to input pipe and executes a given &lt;code>do&lt;/code> command "/>
+      <details key="returns" value="Output of a &lt;code>do&lt;/code> command"/>
+      <details key="example" value="A | B&#xA;A | C&#xA;// is equivalent to:&#xA;with [A] {&#xA;  B&#xA;  C&#xA;}"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="object" lowerBound="1"
         eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
         containment="true"/>

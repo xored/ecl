@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.ecl.core.CorePackage#getWith()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Writes an <code>object</code> to input pipe and executes a given <code>do</code> command ' returns='Output of a <code>do</code> command' example='A | B\nA | C\n// is equivalent to:\nwith [A] {\n  B\n  C\n}'"
  * @generated
  */
 public interface With extends Command {

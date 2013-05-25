@@ -1297,10 +1297,10 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		// Create annotations
 		// http://www.eclipse.org/ecl/internal
 		createInternalAnnotations();
-		// http://www.eclipse.org/ecl/input
-		createInputAnnotations();
 		// http://www.eclipse.org/ecl/docs
 		createDocsAnnotations();
+		// http://www.eclipse.org/ecl/input
+		createInputAnnotations();
 	}
 
 	/**
@@ -1320,12 +1320,12 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (getCommand_Bindings(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });			
 		addAnnotation
 		  (execEClass, 
 		   source, 
 		   new String[] {
-		   });								
+		   });									
 	}
 
 	/**
@@ -1334,7 +1334,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	protected void createInputAnnotations() {
-		String source = "http://www.eclipse.org/ecl/input";					
+		String source = "http://www.eclipse.org/ecl/input";							
 		addAnnotation
 		  (getForeach_Input(), 
 		   source, 
@@ -1348,13 +1348,30 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	protected void createDocsAnnotations() {
-		String source = "http://www.eclipse.org/ecl/docs";						
+		String source = "http://www.eclipse.org/ecl/docs";				
+		addAnnotation
+		  (withEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Writes an <code>object</code> to input pipe and executes a given <code>do</code> command ",
+			 "returns", "Output of a <code>do</code> command",
+			 "example", "A | B\nA | C\n// is equivalent to:\nwith [A] {\n  B\n  C\n}"
+		   });			
+		addAnnotation
+		  (foreachEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Iterates a specified variable over all values of object\'s properties. \r\nFor each distinct property, a specified statement is executed.\r\n\r\nSyntax\r\nforeach [variable in object] {\r\n  statement\r\n}",
+			 "returns", "nothing",
+			 "example", "list-launch-configurations | foreach {get name | log}"
+		   });			
 		addAnnotation
 		  (ifEClass, 
 		   source, 
 		   new String[] {
 			 "description", "Based on a condition corresponds either command either from <code>then</code> or <code>else</code> branch. ",
-			 "returns", "Output of executed branch"
+			 "returns", "Output of executed branch",
+			 "example", "if [get-property caption -raw | not-eq \"Test\" ] {\r\n\tselect-item\r\n\tget-menu Delete | click\r\n\tget-window \"Delete Resources\" | get-button OK | click\r\n}"
 		   });		
 		addAnnotation
 		  (getIf_Condition(), 
