@@ -4,7 +4,7 @@ Bundle-Name: ECL Platform
 Bundle-SymbolicName: org.eclipse.ecl.platform;singleton:=true
 Bundle-Version: 1.1.0.qualifier
 Bundle-ClassPath: .
-Bundle-Vendor: xored softwarem Inc.
+Bundle-Vendor: xored software, Inc.
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.ecl.platform.commands,
  org.eclipse.ecl.platform.commands.impl,
