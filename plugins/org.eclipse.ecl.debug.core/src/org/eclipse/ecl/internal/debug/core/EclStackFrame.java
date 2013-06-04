@@ -23,10 +23,15 @@ public class EclStackFrame extends EclDebugElement implements IStackFrame {
 
 	private final EclDebugThread thread;
 	private final StackFrame frame;
+	private final IVariable[] variables;
 
 	public EclStackFrame(EclDebugThread thread, StackFrame frame) {
 		this.thread = thread;
 		this.frame = frame;
+
+		variables = new IVariable[frame.getArgs().size()];
+		for (int i = 0; i < variables.length; ++i)
+			variables[i] = new EclVariable(thread, frame.getArgs().get(i));
 	}
 
 	public StackFrame getFrame() {
@@ -102,11 +107,11 @@ public class EclStackFrame extends EclDebugElement implements IStackFrame {
 	}
 
 	public IVariable[] getVariables() throws DebugException {
-		return new IVariable[0];
+		return variables;
 	}
 
 	public boolean hasVariables() throws DebugException {
-		return false;
+		return true;
 	}
 
 	public int getLineNumber() throws DebugException {

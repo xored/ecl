@@ -56,6 +56,7 @@ public abstract class EclDebugElement extends PlatformObject implements
 		if (adapter == ILaunch.class) {
 			return getLaunch();
 		}
+
 		return super.getAdapter(adapter);
 	}
 

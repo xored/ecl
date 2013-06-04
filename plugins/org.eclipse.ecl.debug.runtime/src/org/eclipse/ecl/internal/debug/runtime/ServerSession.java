@@ -22,6 +22,7 @@ import java.util.Set;
 
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CommandStack;
+import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.IStackListener;
 import org.eclipse.ecl.core.Parallel;
 import org.eclipse.ecl.core.Pipeline;
@@ -29,6 +30,7 @@ import org.eclipse.ecl.core.Sequence;
 import org.eclipse.ecl.debug.commands.DebugCommand;
 import org.eclipse.ecl.debug.runtime.Session;
 import org.eclipse.ecl.debug.runtime.StackFrame;
+import org.eclipse.ecl.debug.runtime.StackFrame.Arg;
 import org.eclipse.ecl.debug.runtime.SuspendManager;
 import org.eclipse.ecl.debug.runtime.events.BreakpointEvent;
 import org.eclipse.ecl.debug.runtime.events.BreakpointHitEvent;
@@ -39,6 +41,7 @@ import org.eclipse.ecl.debug.runtime.events.StepEndEvent;
 import org.eclipse.ecl.debug.runtime.events.SuspendEvent;
 import org.eclipse.ecl.gen.ast.AstExec;
 import org.eclipse.ecl.gen.ast.AstNode;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 public class ServerSession extends Session implements IStackListener {
 
@@ -183,19 +186,44 @@ public class ServerSession extends Session implements IStackListener {
 		}
 		String path = debug.getPath();
 		List<StackFrame> frames = new ArrayList<StackFrame>();
+		Command lastCommand = null;
 		do {
 			Command command = stack.getCommand();
 			if (command instanceof AstExec) {
 				AstExec exec = (AstExec) command;
 				StackFrame frame = new StackFrame(path, exec.getName(),
-						exec.getLine());
+						exec.getLine(), extractArgs(lastCommand));
 				frames.add(frame);
-			}
+			} else
+				lastCommand = command;
 			stack = stack.getParent();
 		} while (stack != null);
 		if (frames.size() == 0)
 			return null;
 		return frames.toArray(new StackFrame[0]);
+	}
+
+	private static List<Arg> extractArgs(Command command) {
+		List<Arg> result = new ArrayList<Arg>();
+		if (command == null)
+			return result;
+
+		for (EStructuralFeature f : command.eClass()
+				.getEAllStructuralFeatures()) {
+			if (f == CorePackage.eINSTANCE.getCommand_Host())
+				continue;
+			if (f == CorePackage.eINSTANCE.getCommand_Bindings())
+				continue;
+			if (!command.eIsSet(f))
+				continue;
+
+			Object value = command.eGet(f);
+			result.add(new Arg(f.getEType().toString(), value != null ? value
+					.getClass().toString() : "", f.getName(), String
+					.valueOf(value), command.eIsSet(f)));
+		}
+
+		return result;
 	}
 
 	private AstNode getSource(CommandStack stack) {
