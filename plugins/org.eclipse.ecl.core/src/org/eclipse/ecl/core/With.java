@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.ecl.core.CorePackage#getWith()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Writes an <code>object</code> to input pipe and executes a given <code>do</code> command ' returns='Output of a <code>do</code> command' example='A | B\nA | C\n// is equivalent to:\nwith [A] {\n  B\n  C\n}'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Executes a <code>do</code> script by passing given <code>object</code> to each command inside <code>do</code>. The primary use case for this command is to extract a common prefix for a sequence of commands.' returns='Output of a <code>do</code> command' example='get-view \"Package Explorer\" | get-button \"Collapse All (M1+M2+Numpad_Divide)\" | click\nget-view \"Package Explorer\" | get-button \"Link with Editor\" | click\n// can be shorten to:\nwith [get-view \"Package Explorer\"] {\n    get-button \"Collapse All (M1+M2+Numpad_Divide)\" | click\n    get-button \"Link with Editor\" | click\n}\n'"
  * @generated
  */
 public interface With extends Command {

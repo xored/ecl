@@ -26,9 +26,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="Parallel" eSuperTypes="#//Block"/>
   <eClassifiers xsi:type="ecore:EClass" name="With" eSuperTypes="#//Command">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
-      <details key="description" value="Writes an &lt;code>object&lt;/code> to input pipe and executes a given &lt;code>do&lt;/code> command "/>
+      <details key="description" value="Executes a &lt;code>do&lt;/code> script by passing given &lt;code>object&lt;/code> to each command inside &lt;code>do&lt;/code>. The primary use case for this command is to extract a common prefix for a sequence of commands."/>
       <details key="returns" value="Output of a &lt;code>do&lt;/code> command"/>
-      <details key="example" value="A | B&#xA;A | C&#xA;// is equivalent to:&#xA;with [A] {&#xA;  B&#xA;  C&#xA;}"/>
+      <details key="example" value="get-view &quot;Package Explorer&quot; | get-button &quot;Collapse All (M1+M2+Numpad_Divide)&quot; | click&#xA;get-view &quot;Package Explorer&quot; | get-button &quot;Link with Editor&quot; | click&#xA;// can be shorten to:&#xA;with [get-view &quot;Package Explorer&quot;] {&#xA;    get-button &quot;Collapse All (M1+M2+Numpad_Divide)&quot; | click&#xA;    get-button &quot;Link with Editor&quot; | click&#xA;}&#xA;"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="object" lowerBound="1"
         eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
