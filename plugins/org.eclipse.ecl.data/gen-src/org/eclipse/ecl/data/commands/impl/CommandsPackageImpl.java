@@ -720,6 +720,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		// Create annotations
 		// http://www.eclipse.org/ecl/docs
 		createDocsAnnotations();
+		// http://www.eclipse.org/ecl/internal
+		createInternalAnnotations();
 		// http://www.eclipse.org/ecl/input
 		createInputAnnotations();
 	}
@@ -751,7 +753,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   new String[] {
 			 "description", "Takes a list of objects from input pipe and prints them as a plain-text table into output pipe.",
 			 "returns", "Series of string objects"
-		   });			
+		   });				
 		addAnnotation
 		  (writeCsvFileEClass, 
 		   source, 
@@ -937,13 +939,28 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	}
 
 	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/internal</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createInternalAnnotations() {
+		String source = "http://www.eclipse.org/ecl/internal";					
+		addAnnotation
+		  (printEClass, 
+		   source, 
+		   new String[] {
+		   });																																				
+	}
+
+	/**
 	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/input</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createInputAnnotations() {
-		String source = "http://www.eclipse.org/ecl/input";					
+		String source = "http://www.eclipse.org/ecl/input";						
 		addAnnotation
 		  (getPrint_Input(), 
 		   source, 
