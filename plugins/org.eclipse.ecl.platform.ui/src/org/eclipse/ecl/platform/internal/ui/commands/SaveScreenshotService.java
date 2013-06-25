@@ -32,7 +32,7 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.PlatformUI;
 
 public class SaveScreenshotService implements ICommandService {
-	@Override
+
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		SaveScreenshot saveScreenshot = (SaveScreenshot) command;
