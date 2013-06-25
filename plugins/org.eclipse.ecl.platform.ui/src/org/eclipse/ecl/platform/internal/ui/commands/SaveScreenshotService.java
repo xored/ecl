@@ -172,7 +172,6 @@ public class SaveScreenshotService implements ICommandService {
 		final Display display = PlatformUI.getWorkbench().getDisplay();
 		final AtomicReference<byte[]> result = new AtomicReference<byte[]>();
 		display.syncExec(new Runnable() {
-			@Override
 			public void run() {
 				Shell shell = getShell(input);
 				if (shell != null) {
