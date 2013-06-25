@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -25,17 +27,19 @@ public class ExecProcessService implements ICommandService {
 			throws InterruptedException, CoreException {
 
 		ExecProcess cmd = (ExecProcess) command;
-		StringBuilder commandLine = new StringBuilder();
-		commandLine.append(cmd.getCommand());
+		List<String> cmdArray = new ArrayList<String>();
+		cmdArray.add(cmd.getCommand());
 		for (String arg : cmd.getArgs())
-			commandLine.append(" ").append(arg);
+			cmdArray.add(arg);
 
 		Runtime runtime = Runtime.getRuntime();
 		ExecProcessResult result = InteropFactory.eINSTANCE
 				.createExecProcessResult();
 
 		try {
-			Process process = runtime.exec(commandLine.toString(), null, null);
+
+			Process process = runtime.exec(
+					cmdArray.toArray(new String[cmdArray.size()]), null, null);
 
 			if (cmd.getStdin() != null && cmd.getStdin().length() > 0) {
 				Writer stdin = new BufferedWriter(new OutputStreamWriter(
