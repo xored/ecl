@@ -18,6 +18,7 @@ import org.eclipse.ecl.platform.ui.commands.GetHotkey;
 import org.eclipse.ecl.platform.ui.commands.GetWorkingSet;
 import org.eclipse.ecl.platform.ui.commands.ListWorkingSets;
 
+import org.eclipse.ecl.platform.ui.commands.SaveScreenshot;
 import org.eclipse.ecl.platform.ui.objects.ObjectsPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -83,6 +84,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass getHotkeyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass saveScreenshotEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -271,6 +279,24 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSaveScreenshot() {
+		return saveScreenshotEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSaveScreenshot_Out() {
+		return (EAttribute)saveScreenshotEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommandsFactory getCommandsFactory() {
 		return (CommandsFactory)getEFactoryInstance();
 	}
@@ -313,6 +339,9 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		getHotkeyEClass = createEClass(GET_HOTKEY);
 		createEAttribute(getHotkeyEClass, GET_HOTKEY__COMMAND_ID);
+
+		saveScreenshotEClass = createEClass(SAVE_SCREENSHOT);
+		createEAttribute(saveScreenshotEClass, SAVE_SCREENSHOT__OUT);
 	}
 
 	/**
@@ -354,6 +383,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		deleteWorkingSetEClass.getESuperTypes().add(theCorePackage.getCommand());
 		clearLogViewEClass.getESuperTypes().add(theCorePackage.getCommand());
 		getHotkeyEClass.getESuperTypes().add(theCorePackage.getCommand());
+		saveScreenshotEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(alertEClass, Alert.class, "Alert", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -375,6 +405,9 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		initEClass(getHotkeyEClass, GetHotkey.class, "GetHotkey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGetHotkey_CommandId(), theEcorePackage.getEString(), "commandId", null, 0, 1, GetHotkey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(saveScreenshotEClass, SaveScreenshot.class, "SaveScreenshot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSaveScreenshot_Out(), theEcorePackage.getEString(), "out", null, 0, 1, SaveScreenshot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

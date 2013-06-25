@@ -359,6 +359,52 @@ public interface CommandsPackage extends EPackage {
 	int GET_HOTKEY_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.ui.commands.impl.SaveScreenshotImpl <em>Save Screenshot</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.SaveScreenshotImpl
+	 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getSaveScreenshot()
+	 * @generated
+	 */
+	int SAVE_SCREENSHOT = 7;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAVE_SCREENSHOT__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAVE_SCREENSHOT__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Out</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAVE_SCREENSHOT__OUT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Save Screenshot</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAVE_SCREENSHOT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.Alert <em>Alert</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -493,6 +539,27 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getGetHotkey_CommandId();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.ui.commands.SaveScreenshot <em>Save Screenshot</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Save Screenshot</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.SaveScreenshot
+	 * @generated
+	 */
+	EClass getSaveScreenshot();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.ui.commands.SaveScreenshot#getOut <em>Out</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Out</em>'.
+	 * @see org.eclipse.ecl.platform.ui.commands.SaveScreenshot#getOut()
+	 * @see #getSaveScreenshot()
+	 * @generated
+	 */
+	EAttribute getSaveScreenshot_Out();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -633,6 +700,24 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GET_HOTKEY__COMMAND_ID = eINSTANCE.getGetHotkey_CommandId();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.ui.commands.impl.SaveScreenshotImpl <em>Save Screenshot</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.SaveScreenshotImpl
+		 * @see org.eclipse.ecl.platform.ui.commands.impl.CommandsPackageImpl#getSaveScreenshot()
+		 * @generated
+		 */
+		EClass SAVE_SCREENSHOT = eINSTANCE.getSaveScreenshot();
+
+		/**
+		 * The meta object literal for the '<em><b>Out</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SAVE_SCREENSHOT__OUT = eINSTANCE.getSaveScreenshot_Out();
 
 	}
 

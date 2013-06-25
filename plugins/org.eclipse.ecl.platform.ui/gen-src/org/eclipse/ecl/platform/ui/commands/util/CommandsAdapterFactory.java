@@ -102,6 +102,10 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 				return createGetHotkeyAdapter();
 			}
 			@Override
+			public Adapter caseSaveScreenshot(SaveScreenshot object) {
+				return createSaveScreenshotAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -220,6 +224,20 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGetHotkeyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.platform.ui.commands.SaveScreenshot <em>Save Screenshot</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.platform.ui.commands.SaveScreenshot
+	 * @generated
+	 */
+	public Adapter createSaveScreenshotAdapter() {
 		return null;
 	}
 

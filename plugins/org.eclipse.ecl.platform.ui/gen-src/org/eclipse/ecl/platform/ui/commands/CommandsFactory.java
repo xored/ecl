@@ -89,6 +89,15 @@ public interface CommandsFactory extends EFactory {
 	GetHotkey createGetHotkey();
 
 	/**
+	 * Returns a new object of class '<em>Save Screenshot</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Save Screenshot</em>'.
+	 * @generated
+	 */
+	SaveScreenshot createSaveScreenshot();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

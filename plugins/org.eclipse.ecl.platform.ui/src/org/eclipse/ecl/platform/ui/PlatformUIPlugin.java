@@ -1,5 +1,7 @@
 package org.eclipse.ecl.platform.ui;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -13,7 +15,7 @@ public class PlatformUIPlugin extends AbstractUIPlugin {
 
 	// The shared instance
 	private static PlatformUIPlugin plugin;
-	
+
 	/**
 	 * The constructor
 	 */
@@ -22,7 +24,10 @@ public class PlatformUIPlugin extends AbstractUIPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+	 * 
+	 * @see
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
+	 * )
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
@@ -31,7 +36,10 @@ public class PlatformUIPlugin extends AbstractUIPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+	 * 
+	 * @see
+	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
+	 * )
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
@@ -40,11 +48,20 @@ public class PlatformUIPlugin extends AbstractUIPlugin {
 
 	/**
 	 * Returns the shared instance
-	 *
+	 * 
 	 * @return the shared instance
 	 */
 	public static PlatformUIPlugin getDefault() {
 		return plugin;
 	}
 
+	public static IStatus createError(Throwable cause, String format,
+			Object... args) {
+		return new Status(IStatus.ERROR, PLUGIN_ID,
+				String.format(format, args), cause);
+	}
+
+	public static IStatus createError(String format, Object... args) {
+		return createError(null, format, args);
+	}
 }

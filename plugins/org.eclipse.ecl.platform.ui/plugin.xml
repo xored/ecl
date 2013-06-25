@@ -57,6 +57,11 @@
             name="GetHotkey"
             namespace="http://www.eclipse.org/ecl/platform.ui/commands.ecore">
       </scriptlet>
+            <scriptlet
+            class="org.eclipse.ecl.platform.internal.ui.commands.SaveScreenshotService"
+            name="SaveScreenshot"
+            namespace="http://www.eclipse.org/ecl/platform.ui/commands.ecore">
+      </scriptlet>
    </extension>
 
 </plugin>

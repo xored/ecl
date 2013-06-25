@@ -67,6 +67,7 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 			case CommandsPackage.GET_WORKING_SET: return createGetWorkingSet();
 			case CommandsPackage.CLEAR_LOG_VIEW: return createClearLogView();
 			case CommandsPackage.GET_HOTKEY: return createGetHotkey();
+			case CommandsPackage.SAVE_SCREENSHOT: return createSaveScreenshot();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -140,6 +141,16 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public GetHotkey createGetHotkey() {
 		GetHotkeyImpl getHotkey = new GetHotkeyImpl();
 		return getHotkey;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SaveScreenshot createSaveScreenshot() {
+		SaveScreenshotImpl saveScreenshot = new SaveScreenshotImpl();
+		return saveScreenshot;
 	}
 
 	/**
