@@ -124,7 +124,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getConvert()
 	 * @generated
 	 */
-	int CONVERT = 4;
+	int CONVERT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -209,6 +209,52 @@ public interface OperationsPackage extends EPackage {
 	int INT_FEATURE_COUNT = CONVERT_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.FloatImpl <em>Float</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.FloatImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getFloat()
+	 * @generated
+	 */
+	int FLOAT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOAT__HOST = CONVERT__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOAT__BINDINGS = CONVERT__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOAT__INPUT = CONVERT__INPUT;
+
+	/**
+	 * The number of structural features of the '<em>Float</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOAT_FEATURE_COUNT = CONVERT_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.BoolImpl <em>Bool</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -216,7 +262,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getBool()
 	 * @generated
 	 */
-	int BOOL = 2;
+	int BOOL = 3;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -262,7 +308,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getStr()
 	 * @generated
 	 */
-	int STR = 3;
+	int STR = 4;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -308,7 +354,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertTrue()
 	 * @generated
 	 */
-	int ASSERT_TRUE = 5;
+	int ASSERT_TRUE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -363,7 +409,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getLength()
 	 * @generated
 	 */
-	int LENGTH = 6;
+	int LENGTH = 7;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -409,7 +455,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getNotEq()
 	 * @generated
 	 */
-	int NOT_EQ = 7;
+	int NOT_EQ = 8;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -464,7 +510,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getGt()
 	 * @generated
 	 */
-	int GT = 8;
+	int GT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -519,7 +565,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getLt()
 	 * @generated
 	 */
-	int LT = 9;
+	int LT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -574,7 +620,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getNot()
 	 * @generated
 	 */
-	int NOT = 10;
+	int NOT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -620,7 +666,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getTry()
 	 * @generated
 	 */
-	int TRY = 11;
+	int TRY = 12;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -702,7 +748,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getFormat()
 	 * @generated
 	 */
-	int FORMAT = 12;
+	int FORMAT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -757,7 +803,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getEmit()
 	 * @generated
 	 */
-	int EMIT = 13;
+	int EMIT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -803,7 +849,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getRepeatWith()
 	 * @generated
 	 */
-	int REPEAT_WITH = 14;
+	int REPEAT_WITH = 15;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -859,7 +905,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getRepeat()
 	 * @generated
 	 */
-	int REPEAT = 15;
+	int REPEAT = 16;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -924,7 +970,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertEmpty()
 	 * @generated
 	 */
-	int ASSERT_EMPTY = 16;
+	int ASSERT_EMPTY = 17;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -971,7 +1017,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertNonEmpty()
 	 * @generated
 	 */
-	int ASSERT_NON_EMPTY = 17;
+	int ASSERT_NON_EMPTY = 18;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1018,7 +1064,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getConcat()
 	 * @generated
 	 */
-	int CONCAT = 18;
+	int CONCAT = 19;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1065,7 +1111,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 19;
+	int OR = 20;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1111,7 +1157,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 20;
+	int AND = 21;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1191,6 +1237,16 @@ public interface OperationsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getInt();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Float <em>Float</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Float</em>'.
+	 * @see org.eclipse.ecl.operations.Float
+	 * @generated
+	 */
+	EClass getFloat();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Bool <em>Bool</em>}'.
@@ -1758,6 +1814,16 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass INT = eINSTANCE.getInt();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.FloatImpl <em>Float</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.FloatImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getFloat()
+		 * @generated
+		 */
+		EClass FLOAT = eINSTANCE.getFloat();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.BoolImpl <em>Bool</em>}' class.

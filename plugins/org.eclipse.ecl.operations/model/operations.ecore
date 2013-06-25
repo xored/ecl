@@ -26,6 +26,12 @@
       <details key="returns" value="Returns integer value or fails if value cannot be converted. &lt;code>true&lt;/code> is converted to &lt;code>1&lt;/code> and &lt;code>false&lt;/code> is converted to &lt;code>0&lt;/code>."/>
     </eAnnotations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Float" eSuperTypes="#//Convert">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Converts its argument to float."/>
+      <details key="returns" value="&lt;p>Returns float value or fails if value cannot be converted. &lt;code>true&lt;/code> is converted to &lt;code>1.0&lt;/code> and &lt;code>false&lt;/code> is converted to &lt;code>0&lt;/code>. This command uses &lt;code>java.lang.Float.parseFloat&lt;/code> method, but also supports a few additional text values for infinity:&lt;/p>&#xA;&lt;ul>&#xA;  &lt;li>&lt;b>+inf&lt;/b> &amp;ndash; returns &lt;code>Float.POSITIVE_INFINITY&lt;/code>&lt;/li>&#xA;  &lt;li>&lt;b>inf&lt;/b> &amp;ndash; returns &lt;code>Float.POSITIVE_INFINITY&lt;/code>&lt;/li>&#xA;  &lt;li>&lt;b>-inf&lt;/b> &amp;ndash; returns &lt;code>Float.NEGATIVE_INFINITY&lt;/code>&lt;/li>&#xA;&lt;/ul>"/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Bool" eSuperTypes="#//Convert">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
       <details key="description" value="Converts its argument to boolean."/>

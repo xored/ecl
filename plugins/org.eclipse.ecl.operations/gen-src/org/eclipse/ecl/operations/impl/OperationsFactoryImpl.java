@@ -6,6 +6,28 @@
  */
 package org.eclipse.ecl.operations.impl;
 
+import org.eclipse.ecl.operations.And;
+import org.eclipse.ecl.operations.AssertEmpty;
+import org.eclipse.ecl.operations.AssertNonEmpty;
+import org.eclipse.ecl.operations.AssertTrue;
+import org.eclipse.ecl.operations.Bool;
+import org.eclipse.ecl.operations.Concat;
+import org.eclipse.ecl.operations.Emit;
+import org.eclipse.ecl.operations.Eq;
+import org.eclipse.ecl.operations.Format;
+import org.eclipse.ecl.operations.Gt;
+import org.eclipse.ecl.operations.Int;
+import org.eclipse.ecl.operations.Length;
+import org.eclipse.ecl.operations.Lt;
+import org.eclipse.ecl.operations.Not;
+import org.eclipse.ecl.operations.NotEq;
+import org.eclipse.ecl.operations.OperationsFactory;
+import org.eclipse.ecl.operations.OperationsPackage;
+import org.eclipse.ecl.operations.Or;
+import org.eclipse.ecl.operations.Repeat;
+import org.eclipse.ecl.operations.RepeatWith;
+import org.eclipse.ecl.operations.Str;
+import org.eclipse.ecl.operations.Try;
 import org.eclipse.ecl.operations.*;
 
 import org.eclipse.emf.ecore.EClass;
@@ -62,6 +84,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 		switch (eClass.getClassifierID()) {
 			case OperationsPackage.EQ: return createEq();
 			case OperationsPackage.INT: return createInt();
+			case OperationsPackage.FLOAT: return createFloat();
 			case OperationsPackage.BOOL: return createBool();
 			case OperationsPackage.STR: return createStr();
 			case OperationsPackage.ASSERT_TRUE: return createAssertTrue();
@@ -103,6 +126,16 @@ public class OperationsFactoryImpl extends EFactoryImpl implements OperationsFac
 	public Int createInt() {
 		IntImpl int_ = new IntImpl();
 		return int_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public org.eclipse.ecl.operations.Float createFloat() {
+		FloatImpl float_ = new FloatImpl();
+		return float_;
 	}
 
 	/**

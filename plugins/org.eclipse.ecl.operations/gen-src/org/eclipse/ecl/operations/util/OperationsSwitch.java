@@ -10,6 +10,28 @@ import java.util.List;
 
 import org.eclipse.ecl.core.Command;
 
+import org.eclipse.ecl.operations.And;
+import org.eclipse.ecl.operations.AssertEmpty;
+import org.eclipse.ecl.operations.AssertNonEmpty;
+import org.eclipse.ecl.operations.AssertTrue;
+import org.eclipse.ecl.operations.Bool;
+import org.eclipse.ecl.operations.Concat;
+import org.eclipse.ecl.operations.Convert;
+import org.eclipse.ecl.operations.Emit;
+import org.eclipse.ecl.operations.Eq;
+import org.eclipse.ecl.operations.Format;
+import org.eclipse.ecl.operations.Gt;
+import org.eclipse.ecl.operations.Int;
+import org.eclipse.ecl.operations.Length;
+import org.eclipse.ecl.operations.Lt;
+import org.eclipse.ecl.operations.Not;
+import org.eclipse.ecl.operations.NotEq;
+import org.eclipse.ecl.operations.OperationsPackage;
+import org.eclipse.ecl.operations.Or;
+import org.eclipse.ecl.operations.Repeat;
+import org.eclipse.ecl.operations.RepeatWith;
+import org.eclipse.ecl.operations.Str;
+import org.eclipse.ecl.operations.Try;
 import org.eclipse.ecl.operations.*;
 
 import org.eclipse.emf.ecore.EClass;
@@ -101,6 +123,14 @@ public class OperationsSwitch<T> {
 				T result = caseInt(int_);
 				if (result == null) result = caseConvert(int_);
 				if (result == null) result = caseCommand(int_);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.FLOAT: {
+				org.eclipse.ecl.operations.Float float_ = (org.eclipse.ecl.operations.Float)theEObject;
+				T result = caseFloat(float_);
+				if (result == null) result = caseConvert(float_);
+				if (result == null) result = caseCommand(float_);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -270,6 +300,21 @@ public class OperationsSwitch<T> {
 	 * @generated
 	 */
 	public T caseInt(Int object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Float</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Float</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFloat(org.eclipse.ecl.operations.Float object) {
 		return null;
 	}
 

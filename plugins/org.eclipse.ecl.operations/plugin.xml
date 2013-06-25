@@ -21,6 +21,11 @@
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
       <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.FloatService"
+            name="Float"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+      <scriptlet
             class="org.eclipse.ecl.operations.internal.commands.BoolService"
             name="Bool"
             namespace="http://www.eclipse.org/ecl/operations.ecore">

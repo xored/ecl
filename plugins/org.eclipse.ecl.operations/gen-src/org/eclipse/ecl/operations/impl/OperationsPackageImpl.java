@@ -66,6 +66,13 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass floatEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass boolEClass = null;
 
 	/**
@@ -292,6 +299,15 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 */
 	public EClass getInt() {
 		return intEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFloat() {
+		return floatEClass;
 	}
 
 	/**
@@ -760,6 +776,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 		intEClass = createEClass(INT);
 
+		floatEClass = createEClass(FLOAT);
+
 		boolEClass = createEClass(BOOL);
 
 		strEClass = createEClass(STR);
@@ -862,6 +880,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		// Add supertypes to classes
 		eqEClass.getESuperTypes().add(theCorePackage.getCommand());
 		intEClass.getESuperTypes().add(this.getConvert());
+		floatEClass.getESuperTypes().add(this.getConvert());
 		boolEClass.getESuperTypes().add(this.getConvert());
 		strEClass.getESuperTypes().add(this.getConvert());
 		convertEClass.getESuperTypes().add(theCorePackage.getCommand());
@@ -888,6 +907,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		initEReference(getEq_Right(), theEcorePackage.getEObject(), null, "right", null, 0, 1, Eq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(intEClass, Int.class, "Int", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(floatEClass, org.eclipse.ecl.operations.Float.class, "Float", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(boolEClass, Bool.class, "Bool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1001,6 +1022,13 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		   new String[] {
 			 "description", "Converts its argument to int.",
 			 "returns", "Returns integer value or fails if value cannot be converted. <code>true</code> is converted to <code>1</code> and <code>false</code> is converted to <code>0</code>."
+		   });		
+		addAnnotation
+		  (floatEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Converts its argument to float.",
+			 "returns", "<p>Returns float value or fails if value cannot be converted. <code>true</code> is converted to <code>1.0</code> and <code>false</code> is converted to <code>0</code>. This command uses <code>java.lang.Float.parseFloat</code> method, but also supports a few additional text values for infinity:</p>\n<ul>\n  <li><b>+inf</b> &ndash; returns <code>Float.POSITIVE_INFINITY</code></li>\n  <li><b>inf</b> &ndash; returns <code>Float.POSITIVE_INFINITY</code></li>\n  <li><b>-inf</b> &ndash; returns <code>Float.NEGATIVE_INFINITY</code></li>\n</ul>"
 		   });		
 		addAnnotation
 		  (boolEClass, 
@@ -1248,7 +1276,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (getEq_Left(), 
 		   source, 
 		   new String[] {
-		   });									
+		   });										
 		addAnnotation
 		  (getConvert_Input(), 
 		   source, 
@@ -1298,7 +1326,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	 * @generated
 	 */
 	protected void createInternalAnnotations() {
-		String source = "http://www.eclipse.org/ecl/internal";									
+		String source = "http://www.eclipse.org/ecl/internal";										
 		addAnnotation
 		  (convertEClass, 
 		   source, 

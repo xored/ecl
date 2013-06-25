@@ -44,6 +44,15 @@ public interface OperationsFactory extends EFactory {
 	Int createInt();
 
 	/**
+	 * Returns a new object of class '<em>Float</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Float</em>'.
+	 * @generated
+	 */
+	Float createFloat();
+
+	/**
 	 * Returns a new object of class '<em>Bool</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

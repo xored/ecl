@@ -8,6 +8,28 @@ package org.eclipse.ecl.operations.util;
 
 import org.eclipse.ecl.core.Command;
 
+import org.eclipse.ecl.operations.And;
+import org.eclipse.ecl.operations.AssertEmpty;
+import org.eclipse.ecl.operations.AssertNonEmpty;
+import org.eclipse.ecl.operations.AssertTrue;
+import org.eclipse.ecl.operations.Bool;
+import org.eclipse.ecl.operations.Concat;
+import org.eclipse.ecl.operations.Convert;
+import org.eclipse.ecl.operations.Emit;
+import org.eclipse.ecl.operations.Eq;
+import org.eclipse.ecl.operations.Format;
+import org.eclipse.ecl.operations.Gt;
+import org.eclipse.ecl.operations.Int;
+import org.eclipse.ecl.operations.Length;
+import org.eclipse.ecl.operations.Lt;
+import org.eclipse.ecl.operations.Not;
+import org.eclipse.ecl.operations.NotEq;
+import org.eclipse.ecl.operations.OperationsPackage;
+import org.eclipse.ecl.operations.Or;
+import org.eclipse.ecl.operations.Repeat;
+import org.eclipse.ecl.operations.RepeatWith;
+import org.eclipse.ecl.operations.Str;
+import org.eclipse.ecl.operations.Try;
 import org.eclipse.ecl.operations.*;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -80,6 +102,10 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseInt(Int object) {
 				return createIntAdapter();
+			}
+			@Override
+			public Adapter caseFloat(org.eclipse.ecl.operations.Float object) {
+				return createFloatAdapter();
 			}
 			@Override
 			public Adapter caseBool(Bool object) {
@@ -206,6 +232,20 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIntAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.Float <em>Float</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.Float
+	 * @generated
+	 */
+	public Adapter createFloatAdapter() {
 		return null;
 	}
 
