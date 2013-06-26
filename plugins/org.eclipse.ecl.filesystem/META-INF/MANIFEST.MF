@@ -13,5 +13,5 @@ Export-Package: org.eclipse.ecl.filesystem,
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.ecl.core;visibility:=reexport,
- com.google.guava
+ com.google.guava;bundle-version="13.0.1"
 Bundle-ActivationPolicy: lazy
