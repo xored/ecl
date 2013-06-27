@@ -1,7 +1,10 @@
 package org.eclipse.ecl.filesystem.internal.commands;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -11,8 +14,6 @@ import org.eclipse.ecl.filesystem.CopyFile;
 import org.eclipse.ecl.filesystem.EclFilesystemPlugin;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
-
-import com.google.common.io.Files;
 
 public class CopyFileService implements ICommandService {
 
@@ -71,12 +72,30 @@ public class CopyFileService implements ICommandService {
 					parent);
 
 		doCopyFile(src, dst);
-		
+
 		return Status.OK_STATUS;
 	}
 
 	private static void doCopyFile(File src, File dst) throws IOException {
-		Files.copy(src, dst);
+		if (!dst.exists()) {
+			dst.createNewFile();
+		}
+
+		FileChannel source = null;
+		FileChannel destination = null;
+
+		try {
+			source = new FileInputStream(src).getChannel();
+			destination = new FileOutputStream(dst).getChannel();
+			destination.transferFrom(source, 0, source.size());
+		} finally {
+			if (source != null) {
+				source.close();
+			}
+			if (destination != null) {
+				destination.close();
+			}
+		}
 		try {
 			if (src.canExecute() && !dst.setExecutable(true, true)) {
 				EclFilesystemPlugin.logWarning(String.format(

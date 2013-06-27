@@ -11,18 +11,33 @@
 package org.eclipse.ecl.internal.doc;
 
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStreamReader;
 
 import org.eclipse.ecl.doc.EclDocPlugin;
-
-import com.google.common.base.Charsets;
-import com.google.common.io.Resources;
 
 public class FileUtil {
 
 	public static String readFileAsString(String file) throws IOException {
-		URL url = EclDocPlugin.getDefault().getBundle().getResource(file);
-		return Resources.toString(url, Charsets.UTF_8);
+		InputStreamReader reader = null;
+		try {
+			reader = new InputStreamReader(EclDocPlugin.getDefault()
+					.getBundle().getResource(file).openStream(), "UTF-8");
+			char[] buf = new char[8192];
+			int read = 0;
+			StringBuilder sb = new StringBuilder();
+			while ((read = reader.read(buf)) != -1) {
+				sb.append(buf, 0, read);
+			}
+			return sb.toString();
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e) {
+				}
+			}
+
+		}
 	}
 
 }

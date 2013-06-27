@@ -28,14 +28,6 @@
 			<layout>p2</layout>
 			<url>http://download.xored.com/mirrors/indigo/</url>
 		</repository>
-		<repository>
-			<id>guava-osgi</id>
-			<layout>p2</layout>
-			<snapshots>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-			<url>http://download.xored.com/mirrors/guava/</url>
-		</repository>
 	</repositories>
 
 	<build>
