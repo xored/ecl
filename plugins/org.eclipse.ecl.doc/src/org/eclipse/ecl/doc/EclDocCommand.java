@@ -81,7 +81,7 @@ public class EclDocCommand implements IEclDocProvider {
 	private static List<String> excludedCommands = Arrays.asList("recognize",
 			"contains-image", "sequence", "parallel", "get-advanced-info",
 			"control-not-found", "pipeline", "setup-player",
-			"shoutdown-player", "get-global", "set-global", "script",
+			"shutdown-player", "get-global", "set-global", "script",
 			"get-region", "get-region-text", "alert");
 
 	private static EClass COMMAND = (EClass) EPackage.Registry.INSTANCE
