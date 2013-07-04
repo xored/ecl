@@ -318,6 +318,44 @@ public interface InteropPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.interop.impl.GetMemoryUsageImpl <em>Get Memory Usage</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.interop.impl.GetMemoryUsageImpl
+	 * @see org.eclipse.ecl.interop.impl.InteropPackageImpl#getGetMemoryUsage()
+	 * @generated
+	 */
+	int GET_MEMORY_USAGE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_MEMORY_USAGE__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_MEMORY_USAGE__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The number of structural features of the '<em>Get Memory Usage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_MEMORY_USAGE_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.interop.Invoke <em>Invoke</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -512,6 +550,16 @@ public interface InteropPackage extends EPackage {
 	EAttribute getGet_PropertyName();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.interop.GetMemoryUsage <em>Get Memory Usage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Get Memory Usage</em>'.
+	 * @see org.eclipse.ecl.interop.GetMemoryUsage
+	 * @generated
+	 */
+	EClass getGetMemoryUsage();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -684,6 +732,16 @@ public interface InteropPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GET__PROPERTY_NAME = eINSTANCE.getGet_PropertyName();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.interop.impl.GetMemoryUsageImpl <em>Get Memory Usage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.interop.impl.GetMemoryUsageImpl
+		 * @see org.eclipse.ecl.interop.impl.InteropPackageImpl#getGetMemoryUsage()
+		 * @generated
+		 */
+		EClass GET_MEMORY_USAGE = eINSTANCE.getGetMemoryUsage();
 
 	}
 

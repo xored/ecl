@@ -90,6 +90,10 @@ public class InteropAdapterFactory extends AdapterFactoryImpl {
 				return createGetAdapter();
 			}
 			@Override
+			public Adapter caseGetMemoryUsage(GetMemoryUsage object) {
+				return createGetMemoryUsageAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -166,6 +170,20 @@ public class InteropAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.interop.GetMemoryUsage <em>Get Memory Usage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.interop.GetMemoryUsage
+	 * @generated
+	 */
+	public Adapter createGetMemoryUsageAdapter() {
 		return null;
 	}
 

@@ -82,7 +82,7 @@ public class EclDocCommand implements IEclDocProvider {
 			"contains-image", "sequence", "parallel", "get-advanced-info",
 			"control-not-found", "pipeline", "setup-player",
 			"shutdown-player", "get-global", "set-global", "script",
-			"get-region", "get-region-text", "alert");
+			"get-region", "get-region-text", "alert", "get-memory-usage");
 
 	private static EClass COMMAND = (EClass) EPackage.Registry.INSTANCE
 			.getEPackage("http://www.eclipse.org/ecl/core.ecore")

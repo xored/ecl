@@ -29,5 +29,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interop.ecore#//Get/object"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interop.ecore#//Get/propertyName"/>
     </genClasses>
+    <genClasses ecoreClass="interop.ecore#//GetMemoryUsage"/>
   </genPackages>
 </genmodel:GenModel>

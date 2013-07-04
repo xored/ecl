@@ -62,6 +62,15 @@ public interface InteropFactory extends EFactory {
 	Get createGet();
 
 	/**
+	 * Returns a new object of class '<em>Get Memory Usage</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Get Memory Usage</em>'.
+	 * @generated
+	 */
+	GetMemoryUsage createGetMemoryUsage();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -11,6 +11,7 @@ import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.interop.ExecProcess;
 import org.eclipse.ecl.interop.ExecProcessResult;
 import org.eclipse.ecl.interop.Get;
+import org.eclipse.ecl.interop.GetMemoryUsage;
 import org.eclipse.ecl.interop.InteropFactory;
 import org.eclipse.ecl.interop.InteropPackage;
 import org.eclipse.ecl.interop.Invoke;
@@ -56,6 +57,13 @@ public class InteropPackageImpl extends EPackageImpl implements InteropPackage {
 	 * @generated
 	 */
 	private EClass getEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass getMemoryUsageEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -288,6 +296,15 @@ public class InteropPackageImpl extends EPackageImpl implements InteropPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGetMemoryUsage() {
+		return getMemoryUsageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public InteropFactory getInteropFactory() {
 		return (InteropFactory)getEFactoryInstance();
 	}
@@ -332,6 +349,8 @@ public class InteropPackageImpl extends EPackageImpl implements InteropPackage {
 		getEClass = createEClass(GET);
 		createEAttribute(getEClass, GET__OBJECT);
 		createEAttribute(getEClass, GET__PROPERTY_NAME);
+
+		getMemoryUsageEClass = createEClass(GET_MEMORY_USAGE);
 	}
 
 	/**
@@ -369,6 +388,7 @@ public class InteropPackageImpl extends EPackageImpl implements InteropPackage {
 		invokeEClass.getESuperTypes().add(theCorePackage.getCommand());
 		execProcessEClass.getESuperTypes().add(theCorePackage.getCommand());
 		getEClass.getESuperTypes().add(theCorePackage.getCommand());
+		getMemoryUsageEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(invokeEClass, Invoke.class, "Invoke", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -392,6 +412,8 @@ public class InteropPackageImpl extends EPackageImpl implements InteropPackage {
 		initEClass(getEClass, Get.class, "Get", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGet_Object(), theEcorePackage.getEJavaObject(), "object", null, 1, 1, Get.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGet_PropertyName(), theEcorePackage.getEString(), "propertyName", null, 1, 1, Get.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(getMemoryUsageEClass, GetMemoryUsage.class, "GetMemoryUsage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -116,6 +116,13 @@ public class InteropSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case InteropPackage.GET_MEMORY_USAGE: {
+				GetMemoryUsage getMemoryUsage = (GetMemoryUsage)theEObject;
+				T result = caseGetMemoryUsage(getMemoryUsage);
+				if (result == null) result = caseCommand(getMemoryUsage);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -177,6 +184,21 @@ public class InteropSwitch<T> {
 	 * @generated
 	 */
 	public T caseGet(Get object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Get Memory Usage</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Get Memory Usage</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGetMemoryUsage(GetMemoryUsage object) {
 		return null;
 	}
 
