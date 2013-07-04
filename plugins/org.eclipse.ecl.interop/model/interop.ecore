@@ -91,4 +91,5 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GetMemoryUsage" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command"/>
 </ecore:EPackage>
