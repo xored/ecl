@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     xored software, Inc - initial API and implementation
  ******************************************************************************/
@@ -112,12 +112,14 @@ public class EMFStreamPipe implements IPipe, IMarkeredPipe {
 				return eObject;
 			}
 		} catch (Throwable e) {
-			if (!(e instanceof EOFException)) {
+			if (e instanceof EOFException) {
+				return new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
+						"Connection is not Available", e);
+			} else {
 				throw new CoreException(new Status(IStatus.ERROR,
 						CorePlugin.PLUGIN_ID, e.getMessage(), e));
 			}
-			return new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
-					"Connection is not Available", e);
+
 		}
 	}
 
