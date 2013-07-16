@@ -7,7 +7,6 @@
 package org.eclipse.ecl.operations.impl;
 
 import org.eclipse.ecl.core.CorePackage;
-
 import org.eclipse.ecl.operations.And;
 import org.eclipse.ecl.operations.AssertEmpty;
 import org.eclipse.ecl.operations.AssertNonEmpty;
@@ -18,6 +17,8 @@ import org.eclipse.ecl.operations.Convert;
 import org.eclipse.ecl.operations.Emit;
 import org.eclipse.ecl.operations.Eq;
 import org.eclipse.ecl.operations.Format;
+import org.eclipse.ecl.operations.FormatTime;
+import org.eclipse.ecl.operations.GetTime;
 import org.eclipse.ecl.operations.Gt;
 import org.eclipse.ecl.operations.Int;
 import org.eclipse.ecl.operations.Length;
@@ -31,186 +32,180 @@ import org.eclipse.ecl.operations.Repeat;
 import org.eclipse.ecl.operations.RepeatWith;
 import org.eclipse.ecl.operations.Str;
 import org.eclipse.ecl.operations.Try;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Package</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
+ * end-user-doc -->
  * @generated
  */
-public class OperationsPackageImpl extends EPackageImpl implements OperationsPackage {
+public class OperationsPackageImpl extends EPackageImpl implements
+		OperationsPackage {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass eqEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass intEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass longEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass floatEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass boolEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass strEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass convertEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass assertTrueEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass lengthEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass notEqEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass gtEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass ltEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass notEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass tryEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass formatEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass emitEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass repeatWithEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass repeatEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass assertEmptyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass assertNonEmptyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass concatEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass orEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass andEClass = null;
 
 	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass getTimeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass formatTimeEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the
+	 * package package URI value.
+	 * <p>
+	 * Note: the correct way to create the package is via the static factory
+	 * method {@link #init init()}, which also performs initialization of the
+	 * package, or returns the registered package, if one already exists. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.eclipse.ecl.operations.OperationsPackage#eNS_URI
 	 * @see #init()
@@ -221,19 +216,21 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * Creates, registers, and initializes the <b>Package</b> for this model,
+	 * and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link OperationsPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <p>
+	 * This method is used to initialize {@link OperationsPackage#eINSTANCE}
+	 * when that field is accessed. Clients should not invoke it directly.
+	 * Instead, they should simply access that field to obtain the package. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
@@ -266,8 +263,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getEq() {
@@ -275,8 +271,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getEq_Left() {
@@ -284,8 +279,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getEq_Right() {
@@ -293,8 +287,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getInt() {
@@ -302,8 +295,15 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLong() {
+		return longEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getFloat() {
@@ -311,8 +311,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getBool() {
@@ -320,8 +319,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getStr() {
@@ -329,8 +327,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getConvert() {
@@ -338,8 +335,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getConvert_Input() {
@@ -347,8 +343,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getAssertTrue() {
@@ -356,8 +351,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAssertTrue_Input() {
@@ -365,8 +359,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAssertTrue_Message() {
@@ -374,8 +367,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getLength() {
@@ -383,8 +375,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getLength_Input() {
@@ -392,8 +383,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getNotEq() {
@@ -401,8 +391,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getNotEq_Left() {
@@ -410,8 +399,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getNotEq_Right() {
@@ -419,8 +407,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getGt() {
@@ -428,8 +415,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getGt_Left() {
@@ -437,8 +423,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getGt_Right() {
@@ -446,8 +431,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getLt() {
@@ -455,8 +439,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getLt_Left() {
@@ -464,8 +447,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getLt_Right() {
@@ -473,8 +455,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getNot() {
@@ -482,8 +463,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getNot_Left() {
@@ -491,8 +471,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getTry() {
@@ -500,8 +479,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getTry_Command() {
@@ -509,8 +487,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getTry_Catch() {
@@ -518,8 +495,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getTry_Finally() {
@@ -527,8 +503,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTry_Times() {
@@ -536,8 +511,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTry_Delay() {
@@ -545,8 +519,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getFormat() {
@@ -554,8 +527,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getFormat_Format() {
@@ -563,8 +535,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getFormat_Args() {
@@ -572,8 +543,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getEmit() {
@@ -581,8 +551,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getEmit_Values() {
@@ -590,8 +559,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getRepeatWith() {
@@ -599,8 +567,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getRepeatWith_Commands() {
@@ -608,8 +575,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getRepeatWith_Command() {
@@ -617,8 +583,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getRepeat() {
@@ -626,8 +591,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getRepeat_Times() {
@@ -635,8 +599,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getRepeat_Command() {
@@ -644,8 +607,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getRepeat_Delay() {
@@ -653,8 +615,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getAssertEmpty() {
@@ -662,8 +623,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAssertEmpty_Message() {
@@ -671,8 +631,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getAssertNonEmpty() {
@@ -680,8 +639,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAssertNonEmpty_Message() {
@@ -689,8 +647,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getConcat() {
@@ -698,8 +655,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getConcat_Strs() {
@@ -707,8 +663,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getOr() {
@@ -716,8 +671,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getOr_Args() {
@@ -725,8 +679,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getAnd() {
@@ -734,8 +687,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getAnd_Args() {
@@ -743,8 +695,31 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGetTime() {
+		return getTimeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFormatTime() {
+		return formatTimeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFormatTime_Format() {
+		return (EAttribute)formatTimeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public OperationsFactory getOperationsFactory() {
@@ -752,8 +727,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private boolean isCreated = false;
@@ -775,6 +749,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		createEReference(eqEClass, EQ__RIGHT);
 
 		intEClass = createEClass(INT);
+
+		longEClass = createEClass(LONG);
 
 		floatEClass = createEClass(FLOAT);
 
@@ -844,20 +820,24 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 		andEClass = createEClass(AND);
 		createEReference(andEClass, AND__ARGS);
+
+		getTimeEClass = createEClass(GET_TIME);
+
+		formatTimeEClass = createEClass(FORMAT_TIME);
+		createEAttribute(formatTimeEClass, FORMAT_TIME__FORMAT);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private boolean isInitialized = false;
 
 	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Complete the initialization of the package and its meta-model. This
+	 * method is guarded to have no affect on any invocation but its first. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void initializePackageContents() {
@@ -880,6 +860,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		// Add supertypes to classes
 		eqEClass.getESuperTypes().add(theCorePackage.getCommand());
 		intEClass.getESuperTypes().add(this.getConvert());
+		longEClass.getESuperTypes().add(this.getConvert());
 		floatEClass.getESuperTypes().add(this.getConvert());
 		boolEClass.getESuperTypes().add(this.getConvert());
 		strEClass.getESuperTypes().add(this.getConvert());
@@ -900,6 +881,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		concatEClass.getESuperTypes().add(theCorePackage.getCommand());
 		orEClass.getESuperTypes().add(theCorePackage.getCommand());
 		andEClass.getESuperTypes().add(theCorePackage.getCommand());
+		getTimeEClass.getESuperTypes().add(theCorePackage.getCommand());
+		formatTimeEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -907,6 +890,8 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		initEReference(getEq_Right(), theEcorePackage.getEObject(), null, "right", null, 0, 1, Eq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(intEClass, Int.class, "Int", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(longEClass, org.eclipse.ecl.operations.Long.class, "Long", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(floatEClass, org.eclipse.ecl.operations.Float.class, "Float", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -977,6 +962,11 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		initEClass(andEClass, And.class, "And", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAnd_Args(), theEcorePackage.getEObject(), null, "args", null, 2, -1, And.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(getTimeEClass, GetTime.class, "GetTime", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(formatTimeEClass, FormatTime.class, "FormatTime", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFormatTime_Format(), theEcorePackage.getEString(), "format", null, 0, 1, FormatTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Create resource
 		createResource(eNS_URI);
 
@@ -991,8 +981,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 
 	/**
 	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/docs</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createDocsAnnotations() {
@@ -1024,6 +1013,13 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 			 "returns", "Returns integer value or fails if value cannot be converted. <code>true</code> is converted to <code>1</code> and <code>false</code> is converted to <code>0</code>."
 		   });		
 		addAnnotation
+		  (longEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Converts its argument to long.",
+			 "returns", "Returns long value or fails if value cannot be converted. <code>true</code> is converted to <code>1L</code> and <code>false</code> is converted to <code>0L</code>."
+		   });		
+		addAnnotation
 		  (floatEClass, 
 		   source, 
 		   new String[] {
@@ -1048,7 +1044,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (getConvert_Input(), 
 		   source, 
 		   new String[] {
-			 "description", "Argument to be converted to string."
+			 "description", "Argument to be converted."
 		   });			
 		addAnnotation
 		  (assertTrueEClass, 
@@ -1261,13 +1257,26 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		   source, 
 		   new String[] {
 			 "description", "Arguments to compute on."
+		   });		
+		addAnnotation
+		  (getTimeEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Returns current time as a number of milliseconds since January, 1, 1970.",
+			 "returns", "Current time as long integer"
+		   });		
+		addAnnotation
+		  (formatTimeEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Reads timestamp value (as a number of milliseconds since January, 1, 1970) from input pipe and formats according to given format string. Format string is the same as used in <code>java.text.SimpleDateFormat</code>.",
+			 "returns", "String representation of given time"
 		   });
 	}
 
 	/**
 	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/input</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createInputAnnotations() {
@@ -1276,7 +1285,7 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (getEq_Left(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });											
 		addAnnotation
 		  (getConvert_Input(), 
 		   source, 
@@ -1316,22 +1325,22 @@ public class OperationsPackageImpl extends EPackageImpl implements OperationsPac
 		  (getRepeatWith_Commands(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });												
 	}
 
 	/**
 	 * Initializes the annotations for <b>http://www.eclipse.org/ecl/internal</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	protected void createInternalAnnotations() {
-		String source = "http://www.eclipse.org/ecl/internal";										
+		String source = "http://www.eclipse.org/ecl/internal";											
 		addAnnotation
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });																																									
+		   });																																											
 	}
 
-} //OperationsPackageImpl
+} // OperationsPackageImpl

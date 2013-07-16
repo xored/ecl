@@ -124,7 +124,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getConvert()
 	 * @generated
 	 */
-	int CONVERT = 5;
+	int CONVERT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -209,6 +209,52 @@ public interface OperationsPackage extends EPackage {
 	int INT_FEATURE_COUNT = CONVERT_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.LongImpl <em>Long</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.LongImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getLong()
+	 * @generated
+	 */
+	int LONG = 2;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LONG__HOST = CONVERT__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LONG__BINDINGS = CONVERT__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LONG__INPUT = CONVERT__INPUT;
+
+	/**
+	 * The number of structural features of the '<em>Long</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LONG_FEATURE_COUNT = CONVERT_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.FloatImpl <em>Float</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -216,7 +262,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getFloat()
 	 * @generated
 	 */
-	int FLOAT = 2;
+	int FLOAT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -262,7 +308,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getBool()
 	 * @generated
 	 */
-	int BOOL = 3;
+	int BOOL = 4;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -308,7 +354,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getStr()
 	 * @generated
 	 */
-	int STR = 4;
+	int STR = 5;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -354,7 +400,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertTrue()
 	 * @generated
 	 */
-	int ASSERT_TRUE = 6;
+	int ASSERT_TRUE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -409,7 +455,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getLength()
 	 * @generated
 	 */
-	int LENGTH = 7;
+	int LENGTH = 8;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -455,7 +501,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getNotEq()
 	 * @generated
 	 */
-	int NOT_EQ = 8;
+	int NOT_EQ = 9;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -510,7 +556,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getGt()
 	 * @generated
 	 */
-	int GT = 9;
+	int GT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -565,7 +611,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getLt()
 	 * @generated
 	 */
-	int LT = 10;
+	int LT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -620,7 +666,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getNot()
 	 * @generated
 	 */
-	int NOT = 11;
+	int NOT = 12;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -666,7 +712,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getTry()
 	 * @generated
 	 */
-	int TRY = 12;
+	int TRY = 13;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -748,7 +794,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getFormat()
 	 * @generated
 	 */
-	int FORMAT = 13;
+	int FORMAT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -803,7 +849,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getEmit()
 	 * @generated
 	 */
-	int EMIT = 14;
+	int EMIT = 15;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -849,7 +895,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getRepeatWith()
 	 * @generated
 	 */
-	int REPEAT_WITH = 15;
+	int REPEAT_WITH = 16;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -905,7 +951,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getRepeat()
 	 * @generated
 	 */
-	int REPEAT = 16;
+	int REPEAT = 17;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -970,7 +1016,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertEmpty()
 	 * @generated
 	 */
-	int ASSERT_EMPTY = 17;
+	int ASSERT_EMPTY = 18;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1017,7 +1063,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertNonEmpty()
 	 * @generated
 	 */
-	int ASSERT_NON_EMPTY = 18;
+	int ASSERT_NON_EMPTY = 19;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1064,7 +1110,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getConcat()
 	 * @generated
 	 */
-	int CONCAT = 19;
+	int CONCAT = 20;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1111,7 +1157,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 20;
+	int OR = 21;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1157,7 +1203,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 21;
+	int AND = 22;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1194,6 +1240,90 @@ public interface OperationsPackage extends EPackage {
 	 * @ordered
 	 */
 	int AND_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.GetTimeImpl <em>Get Time</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.GetTimeImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getGetTime()
+	 * @generated
+	 */
+	int GET_TIME = 23;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_TIME__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_TIME__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The number of structural features of the '<em>Get Time</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_TIME_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.FormatTimeImpl <em>Format Time</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.FormatTimeImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getFormatTime()
+	 * @generated
+	 */
+	int FORMAT_TIME = 24;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORMAT_TIME__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORMAT_TIME__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORMAT_TIME__FORMAT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Format Time</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORMAT_TIME_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 
 	/**
@@ -1237,6 +1367,16 @@ public interface OperationsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getInt();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Long <em>Long</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Long</em>'.
+	 * @see org.eclipse.ecl.operations.Long
+	 * @generated
+	 */
+	EClass getLong();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Float <em>Float</em>}'.
@@ -1758,6 +1898,37 @@ public interface OperationsPackage extends EPackage {
 	EReference getAnd_Args();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.GetTime <em>Get Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Get Time</em>'.
+	 * @see org.eclipse.ecl.operations.GetTime
+	 * @generated
+	 */
+	EClass getGetTime();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.FormatTime <em>Format Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Format Time</em>'.
+	 * @see org.eclipse.ecl.operations.FormatTime
+	 * @generated
+	 */
+	EClass getFormatTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.operations.FormatTime#getFormat <em>Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Format</em>'.
+	 * @see org.eclipse.ecl.operations.FormatTime#getFormat()
+	 * @see #getFormatTime()
+	 * @generated
+	 */
+	EAttribute getFormatTime_Format();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1814,6 +1985,16 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass INT = eINSTANCE.getInt();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.LongImpl <em>Long</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.LongImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getLong()
+		 * @generated
+		 */
+		EClass LONG = eINSTANCE.getLong();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.FloatImpl <em>Float</em>}' class.
@@ -2246,6 +2427,34 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference AND__ARGS = eINSTANCE.getAnd_Args();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.GetTimeImpl <em>Get Time</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.GetTimeImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getGetTime()
+		 * @generated
+		 */
+		EClass GET_TIME = eINSTANCE.getGetTime();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.FormatTimeImpl <em>Format Time</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.FormatTimeImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getFormatTime()
+		 * @generated
+		 */
+		EClass FORMAT_TIME = eINSTANCE.getFormatTime();
+
+		/**
+		 * The meta object literal for the '<em><b>Format</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FORMAT_TIME__FORMAT = eINSTANCE.getFormatTime_Format();
 
 	}
 

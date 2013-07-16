@@ -44,6 +44,15 @@ public interface OperationsFactory extends EFactory {
 	Int createInt();
 
 	/**
+	 * Returns a new object of class '<em>Long</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Long</em>'.
+	 * @generated
+	 */
+	Long createLong();
+
+	/**
 	 * Returns a new object of class '<em>Float</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -213,6 +222,24 @@ public interface OperationsFactory extends EFactory {
 	 * @generated
 	 */
 	And createAnd();
+
+	/**
+	 * Returns a new object of class '<em>Get Time</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Get Time</em>'.
+	 * @generated
+	 */
+	GetTime createGetTime();
+
+	/**
+	 * Returns a new object of class '<em>Format Time</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Format Time</em>'.
+	 * @generated
+	 */
+	FormatTime createFormatTime();
 
 	/**
 	 * Returns the package supported by this factory.

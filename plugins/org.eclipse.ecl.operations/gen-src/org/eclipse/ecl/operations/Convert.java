@@ -38,7 +38,7 @@ public interface Convert extends Command {
 	 * @return the value of the '<em>Input</em>' reference.
 	 * @see #setInput(EObject)
 	 * @see org.eclipse.ecl.operations.OperationsPackage#getConvert_Input()
-	 * @model annotation="http://www.eclipse.org/ecl/docs description='Argument to be converted to string.'"
+	 * @model annotation="http://www.eclipse.org/ecl/docs description='Argument to be converted.'"
 	 * @generated
 	 */
 	EObject getInput();
