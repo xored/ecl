@@ -97,21 +97,14 @@ public class EclTcpSession implements ISession {
 							IStatus result = writeOutput(node.output, pipe);
 
 							node.process.setStatus(result);
-						} catch (CoreException e) {
-							try {
-								if (node != null) {
-									IStatus status = e.getStatus();
-									node.process.setStatus(new EclTcpSocketStatus(
-											status));
-								}
-							} catch (CoreException e1) {
-								CorePlugin.log(e1);
-							}
 						} catch (Throwable t) {
 							try {
 								if (node != null) {
+									IStatus status = (t instanceof CoreException)
+											? ((CoreException) t).getStatus()
+											: CorePlugin.err(t);
 									node.process.setStatus(new EclTcpSocketStatus(
-											CorePlugin.err(t)));
+											status));
 								}
 							} catch (CoreException e1) {
 								CorePlugin.log(e1);
