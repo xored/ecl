@@ -26,6 +26,12 @@
       <details key="returns" value="Returns integer value or fails if value cannot be converted. &lt;code>true&lt;/code> is converted to &lt;code>1&lt;/code> and &lt;code>false&lt;/code> is converted to &lt;code>0&lt;/code>."/>
     </eAnnotations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Long" eSuperTypes="#//Convert">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Converts its argument to long."/>
+      <details key="returns" value="Returns long value or fails if value cannot be converted. &lt;code>true&lt;/code> is converted to &lt;code>1L&lt;/code> and &lt;code>false&lt;/code> is converted to &lt;code>0L&lt;/code>."/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Float" eSuperTypes="#//Convert">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
       <details key="description" value="Converts its argument to float."/>
@@ -48,7 +54,7 @@
     <eAnnotations source="http://www.eclipse.org/ecl/internal"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="input" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
       <eAnnotations source="http://www.eclipse.org/ecl/docs">
-        <details key="description" value="Argument to be converted to string."/>
+        <details key="description" value="Argument to be converted."/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/ecl/input"/>
     </eStructuralFeatures>
@@ -264,5 +270,18 @@
         <details key="description" value="Arguments to compute on."/>
       </eAnnotations>
     </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GetTime" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Returns current time as a number of milliseconds since January, 1, 1970."/>
+      <details key="returns" value="Current time as long integer"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FormatTime" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Reads timestamp value (as a number of milliseconds since January, 1, 1970) from input pipe and formats according to given format string. Format string is the same as used in &lt;code>java.text.SimpleDateFormat&lt;/code>."/>
+      <details key="returns" value="String representation of given time"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

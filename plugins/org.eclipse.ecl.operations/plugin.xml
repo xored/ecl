@@ -21,6 +21,11 @@
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
       <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.LongService"
+            name="Long"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+      <scriptlet
             class="org.eclipse.ecl.operations.internal.commands.FloatService"
             name="Float"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
@@ -115,5 +120,16 @@
             name="And"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.GetTimeService"
+            name="GetTime"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.FormatTimeService"
+            name="FormatTime"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+     
    </extension>
 </plugin>
