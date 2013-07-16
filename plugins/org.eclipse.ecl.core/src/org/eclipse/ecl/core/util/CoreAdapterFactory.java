@@ -224,6 +224,26 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 				return createListenAdapter();
 			}
 			@Override
+			public Adapter caseDeclaration(Declaration object) {
+				return createDeclarationAdapter();
+			}
+			@Override
+			public Adapter caseVal(Val object) {
+				return createValAdapter();
+			}
+			@Override
+			public Adapter caseGetVal(GetVal object) {
+				return createGetValAdapter();
+			}
+			@Override
+			public Adapter caseLet(Let object) {
+				return createLetAdapter();
+			}
+			@Override
+			public Adapter caseProc(Proc object) {
+				return createProcAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -548,6 +568,76 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createListenAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.Declaration <em>Declaration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.Declaration
+	 * @generated
+	 */
+	public Adapter createDeclarationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.Val <em>Val</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.Val
+	 * @generated
+	 */
+	public Adapter createValAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.GetVal <em>Get Val</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.GetVal
+	 * @generated
+	 */
+	public Adapter createGetValAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.Let <em>Let</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.Let
+	 * @generated
+	 */
+	public Adapter createLetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.Proc <em>Proc</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.Proc
+	 * @generated
+	 */
+	public Adapter createProcAdapter() {
 		return null;
 	}
 

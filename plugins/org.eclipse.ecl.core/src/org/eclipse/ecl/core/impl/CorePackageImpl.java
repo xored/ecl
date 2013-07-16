@@ -17,6 +17,7 @@ import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.ConvertedToEMFPipe;
 import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.core.CorePackage;
+import org.eclipse.ecl.core.Declaration;
 import org.eclipse.ecl.core.EclBoolean;
 import org.eclipse.ecl.core.EclByte;
 import org.eclipse.ecl.core.EclChar;
@@ -31,17 +32,21 @@ import org.eclipse.ecl.core.EclString;
 import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.ExecutableParameter;
 import org.eclipse.ecl.core.Foreach;
+import org.eclipse.ecl.core.GetVal;
 import org.eclipse.ecl.core.If;
+import org.eclipse.ecl.core.Let;
 import org.eclipse.ecl.core.Listen;
 import org.eclipse.ecl.core.LiteralParameter;
 import org.eclipse.ecl.core.Nullable;
 import org.eclipse.ecl.core.Parallel;
 import org.eclipse.ecl.core.Parameter;
 import org.eclipse.ecl.core.Pipeline;
+import org.eclipse.ecl.core.Proc;
 import org.eclipse.ecl.core.ProcessStatus;
 import org.eclipse.ecl.core.Script;
 import org.eclipse.ecl.core.Sequence;
 import org.eclipse.ecl.core.Serialized;
+import org.eclipse.ecl.core.Val;
 import org.eclipse.ecl.core.With;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -182,6 +187,41 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	private EClass listenEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass declarationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass valEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass getValEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass letEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass procEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -820,6 +860,123 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDeclaration() {
+		return declarationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getVal() {
+		return valEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVal_Name() {
+		return (EAttribute)valEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVal_Input() {
+		return (EAttribute)valEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getVal_Value() {
+		return (EReference)valEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGetVal() {
+		return getValEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGetVal_Name() {
+		return (EAttribute)getValEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLet() {
+		return letEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLet_Vals() {
+		return (EReference)letEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLet_Body() {
+		return (EReference)letEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getProc() {
+		return procEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProc_Vals() {
+		return (EReference)procEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProc_Body() {
+		return (EReference)procEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1118,6 +1275,24 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEAttribute(listenEClass, LISTEN__SOURCE);
 		createEReference(listenEClass, LISTEN__WHILE);
 
+		declarationEClass = createEClass(DECLARATION);
+
+		valEClass = createEClass(VAL);
+		createEAttribute(valEClass, VAL__NAME);
+		createEAttribute(valEClass, VAL__INPUT);
+		createEReference(valEClass, VAL__VALUE);
+
+		getValEClass = createEClass(GET_VAL);
+		createEAttribute(getValEClass, GET_VAL__NAME);
+
+		letEClass = createEClass(LET);
+		createEReference(letEClass, LET__VALS);
+		createEReference(letEClass, LET__BODY);
+
+		procEClass = createEClass(PROC);
+		createEReference(procEClass, PROC__VALS);
+		createEReference(procEClass, PROC__BODY);
+
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
 	}
@@ -1173,6 +1348,11 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		eclCharEClass.getESuperTypes().add(this.getBoxedValue());
 		eclStringEClass.getESuperTypes().add(this.getBoxedValue());
 		listenEClass.getESuperTypes().add(this.getCommand());
+		declarationEClass.getESuperTypes().add(this.getCommand());
+		valEClass.getESuperTypes().add(this.getDeclaration());
+		getValEClass.getESuperTypes().add(this.getCommand());
+		letEClass.getESuperTypes().add(this.getCommand());
+		procEClass.getESuperTypes().add(this.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1287,6 +1467,24 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEClass(listenEClass, Listen.class, "Listen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getListen_Source(), theEcorePackage.getEString(), "source", null, 1, 1, Listen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getListen_While(), this.getCommand(), null, "while", null, 1, 1, Listen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(declarationEClass, Declaration.class, "Declaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(valEClass, Val.class, "Val", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVal_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Val.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVal_Input(), theEcorePackage.getEBoolean(), "input", "false", 0, 1, Val.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVal_Value(), theEcorePackage.getEObject(), null, "value", null, 0, 1, Val.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(getValEClass, GetVal.class, "GetVal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGetVal_Name(), theEcorePackage.getEString(), "name", null, 0, 1, GetVal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(letEClass, Let.class, "Let", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLet_Vals(), this.getDeclaration(), null, "vals", null, 0, -1, Let.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLet_Body(), this.getCommand(), null, "body", null, 0, 1, Let.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(procEClass, Proc.class, "Proc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getProc_Vals(), this.getDeclaration(), null, "vals", null, 0, -1, Proc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProc_Body(), this.getCommand(), null, "body", null, 0, 1, Proc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

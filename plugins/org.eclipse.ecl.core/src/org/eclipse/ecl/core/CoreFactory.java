@@ -228,6 +228,51 @@ public interface CoreFactory extends EFactory {
 	Listen createListen();
 
 	/**
+	 * Returns a new object of class '<em>Declaration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Declaration</em>'.
+	 * @generated
+	 */
+	Declaration createDeclaration();
+
+	/**
+	 * Returns a new object of class '<em>Val</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Val</em>'.
+	 * @generated
+	 */
+	Val createVal();
+
+	/**
+	 * Returns a new object of class '<em>Get Val</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Get Val</em>'.
+	 * @generated
+	 */
+	GetVal createGetVal();
+
+	/**
+	 * Returns a new object of class '<em>Let</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Let</em>'.
+	 * @generated
+	 */
+	Let createLet();
+
+	/**
+	 * Returns a new object of class '<em>Proc</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Proc</em>'.
+	 * @generated
+	 */
+	Proc createProc();
+
+	/**
 	 * Returns a new object of class '<em>Ecl Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

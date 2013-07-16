@@ -327,6 +327,42 @@ public class CoreSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CorePackage.DECLARATION: {
+				Declaration declaration = (Declaration)theEObject;
+				T result = caseDeclaration(declaration);
+				if (result == null) result = caseCommand(declaration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.VAL: {
+				Val val = (Val)theEObject;
+				T result = caseVal(val);
+				if (result == null) result = caseDeclaration(val);
+				if (result == null) result = caseCommand(val);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.GET_VAL: {
+				GetVal getVal = (GetVal)theEObject;
+				T result = caseGetVal(getVal);
+				if (result == null) result = caseCommand(getVal);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.LET: {
+				Let let = (Let)theEObject;
+				T result = caseLet(let);
+				if (result == null) result = caseCommand(let);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.PROC: {
+				Proc proc = (Proc)theEObject;
+				T result = caseProc(proc);
+				if (result == null) result = caseCommand(proc);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -793,6 +829,81 @@ public class CoreSwitch<T> {
 	 * @generated
 	 */
 	public T caseListen(Listen object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Declaration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Declaration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDeclaration(Declaration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Val</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Val</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVal(Val object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Get Val</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Get Val</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGetVal(GetVal object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Let</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Let</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLet(Let object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Proc</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Proc</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProc(Proc object) {
 		return null;
 	}
 

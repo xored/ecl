@@ -121,6 +121,11 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.ECL_EXCEPTION: return createEclException();
 			case CorePackage.ECL_STACK_TRACE_ENTRY: return createEclStackTraceEntry();
 			case CorePackage.LISTEN: return createListen();
+			case CorePackage.DECLARATION: return createDeclaration();
+			case CorePackage.VAL: return createVal();
+			case CorePackage.GET_VAL: return createGetVal();
+			case CorePackage.LET: return createLet();
+			case CorePackage.PROC: return createProc();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -374,6 +379,56 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public Listen createListen() {
 		ListenImpl listen = new ListenImpl();
 		return listen;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Declaration createDeclaration() {
+		DeclarationImpl declaration = new DeclarationImpl();
+		return declaration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Val createVal() {
+		ValImpl val = new ValImpl();
+		return val;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GetVal createGetVal() {
+		GetValImpl getVal = new GetValImpl();
+		return getVal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Let createLet() {
+		LetImpl let = new LetImpl();
+		return let;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Proc createProc() {
+		ProcImpl proc = new ProcImpl();
+		return proc;
 	}
 
 	/**

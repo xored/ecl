@@ -1338,6 +1338,263 @@ public interface CorePackage extends EPackage {
 	int LISTEN_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.DeclarationImpl <em>Declaration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.DeclarationImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getDeclaration()
+	 * @generated
+	 */
+	int DECLARATION = 31;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECLARATION__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECLARATION__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The number of structural features of the '<em>Declaration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECLARATION_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.ValImpl <em>Val</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.ValImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getVal()
+	 * @generated
+	 */
+	int VAL = 32;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VAL__HOST = DECLARATION__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VAL__BINDINGS = DECLARATION__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VAL__NAME = DECLARATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VAL__INPUT = DECLARATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VAL__VALUE = DECLARATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Val</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VAL_FEATURE_COUNT = DECLARATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.GetValImpl <em>Get Val</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.GetValImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getGetVal()
+	 * @generated
+	 */
+	int GET_VAL = 33;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_VAL__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_VAL__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_VAL__NAME = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Get Val</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_VAL_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.LetImpl <em>Let</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.LetImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getLet()
+	 * @generated
+	 */
+	int LET = 34;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LET__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LET__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Vals</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LET__VALS = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LET__BODY = COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Let</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LET_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.ProcImpl <em>Proc</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.ProcImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getProc()
+	 * @generated
+	 */
+	int PROC = 35;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROC__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROC__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Vals</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROC__VALS = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROC__BODY = COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Proc</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROC_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1345,7 +1602,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
 	 * @generated
 	 */
-	int THROWABLE = 31;
+	int THROWABLE = 36;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -2018,6 +2275,144 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getListen_While();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Declaration <em>Declaration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Declaration</em>'.
+	 * @see org.eclipse.ecl.core.Declaration
+	 * @generated
+	 */
+	EClass getDeclaration();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Val <em>Val</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Val</em>'.
+	 * @see org.eclipse.ecl.core.Val
+	 * @generated
+	 */
+	EClass getVal();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Val#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.ecl.core.Val#getName()
+	 * @see #getVal()
+	 * @generated
+	 */
+	EAttribute getVal_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Val#isInput <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Input</em>'.
+	 * @see org.eclipse.ecl.core.Val#isInput()
+	 * @see #getVal()
+	 * @generated
+	 */
+	EAttribute getVal_Input();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.Val#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value</em>'.
+	 * @see org.eclipse.ecl.core.Val#getValue()
+	 * @see #getVal()
+	 * @generated
+	 */
+	EReference getVal_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.GetVal <em>Get Val</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Get Val</em>'.
+	 * @see org.eclipse.ecl.core.GetVal
+	 * @generated
+	 */
+	EClass getGetVal();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.GetVal#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.ecl.core.GetVal#getName()
+	 * @see #getGetVal()
+	 * @generated
+	 */
+	EAttribute getGetVal_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Let <em>Let</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Let</em>'.
+	 * @see org.eclipse.ecl.core.Let
+	 * @generated
+	 */
+	EClass getLet();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.core.Let#getVals <em>Vals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Vals</em>'.
+	 * @see org.eclipse.ecl.core.Let#getVals()
+	 * @see #getLet()
+	 * @generated
+	 */
+	EReference getLet_Vals();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.Let#getBody <em>Body</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Body</em>'.
+	 * @see org.eclipse.ecl.core.Let#getBody()
+	 * @see #getLet()
+	 * @generated
+	 */
+	EReference getLet_Body();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Proc <em>Proc</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Proc</em>'.
+	 * @see org.eclipse.ecl.core.Proc
+	 * @generated
+	 */
+	EClass getProc();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.core.Proc#getVals <em>Vals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Vals</em>'.
+	 * @see org.eclipse.ecl.core.Proc#getVals()
+	 * @see #getProc()
+	 * @generated
+	 */
+	EReference getProc_Vals();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.Proc#getBody <em>Body</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Body</em>'.
+	 * @see org.eclipse.ecl.core.Proc#getBody()
+	 * @see #getProc()
+	 * @generated
+	 */
+	EReference getProc_Body();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclBoolean <em>Ecl Boolean</em>}'.
@@ -2796,6 +3191,120 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference LISTEN__WHILE = eINSTANCE.getListen_While();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.DeclarationImpl <em>Declaration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.DeclarationImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getDeclaration()
+		 * @generated
+		 */
+		EClass DECLARATION = eINSTANCE.getDeclaration();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ValImpl <em>Val</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.ValImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getVal()
+		 * @generated
+		 */
+		EClass VAL = eINSTANCE.getVal();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VAL__NAME = eINSTANCE.getVal_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VAL__INPUT = eINSTANCE.getVal_Input();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VAL__VALUE = eINSTANCE.getVal_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.GetValImpl <em>Get Val</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.GetValImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getGetVal()
+		 * @generated
+		 */
+		EClass GET_VAL = eINSTANCE.getGetVal();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GET_VAL__NAME = eINSTANCE.getGetVal_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.LetImpl <em>Let</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.LetImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getLet()
+		 * @generated
+		 */
+		EClass LET = eINSTANCE.getLet();
+
+		/**
+		 * The meta object literal for the '<em><b>Vals</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LET__VALS = eINSTANCE.getLet_Vals();
+
+		/**
+		 * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LET__BODY = eINSTANCE.getLet_Body();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ProcImpl <em>Proc</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.ProcImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getProc()
+		 * @generated
+		 */
+		EClass PROC = eINSTANCE.getProc();
+
+		/**
+		 * The meta object literal for the '<em><b>Vals</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROC__VALS = eINSTANCE.getProc_Vals();
+
+		/**
+		 * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROC__BODY = eINSTANCE.getProc_Body();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclBooleanImpl <em>Ecl Boolean</em>}' class.
