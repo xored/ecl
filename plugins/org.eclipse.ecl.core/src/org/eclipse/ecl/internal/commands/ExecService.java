@@ -13,6 +13,7 @@ package org.eclipse.ecl.internal.commands;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -80,19 +81,21 @@ public class ExecService implements ICommandService {
 
 		List<EStructuralFeature> features = CoreUtils.getFeatures(targetClass);
 		int cmdCommandSize = 0;
-		Map<String, EStructuralFeature> map = new HashMap<String, EStructuralFeature>();
+		Map<String, EStructuralFeature> featuresByName = new HashMap<String, EStructuralFeature>();
+		List<EStructuralFeature> orderedFeatures = new ArrayList<EStructuralFeature>();
 		boolean hasNonLimited = false;
 		for (EStructuralFeature feature : features) {
 			if (isInternalFeature(feature)) {
 				// Skipping internal parameter
 				continue;
 			}
+			orderedFeatures.add(feature);
 			String name = feature.getName();
-			if (map.containsKey(name)) {
+			if (featuresByName.containsKey(name)) {
 				return createErrorStatus(NLS.bind(
 						"Duplicate parameter name: {0}", name));
 			}
-			map.put(name, feature);
+			featuresByName.put(name, feature);
 			int upperBound = feature.getUpperBound();
 			if (upperBound == -1) {
 				hasNonLimited = true;
@@ -103,7 +106,15 @@ public class ExecService implements ICommandService {
 		int i = 0;
 		boolean processUnnamed = canProcessUnnamed(targetClass);
 		boolean fullSet = (params.size() == cmdCommandSize) && !hasNonLimited;
-		for (Parameter param : params) {
+
+		Iterator<Parameter> paramIterator = params.iterator();
+		Parameter param = null;
+		boolean peekParam = true;
+		while (paramIterator.hasNext() || !peekParam) {
+			if (peekParam) {
+				param = paramIterator.next();
+			}
+			peekParam = true;
 			if (param.eIsSet(CorePackage.eINSTANCE.getParameter_Name())) {
 				processUnnamed = false;
 			} else {
@@ -111,31 +122,62 @@ public class ExecService implements ICommandService {
 					return createErrorStatus("Unnamed parameters disallowed after named ones");
 				}
 			}
-			EStructuralFeature feature = processUnnamed ? features.get(i++)
-					: map.get(param.getName());
+			if (i >= orderedFeatures.size()) {
+				System.out.println("alarma!");
+			}
+			EStructuralFeature feature = processUnnamed ? orderedFeatures
+					.get(i++) : featuresByName.get(param.getName());
 
 			if (feature == null) {
 				return createErrorStatus(NLS.bind(
 						"Invalid parameter name: {0}", param.getName()));
 			}
+
 			if (processUnnamed && isInputFeature(feature)
 					&& (input.size() > 0 && !fullSet)) {
 				// Skipping input parameter
-				feature = features.get(i++);
-			}
-			if (isInternalFeature(feature)) {
-				// Skipping internal parameter
-				feature = features.get(i++);
+				feature = orderedFeatures.get(i++);
 			}
 
-			evalParameterValue(target, param, feature, process, input);
+			int lowerBound = feature.getLowerBound();
+			int upperBound = feature.getUpperBound();
+			int setParamsCount = 0;
+			if (upperBound == -1) {
+				upperBound = Integer.MAX_VALUE;
+			}
+			while (setParamsCount < upperBound) {
+				Object value = null;
+				try {
+					value = calcParamValue(param, feature, process, input);
+				} catch (CoreException e) {
+					if (e.getStatus().getCode() != 42) {
+						throw e;
+					}
+					// parameter not consumed
+					peekParam = false;
+					break;
+				}
+
+				setFeatureValue(target, feature, value);
+				peekParam = true;
+				setParamsCount++;
+				if (paramIterator.hasNext()) {
+					param = paramIterator.next();
+					peekParam = false;
+				} else {
+					break;
+				}
+			}
+			if (setParamsCount < lowerBound) {
+				return createErrorStatus(String.format(
+						"Insuffitient parameter count for feature '%s'",
+						feature.getName()));
+			}
+
 			if (isInputFeature(feature)) {
 				// Clear input
 				input.clear();
 			}
-			// TODO support any upper bound
-			if (feature.getUpperBound() == -1)
-				i--;
 		}
 		return Status.OK_STATUS;
 	}
@@ -151,6 +193,36 @@ public class ExecService implements ICommandService {
 	private void evalParameterValue(Command target, Parameter param,
 			EStructuralFeature feature, IProcess process, List<Object> input)
 			throws CoreException, InterruptedException {
+		Object value = calcParamValue(param, feature, process, input);
+
+		setFeatureValue(target, feature, value);
+	}
+
+	private void setFeatureValue(Command target, EStructuralFeature feature,
+			Object value) throws CoreException {
+		try {
+
+			if (feature.getUpperBound() == 1) {
+				target.eSet(feature, value);
+			} else {
+				@SuppressWarnings("unchecked")
+				List<Object> list = (List<Object>) target.eGet(feature);
+				if (value instanceof List)
+					list.addAll((List<?>) value);
+				else
+					list.add(value);
+			}
+		} catch (ClassCastException cce) {
+			IStatus status = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
+					"Can't assign value " + value + " to parameter "
+							+ feature.getName(), cce);
+			throw new CoreException(status);
+		}
+	}
+
+	private Object calcParamValue(Parameter param, EStructuralFeature feature,
+			IProcess process, List<Object> input) throws CoreException,
+			InterruptedException {
 		Object value = null;
 		if (param instanceof LiteralParameter) {
 			LiteralParameter literal = (LiteralParameter) param;
@@ -181,16 +253,16 @@ public class ExecService implements ICommandService {
 					throw (CoreException) e;
 				}
 				IStatus status = new Status(IStatus.ERROR,
-						CorePlugin.PLUGIN_ID, "Parameter conversion failed: "
-								+ e.getMessage(), e);
+						CorePlugin.PLUGIN_ID, 42,
+						"Parameter conversion failed: " + e.getMessage(), e);
 				throw new CoreException(status);
 			}
 			// If failed to convert emit error
 			if (value == null) {
 				IStatus status = new Status(IStatus.ERROR,
-						CorePlugin.PLUGIN_ID, "Can't convert value "
+						CorePlugin.PLUGIN_ID, 42, "Can't convert value "
 								+ literal.getLiteral() + " to type "
-								+ instanceClass.getSimpleName());
+								+ instanceClass.getSimpleName(), null);
 				throw new CoreException(status);
 			}
 		} else if (param instanceof ExecutableParameter) {
@@ -199,26 +271,9 @@ public class ExecService implements ICommandService {
 			throw new RuntimeException("Invalid parameter");
 		}
 
-		try {
-			// box or unbox
-			value = processBoxUnbox(feature, value);
-
-			if (feature.getUpperBound() == 1) {
-				target.eSet(feature, value);
-			} else {
-				@SuppressWarnings("unchecked")
-				List<Object> list = (List<Object>) target.eGet(feature);
-				if (value instanceof List)
-					list.addAll((List<?>) value);
-				else
-					list.add(value);
-			}
-		} catch (ClassCastException cce) {
-			IStatus status = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
-					"Can't assign value " + value + " to parameter "
-							+ feature.getName(), cce);
-			throw new CoreException(status);
-		}
+		// box or unbox
+		value = processBoxUnbox(feature, value);
+		return value;
 	}
 
 	private Object processBoxUnbox(EStructuralFeature feature, Object value) {

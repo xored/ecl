@@ -25,8 +25,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.ecl.core.impl.ValImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.ecl.core.impl.ValImpl#isInput <em>Input</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.ValImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.impl.ValImpl#isInput <em>Input</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,6 +54,16 @@ public class ValImpl extends DeclarationImpl implements Val {
 	protected String name = NAME_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected EObject value;
+
+	/**
 	 * The default value of the '{@link #isInput() <em>Input</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -72,16 +82,6 @@ public class ValImpl extends DeclarationImpl implements Val {
 	 * @ordered
 	 */
 	protected boolean input = INPUT_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected EObject value;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -192,11 +192,11 @@ public class ValImpl extends DeclarationImpl implements Val {
 		switch (featureID) {
 			case CorePackage.VAL__NAME:
 				return getName();
-			case CorePackage.VAL__INPUT:
-				return isInput();
 			case CorePackage.VAL__VALUE:
 				if (resolve) return getValue();
 				return basicGetValue();
+			case CorePackage.VAL__INPUT:
+				return isInput();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -212,11 +212,11 @@ public class ValImpl extends DeclarationImpl implements Val {
 			case CorePackage.VAL__NAME:
 				setName((String)newValue);
 				return;
-			case CorePackage.VAL__INPUT:
-				setInput((Boolean)newValue);
-				return;
 			case CorePackage.VAL__VALUE:
 				setValue((EObject)newValue);
+				return;
+			case CorePackage.VAL__INPUT:
+				setInput((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -233,11 +233,11 @@ public class ValImpl extends DeclarationImpl implements Val {
 			case CorePackage.VAL__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case CorePackage.VAL__INPUT:
-				setInput(INPUT_EDEFAULT);
-				return;
 			case CorePackage.VAL__VALUE:
 				setValue((EObject)null);
+				return;
+			case CorePackage.VAL__INPUT:
+				setInput(INPUT_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -253,10 +253,10 @@ public class ValImpl extends DeclarationImpl implements Val {
 		switch (featureID) {
 			case CorePackage.VAL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case CorePackage.VAL__INPUT:
-				return input != INPUT_EDEFAULT;
 			case CorePackage.VAL__VALUE:
 				return value != null;
+			case CorePackage.VAL__INPUT:
+				return input != INPUT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

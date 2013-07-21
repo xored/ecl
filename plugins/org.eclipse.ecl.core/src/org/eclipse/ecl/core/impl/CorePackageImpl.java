@@ -892,7 +892,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	public EAttribute getVal_Input() {
-		return (EAttribute)valEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)valEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -901,7 +901,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	public EReference getVal_Value() {
-		return (EReference)valEClass.getEStructuralFeatures().get(2);
+		return (EReference)valEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1279,8 +1279,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 
 		valEClass = createEClass(VAL);
 		createEAttribute(valEClass, VAL__NAME);
-		createEAttribute(valEClass, VAL__INPUT);
 		createEReference(valEClass, VAL__VALUE);
+		createEAttribute(valEClass, VAL__INPUT);
 
 		getValEClass = createEClass(GET_VAL);
 		createEAttribute(getValEClass, GET_VAL__NAME);
@@ -1472,8 +1472,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 
 		initEClass(valEClass, Val.class, "Val", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVal_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Val.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVal_Input(), theEcorePackage.getEBoolean(), "input", "false", 0, 1, Val.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVal_Value(), theEcorePackage.getEObject(), null, "value", null, 0, 1, Val.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVal_Input(), theEcorePackage.getEBoolean(), "input", "false", 0, 1, Val.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(getValEClass, GetVal.class, "GetVal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGetVal_Name(), theEcorePackage.getEString(), "name", null, 0, 1, GetVal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
