@@ -273,6 +273,15 @@ public interface CoreFactory extends EFactory {
 	Proc createProc();
 
 	/**
+	 * Returns a new object of class '<em>Proc Instance</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Proc Instance</em>'.
+	 * @generated
+	 */
+	ProcInstance createProcInstance();
+
+	/**
 	 * Returns a new object of class '<em>Ecl Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

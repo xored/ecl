@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.ecl.core.impl.ProcImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.ProcImpl#getVals <em>Vals</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.ProcImpl#getBody <em>Body</em>}</li>
  * </ul>
@@ -41,6 +42,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class ProcImpl extends CommandImpl implements Proc {
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getVals() <em>Vals</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -78,6 +99,27 @@ public class ProcImpl extends CommandImpl implements Proc {
 	@Override
 	protected EClass eStaticClass() {
 		return CorePackage.Literals.PROC;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.PROC__NAME, oldName, name));
 	}
 
 	/**
@@ -159,6 +201,8 @@ public class ProcImpl extends CommandImpl implements Proc {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case CorePackage.PROC__NAME:
+				return getName();
 			case CorePackage.PROC__VALS:
 				return getVals();
 			case CorePackage.PROC__BODY:
@@ -176,6 +220,9 @@ public class ProcImpl extends CommandImpl implements Proc {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case CorePackage.PROC__NAME:
+				setName((String)newValue);
+				return;
 			case CorePackage.PROC__VALS:
 				getVals().clear();
 				getVals().addAll((Collection<? extends Declaration>)newValue);
@@ -195,6 +242,9 @@ public class ProcImpl extends CommandImpl implements Proc {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case CorePackage.PROC__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 			case CorePackage.PROC__VALS:
 				getVals().clear();
 				return;
@@ -213,12 +263,30 @@ public class ProcImpl extends CommandImpl implements Proc {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case CorePackage.PROC__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case CorePackage.PROC__VALS:
 				return vals != null && !vals.isEmpty();
 			case CorePackage.PROC__BODY:
 				return body != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ProcImpl

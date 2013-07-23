@@ -1568,13 +1568,22 @@ public interface CorePackage extends EPackage {
 	int PROC__BINDINGS = COMMAND__BINDINGS;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROC__NAME = COMMAND_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Vals</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROC__VALS = COMMAND_FEATURE_COUNT + 0;
+	int PROC__VALS = COMMAND_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -1583,7 +1592,7 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROC__BODY = COMMAND_FEATURE_COUNT + 1;
+	int PROC__BODY = COMMAND_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Proc</em>' class.
@@ -1592,7 +1601,53 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROC_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
+	int PROC_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.ProcInstanceImpl <em>Proc Instance</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.ProcInstanceImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getProcInstance()
+	 * @generated
+	 */
+	int PROC_INSTANCE = 36;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROC_INSTANCE__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROC_INSTANCE__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Definition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROC_INSTANCE__DEFINITION = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Proc Instance</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROC_INSTANCE_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
@@ -1602,7 +1657,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
 	 * @generated
 	 */
-	int THROWABLE = 36;
+	int THROWABLE = 37;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -2393,6 +2448,17 @@ public interface CorePackage extends EPackage {
 	EClass getProc();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Proc#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.ecl.core.Proc#getName()
+	 * @see #getProc()
+	 * @generated
+	 */
+	EAttribute getProc_Name();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.core.Proc#getVals <em>Vals</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2413,6 +2479,27 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getProc_Body();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.ProcInstance <em>Proc Instance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Proc Instance</em>'.
+	 * @see org.eclipse.ecl.core.ProcInstance
+	 * @generated
+	 */
+	EClass getProcInstance();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.ProcInstance#getDefinition <em>Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Definition</em>'.
+	 * @see org.eclipse.ecl.core.ProcInstance#getDefinition()
+	 * @see #getProcInstance()
+	 * @generated
+	 */
+	EReference getProcInstance_Definition();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclBoolean <em>Ecl Boolean</em>}'.
@@ -3291,6 +3378,14 @@ public interface CorePackage extends EPackage {
 		EClass PROC = eINSTANCE.getProc();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROC__NAME = eINSTANCE.getProc_Name();
+
+		/**
 		 * The meta object literal for the '<em><b>Vals</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3305,6 +3400,24 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference PROC__BODY = eINSTANCE.getProc_Body();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ProcInstanceImpl <em>Proc Instance</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.ProcInstanceImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getProcInstance()
+		 * @generated
+		 */
+		EClass PROC_INSTANCE = eINSTANCE.getProcInstance();
+
+		/**
+		 * The meta object literal for the '<em><b>Definition</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROC_INSTANCE__DEFINITION = eINSTANCE.getProcInstance_Definition();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclBooleanImpl <em>Ecl Boolean</em>}' class.

@@ -8,6 +8,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CommandStack;
+import org.eclipse.ecl.core.ProcInstance;
 import org.eclipse.ecl.core.SessionListenerManager;
 import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.ICommandService;
@@ -32,8 +33,9 @@ public abstract class AbstractSession implements ISession {
 
 	public IProcess execute(final Command scriptlet, IPipe in, IPipe out)
 			throws CoreException {
-		final ICommandService svc = CorePlugin.getScriptletManager()
-				.getScriptletService(scriptlet);
+		final ICommandService svc = scriptlet instanceof ProcInstance ? new ProcInstanceService()
+				: CorePlugin.getScriptletManager().getScriptletService(
+						scriptlet);
 		final IPipe tinput = in == null ? createPipe().close(Status.OK_STATUS)
 				: in;
 		final IPipe output = out == null ? createPipe() : out;

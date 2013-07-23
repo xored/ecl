@@ -10,6 +10,8 @@
  ******************************************************************************/
 package org.eclipse.ecl.internal.commands;
 
+import static org.eclipse.ecl.internal.core.ProcService.getProcs;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -57,7 +59,7 @@ public class ExecService implements ICommandService {
 
 	private IStatus exec(FQName fqn, List<Parameter> params, IProcess process,
 			List<Object> input) throws CoreException, InterruptedException {
-		Command target = CoreUtils.createCommand(fqn.ns, fqn.name);
+		Command target = createCommand(fqn, process);
 
 		List<Object> inputList = new ArrayList<Object>(input);
 
@@ -72,6 +74,20 @@ public class ExecService implements ICommandService {
 		IProcess targetProcess = process.getSession().execute(target,
 				inputPipe, process.getOutput());
 		return targetProcess.waitFor();
+	}
+
+	private Command createCommand(FQName fqn, IProcess process)
+			throws CoreException {
+		try {
+			return CoreUtils.createCommand(fqn.ns, fqn.name);
+		} catch (CoreException e) {
+			Command result = getProcs(process).createCommand(fqn.name);
+			if (result == null) {
+				throw new CoreException(CorePlugin.err(String.format(
+						"Scriptlet %s not found", fqn.name)));
+			}
+			return result;
+		}
 	}
 
 	private IStatus evalParameters(Command target, List<Parameter> params,
@@ -122,9 +138,7 @@ public class ExecService implements ICommandService {
 					return createErrorStatus("Unnamed parameters disallowed after named ones");
 				}
 			}
-			if (i >= orderedFeatures.size()) {
-				System.out.println("alarma!");
-			}
+
 			EStructuralFeature feature = processUnnamed ? orderedFeatures
 					.get(i++) : featuresByName.get(param.getName());
 
@@ -188,14 +202,6 @@ public class ExecService implements ICommandService {
 
 	private boolean isInputFeature(EStructuralFeature feature) {
 		return feature.getEAnnotation(CoreUtils.INPUT_ANN) != null;
-	}
-
-	private void evalParameterValue(Command target, Parameter param,
-			EStructuralFeature feature, IProcess process, List<Object> input)
-			throws CoreException, InterruptedException {
-		Object value = calcParamValue(param, feature, process, input);
-
-		setFeatureValue(target, feature, value);
 	}
 
 	private void setFeatureValue(Command target, EStructuralFeature feature,
@@ -276,6 +282,7 @@ public class ExecService implements ICommandService {
 		return value;
 	}
 
+	@SuppressWarnings("unchecked")
 	private Object processBoxUnbox(EStructuralFeature feature, Object value) {
 		if (value instanceof List) {
 			value = CoreUtils.convert((List<Object>) value, feature);

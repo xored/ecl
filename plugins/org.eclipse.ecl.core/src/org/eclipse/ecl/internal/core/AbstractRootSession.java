@@ -42,6 +42,12 @@ public abstract class AbstractRootSession extends AbstractSession {
 		closed.set(true);
 	}
 
+	private LocalProcManager manager = new LocalProcManager();
+
+	public LocalProcManager getProcManager() {
+		return manager;
+	}
+
 	public boolean isClosed() {
 		return closed.get();
 	}

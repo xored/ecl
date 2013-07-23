@@ -42,6 +42,7 @@ import org.eclipse.ecl.core.Parallel;
 import org.eclipse.ecl.core.Parameter;
 import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.core.Proc;
+import org.eclipse.ecl.core.ProcInstance;
 import org.eclipse.ecl.core.ProcessStatus;
 import org.eclipse.ecl.core.Script;
 import org.eclipse.ecl.core.Sequence;
@@ -222,6 +223,13 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	private EClass procEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass procInstanceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -963,8 +971,17 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getProc_Name() {
+		return (EAttribute)procEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getProc_Vals() {
-		return (EReference)procEClass.getEStructuralFeatures().get(0);
+		return (EReference)procEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -973,7 +990,25 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	public EReference getProc_Body() {
-		return (EReference)procEClass.getEStructuralFeatures().get(1);
+		return (EReference)procEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getProcInstance() {
+		return procInstanceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProcInstance_Definition() {
+		return (EReference)procInstanceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1290,8 +1325,12 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEReference(letEClass, LET__BODY);
 
 		procEClass = createEClass(PROC);
+		createEAttribute(procEClass, PROC__NAME);
 		createEReference(procEClass, PROC__VALS);
 		createEReference(procEClass, PROC__BODY);
+
+		procInstanceEClass = createEClass(PROC_INSTANCE);
+		createEReference(procInstanceEClass, PROC_INSTANCE__DEFINITION);
 
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
@@ -1353,6 +1392,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		getValEClass.getESuperTypes().add(this.getCommand());
 		letEClass.getESuperTypes().add(this.getCommand());
 		procEClass.getESuperTypes().add(this.getCommand());
+		procInstanceEClass.getESuperTypes().add(this.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1483,8 +1523,12 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEReference(getLet_Body(), this.getCommand(), null, "body", null, 0, 1, Let.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(procEClass, Proc.class, "Proc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProc_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Proc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProc_Vals(), this.getDeclaration(), null, "vals", null, 0, -1, Proc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProc_Body(), this.getCommand(), null, "body", null, 0, 1, Proc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(procInstanceEClass, ProcInstance.class, "ProcInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getProcInstance_Definition(), this.getProc(), null, "definition", null, 0, 1, ProcInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -1523,7 +1567,17 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (execEClass, 
 		   source, 
 		   new String[] {
-		   });									
+		   });												
+		addAnnotation
+		  (procInstanceEClass, 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getProcInstance_Definition(), 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 	/**
@@ -1537,7 +1591,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (getForeach_Input(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });										
 	}
 
 	/**
@@ -1608,7 +1662,13 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		   source, 
 		   new String[] {
 			 "description", "Commands to execute while listening for the source."
-		   });
+		   });		
+		addAnnotation
+		  (procInstanceEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Marker superclass for user-defined procs"
+		   });		
 	}
 
 } // CorePackageImpl

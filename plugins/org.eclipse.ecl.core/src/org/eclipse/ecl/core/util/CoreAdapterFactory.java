@@ -244,6 +244,10 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 				return createProcAdapter();
 			}
 			@Override
+			public Adapter caseProcInstance(ProcInstance object) {
+				return createProcInstanceAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -638,6 +642,20 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createProcAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.ProcInstance <em>Proc Instance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.ProcInstance
+	 * @generated
+	 */
+	public Adapter createProcInstanceAdapter() {
 		return null;
 	}
 
