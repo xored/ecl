@@ -33,6 +33,7 @@ import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.ExecutableParameter;
 import org.eclipse.ecl.core.Foreach;
 import org.eclipse.ecl.core.GetVal;
+import org.eclipse.ecl.core.Global;
 import org.eclipse.ecl.core.If;
 import org.eclipse.ecl.core.Let;
 import org.eclipse.ecl.core.Listen;
@@ -230,6 +231,13 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	private EClass procInstanceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass globalEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1012,6 +1020,24 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGlobal() {
+		return globalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGlobal_Vals() {
+		return (EReference)globalEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1332,6 +1358,9 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		procInstanceEClass = createEClass(PROC_INSTANCE);
 		createEReference(procInstanceEClass, PROC_INSTANCE__DEFINITION);
 
+		globalEClass = createEClass(GLOBAL);
+		createEReference(globalEClass, GLOBAL__VALS);
+
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
 	}
@@ -1393,6 +1422,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		letEClass.getESuperTypes().add(this.getCommand());
 		procEClass.getESuperTypes().add(this.getCommand());
 		procInstanceEClass.getESuperTypes().add(this.getCommand());
+		globalEClass.getESuperTypes().add(this.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1529,6 +1559,9 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 
 		initEClass(procInstanceEClass, ProcInstance.class, "ProcInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProcInstance_Definition(), this.getProc(), null, "definition", null, 0, 1, ProcInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(globalEClass, Global.class, "Global", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGlobal_Vals(), this.getDeclaration(), null, "vals", null, 0, -1, Global.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

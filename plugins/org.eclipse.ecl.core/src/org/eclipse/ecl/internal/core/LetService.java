@@ -6,7 +6,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
-import org.eclipse.ecl.core.CommandStack;
 import org.eclipse.ecl.core.Declaration;
 import org.eclipse.ecl.core.Let;
 import org.eclipse.ecl.core.Val;
@@ -22,7 +21,7 @@ public class LetService implements ICommandService {
 		}
 
 		Let let = (Let) command;
-		CommandStack stack = getStack(context);
+		DeclarationContainer locals = getLocals(context);
 
 		boolean inputUsed = false;
 		for (Declaration decl : let.getVals()) {
@@ -35,7 +34,7 @@ public class LetService implements ICommandService {
 				val.setValue(box(context.getInput().take(Long.MAX_VALUE)));
 			}
 
-			stack.declare(val.getName(), val);
+			locals.declare(val.getName(), val);
 		}
 
 		return context
@@ -44,12 +43,12 @@ public class LetService implements ICommandService {
 						context.getOutput()).waitFor();
 	}
 
-	protected static CommandStack getStack(IProcess context) {
+	protected static DeclarationContainer getLocals(IProcess context) {
 		ISession session = context.getSession();
 		if (!(session instanceof CommandSession)) {
 			return null;
 		}
 
-		return ((CommandSession) session).getStack();
+		return ((CommandSession) session).getStack().getDeclarations();
 	}
 }

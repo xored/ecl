@@ -1650,6 +1650,52 @@ public interface CorePackage extends EPackage {
 	int PROC_INSTANCE_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.GlobalImpl <em>Global</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.GlobalImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getGlobal()
+	 * @generated
+	 */
+	int GLOBAL = 37;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Vals</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL__VALS = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Global</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1657,7 +1703,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
 	 * @generated
 	 */
-	int THROWABLE = 37;
+	int THROWABLE = 38;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -2500,6 +2546,27 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getProcInstance_Definition();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Global <em>Global</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Global</em>'.
+	 * @see org.eclipse.ecl.core.Global
+	 * @generated
+	 */
+	EClass getGlobal();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.core.Global#getVals <em>Vals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Vals</em>'.
+	 * @see org.eclipse.ecl.core.Global#getVals()
+	 * @see #getGlobal()
+	 * @generated
+	 */
+	EReference getGlobal_Vals();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclBoolean <em>Ecl Boolean</em>}'.
@@ -3418,6 +3485,24 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference PROC_INSTANCE__DEFINITION = eINSTANCE.getProcInstance_Definition();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.GlobalImpl <em>Global</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.GlobalImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getGlobal()
+		 * @generated
+		 */
+		EClass GLOBAL = eINSTANCE.getGlobal();
+
+		/**
+		 * The meta object literal for the '<em><b>Vals</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GLOBAL__VALS = eINSTANCE.getGlobal_Vals();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclBooleanImpl <em>Ecl Boolean</em>}' class.

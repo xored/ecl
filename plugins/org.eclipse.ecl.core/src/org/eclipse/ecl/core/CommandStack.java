@@ -11,35 +11,23 @@
  *******************************************************************************/
 package org.eclipse.ecl.core;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import org.eclipse.ecl.internal.core.DeclarationContainer;
 
 public class CommandStack {
 
 	public CommandStack(Command command, CommandStack parent) {
 		this.command = command;
 		this.parent = parent;
+		this.locals = new DeclarationContainer(parent == null ? null
+				: parent.locals);
 	}
 
-	private Map<String, Declaration> declarations = new LinkedHashMap<String, Declaration>();
+	private DeclarationContainer locals;
 
-	public void declare(String name, Declaration decl) {
-		declarations.put(name, decl);
-	}
-
-	public Declaration lookup(String name) {
-		Declaration decl = declarations.get(name);
-		if (decl != null) {
-			return decl;
-		}
-
-		CommandStack parent = getParent();
-		if (parent == null) {
-			return null;
-		}
-
-		return parent.lookup(name);
+	public DeclarationContainer getDeclarations() {
+		return locals;
 	}
 
 	public Command getCommand() {

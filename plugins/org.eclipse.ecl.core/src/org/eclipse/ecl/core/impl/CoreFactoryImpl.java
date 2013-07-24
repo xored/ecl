@@ -127,6 +127,7 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.LET: return createLet();
 			case CorePackage.PROC: return createProc();
 			case CorePackage.PROC_INSTANCE: return createProcInstance();
+			case CorePackage.GLOBAL: return createGlobal();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -440,6 +441,16 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public ProcInstance createProcInstance() {
 		ProcInstanceImpl procInstance = new ProcInstanceImpl();
 		return procInstance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Global createGlobal() {
+		GlobalImpl global = new GlobalImpl();
+		return global;
 	}
 
 	/**

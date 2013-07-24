@@ -1,12 +1,11 @@
 package org.eclipse.ecl.internal.core;
 
-import static org.eclipse.ecl.internal.core.LetService.getStack;
+import static org.eclipse.ecl.internal.core.LetService.getLocals;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
-import org.eclipse.ecl.core.CommandStack;
 import org.eclipse.ecl.core.Declaration;
 import org.eclipse.ecl.core.ProcInstance;
 import org.eclipse.ecl.core.Val;
@@ -24,7 +23,7 @@ public class ProcInstanceService implements ICommandService {
 		}
 
 		ProcInstance instance = (ProcInstance) command;
-		CommandStack stack = getStack(context);
+		DeclarationContainer locals = getLocals(context);
 
 		boolean inputUsed = false;
 		for (Declaration decl : instance.getDefinition().getVals()) {
@@ -38,7 +37,7 @@ public class ProcInstanceService implements ICommandService {
 			if (val.isInput()) {
 				inputUsed = true;
 			}
-			stack.declare(val.getName(), val);
+			locals.declare(val.getName(), val);
 		}
 
 		return context

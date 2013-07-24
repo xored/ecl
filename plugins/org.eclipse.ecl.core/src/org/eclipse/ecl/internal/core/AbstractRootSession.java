@@ -48,6 +48,12 @@ public abstract class AbstractRootSession extends AbstractSession {
 		return manager;
 	}
 
+	private DeclarationContainer globals = new DeclarationContainer(null);
+
+	public DeclarationContainer getGlobals() {
+		return globals;
+	}
+
 	public boolean isClosed() {
 		return closed.get();
 	}

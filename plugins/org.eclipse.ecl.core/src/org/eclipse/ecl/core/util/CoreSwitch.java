@@ -370,6 +370,13 @@ public class CoreSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CorePackage.GLOBAL: {
+				Global global = (Global)theEObject;
+				T result = caseGlobal(global);
+				if (result == null) result = caseCommand(global);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -926,6 +933,21 @@ public class CoreSwitch<T> {
 	 * @generated
 	 */
 	public T caseProcInstance(ProcInstance object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Global</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Global</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGlobal(Global object) {
 		return null;
 	}
 

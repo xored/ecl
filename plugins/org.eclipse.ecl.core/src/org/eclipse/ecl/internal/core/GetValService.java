@@ -2,7 +2,8 @@ package org.eclipse.ecl.internal.core;
 
 import static java.lang.String.format;
 import static org.eclipse.ecl.internal.core.CorePlugin.err;
-import static org.eclipse.ecl.internal.core.LetService.getStack;
+import static org.eclipse.ecl.internal.core.GlobalService.getGlobals;
+import static org.eclipse.ecl.internal.core.LetService.getLocals;
 import static org.eclipse.emf.ecore.util.EcoreUtil.copy;
 
 import org.eclipse.core.runtime.CoreException;
@@ -23,7 +24,10 @@ public class GetValService implements ICommandService {
 		}
 
 		String name = ((GetVal) command).getName();
-		Declaration declaration = getStack(context).lookup(name);
+		Declaration declaration = getLocals(context).lookup(name);
+		if (declaration == null) {
+			declaration = getGlobals(context).lookup(name);
+		}
 
 		if (!(declaration instanceof Val)) {
 			throw new CoreException(err(format("Undeclared val '%s'", name)));

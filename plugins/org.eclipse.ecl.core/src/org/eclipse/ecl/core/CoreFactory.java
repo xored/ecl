@@ -282,6 +282,15 @@ public interface CoreFactory extends EFactory {
 	ProcInstance createProcInstance();
 
 	/**
+	 * Returns a new object of class '<em>Global</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Global</em>'.
+	 * @generated
+	 */
+	Global createGlobal();
+
+	/**
 	 * Returns a new object of class '<em>Ecl Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
