@@ -252,6 +252,18 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 				return createGlobalAdapter();
 			}
 			@Override
+			public Adapter caseSessionState(SessionState object) {
+				return createSessionStateAdapter();
+			}
+			@Override
+			public Adapter caseSaveState(SaveState object) {
+				return createSaveStateAdapter();
+			}
+			@Override
+			public Adapter caseRestoreState(RestoreState object) {
+				return createRestoreStateAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -674,6 +686,48 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGlobalAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.SessionState <em>Session State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.SessionState
+	 * @generated
+	 */
+	public Adapter createSessionStateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.SaveState <em>Save State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.SaveState
+	 * @generated
+	 */
+	public Adapter createSaveStateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.RestoreState <em>Restore State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.RestoreState
+	 * @generated
+	 */
+	public Adapter createRestoreStateAdapter() {
 		return null;
 	}
 

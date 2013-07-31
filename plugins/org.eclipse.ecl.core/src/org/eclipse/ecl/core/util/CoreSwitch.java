@@ -377,6 +377,26 @@ public class CoreSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CorePackage.SESSION_STATE: {
+				SessionState sessionState = (SessionState)theEObject;
+				T result = caseSessionState(sessionState);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.SAVE_STATE: {
+				SaveState saveState = (SaveState)theEObject;
+				T result = caseSaveState(saveState);
+				if (result == null) result = caseCommand(saveState);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.RESTORE_STATE: {
+				RestoreState restoreState = (RestoreState)theEObject;
+				T result = caseRestoreState(restoreState);
+				if (result == null) result = caseCommand(restoreState);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -948,6 +968,51 @@ public class CoreSwitch<T> {
 	 * @generated
 	 */
 	public T caseGlobal(Global object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Session State</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Session State</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSessionState(SessionState object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Save State</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Save State</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSaveState(SaveState object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Restore State</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Restore State</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRestoreState(RestoreState object) {
 		return null;
 	}
 

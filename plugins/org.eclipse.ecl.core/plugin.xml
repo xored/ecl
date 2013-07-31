@@ -93,6 +93,16 @@
             name="Global"
             namespace="http://www.eclipse.org/ecl/core.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.core.SaveStateService"
+            name="SaveState"
+            namespace="http://www.eclipse.org/ecl/core.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.core.RestoreStateService"
+            name="RestoreState"
+            namespace="http://www.eclipse.org/ecl/core.ecore">
+      </scriptlet>
    </extension>   
    <extension
          point="org.eclipse.ecl.core.param_converter">

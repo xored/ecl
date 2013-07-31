@@ -1696,6 +1696,126 @@ public interface CorePackage extends EPackage {
 	int GLOBAL_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.SessionStateImpl <em>Session State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.SessionStateImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getSessionState()
+	 * @generated
+	 */
+	int SESSION_STATE = 38;
+
+	/**
+	 * The feature id for the '<em><b>Procs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SESSION_STATE__PROCS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Decls</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SESSION_STATE__DECLS = 1;
+
+	/**
+	 * The number of structural features of the '<em>Session State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SESSION_STATE_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.SaveStateImpl <em>Save State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.SaveStateImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getSaveState()
+	 * @generated
+	 */
+	int SAVE_STATE = 39;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAVE_STATE__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAVE_STATE__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The number of structural features of the '<em>Save State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAVE_STATE_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.RestoreStateImpl <em>Restore State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.RestoreStateImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getRestoreState()
+	 * @generated
+	 */
+	int RESTORE_STATE = 40;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTORE_STATE__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTORE_STATE__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTORE_STATE__STATE = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Restore State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTORE_STATE_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1703,7 +1823,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
 	 * @generated
 	 */
-	int THROWABLE = 38;
+	int THROWABLE = 41;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -2567,6 +2687,69 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getGlobal_Vals();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.SessionState <em>Session State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Session State</em>'.
+	 * @see org.eclipse.ecl.core.SessionState
+	 * @generated
+	 */
+	EClass getSessionState();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.core.SessionState#getProcs <em>Procs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Procs</em>'.
+	 * @see org.eclipse.ecl.core.SessionState#getProcs()
+	 * @see #getSessionState()
+	 * @generated
+	 */
+	EReference getSessionState_Procs();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.core.SessionState#getDecls <em>Decls</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Decls</em>'.
+	 * @see org.eclipse.ecl.core.SessionState#getDecls()
+	 * @see #getSessionState()
+	 * @generated
+	 */
+	EReference getSessionState_Decls();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.SaveState <em>Save State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Save State</em>'.
+	 * @see org.eclipse.ecl.core.SaveState
+	 * @generated
+	 */
+	EClass getSaveState();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.RestoreState <em>Restore State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Restore State</em>'.
+	 * @see org.eclipse.ecl.core.RestoreState
+	 * @generated
+	 */
+	EClass getRestoreState();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.RestoreState#getState <em>State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>State</em>'.
+	 * @see org.eclipse.ecl.core.RestoreState#getState()
+	 * @see #getRestoreState()
+	 * @generated
+	 */
+	EReference getRestoreState_State();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclBoolean <em>Ecl Boolean</em>}'.
@@ -3503,6 +3686,60 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference GLOBAL__VALS = eINSTANCE.getGlobal_Vals();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.SessionStateImpl <em>Session State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.SessionStateImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getSessionState()
+		 * @generated
+		 */
+		EClass SESSION_STATE = eINSTANCE.getSessionState();
+
+		/**
+		 * The meta object literal for the '<em><b>Procs</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SESSION_STATE__PROCS = eINSTANCE.getSessionState_Procs();
+
+		/**
+		 * The meta object literal for the '<em><b>Decls</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SESSION_STATE__DECLS = eINSTANCE.getSessionState_Decls();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.SaveStateImpl <em>Save State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.SaveStateImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getSaveState()
+		 * @generated
+		 */
+		EClass SAVE_STATE = eINSTANCE.getSaveState();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.RestoreStateImpl <em>Restore State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.RestoreStateImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getRestoreState()
+		 * @generated
+		 */
+		EClass RESTORE_STATE = eINSTANCE.getRestoreState();
+
+		/**
+		 * The meta object literal for the '<em><b>State</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESTORE_STATE__STATE = eINSTANCE.getRestoreState_State();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclBooleanImpl <em>Ecl Boolean</em>}' class.

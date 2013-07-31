@@ -3,7 +3,7 @@ package org.eclipse.ecl.internal.core;
 import static org.eclipse.ecl.core.util.EclCommandNameConvention.toScriptletName;
 import static org.eclipse.ecl.internal.core.CorePlugin.err;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 public class LocalProcManager {
 	private EPackage epackage;
-	private Map<String, Proc> declarations = new HashMap<String, Proc>();
+	private Map<String, Proc> declarations = new LinkedHashMap<String, Proc>();
 
 	protected EPackage getPackage() {
 		if (epackage == null) {
@@ -34,6 +34,10 @@ public class LocalProcManager {
 			epackage.setNsURI(randomName);
 		}
 		return epackage;
+	}
+
+	public synchronized Iterable<Proc> declarations() {
+		return declarations.values();
 	}
 
 	public synchronized void declare(Proc proc) throws CoreException {

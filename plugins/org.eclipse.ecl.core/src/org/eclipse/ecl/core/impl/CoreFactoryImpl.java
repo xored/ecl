@@ -128,6 +128,9 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.PROC: return createProc();
 			case CorePackage.PROC_INSTANCE: return createProcInstance();
 			case CorePackage.GLOBAL: return createGlobal();
+			case CorePackage.SESSION_STATE: return createSessionState();
+			case CorePackage.SAVE_STATE: return createSaveState();
+			case CorePackage.RESTORE_STATE: return createRestoreState();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -451,6 +454,36 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public Global createGlobal() {
 		GlobalImpl global = new GlobalImpl();
 		return global;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SessionState createSessionState() {
+		SessionStateImpl sessionState = new SessionStateImpl();
+		return sessionState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SaveState createSaveState() {
+		SaveStateImpl saveState = new SaveStateImpl();
+		return saveState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RestoreState createRestoreState() {
+		RestoreStateImpl restoreState = new RestoreStateImpl();
+		return restoreState;
 	}
 
 	/**

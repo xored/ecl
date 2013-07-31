@@ -45,9 +45,12 @@ import org.eclipse.ecl.core.Pipeline;
 import org.eclipse.ecl.core.Proc;
 import org.eclipse.ecl.core.ProcInstance;
 import org.eclipse.ecl.core.ProcessStatus;
+import org.eclipse.ecl.core.RestoreState;
+import org.eclipse.ecl.core.SaveState;
 import org.eclipse.ecl.core.Script;
 import org.eclipse.ecl.core.Sequence;
 import org.eclipse.ecl.core.Serialized;
+import org.eclipse.ecl.core.SessionState;
 import org.eclipse.ecl.core.Val;
 import org.eclipse.ecl.core.With;
 import org.eclipse.emf.ecore.EAttribute;
@@ -238,6 +241,27 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	private EClass globalEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass sessionStateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass saveStateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass restoreStateEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1038,6 +1062,60 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSessionState() {
+		return sessionStateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSessionState_Procs() {
+		return (EReference)sessionStateEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSessionState_Decls() {
+		return (EReference)sessionStateEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSaveState() {
+		return saveStateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRestoreState() {
+		return restoreStateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRestoreState_State() {
+		return (EReference)restoreStateEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1361,6 +1439,15 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		globalEClass = createEClass(GLOBAL);
 		createEReference(globalEClass, GLOBAL__VALS);
 
+		sessionStateEClass = createEClass(SESSION_STATE);
+		createEReference(sessionStateEClass, SESSION_STATE__PROCS);
+		createEReference(sessionStateEClass, SESSION_STATE__DECLS);
+
+		saveStateEClass = createEClass(SAVE_STATE);
+
+		restoreStateEClass = createEClass(RESTORE_STATE);
+		createEReference(restoreStateEClass, RESTORE_STATE__STATE);
+
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
 	}
@@ -1423,6 +1510,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		procEClass.getESuperTypes().add(this.getCommand());
 		procInstanceEClass.getESuperTypes().add(this.getCommand());
 		globalEClass.getESuperTypes().add(this.getCommand());
+		saveStateEClass.getESuperTypes().add(this.getCommand());
+		restoreStateEClass.getESuperTypes().add(this.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1563,6 +1652,15 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEClass(globalEClass, Global.class, "Global", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGlobal_Vals(), this.getDeclaration(), null, "vals", null, 0, -1, Global.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(sessionStateEClass, SessionState.class, "SessionState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSessionState_Procs(), this.getProc(), null, "procs", null, 0, -1, SessionState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSessionState_Decls(), this.getDeclaration(), null, "decls", null, 0, -1, SessionState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(saveStateEClass, SaveState.class, "SaveState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(restoreStateEClass, RestoreState.class, "RestoreState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRestoreState_State(), this.getSessionState(), null, "state", null, 0, 1, RestoreState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
@@ -1610,6 +1708,16 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (getProcInstance_Definition(), 
 		   source, 
 		   new String[] {
+		   });		
+		addAnnotation
+		  (saveStateEClass, 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (restoreStateEClass, 
+		   source, 
+		   new String[] {
 		   });
 	}
 
@@ -1624,7 +1732,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (getForeach_Input(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });												
 	}
 
 	/**
@@ -1701,7 +1809,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		   source, 
 		   new String[] {
 			 "description", "Marker superclass for user-defined procs"
-		   });		
+		   });				
 	}
 
 } // CorePackageImpl

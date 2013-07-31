@@ -80,9 +80,13 @@ public class EclDocCommand implements IEclDocProvider {
 
 	private static List<String> excludedCommands = Arrays.asList("recognize",
 			"contains-image", "sequence", "parallel", "get-advanced-info",
-			"control-not-found", "pipeline", "setup-player",
-			"shutdown-player", "get-global", "set-global", "script",
-			"get-region", "get-region-text", "alert", "get-memory-usage");
+			"control-not-found", "pipeline", "setup-player", "shutdown-player",
+			"get-global", "set-global", "script", "get-region",
+			"get-region-text", "alert", "get-memory-usage", "get-val", "proc",
+			"val", "proc-instance", "let", "save-session", "restore-session",
+			"global", "upload-file", "declaration", "unzip-file",
+			"shoutdown-player", "path-utils", "list-executed-suites",
+			"kill-all-executed");
 
 	private static EClass COMMAND = (EClass) EPackage.Registry.INSTANCE
 			.getEPackage("http://www.eclipse.org/ecl/core.ecore")

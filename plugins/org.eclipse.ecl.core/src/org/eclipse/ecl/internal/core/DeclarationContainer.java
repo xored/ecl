@@ -18,10 +18,14 @@ public class DeclarationContainer {
 
 	private Map<String, Declaration> declarations = new LinkedHashMap<String, Declaration>();
 
+	public synchronized Iterable<Declaration> declarations() {
+		return declarations.values();
+	}
+
 	public synchronized void declare(String name, Declaration decl)
 			throws CoreException {
 		if (declarations.containsKey(name)) {
-			throw new CoreException(err(format("'%s' already declared")));
+			throw new CoreException(err(format("'%s' already declared", name)));
 		}
 		declarations.put(name, decl);
 	}

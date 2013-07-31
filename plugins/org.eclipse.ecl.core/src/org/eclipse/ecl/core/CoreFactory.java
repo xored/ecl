@@ -291,6 +291,33 @@ public interface CoreFactory extends EFactory {
 	Global createGlobal();
 
 	/**
+	 * Returns a new object of class '<em>Session State</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Session State</em>'.
+	 * @generated
+	 */
+	SessionState createSessionState();
+
+	/**
+	 * Returns a new object of class '<em>Save State</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Save State</em>'.
+	 * @generated
+	 */
+	SaveState createSaveState();
+
+	/**
+	 * Returns a new object of class '<em>Restore State</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Restore State</em>'.
+	 * @generated
+	 */
+	RestoreState createRestoreState();
+
+	/**
 	 * Returns a new object of class '<em>Ecl Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
