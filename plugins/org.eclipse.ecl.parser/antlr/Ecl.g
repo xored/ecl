@@ -20,6 +20,7 @@ import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.ExecutableParameter;
+import org.eclipse.ecl.core.GetVal;
 import org.eclipse.ecl.core.LiteralParameter;
 import org.eclipse.ecl.core.Parallel;
 import org.eclipse.ecl.core.Parameter;
@@ -63,7 +64,7 @@ package org.eclipse.ecl.internal.parser;
 	
   public void displayRecognitionError(String[] tokenNames,
       RecognitionException e) {
-	    if (e.token == Token.EOF_TOKEN) {
+	    if (e.token.getType() == Token.EOF) {
 	      Token prev = getTokenStream().get(e.index - 1);
 	      throw new SyntaxErrorException(prev.getLine(),
 	          prev.getCharPositionInLine());
@@ -200,9 +201,13 @@ cmd returns [Command cmd=null;]:
  c=command {
 	cmd = c;
  } |
- LOPEN c=open_expr_list {
+ (LOPEN c=open_expr_list {
  	cmd = c; 
- } ROPEN
+ } ROPEN) | '$' n=command_name {
+  GetVal getVal = CoreFactory.eINSTANCE.createGetVal();
+  getVal.setName(n);
+  cmd = getVal;
+ }
 ;
 
 command returns[Exec cmd=null;]:
@@ -247,13 +252,19 @@ command returns[Exec cmd=null;]:
 ;
 
 subcommand returns[Parameter param=null;]:
-  LBRACK
+  (LBRACK
     c=expr_list {
     	ExecutableParameter p = factory.createExecutableParameter();
   		p.setCommand(c);
 	  	param = p;
     }
-  RBRACK
+  RBRACK) | '$' name=command_name {
+    ExecutableParameter p = factory.createExecutableParameter();
+    GetVal cmd = CoreFactory.eINSTANCE.createGetVal();
+    cmd.setName(name);
+    p.setCommand(cmd);
+    param = p;
+  }
 ; 
 
 command_name returns[String name=null;]:
