@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.eclipse.ecl.core_1.1.0.qualifier.jar" id="org.eclipse.ecl.core" version="1.1.0.qualifier">
+   <feature url="features/org.eclipse.ecl.core_1.2.0.qualifier.jar" id="org.eclipse.ecl.core" version="1.2.0.qualifier">
       <category name="ecl"/>
    </feature>
    <feature url="features/org.eclipse.ecl.server_1.1.0.qualifier.jar" id="org.eclipse.ecl.server" version="1.1.0.qualifier">

@@ -16,8 +16,6 @@ import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class SaveStateService implements ICommandService {
-
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		LocalProcManager procs = getProcs(context);

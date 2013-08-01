@@ -15,7 +15,6 @@ import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class ProcInstanceService implements ICommandService {
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		if (!(command instanceof ProcInstance)) {
