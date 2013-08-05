@@ -179,6 +179,15 @@ public interface CommandsFactory extends EFactory {
 	GetWorkspaceLocation createGetWorkspaceLocation();
 
 	/**
+	 * Returns a new object of class '<em>Find In Workspace</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Find In Workspace</em>'.
+	 * @generated
+	 */
+	FindInWorkspace createFindInWorkspace();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
