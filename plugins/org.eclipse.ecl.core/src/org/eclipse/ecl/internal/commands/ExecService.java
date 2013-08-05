@@ -122,6 +122,7 @@ public class ExecService implements ICommandService {
 		int i = 0;
 		boolean processUnnamed = canProcessUnnamed(targetClass);
 		boolean fullSet = (params.size() == cmdCommandSize) && !hasNonLimited;
+		boolean inputUsed = false;
 
 		Iterator<Parameter> paramIterator = params.iterator();
 		Parameter param = null;
@@ -189,9 +190,12 @@ public class ExecService implements ICommandService {
 			}
 
 			if (isInputFeature(feature)) {
-				// Clear input
-				input.clear();
+				inputUsed = true;
 			}
+		}
+
+		if (inputUsed) {
+			input.clear();
 		}
 		return Status.OK_STATUS;
 	}
