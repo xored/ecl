@@ -103,6 +103,7 @@ public class ExecService implements ICommandService {
 		int i = 0;
 		boolean processUnnamed = canProcessUnnamed(targetClass);
 		boolean fullSet = (params.size() == cmdCommandSize) && !hasNonLimited;
+		boolean inputUsed = false;
 		for (Parameter param : params) {
 			if (param.eIsSet(CorePackage.eINSTANCE.getParameter_Name())) {
 				processUnnamed = false;
@@ -130,12 +131,15 @@ public class ExecService implements ICommandService {
 
 			evalParameterValue(target, param, feature, process, input);
 			if (isInputFeature(feature)) {
-				// Clear input
-				input.clear();
+				inputUsed = true;
 			}
 			// TODO support any upper bound
 			if (feature.getUpperBound() == -1)
 				i--;
+		}
+
+		if (inputUsed) {
+			input.clear();
 		}
 		return Status.OK_STATUS;
 	}
