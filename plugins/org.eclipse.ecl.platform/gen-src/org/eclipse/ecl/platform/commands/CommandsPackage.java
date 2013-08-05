@@ -836,6 +836,62 @@ public interface CommandsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.platform.commands.impl.FindInWorkspaceImpl <em>Find In Workspace</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.platform.commands.impl.FindInWorkspaceImpl
+	 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getFindInWorkspace()
+	 * @generated
+	 */
+	int FIND_IN_WORKSPACE = 17;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIND_IN_WORKSPACE__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIND_IN_WORKSPACE__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIND_IN_WORKSPACE__PATH = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>All</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIND_IN_WORKSPACE__ALL = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Find In Workspace</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIND_IN_WORKSPACE_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.ListPlugins <em>List Plugins</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1182,6 +1238,38 @@ public interface CommandsPackage extends EPackage {
 	EClass getGetWorkspaceLocation();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.platform.commands.FindInWorkspace <em>Find In Workspace</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Find In Workspace</em>'.
+	 * @see org.eclipse.ecl.platform.commands.FindInWorkspace
+	 * @generated
+	 */
+	EClass getFindInWorkspace();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.FindInWorkspace#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Path</em>'.
+	 * @see org.eclipse.ecl.platform.commands.FindInWorkspace#getPath()
+	 * @see #getFindInWorkspace()
+	 * @generated
+	 */
+	EAttribute getFindInWorkspace_Path();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.platform.commands.FindInWorkspace#isAll <em>All</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>All</em>'.
+	 * @see org.eclipse.ecl.platform.commands.FindInWorkspace#isAll()
+	 * @see #getFindInWorkspace()
+	 * @generated
+	 */
+	EAttribute getFindInWorkspace_All();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1500,6 +1588,32 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass GET_WORKSPACE_LOCATION = eINSTANCE.getGetWorkspaceLocation();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.platform.commands.impl.FindInWorkspaceImpl <em>Find In Workspace</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.platform.commands.impl.FindInWorkspaceImpl
+		 * @see org.eclipse.ecl.platform.commands.impl.CommandsPackageImpl#getFindInWorkspace()
+		 * @generated
+		 */
+		EClass FIND_IN_WORKSPACE = eINSTANCE.getFindInWorkspace();
+
+		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FIND_IN_WORKSPACE__PATH = eINSTANCE.getFindInWorkspace_Path();
+
+		/**
+		 * The meta object literal for the '<em><b>All</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FIND_IN_WORKSPACE__ALL = eINSTANCE.getFindInWorkspace_All();
 
 	}
 

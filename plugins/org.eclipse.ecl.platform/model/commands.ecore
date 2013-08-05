@@ -160,4 +160,16 @@
       <details key="returns" value="path to workspace root"/>
     </eAnnotations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FindInWorkspace" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Perform regex search per segment. Returns list of matched paths."/>
+      <details key="returns" value="list of matched paths"/>
+      <details key="example" value="find-in-workspace &quot;project/dir1.*/dir2/file.*.txt&quot;"/>
+      <details key="recorded" value="false"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="all" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
 </ecore:EPackage>

@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -207,6 +209,45 @@ public class EclPlatformUtil {
 		result.setMessage(entry.getMessage());
 		result.setSeverity(entry.getSeverityText());
 		result.setPluginId(entry.getPluginId());
+		return result;
+	}
+	
+	public static List<String> getWorkspaceResources(
+			IContainer cont, 
+			String path, 
+			boolean findAll) throws CoreException {
+		List<String> result = new ArrayList<String>();
+		if (path == null)
+			return result;
+		IResource[] resources = cont.members();
+		int slashInd = path.indexOf('/');
+		String trimmedPath;
+		String resRegex;
+		if (slashInd != -1) {
+			trimmedPath = path.substring(slashInd + 1);
+			resRegex = path.substring(0, slashInd);
+		}
+		else {
+			trimmedPath = null;
+			resRegex = path;
+		}		
+		for (IResource res : resources) {
+			String name = res.getName();
+			if (name.matches(resRegex)) {
+				if (res instanceof IContainer) {
+					if (trimmedPath != null) {
+						result.addAll(getWorkspaceResources((IContainer) res, trimmedPath, findAll));
+						if (result.size() > 0 && !findAll)
+							return result;
+					}
+				} else {
+					result.add(res.getFullPath().toString());
+					if (!findAll) {
+						return result;
+					}
+				}
+			}
+		}
 		return result;
 	}
 }

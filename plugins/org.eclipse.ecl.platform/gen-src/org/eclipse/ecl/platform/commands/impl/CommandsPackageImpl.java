@@ -13,6 +13,7 @@ import org.eclipse.ecl.platform.commands.ClearLog;
 import org.eclipse.ecl.platform.commands.CommandsFactory;
 import org.eclipse.ecl.platform.commands.CommandsPackage;
 import org.eclipse.ecl.platform.commands.Echo;
+import org.eclipse.ecl.platform.commands.FindInWorkspace;
 import org.eclipse.ecl.platform.commands.GetLog;
 import org.eclipse.ecl.platform.commands.GetWorkspaceLocation;
 import org.eclipse.ecl.platform.commands.Launch;
@@ -164,6 +165,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass getWorkspaceLocationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass findInWorkspaceEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -532,6 +540,33 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getFindInWorkspace() {
+		return findInWorkspaceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFindInWorkspace_Path() {
+		return (EAttribute)findInWorkspaceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getFindInWorkspace_All() {
+		return (EAttribute)findInWorkspaceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommandsFactory getCommandsFactory() {
 		return (CommandsFactory)getEFactoryInstance();
 	}
@@ -604,6 +639,10 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		createEAttribute(substituteVariablesEClass, SUBSTITUTE_VARIABLES__IGNORE_UNDEFINED);
 
 		getWorkspaceLocationEClass = createEClass(GET_WORKSPACE_LOCATION);
+
+		findInWorkspaceEClass = createEClass(FIND_IN_WORKSPACE);
+		createEAttribute(findInWorkspaceEClass, FIND_IN_WORKSPACE__PATH);
+		createEAttribute(findInWorkspaceEClass, FIND_IN_WORKSPACE__ALL);
 	}
 
 	/**
@@ -655,6 +694,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		launchEClass.getESuperTypes().add(theCorePackage.getCommand());
 		substituteVariablesEClass.getESuperTypes().add(theCorePackage.getCommand());
 		getWorkspaceLocationEClass.getESuperTypes().add(theCorePackage.getCommand());
+		findInWorkspaceEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(listPluginsEClass, ListPlugins.class, "ListPlugins", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -706,6 +746,10 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		initEAttribute(getSubstituteVariables_IgnoreUndefined(), theEcorePackage.getEBoolean(), "ignoreUndefined", "false", 0, 1, SubstituteVariables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(getWorkspaceLocationEClass, GetWorkspaceLocation.class, "GetWorkspaceLocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(findInWorkspaceEClass, FindInWorkspace.class, "FindInWorkspace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFindInWorkspace_Path(), theEcorePackage.getEString(), "path", "", 1, 1, FindInWorkspace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFindInWorkspace_All(), theEcorePackage.getEBoolean(), "all", "false", 0, 1, FindInWorkspace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -885,6 +929,15 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   new String[] {
 			 "descriprion", "Returns the path to workspace root.",
 			 "returns", "path to workspace root"
+		   });		
+		addAnnotation
+		  (findInWorkspaceEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Perform regex search per segment. Returns list of matched paths.",
+			 "returns", "list of matched paths",
+			 "example", "find-in-workspace \"project/dir1.*/dir2/file.*.txt\"",
+			 "recorded", "false"
 		   });
 	}
 
@@ -908,7 +961,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getEcho_Str(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });								
 	}
 
 } //CommandsPackageImpl

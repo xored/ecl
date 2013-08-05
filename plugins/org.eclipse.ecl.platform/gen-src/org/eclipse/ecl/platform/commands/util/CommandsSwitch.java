@@ -208,6 +208,13 @@ public class CommandsSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CommandsPackage.FIND_IN_WORKSPACE: {
+				FindInWorkspace findInWorkspace = (FindInWorkspace)theEObject;
+				T result = caseFindInWorkspace(findInWorkspace);
+				if (result == null) result = caseCommand(findInWorkspace);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -464,6 +471,21 @@ public class CommandsSwitch<T> {
 	 * @generated
 	 */
 	public T caseGetWorkspaceLocation(GetWorkspaceLocation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Find In Workspace</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Find In Workspace</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFindInWorkspace(FindInWorkspace object) {
 		return null;
 	}
 
