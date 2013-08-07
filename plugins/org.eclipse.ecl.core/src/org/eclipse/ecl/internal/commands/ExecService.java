@@ -160,6 +160,9 @@ public class ExecService implements ICommandService {
 			if (upperBound == -1) {
 				upperBound = Integer.MAX_VALUE;
 			}
+
+			String currentParamName = param.getName();
+
 			while (setParamsCount < upperBound) {
 				Object value = null;
 				try {
@@ -179,6 +182,15 @@ public class ExecService implements ICommandService {
 				if (paramIterator.hasNext()) {
 					param = paramIterator.next();
 					peekParam = false;
+					String nextParamName = param.getName();
+
+					if (currentParamName == null) {
+						if (nextParamName != null) {
+							break;
+						}
+					} else if (!currentParamName.equals(nextParamName)) {
+						break;
+					}
 				} else {
 					break;
 				}
