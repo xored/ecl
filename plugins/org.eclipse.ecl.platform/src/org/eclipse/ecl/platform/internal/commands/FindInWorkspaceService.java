@@ -16,16 +16,15 @@ import org.eclipse.ecl.runtime.IProcess;
 
 public class FindInWorkspaceService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		FindInWorkspace cmd = (FindInWorkspace) command;
-		String path = cmd.getPath();		
+		String path = cmd.getPath();
 		boolean findAll = cmd.isAll();
-		
-		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();		
-		IContainer[] rootResources = root.findContainersForLocationURI(root.getLocationURI());										
-		List<String> paths = EclPlatformUtil.getWorkspaceResources(rootResources[0], path, findAll);		
+
+		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+		IContainer[] rootResources = root.findContainersForLocationURI(root.getLocationURI());
+		List<String> paths = EclPlatformUtil.getWorkspaceResources(rootResources[0], path, findAll);
 		for (String resultPath : paths) {
 			context.getOutput().write(resultPath);
 		}
