@@ -106,39 +106,17 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Gt" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+  <eClassifiers xsi:type="ecore:EClass" name="Gt" eSuperTypes="#//BinaryOp">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
       <details key="description" value="Compares arguments on to one be greater then another"/>
       <details key="returns" value="&lt;code>true&lt;/code> when left are greater then right, &lt;code>false&lt;/code> otherwise."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
-      <eAnnotations source="http://www.eclipse.org/ecl/docs">
-        <details key="description" value="Left argument"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-      <eAnnotations source="http://www.eclipse.org/ecl/docs">
-        <details key="description" value="Right argument"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Lt" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+  <eClassifiers xsi:type="ecore:EClass" name="Lt" eSuperTypes="#//BinaryOp">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
       <details key="description" value="Compares arguments one are less then another"/>
       <details key="returns" value="&lt;code>true&lt;/code> when left is less then right, &lt;code>false&lt;/code> otherwise."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
-      <eAnnotations source="http://www.eclipse.org/ecl/docs">
-        <details key="description" value="Left argument"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-      <eAnnotations source="http://www.eclipse.org/ecl/docs">
-        <details key="description" value="Right argument"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Not" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
@@ -283,5 +261,56 @@
       <details key="returns" value="String representation of given time"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BinaryOp" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Left argument"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" unique="false" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Right argument"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Plus" eSuperTypes="#//BinaryOp">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="&lt;p>returns &lt;code>left + right&lt;/code>&lt;/p>&#xA;&lt;p>Before performing an operation, arguments are converted to the widest type according to the following rules:&lt;/p>&#xA;&lt;ol>&#xA;  &lt;li>&lt;code>string&lt;/code> arguments converted to &lt;code>long&lt;/code>&lt;/li>&#xA;  &lt;li>&lt;code>boolean&lt;/code> arguments converted to &lt;code>long&lt;/code> (1 for &lt;code>true&lt;/code> and 0 for &lt;code>false&lt;/code>)&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>double&lt;/code>, converts the other one to &lt;code>double&lt;/code>&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>float&lt;/code>, converts the other one to &lt;code>float&lt;/code>&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>long&lt;/code>, converts the other one to &lt;code>long&lt;/code>&lt;/li>&#xA;  &lt;li>Otherwise (in case of &lt;code>byte&lt;/code>, &lt;code>char&lt;/code>, or &lt;code>short&lt;/code>) converts both arguments to &lt;code>int&lt;/code>&lt;/li>&#xA;&lt;/ol>&#xA;"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Minus" eSuperTypes="#//BinaryOp">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="&lt;p>returns &lt;code>left - right&lt;/code>&lt;/p>&#xA;&lt;p>Before performing an operation, arguments are converted to the widest type according to the following rules:&lt;/p>&#xA;&lt;ol>&#xA;  &lt;li>&lt;code>string&lt;/code> arguments converted to &lt;code>long&lt;/code>&lt;/li>&#xA;  &lt;li>&lt;code>boolean&lt;/code> arguments converted to &lt;code>long&lt;/code> (1 for &lt;code>true&lt;/code> and 0 for &lt;code>false&lt;/code>)&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>double&lt;/code>, converts the other one to &lt;code>double&lt;/code>&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>float&lt;/code>, converts the other one to &lt;code>float&lt;/code>&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>long&lt;/code>, converts the other one to &lt;code>long&lt;/code>&lt;/li>&#xA;  &lt;li>Otherwise (in case of &lt;code>byte&lt;/code>, &lt;code>char&lt;/code>, or &lt;code>short&lt;/code>) converts both arguments to &lt;code>int&lt;/code>&lt;/li>&#xA;&lt;/ol>&#xA;"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Div" eSuperTypes="#//BinaryOp">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="&lt;p>returns &lt;code>left / right&lt;/code>&lt;/p>&#xA;&lt;p>Before performing an operation, arguments are converted to the widest type according to the following rules:&lt;/p>&#xA;&lt;ol>&#xA;  &lt;li>&lt;code>string&lt;/code> arguments converted to &lt;code>long&lt;/code>&lt;/li>&#xA;  &lt;li>&lt;code>boolean&lt;/code> arguments converted to &lt;code>long&lt;/code> (1 for &lt;code>true&lt;/code> and 0 for &lt;code>false&lt;/code>)&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>double&lt;/code>, converts the other one to &lt;code>double&lt;/code>&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>float&lt;/code>, converts the other one to &lt;code>float&lt;/code>&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>long&lt;/code>, converts the other one to &lt;code>long&lt;/code>&lt;/li>&#xA;  &lt;li>Otherwise (in case of &lt;code>byte&lt;/code>, &lt;code>char&lt;/code>, or &lt;code>short&lt;/code>) converts both arguments to &lt;code>int&lt;/code>&lt;/li>&#xA;&lt;/ol>&#xA;"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Mult" eSuperTypes="#//BinaryOp">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="&lt;p>returns &lt;code>left * right&lt;/code>&lt;/p>&#xA;&lt;p>Before performing an operation, arguments are converted to the widest type according to the following rules:&lt;/p>&#xA;&lt;ol>&#xA;  &lt;li>&lt;code>string&lt;/code> arguments converted to &lt;code>long&lt;/code>&lt;/li>&#xA;  &lt;li>&lt;code>boolean&lt;/code> arguments converted to &lt;code>long&lt;/code> (1 for &lt;code>true&lt;/code> and 0 for &lt;code>false&lt;/code>)&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>double&lt;/code>, converts the other one to &lt;code>double&lt;/code>&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>float&lt;/code>, converts the other one to &lt;code>float&lt;/code>&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>long&lt;/code>, converts the other one to &lt;code>long&lt;/code>&lt;/li>&#xA;  &lt;li>Otherwise (in case of &lt;code>byte&lt;/code>, &lt;code>char&lt;/code>, or &lt;code>short&lt;/code>) converts both arguments to &lt;code>int&lt;/code>&lt;/li>&#xA;&lt;/ol>&#xA;"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Abs" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="&lt;p>returns &lt;code>java.lang.Math.abs(arg)&lt;/code>&lt;/p>&#xA;&lt;p>The return type of an operation is determined by the following rules:&lt;/p>&#xA;&lt;ol>&#xA;  &lt;li>&lt;code>string&lt;/code> arg is converted to &lt;code>long&lt;/code>&lt;/li>&#xA;  &lt;li>&lt;code>boolean&lt;/code> arg is converted to &lt;code>long&lt;/code> (1 for &lt;code>true&lt;/code> and 0 for &lt;code>false&lt;/code>)&lt;/li>&#xA;  &lt;li>&lt;code>double&lt;/code>, &lt;code>float&lt;/code>, &lt;code>long&lt;/code> args retain its original type&lt;/li>&#xA;  &lt;li>Otherwise (in case of &lt;code>byte&lt;/code>, &lt;code>char&lt;/code>, or &lt;code>short&lt;/code>) the returned value has type &lt;code>int&lt;/code>&lt;/li>&#xA;&lt;/ol>&#xA;"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arg" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Between" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="&lt;p>returns &lt;code>true&lt;/code> if &lt;code>input&lt;/code> is greater than or equal to &lt;code>left&lt;/code> and less than or equal to &lt;code>right&lt;/code>&lt;/p>&#xA;&#xA;&lt;p>Before performing an operation, arguments are converted according to the following rules:&lt;/p>&#xA;&lt;ol>&#xA;  &lt;li>&lt;code>string&lt;/code> arguments converted to &lt;code>long&lt;/code>&lt;/li>&#xA;  &lt;li>&lt;code>boolean&lt;/code> arguments converted to &lt;code>long&lt;/code> (1 for &lt;code>true&lt;/code> and 0 for &lt;code>false&lt;/code>)&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>double&lt;/code>, converts the other one to &lt;code>double&lt;/code>&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>float&lt;/code>, converts the other one to &lt;code>float&lt;/code>&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>long&lt;/code>, converts the other one to &lt;code>long&lt;/code>&lt;/li>&#xA;  &lt;li>Otherwise (in case of &lt;code>byte&lt;/code>, &lt;code>char&lt;/code>, or &lt;code>short&lt;/code>) converts both arguments to &lt;code>int&lt;/code>&lt;/li>&#xA;&lt;/ol>&#xA;"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" unique="false" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
   </eClassifiers>
 </ecore:EPackage>
