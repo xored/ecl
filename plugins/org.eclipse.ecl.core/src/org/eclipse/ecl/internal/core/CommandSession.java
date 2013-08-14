@@ -29,7 +29,7 @@ public class CommandSession extends AbstractSession {
 	}
 
 	@Override
-	protected AbstractRootSession getRoot() {
+	public AbstractRootSession getRoot() {
 		return session;
 	}
 

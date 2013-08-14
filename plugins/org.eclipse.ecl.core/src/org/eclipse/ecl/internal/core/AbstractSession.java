@@ -25,7 +25,7 @@ public abstract class AbstractSession implements ISession {
 
 	protected abstract CommandStack getStack();
 
-	protected abstract AbstractRootSession getRoot();
+	public abstract AbstractRootSession getRoot();
 
 	public IProcess execute(Command command) throws CoreException {
 		return execute(command, null, null);

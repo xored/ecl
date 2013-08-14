@@ -30,7 +30,7 @@ public abstract class AbstractRootSession extends AbstractSession {
 	}
 
 	@Override
-	protected AbstractRootSession getRoot() {
+	public AbstractRootSession getRoot() {
 		return this;
 	}
 
