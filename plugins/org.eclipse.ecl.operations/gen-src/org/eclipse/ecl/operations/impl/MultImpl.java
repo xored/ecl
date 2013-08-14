@@ -6,35 +6,27 @@
  */
 package org.eclipse.ecl.operations.impl;
 
-import org.eclipse.ecl.core.impl.CommandImpl;
-
-import org.eclipse.ecl.operations.Lt;
+import org.eclipse.ecl.operations.Mult;
 import org.eclipse.ecl.operations.OperationsPackage;
 
-import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Lt</b></em>'.
+ * An implementation of the model object '<em><b>Mult</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class LtImpl extends BinaryOpImpl implements Lt {
+public class MultImpl extends BinaryOpImpl implements Mult {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LtImpl() {
+	protected MultImpl() {
 		super();
 	}
 
@@ -45,7 +37,7 @@ public class LtImpl extends BinaryOpImpl implements Lt {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OperationsPackage.Literals.LT;
+		return OperationsPackage.Literals.MULT;
 	}
 
-} //LtImpl
+} //MultImpl

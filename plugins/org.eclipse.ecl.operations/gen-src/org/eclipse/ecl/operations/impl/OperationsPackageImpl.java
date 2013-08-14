@@ -7,13 +7,17 @@
 package org.eclipse.ecl.operations.impl;
 
 import org.eclipse.ecl.core.CorePackage;
+import org.eclipse.ecl.operations.Abs;
 import org.eclipse.ecl.operations.And;
 import org.eclipse.ecl.operations.AssertEmpty;
 import org.eclipse.ecl.operations.AssertNonEmpty;
 import org.eclipse.ecl.operations.AssertTrue;
+import org.eclipse.ecl.operations.Between;
+import org.eclipse.ecl.operations.BinaryOp;
 import org.eclipse.ecl.operations.Bool;
 import org.eclipse.ecl.operations.Concat;
 import org.eclipse.ecl.operations.Convert;
+import org.eclipse.ecl.operations.Div;
 import org.eclipse.ecl.operations.Emit;
 import org.eclipse.ecl.operations.Eq;
 import org.eclipse.ecl.operations.Format;
@@ -23,11 +27,14 @@ import org.eclipse.ecl.operations.Gt;
 import org.eclipse.ecl.operations.Int;
 import org.eclipse.ecl.operations.Length;
 import org.eclipse.ecl.operations.Lt;
+import org.eclipse.ecl.operations.Minus;
+import org.eclipse.ecl.operations.Mult;
 import org.eclipse.ecl.operations.Not;
 import org.eclipse.ecl.operations.NotEq;
 import org.eclipse.ecl.operations.OperationsFactory;
 import org.eclipse.ecl.operations.OperationsPackage;
 import org.eclipse.ecl.operations.Or;
+import org.eclipse.ecl.operations.Plus;
 import org.eclipse.ecl.operations.Repeat;
 import org.eclipse.ecl.operations.RepeatWith;
 import org.eclipse.ecl.operations.Str;
@@ -195,6 +202,48 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass formatTimeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass plusEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass minusEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass divEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass multEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass absEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass betweenEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass binaryOpEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -418,40 +467,8 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGt_Left() {
-		return (EReference)gtEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getGt_Right() {
-		return (EReference)gtEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getLt() {
 		return ltEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLt_Left() {
-		return (EReference)ltEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLt_Right() {
-		return (EReference)ltEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -722,6 +739,110 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getPlus() {
+		return plusEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMinus() {
+		return minusEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDiv() {
+		return divEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMult() {
+		return multEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAbs() {
+		return absEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbs_Arg() {
+		return (EReference)absEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBetween() {
+		return betweenEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBetween_Input() {
+		return (EReference)betweenEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBetween_Left() {
+		return (EReference)betweenEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBetween_Right() {
+		return (EReference)betweenEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBinaryOp() {
+		return binaryOpEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBinaryOp_Left() {
+		return (EReference)binaryOpEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBinaryOp_Right() {
+		return (EReference)binaryOpEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
 	public OperationsFactory getOperationsFactory() {
 		return (OperationsFactory)getEFactoryInstance();
 	}
@@ -773,12 +894,8 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		createEReference(notEqEClass, NOT_EQ__RIGHT);
 
 		gtEClass = createEClass(GT);
-		createEReference(gtEClass, GT__LEFT);
-		createEReference(gtEClass, GT__RIGHT);
 
 		ltEClass = createEClass(LT);
-		createEReference(ltEClass, LT__LEFT);
-		createEReference(ltEClass, LT__RIGHT);
 
 		notEClass = createEClass(NOT);
 		createEReference(notEClass, NOT__LEFT);
@@ -825,6 +942,26 @@ public class OperationsPackageImpl extends EPackageImpl implements
 
 		formatTimeEClass = createEClass(FORMAT_TIME);
 		createEAttribute(formatTimeEClass, FORMAT_TIME__FORMAT);
+
+		binaryOpEClass = createEClass(BINARY_OP);
+		createEReference(binaryOpEClass, BINARY_OP__LEFT);
+		createEReference(binaryOpEClass, BINARY_OP__RIGHT);
+
+		plusEClass = createEClass(PLUS);
+
+		minusEClass = createEClass(MINUS);
+
+		divEClass = createEClass(DIV);
+
+		multEClass = createEClass(MULT);
+
+		absEClass = createEClass(ABS);
+		createEReference(absEClass, ABS__ARG);
+
+		betweenEClass = createEClass(BETWEEN);
+		createEReference(betweenEClass, BETWEEN__INPUT);
+		createEReference(betweenEClass, BETWEEN__LEFT);
+		createEReference(betweenEClass, BETWEEN__RIGHT);
 	}
 
 	/**
@@ -868,8 +1005,8 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		assertTrueEClass.getESuperTypes().add(theCorePackage.getCommand());
 		lengthEClass.getESuperTypes().add(theCorePackage.getCommand());
 		notEqEClass.getESuperTypes().add(theCorePackage.getCommand());
-		gtEClass.getESuperTypes().add(theCorePackage.getCommand());
-		ltEClass.getESuperTypes().add(theCorePackage.getCommand());
+		gtEClass.getESuperTypes().add(this.getBinaryOp());
+		ltEClass.getESuperTypes().add(this.getBinaryOp());
 		notEClass.getESuperTypes().add(theCorePackage.getCommand());
 		tryEClass.getESuperTypes().add(theCorePackage.getCommand());
 		formatEClass.getESuperTypes().add(theCorePackage.getCommand());
@@ -883,6 +1020,13 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		andEClass.getESuperTypes().add(theCorePackage.getCommand());
 		getTimeEClass.getESuperTypes().add(theCorePackage.getCommand());
 		formatTimeEClass.getESuperTypes().add(theCorePackage.getCommand());
+		binaryOpEClass.getESuperTypes().add(theCorePackage.getCommand());
+		plusEClass.getESuperTypes().add(this.getBinaryOp());
+		minusEClass.getESuperTypes().add(this.getBinaryOp());
+		divEClass.getESuperTypes().add(this.getBinaryOp());
+		multEClass.getESuperTypes().add(this.getBinaryOp());
+		absEClass.getESuperTypes().add(theCorePackage.getCommand());
+		betweenEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -914,12 +1058,8 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		initEReference(getNotEq_Right(), theEcorePackage.getEObject(), null, "right", null, 0, 1, NotEq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(gtEClass, Gt.class, "Gt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGt_Left(), theEcorePackage.getEObject(), null, "left", null, 0, 1, Gt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGt_Right(), theEcorePackage.getEObject(), null, "right", null, 0, 1, Gt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ltEClass, Lt.class, "Lt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLt_Left(), theEcorePackage.getEObject(), null, "left", null, 0, 1, Lt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLt_Right(), theEcorePackage.getEObject(), null, "right", null, 0, 1, Lt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(notEClass, Not.class, "Not", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNot_Left(), theEcorePackage.getEObject(), null, "left", null, 0, 1, Not.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -966,6 +1106,26 @@ public class OperationsPackageImpl extends EPackageImpl implements
 
 		initEClass(formatTimeEClass, FormatTime.class, "FormatTime", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFormatTime_Format(), theEcorePackage.getEString(), "format", null, 0, 1, FormatTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(binaryOpEClass, BinaryOp.class, "BinaryOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBinaryOp_Left(), theEcorePackage.getEObject(), null, "left", null, 0, 1, BinaryOp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBinaryOp_Right(), theEcorePackage.getEObject(), null, "right", null, 0, 1, BinaryOp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(plusEClass, Plus.class, "Plus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(minusEClass, Minus.class, "Minus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(divEClass, Div.class, "Div", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(multEClass, Mult.class, "Mult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(absEClass, Abs.class, "Abs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAbs_Arg(), theEcorePackage.getEObject(), null, "arg", null, 0, 1, Abs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(betweenEClass, Between.class, "Between", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBetween_Input(), theEcorePackage.getEObject(), null, "input", null, 0, 1, Between.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBetween_Left(), theEcorePackage.getEObject(), null, "left", null, 0, 1, Between.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBetween_Right(), theEcorePackage.getEObject(), null, "right", null, 0, 1, Between.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1103,18 +1263,6 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "description", "Compares arguments on to one be greater then another",
 			 "returns", "<code>true</code> when left are greater then right, <code>false</code> otherwise."
-		   });			
-		addAnnotation
-		  (getGt_Left(), 
-		   source, 
-		   new String[] {
-			 "description", "Left argument"
-		   });		
-		addAnnotation
-		  (getGt_Right(), 
-		   source, 
-		   new String[] {
-			 "description", "Right argument"
 		   });		
 		addAnnotation
 		  (ltEClass, 
@@ -1122,18 +1270,6 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "description", "Compares arguments one are less then another",
 			 "returns", "<code>true</code> when left is less then right, <code>false</code> otherwise."
-		   });			
-		addAnnotation
-		  (getLt_Left(), 
-		   source, 
-		   new String[] {
-			 "description", "Left argument"
-		   });		
-		addAnnotation
-		  (getLt_Right(), 
-		   source, 
-		   new String[] {
-			 "description", "Right argument"
 		   });		
 		addAnnotation
 		  (notEClass, 
@@ -1271,7 +1407,55 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "description", "Reads timestamp value (as a number of milliseconds since January, 1, 1970) from input pipe and formats according to given format string. Format string is the same as used in <code>java.text.SimpleDateFormat</code>.",
 			 "returns", "String representation of given time"
-		   });
+		   });			
+		addAnnotation
+		  (getBinaryOp_Left(), 
+		   source, 
+		   new String[] {
+			 "description", "Left argument"
+		   });		
+		addAnnotation
+		  (getBinaryOp_Right(), 
+		   source, 
+		   new String[] {
+			 "description", "Right argument"
+		   });		
+		addAnnotation
+		  (plusEClass, 
+		   source, 
+		   new String[] {
+			 "description", "<p>returns <code>left + right</code></p>\n<p>Before performing an operation, arguments are converted to the widest type according to the following rules:</p>\n<ol>\n  <li><code>string</code> arguments converted to <code>long</code></li>\n  <li><code>boolean</code> arguments converted to <code>long</code> (1 for <code>true</code> and 0 for <code>false</code>)</li>\n  <li>If one of arguments is <code>double</code>, converts the other one to <code>double</code></li>\n  <li>If one of arguments is <code>float</code>, converts the other one to <code>float</code></li>\n  <li>If one of arguments is <code>long</code>, converts the other one to <code>long</code></li>\n  <li>Otherwise (in case of <code>byte</code>, <code>char</code>, or <code>short</code>) converts both arguments to <code>int</code></li>\n</ol>\n"
+		   });		
+		addAnnotation
+		  (minusEClass, 
+		   source, 
+		   new String[] {
+			 "description", "<p>returns <code>left - right</code></p>\n<p>Before performing an operation, arguments are converted to the widest type according to the following rules:</p>\n<ol>\n  <li><code>string</code> arguments converted to <code>long</code></li>\n  <li><code>boolean</code> arguments converted to <code>long</code> (1 for <code>true</code> and 0 for <code>false</code>)</li>\n  <li>If one of arguments is <code>double</code>, converts the other one to <code>double</code></li>\n  <li>If one of arguments is <code>float</code>, converts the other one to <code>float</code></li>\n  <li>If one of arguments is <code>long</code>, converts the other one to <code>long</code></li>\n  <li>Otherwise (in case of <code>byte</code>, <code>char</code>, or <code>short</code>) converts both arguments to <code>int</code></li>\n</ol>\n"
+		   });		
+		addAnnotation
+		  (divEClass, 
+		   source, 
+		   new String[] {
+			 "description", "<p>returns <code>left / right</code></p>\n<p>Before performing an operation, arguments are converted to the widest type according to the following rules:</p>\n<ol>\n  <li><code>string</code> arguments converted to <code>long</code></li>\n  <li><code>boolean</code> arguments converted to <code>long</code> (1 for <code>true</code> and 0 for <code>false</code>)</li>\n  <li>If one of arguments is <code>double</code>, converts the other one to <code>double</code></li>\n  <li>If one of arguments is <code>float</code>, converts the other one to <code>float</code></li>\n  <li>If one of arguments is <code>long</code>, converts the other one to <code>long</code></li>\n  <li>Otherwise (in case of <code>byte</code>, <code>char</code>, or <code>short</code>) converts both arguments to <code>int</code></li>\n</ol>\n"
+		   });		
+		addAnnotation
+		  (multEClass, 
+		   source, 
+		   new String[] {
+			 "description", "<p>returns <code>left * right</code></p>\n<p>Before performing an operation, arguments are converted to the widest type according to the following rules:</p>\n<ol>\n  <li><code>string</code> arguments converted to <code>long</code></li>\n  <li><code>boolean</code> arguments converted to <code>long</code> (1 for <code>true</code> and 0 for <code>false</code>)</li>\n  <li>If one of arguments is <code>double</code>, converts the other one to <code>double</code></li>\n  <li>If one of arguments is <code>float</code>, converts the other one to <code>float</code></li>\n  <li>If one of arguments is <code>long</code>, converts the other one to <code>long</code></li>\n  <li>Otherwise (in case of <code>byte</code>, <code>char</code>, or <code>short</code>) converts both arguments to <code>int</code></li>\n</ol>\n"
+		   });		
+		addAnnotation
+		  (absEClass, 
+		   source, 
+		   new String[] {
+			 "description", "<p>returns <code>java.lang.Math.abs(arg)</code></p>\n<p>The return type of an operation is determined by the following rules:</p>\n<ol>\n  <li><code>string</code> arg is converted to <code>long</code></li>\n  <li><code>boolean</code> arg is converted to <code>long</code> (1 for <code>true</code> and 0 for <code>false</code>)</li>\n  <li><code>double</code>, <code>float</code>, <code>long</code> args retain its original type</li>\n  <li>Otherwise (in case of <code>byte</code>, <code>char</code>, or <code>short</code>) the returned value has type <code>int</code></li>\n</ol>\n"
+		   });			
+		addAnnotation
+		  (betweenEClass, 
+		   source, 
+		   new String[] {
+			 "description", "<p>returns <code>true</code> if <code>input</code> is greater than or equal to <code>left</code> and less than or equal to <code>right</code></p>\n\n<p>Before performing an operation, arguments are converted according to the following rules:</p>\n<ol>\n  <li><code>string</code> arguments converted to <code>long</code></li>\n  <li><code>boolean</code> arguments converted to <code>long</code> (1 for <code>true</code> and 0 for <code>false</code>)</li>\n  <li>If one of arguments is <code>double</code>, converts the other one to <code>double</code></li>\n  <li>If one of arguments is <code>float</code>, converts the other one to <code>float</code></li>\n  <li>If one of arguments is <code>long</code>, converts the other one to <code>long</code></li>\n  <li>Otherwise (in case of <code>byte</code>, <code>char</code>, or <code>short</code>) converts both arguments to <code>int</code></li>\n</ol>\n"
+		   });	
 	}
 
 	/**
@@ -1305,17 +1489,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		  (getNotEq_Left(), 
 		   source, 
 		   new String[] {
-		   });					
-		addAnnotation
-		  (getGt_Left(), 
-		   source, 
-		   new String[] {
-		   });					
-		addAnnotation
-		  (getLt_Left(), 
-		   source, 
-		   new String[] {
-		   });					
+		   });							
 		addAnnotation
 		  (getNot_Left(), 
 		   source, 
@@ -1325,7 +1499,22 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		  (getRepeatWith_Commands(), 
 		   source, 
 		   new String[] {
-		   });												
+		   });														
+		addAnnotation
+		  (getBinaryOp_Left(), 
+		   source, 
+		   new String[] {
+		   });									
+		addAnnotation
+		  (getAbs_Arg(), 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  (getBetween_Input(), 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 	/**
@@ -1340,7 +1529,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });																																											
+		   });																																																
 	}
 
 } // OperationsPackageImpl

@@ -65,6 +65,9 @@ public class ServerSession extends Session implements IStackListener {
 		try {
 			StackFrame[] frames = getFrames(stack);
 			if (frames != null) {
+				if (lastLine != frames[0].getLine()) {
+					lastLine = -1;
+				}
 				if (latch.isLocked()) {
 					if (stepOver) {
 						if (lastLine != frames[0].getLine()) {

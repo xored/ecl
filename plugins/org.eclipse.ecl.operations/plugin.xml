@@ -130,6 +130,35 @@
             name="FormatTime"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
-     
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.PlusService"
+            name="Plus"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.MinusService"
+            name="Minus"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.DivService"
+            name="Div"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.MultService"
+            name="Mult"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.AbsService"
+            name="Abs"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+         <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.BetweenService"
+            name="Between"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
    </extension>
 </plugin>
