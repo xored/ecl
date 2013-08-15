@@ -93,6 +93,7 @@ public abstract class BaseRecognizer {
 	 * 
 	 * This is only used if rule memoization is on (which it is by default).
 	 */
+	@SuppressWarnings("rawtypes")
 	protected Map[] ruleMemo;
 
 	/** reset the parser's state; subclasses must rewinds the input stream */
@@ -204,6 +205,7 @@ public abstract class BaseRecognizer {
 	 * Override this to change the message generated for one or more exception
 	 * types.
 	 */
+
 	public String getErrorMessage(RecognitionException e, String[] tokenNames) {
 		String msg = null;
 		if (e instanceof MismatchedTokenException) {
@@ -217,7 +219,7 @@ public abstract class BaseRecognizer {
 			msg = "mismatched input " + getTokenErrorDisplay(e.token)
 					+ " expecting " + tokenName;
 		} else if (e instanceof NoViableAltException) {
-			NoViableAltException nvae = (NoViableAltException) e;
+			// NoViableAltException nvae = (NoViableAltException) e;
 			// for development, can add
 			// "decision=<<"+nvae.grammarDecisionDescription+">>"
 			// and "(decision="+nvae.decisionNumber+") and
@@ -225,7 +227,7 @@ public abstract class BaseRecognizer {
 			msg = "no viable alternative at input "
 					+ getTokenErrorDisplay(e.token);
 		} else if (e instanceof EarlyExitException) {
-			EarlyExitException eee = (EarlyExitException) e;
+			// EarlyExitException eee = (EarlyExitException) e;
 			// for development, can add "(decision="+eee.decisionNumber+")"
 			msg = "required (...)+ loop did not match anything at input "
 					+ getTokenErrorDisplay(e.token);
@@ -578,6 +580,7 @@ public abstract class BaseRecognizer {
 	 * This is very useful for error messages and for context-sensitive error
 	 * recovery.
 	 */
+	@SuppressWarnings("rawtypes")
 	public List getRuleInvocationStack() {
 		String parserClassName = getClass().getName();
 		return getRuleInvocationStack(new Throwable(), parserClassName);
@@ -590,6 +593,7 @@ public abstract class BaseRecognizer {
 	 * 
 	 * TODO: move to a utility class or something; weird having lexer call this
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static List getRuleInvocationStack(Throwable e,
 			String recognizerClassName) {
 		List rules = new ArrayList();
@@ -636,6 +640,7 @@ public abstract class BaseRecognizer {
 	 * A convenience method for use most often with template rewrites. Convert a
 	 * List<Token> to List<String>
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List toStrings(List tokens) {
 		if (tokens == null)
 			return null;
@@ -672,6 +677,7 @@ public abstract class BaseRecognizer {
 	 * can make a special one for ints and also one that tosses out data after
 	 * we commit past input position i.
 	 */
+	@SuppressWarnings("rawtypes")
 	public int getRuleMemoization(int ruleIndex, int ruleStartIndex) {
 		if (ruleMemo[ruleIndex] == null) {
 			ruleMemo[ruleIndex] = new HashMap();
@@ -712,6 +718,7 @@ public abstract class BaseRecognizer {
 	 * Record whether or not this rule parsed the input at this position
 	 * successfully. Use a standard java hashtable for now.
 	 */
+	@SuppressWarnings("unchecked")
 	public void memoize(IntStream input, int ruleIndex, int ruleStartIndex) {
 		int stopTokenIndex = failed ? MEMO_RULE_FAILED : input.index() - 1;
 		if (ruleMemo[ruleIndex] != null) {
@@ -739,6 +746,7 @@ public abstract class BaseRecognizer {
 	 * return how many rule/input-index pairs there are in total. TODO: this
 	 * includes synpreds. :(
 	 */
+	@SuppressWarnings("rawtypes")
 	public int getRuleMemoizationCacheSize() {
 		int n = 0;
 		for (int i = 0; ruleMemo != null && i < ruleMemo.length; i++) {

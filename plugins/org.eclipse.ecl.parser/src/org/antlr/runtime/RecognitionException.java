@@ -57,6 +57,11 @@ package org.antlr.runtime;
  * problem and then let the parser figure out a fancy report.
  */
 public class RecognitionException extends Exception {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** What input stream did the error occur in? */
 	public transient IntStream input;
 

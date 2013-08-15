@@ -102,6 +102,7 @@ public class ServerSession extends Session implements IStackListener {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private Command getCommandParent(CommandStack stack) {
 		CommandStack parent = stack.getParent();
 		while (parent != null) {

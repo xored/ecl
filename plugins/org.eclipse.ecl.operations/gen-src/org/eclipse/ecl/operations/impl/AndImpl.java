@@ -8,38 +8,31 @@ package org.eclipse.ecl.operations.impl;
 
 import java.util.Collection;
 
-import org.eclipse.ecl.core.EclBoolean;
-
 import org.eclipse.ecl.core.impl.CommandImpl;
-
 import org.eclipse.ecl.operations.And;
 import org.eclipse.ecl.operations.OperationsPackage;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>And</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>And</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.operations.impl.AndImpl#getArgs <em>Args</em>}</li>
+ * <li>{@link org.eclipse.ecl.operations.impl.AndImpl#getArgs <em>Args</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class AndImpl extends CommandImpl implements And {
 	/**
-	 * The cached value of the '{@link #getArgs() <em>Args</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getArgs() <em>Args</em>}' reference
+	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getArgs()
 	 * @generated
 	 * @ordered
@@ -47,8 +40,8 @@ public class AndImpl extends CommandImpl implements And {
 	protected EList<EObject> args;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AndImpl() {
@@ -56,8 +49,8 @@ public class AndImpl extends CommandImpl implements And {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -66,8 +59,8 @@ public class AndImpl extends CommandImpl implements And {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<EObject> getArgs() {
@@ -78,63 +71,63 @@ public class AndImpl extends CommandImpl implements And {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OperationsPackage.AND__ARGS:
-				return getArgs();
+		case OperationsPackage.AND__ARGS:
+			return getArgs();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OperationsPackage.AND__ARGS:
-				getArgs().clear();
-				getArgs().addAll((Collection<? extends EObject>)newValue);
-				return;
+		case OperationsPackage.AND__ARGS:
+			getArgs().clear();
+			getArgs().addAll((Collection<? extends EObject>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OperationsPackage.AND__ARGS:
-				getArgs().clear();
-				return;
+		case OperationsPackage.AND__ARGS:
+			getArgs().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OperationsPackage.AND__ARGS:
-				return args != null && !args.isEmpty();
+		case OperationsPackage.AND__ARGS:
+			return args != null && !args.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //AndImpl
+} // AndImpl

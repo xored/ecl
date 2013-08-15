@@ -28,14 +28,21 @@
 package org.antlr.runtime;
 
 public class MismatchedNotSetException extends MismatchedSetException {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** Used for remote debugger deserialization */
-	public MismatchedNotSetException() {;}
+	public MismatchedNotSetException() {
+		;
+	}
 
 	public MismatchedNotSetException(BitSet expecting, IntStream input) {
 		super(expecting, input);
 	}
 
 	public String toString() {
-		return "MismatchedNotSetException("+getUnexpectedType()+"!="+expecting+")";
+		return "MismatchedNotSetException(" + getUnexpectedType() + "!=" + expecting + ")";
 	}
 }

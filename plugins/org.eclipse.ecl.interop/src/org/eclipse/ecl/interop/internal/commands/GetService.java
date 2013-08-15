@@ -32,6 +32,7 @@ public class GetService implements ICommandService {
 			return error("Unsupported object type.");
 	}
 
+	@SuppressWarnings("rawtypes")
 	private IStatus getFromEmfObject(EObject object, String propName,
 			IProcess context) throws CoreException {
 		EStructuralFeature feature = object.eClass().getEStructuralFeature(

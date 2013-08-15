@@ -60,6 +60,7 @@ public abstract class AbstractSession implements ISession {
 			resolveBindings(scriptlet, inputContent);
 			setupInputFeature(scriptlet, inputContent);
 			checkParams(scriptlet);
+
 			CommandStack.fireEnter(stack);
 			SessionListenerManager.beginCommand(scriptlet);
 			s = svc.service(scriptlet, process);

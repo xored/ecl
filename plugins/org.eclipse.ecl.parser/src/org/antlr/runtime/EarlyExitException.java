@@ -27,13 +27,19 @@
  ******************************************************************************/
 package org.antlr.runtime;
 
-/**  The recognizer did not match anything for a (..)+ loop. */
+/** The recognizer did not match anything for a (..)+ loop. */
 public class EarlyExitException extends RecognitionException {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public int decisionNumber;
 
 	/** Used for remote debugger deserialization */
-	public EarlyExitException() {;}
-	
+	public EarlyExitException() {
+		;
+	}
+
 	public EarlyExitException(int decisionNumber, IntStream input) {
 		super(input);
 		this.decisionNumber = decisionNumber;

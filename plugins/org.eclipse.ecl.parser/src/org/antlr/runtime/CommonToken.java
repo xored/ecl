@@ -30,15 +30,20 @@ package org.antlr.runtime;
 import java.io.Serializable;
 
 public class CommonToken implements Token, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected int type;
 	protected int line;
 	protected int charPositionInLine = -1; // set to invalid position
-	protected int channel=DEFAULT_CHANNEL;
+	protected int channel = DEFAULT_CHANNEL;
 	protected transient CharStream input;
-	/** We need to be able to change the text once in a while.  If
-	 *  this is non-null, then getText should return this.  Note that
-	 *  start/stop are not affected by changing this.
-	  */
+	/**
+	 * We need to be able to change the text once in a while. If this is
+	 * non-null, then getText should return this. Note that start/stop are not
+	 * affected by changing this.
+	 */
 	protected String text;
 
 	/** What token number is this from 0..n-1 tokens; < 0 implies invalid index */
@@ -86,20 +91,21 @@ public class CommonToken implements Token, Serializable {
 	}
 
 	public String getText() {
-		if ( text!=null ) {
+		if (text != null) {
 			return text;
 		}
-		if ( input==null ) {
+		if (input == null) {
 			return null;
 		}
-		text = input.substring(start,stop);
+		text = input.substring(start, stop);
 		return text;
 	}
 
-	/** Override the text for this token.  getText() will return this text
-	 *  rather than pulling from the buffer.  Note that this does not mean
-	 *  that start/stop indexes are not valid.  It means that that input
-	 *  was converted to a new string in the token object.
+	/**
+	 * Override the text for this token. getText() will return this text rather
+	 * than pulling from the buffer. Note that this does not mean that
+	 * start/stop indexes are not valid. It means that that input was converted
+	 * to a new string in the token object.
 	 */
 	public void setText(String text) {
 		this.text = text;
@@ -155,18 +161,19 @@ public class CommonToken implements Token, Serializable {
 
 	public String toString() {
 		String channelStr = "";
-		if ( channel>0 ) {
-			channelStr=",channel="+channel;
+		if (channel > 0) {
+			channelStr = ",channel=" + channel;
 		}
 		String txt = getText();
-		if ( txt!=null ) {
-			txt = txt.replaceAll("\n","\\\\n");
-			txt = txt.replaceAll("\r","\\\\r");
-			txt = txt.replaceAll("\t","\\\\t");
+		if (txt != null) {
+			txt = txt.replaceAll("\n", "\\\\n");
+			txt = txt.replaceAll("\r", "\\\\r");
+			txt = txt.replaceAll("\t", "\\\\t");
 		}
 		else {
 			txt = "<no text>";
 		}
-		return "[@"+getTokenIndex()+","+start+":"+stop+"='"+txt+"',<"+type+">"+channelStr+","+line+":"+getCharPositionInLine()+"]";
+		return "[@" + getTokenIndex() + "," + start + ":" + stop + "='" + txt + "',<" + type + ">" + channelStr + ","
+				+ line + ":" + getCharPositionInLine() + "]";
 	}
 }

@@ -28,10 +28,16 @@
 package org.antlr.runtime;
 
 public class MismatchedSetException extends RecognitionException {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public BitSet expecting;
 
 	/** Used for remote debugger deserialization */
-	public MismatchedSetException() {;}
+	public MismatchedSetException() {
+		;
+	}
 
 	public MismatchedSetException(BitSet expecting, IntStream input) {
 		super(input);
@@ -39,6 +45,6 @@ public class MismatchedSetException extends RecognitionException {
 	}
 
 	public String toString() {
-		return "MismatchedSetException("+getUnexpectedType()+"!="+expecting+")";
+		return "MismatchedSetException(" + getUnexpectedType() + "!=" + expecting + ")";
 	}
 }

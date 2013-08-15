@@ -65,6 +65,7 @@ public class ExecService implements ICommandService {
 			return status;
 
 		IPipe inputPipe = process.getSession().createPipe();
+
 		for (Object o : inputList)
 			inputPipe.write(o);
 		inputPipe.close(Status.OK_STATUS);
@@ -225,6 +226,7 @@ public class ExecService implements ICommandService {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private Object processBoxUnbox(EStructuralFeature feature, Object value) {
 		if (value instanceof List) {
 			value = CoreUtils.convert((List<Object>) value, feature);

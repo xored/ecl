@@ -53,7 +53,7 @@ public class ProcessStatusConverter implements
 			// Failed to restore exception, try to construct new one
 			try {
 				String className = exception.getClassName();
-				Class<?> forName = this.getClass().forName(className);
+				Class<?> forName = Class.forName(className);
 				if (forName != null) {
 					Constructor<?> constructor = forName.getConstructor(
 							String.class, Throwable.class);
