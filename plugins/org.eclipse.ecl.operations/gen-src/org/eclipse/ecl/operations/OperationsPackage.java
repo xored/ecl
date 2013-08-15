@@ -559,51 +559,6 @@ public interface OperationsPackage extends EPackage {
 	int GT = 10;
 
 	/**
-	 * The feature id for the '<em><b>Host</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GT__HOST = CorePackage.COMMAND__HOST;
-
-	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GT__BINDINGS = CorePackage.COMMAND__BINDINGS;
-
-	/**
-	 * The feature id for the '<em><b>Left</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GT__LEFT = CorePackage.COMMAND_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Right</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GT__RIGHT = CorePackage.COMMAND_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Gt</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.LtImpl <em>Lt</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -614,51 +569,6 @@ public interface OperationsPackage extends EPackage {
 	int LT = 11;
 
 	/**
-	 * The feature id for the '<em><b>Host</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LT__HOST = CorePackage.COMMAND__HOST;
-
-	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LT__BINDINGS = CorePackage.COMMAND__BINDINGS;
-
-	/**
-	 * The feature id for the '<em><b>Left</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LT__LEFT = CorePackage.COMMAND_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Right</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LT__RIGHT = CorePackage.COMMAND_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Lt</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.NotImpl <em>Not</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -667,6 +577,271 @@ public interface OperationsPackage extends EPackage {
 	 * @generated
 	 */
 	int NOT = 12;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.TryImpl <em>Try</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.TryImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getTry()
+	 * @generated
+	 */
+	int TRY = 13;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.FormatImpl <em>Format</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.FormatImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getFormat()
+	 * @generated
+	 */
+	int FORMAT = 14;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.EmitImpl <em>Emit</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.EmitImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getEmit()
+	 * @generated
+	 */
+	int EMIT = 15;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.RepeatWithImpl <em>Repeat With</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.RepeatWithImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getRepeatWith()
+	 * @generated
+	 */
+	int REPEAT_WITH = 16;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.RepeatImpl <em>Repeat</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.RepeatImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getRepeat()
+	 * @generated
+	 */
+	int REPEAT = 17;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.AssertEmptyImpl <em>Assert Empty</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.AssertEmptyImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertEmpty()
+	 * @generated
+	 */
+	int ASSERT_EMPTY = 18;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.AssertNonEmptyImpl <em>Assert Non Empty</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.AssertNonEmptyImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertNonEmpty()
+	 * @generated
+	 */
+	int ASSERT_NON_EMPTY = 19;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.ConcatImpl <em>Concat</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.ConcatImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getConcat()
+	 * @generated
+	 */
+	int CONCAT = 20;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.OrImpl <em>Or</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.OrImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getOr()
+	 * @generated
+	 */
+	int OR = 21;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.AndImpl <em>And</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.AndImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAnd()
+	 * @generated
+	 */
+	int AND = 22;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.GetTimeImpl <em>Get Time</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.GetTimeImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getGetTime()
+	 * @generated
+	 */
+	int GET_TIME = 23;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.FormatTimeImpl <em>Format Time</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.FormatTimeImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getFormatTime()
+	 * @generated
+	 */
+	int FORMAT_TIME = 24;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.BinaryOpImpl <em>Binary Op</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.BinaryOpImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getBinaryOp()
+	 * @generated
+	 */
+	int BINARY_OP = 25;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_OP__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_OP__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_OP__LEFT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_OP__RIGHT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Binary Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_OP_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GT__HOST = BINARY_OP__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GT__BINDINGS = BINARY_OP__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GT__LEFT = BINARY_OP__LEFT;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GT__RIGHT = BINARY_OP__RIGHT;
+
+	/**
+	 * The number of structural features of the '<em>Gt</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GT_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LT__HOST = BINARY_OP__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LT__BINDINGS = BINARY_OP__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LT__LEFT = BINARY_OP__LEFT;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LT__RIGHT = BINARY_OP__RIGHT;
+
+	/**
+	 * The number of structural features of the '<em>Lt</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LT_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -703,16 +878,6 @@ public interface OperationsPackage extends EPackage {
 	 * @ordered
 	 */
 	int NOT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.TryImpl <em>Try</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.operations.impl.TryImpl
-	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getTry()
-	 * @generated
-	 */
-	int TRY = 13;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -787,16 +952,6 @@ public interface OperationsPackage extends EPackage {
 	int TRY_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 5;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.FormatImpl <em>Format</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.operations.impl.FormatImpl
-	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getFormat()
-	 * @generated
-	 */
-	int FORMAT = 14;
-
-	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -842,16 +997,6 @@ public interface OperationsPackage extends EPackage {
 	int FORMAT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.EmitImpl <em>Emit</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.operations.impl.EmitImpl
-	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getEmit()
-	 * @generated
-	 */
-	int EMIT = 15;
-
-	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -886,16 +1031,6 @@ public interface OperationsPackage extends EPackage {
 	 * @ordered
 	 */
 	int EMIT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.RepeatWithImpl <em>Repeat With</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.operations.impl.RepeatWithImpl
-	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getRepeatWith()
-	 * @generated
-	 */
-	int REPEAT_WITH = 16;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -941,17 +1076,6 @@ public interface OperationsPackage extends EPackage {
 	 * @ordered
 	 */
 	int REPEAT_WITH_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
-
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.RepeatImpl <em>Repeat</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.operations.impl.RepeatImpl
-	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getRepeat()
-	 * @generated
-	 */
-	int REPEAT = 17;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1007,17 +1131,6 @@ public interface OperationsPackage extends EPackage {
 	 */
 	int REPEAT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 3;
 
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.AssertEmptyImpl <em>Assert Empty</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.operations.impl.AssertEmptyImpl
-	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertEmpty()
-	 * @generated
-	 */
-	int ASSERT_EMPTY = 18;
-
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -1053,17 +1166,6 @@ public interface OperationsPackage extends EPackage {
 	 * @ordered
 	 */
 	int ASSERT_EMPTY_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
-
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.AssertNonEmptyImpl <em>Assert Non Empty</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.operations.impl.AssertNonEmptyImpl
-	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAssertNonEmpty()
-	 * @generated
-	 */
-	int ASSERT_NON_EMPTY = 19;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1101,17 +1203,6 @@ public interface OperationsPackage extends EPackage {
 	 */
 	int ASSERT_NON_EMPTY_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.ConcatImpl <em>Concat</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.operations.impl.ConcatImpl
-	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getConcat()
-	 * @generated
-	 */
-	int CONCAT = 20;
-
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -1147,17 +1238,6 @@ public interface OperationsPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCAT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
-
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.OrImpl <em>Or</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.operations.impl.OrImpl
-	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getOr()
-	 * @generated
-	 */
-	int OR = 21;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1196,16 +1276,6 @@ public interface OperationsPackage extends EPackage {
 	int OR_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.AndImpl <em>And</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.operations.impl.AndImpl
-	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAnd()
-	 * @generated
-	 */
-	int AND = 22;
-
-	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1241,17 +1311,6 @@ public interface OperationsPackage extends EPackage {
 	 */
 	int AND_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.GetTimeImpl <em>Get Time</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.operations.impl.GetTimeImpl
-	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getGetTime()
-	 * @generated
-	 */
-	int GET_TIME = 23;
-
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -1278,16 +1337,6 @@ public interface OperationsPackage extends EPackage {
 	 * @ordered
 	 */
 	int GET_TIME_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.FormatTimeImpl <em>Format Time</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.operations.impl.FormatTimeImpl
-	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getFormatTime()
-	 * @generated
-	 */
-	int FORMAT_TIME = 24;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1325,6 +1374,337 @@ public interface OperationsPackage extends EPackage {
 	 */
 	int FORMAT_TIME_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.PlusImpl <em>Plus</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.PlusImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getPlus()
+	 * @generated
+	 */
+	int PLUS = 26;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUS__HOST = BINARY_OP__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUS__BINDINGS = BINARY_OP__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUS__LEFT = BINARY_OP__LEFT;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUS__RIGHT = BINARY_OP__RIGHT;
+
+	/**
+	 * The number of structural features of the '<em>Plus</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUS_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.MinusImpl <em>Minus</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.MinusImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getMinus()
+	 * @generated
+	 */
+	int MINUS = 27;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINUS__HOST = BINARY_OP__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINUS__BINDINGS = BINARY_OP__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINUS__LEFT = BINARY_OP__LEFT;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINUS__RIGHT = BINARY_OP__RIGHT;
+
+	/**
+	 * The number of structural features of the '<em>Minus</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINUS_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.DivImpl <em>Div</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.DivImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getDiv()
+	 * @generated
+	 */
+	int DIV = 28;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIV__HOST = BINARY_OP__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIV__BINDINGS = BINARY_OP__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIV__LEFT = BINARY_OP__LEFT;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIV__RIGHT = BINARY_OP__RIGHT;
+
+	/**
+	 * The number of structural features of the '<em>Div</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIV_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.MultImpl <em>Mult</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.MultImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getMult()
+	 * @generated
+	 */
+	int MULT = 29;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULT__HOST = BINARY_OP__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULT__BINDINGS = BINARY_OP__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULT__LEFT = BINARY_OP__LEFT;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULT__RIGHT = BINARY_OP__RIGHT;
+
+	/**
+	 * The number of structural features of the '<em>Mult</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULT_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.AbsImpl <em>Abs</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.AbsImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAbs()
+	 * @generated
+	 */
+	int ABS = 30;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABS__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABS__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Arg</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABS__ARG = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Abs</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.BetweenImpl <em>Between</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.BetweenImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getBetween()
+	 * @generated
+	 */
+	int BETWEEN = 31;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BETWEEN__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BETWEEN__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BETWEEN__INPUT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BETWEEN__LEFT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BETWEEN__RIGHT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Between</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BETWEEN_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 3;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Eq <em>Eq</em>}'.
@@ -1525,28 +1905,6 @@ public interface OperationsPackage extends EPackage {
 	EClass getGt();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Gt#getLeft <em>Left</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Left</em>'.
-	 * @see org.eclipse.ecl.operations.Gt#getLeft()
-	 * @see #getGt()
-	 * @generated
-	 */
-	EReference getGt_Left();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Gt#getRight <em>Right</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Right</em>'.
-	 * @see org.eclipse.ecl.operations.Gt#getRight()
-	 * @see #getGt()
-	 * @generated
-	 */
-	EReference getGt_Right();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Lt <em>Lt</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1555,28 +1913,6 @@ public interface OperationsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getLt();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Lt#getLeft <em>Left</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Left</em>'.
-	 * @see org.eclipse.ecl.operations.Lt#getLeft()
-	 * @see #getLt()
-	 * @generated
-	 */
-	EReference getLt_Left();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Lt#getRight <em>Right</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Right</em>'.
-	 * @see org.eclipse.ecl.operations.Lt#getRight()
-	 * @see #getLt()
-	 * @generated
-	 */
-	EReference getLt_Right();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Not <em>Not</em>}'.
@@ -1929,6 +2265,142 @@ public interface OperationsPackage extends EPackage {
 	EAttribute getFormatTime_Format();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Plus <em>Plus</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Plus</em>'.
+	 * @see org.eclipse.ecl.operations.Plus
+	 * @generated
+	 */
+	EClass getPlus();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Minus <em>Minus</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Minus</em>'.
+	 * @see org.eclipse.ecl.operations.Minus
+	 * @generated
+	 */
+	EClass getMinus();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Div <em>Div</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Div</em>'.
+	 * @see org.eclipse.ecl.operations.Div
+	 * @generated
+	 */
+	EClass getDiv();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Mult <em>Mult</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Mult</em>'.
+	 * @see org.eclipse.ecl.operations.Mult
+	 * @generated
+	 */
+	EClass getMult();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Abs <em>Abs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abs</em>'.
+	 * @see org.eclipse.ecl.operations.Abs
+	 * @generated
+	 */
+	EClass getAbs();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Abs#getArg <em>Arg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Arg</em>'.
+	 * @see org.eclipse.ecl.operations.Abs#getArg()
+	 * @see #getAbs()
+	 * @generated
+	 */
+	EReference getAbs_Arg();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Between <em>Between</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Between</em>'.
+	 * @see org.eclipse.ecl.operations.Between
+	 * @generated
+	 */
+	EClass getBetween();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Between#getInput <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Input</em>'.
+	 * @see org.eclipse.ecl.operations.Between#getInput()
+	 * @see #getBetween()
+	 * @generated
+	 */
+	EReference getBetween_Input();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Between#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Left</em>'.
+	 * @see org.eclipse.ecl.operations.Between#getLeft()
+	 * @see #getBetween()
+	 * @generated
+	 */
+	EReference getBetween_Left();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Between#getRight <em>Right</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Right</em>'.
+	 * @see org.eclipse.ecl.operations.Between#getRight()
+	 * @see #getBetween()
+	 * @generated
+	 */
+	EReference getBetween_Right();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.BinaryOp <em>Binary Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Binary Op</em>'.
+	 * @see org.eclipse.ecl.operations.BinaryOp
+	 * @generated
+	 */
+	EClass getBinaryOp();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.BinaryOp#getLeft <em>Left</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Left</em>'.
+	 * @see org.eclipse.ecl.operations.BinaryOp#getLeft()
+	 * @see #getBinaryOp()
+	 * @generated
+	 */
+	EReference getBinaryOp_Left();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.BinaryOp#getRight <em>Right</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Right</em>'.
+	 * @see org.eclipse.ecl.operations.BinaryOp#getRight()
+	 * @see #getBinaryOp()
+	 * @generated
+	 */
+	EReference getBinaryOp_Right();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2125,22 +2597,6 @@ public interface OperationsPackage extends EPackage {
 		EClass GT = eINSTANCE.getGt();
 
 		/**
-		 * The meta object literal for the '<em><b>Left</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference GT__LEFT = eINSTANCE.getGt_Left();
-
-		/**
-		 * The meta object literal for the '<em><b>Right</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference GT__RIGHT = eINSTANCE.getGt_Right();
-
-		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.LtImpl <em>Lt</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2149,22 +2605,6 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass LT = eINSTANCE.getLt();
-
-		/**
-		 * The meta object literal for the '<em><b>Left</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LT__LEFT = eINSTANCE.getLt_Left();
-
-		/**
-		 * The meta object literal for the '<em><b>Right</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LT__RIGHT = eINSTANCE.getLt_Right();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.NotImpl <em>Not</em>}' class.
@@ -2455,6 +2895,124 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FORMAT_TIME__FORMAT = eINSTANCE.getFormatTime_Format();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.PlusImpl <em>Plus</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.PlusImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getPlus()
+		 * @generated
+		 */
+		EClass PLUS = eINSTANCE.getPlus();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.MinusImpl <em>Minus</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.MinusImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getMinus()
+		 * @generated
+		 */
+		EClass MINUS = eINSTANCE.getMinus();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.DivImpl <em>Div</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.DivImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getDiv()
+		 * @generated
+		 */
+		EClass DIV = eINSTANCE.getDiv();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.MultImpl <em>Mult</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.MultImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getMult()
+		 * @generated
+		 */
+		EClass MULT = eINSTANCE.getMult();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.AbsImpl <em>Abs</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.AbsImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getAbs()
+		 * @generated
+		 */
+		EClass ABS = eINSTANCE.getAbs();
+
+		/**
+		 * The meta object literal for the '<em><b>Arg</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABS__ARG = eINSTANCE.getAbs_Arg();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.BetweenImpl <em>Between</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.BetweenImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getBetween()
+		 * @generated
+		 */
+		EClass BETWEEN = eINSTANCE.getBetween();
+
+		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BETWEEN__INPUT = eINSTANCE.getBetween_Input();
+
+		/**
+		 * The meta object literal for the '<em><b>Left</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BETWEEN__LEFT = eINSTANCE.getBetween_Left();
+
+		/**
+		 * The meta object literal for the '<em><b>Right</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BETWEEN__RIGHT = eINSTANCE.getBetween_Right();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.BinaryOpImpl <em>Binary Op</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.BinaryOpImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getBinaryOp()
+		 * @generated
+		 */
+		EClass BINARY_OP = eINSTANCE.getBinaryOp();
+
+		/**
+		 * The meta object literal for the '<em><b>Left</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BINARY_OP__LEFT = eINSTANCE.getBinaryOp_Left();
+
+		/**
+		 * The meta object literal for the '<em><b>Right</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BINARY_OP__RIGHT = eINSTANCE.getBinaryOp_Right();
 
 	}
 

@@ -6,12 +6,16 @@
  */
 package org.eclipse.ecl.operations.impl;
 
+import org.eclipse.ecl.operations.Abs;
 import org.eclipse.ecl.operations.And;
 import org.eclipse.ecl.operations.AssertEmpty;
 import org.eclipse.ecl.operations.AssertNonEmpty;
 import org.eclipse.ecl.operations.AssertTrue;
+import org.eclipse.ecl.operations.Between;
+import org.eclipse.ecl.operations.BinaryOp;
 import org.eclipse.ecl.operations.Bool;
 import org.eclipse.ecl.operations.Concat;
+import org.eclipse.ecl.operations.Div;
 import org.eclipse.ecl.operations.Emit;
 import org.eclipse.ecl.operations.Eq;
 import org.eclipse.ecl.operations.Format;
@@ -21,11 +25,14 @@ import org.eclipse.ecl.operations.Gt;
 import org.eclipse.ecl.operations.Int;
 import org.eclipse.ecl.operations.Length;
 import org.eclipse.ecl.operations.Lt;
+import org.eclipse.ecl.operations.Minus;
+import org.eclipse.ecl.operations.Mult;
 import org.eclipse.ecl.operations.Not;
 import org.eclipse.ecl.operations.NotEq;
 import org.eclipse.ecl.operations.OperationsFactory;
 import org.eclipse.ecl.operations.OperationsPackage;
 import org.eclipse.ecl.operations.Or;
+import org.eclipse.ecl.operations.Plus;
 import org.eclipse.ecl.operations.Repeat;
 import org.eclipse.ecl.operations.RepeatWith;
 import org.eclipse.ecl.operations.Str;
@@ -103,6 +110,13 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 			case OperationsPackage.AND: return createAnd();
 			case OperationsPackage.GET_TIME: return createGetTime();
 			case OperationsPackage.FORMAT_TIME: return createFormatTime();
+			case OperationsPackage.BINARY_OP: return createBinaryOp();
+			case OperationsPackage.PLUS: return createPlus();
+			case OperationsPackage.MINUS: return createMinus();
+			case OperationsPackage.DIV: return createDiv();
+			case OperationsPackage.MULT: return createMult();
+			case OperationsPackage.ABS: return createAbs();
+			case OperationsPackage.BETWEEN: return createBetween();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -322,6 +336,69 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	public FormatTime createFormatTime() {
 		FormatTimeImpl formatTime = new FormatTimeImpl();
 		return formatTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Plus createPlus() {
+		PlusImpl plus = new PlusImpl();
+		return plus;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Minus createMinus() {
+		MinusImpl minus = new MinusImpl();
+		return minus;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Div createDiv() {
+		DivImpl div = new DivImpl();
+		return div;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Mult createMult() {
+		MultImpl mult = new MultImpl();
+		return mult;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Abs createAbs() {
+		AbsImpl abs = new AbsImpl();
+		return abs;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Between createBetween() {
+		BetweenImpl between = new BetweenImpl();
+		return between;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BinaryOp createBinaryOp() {
+		BinaryOpImpl binaryOp = new BinaryOpImpl();
+		return binaryOp;
 	}
 
 	/**

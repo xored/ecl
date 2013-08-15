@@ -9,13 +9,17 @@ package org.eclipse.ecl.operations.util;
 import java.util.List;
 
 import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.operations.Abs;
 import org.eclipse.ecl.operations.And;
 import org.eclipse.ecl.operations.AssertEmpty;
 import org.eclipse.ecl.operations.AssertNonEmpty;
 import org.eclipse.ecl.operations.AssertTrue;
+import org.eclipse.ecl.operations.Between;
+import org.eclipse.ecl.operations.BinaryOp;
 import org.eclipse.ecl.operations.Bool;
 import org.eclipse.ecl.operations.Concat;
 import org.eclipse.ecl.operations.Convert;
+import org.eclipse.ecl.operations.Div;
 import org.eclipse.ecl.operations.Emit;
 import org.eclipse.ecl.operations.Eq;
 import org.eclipse.ecl.operations.Format;
@@ -25,10 +29,13 @@ import org.eclipse.ecl.operations.Gt;
 import org.eclipse.ecl.operations.Int;
 import org.eclipse.ecl.operations.Length;
 import org.eclipse.ecl.operations.Lt;
+import org.eclipse.ecl.operations.Minus;
+import org.eclipse.ecl.operations.Mult;
 import org.eclipse.ecl.operations.Not;
 import org.eclipse.ecl.operations.NotEq;
 import org.eclipse.ecl.operations.OperationsPackage;
 import org.eclipse.ecl.operations.Or;
+import org.eclipse.ecl.operations.Plus;
 import org.eclipse.ecl.operations.Repeat;
 import org.eclipse.ecl.operations.RepeatWith;
 import org.eclipse.ecl.operations.Str;
@@ -184,6 +191,7 @@ public class OperationsSwitch<T> {
 			case OperationsPackage.GT: {
 				Gt gt = (Gt)theEObject;
 				T result = caseGt(gt);
+				if (result == null) result = caseBinaryOp(gt);
 				if (result == null) result = caseCommand(gt);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -191,6 +199,7 @@ public class OperationsSwitch<T> {
 			case OperationsPackage.LT: {
 				Lt lt = (Lt)theEObject;
 				T result = caseLt(lt);
+				if (result == null) result = caseBinaryOp(lt);
 				if (result == null) result = caseCommand(lt);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -283,6 +292,59 @@ public class OperationsSwitch<T> {
 				FormatTime formatTime = (FormatTime)theEObject;
 				T result = caseFormatTime(formatTime);
 				if (result == null) result = caseCommand(formatTime);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.BINARY_OP: {
+				BinaryOp binaryOp = (BinaryOp)theEObject;
+				T result = caseBinaryOp(binaryOp);
+				if (result == null) result = caseCommand(binaryOp);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.PLUS: {
+				Plus plus = (Plus)theEObject;
+				T result = casePlus(plus);
+				if (result == null) result = caseBinaryOp(plus);
+				if (result == null) result = caseCommand(plus);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.MINUS: {
+				Minus minus = (Minus)theEObject;
+				T result = caseMinus(minus);
+				if (result == null) result = caseBinaryOp(minus);
+				if (result == null) result = caseCommand(minus);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.DIV: {
+				Div div = (Div)theEObject;
+				T result = caseDiv(div);
+				if (result == null) result = caseBinaryOp(div);
+				if (result == null) result = caseCommand(div);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.MULT: {
+				Mult mult = (Mult)theEObject;
+				T result = caseMult(mult);
+				if (result == null) result = caseBinaryOp(mult);
+				if (result == null) result = caseCommand(mult);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.ABS: {
+				Abs abs = (Abs)theEObject;
+				T result = caseAbs(abs);
+				if (result == null) result = caseCommand(abs);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.BETWEEN: {
+				Between between = (Between)theEObject;
+				T result = caseBetween(between);
+				if (result == null) result = caseCommand(between);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -673,6 +735,116 @@ public class OperationsSwitch<T> {
 	 * @generated
 	 */
 	public T caseFormatTime(FormatTime object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '
+	 * <em>Plus</em>'. <!-- begin-user-doc --> This implementation returns null;
+	 * returning a non-null result will terminate the switch. <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param object
+	 *            the target of the switch.
+	 * @return the result of interpreting the object as an instance of '
+	 *         <em>Plus</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePlus(Plus object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Minus</em>'.
+	 * <!-- begin-user-doc --> This implementation returns
+	 * null; returning a non-null result will terminate the switch. <!--
+	 * end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Minus</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMinus(Minus object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '
+	 * <em>Div</em>'. <!-- begin-user-doc --> This implementation returns null;
+	 * returning a non-null result will terminate the switch. <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param object
+	 *            the target of the switch.
+	 * @return the result of interpreting the object as an instance of '
+	 *         <em>Div</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDiv(Div object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '
+	 * <em>Mult</em>'. <!-- begin-user-doc --> This implementation returns null;
+	 * returning a non-null result will terminate the switch. <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param object
+	 *            the target of the switch.
+	 * @return the result of interpreting the object as an instance of '
+	 *         <em>Mult</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMult(Mult object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '
+	 * <em>Abs</em>'. <!-- begin-user-doc --> This implementation returns null;
+	 * returning a non-null result will terminate the switch. <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param object
+	 *            the target of the switch.
+	 * @return the result of interpreting the object as an instance of '
+	 *         <em>Abs</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbs(Abs object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Between</em>'.
+	 * <!-- begin-user-doc --> This implementation returns
+	 * null; returning a non-null result will terminate the switch. <!--
+	 * end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Between</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBetween(Between object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Binary Op</em>'.
+	 * <!-- begin-user-doc --> This implementation returns
+	 * null; returning a non-null result will terminate the switch. <!--
+	 * end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Binary Op</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBinaryOp(BinaryOp object) {
 		return null;
 	}
 
