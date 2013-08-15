@@ -90,7 +90,7 @@ public abstract class BinaryOpService implements ICommandService {
 	protected abstract BoxedValue doLongOp(long left, long right);
 
 	public static BoxedValue convertToNumber(EObject arg) throws CoreException {
-		if (!(arg instanceof EObject)) {
+		if (!(arg instanceof BoxedValue)) {
 			throw new CoreException(createErr("Cannot convert argument to number: '%s' ", arg));
 		}
 
