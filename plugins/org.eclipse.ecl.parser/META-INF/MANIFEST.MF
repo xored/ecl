@@ -5,8 +5,7 @@ Bundle-SymbolicName: org.eclipse.ecl.parser;singleton:=true
 Bundle-Version: 1.2.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.ecl.core,
- com.xored.q7.ecl.parser
+ org.eclipse.ecl.core
 Bundle-ActivationPolicy: lazy
 Export-Package: org.antlr.runtime;x-friends:="org.eclipse.ecl.parser.test",
  org.eclipse.ecl.gen.ast,
