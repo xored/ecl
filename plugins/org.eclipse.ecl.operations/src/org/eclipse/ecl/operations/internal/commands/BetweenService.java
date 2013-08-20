@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EClass;
 
 public class BetweenService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context) throws InterruptedException, CoreException {
 		if (!(command instanceof Between)) {
 			return Status.CANCEL_STATUS;
