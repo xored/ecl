@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.EObject;
 
 public abstract class BinaryOpService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context) throws InterruptedException, CoreException {
 		if (!(command instanceof BinaryOp)) {
 			return Status.CANCEL_STATUS;

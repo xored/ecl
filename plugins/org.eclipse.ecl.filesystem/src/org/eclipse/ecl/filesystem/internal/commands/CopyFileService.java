@@ -17,7 +17,6 @@ import org.eclipse.ecl.runtime.IProcess;
 
 public class CopyFileService implements ICommandService {
 
-	@Override
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		CopyFile copyFile = (CopyFile) command;
