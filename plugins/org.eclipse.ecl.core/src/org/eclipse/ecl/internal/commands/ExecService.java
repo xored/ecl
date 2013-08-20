@@ -48,23 +48,23 @@ import org.eclipse.osgi.util.NLS;
 
 public class ExecService implements ICommandService {
 	private String id;
-	
+
 	public IStatus service(Command command, IProcess process, String id) throws InterruptedException, CoreException {
 		this.id = id;
-		return service(command,process);
+		return service(command, process);
 	}
-	
+
 	public IStatus service(Command command, IProcess process)
 			throws InterruptedException, CoreException {
 		Exec exec = (Exec) command;
 		List<Object> input = CoreUtils.readPipeContent(process.getInput());
 		return exec(
 				new FQName(null, EclCommandNameConvention.toScriptletName(exec
-						.getName())), exec.getParameters(), process, input, command);		
+						.getName())), exec.getParameters(), process, input, command);
 	}
 
 	private IStatus exec(FQName fqn, List<Parameter> params, IProcess process,
-			List<Object> input,Command cmd) throws CoreException, InterruptedException {
+			List<Object> input, Command cmd) throws CoreException, InterruptedException {
 		Command target = createCommand(fqn, process);
 
 		List<Object> inputList = new ArrayList<Object>(input);
