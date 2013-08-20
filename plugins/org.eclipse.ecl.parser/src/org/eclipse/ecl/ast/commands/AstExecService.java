@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.gen.ast.AstExec;
 import org.eclipse.ecl.internal.commands.ExecService;
+import org.eclipse.ecl.internal.core.ProcErrorStatus;
 import org.eclipse.ecl.parser.ScriptErrorStatus;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
@@ -24,11 +25,18 @@ public class AstExecService implements ICommandService {
 	public IStatus service(Command command, IProcess process)
 			throws InterruptedException, CoreException {
 		AstExec exec = (AstExec) command;
-		IStatus s = new ExecService().service(exec, process);
+		IStatus s = new ExecService().service(exec, process, exec.getResourceID());
+		
 		if (!s.isOK() && !(s instanceof ScriptErrorStatus)) {
-			return new ScriptErrorStatus(s, exec.getLine(), exec.getColumn(),
+			if(s instanceof ProcErrorStatus){
+			return new ScriptErrorStatus(((ProcErrorStatus) s).getStatus(), exec.getName(), exec.getResourceID(), exec.getLine(), exec.getColumn(),
 					exec.getLength());
-		}
+			}else{
+				return new ScriptErrorStatus(s, exec.getName(), exec.getResourceID(), exec.getLine(), exec.getColumn(),
+						exec.getLength());
+			}			
+		}		
+		
 		return s;
 	}
 }

@@ -21,6 +21,15 @@ import org.eclipse.ecl.runtime.IParamConverter;
 
 public class CommandParamConverter implements IParamConverter<Command> {
 
+	public Command convert(LiteralParameter parameter, List<String> allowedTypes, String id) throws CoreException{
+		if (parameter instanceof AstLiteral) {
+			AstLiteral astLiteral = (AstLiteral) parameter;
+			return EclCoreParser.newCommand(parameter.getLiteral(), id,
+					astLiteral.getLine(), astLiteral.getColumn());
+		} else
+			return EclCoreParser.newCommand(parameter.getLiteral());
+	}
+	
 	public Command convert(LiteralParameter parameter, List<String> allowedTypes)
 			throws CoreException {
 		if (parameter instanceof AstLiteral) {

@@ -47,18 +47,24 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.osgi.util.NLS;
 
 public class ExecService implements ICommandService {
-
+	private String id;
+	
+	public IStatus service(Command command, IProcess process, String id) throws InterruptedException, CoreException {
+		this.id = id;
+		return service(command,process);
+	}
+	
 	public IStatus service(Command command, IProcess process)
 			throws InterruptedException, CoreException {
 		Exec exec = (Exec) command;
 		List<Object> input = CoreUtils.readPipeContent(process.getInput());
 		return exec(
 				new FQName(null, EclCommandNameConvention.toScriptletName(exec
-						.getName())), exec.getParameters(), process, input);
+						.getName())), exec.getParameters(), process, input, command);		
 	}
 
 	private IStatus exec(FQName fqn, List<Parameter> params, IProcess process,
-			List<Object> input) throws CoreException, InterruptedException {
+			List<Object> input,Command cmd) throws CoreException, InterruptedException {
 		Command target = createCommand(fqn, process);
 
 		List<Object> inputList = new ArrayList<Object>(input);
@@ -73,7 +79,8 @@ public class ExecService implements ICommandService {
 		inputPipe.close(Status.OK_STATUS);
 		IProcess targetProcess = process.getSession().execute(target,
 				inputPipe, process.getOutput());
-		return targetProcess.waitFor();
+		IStatus s = targetProcess.waitFor();
+		return s;
 	}
 
 	private Command createCommand(FQName fqn, IProcess process)
@@ -337,7 +344,7 @@ public class ExecService implements ICommandService {
 		IParamConverter<?> converter = ParamConverterManager.getInstance()
 				.getConverter(instanceClass);
 		if (converter != null) {
-			value = converter.convert(literal, allowedTypes);
+			value = converter.convert(literal, allowedTypes, id);
 		}
 		return value;
 	}
@@ -366,7 +373,7 @@ public class ExecService implements ICommandService {
 		IParamConverter<Object> converter = ParamConverterManager.getInstance()
 				.getConverter(Object.class);
 		if (converter != null) {
-			val = converter.convert(literal, allowedTypes);
+			val = converter.convert(literal, allowedTypes, id);
 		}
 
 		return val;

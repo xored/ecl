@@ -26,22 +26,24 @@ import org.eclipse.ecl.runtime.IProcess;
 
 public class SequenceService implements ICommandService {
 
-	public IStatus service(Command command, IProcess process)
-			throws InterruptedException, CoreException {
+	public IStatus service(Command command, IProcess process) throws InterruptedException, CoreException {
 		IStatus status = Status.OK_STATUS;
 		Sequence seq = (Sequence) command;
 		List<Object> content = CoreUtils.readPipeContent(process.getInput());
-		for (Command cmd : seq.getCommands()) {
+		List<Command> commands = seq.getCommands();
+		for (int i = 0; i < commands.size(); ++i) {
+			Command cmd = commands.get(i);
 			IPipe pipe = process.getSession().createPipe();
 			for (Object o : content)
 				pipe.write(o);
 			pipe.close(Status.OK_STATUS);
 			IProcess child = process.getSession().execute(cmd, pipe, null);
 			status = child.waitFor();
-			if (!status.isOK())
+			
+			if (!status.isOK()) {
 				return status;
+			}
 		}
 		return status;
 	}
-
 }

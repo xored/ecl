@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.ecl.gen.ast.AstNode#getColumn <em>Column</em>}</li>
  *   <li>{@link org.eclipse.ecl.gen.ast.AstNode#getLine <em>Line</em>}</li>
  *   <li>{@link org.eclipse.ecl.gen.ast.AstNode#getLength <em>Length</em>}</li>
+ *   <li>{@link org.eclipse.ecl.gen.ast.AstNode#getResourceID <em>Resource ID</em>}</li>
  * </ul>
  * </p>
  *
@@ -114,5 +115,31 @@ public interface AstNode extends EObject {
 	 * @generated
 	 */
 	void setLength(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Resource ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Resource ID</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Resource ID</em>' attribute.
+	 * @see #setResourceID(String)
+	 * @see org.eclipse.ecl.gen.ast.AstPackage#getAstNode_ResourceID()
+	 * @model
+	 * @generated
+	 */
+	String getResourceID();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.ecl.gen.ast.AstNode#getResourceID <em>Resource ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Resource ID</em>' attribute.
+	 * @see #getResourceID()
+	 * @generated
+	 */
+	void setResourceID(String value);
 
 } // AstNode

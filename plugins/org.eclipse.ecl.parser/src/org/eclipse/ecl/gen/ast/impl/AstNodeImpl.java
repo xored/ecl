@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link org.eclipse.ecl.gen.ast.impl.AstNodeImpl#getColumn <em>Column</em>}</li>
  *   <li>{@link org.eclipse.ecl.gen.ast.impl.AstNodeImpl#getLine <em>Line</em>}</li>
  *   <li>{@link org.eclipse.ecl.gen.ast.impl.AstNodeImpl#getLength <em>Length</em>}</li>
+ *   <li>{@link org.eclipse.ecl.gen.ast.impl.AstNodeImpl#getResourceID <em>Resource ID</em>}</li>
  * </ul>
  * </p>
  *
@@ -101,6 +102,26 @@ public class AstNodeImpl extends EObjectImpl implements AstNode {
 	 * @ordered
 	 */
 	protected int length = LENGTH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getResourceID() <em>Resource ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResourceID()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RESOURCE_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getResourceID() <em>Resource ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResourceID()
+	 * @generated
+	 * @ordered
+	 */
+	protected String resourceID = RESOURCE_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -189,6 +210,27 @@ public class AstNodeImpl extends EObjectImpl implements AstNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getResourceID() {
+		return resourceID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResourceID(String newResourceID) {
+		String oldResourceID = resourceID;
+		resourceID = newResourceID;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstPackage.AST_NODE__RESOURCE_ID, oldResourceID, resourceID));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -198,6 +240,8 @@ public class AstNodeImpl extends EObjectImpl implements AstNode {
 				return getLine();
 			case AstPackage.AST_NODE__LENGTH:
 				return getLength();
+			case AstPackage.AST_NODE__RESOURCE_ID:
+				return getResourceID();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -218,6 +262,9 @@ public class AstNodeImpl extends EObjectImpl implements AstNode {
 				return;
 			case AstPackage.AST_NODE__LENGTH:
 				setLength((Integer)newValue);
+				return;
+			case AstPackage.AST_NODE__RESOURCE_ID:
+				setResourceID((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -240,6 +287,9 @@ public class AstNodeImpl extends EObjectImpl implements AstNode {
 			case AstPackage.AST_NODE__LENGTH:
 				setLength(LENGTH_EDEFAULT);
 				return;
+			case AstPackage.AST_NODE__RESOURCE_ID:
+				setResourceID(RESOURCE_ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -258,6 +308,8 @@ public class AstNodeImpl extends EObjectImpl implements AstNode {
 				return line != LINE_EDEFAULT;
 			case AstPackage.AST_NODE__LENGTH:
 				return length != LENGTH_EDEFAULT;
+			case AstPackage.AST_NODE__RESOURCE_ID:
+				return RESOURCE_ID_EDEFAULT == null ? resourceID != null : !RESOURCE_ID_EDEFAULT.equals(resourceID);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -278,6 +330,8 @@ public class AstNodeImpl extends EObjectImpl implements AstNode {
 		result.append(line);
 		result.append(", length: ");
 		result.append(length);
+		result.append(", resourceID: ");
+		result.append(resourceID);
 		result.append(')');
 		return result.toString();
 	}

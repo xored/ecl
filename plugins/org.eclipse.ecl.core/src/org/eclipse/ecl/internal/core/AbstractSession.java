@@ -31,8 +31,10 @@ public abstract class AbstractSession implements ISession {
 		return execute(command, null, null);
 	}
 
-	public IProcess execute(final Command scriptlet, IPipe in, IPipe out)
-			throws CoreException {
+	//public IProcess execute(final Command scriptlet, IPipe in, IPipe out)
+	//		throws CoreException 
+	public IProcess execute(Command scriptlet, IPipe in, IPipe out)
+					throws CoreException {
 		final ICommandService svc = scriptlet instanceof ProcInstance ? new ProcInstanceService()
 				: CorePlugin.getScriptletManager().getScriptletService(
 						scriptlet);
@@ -50,11 +52,14 @@ public abstract class AbstractSession implements ISession {
 		final Process process = new Process(session, input, output);
 		doExecute(scriptlet, svc, inputContent, process);
 		return process;
-	}
-
-	protected void internalDoExecute(final Command scriptlet,
+	}	
+	
+	//protected void internalDoExecute(final Command scriptlet,
+	//		final ICommandService svc, final List<Object> inputContent,
+	//		final Process process)
+	protected void internalDoExecute(Command scriptlet,
 			final ICommandService svc, final List<Object> inputContent,
-			final Process process) {
+			final Process process){
 		IStatus s = null;
 		CommandStack stack = ((AbstractSession) process.getSession())
 				.getStack();

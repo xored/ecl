@@ -39,6 +39,17 @@ public class ScriptErrorStatus extends Status {
 				"Execution failed. Cause: '%s'", cause.getMessage()), line,
 				column, length, cause);
 	}
+	
+	public ScriptErrorStatus(IStatus cause_, String name, String resourceID, int line, int column, int length) {
+		super(cause_.getSeverity(), cause_.getPlugin(), cause_.getMessage() + "\n" + String.format(				
+				"\t\tat %s (%s" + ((resourceID==null)?")":":%d#%d#%d)"), name, (resourceID==null)?"Unknown source":resourceID, line, column, length));
+		
+		this.line = line;
+		this.column = column;
+		this.length = length;
+		this.cause = new Status(cause_.getSeverity(), cause_.getPlugin(), cause_.getMessage() + "\n" + String.format(				
+				"\t\tat %s (%s" + ((resourceID==null)?")":":%d#%d#%d)"), name, (resourceID==null)?"Unknown source":resourceID, line, column, length));		
+	}
 
 	public int getLine() {
 		return line;

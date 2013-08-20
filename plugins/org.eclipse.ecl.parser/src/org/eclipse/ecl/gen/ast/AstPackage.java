@@ -103,13 +103,22 @@ public interface AstPackage extends EPackage {
 	int AST_NODE__LENGTH = 2;
 
 	/**
+	 * The feature id for the '<em><b>Resource ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_NODE__RESOURCE_ID = 3;
+
+	/**
 	 * The number of structural features of the '<em>Node</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int AST_NODE_FEATURE_COUNT = 3;
+	int AST_NODE_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.gen.ast.impl.AstExecImpl <em>Exec</em>}' class.
@@ -193,13 +202,22 @@ public interface AstPackage extends EPackage {
 	int AST_EXEC__LENGTH = CorePackage.EXEC_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Resource ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_EXEC__RESOURCE_ID = CorePackage.EXEC_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Exec</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int AST_EXEC_FEATURE_COUNT = CorePackage.EXEC_FEATURE_COUNT + 3;
+	int AST_EXEC_FEATURE_COUNT = CorePackage.EXEC_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.gen.ast.impl.AstLiteralImpl <em>Literal</em>}' class.
@@ -265,13 +283,22 @@ public interface AstPackage extends EPackage {
 	int AST_LITERAL__LENGTH = CorePackage.LITERAL_PARAMETER_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Resource ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AST_LITERAL__RESOURCE_ID = CorePackage.LITERAL_PARAMETER_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Literal</em>' class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated
 	 * @ordered
 	 */
-	int AST_LITERAL_FEATURE_COUNT = CorePackage.LITERAL_PARAMETER_FEATURE_COUNT + 3;
+	int AST_LITERAL_FEATURE_COUNT = CorePackage.LITERAL_PARAMETER_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.gen.ast.impl.ScriptProcessStatusImpl <em>Script Process Status</em>}' class.
@@ -356,13 +383,22 @@ public interface AstPackage extends EPackage {
 	int SCRIPT_PROCESS_STATUS__LENGTH = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Resource ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_PROCESS_STATUS__RESOURCE_ID = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Cause</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCRIPT_PROCESS_STATUS__CAUSE = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 3;
+	int SCRIPT_PROCESS_STATUS__CAUSE = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Script Process Status</em>' class.
@@ -371,7 +407,7 @@ public interface AstPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCRIPT_PROCESS_STATUS_FEATURE_COUNT = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 4;
+	int SCRIPT_PROCESS_STATUS_FEATURE_COUNT = CorePackage.PROCESS_STATUS_FEATURE_COUNT + 5;
 
 	/**
 	 * Returns the meta object for class '
@@ -419,6 +455,17 @@ public interface AstPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAstNode_Length();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.gen.ast.AstNode#getResourceID <em>Resource ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resource ID</em>'.
+	 * @see org.eclipse.ecl.gen.ast.AstNode#getResourceID()
+	 * @see #getAstNode()
+	 * @generated
+	 */
+	EAttribute getAstNode_ResourceID();
 
 	/**
 	 * Returns the meta object for class '
@@ -514,6 +561,14 @@ public interface AstPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute AST_NODE__LENGTH = eINSTANCE.getAstNode_Length();
+
+		/**
+		 * The meta object literal for the '<em><b>Resource ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute AST_NODE__RESOURCE_ID = eINSTANCE.getAstNode_ResourceID();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.gen.ast.impl.AstExecImpl <em>Exec</em>}' class.

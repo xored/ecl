@@ -41,6 +41,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.ecl.gen.ast.impl.ScriptProcessStatusImpl#getColumn <em>Column</em>}</li>
  *   <li>{@link org.eclipse.ecl.gen.ast.impl.ScriptProcessStatusImpl#getLine <em>Line</em>}</li>
  *   <li>{@link org.eclipse.ecl.gen.ast.impl.ScriptProcessStatusImpl#getLength <em>Length</em>}</li>
+ *   <li>{@link org.eclipse.ecl.gen.ast.impl.ScriptProcessStatusImpl#getResourceID <em>Resource ID</em>}</li>
  *   <li>{@link org.eclipse.ecl.gen.ast.impl.ScriptProcessStatusImpl#getCause <em>Cause</em>}</li>
  * </ul>
  * </p>
@@ -107,6 +108,26 @@ public class ScriptProcessStatusImpl extends ProcessStatusImpl implements Script
 	 * @ordered
 	 */
 	protected int length = LENGTH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getResourceID() <em>Resource ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResourceID()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String RESOURCE_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getResourceID() <em>Resource ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResourceID()
+	 * @generated
+	 * @ordered
+	 */
+	protected String resourceID = RESOURCE_ID_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getCause() <em>Cause</em>}' containment reference.
@@ -205,6 +226,27 @@ public class ScriptProcessStatusImpl extends ProcessStatusImpl implements Script
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getResourceID() {
+		return resourceID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResourceID(String newResourceID) {
+		String oldResourceID = resourceID;
+		resourceID = newResourceID;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstPackage.SCRIPT_PROCESS_STATUS__RESOURCE_ID, oldResourceID, resourceID));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ProcessStatus getCause() {
 		return cause;
 	}
@@ -271,6 +313,8 @@ public class ScriptProcessStatusImpl extends ProcessStatusImpl implements Script
 				return getLine();
 			case AstPackage.SCRIPT_PROCESS_STATUS__LENGTH:
 				return getLength();
+			case AstPackage.SCRIPT_PROCESS_STATUS__RESOURCE_ID:
+				return getResourceID();
 			case AstPackage.SCRIPT_PROCESS_STATUS__CAUSE:
 				return getCause();
 		}
@@ -293,6 +337,9 @@ public class ScriptProcessStatusImpl extends ProcessStatusImpl implements Script
 				return;
 			case AstPackage.SCRIPT_PROCESS_STATUS__LENGTH:
 				setLength((Integer)newValue);
+				return;
+			case AstPackage.SCRIPT_PROCESS_STATUS__RESOURCE_ID:
+				setResourceID((String)newValue);
 				return;
 			case AstPackage.SCRIPT_PROCESS_STATUS__CAUSE:
 				setCause((ProcessStatus)newValue);
@@ -318,6 +365,9 @@ public class ScriptProcessStatusImpl extends ProcessStatusImpl implements Script
 			case AstPackage.SCRIPT_PROCESS_STATUS__LENGTH:
 				setLength(LENGTH_EDEFAULT);
 				return;
+			case AstPackage.SCRIPT_PROCESS_STATUS__RESOURCE_ID:
+				setResourceID(RESOURCE_ID_EDEFAULT);
+				return;
 			case AstPackage.SCRIPT_PROCESS_STATUS__CAUSE:
 				setCause((ProcessStatus)null);
 				return;
@@ -339,6 +389,8 @@ public class ScriptProcessStatusImpl extends ProcessStatusImpl implements Script
 				return line != LINE_EDEFAULT;
 			case AstPackage.SCRIPT_PROCESS_STATUS__LENGTH:
 				return length != LENGTH_EDEFAULT;
+			case AstPackage.SCRIPT_PROCESS_STATUS__RESOURCE_ID:
+				return RESOURCE_ID_EDEFAULT == null ? resourceID != null : !RESOURCE_ID_EDEFAULT.equals(resourceID);
 			case AstPackage.SCRIPT_PROCESS_STATUS__CAUSE:
 				return cause != null;
 		}
@@ -357,6 +409,7 @@ public class ScriptProcessStatusImpl extends ProcessStatusImpl implements Script
 				case AstPackage.SCRIPT_PROCESS_STATUS__COLUMN: return AstPackage.AST_NODE__COLUMN;
 				case AstPackage.SCRIPT_PROCESS_STATUS__LINE: return AstPackage.AST_NODE__LINE;
 				case AstPackage.SCRIPT_PROCESS_STATUS__LENGTH: return AstPackage.AST_NODE__LENGTH;
+				case AstPackage.SCRIPT_PROCESS_STATUS__RESOURCE_ID: return AstPackage.AST_NODE__RESOURCE_ID;
 				default: return -1;
 			}
 		}
@@ -375,6 +428,7 @@ public class ScriptProcessStatusImpl extends ProcessStatusImpl implements Script
 				case AstPackage.AST_NODE__COLUMN: return AstPackage.SCRIPT_PROCESS_STATUS__COLUMN;
 				case AstPackage.AST_NODE__LINE: return AstPackage.SCRIPT_PROCESS_STATUS__LINE;
 				case AstPackage.AST_NODE__LENGTH: return AstPackage.SCRIPT_PROCESS_STATUS__LENGTH;
+				case AstPackage.AST_NODE__RESOURCE_ID: return AstPackage.SCRIPT_PROCESS_STATUS__RESOURCE_ID;
 				default: return -1;
 			}
 		}
@@ -397,6 +451,8 @@ public class ScriptProcessStatusImpl extends ProcessStatusImpl implements Script
 		result.append(line);
 		result.append(", length: ");
 		result.append(length);
+		result.append(", resourceID: ");
+		result.append(resourceID);
 		result.append(')');
 		return result.toString();
 	}

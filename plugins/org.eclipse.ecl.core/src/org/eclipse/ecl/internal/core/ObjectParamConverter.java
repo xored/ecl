@@ -120,4 +120,8 @@ public class ObjectParamConverter implements IParamConverter<Object> {
 		return String.valueOf(value);
 	}
 
+	public Object convert(LiteralParameter literal, List<String> allowedTypes, String id) throws CoreException {
+		return null;
+	}
+
 }

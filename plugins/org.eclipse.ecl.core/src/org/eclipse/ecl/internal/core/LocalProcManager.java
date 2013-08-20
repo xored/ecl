@@ -99,7 +99,8 @@ public class LocalProcManager {
 				command.eSet(commandClass.getEStructuralFeature(val.getName()),
 						val.getValue());
 			}
-		}
+		}		
+		
 		return command;
 	}
 

@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -171,6 +172,15 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAstNode_ResourceID() {
+		return (EAttribute)astNodeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAstExec() {
 		return astExecEClass;
 	}
@@ -234,6 +244,7 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		createEAttribute(astNodeEClass, AST_NODE__COLUMN);
 		createEAttribute(astNodeEClass, AST_NODE__LINE);
 		createEAttribute(astNodeEClass, AST_NODE__LENGTH);
+		createEAttribute(astNodeEClass, AST_NODE__RESOURCE_ID);
 
 		astExecEClass = createEClass(AST_EXEC);
 
@@ -267,6 +278,7 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
+		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		CorePackage theCorePackage = (CorePackage)EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI);
 
 		// Create type parameters
@@ -286,6 +298,7 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		initEAttribute(getAstNode_Column(), ecorePackage.getEInt(), "column", null, 0, 1, AstNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAstNode_Line(), ecorePackage.getEInt(), "line", null, 0, 1, AstNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAstNode_Length(), ecorePackage.getEInt(), "length", null, 0, 1, AstNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAstNode_ResourceID(), theEcorePackage.getEString(), "resourceID", null, 0, 1, AstNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(astExecEClass, AstExec.class, "AstExec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -322,6 +335,11 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		   });		
 		addAnnotation
 		  (getAstNode_Length(), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getAstNode_ResourceID(), 
 		   source, 
 		   new String[] {
 		   });		

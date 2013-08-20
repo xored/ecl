@@ -26,17 +26,23 @@ import org.eclipse.ecl.runtime.ISession;
 public class Session extends AbstractRootSession implements ISession {
 
 	public static abstract class EclJob extends Job {
-
+		Command scriptlet;
 		private EclJob(Command scriptlet) {
 			super("ECL session execute: "
 					+ CoreUtils.getScriptletNameByClass(scriptlet.eClass()));
+			this.scriptlet = scriptlet;
+		}
+		
+		public Command getScriptlet() {
+			return scriptlet;
 		}
 
 	}
 
-	protected void doExecute(final Command scriptlet,
+	protected void doExecute(Command scriptlet,
 			final ICommandService svc, final List<Object> inputContent,
-			final Process process) {
+			final Process process){
+		
 		EclJob job = new EclJob(scriptlet) {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
@@ -56,7 +62,8 @@ public class Session extends AbstractRootSession implements ISession {
 				}
 				super.canceling();
 			}
-		};
+		};		
+		
 		job.setSystem(true);
 		job.schedule();
 
