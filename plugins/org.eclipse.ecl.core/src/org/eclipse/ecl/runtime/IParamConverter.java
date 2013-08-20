@@ -21,9 +21,6 @@ public interface IParamConverter<T> {
 
 	Class<T> forType();
 
-	T convert(LiteralParameter literal, List<String> allowedTypes, String id)
-			throws CoreException;
-	
 	T convert(LiteralParameter literal, List<String> allowedTypes)
 			throws CoreException;
 

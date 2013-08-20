@@ -47,13 +47,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.osgi.util.NLS;
 
 public class ExecService implements ICommandService {
-	private String id;
-
-	public IStatus service(Command command, IProcess process, String id) throws InterruptedException, CoreException {
-		this.id = id;
-		return service(command, process);
-	}
-
 	public IStatus service(Command command, IProcess process)
 			throws InterruptedException, CoreException {
 		Exec exec = (Exec) command;
@@ -344,7 +337,7 @@ public class ExecService implements ICommandService {
 		IParamConverter<?> converter = ParamConverterManager.getInstance()
 				.getConverter(instanceClass);
 		if (converter != null) {
-			value = converter.convert(literal, allowedTypes, id);
+			value = converter.convert(literal, allowedTypes);
 		}
 		return value;
 	}
@@ -373,7 +366,7 @@ public class ExecService implements ICommandService {
 		IParamConverter<Object> converter = ParamConverterManager.getInstance()
 				.getConverter(Object.class);
 		if (converter != null) {
-			val = converter.convert(literal, allowedTypes, id);
+			val = converter.convert(literal, allowedTypes);
 		}
 
 		return val;

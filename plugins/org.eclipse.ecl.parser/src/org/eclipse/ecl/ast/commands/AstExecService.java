@@ -25,18 +25,19 @@ public class AstExecService implements ICommandService {
 	public IStatus service(Command command, IProcess process)
 			throws InterruptedException, CoreException {
 		AstExec exec = (AstExec) command;
-		IStatus s = new ExecService().service(exec, process, exec.getResourceID());
-		
+		IStatus s = new ExecService().service(exec, process);
+
 		if (!s.isOK() && !(s instanceof ScriptErrorStatus)) {
-			if(s instanceof ProcErrorStatus){
-			return new ScriptErrorStatus(((ProcErrorStatus) s).getStatus(), exec.getName(), exec.getResourceID(), exec.getLine(), exec.getColumn(),
-					exec.getLength());
-			}else{
+			if (s instanceof ProcErrorStatus) {
+				return new ScriptErrorStatus(((ProcErrorStatus) s).getStatus(), exec.getName(), exec.getResourceID(),
+						exec.getLine(), exec.getColumn(),
+						exec.getLength());
+			} else {
 				return new ScriptErrorStatus(s, exec.getName(), exec.getResourceID(), exec.getLine(), exec.getColumn(),
 						exec.getLength());
-			}			
-		}		
-		
+			}
+		}
+
 		return s;
 	}
 }
