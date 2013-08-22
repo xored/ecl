@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.eclipse.ecl.core.util.DeclarationInfo;
 
-
-
 public class EclDocReference implements IEclDocProvider {
 	List<DeclarationInfo> listOfDeclarations;
 	String refName;
@@ -25,7 +23,7 @@ public class EclDocReference implements IEclDocProvider {
 			writer.text("");
 			writer.b(refName);
 			writer.text(" cannot be resolved as reference or procedure.");
-		} else {			
+		} else {
 			writer.b(refName);
 			if (listOfDeclarations.size() > 1) {
 				writer.text(" Mutliple declarations have been found.");
@@ -43,11 +41,9 @@ public class EclDocReference implements IEclDocProvider {
 					case File: {
 						writer.dt("Defined in: ");
 						if (declInfo.getQ7NamedElementID().isEmpty()) {
-							writer.dd(" current script at <b>line " + declInfo.getDeclarationOffset() + "</b> as \"<b>" + declInfo.getDeclarationString()
-									+ "</b>\"");
+							writer.dd(" current script </b> as \"<b>" + declInfo.getDeclarationString() + "</b>\"");
 						} else {
-							writer.dd(" another file at <b>line " + declInfo.getDeclarationOffset() + "</b> as \"<b>" + declInfo.getDeclarationString()
-									+ "<b>\"");
+							writer.dd(" another file </b> as \"<b>" + declInfo.getDeclarationString() + "<b>\"");
 						}
 
 					}
