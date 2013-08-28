@@ -6,7 +6,9 @@
  */
 package org.eclipse.ecl.debug.commands;
 
+import java.util.Map;
 import org.eclipse.ecl.core.Command;
+import org.eclipse.emf.common.util.EMap;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,6 +21,7 @@ import org.eclipse.ecl.core.Command;
  *   <li>{@link org.eclipse.ecl.debug.commands.DebugCommand#getPath <em>Path</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.commands.DebugCommand#getSession <em>Session</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.commands.DebugCommand#getCommand <em>Command</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.commands.DebugCommand#getPaths <em>Paths</em>}</li>
  * </ul>
  * </p>
  *
@@ -104,5 +107,22 @@ public interface DebugCommand extends Command {
 	 * @generated
 	 */
 	void setCommand(Command value);
+
+	/**
+	 * Returns the value of the '<em><b>Paths</b></em>' map.
+	 * The key is of type {@link java.lang.String},
+	 * and the value is of type {@link java.lang.String},
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Paths</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Paths</em>' map.
+	 * @see org.eclipse.ecl.debug.commands.CommandsPackage#getDebugCommand_Paths()
+	 * @model mapType="org.eclipse.ecl.debug.commands.PathsMap<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
+	 * @generated
+	 */
+	EMap<String, String> getPaths();
 
 } // DebugCommand

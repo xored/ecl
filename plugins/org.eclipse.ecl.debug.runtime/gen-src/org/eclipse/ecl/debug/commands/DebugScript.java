@@ -6,7 +6,9 @@
  */
 package org.eclipse.ecl.debug.commands;
 
+import java.util.Map;
 import org.eclipse.ecl.core.Script;
+import org.eclipse.emf.common.util.EMap;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,6 +20,7 @@ import org.eclipse.ecl.core.Script;
  * <ul>
  *   <li>{@link org.eclipse.ecl.debug.commands.DebugScript#getPath <em>Path</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.commands.DebugScript#getSession <em>Session</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.commands.DebugScript#getPaths <em>Paths</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,5 +80,22 @@ public interface DebugScript extends Script {
 	 * @generated
 	 */
 	void setSession(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Paths</b></em>' map.
+	 * The key is of type {@link java.lang.String},
+	 * and the value is of type {@link java.lang.String},
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Paths</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Paths</em>' map.
+	 * @see org.eclipse.ecl.debug.commands.CommandsPackage#getDebugScript_Paths()
+	 * @model mapType="org.eclipse.ecl.debug.commands.PathsMap<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
+	 * @generated
+	 */
+	EMap<String, String> getPaths();
 
 } // DebugScript

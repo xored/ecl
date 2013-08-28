@@ -8,6 +8,7 @@ package org.eclipse.ecl.debug.commands.util;
 
 import java.util.List;
 
+import java.util.Map;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.Script;
 
@@ -125,6 +126,12 @@ public class CommandsSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CommandsPackage.PATHS_MAP: {
+				@SuppressWarnings("unchecked") Map.Entry<String, String> pathsMap = (Map.Entry<String, String>)theEObject;
+				T result = casePathsMap(pathsMap);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -201,6 +208,21 @@ public class CommandsSwitch<T> {
 	 * @generated
 	 */
 	public T caseDebugCommand(DebugCommand object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Paths Map</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Paths Map</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePathsMap(Map.Entry<String, String> object) {
 		return null;
 	}
 

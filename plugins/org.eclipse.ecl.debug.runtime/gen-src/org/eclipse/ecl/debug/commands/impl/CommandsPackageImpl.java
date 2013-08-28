@@ -6,6 +6,7 @@
  */
 package org.eclipse.ecl.debug.commands.impl;
 
+import java.util.Map;
 import org.eclipse.ecl.core.CorePackage;
 
 import org.eclipse.ecl.debug.commands.CommandsFactory;
@@ -65,6 +66,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass debugCommandEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pathsMapEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -216,6 +224,15 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getDebugScript_Paths() {
+		return (EReference)debugScriptEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDebugCommand() {
 		return debugCommandEClass;
 	}
@@ -245,6 +262,42 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 */
 	public EReference getDebugCommand_Command() {
 		return (EReference)debugCommandEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDebugCommand_Paths() {
+		return (EReference)debugCommandEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPathsMap() {
+		return pathsMapEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPathsMap_Key() {
+		return (EAttribute)pathsMapEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPathsMap_Value() {
+		return (EAttribute)pathsMapEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -287,11 +340,17 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		debugScriptEClass = createEClass(DEBUG_SCRIPT);
 		createEAttribute(debugScriptEClass, DEBUG_SCRIPT__PATH);
 		createEAttribute(debugScriptEClass, DEBUG_SCRIPT__SESSION);
+		createEReference(debugScriptEClass, DEBUG_SCRIPT__PATHS);
 
 		debugCommandEClass = createEClass(DEBUG_COMMAND);
 		createEAttribute(debugCommandEClass, DEBUG_COMMAND__PATH);
 		createEAttribute(debugCommandEClass, DEBUG_COMMAND__SESSION);
 		createEReference(debugCommandEClass, DEBUG_COMMAND__COMMAND);
+		createEReference(debugCommandEClass, DEBUG_COMMAND__PATHS);
+
+		pathsMapEClass = createEClass(PATHS_MAP);
+		createEAttribute(pathsMapEClass, PATHS_MAP__KEY);
+		createEAttribute(pathsMapEClass, PATHS_MAP__VALUE);
 	}
 
 	/**
@@ -344,11 +403,17 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		initEClass(debugScriptEClass, DebugScript.class, "DebugScript", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDebugScript_Path(), theEcorePackage.getEString(), "path", null, 0, 1, DebugScript.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDebugScript_Session(), theEcorePackage.getEString(), "session", null, 0, 1, DebugScript.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDebugScript_Paths(), this.getPathsMap(), null, "paths", null, 0, -1, DebugScript.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(debugCommandEClass, DebugCommand.class, "DebugCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDebugCommand_Path(), theEcorePackage.getEString(), "path", null, 0, 1, DebugCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDebugCommand_Session(), theEcorePackage.getEString(), "session", null, 0, 1, DebugCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDebugCommand_Command(), theCorePackage.getCommand(), null, "command", null, 0, 1, DebugCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDebugCommand_Paths(), this.getPathsMap(), null, "paths", null, 0, -1, DebugCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(pathsMapEClass, Map.Entry.class, "PathsMap", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPathsMap_Key(), theEcorePackage.getEString(), "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPathsMap_Value(), theEcorePackage.getEString(), "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

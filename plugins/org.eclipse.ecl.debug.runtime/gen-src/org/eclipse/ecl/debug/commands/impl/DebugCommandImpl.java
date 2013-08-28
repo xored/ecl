@@ -6,6 +6,9 @@
  */
 package org.eclipse.ecl.debug.commands.impl;
 
+import java.util.Collection;
+import java.util.Map;
+import java.util.Map.Entry;
 import org.eclipse.ecl.core.Command;
 
 import org.eclipse.ecl.core.impl.CommandImpl;
@@ -16,10 +19,16 @@ import org.eclipse.ecl.debug.commands.DebugCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreEMap;
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,6 +40,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.ecl.debug.commands.impl.DebugCommandImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.commands.impl.DebugCommandImpl#getSession <em>Session</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.commands.impl.DebugCommandImpl#getCommand <em>Command</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.commands.impl.DebugCommandImpl#getPaths <em>Paths</em>}</li>
  * </ul>
  * </p>
  *
@@ -86,6 +96,16 @@ public class DebugCommandImpl extends CommandImpl implements DebugCommand {
 	 * @ordered
 	 */
 	protected Command command;
+
+	/**
+	 * The cached value of the '{@link #getPaths() <em>Paths</em>}' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPaths()
+	 * @generated
+	 * @ordered
+	 */
+	protected EMap<String, String> paths;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -196,11 +216,26 @@ public class DebugCommandImpl extends CommandImpl implements DebugCommand {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	public EMap<String, String> getPaths() {
+		if (paths == null) {
+			paths = new EcoreEMap<String,String>(CommandsPackage.Literals.PATHS_MAP, PathsMapImpl.class, this, CommandsPackage.DEBUG_COMMAND__PATHS);
+		}
+		return paths;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CommandsPackage.DEBUG_COMMAND__COMMAND:
 				return basicSetCommand(null, msgs);
+			case CommandsPackage.DEBUG_COMMAND__PATHS:
+				return ((InternalEList<?>)getPaths()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -219,6 +254,9 @@ public class DebugCommandImpl extends CommandImpl implements DebugCommand {
 				return getSession();
 			case CommandsPackage.DEBUG_COMMAND__COMMAND:
 				return getCommand();
+			case CommandsPackage.DEBUG_COMMAND__PATHS:
+				if (coreType) return getPaths();
+				else return getPaths().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -228,6 +266,7 @@ public class DebugCommandImpl extends CommandImpl implements DebugCommand {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -239,6 +278,9 @@ public class DebugCommandImpl extends CommandImpl implements DebugCommand {
 				return;
 			case CommandsPackage.DEBUG_COMMAND__COMMAND:
 				setCommand((Command)newValue);
+				return;
+			case CommandsPackage.DEBUG_COMMAND__PATHS:
+				((EStructuralFeature.Setting)getPaths()).set(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -261,6 +303,9 @@ public class DebugCommandImpl extends CommandImpl implements DebugCommand {
 			case CommandsPackage.DEBUG_COMMAND__COMMAND:
 				setCommand((Command)null);
 				return;
+			case CommandsPackage.DEBUG_COMMAND__PATHS:
+				getPaths().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -279,6 +324,8 @@ public class DebugCommandImpl extends CommandImpl implements DebugCommand {
 				return SESSION_EDEFAULT == null ? session != null : !SESSION_EDEFAULT.equals(session);
 			case CommandsPackage.DEBUG_COMMAND__COMMAND:
 				return command != null;
+			case CommandsPackage.DEBUG_COMMAND__PATHS:
+				return paths != null && !paths.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

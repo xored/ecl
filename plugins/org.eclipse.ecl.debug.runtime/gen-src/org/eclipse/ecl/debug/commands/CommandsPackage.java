@@ -237,13 +237,22 @@ public interface CommandsPackage extends EPackage {
 	int DEBUG_SCRIPT__SESSION = CorePackage.SCRIPT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Paths</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEBUG_SCRIPT__PATHS = CorePackage.SCRIPT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Debug Script</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEBUG_SCRIPT_FEATURE_COUNT = CorePackage.SCRIPT_FEATURE_COUNT + 2;
+	int DEBUG_SCRIPT_FEATURE_COUNT = CorePackage.SCRIPT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.debug.commands.impl.DebugCommandImpl <em>Debug Command</em>}' class.
@@ -301,14 +310,60 @@ public interface CommandsPackage extends EPackage {
 	int DEBUG_COMMAND__COMMAND = CorePackage.COMMAND_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Paths</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEBUG_COMMAND__PATHS = CorePackage.COMMAND_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Debug Command</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEBUG_COMMAND_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 3;
+	int DEBUG_COMMAND_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 4;
 
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.debug.commands.impl.PathsMapImpl <em>Paths Map</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.debug.commands.impl.PathsMapImpl
+	 * @see org.eclipse.ecl.debug.commands.impl.CommandsPackageImpl#getPathsMap()
+	 * @generated
+	 */
+	int PATHS_MAP = 5;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PATHS_MAP__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PATHS_MAP__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Paths Map</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PATHS_MAP_FEATURE_COUNT = 2;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.debug.commands.StartServer <em>Start Server</em>}'.
@@ -406,6 +461,17 @@ public interface CommandsPackage extends EPackage {
 	EAttribute getDebugScript_Session();
 
 	/**
+	 * Returns the meta object for the map '{@link org.eclipse.ecl.debug.commands.DebugScript#getPaths <em>Paths</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Paths</em>'.
+	 * @see org.eclipse.ecl.debug.commands.DebugScript#getPaths()
+	 * @see #getDebugScript()
+	 * @generated
+	 */
+	EReference getDebugScript_Paths();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.debug.commands.DebugCommand <em>Debug Command</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -447,6 +513,51 @@ public interface CommandsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDebugCommand_Command();
+
+	/**
+	 * Returns the meta object for the map '{@link org.eclipse.ecl.debug.commands.DebugCommand#getPaths <em>Paths</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Paths</em>'.
+	 * @see org.eclipse.ecl.debug.commands.DebugCommand#getPaths()
+	 * @see #getDebugCommand()
+	 * @generated
+	 */
+	EReference getDebugCommand_Paths();
+
+	/**
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Paths Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Paths Map</em>'.
+	 * @see java.util.Map.Entry
+	 * @model keyDataType="org.eclipse.emf.ecore.EString"
+	 *        valueDataType="org.eclipse.emf.ecore.EString"
+	 * @generated
+	 */
+	EClass getPathsMap();
+
+	/**
+	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getPathsMap()
+	 * @generated
+	 */
+	EAttribute getPathsMap_Key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getPathsMap()
+	 * @generated
+	 */
+	EAttribute getPathsMap_Value();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -551,6 +662,14 @@ public interface CommandsPackage extends EPackage {
 		EAttribute DEBUG_SCRIPT__SESSION = eINSTANCE.getDebugScript_Session();
 
 		/**
+		 * The meta object literal for the '<em><b>Paths</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEBUG_SCRIPT__PATHS = eINSTANCE.getDebugScript_Paths();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.debug.commands.impl.DebugCommandImpl <em>Debug Command</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -583,6 +702,40 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DEBUG_COMMAND__COMMAND = eINSTANCE.getDebugCommand_Command();
+
+		/**
+		 * The meta object literal for the '<em><b>Paths</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEBUG_COMMAND__PATHS = eINSTANCE.getDebugCommand_Paths();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.debug.commands.impl.PathsMapImpl <em>Paths Map</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.debug.commands.impl.PathsMapImpl
+		 * @see org.eclipse.ecl.debug.commands.impl.CommandsPackageImpl#getPathsMap()
+		 * @generated
+		 */
+		EClass PATHS_MAP = eINSTANCE.getPathsMap();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PATHS_MAP__KEY = eINSTANCE.getPathsMap_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PATHS_MAP__VALUE = eINSTANCE.getPathsMap_Value();
 
 	}
 
