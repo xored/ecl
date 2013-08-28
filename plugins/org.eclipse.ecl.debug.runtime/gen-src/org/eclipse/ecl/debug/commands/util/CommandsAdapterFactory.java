@@ -6,6 +6,7 @@
  */
 package org.eclipse.ecl.debug.commands.util;
 
+import java.util.Map;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.Script;
 
@@ -93,6 +94,10 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseDebugCommand(DebugCommand object) {
 				return createDebugCommandAdapter();
+			}
+			@Override
+			public Adapter casePathsMap(Map.Entry<String, String> object) {
+				return createPathsMapAdapter();
 			}
 			@Override
 			public Adapter caseCommand(Command object) {
@@ -189,6 +194,20 @@ public class CommandsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDebugCommandAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Paths Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createPathsMapAdapter() {
 		return null;
 	}
 

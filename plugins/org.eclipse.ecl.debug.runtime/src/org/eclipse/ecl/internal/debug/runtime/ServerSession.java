@@ -41,6 +41,7 @@ import org.eclipse.ecl.debug.runtime.events.StepEndEvent;
 import org.eclipse.ecl.debug.runtime.events.SuspendEvent;
 import org.eclipse.ecl.gen.ast.AstExec;
 import org.eclipse.ecl.gen.ast.AstNode;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 public class ServerSession extends Session implements IStackListener {
@@ -188,12 +189,16 @@ public class ServerSession extends Session implements IStackListener {
 			return null;
 		}
 		String path = debug.getPath();
+		EMap<String,String> paths = debug.getPaths();
 		List<StackFrame> frames = new ArrayList<StackFrame>();
 		Command lastCommand = null;
 		do {
 			Command command = stack.getCommand();
 			if (command instanceof AstExec) {
 				AstExec exec = (AstExec) command;
+				if( exec.getResourceID() != null && paths.containsKey(exec.getResourceID())) {
+					path = paths.get(exec.getResourceID());
+				}
 				StackFrame frame = new StackFrame(path, exec.getName(),
 						exec.getLine(), extractArgs(lastCommand));
 				frames.add(frame);

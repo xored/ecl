@@ -6,6 +6,7 @@
  */
 package org.eclipse.ecl.debug.commands.impl;
 
+import java.util.Map;
 import org.eclipse.ecl.debug.commands.*;
 
 import org.eclipse.emf.ecore.EClass;
@@ -65,6 +66,7 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 			case CommandsPackage.SERVER_INFO: return createServerInfo();
 			case CommandsPackage.DEBUG_SCRIPT: return createDebugScript();
 			case CommandsPackage.DEBUG_COMMAND: return createDebugCommand();
+			case CommandsPackage.PATHS_MAP: return (EObject)createPathsMap();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -118,6 +120,16 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	public DebugCommand createDebugCommand() {
 		DebugCommandImpl debugCommand = new DebugCommandImpl();
 		return debugCommand;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<String, String> createPathsMap() {
+		PathsMapImpl pathsMap = new PathsMapImpl();
+		return pathsMap;
 	}
 
 	/**
