@@ -58,7 +58,12 @@ public class ExecService implements ICommandService {
 
 	private IStatus exec(FQName fqn, List<Parameter> params, IProcess process,
 			List<Object> input, Command cmd) throws CoreException, InterruptedException {
-		Command target = createCommand(fqn, process);
+		Command target;
+		try {
+			target = createCommand(fqn, process);
+		} catch (CoreException e) {
+			return e.getStatus();
+		}
 
 		List<Object> inputList = new ArrayList<Object>(input);
 

@@ -25,7 +25,6 @@ public interface IPipe {
 	 *            How long the client is willing to wait for a proper matching
 	 *            entry.
 	 * @return object or status
-	 * @throws InterruptedException
 	 * @throws CoreException
 	 */
 	Object take(long timeout) throws CoreException;

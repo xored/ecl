@@ -5,6 +5,7 @@ import java.net.SocketException;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.runtime.CoreUtils;
@@ -99,7 +100,11 @@ final class SessionRequestHandler implements Runnable {
 		do {
 			object = process.getOutput().take(Long.MAX_VALUE);
 			if (object instanceof IStatus) {
-				return (IStatus) object;
+				try {
+					return process.waitFor();
+				} catch (InterruptedException e) {
+					return Status.CANCEL_STATUS;
+				}
 			} else {
 				pipe.write(object);
 			}
