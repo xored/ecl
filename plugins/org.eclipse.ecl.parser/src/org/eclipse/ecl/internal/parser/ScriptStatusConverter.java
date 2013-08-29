@@ -38,17 +38,25 @@ public class ScriptStatusConverter implements
 			IStatus cause = (IStatus) EMFConverterManager.INSTANCE
 					.fromEObject(ps.getCause());
 			return new ScriptErrorStatus(ps.getSeverity(), ps.getPluginId(),
-					ps.getMessage(), ps.getLine(), ps.getColumn(),
+					ps.getMessage(), ps.getResourceID(), ps.getLine(), ps.getColumn(),
 					ps.getLength(), cause);
 		}
 		return new ScriptErrorStatus(ps.getSeverity(), ps.getPluginId(),
-				ps.getPluginId(), ps.getLine(), ps.getColumn(), ps.getLength());
+				ps.getMessage(), ps.getResourceID(), ps.getLine(), ps.getColumn(), ps.getLength(), null);
 	}
 
 	public ScriptProcessStatus toEObject(ScriptErrorStatus status)
 			throws CoreException {
+		int depth = 1;
+		ScriptErrorStatus it = status;
+		while (it.getCause() instanceof ScriptErrorStatus) {
+			depth++;
+			it = (ScriptErrorStatus) it.getCause();
+		}
+		System.out.println("depth!!!! " + depth + " " + status.getMessage());
 		ScriptProcessStatus ps = AstFactory.eINSTANCE
 				.createScriptProcessStatus();
+		ps.setResourceID(status.getResource());
 		ps.setLine(status.getLine());
 		ps.setColumn(status.getColumn());
 		ps.setLength(status.getLength());

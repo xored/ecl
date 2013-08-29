@@ -38,14 +38,14 @@ public class ProcInstanceService implements ICommandService {
 			}
 			locals.declare(val.getName(), val);
 		}
-		
+
 		IStatus s = context
 				.getSession()
 				.execute(instance.getDefinition().getBody(),
 						inputUsed ? null : context.getInput(),
 						context.getOutput()).waitFor();
-		
-		return new ProcErrorStatus(s);
+
+		return s.isOK() ? Status.OK_STATUS : new ProcErrorStatus(s);
 	}
 
 }
