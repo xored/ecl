@@ -14,8 +14,8 @@ package org.eclipse.ecl.debug.core;
 import java.net.Socket;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.ecl.debug.model.Event;
 import org.eclipse.ecl.debug.runtime.Session;
-import org.eclipse.ecl.debug.runtime.events.Event;
 import org.eclipse.ecl.internal.debug.core.Plugin;
 
 public class DebuggerBaseTransport implements DebuggerTransport {
@@ -44,7 +44,7 @@ public class DebuggerBaseTransport implements DebuggerTransport {
 		}
 	}
 
-	public synchronized void request(Event event) {
+	public synchronized void request(Event event) throws CoreException {
 		session.request(event);
 	}
 

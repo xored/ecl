@@ -11,35 +11,39 @@
  *******************************************************************************/
 package org.eclipse.ecl.debug.runtime;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.Socket;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.ecl.debug.runtime.events.Event;
+import org.eclipse.ecl.debug.model.Event;
+import org.eclipse.ecl.internal.core.CorePlugin;
+import org.eclipse.ecl.internal.core.IMarkeredPipe;
+import org.eclipse.ecl.runtime.CoreUtils;
 
 public abstract class Session extends Job {
 
-	public Session(Socket socket) throws IOException {
+	public Session(Socket socket) throws CoreException {
 		super("Event Dispatch");
 		setSystem(true);
 
 		this.socket = socket;
-		writer = new PrintWriter(socket.getOutputStream());
-		reader = new BufferedReader(new InputStreamReader(
-				socket.getInputStream()));
 
+		try {
+			this.pipe = CoreUtils.createEMFPipe(
+					socket.getInputStream(),
+					socket.getOutputStream());
+		} catch (IOException e) {
+			throw new CoreException(CorePlugin.err(e.getMessage(), e));
+		}
 		schedule();
 	}
 
-	public void request(Event event) {
-		writer.println(event.toString());
-		writer.flush();
+	public void request(Event event) throws CoreException {
+		pipe.write(event);
 	}
 
 	public void terminate() {
@@ -56,15 +60,19 @@ public abstract class Session extends Job {
 	protected abstract void handle(Exception e);
 
 	private final Socket socket;
-	private final PrintWriter writer;
-	private final BufferedReader reader;
+	private IMarkeredPipe pipe;
 	private volatile boolean terminated = false;
 
 	protected IStatus run(IProgressMonitor monitor) {
-		String line;
 		try {
-			while ((line = reader.readLine()) != null) {
-				handle(Event.fromString(line));
+			while (!pipe.isClosed()) {
+				Object take = pipe.take(60000);
+				if (pipe.isClosed()) {
+					return Status.OK_STATUS;
+				}
+				if (take instanceof Event) {
+					handle((Event) take);
+				}
 			}
 		} catch (Exception e) {
 			// exception on termination is OK

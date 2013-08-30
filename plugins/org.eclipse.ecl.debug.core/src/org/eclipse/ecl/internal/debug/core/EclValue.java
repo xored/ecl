@@ -4,16 +4,24 @@ import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IValue;
 import org.eclipse.debug.core.model.IVariable;
-import org.eclipse.ecl.debug.runtime.StackFrame.Arg;
+import org.eclipse.ecl.debug.model.Variable;
+import org.eclipse.ecl.runtime.BoxedValues;
+import org.eclipse.emf.common.util.EList;
 
 public class EclValue extends EclDebugElement implements IValue {
 
 	private final EclDebugThread thread;
-	private final Arg arg;
+	private final Variable arg;
+	private final IVariable[] children;
 
-	public EclValue(EclDebugThread thread, Arg arg) {
+	public EclValue(EclDebugThread thread, Variable arg) {
 		this.thread = thread;
 		this.arg = arg;
+		EList<Variable> list = arg.getChildren();
+		children = new IVariable[list.size()];
+		for (int i = 0; i < list.size(); i++) {
+			children[i] = new EclVariable(thread, list.get(i));
+		}
 	}
 
 	public IDebugTarget getDebugTarget() {
@@ -21,25 +29,27 @@ public class EclValue extends EclDebugElement implements IValue {
 	}
 
 	public String getReferenceTypeName() throws DebugException {
-		return arg.getActualType();
+		return arg.getType();
 	}
 
 	public String getValueString() throws DebugException {
-		return arg.getValue();
+		Object object = BoxedValues.unbox(arg.getValue());
+		if (object != null) {
+			return object.toString();
+		}
+		return "";
 	}
 
 	public boolean isAllocated() throws DebugException {
-		return arg.isSet();
+		return true;
 	}
 
-	private static final IVariable[] EMPTY_VARIABLES = new IVariable[0];
-
 	public IVariable[] getVariables() throws DebugException {
-		return EMPTY_VARIABLES;
+		return children;
 	}
 
 	public boolean hasVariables() throws DebugException {
-		return false;
+		return !arg.getChildren().isEmpty();
 	}
 
 }

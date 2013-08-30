@@ -11,11 +11,13 @@
  *******************************************************************************/
 package org.eclipse.ecl.debug.core;
 
-import org.eclipse.ecl.debug.runtime.events.Event;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.ecl.debug.model.Event;
+
 
 public interface DebuggerTransport {
 
-	public void request(Event event);
+	public void request(Event event) throws CoreException;
 
 	public void setCallback(DebuggerCallback callback);
 

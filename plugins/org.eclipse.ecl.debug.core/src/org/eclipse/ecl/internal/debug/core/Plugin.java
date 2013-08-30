@@ -34,6 +34,9 @@ public class Plugin {
 	public static void log(Throwable t) {
 		log(status(t));
 	}
+	public static void log(String msg, Throwable t) {
+		log(status(msg,t));
+	}
 
 	public static void log(IStatus status) {
 		Bundle bundle = Platform.getBundle(ID);

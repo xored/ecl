@@ -15,6 +15,11 @@
             uri="http://www.eclipse.org/debug/runtime/commands.ecore"
             class="org.eclipse.ecl.debug.commands.CommandsPackage"
             genModel="model/commands.genmodel"/>
+      <package
+            class="org.eclipse.ecl.debug.model.ModelPackage"
+            genModel="model/model.genmodel"
+            uri="http://www.eclipse.org/debug/runtime/model.ecore">
+      </package>
    </extension>
 
    <extension point="org.eclipse.ecl.core.scriptlet">

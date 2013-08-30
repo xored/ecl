@@ -11,7 +11,8 @@
  *******************************************************************************/
 package org.eclipse.ecl.debug.core;
 
-import org.eclipse.ecl.debug.runtime.events.Event;
+import org.eclipse.ecl.debug.model.Event;
+
 
 public interface DebuggerCallback {
 

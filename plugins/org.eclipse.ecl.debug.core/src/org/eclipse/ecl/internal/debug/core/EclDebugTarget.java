@@ -11,6 +11,12 @@
  *******************************************************************************/
 package org.eclipse.ecl.internal.debug.core;
 
+import static org.eclipse.ecl.debug.runtime.ModelUtils.createEvent;
+import static org.eclipse.ecl.debug.runtime.ModelUtils.createBreakpointEvent;
+import static org.eclipse.ecl.debug.runtime.ModelUtils.createStackEvent;
+import static org.eclipse.ecl.debug.runtime.ModelUtils.createSkipAllEvent; 
+
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.resources.IMarker;
@@ -36,16 +42,12 @@ import org.eclipse.ecl.debug.core.Debugger;
 import org.eclipse.ecl.debug.core.DebuggerCallback;
 import org.eclipse.ecl.debug.core.DebuggerTransport;
 import org.eclipse.ecl.debug.core.EclDebug;
-import org.eclipse.ecl.debug.runtime.StackFrame;
-import org.eclipse.ecl.debug.runtime.events.BreakpointAddEvent;
-import org.eclipse.ecl.debug.runtime.events.BreakpointHitEvent;
-import org.eclipse.ecl.debug.runtime.events.BreakpointRemoveEvent;
-import org.eclipse.ecl.debug.runtime.events.Event;
-import org.eclipse.ecl.debug.runtime.events.EventType;
-import org.eclipse.ecl.debug.runtime.events.SkipAllEvent;
-import org.eclipse.ecl.debug.runtime.events.StackEvent;
-import org.eclipse.ecl.debug.runtime.events.StepEndEvent;
-import org.eclipse.ecl.debug.runtime.events.SuspendEvent;
+import org.eclipse.ecl.debug.model.Event;
+import org.eclipse.ecl.debug.model.EventType;
+import org.eclipse.ecl.debug.model.ModelFactory;
+import org.eclipse.ecl.debug.model.SkipAllEvent;
+import org.eclipse.ecl.debug.model.StackEvent;
+import org.eclipse.ecl.debug.model.StackFrame;
 
 public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		IBreakpointManagerListener, Debugger, DebuggerCallback {
@@ -138,23 +140,23 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 	}
 
 	public void suspend() {
-		request(new Event(EventType.SUSPEND));
+		request(createEvent(EventType.SUSPEND));
 	}
 
 	public void resume() {
-		request(new Event(EventType.RESUME));
+		request(createEvent(EventType.RESUME));
 	}
 
 	public void step() {
 		// TODO actually we need to add real response from server for step
 		// started
 		stepStarted();
-		request(new Event(EventType.STEP));
+		request(createEvent(EventType.STEP));
 	}
 
 	public void stepOver() {
 		stepOverStarted();
-		request(new Event(EventType.STEP_OVER));
+		request(createEvent(EventType.STEP_OVER));
 	}
 
 	public void breakpointAdded(IBreakpoint breakpoint) {
@@ -163,7 +165,7 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 				int line = ((ILineBreakpoint) breakpoint).getLineNumber();
 				String path = breakpoint.getMarker().getResource()
 						.getFullPath().toString();
-				request(new BreakpointAddEvent(path, line));
+				request(createBreakpointEvent(EventType.BREAKPOINT_ADD, path, line));
 			}
 		} catch (CoreException e) {
 			Plugin.log(e);
@@ -176,7 +178,7 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 				int line = ((ILineBreakpoint) breakpoint).getLineNumber();
 				String path = breakpoint.getMarker().getResource()
 						.getFullPath().toString();
-				request(new BreakpointRemoveEvent(path, line));
+				request(createBreakpointEvent(EventType.BREAKPOINT_REMOVE, path, line));
 			} catch (CoreException e) {
 				Plugin.log(e);
 			}
@@ -198,7 +200,7 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 	}
 
 	public void breakpointManagerEnablementChanged(boolean enabled) {
-		request(new SkipAllEvent(!enabled));
+		request(createSkipAllEvent(!enabled));
 	}
 
 	public boolean canDisconnect() {
@@ -248,7 +250,11 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 	}
 
 	private void request(Event event) {
-		transport.request(event);
+		try {
+			transport.request(event);
+		} catch (CoreException e) {
+			Plugin.log(e.getMessage(), e);
+		}
 	}
 
 	public void handleResponse(Event event) {
@@ -258,13 +264,13 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 			started();
 			break;
 		case SUSPENDED:
-			suspended((SuspendEvent) event);
+			suspended((StackEvent) event);
 			break;
 		case STEP_ENDED:
-			stepEnded((StepEndEvent) event);
+			stepEnded((StackEvent) event);
 			break;
 		case BREAKPOINT_HIT:
-			breakpointHit((BreakpointHitEvent) event);
+			breakpointHit((StackEvent) event);
 			break;
 		case RESUMED:
 			resumed();
@@ -280,16 +286,16 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		}
 		installDeferredBreakpoints();
 		if (!getBreakpointManager().isEnabled()) {
-			request(new SkipAllEvent(true));
+			request(createSkipAllEvent(true));
 		}
 		if (isStepping()) {
-			request(new Event(EventType.STEP));
+			request(createEvent(EventType.STEP));
 		} else {
 			resume();
 		}
 	}
 
-	private void suspended(SuspendEvent event) {
+	private void suspended(StackEvent event) {
 		suspended(event, DebugEvent.CLIENT_REQUEST);
 	}
 
@@ -309,12 +315,12 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		thread.fireResumeEvent(DebugEvent.STEP_OVER);
 	}
 
-	private void stepEnded(StepEndEvent event) {
+	private void stepEnded(StackEvent event) {
 		suspended(event, DebugEvent.STEP_END);
 	}
 
-	private void breakpointHit(BreakpointHitEvent event) {
-		StackFrame data = event.getFrames()[0];
+	private void breakpointHit(StackEvent event) {
+		StackFrame data = event.getStackFrame().get(0);
 		IBreakpoint breakpoint = getBreakpoint(data);
 		if (breakpoint != null && supportsBreakpoint(breakpoint)) {
 			thread.setBreakpoints(new IBreakpoint[] { breakpoint });
@@ -360,10 +366,10 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 	}
 
 	private void updateStack(StackEvent event) {
-		StackFrame[] eventFrames = event.getFrames();
-		IStackFrame[] newFrames = new IStackFrame[eventFrames.length];
-		for (int i = 0; i < eventFrames.length; i++) {
-			newFrames[i] = new EclStackFrame(thread, eventFrames[i]);
+		List<StackFrame> eventFrames = event.getStackFrame();
+		IStackFrame[] newFrames = new IStackFrame[eventFrames.size()];
+		for (int i = 0; i < eventFrames.size(); i++) {
+			newFrames[i] = new EclStackFrame(thread, eventFrames.get(i));
 		}
 		frames = newFrames;
 	}

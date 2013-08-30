@@ -4,15 +4,15 @@ import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IValue;
 import org.eclipse.debug.core.model.IVariable;
-import org.eclipse.ecl.debug.runtime.StackFrame.Arg;
+import org.eclipse.ecl.debug.model.Variable;
 
 public class EclVariable extends EclDebugElement implements IVariable {
 
 	private final EclDebugThread thread;
-	private final Arg arg;
+	private final Variable arg;
 	private final EclValue value;
 
-	public EclVariable(EclDebugThread thread, Arg arg) {
+	public EclVariable(EclDebugThread thread, Variable arg) {
 		this.thread = thread;
 		this.arg = arg;
 
