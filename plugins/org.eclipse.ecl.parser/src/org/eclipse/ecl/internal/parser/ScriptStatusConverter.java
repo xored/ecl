@@ -47,13 +47,6 @@ public class ScriptStatusConverter implements
 
 	public ScriptProcessStatus toEObject(ScriptErrorStatus status)
 			throws CoreException {
-		int depth = 1;
-		ScriptErrorStatus it = status;
-		while (it.getCause() instanceof ScriptErrorStatus) {
-			depth++;
-			it = (ScriptErrorStatus) it.getCause();
-		}
-		System.out.println("depth!!!! " + depth + " " + status.getMessage());
 		ScriptProcessStatus ps = AstFactory.eINSTANCE
 				.createScriptProcessStatus();
 		ps.setResourceID(status.getResource());
