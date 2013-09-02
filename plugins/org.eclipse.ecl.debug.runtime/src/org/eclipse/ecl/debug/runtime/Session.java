@@ -67,6 +67,9 @@ public abstract class Session extends Job {
 		try {
 			while (!pipe.isClosed()) {
 				Object take = pipe.take(60000);
+				if( take instanceof IStatus) {
+					return (IStatus) take;
+				}
 				if (pipe.isClosed()) {
 					return Status.OK_STATUS;
 				}
