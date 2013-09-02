@@ -6,38 +6,30 @@
  */
 package org.eclipse.ecl.debug.model.impl;
 
-import java.util.Collection;
-
+import org.eclipse.ecl.debug.model.BreakpointCmd;
 import org.eclipse.ecl.debug.model.ModelPackage;
-import org.eclipse.ecl.debug.model.StackEvent;
-import org.eclipse.ecl.debug.model.StackFrame;
 
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Stack Event</b></em>'.
+ * An implementation of the model object '<em><b>Breakpoint Cmd</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.debug.model.impl.StackEventImpl#getLine <em>Line</em>}</li>
- *   <li>{@link org.eclipse.ecl.debug.model.impl.StackEventImpl#getPath <em>Path</em>}</li>
- *   <li>{@link org.eclipse.ecl.debug.model.impl.StackEventImpl#getStackFrame <em>Stack Frame</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.model.impl.BreakpointCmdImpl#getLine <em>Line</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.model.impl.BreakpointCmdImpl#getPath <em>Path</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class StackEventImpl extends EventImpl implements StackEvent {
+public class BreakpointCmdImpl extends DebugCmdImpl implements BreakpointCmd {
 	/**
 	 * The default value of the '{@link #getLine() <em>Line</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -46,7 +38,7 @@ public class StackEventImpl extends EventImpl implements StackEvent {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String LINE_EDEFAULT = null;
+	protected static final int LINE_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getLine() <em>Line</em>}' attribute.
@@ -56,7 +48,7 @@ public class StackEventImpl extends EventImpl implements StackEvent {
 	 * @generated
 	 * @ordered
 	 */
-	protected String line = LINE_EDEFAULT;
+	protected int line = LINE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
@@ -79,21 +71,11 @@ public class StackEventImpl extends EventImpl implements StackEvent {
 	protected String path = PATH_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getStackFrame() <em>Stack Frame</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStackFrame()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<StackFrame> stackFrame;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StackEventImpl() {
+	protected BreakpointCmdImpl() {
 		super();
 	}
 
@@ -104,7 +86,7 @@ public class StackEventImpl extends EventImpl implements StackEvent {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ModelPackage.Literals.STACK_EVENT;
+		return ModelPackage.Literals.BREAKPOINT_CMD;
 	}
 
 	/**
@@ -112,7 +94,7 @@ public class StackEventImpl extends EventImpl implements StackEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getLine() {
+	public int getLine() {
 		return line;
 	}
 
@@ -121,11 +103,11 @@ public class StackEventImpl extends EventImpl implements StackEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLine(String newLine) {
-		String oldLine = line;
+	public void setLine(int newLine) {
+		int oldLine = line;
 		line = newLine;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.STACK_EVENT__LINE, oldLine, line));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.BREAKPOINT_CMD__LINE, oldLine, line));
 	}
 
 	/**
@@ -146,19 +128,7 @@ public class StackEventImpl extends EventImpl implements StackEvent {
 		String oldPath = path;
 		path = newPath;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.STACK_EVENT__PATH, oldPath, path));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<StackFrame> getStackFrame() {
-		if (stackFrame == null) {
-			stackFrame = new EObjectResolvingEList<StackFrame>(StackFrame.class, this, ModelPackage.STACK_EVENT__STACK_FRAME);
-		}
-		return stackFrame;
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.BREAKPOINT_CMD__PATH, oldPath, path));
 	}
 
 	/**
@@ -169,12 +139,10 @@ public class StackEventImpl extends EventImpl implements StackEvent {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ModelPackage.STACK_EVENT__LINE:
+			case ModelPackage.BREAKPOINT_CMD__LINE:
 				return getLine();
-			case ModelPackage.STACK_EVENT__PATH:
+			case ModelPackage.BREAKPOINT_CMD__PATH:
 				return getPath();
-			case ModelPackage.STACK_EVENT__STACK_FRAME:
-				return getStackFrame();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -184,19 +152,14 @@ public class StackEventImpl extends EventImpl implements StackEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ModelPackage.STACK_EVENT__LINE:
-				setLine((String)newValue);
+			case ModelPackage.BREAKPOINT_CMD__LINE:
+				setLine((Integer)newValue);
 				return;
-			case ModelPackage.STACK_EVENT__PATH:
+			case ModelPackage.BREAKPOINT_CMD__PATH:
 				setPath((String)newValue);
-				return;
-			case ModelPackage.STACK_EVENT__STACK_FRAME:
-				getStackFrame().clear();
-				getStackFrame().addAll((Collection<? extends StackFrame>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -210,14 +173,11 @@ public class StackEventImpl extends EventImpl implements StackEvent {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ModelPackage.STACK_EVENT__LINE:
+			case ModelPackage.BREAKPOINT_CMD__LINE:
 				setLine(LINE_EDEFAULT);
 				return;
-			case ModelPackage.STACK_EVENT__PATH:
+			case ModelPackage.BREAKPOINT_CMD__PATH:
 				setPath(PATH_EDEFAULT);
-				return;
-			case ModelPackage.STACK_EVENT__STACK_FRAME:
-				getStackFrame().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -231,12 +191,10 @@ public class StackEventImpl extends EventImpl implements StackEvent {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ModelPackage.STACK_EVENT__LINE:
-				return LINE_EDEFAULT == null ? line != null : !LINE_EDEFAULT.equals(line);
-			case ModelPackage.STACK_EVENT__PATH:
+			case ModelPackage.BREAKPOINT_CMD__LINE:
+				return line != LINE_EDEFAULT;
+			case ModelPackage.BREAKPOINT_CMD__PATH:
 				return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
-			case ModelPackage.STACK_EVENT__STACK_FRAME:
-				return stackFrame != null && !stackFrame.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -259,4 +217,4 @@ public class StackEventImpl extends EventImpl implements StackEvent {
 		return result.toString();
 	}
 
-} //StackEventImpl
+} //BreakpointCmdImpl

@@ -66,7 +66,11 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 			case ModelPackage.STACK_EVENT: return createStackEvent();
 			case ModelPackage.STACK_FRAME: return createStackFrame();
 			case ModelPackage.VARIABLE: return createVariable();
-			case ModelPackage.SKIP_ALL_EVENT: return createSkipAllEvent();
+			case ModelPackage.RESOLVE_VARIABLE_EVENT: return createResolveVariableEvent();
+			case ModelPackage.DEBUG_CMD: return createDebugCmd();
+			case ModelPackage.SKIP_ALL_CMD: return createSkipAllCmd();
+			case ModelPackage.BREAKPOINT_CMD: return createBreakpointCmd();
+			case ModelPackage.RESOLVE_VARIABLE_CMD: return createResolveVariableCmd();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -82,6 +86,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 		switch (eDataType.getClassifierID()) {
 			case ModelPackage.EVENT_TYPE:
 				return createEventTypeFromString(eDataType, initialValue);
+			case ModelPackage.DEBUG_TYPE:
+				return createDebugTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -97,6 +103,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 		switch (eDataType.getClassifierID()) {
 			case ModelPackage.EVENT_TYPE:
 				return convertEventTypeToString(eDataType, instanceValue);
+			case ModelPackage.DEBUG_TYPE:
+				return convertDebugTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -157,9 +165,49 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SkipAllEvent createSkipAllEvent() {
-		SkipAllEventImpl skipAllEvent = new SkipAllEventImpl();
-		return skipAllEvent;
+	public ResolveVariableEvent createResolveVariableEvent() {
+		ResolveVariableEventImpl resolveVariableEvent = new ResolveVariableEventImpl();
+		return resolveVariableEvent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DebugCmd createDebugCmd() {
+		DebugCmdImpl debugCmd = new DebugCmdImpl();
+		return debugCmd;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SkipAllCmd createSkipAllCmd() {
+		SkipAllCmdImpl skipAllCmd = new SkipAllCmdImpl();
+		return skipAllCmd;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BreakpointCmd createBreakpointCmd() {
+		BreakpointCmdImpl breakpointCmd = new BreakpointCmdImpl();
+		return breakpointCmd;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ResolveVariableCmd createResolveVariableCmd() {
+		ResolveVariableCmdImpl resolveVariableCmd = new ResolveVariableCmdImpl();
+		return resolveVariableCmd;
 	}
 
 	/**
@@ -179,6 +227,26 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public String convertEventTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DebugType createDebugTypeFromString(EDataType eDataType, String initialValue) {
+		DebugType result = DebugType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDebugTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -11,11 +11,11 @@
  *******************************************************************************/
 package org.eclipse.ecl.debug.core;
 
-import org.eclipse.ecl.debug.model.Event;
+import org.eclipse.emf.ecore.EObject;
 
 
 public interface DebuggerCallback {
 
-	void handleResponse(Event event);
+	void handleResponse(EObject event);
 
 }

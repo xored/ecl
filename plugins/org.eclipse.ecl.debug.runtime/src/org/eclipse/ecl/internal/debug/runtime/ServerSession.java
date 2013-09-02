@@ -15,7 +15,6 @@ import static org.eclipse.ecl.debug.runtime.ModelUtils.createEvent;
 import static org.eclipse.ecl.debug.runtime.ModelUtils.createStackEvent;
 
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -23,45 +22,35 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.ecl.core.BoxedValue;
-import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CommandStack;
-import org.eclipse.ecl.core.CorePackage;
-import org.eclipse.ecl.core.Declaration;
 import org.eclipse.ecl.core.GetVal;
 import org.eclipse.ecl.core.IStackListener;
-import org.eclipse.ecl.core.Parallel;
-import org.eclipse.ecl.core.Pipeline;
-import org.eclipse.ecl.core.ProcInstance;
-import org.eclipse.ecl.core.Sequence;
-import org.eclipse.ecl.core.Val;
-import org.eclipse.ecl.debug.commands.DebugCommand;
-import org.eclipse.ecl.debug.model.BreakpointEvent;
-import org.eclipse.ecl.debug.model.Event;
+import org.eclipse.ecl.debug.model.BreakpointCmd;
+import org.eclipse.ecl.debug.model.DebugCmd;
 import org.eclipse.ecl.debug.model.EventType;
 import org.eclipse.ecl.debug.model.ModelFactory;
-import org.eclipse.ecl.debug.model.SkipAllEvent;
+import org.eclipse.ecl.debug.model.ResolveVariableCmd;
+import org.eclipse.ecl.debug.model.ResolveVariableEvent;
+import org.eclipse.ecl.debug.model.SkipAllCmd;
 import org.eclipse.ecl.debug.model.StackFrame;
 import org.eclipse.ecl.debug.model.Variable;
 import org.eclipse.ecl.debug.runtime.Session;
 import org.eclipse.ecl.debug.runtime.SuspendManager;
-import org.eclipse.ecl.gen.ast.AstExec;
-import org.eclipse.ecl.gen.ast.AstNode;
 import org.eclipse.ecl.internal.core.CorePlugin;
-import org.eclipse.ecl.internal.core.DeclarationContainer;
-import org.eclipse.ecl.runtime.BoxedValues;
-import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class ServerSession extends Session implements IStackListener {
 
 	private int lastLine = -1;
+	private EclStackSupport stackSupport = null;
+	private List<StackFrame> currentFrame = null;
+	private Map<String, Variable> currentVariables = new HashMap<String, Variable>();
 
 	public ServerSession(Socket socket, String id) throws CoreException {
 		super(socket);
 		this.id = id;
+		this.stackSupport = new EclStackSupport(this.id);
 		CommandStack.addListener(this);
 
 		request(createEvent(EventType.STARTED));
@@ -76,7 +65,7 @@ public class ServerSession extends Session implements IStackListener {
 
 	public void enter(CommandStack stack) {
 		try {
-			List<StackFrame> frames = getFrames(stack);
+			List<StackFrame> frames = stackSupport.getFrames(stack);
 			if (frames != null) {
 				if (stack.getCommand() instanceof GetVal) {
 					// Skip get-val commands in processing.
@@ -89,21 +78,24 @@ public class ServerSession extends Session implements IStackListener {
 					if (stepOver) {
 						if (lastLine != frames.get(0).getLine()) {
 							lastLine = frames.get(0).getLine();
+							setCurrentState(frames);
 
 							request(createStackEvent(EventType.STEP_ENDED, frames));
 							await();
 						}
 					} else {
+						setCurrentState(frames);
 						if (step) {
 							request(createStackEvent(EventType.STEP_ENDED, frames));
 						} else {
-							request(createStackEvent(EventType.SUSPEND, frames));
+							request(createStackEvent(EventType.SUSPENDED, frames));
 						}
 						await();
 					}
 				} else if (isHitBreakpoint(frames.get(0))) {
 					if (lastLine != frames.get(0).getLine()) {
 						lastLine = frames.get(0).getLine();
+						setCurrentState(frames);
 						latch.lock();
 						request(createStackEvent(EventType.BREAKPOINT_HIT, frames));
 						await();
@@ -118,20 +110,24 @@ public class ServerSession extends Session implements IStackListener {
 		}
 	}
 
-	private Command getCommandParent(CommandStack stack) {
-		CommandStack parent = stack.getParent();
-		while (parent != null) {
-			Command cmd = parent.getCommand();
-			if (cmd instanceof Sequence) {
-				return cmd;
-			} else if (cmd instanceof Pipeline) {
-				return cmd;
-			} else if (cmd instanceof Parallel) {
-				return cmd;
+	private void setCurrentState(List<StackFrame> frames) {
+		synchronized (currentVariables) {
+			currentFrame = frames;
+			currentVariables.clear();
+			for (StackFrame stackFrame : frames) {
+				EList<Variable> list = stackFrame.getVariables();
+				storeVarIds(list);
 			}
-			parent = parent.getParent();
 		}
-		return null;
+	}
+
+	private void storeVarIds(EList<Variable> list) {
+		for (Variable var : list) {
+			currentVariables.put(var.getId(), var);
+			if (var.getChildren().size() > 0) {
+				storeVarIds(var.getChildren());
+			}
+		}
 	}
 
 	private boolean isHitBreakpoint(StackFrame data) {
@@ -160,198 +156,59 @@ public class ServerSession extends Session implements IStackListener {
 	}
 
 	@Override
-	protected void handle(Event event) {
-		switch (event.getType()) {
-		case SUSPEND:
-			suspend();
-			break;
-		case RESUME:
-			resume();
-			break;
-		case STEP:
-			step();
-			break;
-		case STEP_OVER:
-			stepOver();
-			break;
-		case BREAKPOINT_ADD:
-			addBreakpoint((BreakpointEvent) event);
-			break;
-		case BREAKPOINT_REMOVE:
-			removeBreakpoint((BreakpointEvent) event);
-			break;
-		case SKIP_ALL:
-			skip = ((SkipAllEvent) event).isSkip();
-			break;
-		default:
-			throw new IllegalArgumentException("Unexpected request: " + event);
-		}
+	protected void handle(EObject op) {
+		if (op instanceof DebugCmd)
+			switch (((DebugCmd) op).getType()) {
+			case SUSPEND:
+				suspend();
+				break;
+			case RESUME:
+				resume();
+				break;
+			case STEP:
+				step();
+				break;
+			case STEP_OVER:
+				stepOver();
+				break;
+			case BREAKPOINT_ADD:
+				addBreakpoint((BreakpointCmd) op);
+				break;
+			case BREAKPOINT_REMOVE:
+				removeBreakpoint((BreakpointCmd) op);
+				break;
+			case SKIP_ALL:
+				skip = ((SkipAllCmd) op).isSkip();
+				break;
+			case RESOLVE_VARIABLE:
+				synchronized (currentVariables) {
+					ResolveVariableCmd resolveCmd = (ResolveVariableCmd) op;
+					Variable var = currentVariables.get(resolveCmd.getId());
+					if (var != null) {
+						stackSupport.resolveVariable(var);
+					}
+					ResolveVariableEvent event = ModelFactory.eINSTANCE.createResolveVariableEvent();
+					event.setType(EventType.RESOLVE_VARIABLE);
+					event.setVariable(var);
+					synchronized(currentVariables) {
+						storeVarIds(var.getChildren());
+					}
+					try {
+						request(event);
+					} catch (CoreException e) {
+						CorePlugin.err(e.getMessage(), e);
+						Thread.currentThread().interrupt();
+					}
+				}
+				break;
+			default:
+				throw new IllegalArgumentException("Unexpected request: " + op);
+			}
 	}
 
 	@Override
 	protected void handle(Exception e) {
 		Log.log(e);
-	}
-
-	private List<StackFrame> getFrames(CommandStack stack) {
-		if (getSource(stack) == null) {
-			// no source information for this command stack
-			return null;
-		}
-		DebugCommand debug = getRoot(stack);
-		if (debug == null || !id.equals(debug.getSession())) {
-			// another session
-			return null;
-		}
-		String path = debug.getPath();
-		EMap<String, String> paths = debug.getPaths();
-		List<StackFrame> frames = new ArrayList<StackFrame>();
-		Command lastCommand = null;
-		int id = 0;
-		do {
-			Command command = stack.getCommand();
-			if (command instanceof AstExec) {
-				AstExec exec = (AstExec) command;
-				String currentPath = getCurrentPath(path, paths, exec);
-				StackFrame frame = ModelFactory.eINSTANCE.createStackFrame();
-				frame.setFile(currentPath);
-				frame.setCommand(exec.getName());
-				frame.setLine(exec.getLine());
-				frame.getVariables().addAll(extractArgs(lastCommand));
-
-				// Add all variables
-				CommandStack current = stack;
-				Set<String> variables = new HashSet<String>();
-				while (current != null) {
-					DeclarationContainer declarations = current.getDeclarations();
-					if (declarations != null) {
-						for (Declaration d : declarations.declarations()) {
-							if (d instanceof Val) {
-								Val v = (Val) d;
-								if (variables.add(v.getName())) {
-									Variable var = ModelFactory.eINSTANCE.createVariable();
-									var.setName(v.getName());
-									processVariable(var, v.getValue());
-									frame.getVariables().add(var);
-								}
-							}
-						}
-					}
-					if (current.getCommand() instanceof ProcInstance) {
-						current = null;
-					}
-					else {
-						current = current.getParent();
-					}
-				}
-
-				frame.setId(id);
-				id++;
-				frames.add(frame);
-			} else {
-				lastCommand = command;
-			}
-			stack = stack.getParent();
-		} while (stack != null);
-		return frames;
-	}
-
-	private static void processVariable(Variable var, Object value) {
-		if (value != null) {
-			if (value instanceof EObject) {
-				var.setType(((EObject) value).eClass().getName());
-			}
-			else {
-				var.setType(value.getClass().getName());
-			}
-			if (value instanceof BoxedValue) {
-				var.setValue(EcoreUtil.copy((BoxedValue) value));
-			}
-			else if( value instanceof EObject) {
-				EObject obj = (EObject) value;
-				for (EStructuralFeature f : obj.eClass()
-						.getEAllStructuralFeatures()) {
-					if (!obj.eIsSet(f) || f == CorePackage.eINSTANCE.getCommand_Host()
-							|| f == CorePackage.eINSTANCE.getCommand_Bindings()) {
-						continue;
-					}
-
-					Object childValue = obj.eGet(f);
-					Variable childVar = ModelFactory.eINSTANCE.createVariable();
-					childVar.setType(f.getEType().toString());
-					childVar.setName(f.getName());
-					if (childValue instanceof EObject) {
-						var.setObjectRef((EObject) childValue);
-					}
-					processVariable(childVar, childValue);
-
-					var.getChildren().add(childVar);
-				}
-			}
-			else {
-				var.setValue(BoxedValues.box(value.toString()));
-			}
-		}
-	}
-
-	private String getCurrentPath(String path, EMap<String, String> paths, AstExec exec) {
-		String currentPath = path;
-		if (exec.getResourceID() != null && paths.containsKey(exec.getResourceID())) {
-			currentPath = paths.get(exec.getResourceID());
-		}
-		return currentPath;
-	}
-
-	private static List<Variable> extractArgs(Command command) {
-		List<Variable> result = new ArrayList<Variable>();
-		if (command == null) {
-			return result;
-		}
-		Variable cmd = ModelFactory.eINSTANCE.createVariable();
-		cmd.setName(command.eClass().getName());
-		for (EStructuralFeature f : command.eClass()
-				.getEAllStructuralFeatures()) {
-			if (!command.eIsSet(f) || f == CorePackage.eINSTANCE.getCommand_Host()
-					|| f == CorePackage.eINSTANCE.getCommand_Bindings()) {
-				continue;
-			}
-
-			Object value = command.eGet(f);
-			Variable var = ModelFactory.eINSTANCE.createVariable();
-			var.setType(f.getEType().toString());
-			var.setName(f.getName());
-			if (value instanceof EObject) {
-				var.setObjectRef((EObject) value);
-			}
-			processVariable(var, value);
-
-			cmd.getChildren().add(var);
-		}
-		result.add(cmd);
-
-		return result;
-	}
-
-	private AstNode getSource(CommandStack stack) {
-		stack = stack.getParent();
-		if (stack != null) {
-			Command command = stack.getCommand();
-			if (command instanceof AstExec) {
-				return (AstExec) command;
-			}
-		}
-		return null;
-	}
-
-	private static DebugCommand getRoot(CommandStack stack) {
-		do {
-			Command command = stack.getCommand();
-			if (command instanceof DebugCommand) {
-				return (DebugCommand) command;
-			}
-			stack = stack.getParent();
-		} while (stack != null);
-		return null;
 	}
 
 	private synchronized void suspend() {
@@ -381,7 +238,7 @@ public class ServerSession extends Session implements IStackListener {
 		latch.lockAfterUnlock();
 	}
 
-	private void addBreakpoint(BreakpointEvent event) {
+	private void addBreakpoint(BreakpointCmd event) {
 		Set<Integer> set = breakpoints.get(event.getPath());
 		if (set == null) {
 			set = new HashSet<Integer>();
@@ -390,7 +247,7 @@ public class ServerSession extends Session implements IStackListener {
 		set.add(event.getLine());
 	}
 
-	private void removeBreakpoint(BreakpointEvent event) {
+	private void removeBreakpoint(BreakpointCmd event) {
 		Set<Integer> set = breakpoints.get(event.getPath());
 		if (set != null) {
 			set.remove(event.getLine());

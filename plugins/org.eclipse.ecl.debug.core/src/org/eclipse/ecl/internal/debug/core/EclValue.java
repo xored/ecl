@@ -11,17 +11,13 @@ import org.eclipse.emf.common.util.EList;
 public class EclValue extends EclDebugElement implements IValue {
 
 	private final EclDebugThread thread;
-	private final Variable arg;
-	private final IVariable[] children;
+	private Variable arg;
+	private IVariable[] children;
+	private boolean resolved = false;
 
 	public EclValue(EclDebugThread thread, Variable arg) {
 		this.thread = thread;
-		this.arg = arg;
-		EList<Variable> list = arg.getChildren();
-		children = new IVariable[list.size()];
-		for (int i = 0; i < list.size(); i++) {
-			children[i] = new EclVariable(thread, list.get(i));
-		}
+		setVariable(arg);
 	}
 
 	public IDebugTarget getDebugTarget() {
@@ -37,7 +33,9 @@ public class EclValue extends EclDebugElement implements IValue {
 		if (object != null) {
 			return object.toString();
 		}
-		return "";
+		else {
+			return arg.getType();
+		}
 	}
 
 	public boolean isAllocated() throws DebugException {
@@ -45,11 +43,31 @@ public class EclValue extends EclDebugElement implements IValue {
 	}
 
 	public IVariable[] getVariables() throws DebugException {
+		resolve();
 		return children;
 	}
 
 	public boolean hasVariables() throws DebugException {
+		resolve();
 		return !arg.getChildren().isEmpty();
+	}
+
+	private void resolve() {
+		if (!resolved) {
+			resolved = true;
+			if (arg.isComplex()) {
+				((EclDebugTarget) getDebugTarget()).resolveVariable(arg, this);
+			}
+		}
+	}
+
+	public void setVariable(Variable var) {
+		this.arg = var;
+		EList<Variable> list = arg.getChildren();
+		children = new IVariable[list.size()];
+		for (int i = 0; i < list.size(); i++) {
+			children[i] = new EclVariable(thread, list.get(i));
+		}
 	}
 
 }

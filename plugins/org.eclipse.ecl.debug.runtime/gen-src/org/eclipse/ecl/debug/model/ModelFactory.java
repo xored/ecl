@@ -71,13 +71,49 @@ public interface ModelFactory extends EFactory {
 	Variable createVariable();
 
 	/**
-	 * Returns a new object of class '<em>Skip All Event</em>'.
+	 * Returns a new object of class '<em>Resolve Variable Event</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Skip All Event</em>'.
+	 * @return a new object of class '<em>Resolve Variable Event</em>'.
 	 * @generated
 	 */
-	SkipAllEvent createSkipAllEvent();
+	ResolveVariableEvent createResolveVariableEvent();
+
+	/**
+	 * Returns a new object of class '<em>Debug Cmd</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Debug Cmd</em>'.
+	 * @generated
+	 */
+	DebugCmd createDebugCmd();
+
+	/**
+	 * Returns a new object of class '<em>Skip All Cmd</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Skip All Cmd</em>'.
+	 * @generated
+	 */
+	SkipAllCmd createSkipAllCmd();
+
+	/**
+	 * Returns a new object of class '<em>Breakpoint Cmd</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Breakpoint Cmd</em>'.
+	 * @generated
+	 */
+	BreakpointCmd createBreakpointCmd();
+
+	/**
+	 * Returns a new object of class '<em>Resolve Variable Cmd</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Resolve Variable Cmd</em>'.
+	 * @generated
+	 */
+	ResolveVariableCmd createResolveVariableCmd();
 
 	/**
 	 * Returns the package supported by this factory.

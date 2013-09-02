@@ -6,8 +6,8 @@
  */
 package org.eclipse.ecl.debug.model.impl;
 
-import org.eclipse.ecl.debug.model.Event;
-import org.eclipse.ecl.debug.model.EventType;
+import org.eclipse.ecl.debug.model.DebugCmd;
+import org.eclipse.ecl.debug.model.DebugType;
 import org.eclipse.ecl.debug.model.ModelPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -19,18 +19,18 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Event</b></em>'.
+ * An implementation of the model object '<em><b>Debug Cmd</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.debug.model.impl.EventImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.model.impl.DebugCmdImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class EventImpl extends EObjectImpl implements Event {
+public class DebugCmdImpl extends EObjectImpl implements DebugCmd {
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -39,7 +39,7 @@ public class EventImpl extends EObjectImpl implements Event {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final EventType TYPE_EDEFAULT = EventType.STARTED;
+	protected static final DebugType TYPE_EDEFAULT = DebugType.SUSPEND;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -49,14 +49,14 @@ public class EventImpl extends EObjectImpl implements Event {
 	 * @generated
 	 * @ordered
 	 */
-	protected EventType type = TYPE_EDEFAULT;
+	protected DebugType type = TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EventImpl() {
+	protected DebugCmdImpl() {
 		super();
 	}
 
@@ -67,7 +67,7 @@ public class EventImpl extends EObjectImpl implements Event {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ModelPackage.Literals.EVENT;
+		return ModelPackage.Literals.DEBUG_CMD;
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class EventImpl extends EObjectImpl implements Event {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EventType getType() {
+	public DebugType getType() {
 		return type;
 	}
 
@@ -84,11 +84,11 @@ public class EventImpl extends EObjectImpl implements Event {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(EventType newType) {
-		EventType oldType = type;
+	public void setType(DebugType newType) {
+		DebugType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.EVENT__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DEBUG_CMD__TYPE, oldType, type));
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class EventImpl extends EObjectImpl implements Event {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ModelPackage.EVENT__TYPE:
+			case ModelPackage.DEBUG_CMD__TYPE:
 				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -113,8 +113,8 @@ public class EventImpl extends EObjectImpl implements Event {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ModelPackage.EVENT__TYPE:
-				setType((EventType)newValue);
+			case ModelPackage.DEBUG_CMD__TYPE:
+				setType((DebugType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -128,7 +128,7 @@ public class EventImpl extends EObjectImpl implements Event {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ModelPackage.EVENT__TYPE:
+			case ModelPackage.DEBUG_CMD__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
 		}
@@ -143,7 +143,7 @@ public class EventImpl extends EObjectImpl implements Event {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ModelPackage.EVENT__TYPE:
+			case ModelPackage.DEBUG_CMD__TYPE:
 				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -165,4 +165,4 @@ public class EventImpl extends EObjectImpl implements Event {
 		return result.toString();
 	}
 
-} //EventImpl
+} //DebugCmdImpl

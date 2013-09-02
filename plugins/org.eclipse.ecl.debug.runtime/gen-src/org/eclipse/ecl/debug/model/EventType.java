@@ -23,76 +23,6 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum EventType implements Enumerator {
 	/**
-	 * The '<em><b>Suspend</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SUSPEND_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	SUSPEND(0, "Suspend", "Suspend"),
-
-	/**
-	 * The '<em><b>Resume</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #RESUME_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	RESUME(1, "Resume", "Resume"),
-
-	/**
-	 * The '<em><b>Step</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #STEP_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	STEP(2, "Step", "Step"),
-
-	/**
-	 * The '<em><b>Step Over</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #STEP_OVER_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	STEP_OVER(3, "StepOver", "StepOver"),
-
-	/**
-	 * The '<em><b>Breakpoint Add</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #BREAKPOINT_ADD_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	BREAKPOINT_ADD(4, "BreakpointAdd", "BreakpointAdd"),
-
-	/**
-	 * The '<em><b>Breakpoint Remove</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #BREAKPOINT_REMOVE_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	BREAKPOINT_REMOVE(5, "BreakpointRemove", "BreakpointRemove"),
-
-	/**
-	 * The '<em><b>Skip All</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SKIP_ALL_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	SKIP_ALL(6, "SkipAll", "SkipAll"),
-
-	/**
 	 * The '<em><b>Started</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -100,7 +30,7 @@ public enum EventType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	STARTED(7, "Started", "Started"),
+	STARTED(0, "Started", "Started"),
 
 	/**
 	 * The '<em><b>Suspended</b></em>' literal object.
@@ -110,7 +40,7 @@ public enum EventType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SUSPENDED(8, "Suspended", "Suspended"),
+	SUSPENDED(1, "Suspended", "Suspended"),
 
 	/**
 	 * The '<em><b>Step Ended</b></em>' literal object.
@@ -120,7 +50,7 @@ public enum EventType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	STEP_ENDED(9, "StepEnded", "StepEnded"),
+	STEP_ENDED(2, "StepEnded", "StepEnded"),
 
 	/**
 	 * The '<em><b>Breakpoint Hit</b></em>' literal object.
@@ -130,7 +60,7 @@ public enum EventType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	BREAKPOINT_HIT(10, "BreakpointHit", "BreakpointHit"),
+	BREAKPOINT_HIT(3, "BreakpointHit", "BreakpointHit"),
 
 	/**
 	 * The '<em><b>Resumed</b></em>' literal object.
@@ -140,112 +70,15 @@ public enum EventType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	RESUMED(11, "Resumed", "Resumed");
-
-	/**
-	 * The '<em><b>Suspend</b></em>' literal value.
+	RESUMED(4, "Resumed", "Resumed"), /**
+	 * The '<em><b>Resolve Variable</b></em>' literal object.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Suspend</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #SUSPEND
-	 * @model name="Suspend"
+	 * @see #RESOLVE_VARIABLE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SUSPEND_VALUE = 0;
-
-	/**
-	 * The '<em><b>Resume</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Resume</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #RESUME
-	 * @model name="Resume"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int RESUME_VALUE = 1;
-
-	/**
-	 * The '<em><b>Step</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Step</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #STEP
-	 * @model name="Step"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int STEP_VALUE = 2;
-
-	/**
-	 * The '<em><b>Step Over</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Step Over</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #STEP_OVER
-	 * @model name="StepOver"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int STEP_OVER_VALUE = 3;
-
-	/**
-	 * The '<em><b>Breakpoint Add</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Breakpoint Add</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #BREAKPOINT_ADD
-	 * @model name="BreakpointAdd"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int BREAKPOINT_ADD_VALUE = 4;
-
-	/**
-	 * The '<em><b>Breakpoint Remove</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Breakpoint Remove</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #BREAKPOINT_REMOVE
-	 * @model name="BreakpointRemove"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int BREAKPOINT_REMOVE_VALUE = 5;
-
-	/**
-	 * The '<em><b>Skip All</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Skip All</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #SKIP_ALL
-	 * @model name="SkipAll"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int SKIP_ALL_VALUE = 6;
+	RESOLVE_VARIABLE(5, "ResolveVariable", "ResolveVariable");
 
 	/**
 	 * The '<em><b>Started</b></em>' literal value.
@@ -260,7 +93,7 @@ public enum EventType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STARTED_VALUE = 7;
+	public static final int STARTED_VALUE = 0;
 
 	/**
 	 * The '<em><b>Suspended</b></em>' literal value.
@@ -275,7 +108,7 @@ public enum EventType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SUSPENDED_VALUE = 8;
+	public static final int SUSPENDED_VALUE = 1;
 
 	/**
 	 * The '<em><b>Step Ended</b></em>' literal value.
@@ -290,7 +123,7 @@ public enum EventType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STEP_ENDED_VALUE = 9;
+	public static final int STEP_ENDED_VALUE = 2;
 
 	/**
 	 * The '<em><b>Breakpoint Hit</b></em>' literal value.
@@ -305,7 +138,7 @@ public enum EventType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int BREAKPOINT_HIT_VALUE = 10;
+	public static final int BREAKPOINT_HIT_VALUE = 3;
 
 	/**
 	 * The '<em><b>Resumed</b></em>' literal value.
@@ -320,7 +153,22 @@ public enum EventType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int RESUMED_VALUE = 11;
+	public static final int RESUMED_VALUE = 4;
+
+	/**
+	 * The '<em><b>Resolve Variable</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Resolve Variable</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #RESOLVE_VARIABLE
+	 * @model name="ResolveVariable"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RESOLVE_VARIABLE_VALUE = 5;
 
 	/**
 	 * An array of all the '<em><b>Event Type</b></em>' enumerators.
@@ -330,18 +178,12 @@ public enum EventType implements Enumerator {
 	 */
 	private static final EventType[] VALUES_ARRAY =
 		new EventType[] {
-			SUSPEND,
-			RESUME,
-			STEP,
-			STEP_OVER,
-			BREAKPOINT_ADD,
-			BREAKPOINT_REMOVE,
-			SKIP_ALL,
 			STARTED,
 			SUSPENDED,
 			STEP_ENDED,
 			BREAKPOINT_HIT,
 			RESUMED,
+			RESOLVE_VARIABLE,
 		};
 
 	/**
@@ -392,18 +234,12 @@ public enum EventType implements Enumerator {
 	 */
 	public static EventType get(int value) {
 		switch (value) {
-			case SUSPEND_VALUE: return SUSPEND;
-			case RESUME_VALUE: return RESUME;
-			case STEP_VALUE: return STEP;
-			case STEP_OVER_VALUE: return STEP_OVER;
-			case BREAKPOINT_ADD_VALUE: return BREAKPOINT_ADD;
-			case BREAKPOINT_REMOVE_VALUE: return BREAKPOINT_REMOVE;
-			case SKIP_ALL_VALUE: return SKIP_ALL;
 			case STARTED_VALUE: return STARTED;
 			case SUSPENDED_VALUE: return SUSPENDED;
 			case STEP_ENDED_VALUE: return STEP_ENDED;
 			case BREAKPOINT_HIT_VALUE: return BREAKPOINT_HIT;
 			case RESUMED_VALUE: return RESUMED;
+			case RESOLVE_VARIABLE_VALUE: return RESOLVE_VARIABLE;
 		}
 		return null;
 	}

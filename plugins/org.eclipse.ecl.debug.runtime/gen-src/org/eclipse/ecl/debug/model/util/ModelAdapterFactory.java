@@ -92,8 +92,24 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 				return createVariableAdapter();
 			}
 			@Override
-			public Adapter caseSkipAllEvent(SkipAllEvent object) {
-				return createSkipAllEventAdapter();
+			public Adapter caseResolveVariableEvent(ResolveVariableEvent object) {
+				return createResolveVariableEventAdapter();
+			}
+			@Override
+			public Adapter caseDebugCmd(DebugCmd object) {
+				return createDebugCmdAdapter();
+			}
+			@Override
+			public Adapter caseSkipAllCmd(SkipAllCmd object) {
+				return createSkipAllCmdAdapter();
+			}
+			@Override
+			public Adapter caseBreakpointCmd(BreakpointCmd object) {
+				return createBreakpointCmdAdapter();
+			}
+			@Override
+			public Adapter caseResolveVariableCmd(ResolveVariableCmd object) {
+				return createResolveVariableCmdAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -186,16 +202,72 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.debug.model.SkipAllEvent <em>Skip All Event</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.debug.model.ResolveVariableEvent <em>Resolve Variable Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.ecl.debug.model.SkipAllEvent
+	 * @see org.eclipse.ecl.debug.model.ResolveVariableEvent
 	 * @generated
 	 */
-	public Adapter createSkipAllEventAdapter() {
+	public Adapter createResolveVariableEventAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.debug.model.DebugCmd <em>Debug Cmd</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.debug.model.DebugCmd
+	 * @generated
+	 */
+	public Adapter createDebugCmdAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.debug.model.SkipAllCmd <em>Skip All Cmd</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.debug.model.SkipAllCmd
+	 * @generated
+	 */
+	public Adapter createSkipAllCmdAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.debug.model.BreakpointCmd <em>Breakpoint Cmd</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.debug.model.BreakpointCmd
+	 * @generated
+	 */
+	public Adapter createBreakpointCmdAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.debug.model.ResolveVariableCmd <em>Resolve Variable Cmd</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.debug.model.ResolveVariableCmd
+	 * @generated
+	 */
+	public Adapter createResolveVariableCmdAdapter() {
 		return null;
 	}
 

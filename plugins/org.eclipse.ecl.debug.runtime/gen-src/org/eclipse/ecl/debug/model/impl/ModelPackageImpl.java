@@ -8,22 +8,27 @@ package org.eclipse.ecl.debug.model.impl;
 
 import org.eclipse.ecl.core.CorePackage;
 
+import org.eclipse.ecl.debug.model.BreakpointCmd;
 import org.eclipse.ecl.debug.model.BreakpointEvent;
+import org.eclipse.ecl.debug.model.DebugCmd;
+import org.eclipse.ecl.debug.model.DebugType;
 import org.eclipse.ecl.debug.model.Event;
 import org.eclipse.ecl.debug.model.EventType;
 import org.eclipse.ecl.debug.model.ModelFactory;
 import org.eclipse.ecl.debug.model.ModelPackage;
-
-import org.eclipse.ecl.debug.model.SkipAllEvent;
+import org.eclipse.ecl.debug.model.ResolveVariableCmd;
+import org.eclipse.ecl.debug.model.ResolveVariableEvent;
+import org.eclipse.ecl.debug.model.SkipAllCmd;
 import org.eclipse.ecl.debug.model.StackEvent;
 import org.eclipse.ecl.debug.model.StackFrame;
 import org.eclipse.ecl.debug.model.Variable;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -39,42 +44,84 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	private EClass eventEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass breakpointEventEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass stackEventEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass stackFrameEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass variableEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass skipAllEventEClass = null;
+	private EClass resolveVariableEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass debugCmdEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass skipAllCmdEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass breakpointCmdEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass resolveVariableCmdEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum eventTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum debugTypeEEnum = null;
+
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
@@ -324,8 +371,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getVariable_ObjectRef() {
-		return (EReference)variableEClass.getEStructuralFeatures().get(4);
+	public EAttribute getVariable_ObjectRef() {
+		return (EAttribute)variableEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -333,8 +380,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSkipAllEvent() {
-		return skipAllEventEClass;
+	public EAttribute getVariable_Complex() {
+		return (EAttribute)variableEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -342,8 +389,107 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSkipAllEvent_Skip() {
-		return (EAttribute)skipAllEventEClass.getEStructuralFeatures().get(0);
+	public EAttribute getVariable_Id() {
+		return (EAttribute)variableEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getResolveVariableEvent() {
+		return resolveVariableEventEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getResolveVariableEvent_Variable() {
+		return (EReference)resolveVariableEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDebugCmd() {
+		return debugCmdEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDebugCmd_Type() {
+		return (EAttribute)debugCmdEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSkipAllCmd() {
+		return skipAllCmdEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSkipAllCmd_Skip() {
+		return (EAttribute)skipAllCmdEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBreakpointCmd() {
+		return breakpointCmdEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBreakpointCmd_Line() {
+		return (EAttribute)breakpointCmdEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBreakpointCmd_Path() {
+		return (EAttribute)breakpointCmdEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getResolveVariableCmd() {
+		return resolveVariableCmdEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getResolveVariableCmd_Id() {
+		return (EAttribute)resolveVariableCmdEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -353,6 +499,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 */
 	public EEnum getEventType() {
 		return eventTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getDebugType() {
+		return debugTypeEEnum;
 	}
 
 	/**
@@ -407,13 +562,29 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(variableEClass, VARIABLE__NAME);
 		createEReference(variableEClass, VARIABLE__VALUE);
 		createEReference(variableEClass, VARIABLE__CHILDREN);
-		createEReference(variableEClass, VARIABLE__OBJECT_REF);
+		createEAttribute(variableEClass, VARIABLE__ID);
+		createEAttribute(variableEClass, VARIABLE__OBJECT_REF);
+		createEAttribute(variableEClass, VARIABLE__COMPLEX);
 
-		skipAllEventEClass = createEClass(SKIP_ALL_EVENT);
-		createEAttribute(skipAllEventEClass, SKIP_ALL_EVENT__SKIP);
+		resolveVariableEventEClass = createEClass(RESOLVE_VARIABLE_EVENT);
+		createEReference(resolveVariableEventEClass, RESOLVE_VARIABLE_EVENT__VARIABLE);
+
+		debugCmdEClass = createEClass(DEBUG_CMD);
+		createEAttribute(debugCmdEClass, DEBUG_CMD__TYPE);
+
+		skipAllCmdEClass = createEClass(SKIP_ALL_CMD);
+		createEAttribute(skipAllCmdEClass, SKIP_ALL_CMD__SKIP);
+
+		breakpointCmdEClass = createEClass(BREAKPOINT_CMD);
+		createEAttribute(breakpointCmdEClass, BREAKPOINT_CMD__LINE);
+		createEAttribute(breakpointCmdEClass, BREAKPOINT_CMD__PATH);
+
+		resolveVariableCmdEClass = createEClass(RESOLVE_VARIABLE_CMD);
+		createEAttribute(resolveVariableCmdEClass, RESOLVE_VARIABLE_CMD__ID);
 
 		// Create enums
 		eventTypeEEnum = createEEnum(EVENT_TYPE);
+		debugTypeEEnum = createEEnum(DEBUG_TYPE);
 	}
 
 	/**
@@ -446,7 +617,10 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		// Add supertypes to classes
 		breakpointEventEClass.getESuperTypes().add(this.getEvent());
 		stackEventEClass.getESuperTypes().add(this.getEvent());
-		skipAllEventEClass.getESuperTypes().add(this.getEvent());
+		resolveVariableEventEClass.getESuperTypes().add(this.getEvent());
+		skipAllCmdEClass.getESuperTypes().add(this.getDebugCmd());
+		breakpointCmdEClass.getESuperTypes().add(this.getDebugCmd());
+		resolveVariableCmdEClass.getESuperTypes().add(this.getDebugCmd());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -473,25 +647,44 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariable_Value(), ecorePackage.getEObject(), null, "value", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariable_Children(), this.getVariable(), null, "children", null, 0, -1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariable_ObjectRef(), ecorePackage.getEObject(), null, "objectRef", null, 0, 1, Variable.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_Id(), ecorePackage.getEString(), "id", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_ObjectRef(), ecorePackage.getEJavaObject(), "objectRef", null, 0, 1, Variable.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_Complex(), ecorePackage.getEBoolean(), "complex", "false", 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(skipAllEventEClass, SkipAllEvent.class, "SkipAllEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSkipAllEvent_Skip(), ecorePackage.getEBoolean(), "skip", null, 0, 1, SkipAllEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(resolveVariableEventEClass, ResolveVariableEvent.class, "ResolveVariableEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getResolveVariableEvent_Variable(), this.getVariable(), null, "variable", null, 0, 1, ResolveVariableEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(debugCmdEClass, DebugCmd.class, "DebugCmd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDebugCmd_Type(), this.getDebugType(), "type", null, 0, 1, DebugCmd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(skipAllCmdEClass, SkipAllCmd.class, "SkipAllCmd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSkipAllCmd_Skip(), ecorePackage.getEBoolean(), "skip", null, 0, 1, SkipAllCmd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(breakpointCmdEClass, BreakpointCmd.class, "BreakpointCmd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBreakpointCmd_Line(), ecorePackage.getEInt(), "line", null, 0, 1, BreakpointCmd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBreakpointCmd_Path(), ecorePackage.getEString(), "path", null, 0, 1, BreakpointCmd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(resolveVariableCmdEClass, ResolveVariableCmd.class, "ResolveVariableCmd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getResolveVariableCmd_Id(), ecorePackage.getEString(), "id", null, 0, 1, ResolveVariableCmd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(eventTypeEEnum, EventType.class, "EventType");
-		addEEnumLiteral(eventTypeEEnum, EventType.SUSPEND);
-		addEEnumLiteral(eventTypeEEnum, EventType.RESUME);
-		addEEnumLiteral(eventTypeEEnum, EventType.STEP);
-		addEEnumLiteral(eventTypeEEnum, EventType.STEP_OVER);
-		addEEnumLiteral(eventTypeEEnum, EventType.BREAKPOINT_ADD);
-		addEEnumLiteral(eventTypeEEnum, EventType.BREAKPOINT_REMOVE);
-		addEEnumLiteral(eventTypeEEnum, EventType.SKIP_ALL);
 		addEEnumLiteral(eventTypeEEnum, EventType.STARTED);
 		addEEnumLiteral(eventTypeEEnum, EventType.SUSPENDED);
 		addEEnumLiteral(eventTypeEEnum, EventType.STEP_ENDED);
 		addEEnumLiteral(eventTypeEEnum, EventType.BREAKPOINT_HIT);
 		addEEnumLiteral(eventTypeEEnum, EventType.RESUMED);
+		addEEnumLiteral(eventTypeEEnum, EventType.RESOLVE_VARIABLE);
+
+		initEEnum(debugTypeEEnum, DebugType.class, "DebugType");
+		addEEnumLiteral(debugTypeEEnum, DebugType.SUSPEND);
+		addEEnumLiteral(debugTypeEEnum, DebugType.RESUME);
+		addEEnumLiteral(debugTypeEEnum, DebugType.STEP);
+		addEEnumLiteral(debugTypeEEnum, DebugType.STEP_OVER);
+		addEEnumLiteral(debugTypeEEnum, DebugType.BREAKPOINT_ADD);
+		addEEnumLiteral(debugTypeEEnum, DebugType.BREAKPOINT_REMOVE);
+		addEEnumLiteral(debugTypeEEnum, DebugType.SKIP_ALL);
+		addEEnumLiteral(debugTypeEEnum, DebugType.RESOLVE_VARIABLE);
 
 		// Create resource
 		createResource(eNS_URI);

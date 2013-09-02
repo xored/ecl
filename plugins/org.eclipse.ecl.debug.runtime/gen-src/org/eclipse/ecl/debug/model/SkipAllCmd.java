@@ -9,21 +9,21 @@ package org.eclipse.ecl.debug.model;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Skip All Event</b></em>'.
+ * A representation of the model object '<em><b>Skip All Cmd</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.ecl.debug.model.SkipAllEvent#isSkip <em>Skip</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.model.SkipAllCmd#isSkip <em>Skip</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.eclipse.ecl.debug.model.ModelPackage#getSkipAllEvent()
+ * @see org.eclipse.ecl.debug.model.ModelPackage#getSkipAllCmd()
  * @model
  * @generated
  */
-public interface SkipAllEvent extends Event {
+public interface SkipAllCmd extends DebugCmd {
 	/**
 	 * Returns the value of the '<em><b>Skip</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -34,14 +34,14 @@ public interface SkipAllEvent extends Event {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Skip</em>' attribute.
 	 * @see #setSkip(boolean)
-	 * @see org.eclipse.ecl.debug.model.ModelPackage#getSkipAllEvent_Skip()
+	 * @see org.eclipse.ecl.debug.model.ModelPackage#getSkipAllCmd_Skip()
 	 * @model
 	 * @generated
 	 */
 	boolean isSkip();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.ecl.debug.model.SkipAllEvent#isSkip <em>Skip</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.ecl.debug.model.SkipAllCmd#isSkip <em>Skip</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Skip</em>' attribute.
@@ -50,4 +50,4 @@ public interface SkipAllEvent extends Event {
 	 */
 	void setSkip(boolean value);
 
-} // SkipAllEvent
+} // SkipAllCmd

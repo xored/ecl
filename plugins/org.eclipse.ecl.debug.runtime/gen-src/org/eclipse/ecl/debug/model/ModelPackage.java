@@ -70,7 +70,6 @@ public interface ModelPackage extends EPackage {
 	 */
 	int EVENT = 0;
 
-
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -301,13 +300,31 @@ public interface ModelPackage extends EPackage {
 	int VARIABLE__CHILDREN = 3;
 
 	/**
-	 * The feature id for the '<em><b>Object Ref</b></em>' reference.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__OBJECT_REF = 4;
+	int VARIABLE__ID = 4;
+
+	/**
+	 * The feature id for the '<em><b>Object Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__OBJECT_REF = 5;
+
+	/**
+	 * The feature id for the '<em><b>Complex</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__COMPLEX = 6;
 
 	/**
 	 * The number of structural features of the '<em>Variable</em>' class.
@@ -316,17 +333,17 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_FEATURE_COUNT = 5;
+	int VARIABLE_FEATURE_COUNT = 7;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.debug.model.impl.SkipAllEventImpl <em>Skip All Event</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.ecl.debug.model.impl.ResolveVariableEventImpl <em>Resolve Variable Event</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.debug.model.impl.SkipAllEventImpl
-	 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getSkipAllEvent()
+	 * @see org.eclipse.ecl.debug.model.impl.ResolveVariableEventImpl
+	 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getResolveVariableEvent()
 	 * @generated
 	 */
-	int SKIP_ALL_EVENT = 5;
+	int RESOLVE_VARIABLE_EVENT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -335,7 +352,72 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SKIP_ALL_EVENT__TYPE = EVENT__TYPE;
+	int RESOLVE_VARIABLE_EVENT__TYPE = EVENT__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOLVE_VARIABLE_EVENT__VARIABLE = EVENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Resolve Variable Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOLVE_VARIABLE_EVENT_FEATURE_COUNT = EVENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.debug.model.impl.DebugCmdImpl <em>Debug Cmd</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.debug.model.impl.DebugCmdImpl
+	 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getDebugCmd()
+	 * @generated
+	 */
+	int DEBUG_CMD = 6;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEBUG_CMD__TYPE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Debug Cmd</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEBUG_CMD_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.debug.model.impl.SkipAllCmdImpl <em>Skip All Cmd</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.debug.model.impl.SkipAllCmdImpl
+	 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getSkipAllCmd()
+	 * @generated
+	 */
+	int SKIP_ALL_CMD = 7;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SKIP_ALL_CMD__TYPE = DEBUG_CMD__TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Skip</b></em>' attribute.
@@ -344,16 +426,99 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SKIP_ALL_EVENT__SKIP = EVENT_FEATURE_COUNT + 0;
+	int SKIP_ALL_CMD__SKIP = DEBUG_CMD_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Skip All Event</em>' class.
+	 * The number of structural features of the '<em>Skip All Cmd</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SKIP_ALL_EVENT_FEATURE_COUNT = EVENT_FEATURE_COUNT + 1;
+	int SKIP_ALL_CMD_FEATURE_COUNT = DEBUG_CMD_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.debug.model.impl.BreakpointCmdImpl <em>Breakpoint Cmd</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.debug.model.impl.BreakpointCmdImpl
+	 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getBreakpointCmd()
+	 * @generated
+	 */
+	int BREAKPOINT_CMD = 8;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BREAKPOINT_CMD__TYPE = DEBUG_CMD__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Line</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BREAKPOINT_CMD__LINE = DEBUG_CMD_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BREAKPOINT_CMD__PATH = DEBUG_CMD_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Breakpoint Cmd</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BREAKPOINT_CMD_FEATURE_COUNT = DEBUG_CMD_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.debug.model.impl.ResolveVariableCmdImpl <em>Resolve Variable Cmd</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.debug.model.impl.ResolveVariableCmdImpl
+	 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getResolveVariableCmd()
+	 * @generated
+	 */
+	int RESOLVE_VARIABLE_CMD = 9;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOLVE_VARIABLE_CMD__TYPE = DEBUG_CMD__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOLVE_VARIABLE_CMD__ID = DEBUG_CMD_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Resolve Variable Cmd</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOLVE_VARIABLE_CMD_FEATURE_COUNT = DEBUG_CMD_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.debug.model.EventType <em>Event Type</em>}' enum.
@@ -363,7 +528,17 @@ public interface ModelPackage extends EPackage {
 	 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getEventType()
 	 * @generated
 	 */
-	int EVENT_TYPE = 6;
+	int EVENT_TYPE = 10;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.debug.model.DebugType <em>Debug Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.debug.model.DebugType
+	 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getDebugType()
+	 * @generated
+	 */
+	int DEBUG_TYPE = 11;
 
 
 	/**
@@ -582,36 +757,153 @@ public interface ModelPackage extends EPackage {
 	EReference getVariable_Children();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.ecl.debug.model.Variable#getObjectRef <em>Object Ref</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.model.Variable#getObjectRef <em>Object Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Object Ref</em>'.
+	 * @return the meta object for the attribute '<em>Object Ref</em>'.
 	 * @see org.eclipse.ecl.debug.model.Variable#getObjectRef()
 	 * @see #getVariable()
 	 * @generated
 	 */
-	EReference getVariable_ObjectRef();
+	EAttribute getVariable_ObjectRef();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.ecl.debug.model.SkipAllEvent <em>Skip All Event</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.model.Variable#isComplex <em>Complex</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Skip All Event</em>'.
-	 * @see org.eclipse.ecl.debug.model.SkipAllEvent
+	 * @return the meta object for the attribute '<em>Complex</em>'.
+	 * @see org.eclipse.ecl.debug.model.Variable#isComplex()
+	 * @see #getVariable()
 	 * @generated
 	 */
-	EClass getSkipAllEvent();
+	EAttribute getVariable_Complex();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.model.SkipAllEvent#isSkip <em>Skip</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.model.Variable#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.eclipse.ecl.debug.model.Variable#getId()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_Id();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.debug.model.ResolveVariableEvent <em>Resolve Variable Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Resolve Variable Event</em>'.
+	 * @see org.eclipse.ecl.debug.model.ResolveVariableEvent
+	 * @generated
+	 */
+	EClass getResolveVariableEvent();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.debug.model.ResolveVariableEvent#getVariable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Variable</em>'.
+	 * @see org.eclipse.ecl.debug.model.ResolveVariableEvent#getVariable()
+	 * @see #getResolveVariableEvent()
+	 * @generated
+	 */
+	EReference getResolveVariableEvent_Variable();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.debug.model.DebugCmd <em>Debug Cmd</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Debug Cmd</em>'.
+	 * @see org.eclipse.ecl.debug.model.DebugCmd
+	 * @generated
+	 */
+	EClass getDebugCmd();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.model.DebugCmd#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see org.eclipse.ecl.debug.model.DebugCmd#getType()
+	 * @see #getDebugCmd()
+	 * @generated
+	 */
+	EAttribute getDebugCmd_Type();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.debug.model.SkipAllCmd <em>Skip All Cmd</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Skip All Cmd</em>'.
+	 * @see org.eclipse.ecl.debug.model.SkipAllCmd
+	 * @generated
+	 */
+	EClass getSkipAllCmd();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.model.SkipAllCmd#isSkip <em>Skip</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Skip</em>'.
-	 * @see org.eclipse.ecl.debug.model.SkipAllEvent#isSkip()
-	 * @see #getSkipAllEvent()
+	 * @see org.eclipse.ecl.debug.model.SkipAllCmd#isSkip()
+	 * @see #getSkipAllCmd()
 	 * @generated
 	 */
-	EAttribute getSkipAllEvent_Skip();
+	EAttribute getSkipAllCmd_Skip();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.debug.model.BreakpointCmd <em>Breakpoint Cmd</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Breakpoint Cmd</em>'.
+	 * @see org.eclipse.ecl.debug.model.BreakpointCmd
+	 * @generated
+	 */
+	EClass getBreakpointCmd();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.model.BreakpointCmd#getLine <em>Line</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Line</em>'.
+	 * @see org.eclipse.ecl.debug.model.BreakpointCmd#getLine()
+	 * @see #getBreakpointCmd()
+	 * @generated
+	 */
+	EAttribute getBreakpointCmd_Line();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.model.BreakpointCmd#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Path</em>'.
+	 * @see org.eclipse.ecl.debug.model.BreakpointCmd#getPath()
+	 * @see #getBreakpointCmd()
+	 * @generated
+	 */
+	EAttribute getBreakpointCmd_Path();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.debug.model.ResolveVariableCmd <em>Resolve Variable Cmd</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Resolve Variable Cmd</em>'.
+	 * @see org.eclipse.ecl.debug.model.ResolveVariableCmd
+	 * @generated
+	 */
+	EClass getResolveVariableCmd();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.model.ResolveVariableCmd#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.eclipse.ecl.debug.model.ResolveVariableCmd#getId()
+	 * @see #getResolveVariableCmd()
+	 * @generated
+	 */
+	EAttribute getResolveVariableCmd_Id();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.ecl.debug.model.EventType <em>Event Type</em>}'.
@@ -622,6 +914,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getEventType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.ecl.debug.model.DebugType <em>Debug Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Debug Type</em>'.
+	 * @see org.eclipse.ecl.debug.model.DebugType
+	 * @generated
+	 */
+	EEnum getDebugType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -654,6 +956,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass EVENT = eINSTANCE.getEvent();
+
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -661,6 +964,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EVENT__TYPE = eINSTANCE.getEvent_Type();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.debug.model.impl.BreakpointEventImpl <em>Breakpoint Event</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -670,6 +974,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass BREAKPOINT_EVENT = eINSTANCE.getBreakpointEvent();
+
 		/**
 		 * The meta object literal for the '<em><b>Line</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -677,6 +982,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BREAKPOINT_EVENT__LINE = eINSTANCE.getBreakpointEvent_Line();
+
 		/**
 		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -684,6 +990,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BREAKPOINT_EVENT__PATH = eINSTANCE.getBreakpointEvent_Path();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.debug.model.impl.StackEventImpl <em>Stack Event</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -693,6 +1000,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass STACK_EVENT = eINSTANCE.getStackEvent();
+
 		/**
 		 * The meta object literal for the '<em><b>Line</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -700,6 +1008,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STACK_EVENT__LINE = eINSTANCE.getStackEvent_Line();
+
 		/**
 		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -707,6 +1016,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STACK_EVENT__PATH = eINSTANCE.getStackEvent_Path();
+
 		/**
 		 * The meta object literal for the '<em><b>Stack Frame</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
@@ -714,6 +1024,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference STACK_EVENT__STACK_FRAME = eINSTANCE.getStackEvent_StackFrame();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.debug.model.impl.StackFrameImpl <em>Stack Frame</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -723,6 +1034,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass STACK_FRAME = eINSTANCE.getStackFrame();
+
 		/**
 		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -730,6 +1042,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STACK_FRAME__ID = eINSTANCE.getStackFrame_Id();
+
 		/**
 		 * The meta object literal for the '<em><b>File</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -737,6 +1050,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STACK_FRAME__FILE = eINSTANCE.getStackFrame_File();
+
 		/**
 		 * The meta object literal for the '<em><b>Line</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -744,6 +1058,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STACK_FRAME__LINE = eINSTANCE.getStackFrame_Line();
+
 		/**
 		 * The meta object literal for the '<em><b>Command</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -751,6 +1066,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STACK_FRAME__COMMAND = eINSTANCE.getStackFrame_Command();
+
 		/**
 		 * The meta object literal for the '<em><b>Variables</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
@@ -758,6 +1074,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference STACK_FRAME__VARIABLES = eINSTANCE.getStackFrame_Variables();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.debug.model.impl.VariableImpl <em>Variable</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -767,6 +1084,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass VARIABLE = eINSTANCE.getVariable();
+
 		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -774,6 +1092,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VARIABLE__TYPE = eINSTANCE.getVariable_Type();
+
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
@@ -781,6 +1100,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VARIABLE__NAME = eINSTANCE.getVariable_Name();
+
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
@@ -788,6 +1108,7 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference VARIABLE__VALUE = eINSTANCE.getVariable_Value();
+
 		/**
 		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
@@ -795,29 +1116,129 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference VARIABLE__CHILDREN = eINSTANCE.getVariable_Children();
+
 		/**
-		 * The meta object literal for the '<em><b>Object Ref</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Object Ref</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VARIABLE__OBJECT_REF = eINSTANCE.getVariable_ObjectRef();
+		EAttribute VARIABLE__OBJECT_REF = eINSTANCE.getVariable_ObjectRef();
+
 		/**
-		 * The meta object literal for the '{@link org.eclipse.ecl.debug.model.impl.SkipAllEventImpl <em>Skip All Event</em>}' class.
+		 * The meta object literal for the '<em><b>Complex</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.debug.model.impl.SkipAllEventImpl
-		 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getSkipAllEvent()
 		 * @generated
 		 */
-		EClass SKIP_ALL_EVENT = eINSTANCE.getSkipAllEvent();
+		EAttribute VARIABLE__COMPLEX = eINSTANCE.getVariable_Complex();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__ID = eINSTANCE.getVariable_Id();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.debug.model.impl.ResolveVariableEventImpl <em>Resolve Variable Event</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.debug.model.impl.ResolveVariableEventImpl
+		 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getResolveVariableEvent()
+		 * @generated
+		 */
+		EClass RESOLVE_VARIABLE_EVENT = eINSTANCE.getResolveVariableEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESOLVE_VARIABLE_EVENT__VARIABLE = eINSTANCE.getResolveVariableEvent_Variable();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.debug.model.impl.DebugCmdImpl <em>Debug Cmd</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.debug.model.impl.DebugCmdImpl
+		 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getDebugCmd()
+		 * @generated
+		 */
+		EClass DEBUG_CMD = eINSTANCE.getDebugCmd();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEBUG_CMD__TYPE = eINSTANCE.getDebugCmd_Type();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.debug.model.impl.SkipAllCmdImpl <em>Skip All Cmd</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.debug.model.impl.SkipAllCmdImpl
+		 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getSkipAllCmd()
+		 * @generated
+		 */
+		EClass SKIP_ALL_CMD = eINSTANCE.getSkipAllCmd();
+
 		/**
 		 * The meta object literal for the '<em><b>Skip</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SKIP_ALL_EVENT__SKIP = eINSTANCE.getSkipAllEvent_Skip();
+		EAttribute SKIP_ALL_CMD__SKIP = eINSTANCE.getSkipAllCmd_Skip();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.debug.model.impl.BreakpointCmdImpl <em>Breakpoint Cmd</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.debug.model.impl.BreakpointCmdImpl
+		 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getBreakpointCmd()
+		 * @generated
+		 */
+		EClass BREAKPOINT_CMD = eINSTANCE.getBreakpointCmd();
+
+		/**
+		 * The meta object literal for the '<em><b>Line</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BREAKPOINT_CMD__LINE = eINSTANCE.getBreakpointCmd_Line();
+
+		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BREAKPOINT_CMD__PATH = eINSTANCE.getBreakpointCmd_Path();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.debug.model.impl.ResolveVariableCmdImpl <em>Resolve Variable Cmd</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.debug.model.impl.ResolveVariableCmdImpl
+		 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getResolveVariableCmd()
+		 * @generated
+		 */
+		EClass RESOLVE_VARIABLE_CMD = eINSTANCE.getResolveVariableCmd();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESOLVE_VARIABLE_CMD__ID = eINSTANCE.getResolveVariableCmd_Id();
+
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.debug.model.EventType <em>Event Type</em>}' enum.
 		 * <!-- begin-user-doc -->
@@ -827,6 +1248,16 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum EVENT_TYPE = eINSTANCE.getEventType();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.debug.model.DebugType <em>Debug Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.debug.model.DebugType
+		 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getDebugType()
+		 * @generated
+		 */
+		EEnum DEBUG_TYPE = eINSTANCE.getDebugType();
 
 	}
 

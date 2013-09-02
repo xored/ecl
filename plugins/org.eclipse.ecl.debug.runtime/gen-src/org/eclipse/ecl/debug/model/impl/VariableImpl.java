@@ -7,6 +7,7 @@
 package org.eclipse.ecl.debug.model.impl;
 
 import java.util.Collection;
+
 import org.eclipse.ecl.debug.model.ModelPackage;
 import org.eclipse.ecl.debug.model.Variable;
 
@@ -14,12 +15,14 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -34,7 +37,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.ecl.debug.model.impl.VariableImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.model.impl.VariableImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.model.impl.VariableImpl#getChildren <em>Children</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.model.impl.VariableImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.model.impl.VariableImpl#getObjectRef <em>Object Ref</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.model.impl.VariableImpl#isComplex <em>Complex</em>}</li>
  * </ul>
  * </p>
  *
@@ -102,14 +107,64 @@ public class VariableImpl extends EObjectImpl implements Variable {
 	protected EList<Variable> children;
 
 	/**
-	 * The cached value of the '{@link #getObjectRef() <em>Object Ref</em>}' reference.
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getObjectRef() <em>Object Ref</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getObjectRef()
 	 * @generated
 	 * @ordered
 	 */
-	protected EObject objectRef;
+	protected static final Object OBJECT_REF_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getObjectRef() <em>Object Ref</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getObjectRef()
+	 * @generated
+	 * @ordered
+	 */
+	protected Object objectRef = OBJECT_REF_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isComplex() <em>Complex</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isComplex()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean COMPLEX_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isComplex() <em>Complex</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isComplex()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean complex = COMPLEX_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -232,15 +287,7 @@ public class VariableImpl extends EObjectImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject getObjectRef() {
-		if (objectRef != null && objectRef.eIsProxy()) {
-			InternalEObject oldObjectRef = (InternalEObject)objectRef;
-			objectRef = eResolveProxy(oldObjectRef);
-			if (objectRef != oldObjectRef) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.VARIABLE__OBJECT_REF, oldObjectRef, objectRef));
-			}
-		}
+	public Object getObjectRef() {
 		return objectRef;
 	}
 
@@ -249,20 +296,53 @@ public class VariableImpl extends EObjectImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject basicGetObjectRef() {
-		return objectRef;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setObjectRef(EObject newObjectRef) {
-		EObject oldObjectRef = objectRef;
+	public void setObjectRef(Object newObjectRef) {
+		Object oldObjectRef = objectRef;
 		objectRef = newObjectRef;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.VARIABLE__OBJECT_REF, oldObjectRef, objectRef));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isComplex() {
+		return complex;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setComplex(boolean newComplex) {
+		boolean oldComplex = complex;
+		complex = newComplex;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.VARIABLE__COMPLEX, oldComplex, complex));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setId(String newId) {
+		String oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.VARIABLE__ID, oldId, id));
 	}
 
 	/**
@@ -297,9 +377,12 @@ public class VariableImpl extends EObjectImpl implements Variable {
 				return getValue();
 			case ModelPackage.VARIABLE__CHILDREN:
 				return getChildren();
+			case ModelPackage.VARIABLE__ID:
+				return getId();
 			case ModelPackage.VARIABLE__OBJECT_REF:
-				if (resolve) return getObjectRef();
-				return basicGetObjectRef();
+				return getObjectRef();
+			case ModelPackage.VARIABLE__COMPLEX:
+				return isComplex();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -326,8 +409,14 @@ public class VariableImpl extends EObjectImpl implements Variable {
 				getChildren().clear();
 				getChildren().addAll((Collection<? extends Variable>)newValue);
 				return;
+			case ModelPackage.VARIABLE__ID:
+				setId((String)newValue);
+				return;
 			case ModelPackage.VARIABLE__OBJECT_REF:
-				setObjectRef((EObject)newValue);
+				setObjectRef(newValue);
+				return;
+			case ModelPackage.VARIABLE__COMPLEX:
+				setComplex((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -353,8 +442,14 @@ public class VariableImpl extends EObjectImpl implements Variable {
 			case ModelPackage.VARIABLE__CHILDREN:
 				getChildren().clear();
 				return;
+			case ModelPackage.VARIABLE__ID:
+				setId(ID_EDEFAULT);
+				return;
 			case ModelPackage.VARIABLE__OBJECT_REF:
-				setObjectRef((EObject)null);
+				setObjectRef(OBJECT_REF_EDEFAULT);
+				return;
+			case ModelPackage.VARIABLE__COMPLEX:
+				setComplex(COMPLEX_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -376,8 +471,12 @@ public class VariableImpl extends EObjectImpl implements Variable {
 				return value != null;
 			case ModelPackage.VARIABLE__CHILDREN:
 				return children != null && !children.isEmpty();
+			case ModelPackage.VARIABLE__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case ModelPackage.VARIABLE__OBJECT_REF:
-				return objectRef != null;
+				return OBJECT_REF_EDEFAULT == null ? objectRef != null : !OBJECT_REF_EDEFAULT.equals(objectRef);
+			case ModelPackage.VARIABLE__COMPLEX:
+				return complex != COMPLEX_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -396,6 +495,12 @@ public class VariableImpl extends EObjectImpl implements Variable {
 		result.append(type);
 		result.append(", name: ");
 		result.append(name);
+		result.append(", id: ");
+		result.append(id);
+		result.append(", objectRef: ");
+		result.append(objectRef);
+		result.append(", complex: ");
+		result.append(complex);
 		result.append(')');
 		return result.toString();
 	}

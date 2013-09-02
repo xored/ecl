@@ -7,6 +7,7 @@
 package org.eclipse.ecl.debug.model;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -21,7 +22,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.ecl.debug.model.Variable#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.model.Variable#getValue <em>Value</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.model.Variable#getChildren <em>Children</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.model.Variable#getId <em>Id</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.model.Variable#getObjectRef <em>Object Ref</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.model.Variable#isComplex <em>Complex</em>}</li>
  * </ul>
  * </p>
  *
@@ -113,7 +116,7 @@ public interface Variable extends EObject {
 	 * The list contents are of type {@link org.eclipse.ecl.debug.model.Variable}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Children</em>' reference isn't clear,
+	 * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -125,29 +128,82 @@ public interface Variable extends EObject {
 	EList<Variable> getChildren();
 
 	/**
-	 * Returns the value of the '<em><b>Object Ref</b></em>' reference.
+	 * Returns the value of the '<em><b>Object Ref</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Object Ref</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Object Ref</em>' reference.
-	 * @see #setObjectRef(EObject)
+	 * @return the value of the '<em>Object Ref</em>' attribute.
+	 * @see #setObjectRef(Object)
 	 * @see org.eclipse.ecl.debug.model.ModelPackage#getVariable_ObjectRef()
 	 * @model transient="true"
 	 * @generated
 	 */
-	EObject getObjectRef();
+	Object getObjectRef();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.ecl.debug.model.Variable#getObjectRef <em>Object Ref</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.ecl.debug.model.Variable#getObjectRef <em>Object Ref</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Object Ref</em>' reference.
+	 * @param value the new value of the '<em>Object Ref</em>' attribute.
 	 * @see #getObjectRef()
 	 * @generated
 	 */
-	void setObjectRef(EObject value);
+	void setObjectRef(Object value);
+
+	/**
+	 * Returns the value of the '<em><b>Complex</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Complex</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Complex</em>' attribute.
+	 * @see #setComplex(boolean)
+	 * @see org.eclipse.ecl.debug.model.ModelPackage#getVariable_Complex()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isComplex();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.ecl.debug.model.Variable#isComplex <em>Complex</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Complex</em>' attribute.
+	 * @see #isComplex()
+	 * @generated
+	 */
+	void setComplex(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Id</em>' attribute.
+	 * @see #setId(String)
+	 * @see org.eclipse.ecl.debug.model.ModelPackage#getVariable_Id()
+	 * @model
+	 * @generated
+	 */
+	String getId();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.ecl.debug.model.Variable#getId <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Id</em>' attribute.
+	 * @see #getId()
+	 * @generated
+	 */
+	void setId(String value);
 
 } // Variable

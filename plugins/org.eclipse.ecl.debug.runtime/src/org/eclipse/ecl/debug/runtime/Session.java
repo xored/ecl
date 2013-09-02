@@ -19,10 +19,10 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.ecl.debug.model.Event;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.internal.core.IMarkeredPipe;
 import org.eclipse.ecl.runtime.CoreUtils;
+import org.eclipse.emf.ecore.EObject;
 
 public abstract class Session extends Job {
 
@@ -42,7 +42,7 @@ public abstract class Session extends Job {
 		schedule();
 	}
 
-	public void request(Event event) throws CoreException {
+	public void request(EObject event) throws CoreException {
 		pipe.write(event);
 	}
 
@@ -55,7 +55,7 @@ public abstract class Session extends Job {
 		}
 	}
 
-	protected abstract void handle(Event event);
+	protected abstract void handle(EObject event);
 
 	protected abstract void handle(Exception e);
 
@@ -70,8 +70,8 @@ public abstract class Session extends Job {
 				if (pipe.isClosed()) {
 					return Status.OK_STATUS;
 				}
-				if (take instanceof Event) {
-					handle((Event) take);
+				if (take instanceof EObject) {
+					handle((EObject) take);
 				}
 			}
 		} catch (Exception e) {

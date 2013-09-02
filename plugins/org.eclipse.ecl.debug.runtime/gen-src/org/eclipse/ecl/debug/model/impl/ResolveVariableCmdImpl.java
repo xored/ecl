@@ -6,57 +6,52 @@
  */
 package org.eclipse.ecl.debug.model.impl;
 
-import org.eclipse.ecl.debug.model.Event;
-import org.eclipse.ecl.debug.model.EventType;
 import org.eclipse.ecl.debug.model.ModelPackage;
+import org.eclipse.ecl.debug.model.ResolveVariableCmd;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Event</b></em>'.
+ * An implementation of the model object '<em><b>Resolve Variable Cmd</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.debug.model.impl.EventImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.model.impl.ResolveVariableCmdImpl#getId <em>Id</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class EventImpl extends EObjectImpl implements Event {
+public class ResolveVariableCmdImpl extends DebugCmdImpl implements ResolveVariableCmd {
 	/**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final EventType TYPE_EDEFAULT = EventType.STARTED;
-
+	protected static final String ID_EDEFAULT = null;
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-	protected EventType type = TYPE_EDEFAULT;
+	protected String id = ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EventImpl() {
+	protected ResolveVariableCmdImpl() {
 		super();
 	}
 
@@ -67,7 +62,7 @@ public class EventImpl extends EObjectImpl implements Event {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ModelPackage.Literals.EVENT;
+		return ModelPackage.Literals.RESOLVE_VARIABLE_CMD;
 	}
 
 	/**
@@ -75,8 +70,8 @@ public class EventImpl extends EObjectImpl implements Event {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EventType getType() {
-		return type;
+	public String getId() {
+		return id;
 	}
 
 	/**
@@ -84,11 +79,11 @@ public class EventImpl extends EObjectImpl implements Event {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(EventType newType) {
-		EventType oldType = type;
-		type = newType == null ? TYPE_EDEFAULT : newType;
+	public void setId(String newId) {
+		String oldId = id;
+		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.EVENT__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.RESOLVE_VARIABLE_CMD__ID, oldId, id));
 	}
 
 	/**
@@ -99,8 +94,8 @@ public class EventImpl extends EObjectImpl implements Event {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ModelPackage.EVENT__TYPE:
-				return getType();
+			case ModelPackage.RESOLVE_VARIABLE_CMD__ID:
+				return getId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -113,8 +108,8 @@ public class EventImpl extends EObjectImpl implements Event {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ModelPackage.EVENT__TYPE:
-				setType((EventType)newValue);
+			case ModelPackage.RESOLVE_VARIABLE_CMD__ID:
+				setId((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -128,8 +123,8 @@ public class EventImpl extends EObjectImpl implements Event {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ModelPackage.EVENT__TYPE:
-				setType(TYPE_EDEFAULT);
+			case ModelPackage.RESOLVE_VARIABLE_CMD__ID:
+				setId(ID_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -143,8 +138,8 @@ public class EventImpl extends EObjectImpl implements Event {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ModelPackage.EVENT__TYPE:
-				return type != TYPE_EDEFAULT;
+			case ModelPackage.RESOLVE_VARIABLE_CMD__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -159,10 +154,10 @@ public class EventImpl extends EObjectImpl implements Event {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (type: ");
-		result.append(type);
+		result.append(" (id: ");
+		result.append(id);
 		result.append(')');
 		return result.toString();
 	}
 
-} //EventImpl
+} //ResolveVariableCmdImpl

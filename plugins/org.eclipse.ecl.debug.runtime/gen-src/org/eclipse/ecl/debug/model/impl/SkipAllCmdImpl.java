@@ -7,7 +7,7 @@
 package org.eclipse.ecl.debug.model.impl;
 
 import org.eclipse.ecl.debug.model.ModelPackage;
-import org.eclipse.ecl.debug.model.SkipAllEvent;
+import org.eclipse.ecl.debug.model.SkipAllCmd;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -17,18 +17,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Skip All Event</b></em>'.
+ * An implementation of the model object '<em><b>Skip All Cmd</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.debug.model.impl.SkipAllEventImpl#isSkip <em>Skip</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.model.impl.SkipAllCmdImpl#isSkip <em>Skip</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SkipAllEventImpl extends EventImpl implements SkipAllEvent {
+public class SkipAllCmdImpl extends DebugCmdImpl implements SkipAllCmd {
 	/**
 	 * The default value of the '{@link #isSkip() <em>Skip</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -54,7 +54,7 @@ public class SkipAllEventImpl extends EventImpl implements SkipAllEvent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SkipAllEventImpl() {
+	protected SkipAllCmdImpl() {
 		super();
 	}
 
@@ -65,7 +65,7 @@ public class SkipAllEventImpl extends EventImpl implements SkipAllEvent {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ModelPackage.Literals.SKIP_ALL_EVENT;
+		return ModelPackage.Literals.SKIP_ALL_CMD;
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class SkipAllEventImpl extends EventImpl implements SkipAllEvent {
 		boolean oldSkip = skip;
 		skip = newSkip;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SKIP_ALL_EVENT__SKIP, oldSkip, skip));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SKIP_ALL_CMD__SKIP, oldSkip, skip));
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class SkipAllEventImpl extends EventImpl implements SkipAllEvent {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ModelPackage.SKIP_ALL_EVENT__SKIP:
+			case ModelPackage.SKIP_ALL_CMD__SKIP:
 				return isSkip();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -111,7 +111,7 @@ public class SkipAllEventImpl extends EventImpl implements SkipAllEvent {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ModelPackage.SKIP_ALL_EVENT__SKIP:
+			case ModelPackage.SKIP_ALL_CMD__SKIP:
 				setSkip((Boolean)newValue);
 				return;
 		}
@@ -126,7 +126,7 @@ public class SkipAllEventImpl extends EventImpl implements SkipAllEvent {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ModelPackage.SKIP_ALL_EVENT__SKIP:
+			case ModelPackage.SKIP_ALL_CMD__SKIP:
 				setSkip(SKIP_EDEFAULT);
 				return;
 		}
@@ -141,7 +141,7 @@ public class SkipAllEventImpl extends EventImpl implements SkipAllEvent {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ModelPackage.SKIP_ALL_EVENT__SKIP:
+			case ModelPackage.SKIP_ALL_CMD__SKIP:
 				return skip != SKIP_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -163,4 +163,4 @@ public class SkipAllEventImpl extends EventImpl implements SkipAllEvent {
 		return result.toString();
 	}
 
-} //SkipAllEventImpl
+} //SkipAllCmdImpl

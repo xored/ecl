@@ -119,10 +119,37 @@ public class ModelSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ModelPackage.SKIP_ALL_EVENT: {
-				SkipAllEvent skipAllEvent = (SkipAllEvent)theEObject;
-				T result = caseSkipAllEvent(skipAllEvent);
-				if (result == null) result = caseEvent(skipAllEvent);
+			case ModelPackage.RESOLVE_VARIABLE_EVENT: {
+				ResolveVariableEvent resolveVariableEvent = (ResolveVariableEvent)theEObject;
+				T result = caseResolveVariableEvent(resolveVariableEvent);
+				if (result == null) result = caseEvent(resolveVariableEvent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ModelPackage.DEBUG_CMD: {
+				DebugCmd debugCmd = (DebugCmd)theEObject;
+				T result = caseDebugCmd(debugCmd);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ModelPackage.SKIP_ALL_CMD: {
+				SkipAllCmd skipAllCmd = (SkipAllCmd)theEObject;
+				T result = caseSkipAllCmd(skipAllCmd);
+				if (result == null) result = caseDebugCmd(skipAllCmd);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ModelPackage.BREAKPOINT_CMD: {
+				BreakpointCmd breakpointCmd = (BreakpointCmd)theEObject;
+				T result = caseBreakpointCmd(breakpointCmd);
+				if (result == null) result = caseDebugCmd(breakpointCmd);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ModelPackage.RESOLVE_VARIABLE_CMD: {
+				ResolveVariableCmd resolveVariableCmd = (ResolveVariableCmd)theEObject;
+				T result = caseResolveVariableCmd(resolveVariableCmd);
+				if (result == null) result = caseDebugCmd(resolveVariableCmd);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -206,17 +233,77 @@ public class ModelSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Skip All Event</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Resolve Variable Event</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Skip All Event</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Resolve Variable Event</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSkipAllEvent(SkipAllEvent object) {
+	public T caseResolveVariableEvent(ResolveVariableEvent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Debug Cmd</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Debug Cmd</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDebugCmd(DebugCmd object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Skip All Cmd</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Skip All Cmd</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSkipAllCmd(SkipAllCmd object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Breakpoint Cmd</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Breakpoint Cmd</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBreakpointCmd(BreakpointCmd object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Resolve Variable Cmd</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Resolve Variable Cmd</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseResolveVariableCmd(ResolveVariableCmd object) {
 		return null;
 	}
 
