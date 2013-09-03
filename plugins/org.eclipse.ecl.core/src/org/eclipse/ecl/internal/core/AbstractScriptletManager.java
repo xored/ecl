@@ -44,10 +44,15 @@ public abstract class AbstractScriptletManager<T extends ScriptletDefinitionBase
 				.create(clazz);
 	}
 
-	protected T getScriptletDefinition(Command scriptlet) throws CoreException {
+	protected FQName scriptletFQName(Command scriptlet) {
 		String ns = scriptlet.eClass().getEPackage().getNsURI();
 		String name = scriptlet.eClass().getName();
-		return getScriptletDefinition(ns, name);
+		return new FQName(ns, name);
+	}
+
+	protected T getScriptletDefinition(Command scriptlet) throws CoreException {
+		FQName fqn = scriptletFQName(scriptlet);
+		return getScriptletDefinition(fqn.ns, fqn.name);
 	}
 
 	protected synchronized T getScriptletDefinition(String ns, String name) throws CoreException {

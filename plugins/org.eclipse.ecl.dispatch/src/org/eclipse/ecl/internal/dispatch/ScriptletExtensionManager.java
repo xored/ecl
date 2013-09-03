@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.dispatch.IScriptletExtension;
 import org.eclipse.ecl.internal.core.AbstractScriptletManager;
@@ -25,13 +27,33 @@ public class ScriptletExtensionManager extends AbstractScriptletManager<Scriptle
 			scriptlets.put(fqn, new ScriptletExtensionPack(fqn, config));
 	}
 
-	public IScriptletExtension getScriptletExtension(Command scriptled) throws CoreException {
-		ScriptletExtensionPack extPack = getScriptletDefinition(scriptled);
+	public IScriptletExtension getScriptletExtension(Command scriptlet) throws CoreException {
+		ScriptletExtensionPack extPack = getScriptletDefinition(scriptlet);
 		List<IScriptletExtension> exts = extPack.getExtensions();
+		
+		IScriptletExtension suitableExt = null;
+		for (IScriptletExtension ext : exts) {
+			if (ext.canHandle(scriptlet)) {
+				if (suitableExt != null)
+					errorNotUnique(scriptletFQName(scriptlet));
 
-		// TODO check extension ability to handle & uniqueness
+				suitableExt = ext;
+				// and check that others can't handle that,
+				// so we don't break out from here
+			}
+		}
 
-		return exts.get(0);
+		return suitableExt;
+	}
+
+	//
+
+	public static final String PLUGIN_ID = "org.eclipse.ecl.dispatch";
+
+	private void errorNotUnique(FQName fqn) throws CoreException {
+		IStatus status = new Status(IStatus.ERROR, PLUGIN_ID,
+				Messages.bind(Messages.NotUniqueExtension, fqn.name));
+		throw new CoreException(status);
 	}
 
 }
