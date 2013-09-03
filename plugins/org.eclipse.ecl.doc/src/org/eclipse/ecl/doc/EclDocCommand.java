@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.ecl.core.util.EclCommandNameConvention;
+import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -93,6 +94,7 @@ public class EclDocCommand implements IEclDocProvider {
 			.getEClassifier("Command");
 
 	public static synchronized List<EclDocCommand> getAllPublicCommands() {
+		CorePlugin.getScriptletManager().getAllCommandNames(); // prevents deadlock
 		if (commands != null)
 			return commands;
 
