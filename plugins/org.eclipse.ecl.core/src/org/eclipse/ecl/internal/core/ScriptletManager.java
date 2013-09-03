@@ -41,9 +41,20 @@ public class ScriptletManager {
 			Platform.getDebugOption(CorePlugin.PLUGIN_ID
 					+ "/traceRegisteredCommands")).booleanValue();
 
+	private final String extPoint;
 	private Map<FQName, ScriptletDefinition> scriptlets;
 
-	synchronized ICommandService getScriptletService(Command scriptlet)
+	protected ScriptletManager(String extPoint) {
+		this.extPoint = extPoint;
+	}
+	
+	public ScriptletManager() {
+		this(SCRIPTLET_EXTPT);
+	}
+
+	//
+
+	public synchronized ICommandService getScriptletService(Command scriptlet)
 			throws CoreException {
 		String ns = scriptlet.eClass().getEPackage().getNsURI();
 		String name = scriptlet.eClass().getName();
@@ -133,7 +144,7 @@ public class ScriptletManager {
 	private void loadScriptlets() {
 		scriptlets = new HashMap<FQName, ScriptletDefinition>();
 		IConfigurationElement[] configs = Platform.getExtensionRegistry()
-				.getConfigurationElementsFor(SCRIPTLET_EXTPT);
+				.getConfigurationElementsFor(extPoint);
 		for (IConfigurationElement config : configs) {
 			String ns = config.getAttribute(SCRIPTLET_NAMESPACE_ATTR);
 			String name = config.getAttribute(SCRIPTLET_NAME_ATTR);
