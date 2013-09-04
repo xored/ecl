@@ -29,8 +29,8 @@ public class BetweenService implements ICommandService {
 
 		Between bw = (Between) command;
 		BoxedValue input = convertToNumber(bw.getInput());
-		BoxedValue from = convertToNumber(bw.getInput());
-		BoxedValue to = convertToNumber(bw.getInput());
+		BoxedValue from = convertToNumber(bw.getLeft());
+		BoxedValue to = convertToNumber(bw.getRight());
 
 		EClass widestType = max(input.eClass(), from.eClass(), to.eClass());
 		input = toType(input, widestType);
