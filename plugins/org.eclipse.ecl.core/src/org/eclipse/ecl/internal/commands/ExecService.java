@@ -72,6 +72,7 @@ public class ExecService implements ICommandService {
 			return status;
 
 		IPipe inputPipe = process.getSession().createPipe();
+
 		for (Object o : inputList)
 			inputPipe.write(o);
 		inputPipe.close(Status.OK_STATUS);

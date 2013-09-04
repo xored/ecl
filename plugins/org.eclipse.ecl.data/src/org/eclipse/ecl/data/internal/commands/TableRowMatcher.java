@@ -19,10 +19,12 @@ public class TableRowMatcher {
 			this.end = end;
 		}
 
+		@SuppressWarnings("unused")
 		public int getStart() {
 			return start;
 		}
 
+		@SuppressWarnings("unused")
 		public int getEnd() {
 			return end;
 		}

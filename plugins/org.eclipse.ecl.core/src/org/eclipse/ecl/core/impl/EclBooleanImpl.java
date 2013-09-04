@@ -8,18 +8,13 @@ package org.eclipse.ecl.core.impl;
 
 import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.EclBoolean;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Ecl Boolean</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Ecl Boolean</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -32,8 +27,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 public class EclBooleanImpl extends BoxedValueImpl implements EclBoolean {
 	/**
 	 * The default value of the '{@link #isValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isValue()
 	 * @generated
 	 * @ordered
@@ -42,8 +36,7 @@ public class EclBooleanImpl extends BoxedValueImpl implements EclBoolean {
 
 	/**
 	 * The cached value of the '{@link #isValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isValue()
 	 * @generated
 	 * @ordered
@@ -51,8 +44,7 @@ public class EclBooleanImpl extends BoxedValueImpl implements EclBoolean {
 	protected boolean value = VALUE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected EclBooleanImpl() {
@@ -60,8 +52,7 @@ public class EclBooleanImpl extends BoxedValueImpl implements EclBoolean {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -70,8 +61,7 @@ public class EclBooleanImpl extends BoxedValueImpl implements EclBoolean {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean isValue() {
@@ -79,8 +69,7 @@ public class EclBooleanImpl extends BoxedValueImpl implements EclBoolean {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setValue(boolean newValue) {
@@ -91,8 +80,7 @@ public class EclBooleanImpl extends BoxedValueImpl implements EclBoolean {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -105,8 +93,7 @@ public class EclBooleanImpl extends BoxedValueImpl implements EclBoolean {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -120,8 +107,7 @@ public class EclBooleanImpl extends BoxedValueImpl implements EclBoolean {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -135,8 +121,7 @@ public class EclBooleanImpl extends BoxedValueImpl implements EclBoolean {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -149,8 +134,7 @@ public class EclBooleanImpl extends BoxedValueImpl implements EclBoolean {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -164,4 +148,4 @@ public class EclBooleanImpl extends BoxedValueImpl implements EclBoolean {
 		return result.toString();
 	}
 
-} //EclBooleanImpl
+} // EclBooleanImpl

@@ -10,8 +10,6 @@
  ******************************************************************************/
 package org.eclipse.ecl.internal.commands;
 
-import java.util.regex.Pattern;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -29,7 +27,6 @@ public class ForeachService implements ICommandService {
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		Foreach foreach = (Foreach) command;
-		Pattern p;
 		IStatus status = Status.OK_STATUS;
 
 		for (EObject o : foreach.getInput()) {

@@ -8,18 +8,13 @@ package org.eclipse.ecl.core.impl;
 
 import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.EclFloat;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Ecl Float</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Ecl Float</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -32,8 +27,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 public class EclFloatImpl extends BoxedValueImpl implements EclFloat {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -42,8 +36,7 @@ public class EclFloatImpl extends BoxedValueImpl implements EclFloat {
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -51,8 +44,7 @@ public class EclFloatImpl extends BoxedValueImpl implements EclFloat {
 	protected float value = VALUE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected EclFloatImpl() {
@@ -60,8 +52,7 @@ public class EclFloatImpl extends BoxedValueImpl implements EclFloat {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -70,8 +61,7 @@ public class EclFloatImpl extends BoxedValueImpl implements EclFloat {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public float getValue() {
@@ -79,8 +69,7 @@ public class EclFloatImpl extends BoxedValueImpl implements EclFloat {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setValue(float newValue) {
@@ -91,8 +80,7 @@ public class EclFloatImpl extends BoxedValueImpl implements EclFloat {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -105,8 +93,7 @@ public class EclFloatImpl extends BoxedValueImpl implements EclFloat {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -120,8 +107,7 @@ public class EclFloatImpl extends BoxedValueImpl implements EclFloat {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -135,8 +121,7 @@ public class EclFloatImpl extends BoxedValueImpl implements EclFloat {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -149,8 +134,7 @@ public class EclFloatImpl extends BoxedValueImpl implements EclFloat {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -164,4 +148,4 @@ public class EclFloatImpl extends BoxedValueImpl implements EclFloat {
 		return result.toString();
 	}
 
-} //EclFloatImpl
+} // EclFloatImpl
