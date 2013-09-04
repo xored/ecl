@@ -31,18 +31,23 @@ public class SequenceService implements ICommandService {
 		Sequence seq = (Sequence) command;
 		List<Object> content = CoreUtils.readPipeContent(process.getInput());
 		List<Command> commands = seq.getCommands();
+		IPipe lastChildOutput = process.getSession().createPipe();
+		int commandCount = commands.size();
 		for (int i = 0; i < commands.size(); ++i) {
 			Command cmd = commands.get(i);
 			IPipe pipe = process.getSession().createPipe();
 			for (Object o : content)
 				pipe.write(o);
 			pipe.close(Status.OK_STATUS);
-			IProcess child = process.getSession().execute(cmd, pipe, null);
+			IProcess child = process.getSession().execute(cmd, pipe, i == commandCount - 1 ? lastChildOutput : null);
 			status = child.waitFor();
-			
+
 			if (!status.isOK()) {
 				return status;
 			}
+		}
+		for (Object object : CoreUtils.readPipeContent(lastChildOutput)) {
+			process.getOutput().write(object);
 		}
 		return status;
 	}
