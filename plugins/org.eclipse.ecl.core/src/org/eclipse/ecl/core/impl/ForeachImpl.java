@@ -15,26 +15,18 @@ import java.util.Collection;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.Foreach;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Foreach</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Foreach</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -48,8 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class ForeachImpl extends CommandImpl implements Foreach {
 	/**
 	 * The cached value of the '{@link #getDo() <em>Do</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDo()
 	 * @generated
 	 * @ordered
@@ -58,8 +49,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 
 	/**
 	 * The cached value of the '{@link #getInput() <em>Input</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getInput()
 	 * @generated
 	 * @ordered
@@ -67,8 +57,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	protected EList<EObject> input;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected ForeachImpl() {
@@ -76,8 +65,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -86,8 +74,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Command getDo() {
@@ -95,8 +82,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetDo(Command newDo, NotificationChain msgs) {
@@ -110,8 +96,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setDo(Command newDo) {
@@ -129,8 +114,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<EObject> getInput() {
@@ -141,8 +125,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -155,8 +138,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -171,8 +153,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -191,8 +172,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -209,8 +189,7 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -224,4 +203,4 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 		return super.eIsSet(featureID);
 	}
 
-} //ForeachImpl
+} // ForeachImpl

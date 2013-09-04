@@ -24,22 +24,24 @@ public class GetCommandHotkeyService implements ICommandService {
 		if (!(command instanceof GetHotkey)) {
 			return Status.CANCEL_STATUS;
 		}
-		GetHotkey getCommand = (GetHotkey)command;
+		GetHotkey getCommand = (GetHotkey) command;
 		IBindingService bindingService = (IBindingService) PlatformUI.getWorkbench().getService(IBindingService.class);
-		for (TriggerSequence binding: bindingService.getActiveBindingsFor(getCommand.getCommandId())) {
-			StringBuilder rv = new StringBuilder();
-			for (Trigger trigger: binding.getTriggers()) {
+		for (TriggerSequence binding : bindingService.getActiveBindingsFor(getCommand.getCommandId())) {
+			for (Trigger trigger : binding.getTriggers()) {
 				if (!(trigger instanceof KeyStroke)) {
 					continue;
 				}
-				KeyStroke keyStroke = (KeyStroke)trigger;
-//				context.getOutput().write(formatKeyWithMeta(0, keyStroke.getNaturalKey(), keyStroke.getModifierKeys()));
+				KeyStroke keyStroke = (KeyStroke) trigger;
+				// context.getOutput().write(formatKeyWithMeta(0,
+				// keyStroke.getNaturalKey(), keyStroke.getModifierKeys()));
 				context.getOutput().write(keyStroke.toString());
 				return Status.OK_STATUS;
 			}
 		}
-		return new Status(IStatus.ERROR, PlatformUIPlugin.PLUGIN_ID, "No keyboard hotkey is defined for "+getCommand.getCommandId()+" in current context");
+		return new Status(IStatus.ERROR, PlatformUIPlugin.PLUGIN_ID, "No keyboard hotkey is defined for "
+				+ getCommand.getCommandId() + " in current context");
 	}
+
 	public static String formatKeyWithMeta(int mask, int keyCode, int meta) {
 		if (meta == 0) {
 			return KeyFormatterFactory.getFormalKeyFormatter().format(
@@ -53,18 +55,21 @@ public class GetCommandHotkeyService implements ICommandService {
 			return strKey;
 		}
 	}
-	
+
 	static class MetaBuilder {
 		final StringBuilder sb = new StringBuilder();
+
 		void addMeta(String key) {
 			if (sb.length() > 0)
 				sb.append("+");
 			sb.append(key);
 		}
+
 		void tryMeta(int stateMask, int keyMask, String key) {
 			if ((stateMask & keyMask) != 0)
 				addMeta(key);
 		}
+
 		void process(int stateMask) {
 			if (Platform.getOS().equals(Platform.OS_MACOSX)) {
 				tryMeta(stateMask, SWT.COMMAND, "M1");
@@ -77,10 +82,12 @@ public class GetCommandHotkeyService implements ICommandService {
 				tryMeta(stateMask, SWT.ALT, "M3");
 			}
 		}
+
 		public String toString() {
 			return sb.toString();
 		}
 	}
+
 	public static String getMeta(int stateMask) {
 		MetaBuilder rv = new MetaBuilder();
 		rv.process(stateMask);

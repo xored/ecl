@@ -28,7 +28,11 @@
 package org.antlr.runtime;
 
 public class MismatchedRangeException extends RecognitionException {
-	public int a,b;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public int a, b;
 
 	public MismatchedRangeException(int a, int b, IntStream input) {
 		super(input);
@@ -37,6 +41,6 @@ public class MismatchedRangeException extends RecognitionException {
 	}
 
 	public String toString() {
-		return "MismatchedNotSetException("+getUnexpectedType()+" not in ["+a+","+b+"])";
+		return "MismatchedNotSetException(" + getUnexpectedType() + " not in [" + a + "," + b + "])";
 	}
 }

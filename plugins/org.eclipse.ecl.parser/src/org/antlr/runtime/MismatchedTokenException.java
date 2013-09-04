@@ -28,6 +28,10 @@
 package org.antlr.runtime;
 
 public class MismatchedTokenException extends RecognitionException {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public int expecting;
 
 	public MismatchedTokenException() {
@@ -39,6 +43,6 @@ public class MismatchedTokenException extends RecognitionException {
 	}
 
 	public String toString() {
-		return "MismatchedTokenException("+getUnexpectedType()+"!="+expecting+")";
+		return "MismatchedTokenException(" + getUnexpectedType() + "!=" + expecting + ")";
 	}
 }

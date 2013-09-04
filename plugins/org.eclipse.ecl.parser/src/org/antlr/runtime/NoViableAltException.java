@@ -28,17 +28,23 @@
 package org.antlr.runtime;
 
 public class NoViableAltException extends RecognitionException {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public String grammarDecisionDescription;
 	public int decisionNumber;
 	public int stateNumber;
 
 	/** Used for remote debugger deserialization */
-	public NoViableAltException() {;}
-	
+	public NoViableAltException() {
+		;
+	}
+
 	public NoViableAltException(String grammarDecisionDescription,
-								int decisionNumber,
-								int stateNumber,
-								IntStream input)
+			int decisionNumber,
+			int stateNumber,
+			IntStream input)
 	{
 		super(input);
 		this.grammarDecisionDescription = grammarDecisionDescription;
@@ -47,6 +53,6 @@ public class NoViableAltException extends RecognitionException {
 	}
 
 	public String toString() {
-		return "NoViableAltException("+getUnexpectedType()+"!=["+grammarDecisionDescription+"])";
+		return "NoViableAltException(" + getUnexpectedType() + "!=[" + grammarDecisionDescription + "])";
 	}
 }

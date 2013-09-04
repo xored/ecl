@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.ecl.core.CorePackage#getVal()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Creates a new variable declaration. This command can be used only with <a href=\"#let\">let</a> and <a href=\"#proc\">proc</a>.' returns='An internal object, describing a variable' example='let [val button [get-button OK]] {\n    $button | click\n}'"
  * @generated
  */
 public interface Val extends Declaration {
@@ -38,7 +38,7 @@ public interface Val extends Declaration {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.ecl.core.CorePackage#getVal_Name()
-	 * @model
+	 * @model annotation="http://www.eclipse.org/ecl/docs description='Variable name. Later this name can be used to refer to a variable value by prepending a dollar sign, i.e. $varName. If variable with the same name already defined in outer scope, then it will be hidden by inner variable with the same name.'"
 	 * @generated
 	 */
 	String getName();
@@ -66,6 +66,7 @@ public interface Val extends Declaration {
 	 * @see #setInput(boolean)
 	 * @see org.eclipse.ecl.core.CorePackage#getVal_Input()
 	 * @model default="false"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='An option to indicate that variable value should be taken from input pipe. '"
 	 * @generated
 	 */
 	boolean isInput();
@@ -91,7 +92,7 @@ public interface Val extends Declaration {
 	 * @return the value of the '<em>Value</em>' reference.
 	 * @see #setValue(EObject)
 	 * @see org.eclipse.ecl.core.CorePackage#getVal_Value()
-	 * @model
+	 * @model annotation="http://www.eclipse.org/ecl/docs description='Variable value. When variable is defined in <a href=\"#proc\">proc</a> block, this value denotes the default parameter value.'"
 	 * @generated
 	 */
 	EObject getValue();

@@ -20,7 +20,7 @@ package org.eclipse.ecl.core;
  * </p>
  *
  * @see org.eclipse.ecl.core.CorePackage#getGetVal()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Returns variable value by its name. Syntax sugar form <code>$name</code> can be used instead.'"
  * @generated
  */
 public interface GetVal extends Command {

@@ -180,22 +180,64 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Declaration" eSuperTypes="#//Command"/>
   <eClassifiers xsi:type="ecore:EClass" name="Val" eSuperTypes="#//Declaration">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Creates a new variable declaration. This command can be used only with &lt;a href=&quot;#let&quot;>let&lt;/a> and &lt;a href=&quot;#proc&quot;>proc&lt;/a>."/>
+      <details key="returns" value="An internal object, describing a variable"/>
+      <details key="example" value="let [val button [get-button OK]] {&#xA;    $button | click&#xA;}"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Variable name. Later this name can be used to refer to a variable value by prepending a dollar sign, i.e. $varName. If variable with the same name already defined in outer scope, then it will be hidden by inner variable with the same name."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Variable value. When variable is defined in &lt;a href=&quot;#proc&quot;>proc&lt;/a> block, this value denotes the default parameter value."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="input" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
-        defaultValueLiteral="false"/>
+        defaultValueLiteral="false">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="An option to indicate that variable value should be taken from input pipe. "/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GetVal" eSuperTypes="#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Returns variable value by its name. Syntax sugar form &lt;code>$name&lt;/code> can be used instead."/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Let" eSuperTypes="#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Defines variables and evaluates &lt;code>body&lt;/code> script. Variable declarations are only visible from withing a body script and cannot be accessed after 'let' command. If some variable has &lt;code>-input&lt;/code> flag, then &lt;code>let&lt;/code> command must be used in a pipeline (see example 2). "/>
+      <details key="returns" value="An output of a &lt;code>body&lt;/code> script"/>
+      <details key="example" value="// example #1, simple usage of two variables&#xA;let [val foo &quot;hello&quot;]&#xA;     [val bar &quot;world!&quot;] {&#xA;&#x9;format &quot;%s, %s&quot; $foo $bar | show-alert&#xA;}&#xA;&#xA;// example #2, using input argument&#xA;get-window &quot;New Project&quot; | let [val window -input] [val button OK] {&#xA;    $window | get-button $button | click&#xA;}&#xA;"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="vals" upperBound="-1" eType="#//Declaration"
-        containment="true"/>
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="List of variables"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//Command"
-        containment="true"/>
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Script to be executed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Proc" eSuperTypes="#//Command">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Declares a new procedure in a context of current ECL session, which can later be accessed as a usual command."/>
+      <details key="returns" value="An output of a &lt;code>body&lt;/code> script"/>
+      <details key="example" value="// example 1&#xA;// declaration:&#xA;proc click-button [val window] [val button] {&#xA;   get-window $window | get-button $button | click&#xA;}&#xA;&#xA;// usage&#xA;click-button &quot;New Project&quot; &quot;Cancel&quot;&#xA;&#xA;// example #2, using input argument and default value&#xA;// declaration:&#xA;proc set-text-after-label [val parent -input] [val label] [val text &quot;&quot;] {&#xA;&#x9;$parent | get-editbox -after [get-label $label] | set-text $text&#xA;}&#xA;&#xA;// usage:&#xA;with [get-window &quot;New Project&quot;] {&#xA;   set-text-after-label &quot;Name:&quot; &quot;Sample Project&quot;&#xA;}&#xA;get-editor | set-text-after-label &quot;Text&quot;"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Procedure name. Must be unique in a context of current ECL session"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="vals" upperBound="-1" eType="#//Declaration"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//Command"
@@ -211,6 +253,7 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Global" eSuperTypes="#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/internal"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="vals" upperBound="-1" eType="#//Declaration"
         containment="true"/>
   </eClassifiers>

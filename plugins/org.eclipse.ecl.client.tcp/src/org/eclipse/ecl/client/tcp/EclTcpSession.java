@@ -43,7 +43,9 @@ public class EclTcpSession implements ISession {
 
 	private final AtomicBoolean closed = new AtomicBoolean(false);
 
+	@SuppressWarnings("unused")
 	private InetAddress address;
+	@SuppressWarnings("unused")
 	private int port;
 
 	private Socket socket;

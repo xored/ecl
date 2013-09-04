@@ -12,7 +12,6 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
-@SuppressWarnings("restriction")
 public class PlatformPlugin extends Plugin {
 	public static final String PLUGIN_ID = "org.eclipse.ecl.platform";
 
