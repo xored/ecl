@@ -16,6 +16,7 @@
     <module>org.eclipse.ecl.data</module>
     <module>org.eclipse.ecl.debug.core</module>
     <module>org.eclipse.ecl.debug.runtime</module>
+    <module>org.eclipse.ecl.dispatch</module>
     <module>org.eclipse.ecl.doc</module>
     <module>org.eclipse.ecl.parser</module>
     <module>org.eclipse.ecl.perf</module>
