@@ -146,6 +146,9 @@ public class ExecService implements ICommandService {
 				}
 			}
 
+			if (i >= orderedFeatures.size() && processUnnamed) {
+				return createErrorStatus("Cannot match given parameters to declared parameters");
+			}
 			EStructuralFeature feature = processUnnamed ? orderedFeatures
 					.get(i++) : featuresByName.get(param.getName());
 
