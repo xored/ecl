@@ -123,11 +123,11 @@ public class EclStackFrame extends EclDebugElement implements IStackFrame {
 	}
 
 	public int getCharStart() throws DebugException {
-		return -1;
+		return frame.getColumn();
 	}
 
 	public int getCharEnd() throws DebugException {
-		return -1;
+		return frame.getColumn() + frame.getLength();
 	}
 
 	public String getName() throws DebugException {

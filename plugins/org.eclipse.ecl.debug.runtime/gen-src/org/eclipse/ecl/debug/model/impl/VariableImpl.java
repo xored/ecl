@@ -11,6 +11,7 @@ import java.util.Collection;
 import org.eclipse.ecl.debug.model.ModelPackage;
 import org.eclipse.ecl.debug.model.Variable;
 
+import org.eclipse.ecl.debug.model.VariableKind;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -40,6 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.ecl.debug.model.impl.VariableImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.model.impl.VariableImpl#getObjectRef <em>Object Ref</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.model.impl.VariableImpl#isComplex <em>Complex</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.model.impl.VariableImpl#getKind <em>Kind</em>}</li>
  * </ul>
  * </p>
  *
@@ -165,6 +167,26 @@ public class VariableImpl extends EObjectImpl implements Variable {
 	 * @ordered
 	 */
 	protected boolean complex = COMPLEX_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final VariableKind KIND_EDEFAULT = VariableKind.VARIABLE;
+
+	/**
+	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected VariableKind kind = KIND_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -329,6 +351,27 @@ public class VariableImpl extends EObjectImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public VariableKind getKind() {
+		return kind;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setKind(VariableKind newKind) {
+		VariableKind oldKind = kind;
+		kind = newKind == null ? KIND_EDEFAULT : newKind;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.VARIABLE__KIND, oldKind, kind));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getId() {
 		return id;
 	}
@@ -383,6 +426,8 @@ public class VariableImpl extends EObjectImpl implements Variable {
 				return getObjectRef();
 			case ModelPackage.VARIABLE__COMPLEX:
 				return isComplex();
+			case ModelPackage.VARIABLE__KIND:
+				return getKind();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -418,6 +463,9 @@ public class VariableImpl extends EObjectImpl implements Variable {
 			case ModelPackage.VARIABLE__COMPLEX:
 				setComplex((Boolean)newValue);
 				return;
+			case ModelPackage.VARIABLE__KIND:
+				setKind((VariableKind)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -451,6 +499,9 @@ public class VariableImpl extends EObjectImpl implements Variable {
 			case ModelPackage.VARIABLE__COMPLEX:
 				setComplex(COMPLEX_EDEFAULT);
 				return;
+			case ModelPackage.VARIABLE__KIND:
+				setKind(KIND_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -477,6 +528,8 @@ public class VariableImpl extends EObjectImpl implements Variable {
 				return OBJECT_REF_EDEFAULT == null ? objectRef != null : !OBJECT_REF_EDEFAULT.equals(objectRef);
 			case ModelPackage.VARIABLE__COMPLEX:
 				return complex != COMPLEX_EDEFAULT;
+			case ModelPackage.VARIABLE__KIND:
+				return kind != KIND_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -501,6 +554,8 @@ public class VariableImpl extends EObjectImpl implements Variable {
 		result.append(objectRef);
 		result.append(", complex: ");
 		result.append(complex);
+		result.append(", kind: ");
+		result.append(kind);
 		result.append(')');
 		return result.toString();
 	}

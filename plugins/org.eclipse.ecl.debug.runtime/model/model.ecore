@@ -23,6 +23,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
         eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="column" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Variable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -36,6 +38,16 @@
         transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="complex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//VariableKind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VariableKind">
+    <eLiterals name="Variable"/>
+    <eLiterals name="Command" value="1"/>
+    <eLiterals name="Local" value="2"/>
+    <eLiterals name="Argument" value="4"/>
+    <eLiterals name="Object" value="5"/>
+    <eLiterals name="Field" value="6"/>
+    <eLiterals name="Reference" value="7"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResolveVariableEvent" eSuperTypes="#//Event">
     <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//Variable"

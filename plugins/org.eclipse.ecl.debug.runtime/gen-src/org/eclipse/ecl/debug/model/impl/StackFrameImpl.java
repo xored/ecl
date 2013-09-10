@@ -35,6 +35,8 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link org.eclipse.ecl.debug.model.impl.StackFrameImpl#getLine <em>Line</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.model.impl.StackFrameImpl#getCommand <em>Command</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.model.impl.StackFrameImpl#getVariables <em>Variables</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.model.impl.StackFrameImpl#getColumn <em>Column</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.model.impl.StackFrameImpl#getLength <em>Length</em>}</li>
  * </ul>
  * </p>
  *
@@ -130,6 +132,46 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 	 * @ordered
 	 */
 	protected EList<Variable> variables;
+
+	/**
+	 * The default value of the '{@link #getColumn() <em>Column</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getColumn()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int COLUMN_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getColumn() <em>Column</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getColumn()
+	 * @generated
+	 * @ordered
+	 */
+	protected int column = COLUMN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLength() <em>Length</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLength()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int LENGTH_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLength()
+	 * @generated
+	 * @ordered
+	 */
+	protected int length = LENGTH_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -251,6 +293,48 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getColumn() {
+		return column;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setColumn(int newColumn) {
+		int oldColumn = column;
+		column = newColumn;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.STACK_FRAME__COLUMN, oldColumn, column));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getLength() {
+		return length;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLength(int newLength) {
+		int oldLength = length;
+		length = newLength;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.STACK_FRAME__LENGTH, oldLength, length));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -264,6 +348,10 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 				return getCommand();
 			case ModelPackage.STACK_FRAME__VARIABLES:
 				return getVariables();
+			case ModelPackage.STACK_FRAME__COLUMN:
+				return getColumn();
+			case ModelPackage.STACK_FRAME__LENGTH:
+				return getLength();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -293,6 +381,12 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 				getVariables().clear();
 				getVariables().addAll((Collection<? extends Variable>)newValue);
 				return;
+			case ModelPackage.STACK_FRAME__COLUMN:
+				setColumn((Integer)newValue);
+				return;
+			case ModelPackage.STACK_FRAME__LENGTH:
+				setLength((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -320,6 +414,12 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 			case ModelPackage.STACK_FRAME__VARIABLES:
 				getVariables().clear();
 				return;
+			case ModelPackage.STACK_FRAME__COLUMN:
+				setColumn(COLUMN_EDEFAULT);
+				return;
+			case ModelPackage.STACK_FRAME__LENGTH:
+				setLength(LENGTH_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -342,6 +442,10 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 				return COMMAND_EDEFAULT == null ? command != null : !COMMAND_EDEFAULT.equals(command);
 			case ModelPackage.STACK_FRAME__VARIABLES:
 				return variables != null && !variables.isEmpty();
+			case ModelPackage.STACK_FRAME__COLUMN:
+				return column != COLUMN_EDEFAULT;
+			case ModelPackage.STACK_FRAME__LENGTH:
+				return length != LENGTH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -364,6 +468,10 @@ public class StackFrameImpl extends EObjectImpl implements StackFrame {
 		result.append(line);
 		result.append(", command: ");
 		result.append(command);
+		result.append(", column: ");
+		result.append(column);
+		result.append(", length: ");
+		result.append(length);
 		result.append(')');
 		return result.toString();
 	}

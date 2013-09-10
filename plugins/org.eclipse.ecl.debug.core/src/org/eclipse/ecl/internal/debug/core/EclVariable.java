@@ -5,6 +5,7 @@ import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IValue;
 import org.eclipse.debug.core.model.IVariable;
 import org.eclipse.ecl.debug.model.Variable;
+import org.eclipse.ecl.debug.model.VariableKind;
 
 public class EclVariable extends EclDebugElement implements IVariable {
 
@@ -57,5 +58,8 @@ public class EclVariable extends EclDebugElement implements IVariable {
 
 	public boolean hasValueChanged() throws DebugException {
 		return false;
+	}
+	public VariableKind getVariableKind() {
+		return arg.getKind();
 	}
 }

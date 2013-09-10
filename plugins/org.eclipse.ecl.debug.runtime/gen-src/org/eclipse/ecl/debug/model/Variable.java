@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.ecl.debug.model.Variable#getId <em>Id</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.model.Variable#getObjectRef <em>Object Ref</em>}</li>
  *   <li>{@link org.eclipse.ecl.debug.model.Variable#isComplex <em>Complex</em>}</li>
+ *   <li>{@link org.eclipse.ecl.debug.model.Variable#getKind <em>Kind</em>}</li>
  * </ul>
  * </p>
  *
@@ -179,6 +180,35 @@ public interface Variable extends EObject {
 	 * @generated
 	 */
 	void setComplex(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.ecl.debug.model.VariableKind}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Kind</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Kind</em>' attribute.
+	 * @see org.eclipse.ecl.debug.model.VariableKind
+	 * @see #setKind(VariableKind)
+	 * @see org.eclipse.ecl.debug.model.ModelPackage#getVariable_Kind()
+	 * @model
+	 * @generated
+	 */
+	VariableKind getKind();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.ecl.debug.model.Variable#getKind <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Kind</em>' attribute.
+	 * @see org.eclipse.ecl.debug.model.VariableKind
+	 * @see #getKind()
+	 * @generated
+	 */
+	void setKind(VariableKind value);
 
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.

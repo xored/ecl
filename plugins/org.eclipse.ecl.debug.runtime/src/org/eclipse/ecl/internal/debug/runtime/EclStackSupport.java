@@ -20,6 +20,8 @@ import org.eclipse.ecl.debug.commands.DebugCommand;
 import org.eclipse.ecl.debug.model.ModelFactory;
 import org.eclipse.ecl.debug.model.StackFrame;
 import org.eclipse.ecl.debug.model.Variable;
+import org.eclipse.ecl.debug.model.VariableKind;
+import org.eclipse.ecl.debug.runtime.IEclDebugExtension;
 import org.eclipse.ecl.gen.ast.AstExec;
 import org.eclipse.ecl.gen.ast.AstNode;
 import org.eclipse.ecl.internal.core.DeclarationContainer;
@@ -63,6 +65,7 @@ public class EclStackSupport {
 		EMap<String, String> paths = debug.getPaths();
 		List<StackFrame> frames = new ArrayList<StackFrame>();
 		Command lastCommand = null;
+		List<IEclDebugExtension> extensions = DebugExtensionManager.getInstance().getExtensions();
 		int id = 0;
 		do {
 			Command command = stack.getCommand();
@@ -73,11 +76,23 @@ public class EclStackSupport {
 				frame.setFile(currentPath);
 				frame.setCommand(exec.getName());
 				frame.setLine(exec.getLine());
-				frame.getVariables().addAll(createCommandVariable(lastCommand));
+				frame.setColumn(exec.getColumn());
+				frame.setLength(exec.getLength());
+
+				for (IEclDebugExtension ext : extensions) {
+					ext.prepareFrame(stack, frame, this);
+				}
+
+				Set<String> variables = new HashSet<String>();
+
+				Variable cmdVar = createCommandVariable(lastCommand);
+				if (cmdVar != null) {
+					frame.getVariables().add(cmdVar);
+					variables.add(cmdVar.getName());
+				}
 
 				// Add all variables
 				CommandStack current = stack;
-				Set<String> variables = new HashSet<String>();
 				while (current != null) {
 					DeclarationContainer declarations = current.getDeclarations();
 					if (declarations != null) {
@@ -86,6 +101,7 @@ public class EclStackSupport {
 								Val v = (Val) d;
 								if (variables.add(v.getName())) {
 									Variable var = createVariable(v.getValue());
+									var.setKind(VariableKind.VARIABLE);
 									var.setName(v.getName());
 									processVariable(var, v.getValue());
 									frame.getVariables().add(var);
@@ -100,6 +116,9 @@ public class EclStackSupport {
 						current = current.getParent();
 					}
 				}
+				for (IEclDebugExtension ext : extensions) {
+					ext.updateFrame(stack, frame);
+				}
 
 				frame.setId(id);
 				id++;
@@ -112,8 +131,15 @@ public class EclStackSupport {
 		return frames;
 	}
 
-	private void processVariable(Variable var, Object value) {
+	public void processVariable(Variable var, Object value) {
 		if (value != null) {
+			List<IEclDebugExtension> extensions = DebugExtensionManager.getInstance().getExtensions();
+			for (IEclDebugExtension ext : extensions) {
+				if (ext.supportVariableValue(value)) {
+					ext.processVariable(var, value, true);
+					return;
+				}
+			}
 			if (value instanceof EObject) {
 				var.setType(((EObject) value).eClass().getName());
 			}
@@ -130,8 +156,14 @@ public class EclStackSupport {
 	}
 
 	private boolean isComplexValue(Object value) {
-		if( value instanceof BoxedValue) {
+		if (value instanceof BoxedValue) {
 			return false;
+		}
+		List<IEclDebugExtension> extensions = DebugExtensionManager.getInstance().getExtensions();
+		for (IEclDebugExtension ext : extensions) {
+			if (ext.supportVariableValue(value)) {
+				return ext.isComplexVariableValue(value);
+			}
 		}
 		return value instanceof EObject || value instanceof List;
 	}
@@ -140,6 +172,15 @@ public class EclStackSupport {
 		if (!isComplexValue(value)) {
 			return;
 		}
+
+		List<IEclDebugExtension> extensions = DebugExtensionManager.getInstance().getExtensions();
+		for (IEclDebugExtension ext : extensions) {
+			if (ext.supportVariableValue(value)) {
+				ext.processVariable(var, value, false);
+				return;
+			}
+		}
+
 		if (value instanceof EObject) {
 			var.getChildren().clear();
 			processEObject(var, value);
@@ -151,6 +192,7 @@ public class EclStackSupport {
 			var.setType(List.class.getName());
 			for (Object object : list) {
 				Variable childVar = createVariable(object);
+				childVar.setKind(VariableKind.REFERENCE);
 				childVar.setName("[" + Integer.toString(index) + "]");
 				processVariable(childVar, object);
 				var.getChildren().add(childVar);
@@ -175,6 +217,7 @@ public class EclStackSupport {
 			}
 
 			Variable childVar = createVariable(childValue);
+			childVar.setKind(VariableKind.FIELD);
 			childVar.setType(f.getEType().toString());
 			childVar.setName(f.getName());
 			processVariable(childVar, childValue);
@@ -188,6 +231,12 @@ public class EclStackSupport {
 				|| childValue instanceof Proc) {
 			return true;
 		}
+		List<IEclDebugExtension> extensions = DebugExtensionManager.getInstance().getExtensions();
+		for (IEclDebugExtension ext : extensions) {
+			if (ext.isVariableChildFiltered(childValue)) {
+				return true;
+			}
+		}
 		return false;
 	}
 
@@ -199,12 +248,13 @@ public class EclStackSupport {
 		return currentPath;
 	}
 
-	private List<Variable> createCommandVariable(Command command) {
-		List<Variable> result = new ArrayList<Variable>();
+	private Variable createCommandVariable(Command command) {
+		Variable result = null;
 		if (command == null) {
 			return result;
 		}
 		Variable cmd = createVariable(command);
+		cmd.setKind(VariableKind.COMMAND);
 		cmd.setName(converter.convert(command));
 		for (EStructuralFeature f : command.eClass()
 				.getEAllStructuralFeatures()) {
@@ -218,18 +268,17 @@ public class EclStackSupport {
 				continue;
 			}
 			Variable var = createVariable(value);
+			var.setKind(VariableKind.ARGUMENT);
 			var.setType(f.getEType().toString());
 			var.setName(f.getName());
 			processVariable(var, value);
 
 			cmd.getChildren().add(var);
 		}
-		result.add(cmd);
-
-		return result;
+		return cmd;
 	}
 
-	private synchronized Variable createVariable(Object value) {
+	public synchronized Variable createVariable(Object value) {
 		Variable cmd = ModelFactory.eINSTANCE.createVariable();
 		cmd.setId(this.id + varId);
 		varId++;
@@ -255,4 +304,11 @@ public class EclStackSupport {
 		}
 	}
 
+	public Variable createVar(String name, Object value,VariableKind kind) {
+		Variable var = createVariable(value);
+		var.setKind(kind);
+		var.setName(name);
+		processVariable(var, value);
+		return var;
+	}
 }

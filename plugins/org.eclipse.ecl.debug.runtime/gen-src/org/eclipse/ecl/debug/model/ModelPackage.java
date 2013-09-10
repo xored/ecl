@@ -245,13 +245,31 @@ public interface ModelPackage extends EPackage {
 	int STACK_FRAME__VARIABLES = 4;
 
 	/**
+	 * The feature id for the '<em><b>Column</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STACK_FRAME__COLUMN = 5;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STACK_FRAME__LENGTH = 6;
+
+	/**
 	 * The number of structural features of the '<em>Stack Frame</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STACK_FRAME_FEATURE_COUNT = 5;
+	int STACK_FRAME_FEATURE_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.debug.model.impl.VariableImpl <em>Variable</em>}' class.
@@ -327,13 +345,22 @@ public interface ModelPackage extends EPackage {
 	int VARIABLE__COMPLEX = 6;
 
 	/**
+	 * The feature id for the '<em><b>Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__KIND = 7;
+
+	/**
 	 * The number of structural features of the '<em>Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_FEATURE_COUNT = 7;
+	int VARIABLE_FEATURE_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.debug.model.impl.ResolveVariableEventImpl <em>Resolve Variable Event</em>}' class.
@@ -521,6 +548,16 @@ public interface ModelPackage extends EPackage {
 	int RESOLVE_VARIABLE_CMD_FEATURE_COUNT = DEBUG_CMD_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.debug.model.VariableKind <em>Variable Kind</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.debug.model.VariableKind
+	 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getVariableKind()
+	 * @generated
+	 */
+	int VARIABLE_KIND = 10;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.debug.model.EventType <em>Event Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -528,7 +565,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getEventType()
 	 * @generated
 	 */
-	int EVENT_TYPE = 10;
+	int EVENT_TYPE = 11;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.debug.model.DebugType <em>Debug Type</em>}' enum.
@@ -538,7 +575,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getDebugType()
 	 * @generated
 	 */
-	int DEBUG_TYPE = 11;
+	int DEBUG_TYPE = 12;
 
 
 	/**
@@ -703,6 +740,28 @@ public interface ModelPackage extends EPackage {
 	EReference getStackFrame_Variables();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.model.StackFrame#getColumn <em>Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Column</em>'.
+	 * @see org.eclipse.ecl.debug.model.StackFrame#getColumn()
+	 * @see #getStackFrame()
+	 * @generated
+	 */
+	EAttribute getStackFrame_Column();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.model.StackFrame#getLength <em>Length</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Length</em>'.
+	 * @see org.eclipse.ecl.debug.model.StackFrame#getLength()
+	 * @see #getStackFrame()
+	 * @generated
+	 */
+	EAttribute getStackFrame_Length();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.debug.model.Variable <em>Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -777,6 +836,17 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getVariable_Complex();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.model.Variable#getKind <em>Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Kind</em>'.
+	 * @see org.eclipse.ecl.debug.model.Variable#getKind()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_Kind();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.debug.model.Variable#getId <em>Id</em>}'.
@@ -904,6 +974,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getResolveVariableCmd_Id();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.ecl.debug.model.VariableKind <em>Variable Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Variable Kind</em>'.
+	 * @see org.eclipse.ecl.debug.model.VariableKind
+	 * @generated
+	 */
+	EEnum getVariableKind();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.ecl.debug.model.EventType <em>Event Type</em>}'.
@@ -1076,6 +1156,22 @@ public interface ModelPackage extends EPackage {
 		EReference STACK_FRAME__VARIABLES = eINSTANCE.getStackFrame_Variables();
 
 		/**
+		 * The meta object literal for the '<em><b>Column</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STACK_FRAME__COLUMN = eINSTANCE.getStackFrame_Column();
+
+		/**
+		 * The meta object literal for the '<em><b>Length</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STACK_FRAME__LENGTH = eINSTANCE.getStackFrame_Length();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.debug.model.impl.VariableImpl <em>Variable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1132,6 +1228,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VARIABLE__COMPLEX = eINSTANCE.getVariable_Complex();
+
+		/**
+		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__KIND = eINSTANCE.getVariable_Kind();
 
 		/**
 		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
@@ -1238,6 +1342,16 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RESOLVE_VARIABLE_CMD__ID = eINSTANCE.getResolveVariableCmd_Id();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.debug.model.VariableKind <em>Variable Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.debug.model.VariableKind
+		 * @see org.eclipse.ecl.debug.model.impl.ModelPackageImpl#getVariableKind()
+		 * @generated
+		 */
+		EEnum VARIABLE_KIND = eINSTANCE.getVariableKind();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.debug.model.EventType <em>Event Type</em>}' enum.

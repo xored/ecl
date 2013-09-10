@@ -1,6 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 xored software, Inc.
-  
+ * Copyright (c) 2008 xored software, Inc.  
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -11,25 +10,23 @@
  *     xored software, Inc. - initial API and Implementation (Andrey Platov)
  *******************************************************************************/
 
-package org.eclipse.ecl.internal.core;
+package org.eclipse.ecl.internal.debug.runtime;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
 import org.osgi.framework.BundleContext;
 
-public class CorePlugin extends Plugin {
+public class EclDebugRuntimePlugin extends Plugin {
 
-	public static final String PLUGIN_ID = "org.eclipse.ecl.core";
+	public static final String PLUGIN_ID = "org.eclipse.ecl.debug.runtime";
 
-	private static CorePlugin plugin;
-
-	private ScriptletManager manager;
+	private static EclDebugRuntimePlugin plugin;
 
 	/**
 	 * The constructor
 	 */
-	public CorePlugin() {
+	public EclDebugRuntimePlugin() {
 	}
 
 	/*
@@ -42,7 +39,6 @@ public class CorePlugin extends Plugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		manager = new ScriptletManager();
 	}
 
 	/*
@@ -53,7 +49,6 @@ public class CorePlugin extends Plugin {
 	 */
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		manager = null;
 		plugin = null;
 		super.stop(context);
 	}
@@ -63,15 +58,8 @@ public class CorePlugin extends Plugin {
 	 * 
 	 * @return the shared instance
 	 */
-	public static CorePlugin getDefault() {
+	public static EclDebugRuntimePlugin getDefault() {
 		return plugin;
-	}
-
-	public static ScriptletManager getScriptletManager() {
-		if (plugin != null) {
-			return plugin.manager;
-		}
-		return null;
 	}
 
 	public static IStatus err(String message) {

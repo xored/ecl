@@ -84,6 +84,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case ModelPackage.VARIABLE_KIND:
+				return createVariableKindFromString(eDataType, initialValue);
 			case ModelPackage.EVENT_TYPE:
 				return createEventTypeFromString(eDataType, initialValue);
 			case ModelPackage.DEBUG_TYPE:
@@ -101,6 +103,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case ModelPackage.VARIABLE_KIND:
+				return convertVariableKindToString(eDataType, instanceValue);
 			case ModelPackage.EVENT_TYPE:
 				return convertEventTypeToString(eDataType, instanceValue);
 			case ModelPackage.DEBUG_TYPE:
@@ -208,6 +212,26 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	public ResolveVariableCmd createResolveVariableCmd() {
 		ResolveVariableCmdImpl resolveVariableCmd = new ResolveVariableCmdImpl();
 		return resolveVariableCmd;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VariableKind createVariableKindFromString(EDataType eDataType, String initialValue) {
+		VariableKind result = VariableKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVariableKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

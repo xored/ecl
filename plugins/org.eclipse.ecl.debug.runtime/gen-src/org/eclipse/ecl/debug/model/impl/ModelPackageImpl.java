@@ -23,6 +23,7 @@ import org.eclipse.ecl.debug.model.StackEvent;
 import org.eclipse.ecl.debug.model.StackFrame;
 import org.eclipse.ecl.debug.model.Variable;
 
+import org.eclipse.ecl.debug.model.VariableKind;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -107,6 +108,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	private EClass resolveVariableCmdEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum variableKindEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -326,6 +334,24 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getStackFrame_Column() {
+		return (EAttribute)stackFrameEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStackFrame_Length() {
+		return (EAttribute)stackFrameEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getVariable() {
 		return variableEClass;
 	}
@@ -382,6 +408,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 */
 	public EAttribute getVariable_Complex() {
 		return (EAttribute)variableEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVariable_Kind() {
+		return (EAttribute)variableEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -497,6 +532,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getVariableKind() {
+		return variableKindEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getEventType() {
 		return eventTypeEEnum;
 	}
@@ -556,6 +600,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(stackFrameEClass, STACK_FRAME__LINE);
 		createEAttribute(stackFrameEClass, STACK_FRAME__COMMAND);
 		createEReference(stackFrameEClass, STACK_FRAME__VARIABLES);
+		createEAttribute(stackFrameEClass, STACK_FRAME__COLUMN);
+		createEAttribute(stackFrameEClass, STACK_FRAME__LENGTH);
 
 		variableEClass = createEClass(VARIABLE);
 		createEAttribute(variableEClass, VARIABLE__TYPE);
@@ -565,6 +611,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(variableEClass, VARIABLE__ID);
 		createEAttribute(variableEClass, VARIABLE__OBJECT_REF);
 		createEAttribute(variableEClass, VARIABLE__COMPLEX);
+		createEAttribute(variableEClass, VARIABLE__KIND);
 
 		resolveVariableEventEClass = createEClass(RESOLVE_VARIABLE_EVENT);
 		createEReference(resolveVariableEventEClass, RESOLVE_VARIABLE_EVENT__VARIABLE);
@@ -583,6 +630,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(resolveVariableCmdEClass, RESOLVE_VARIABLE_CMD__ID);
 
 		// Create enums
+		variableKindEEnum = createEEnum(VARIABLE_KIND);
 		eventTypeEEnum = createEEnum(EVENT_TYPE);
 		debugTypeEEnum = createEEnum(DEBUG_TYPE);
 	}
@@ -641,6 +689,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getStackFrame_Line(), ecorePackage.getEInt(), "line", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStackFrame_Command(), ecorePackage.getEString(), "command", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStackFrame_Variables(), this.getVariable(), null, "variables", null, 0, -1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStackFrame_Column(), ecorePackage.getEInt(), "column", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStackFrame_Length(), ecorePackage.getEInt(), "length", null, 0, 1, StackFrame.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariable_Type(), ecorePackage.getEString(), "type", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -650,6 +700,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getVariable_Id(), ecorePackage.getEString(), "id", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariable_ObjectRef(), ecorePackage.getEJavaObject(), "objectRef", null, 0, 1, Variable.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariable_Complex(), ecorePackage.getEBoolean(), "complex", "false", 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_Kind(), this.getVariableKind(), "kind", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resolveVariableEventEClass, ResolveVariableEvent.class, "ResolveVariableEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getResolveVariableEvent_Variable(), this.getVariable(), null, "variable", null, 0, 1, ResolveVariableEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -668,6 +719,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getResolveVariableCmd_Id(), ecorePackage.getEString(), "id", null, 0, 1, ResolveVariableCmd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
+		initEEnum(variableKindEEnum, VariableKind.class, "VariableKind");
+		addEEnumLiteral(variableKindEEnum, VariableKind.VARIABLE);
+		addEEnumLiteral(variableKindEEnum, VariableKind.COMMAND);
+		addEEnumLiteral(variableKindEEnum, VariableKind.LOCAL);
+		addEEnumLiteral(variableKindEEnum, VariableKind.ARGUMENT);
+		addEEnumLiteral(variableKindEEnum, VariableKind.OBJECT);
+		addEEnumLiteral(variableKindEEnum, VariableKind.FIELD);
+		addEEnumLiteral(variableKindEEnum, VariableKind.REFERENCE);
+
 		initEEnum(eventTypeEEnum, EventType.class, "EventType");
 		addEEnumLiteral(eventTypeEEnum, EventType.STARTED);
 		addEEnumLiteral(eventTypeEEnum, EventType.SUSPENDED);
