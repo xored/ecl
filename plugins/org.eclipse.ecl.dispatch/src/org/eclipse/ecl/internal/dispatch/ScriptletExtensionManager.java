@@ -27,8 +27,13 @@ public class ScriptletExtensionManager extends AbstractScriptletManager<Scriptle
 			scriptlets.put(fqn, new ScriptletExtensionPack(fqn, config));
 	}
 
+	/**
+	 * @return suitable extension or null, if the extensions are not suitable or no extension is available
+	 */
 	public IScriptletExtension getScriptletExtension(Command scriptlet) throws CoreException {
 		ScriptletExtensionPack extPack = getScriptletDefinition(scriptlet);
+		if (extPack == null)
+			return null;
 		List<IScriptletExtension> exts = extPack.getExtensions();
 		
 		IScriptletExtension suitableExt = null;
@@ -44,6 +49,11 @@ public class ScriptletExtensionManager extends AbstractScriptletManager<Scriptle
 		}
 
 		return suitableExt;
+	}
+
+	@Override
+	protected void scriptletNotFound(FQName fqn) throws CoreException {
+		// do nothing, just pass to default service
 	}
 
 	//

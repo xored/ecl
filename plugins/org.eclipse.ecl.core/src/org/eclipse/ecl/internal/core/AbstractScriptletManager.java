@@ -77,20 +77,23 @@ public abstract class AbstractScriptletManager<T extends ScriptletDefinitionBase
 				def = scriptlets.get(fqname);
 			}
 		}
-		if (def == null) {
-			IStatus status = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
-					MessageFormat.format("Scriptlet {0} not found",
-							new Object[] { fqn }));
-			if (TRACE_REGISTERED_COMMANDS)
-				System.out.println(status.getMessage());
-	
-			throw new CoreException(status);
-		}
+		if (def == null)
+			scriptletNotFound(fqn);
 		return def;
 	}
 
 	protected boolean checkScriptletName(FQName d, String name) {
 		return d.name.equals(name);
+	}
+
+	protected void scriptletNotFound(FQName fqn) throws CoreException {
+		IStatus status = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
+				MessageFormat.format("Scriptlet {0} not found",
+						new Object[] { fqn }));
+		if (TRACE_REGISTERED_COMMANDS)
+			System.out.println(status.getMessage());
+
+		throw new CoreException(status);
 	}
 
 	protected void loadScriptlets() {
