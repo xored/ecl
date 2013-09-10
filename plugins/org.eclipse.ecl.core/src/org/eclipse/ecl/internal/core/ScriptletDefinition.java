@@ -5,23 +5,16 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.ecl.core.util.EclCommandNameConvention;
-import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.ICommandService;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
 
-public final class ScriptletDefinition {
+public final class ScriptletDefinition extends ScriptletDefinitionBase {
 
-	private final String name;
-	private final String namespace;
 	private final IConfigurationElement config;
 	private Set<String> friendlyNames;
 	private ICommandService service;
 
 	ScriptletDefinition(String ns, String name, IConfigurationElement config) {
-		this.namespace = ns;
-		this.name = name;
+		super(ns, name);
 		this.config = config;
 	}
 
@@ -39,23 +32,8 @@ public final class ScriptletDefinition {
 	}
 
 	ICommandService getService() throws CoreException {
-		if (service == null) {
-			service = (ICommandService) config
-					.createExecutableExtension(ScriptletManager.SCRIPTLET_CLASS_ATTR);
-		}
+		if (service == null)
+			service = createServiceFrom(config);
 		return service;
-	}
-
-	public EClass getEClass() {
-		EPackage epackage = EPackage.Registry.INSTANCE.getEPackage(namespace);
-		return (EClass) epackage.getEClassifier(name);
-	}
-
-	public String getCommandName() {
-		return EclCommandNameConvention.toCommandName(getEClass().getName());
-	}
-
-	public boolean isInternal() {
-		return getEClass().getEAnnotation(CoreUtils.INTERNAL_ANN) != null;
 	}
 }

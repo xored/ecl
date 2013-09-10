@@ -31,6 +31,9 @@ public class SequenceService implements ICommandService {
 		Sequence seq = (Sequence) command;
 		List<Object> content = CoreUtils.readPipeContent(process.getInput());
 		List<Command> commands = seq.getCommands();
+		if (commands.isEmpty()) {
+			return status;
+		}
 		IPipe lastChildOutput = process.getSession().createPipe();
 		int commandCount = commands.size();
 		for (int i = 0; i < commands.size(); ++i) {
@@ -46,6 +49,7 @@ public class SequenceService implements ICommandService {
 				return status;
 			}
 		}
+
 		for (Object object : CoreUtils.readPipeContent(lastChildOutput)) {
 			process.getOutput().write(object);
 		}

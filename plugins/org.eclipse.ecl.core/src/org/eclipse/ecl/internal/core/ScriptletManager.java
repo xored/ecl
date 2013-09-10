@@ -12,100 +12,41 @@
 
 package org.eclipse.ecl.internal.core;
 
-import java.text.MessageFormat;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.runtime.FQName;
 import org.eclipse.ecl.runtime.ICommandService;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
 
-public class ScriptletManager {
+public class ScriptletManager extends AbstractScriptletManager<ScriptletDefinition> {
 
 	private final static String SCRIPTLET_EXTPT = "org.eclipse.ecl.core.scriptlet";
-	private final static String SCRIPTLET_NAME_ATTR = "name";
-	private final static String SCRIPTLET_NAMESPACE_ATTR = "namespace";
-	final static String SCRIPTLET_CLASS_ATTR = "class";
 
-	public static final boolean TRACE_REGISTERED_COMMANDS = Boolean.valueOf(
-			Platform.getDebugOption(CorePlugin.PLUGIN_ID
-					+ "/traceRegisteredCommands")).booleanValue();
-
-	private Map<FQName, ScriptletDefinition> scriptlets;
-
-	synchronized ICommandService getScriptletService(Command scriptlet)
-			throws CoreException {
-		String ns = scriptlet.eClass().getEPackage().getNsURI();
-		String name = scriptlet.eClass().getName();
-		return getScriptletDefinition(ns, name).getService();
+	public ScriptletManager() {
+		super(SCRIPTLET_EXTPT);
 	}
 
-	synchronized public EClass findCommand(String ns, String name)
+	//
+
+	public synchronized ICommandService getScriptletService(Command scriptlet)
 			throws CoreException {
-		return getScriptletDefinition(ns, name).getEClass();
+		return getScriptletDefinition(scriptlet).getService();
 	}
 
-	synchronized public Command createCommand(String ns, String name)
-			throws CoreException {
-		EClass clazz = getScriptletDefinition(ns, name).getEClass();
-		return (Command) clazz.getEPackage().getEFactoryInstance()
-				.create(clazz);
-	}
-
-	private synchronized ScriptletDefinition getScriptletDefinition(String ns,
-			String name) throws CoreException {
-		if (scriptlets == null)
-			loadScriptlets();
-		FQName fqn = new FQName(ns, name);
-		ScriptletDefinition def = scriptlets.get(fqn);
-		// Search unique scriptlet
-		if (def == null) {
-			FQName fqname = null;
-			for (FQName d : scriptlets.keySet()) {
-				if (d.name.equals(name)) {
-					if (fqname == null) {
-						fqname = d;
-					} else {
-						fqname = null;
-						break;
-					}
-				} else {
-					ScriptletDefinition sd = scriptlets.get(d);
-					Set<String> friendlyNames = sd.getFriendlyNames();
-					if (friendlyNames.contains(name)) {
-						if (fqname == null) {
-							fqname = d;
-						} else {
-							fqname = null;
-							break;
-						}
-					}
-				}
-			}
-			if (fqname != null) {
-				def = scriptlets.get(fqname);
-			}
+	@Override
+	protected boolean checkScriptletName(FQName d, String name) {
+		if (super.checkScriptletName(d, name))
+			return true;
+		else {
+			ScriptletDefinition sd = scriptlets.get(d);
+			Set<String> friendlyNames = sd.getFriendlyNames();
+			if (friendlyNames.contains(name))
+				return true;
 		}
-		if (def == null) {
-			IStatus status = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
-					MessageFormat.format("Scriptlet {0} not found",
-							new Object[] { fqn }));
-			if (TRACE_REGISTERED_COMMANDS)
-				System.out.println(status.getMessage());
-
-			throw new CoreException(status);
-		}
-		return def;
+		return false;
 	}
 
 	synchronized public Set<FQName> getAllCommandNames() {
@@ -126,32 +67,12 @@ public class ScriptletManager {
 
 	synchronized public Set<String> getFriendlyNames(String ns, String name)
 			throws CoreException {
-		ScriptletDefinition def = getScriptletDefinition(ns, name);
+		ScriptletDefinition def = (ScriptletDefinition) getScriptletDefinition(ns, name);
 		return def == null ? null : def.getFriendlyNames();
 	}
 
-	private void loadScriptlets() {
-		scriptlets = new HashMap<FQName, ScriptletDefinition>();
-		IConfigurationElement[] configs = Platform.getExtensionRegistry()
-				.getConfigurationElementsFor(SCRIPTLET_EXTPT);
-		for (IConfigurationElement config : configs) {
-			String ns = config.getAttribute(SCRIPTLET_NAMESPACE_ATTR);
-			String name = config.getAttribute(SCRIPTLET_NAME_ATTR);
-			try {
-				EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(ns);
-				Assert.isLegal(ePackage != null, "Unknown package nsURI=" + ns);
-				Assert.isLegal(
-						ePackage.getEClassifier(name) != null,
-						"Unknown class=" + name + " in package="
-								+ ePackage.getName());
-				FQName fqn = new FQName(ns, name);
-				if (TRACE_REGISTERED_COMMANDS)
-					System.out.println("Loaded definition of command " + fqn);
-				scriptlets.put(fqn, new ScriptletDefinition(ns, name, config));
-			} catch (Exception e) {
-				CorePlugin.log(CorePlugin.err("Failed to load scriptlet "
-						+ name + ": " + e.getMessage(), e));
-			}
-		}
+	@Override
+	protected void createAndPutScriptletDefinition(FQName fqn, IConfigurationElement config) {
+		scriptlets.put(fqn, new ScriptletDefinition(fqn.ns, fqn.name, config));
 	}
 }
