@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.ecl.internal.core.CorePlugin;
+import org.eclipse.ecl.internal.core.EMFStreamPipe;
 import org.eclipse.ecl.internal.core.IMarkeredPipe;
 import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.emf.ecore.EObject;
@@ -49,6 +50,9 @@ public abstract class Session extends Job {
 	public void terminate() {
 		terminated = true;
 		try {
+			if( pipe instanceof EMFStreamPipe) {
+				pipe.closeNoWait();
+			}
 			socket.close();
 		} catch (IOException e) {
 			// safe close
@@ -68,6 +72,9 @@ public abstract class Session extends Job {
 			while (!pipe.isClosed()) {
 				Object take = pipe.take(60000);
 				if( take instanceof IStatus) {
+					if(terminated) {
+						return Status.OK_STATUS;
+					}
 					return (IStatus) take;
 				}
 				if (pipe.isClosed()) {
