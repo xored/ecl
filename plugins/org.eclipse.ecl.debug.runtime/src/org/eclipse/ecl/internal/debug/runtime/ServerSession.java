@@ -25,6 +25,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ecl.core.CommandStack;
 import org.eclipse.ecl.core.GetVal;
 import org.eclipse.ecl.core.IStackListener;
+import org.eclipse.ecl.core.ProcInstance;
 import org.eclipse.ecl.debug.model.BreakpointCmd;
 import org.eclipse.ecl.debug.model.DebugCmd;
 import org.eclipse.ecl.debug.model.EventType;
@@ -44,6 +45,8 @@ import org.eclipse.emf.ecore.EObject;
 public class ServerSession extends Session implements IStackListener {
 
 	private int lastLine = -1;
+	private int lastStackLevel = 0;
+	private int stepOverStackLevel = 0;
 	private EclStackSupport stackSupport = null;
 	private List<StackFrame> currentFrame = null;
 	private Map<String, Variable> currentVariables = new HashMap<String, Variable>();
@@ -75,9 +78,10 @@ public class ServerSession extends Session implements IStackListener {
 				if (lastLine != frames.get(0).getLine()) {
 					lastLine = -1;
 				}
+				lastStackLevel = getStackLevel(stack);
 				if (latch.isLocked()) {
 					if (stepOver) {
-						if (lastLine != frames.get(0).getLine()) {
+						 if (lastLine != frames.get(0).getLine() && stepOverStackLevel >= lastStackLevel) {
 							lastLine = frames.get(0).getLine();
 							setCurrentState(frames);
 
@@ -109,6 +113,18 @@ public class ServerSession extends Session implements IStackListener {
 			CorePlugin.err(e.getMessage(), e);
 			Thread.currentThread().interrupt();
 		}
+	}
+	
+	private int getStackLevel(CommandStack stack) {
+		int level = 0;
+		CommandStack st = stack.getParent();
+		while(st != null) {
+			if( st.getCommand() instanceof ProcInstance ) {
+				level++;
+			}
+			st = st.getParent();
+		}
+		return level;
 	}
 
 	private void setCurrentState(List<StackFrame> frames) {
@@ -238,6 +254,7 @@ public class ServerSession extends Session implements IStackListener {
 	private void stepOver() {
 		step = false;
 		stepOver = true;
+		stepOverStackLevel = lastStackLevel;
 		latch.lockAfterUnlock();
 	}
 

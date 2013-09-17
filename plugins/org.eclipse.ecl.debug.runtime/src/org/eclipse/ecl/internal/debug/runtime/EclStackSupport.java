@@ -15,6 +15,7 @@ import org.eclipse.ecl.core.Proc;
 import org.eclipse.ecl.core.ProcInstance;
 import org.eclipse.ecl.core.Sequence;
 import org.eclipse.ecl.core.Val;
+import org.eclipse.ecl.core.With;
 import org.eclipse.ecl.core.util.CommandToStringConverter;
 import org.eclipse.ecl.debug.commands.DebugCommand;
 import org.eclipse.ecl.debug.model.ModelFactory;
@@ -94,6 +95,7 @@ public class EclStackSupport {
 
 				// Add all variables
 				CommandStack current = stack;
+				boolean withSet = false;
 				while (current != null) {
 					DeclarationContainer declarations = current.getDeclarations();
 					if (declarations != null) {
@@ -109,6 +111,17 @@ public class EclStackSupport {
 								}
 							}
 						}
+					}
+					if (!withSet && current.getCommand() instanceof With) {
+						EObject val = ((With) current.getCommand()).getObject();
+						if (val != null) {
+							Variable var = createVariable(val);
+							var.setKind(VariableKind.REFERENCE);
+							var.setName("with object");
+							processVariable(var, val);
+							frame.getVariables().add(var);
+						}
+						withSet = true;
 					}
 					if (current.getCommand() instanceof ProcInstance) {
 						current = null;
@@ -305,7 +318,7 @@ public class EclStackSupport {
 		}
 	}
 
-	public Variable createVar(String name, Object value,VariableKind kind) {
+	public Variable createVar(String name, Object value, VariableKind kind) {
 		Variable var = createVariable(value);
 		var.setKind(kind);
 		var.setName(name);
