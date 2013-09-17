@@ -191,8 +191,10 @@ public class ServerSession extends Session implements IStackListener {
 					ResolveVariableEvent event = ModelFactory.eINSTANCE.createResolveVariableEvent();
 					event.setType(EventType.RESOLVE_VARIABLE);
 					event.setVariable(var);
-					synchronized(currentVariables) {
-						storeVarIds(var.getChildren());
+					if( var != null) {
+						synchronized (currentVariables) {
+							storeVarIds(var.getChildren());
+						}
 					}
 					try {
 						request(event);
