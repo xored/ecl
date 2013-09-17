@@ -20,6 +20,7 @@ import org.eclipse.debug.ui.IDebugUIConstants;
 import org.eclipse.debug.ui.IValueDetailListener;
 import org.eclipse.ecl.debug.model.VariableKind;
 import org.eclipse.ecl.internal.debug.core.EclVariable;
+import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.Position;
 import org.eclipse.jface.text.source.Annotation;
@@ -38,6 +39,8 @@ import org.eclipse.ui.part.FileEditorInput;
 public class EclModelPresentation extends LabelProvider implements
 		IDebugModelPresentation, IDebugEditorPresentation {
 
+	private static final String ECL_ACTIVE_CMD_ANNOTATION = "org.eclipse.ecl.debug.ui.activeCommand";
+
 	@Override
 	public String getText(Object element) {
 		return null;
@@ -45,10 +48,10 @@ public class EclModelPresentation extends LabelProvider implements
 
 	@Override
 	public Image getImage(Object element) {
-		if( element instanceof EclVariable) {
+		if (element instanceof EclVariable) {
 			EclVariable var = (EclVariable) element;
 			VariableKind kind = var.getVariableKind();
-			switch(kind) {
+			switch (kind) {
 			case ARGUMENT:
 				return Images.getImage(Images.LOCAL_VARIABLE);
 			case COMMAND:
@@ -128,15 +131,23 @@ public class EclModelPresentation extends LabelProvider implements
 			if (model != null) {
 				removeDebugAnnotations(model);
 				try {
-					IRegion region = viewer.getDocument().getLineInformation(
+					IDocument document = viewer.getDocument();
+					IRegion region = document.getLineInformation(
 							frame.getLineNumber() - 1);
-					int offset = region.getOffset();// + frame.getCharStart()
-													// -1;
-					int length = region.getLength();// + frame.getCharEnd() - 1;
 
+
+					int offset = region.getOffset();
+					int length = region.getLength();
 					Annotation annotation = getInstructionPointerAnnotation(frame);
 					model.addAnnotation(annotation,
 							new Position(offset, length));
+					
+					Annotation cmd = new EclActiveCommandAnnotation(frame, ECL_ACTIVE_CMD_ANNOTATION,
+							frame.getName());
+					model.addAnnotation(cmd,
+							new Position(region.getOffset() + frame.getCharStart()
+									- 1, frame.getCharEnd()));
+
 					return true;
 				} catch (Exception e) {
 					EclDebugUIPlugin.log(e);
@@ -205,6 +216,9 @@ public class EclModelPresentation extends LabelProvider implements
 			}
 			if (IDebugUIConstants.ANNOTATION_TYPE_INSTRUCTION_POINTER_SECONDARY
 					.equals(annotation.getType())) {
+				annotations.add(annotation);
+			}
+			if (ECL_ACTIVE_CMD_ANNOTATION.equals(annotation.getType())) {
 				annotations.add(annotation);
 			}
 		}

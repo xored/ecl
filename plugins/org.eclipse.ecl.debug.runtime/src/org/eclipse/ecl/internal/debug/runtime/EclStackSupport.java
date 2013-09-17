@@ -77,7 +77,7 @@ public class EclStackSupport {
 				frame.setCommand(exec.getName());
 				frame.setLine(exec.getLine());
 				frame.setColumn(exec.getColumn());
-				frame.setLength(exec.getLength());
+				frame.setLength(exec.getName().length());
 
 				for (IEclDebugExtension ext : extensions) {
 					ext.prepareFrame(stack, frame, this);
@@ -87,6 +87,7 @@ public class EclStackSupport {
 
 				Variable cmdVar = createCommandVariable(lastCommand);
 				if (cmdVar != null) {
+					cmdVar.setName(exec.getName());
 					frame.getVariables().add(cmdVar);
 					variables.add(cmdVar.getName());
 				}

@@ -36,6 +36,7 @@ import org.eclipse.ecl.debug.model.StackFrame;
 import org.eclipse.ecl.debug.model.Variable;
 import org.eclipse.ecl.debug.runtime.Session;
 import org.eclipse.ecl.debug.runtime.SuspendManager;
+import org.eclipse.ecl.gen.ast.AstExec;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -67,8 +68,8 @@ public class ServerSession extends Session implements IStackListener {
 		try {
 			List<StackFrame> frames = stackSupport.getFrames(stack);
 			if (frames != null) {
-				if (stack.getCommand() instanceof GetVal) {
-					// Skip get-val commands in processing.
+				if (stack.getCommand() instanceof GetVal || stack.getCommand() instanceof AstExec) {
+					// Skip some commands from processing.
 					return;
 				}
 				if (lastLine != frames.get(0).getLine()) {

@@ -127,7 +127,7 @@ public class EclStackFrame extends EclDebugElement implements IStackFrame {
 	}
 
 	public int getCharEnd() throws DebugException {
-		return frame.getColumn() + frame.getLength();
+		return frame.getLength();
 	}
 
 	public String getName() throws DebugException {
