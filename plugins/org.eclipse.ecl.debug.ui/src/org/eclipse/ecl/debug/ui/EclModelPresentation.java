@@ -28,14 +28,12 @@ import org.eclipse.jface.text.source.IAnnotationModel;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.internal.cocoa.SWTImageTextCell;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.FileEditorInput;
 
-@SuppressWarnings("restriction")
 public class EclModelPresentation extends LabelProvider implements
 		IDebugModelPresentation, IDebugEditorPresentation {
 
@@ -147,6 +145,8 @@ public class EclModelPresentation extends LabelProvider implements
 					model.addAnnotation(cmd,
 							new Position(region.getOffset() + frame.getCharStart()
 									- 1, frame.getCharEnd()));
+					
+					viewer.revealRange(offset, length);
 
 					return true;
 				} catch (Exception e) {
@@ -158,6 +158,7 @@ public class EclModelPresentation extends LabelProvider implements
 		return false;
 	}
 
+	@SuppressWarnings("restriction")
 	private static Annotation getInstructionPointerAnnotation(IStackFrame frame) {
 		String id = null;
 		Image image = null;
