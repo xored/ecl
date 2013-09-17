@@ -59,7 +59,7 @@ public class EclDebugThread extends EclDebugElement implements IThread {
 	}
 
 	public boolean canStepReturn() {
-		return false;
+		return !isTerminated() && isSuspended();
 	}
 
 	public boolean isStepping() {
@@ -75,6 +75,7 @@ public class EclDebugThread extends EclDebugElement implements IThread {
 	}
 
 	public void stepReturn() throws DebugException {
+		target.stepReturn();
 	}
 
 	public boolean canTerminate() {

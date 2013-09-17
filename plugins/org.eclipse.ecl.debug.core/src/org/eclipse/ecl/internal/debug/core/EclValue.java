@@ -4,16 +4,20 @@ import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IValue;
 import org.eclipse.debug.core.model.IVariable;
-import org.eclipse.ecl.debug.runtime.StackFrame.Arg;
+import org.eclipse.ecl.debug.model.Variable;
+import org.eclipse.ecl.runtime.BoxedValues;
+import org.eclipse.emf.common.util.EList;
 
 public class EclValue extends EclDebugElement implements IValue {
 
 	private final EclDebugThread thread;
-	private final Arg arg;
+	private Variable arg;
+	private IVariable[] children;
+	private boolean resolved = false;
 
-	public EclValue(EclDebugThread thread, Arg arg) {
+	public EclValue(EclDebugThread thread, Variable arg) {
 		this.thread = thread;
-		this.arg = arg;
+		setVariable(arg);
 	}
 
 	public IDebugTarget getDebugTarget() {
@@ -21,25 +25,49 @@ public class EclValue extends EclDebugElement implements IValue {
 	}
 
 	public String getReferenceTypeName() throws DebugException {
-		return arg.getActualType();
+		return arg.getType();
 	}
 
 	public String getValueString() throws DebugException {
-		return arg.getValue();
+		Object object = BoxedValues.unbox(arg.getValue());
+		if (object != null) {
+			return object.toString();
+		}
+		else {
+			return arg.getType();
+		}
 	}
 
 	public boolean isAllocated() throws DebugException {
-		return arg.isSet();
+		return true;
 	}
 
-	private static final IVariable[] EMPTY_VARIABLES = new IVariable[0];
-
 	public IVariable[] getVariables() throws DebugException {
-		return EMPTY_VARIABLES;
+		resolve();
+		return children;
 	}
 
 	public boolean hasVariables() throws DebugException {
-		return false;
+		resolve();
+		return !arg.getChildren().isEmpty();
+	}
+
+	private void resolve() {
+		if (!resolved) {
+			resolved = true;
+			if (arg.isComplex()) {
+				((EclDebugTarget) getDebugTarget()).resolveVariable(arg, this);
+			}
+		}
+	}
+
+	public void setVariable(Variable var) {
+		this.arg = var;
+		EList<Variable> list = arg.getChildren();
+		children = new IVariable[list.size()];
+		for (int i = 0; i < list.size(); i++) {
+			children[i] = new EclVariable(thread, list.get(i));
+		}
 	}
 
 }

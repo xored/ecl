@@ -11,48 +11,53 @@
  *******************************************************************************/
 package org.eclipse.ecl.internal.debug.runtime;
 
-import java.io.IOException;
+import static org.eclipse.ecl.debug.runtime.ModelUtils.createEvent;
+import static org.eclipse.ecl.debug.runtime.ModelUtils.createStackEvent;
+
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.ecl.core.Command;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ecl.core.CommandStack;
-import org.eclipse.ecl.core.CorePackage;
+import org.eclipse.ecl.core.GetVal;
 import org.eclipse.ecl.core.IStackListener;
-import org.eclipse.ecl.core.Parallel;
-import org.eclipse.ecl.core.Pipeline;
-import org.eclipse.ecl.core.Sequence;
-import org.eclipse.ecl.debug.commands.DebugCommand;
+import org.eclipse.ecl.core.ProcInstance;
+import org.eclipse.ecl.debug.model.BreakpointCmd;
+import org.eclipse.ecl.debug.model.DebugCmd;
+import org.eclipse.ecl.debug.model.EventType;
+import org.eclipse.ecl.debug.model.ModelFactory;
+import org.eclipse.ecl.debug.model.ResolveVariableCmd;
+import org.eclipse.ecl.debug.model.ResolveVariableEvent;
+import org.eclipse.ecl.debug.model.SkipAllCmd;
+import org.eclipse.ecl.debug.model.StackFrame;
+import org.eclipse.ecl.debug.model.Variable;
 import org.eclipse.ecl.debug.runtime.Session;
-import org.eclipse.ecl.debug.runtime.StackFrame;
-import org.eclipse.ecl.debug.runtime.StackFrame.Arg;
 import org.eclipse.ecl.debug.runtime.SuspendManager;
-import org.eclipse.ecl.debug.runtime.events.BreakpointEvent;
-import org.eclipse.ecl.debug.runtime.events.BreakpointHitEvent;
-import org.eclipse.ecl.debug.runtime.events.Event;
-import org.eclipse.ecl.debug.runtime.events.EventType;
-import org.eclipse.ecl.debug.runtime.events.SkipAllEvent;
-import org.eclipse.ecl.debug.runtime.events.StepEndEvent;
-import org.eclipse.ecl.debug.runtime.events.SuspendEvent;
 import org.eclipse.ecl.gen.ast.AstExec;
-import org.eclipse.ecl.gen.ast.AstNode;
-import org.eclipse.emf.common.util.EMap;
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.ecl.internal.core.CorePlugin;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 public class ServerSession extends Session implements IStackListener {
 
 	private int lastLine = -1;
+	private int lastStackLevel = 0;
+	private int stepOverStackLevel = 0;
+	private EclStackSupport stackSupport = null;
+	private List<StackFrame> currentFrame = null;
+	private Map<String, Variable> currentVariables = new HashMap<String, Variable>();
 
-	public ServerSession(Socket socket, String id) throws IOException {
+	public ServerSession(Socket socket, String id) throws CoreException {
 		super(socket);
 		this.id = id;
+		this.stackSupport = new EclStackSupport(this.id);
 		CommandStack.addListener(this);
-		request(new Event(EventType.STARTED));
+
+		request(createEvent(EventType.STARTED));
 	}
 
 	@Override
@@ -64,60 +69,92 @@ public class ServerSession extends Session implements IStackListener {
 
 	public void enter(CommandStack stack) {
 		try {
-			StackFrame[] frames = getFrames(stack);
+			List<StackFrame> frames = stackSupport.getFrames(stack);
 			if (frames != null) {
-				if (lastLine != frames[0].getLine()) {
+				if (stack.getCommand() instanceof GetVal || stack.getCommand() instanceof AstExec) {
+					// Skip some commands from processing.
+					return;
+				}
+				if (lastLine != frames.get(0).getLine()) {
 					lastLine = -1;
 				}
+				lastStackLevel = getStackLevel(stack);
 				if (latch.isLocked()) {
-					if (stepOver) {
-						if (lastLine != frames[0].getLine()) {
-							lastLine = frames[0].getLine();
-							// Command commandParent = getCommandParent(stack);
-							// if (((commandParent == null) || commandParent
-							// instanceof Sequence)
-							// && !(stack.getCommand() instanceof Pipeline)) {
-							request(new StepEndEvent(frames));
+					if (StepKind.StepOver.equals(step)) {
+						 if (lastLine != frames.get(0).getLine() && stepOverStackLevel >= lastStackLevel) {
+							lastLine = frames.get(0).getLine();
+							setCurrentState(frames);
+
+							request(createStackEvent(EventType.STEP_ENDED, frames));
 							await();
-							// }
 						}
-					} else {
-						if (step) {
-							request(new StepEndEvent(frames));
+					}
+					if (StepKind.StepReturn.equals(step)) {
+						 if (lastLine != frames.get(0).getLine() && (stepOverStackLevel > lastStackLevel || lastStackLevel == 0 ) ) {
+							lastLine = frames.get(0).getLine();
+							setCurrentState(frames);
+
+							request(createStackEvent(EventType.STEP_ENDED, frames));
+							await();
+						}
+					}
+					else {
+						setCurrentState(frames);
+						if (StepKind.Step.equals(step)) {
+							request(createStackEvent(EventType.STEP_ENDED, frames));
 						} else {
-							request(new SuspendEvent(frames));
+							request(createStackEvent(EventType.SUSPENDED, frames));
 						}
 						await();
 					}
-				} else if (isHitBreakpoint(frames[0])) {
-					if (lastLine != frames[0].getLine()) {
-						lastLine = frames[0].getLine();
+				} else if (isHitBreakpoint(frames.get(0))) {
+					if (lastLine != frames.get(0).getLine()) {
+						lastLine = frames.get(0).getLine();
+						setCurrentState(frames);
 						latch.lock();
-						request(new BreakpointHitEvent(frames));
+						request(createStackEvent(EventType.BREAKPOINT_HIT, frames));
 						await();
 					}
 				}
 			}
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
+		} catch (CoreException e) {
+			CorePlugin.err(e.getMessage(), e);
+			Thread.currentThread().interrupt();
+		}
+	}
+	
+	private int getStackLevel(CommandStack stack) {
+		int level = 0;
+		CommandStack st = stack.getParent();
+		while(st != null) {
+			if( st.getCommand() instanceof ProcInstance ) {
+				level++;
+			}
+			st = st.getParent();
+		}
+		return level;
+	}
+
+	private void setCurrentState(List<StackFrame> frames) {
+		synchronized (currentVariables) {
+			currentFrame = frames;
+			currentVariables.clear();
+			for (StackFrame stackFrame : frames) {
+				EList<Variable> list = stackFrame.getVariables();
+				storeVarIds(list);
+			}
 		}
 	}
 
-	@SuppressWarnings("unused")
-	private Command getCommandParent(CommandStack stack) {
-		CommandStack parent = stack.getParent();
-		while (parent != null) {
-			Command cmd = parent.getCommand();
-			if (cmd instanceof Sequence) {
-				return cmd;
-			} else if (cmd instanceof Pipeline) {
-				return cmd;
-			} else if (cmd instanceof Parallel) {
-				return cmd;
+	private void storeVarIds(EList<Variable> list) {
+		for (Variable var : list) {
+			currentVariables.put(var.getId(), var);
+			if (var.getChildren().size() > 0) {
+				storeVarIds(var.getChildren());
 			}
-			parent = parent.getParent();
 		}
-		return null;
 	}
 
 	private boolean isHitBreakpoint(StackFrame data) {
@@ -146,32 +183,59 @@ public class ServerSession extends Session implements IStackListener {
 	}
 
 	@Override
-	protected void handle(Event event) {
-		switch (event.getType()) {
-		case SUSPEND:
-			suspend();
-			break;
-		case RESUME:
-			resume();
-			break;
-		case STEP:
-			step();
-			break;
-		case STEP_OVER:
-			stepOver();
-			break;
-		case BREAKPOINT_ADD:
-			addBreakpoint((BreakpointEvent) event);
-			break;
-		case BREAKPOINT_REMOVE:
-			removeBreakpoint((BreakpointEvent) event);
-			break;
-		case SKIP_ALL:
-			skip = ((SkipAllEvent) event).isSkip();
-			break;
-		default:
-			throw new IllegalArgumentException("Unexpected request: " + event);
-		}
+	protected void handle(EObject op) {
+		if (op instanceof DebugCmd)
+			switch (((DebugCmd) op).getType()) {
+			case SUSPEND:
+				suspend();
+				break;
+			case RESUME:
+				resume();
+				break;
+			case STEP:
+				step();
+				break;
+			case STEP_OVER:
+				stepOver();
+				break;
+			case STEP_RETURN:
+				stepReturn();
+				break;
+			case BREAKPOINT_ADD:
+				addBreakpoint((BreakpointCmd) op);
+				break;
+			case BREAKPOINT_REMOVE:
+				removeBreakpoint((BreakpointCmd) op);
+				break;
+			case SKIP_ALL:
+				skip = ((SkipAllCmd) op).isSkip();
+				break;
+			case RESOLVE_VARIABLE:
+				synchronized (currentVariables) {
+					ResolveVariableCmd resolveCmd = (ResolveVariableCmd) op;
+					Variable var = currentVariables.get(resolveCmd.getId());
+					if (var != null) {
+						stackSupport.resolveVariable(var);
+					}
+					ResolveVariableEvent event = ModelFactory.eINSTANCE.createResolveVariableEvent();
+					event.setType(EventType.RESOLVE_VARIABLE);
+					event.setVariable(var);
+					if( var != null) {
+						synchronized (currentVariables) {
+							storeVarIds(var.getChildren());
+						}
+					}
+					try {
+						request(event);
+					} catch (CoreException e) {
+						CorePlugin.err(e.getMessage(), e);
+						Thread.currentThread().interrupt();
+					}
+				}
+				break;
+			default:
+				throw new IllegalArgumentException("Unexpected request: " + op);
+			}
 	}
 
 	@Override
@@ -179,108 +243,37 @@ public class ServerSession extends Session implements IStackListener {
 		Log.log(e);
 	}
 
-	private StackFrame[] getFrames(CommandStack stack) {
-		if (getSource(stack) == null) {
-			// no source information for this command stack
-			return null;
-		}
-		DebugCommand debug = getRoot(stack);
-		if (debug == null || !id.equals(debug.getSession())) {
-			// another session
-			return null;
-		}
-		String path = debug.getPath();
-		EMap<String,String> paths = debug.getPaths();
-		List<StackFrame> frames = new ArrayList<StackFrame>();
-		Command lastCommand = null;
-		do {
-			Command command = stack.getCommand();
-			if (command instanceof AstExec) {
-				AstExec exec = (AstExec) command;
-				if( exec.getResourceID() != null && paths.containsKey(exec.getResourceID())) {
-					path = paths.get(exec.getResourceID());
-				}
-				StackFrame frame = new StackFrame(path, exec.getName(),
-						exec.getLine(), extractArgs(lastCommand));
-				frames.add(frame);
-			} else
-				lastCommand = command;
-			stack = stack.getParent();
-		} while (stack != null);
-		if (frames.size() == 0)
-			return null;
-		return frames.toArray(new StackFrame[0]);
-	}
-
-	private static List<Arg> extractArgs(Command command) {
-		List<Arg> result = new ArrayList<Arg>();
-		if (command == null)
-			return result;
-
-		for (EStructuralFeature f : command.eClass()
-				.getEAllStructuralFeatures()) {
-			if (f == CorePackage.eINSTANCE.getCommand_Host())
-				continue;
-			if (f == CorePackage.eINSTANCE.getCommand_Bindings())
-				continue;
-			if (!command.eIsSet(f))
-				continue;
-
-			Object value = command.eGet(f);
-			result.add(new Arg(f.getEType().toString(), value != null ? value
-					.getClass().toString() : "", f.getName(), String
-					.valueOf(value), command.eIsSet(f)));
-		}
-
-		return result;
-	}
-
-	private AstNode getSource(CommandStack stack) {
-		stack = stack.getParent();
-		if (stack != null) {
-			Command command = stack.getCommand();
-			if (command instanceof AstExec) {
-				return (AstExec) command;
-			}
-		}
-		return null;
-	}
-
-	private static DebugCommand getRoot(CommandStack stack) {
-		do {
-			Command command = stack.getCommand();
-			if (command instanceof DebugCommand) {
-				return (DebugCommand) command;
-			}
-			stack = stack.getParent();
-		} while (stack != null);
-		return null;
-	}
-
 	private synchronized void suspend() {
 		latch.lock();
 	}
 
 	private synchronized void resume() {
-		step = false;
-		stepOver = false;
+		step = StepKind.None;
 		latch.unlock();
-		request(new Event(EventType.RESUMED));
+		try {
+			request(createEvent(EventType.RESUMED));
+		} catch (CoreException e) {
+			CorePlugin.err(e.getMessage(), e);
+		}
 	}
 
 	private void step() {
-		step = true;
-		stepOver = false;
+		step = StepKind.Step;
 		latch.lockAfterUnlock();
 	}
 
 	private void stepOver() {
-		step = false;
-		stepOver = true;
+		step = StepKind.StepOver;
+		stepOverStackLevel = lastStackLevel;
+		latch.lockAfterUnlock();
+	}
+	private void stepReturn() {
+		step = StepKind.StepReturn;
+		stepOverStackLevel = lastStackLevel;
 		latch.lockAfterUnlock();
 	}
 
-	private void addBreakpoint(BreakpointEvent event) {
+	private void addBreakpoint(BreakpointCmd event) {
 		Set<Integer> set = breakpoints.get(event.getPath());
 		if (set == null) {
 			set = new HashSet<Integer>();
@@ -289,7 +282,7 @@ public class ServerSession extends Session implements IStackListener {
 		set.add(event.getLine());
 	}
 
-	private void removeBreakpoint(BreakpointEvent event) {
+	private void removeBreakpoint(BreakpointCmd event) {
 		Set<Integer> set = breakpoints.get(event.getPath());
 		if (set != null) {
 			set.remove(event.getLine());
@@ -298,9 +291,12 @@ public class ServerSession extends Session implements IStackListener {
 			breakpoints.remove(event.getPath());
 		}
 	}
+	
+	private enum StepKind {
+		None, Step, StepOver, StepReturn
+	}
 
-	private volatile boolean step = false;
-	private volatile boolean stepOver = false;
+	private volatile StepKind step = StepKind.None;
 	private volatile boolean skip = false;
 	private final MultiLatch latch = new MultiLatch();
 

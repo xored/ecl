@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ECL Debugging UI support
+Bundle-SymbolicName: org.eclipse.ecl.debug.ui;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.ecl.debug.ui.EclDebugUIPlugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.debug.ui,
+ org.eclipse.ecl.debug.core;bundle-version="1.0.0",
+ org.eclipse.ecl.debug.runtime;bundle-version="1.0.0",
+ org.eclipse.ui.ide,
+ org.eclipse.jface.text,
+ org.eclipse.ui.editors
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

@@ -11,6 +11,14 @@
  *******************************************************************************/
 package org.eclipse.ecl.internal.debug.core;
 
+import static org.eclipse.ecl.debug.runtime.ModelUtils.createBreakpointCmd;
+import static org.eclipse.ecl.debug.runtime.ModelUtils.createDebugCmd;
+import static org.eclipse.ecl.debug.runtime.ModelUtils.createSkipAllEvent;
+import static org.eclipse.ecl.debug.runtime.ModelUtils.createVariableCmd;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.resources.IMarker;
@@ -32,20 +40,18 @@ import org.eclipse.debug.core.model.IMemoryBlock;
 import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
+import org.eclipse.debug.core.model.IValue;
 import org.eclipse.ecl.debug.core.Debugger;
 import org.eclipse.ecl.debug.core.DebuggerCallback;
 import org.eclipse.ecl.debug.core.DebuggerTransport;
 import org.eclipse.ecl.debug.core.EclDebug;
-import org.eclipse.ecl.debug.runtime.StackFrame;
-import org.eclipse.ecl.debug.runtime.events.BreakpointAddEvent;
-import org.eclipse.ecl.debug.runtime.events.BreakpointHitEvent;
-import org.eclipse.ecl.debug.runtime.events.BreakpointRemoveEvent;
-import org.eclipse.ecl.debug.runtime.events.Event;
-import org.eclipse.ecl.debug.runtime.events.EventType;
-import org.eclipse.ecl.debug.runtime.events.SkipAllEvent;
-import org.eclipse.ecl.debug.runtime.events.StackEvent;
-import org.eclipse.ecl.debug.runtime.events.StepEndEvent;
-import org.eclipse.ecl.debug.runtime.events.SuspendEvent;
+import org.eclipse.ecl.debug.core.NullDebuggerTransport;
+import org.eclipse.ecl.debug.model.DebugType;
+import org.eclipse.ecl.debug.model.ResolveVariableEvent;
+import org.eclipse.ecl.debug.model.StackEvent;
+import org.eclipse.ecl.debug.model.StackFrame;
+import org.eclipse.ecl.debug.model.Variable;
+import org.eclipse.emf.ecore.EObject;
 
 public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		IBreakpointManagerListener, Debugger, DebuggerCallback {
@@ -59,6 +65,7 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 	private volatile boolean suspended = true;
 	private volatile boolean stepping = false;
 	private volatile AtomicBoolean initialized = new AtomicBoolean();
+	private Map<String, IValue> resolveRequests = new HashMap<String, IValue>();
 
 	public EclDebugTarget(IProcess process) throws CoreException {
 		this.process = process;
@@ -67,6 +74,9 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 	}
 
 	public void setTransport(DebuggerTransport transport) {
+		if( transport == null) {
+			transport = new NullDebuggerTransport();
+		}
 		if (this.transport != null) {
 			this.transport.setCallback(null);
 		}
@@ -138,23 +148,27 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 	}
 
 	public void suspend() {
-		request(new Event(EventType.SUSPEND));
+		request(createDebugCmd(DebugType.SUSPEND));
 	}
 
 	public void resume() {
-		request(new Event(EventType.RESUME));
+		request(createDebugCmd(DebugType.RESUME));
 	}
 
 	public void step() {
 		// TODO actually we need to add real response from server for step
 		// started
 		stepStarted();
-		request(new Event(EventType.STEP));
+		request(createDebugCmd(DebugType.STEP));
 	}
 
 	public void stepOver() {
 		stepOverStarted();
-		request(new Event(EventType.STEP_OVER));
+		request(createDebugCmd(DebugType.STEP_OVER));
+	}
+	public void stepReturn() {
+		stepReturnStarted();
+		request(createDebugCmd(DebugType.STEP_RETURN));
 	}
 
 	public void breakpointAdded(IBreakpoint breakpoint) {
@@ -163,7 +177,7 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 				int line = ((ILineBreakpoint) breakpoint).getLineNumber();
 				String path = breakpoint.getMarker().getResource()
 						.getFullPath().toString();
-				request(new BreakpointAddEvent(path, line));
+				request(createBreakpointCmd(DebugType.BREAKPOINT_ADD, path, line));
 			}
 		} catch (CoreException e) {
 			Plugin.log(e);
@@ -176,7 +190,7 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 				int line = ((ILineBreakpoint) breakpoint).getLineNumber();
 				String path = breakpoint.getMarker().getResource()
 						.getFullPath().toString();
-				request(new BreakpointRemoveEvent(path, line));
+				request(createBreakpointCmd(DebugType.BREAKPOINT_REMOVE, path, line));
 			} catch (CoreException e) {
 				Plugin.log(e);
 			}
@@ -198,7 +212,7 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 	}
 
 	public void breakpointManagerEnablementChanged(boolean enabled) {
-		request(new SkipAllEvent(!enabled));
+		request(createSkipAllEvent(!enabled));
 	}
 
 	public boolean canDisconnect() {
@@ -247,27 +261,37 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		return DebugPlugin.getDefault().getBreakpointManager();
 	}
 
-	private void request(Event event) {
-		transport.request(event);
+	private void request(EObject event) {
+		try {
+			transport.request(event);
+		} catch (CoreException e) {
+			Plugin.log(e.getMessage(), e);
+		}
 	}
 
-	public void handleResponse(Event event) {
+	public void handleResponse(EObject event) {
 		thread.setBreakpoints(null);
-		switch (event.getType()) {
+		if (!(event instanceof org.eclipse.ecl.debug.model.Event)) {
+			return;
+		}
+		switch (((org.eclipse.ecl.debug.model.Event) event).getType()) {
 		case STARTED:
 			started();
 			break;
 		case SUSPENDED:
-			suspended((SuspendEvent) event);
+			suspended((StackEvent) event);
 			break;
 		case STEP_ENDED:
-			stepEnded((StepEndEvent) event);
+			stepEnded((StackEvent) event);
 			break;
 		case BREAKPOINT_HIT:
-			breakpointHit((BreakpointHitEvent) event);
+			breakpointHit((StackEvent) event);
 			break;
 		case RESUMED:
 			resumed();
+			break;
+		case RESOLVE_VARIABLE:
+			variableResolved((ResolveVariableEvent) event);
 			break;
 		}
 	}
@@ -280,16 +304,16 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		}
 		installDeferredBreakpoints();
 		if (!getBreakpointManager().isEnabled()) {
-			request(new SkipAllEvent(true));
+			request(createSkipAllEvent(true));
 		}
 		if (isStepping()) {
-			request(new Event(EventType.STEP));
+			request(createDebugCmd(DebugType.STEP));
 		} else {
 			resume();
 		}
 	}
 
-	private void suspended(SuspendEvent event) {
+	private void suspended(StackEvent event) {
 		suspended(event, DebugEvent.CLIENT_REQUEST);
 	}
 
@@ -308,13 +332,17 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		stepping = true;
 		thread.fireResumeEvent(DebugEvent.STEP_OVER);
 	}
+	private void stepReturnStarted() {
+		stepping = true;
+		thread.fireResumeEvent(DebugEvent.STEP_RETURN);
+	}
 
-	private void stepEnded(StepEndEvent event) {
+	private void stepEnded(StackEvent event) {
 		suspended(event, DebugEvent.STEP_END);
 	}
 
-	private void breakpointHit(BreakpointHitEvent event) {
-		StackFrame data = event.getFrames()[0];
+	private void breakpointHit(StackEvent event) {
+		StackFrame data = event.getStackFrame().get(0);
 		IBreakpoint breakpoint = getBreakpoint(data);
 		if (breakpoint != null && supportsBreakpoint(breakpoint)) {
 			thread.setBreakpoints(new IBreakpoint[] { breakpoint });
@@ -360,11 +388,38 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 	}
 
 	private void updateStack(StackEvent event) {
-		StackFrame[] eventFrames = event.getFrames();
-		IStackFrame[] newFrames = new IStackFrame[eventFrames.length];
-		for (int i = 0; i < eventFrames.length; i++) {
-			newFrames[i] = new EclStackFrame(thread, eventFrames[i]);
+		synchronized (resolveRequests) {
+			resolveRequests.clear();
+		}
+		List<StackFrame> eventFrames = event.getStackFrame();
+		IStackFrame[] newFrames = new IStackFrame[eventFrames.size()];
+		for (int i = 0; i < eventFrames.size(); i++) {
+			newFrames[i] = new EclStackFrame(thread, eventFrames.get(i));
 		}
 		frames = newFrames;
+	}
+
+	public void resolveVariable(Variable arg, EclValue eclValue) {
+		synchronized (resolveRequests) {
+			resolveRequests.put(arg.getId(), eclValue);
+		}
+		request(createVariableCmd(arg.getId()));
+	}
+
+	private void variableResolved(ResolveVariableEvent event) {
+		EclValue value = null;
+		Variable var = event.getVariable();
+		if(var == null) {
+			return;
+		}
+		synchronized (resolveRequests) {
+			value = (EclValue) resolveRequests.get(var.getId());
+			resolveRequests.remove(var.getId());
+		}
+		if (value != null) {
+			value.setVariable(var);
+			DebugEvent de = new DebugEvent(value, DebugEvent.CHANGE | DebugEvent.CONTENT);
+			fireEvent(de);
+		}
 	}
 }

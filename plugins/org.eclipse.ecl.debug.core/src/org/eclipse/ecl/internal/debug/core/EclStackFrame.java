@@ -11,13 +11,16 @@
  *******************************************************************************/
 package org.eclipse.ecl.internal.debug.core;
 
+import org.eclipse.core.runtime.Path;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IRegisterGroup;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
 import org.eclipse.debug.core.model.IVariable;
-import org.eclipse.ecl.debug.runtime.StackFrame;
+import org.eclipse.ecl.debug.model.StackFrame;
+import org.eclipse.ecl.debug.model.Variable;
+import org.eclipse.emf.common.util.EList;
 
 public class EclStackFrame extends EclDebugElement implements IStackFrame {
 
@@ -29,9 +32,11 @@ public class EclStackFrame extends EclDebugElement implements IStackFrame {
 		this.thread = thread;
 		this.frame = frame;
 
-		variables = new IVariable[frame.getArgs().size()];
-		for (int i = 0; i < variables.length; ++i)
-			variables[i] = new EclVariable(thread, frame.getArgs().get(i));
+		EList<Variable> vars = frame.getVariables();
+		variables = new IVariable[vars.size()];
+		for (int i = 0; i < variables.length; ++i) {
+			variables[i] = new EclVariable(thread, vars.get(i));
+		}
 	}
 
 	public StackFrame getFrame() {
@@ -119,15 +124,15 @@ public class EclStackFrame extends EclDebugElement implements IStackFrame {
 	}
 
 	public int getCharStart() throws DebugException {
-		return -1;
+		return frame.getColumn();
 	}
 
 	public int getCharEnd() throws DebugException {
-		return -1;
+		return frame.getLength();
 	}
 
 	public String getName() throws DebugException {
-		return frame.getCommand() + " line: " + frame.getLine();
+		return  frame.getCommand() + " ("+new Path(frame.getFile()).removeFileExtension().lastSegment() + ": " + frame.getLine() + ")";
 	}
 
 	public String getFile() {

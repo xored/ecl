@@ -15,8 +15,8 @@ import java.net.Socket;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ecl.debug.runtime.Session;
-import org.eclipse.ecl.debug.runtime.events.Event;
 import org.eclipse.ecl.internal.debug.core.Plugin;
+import org.eclipse.emf.ecore.EObject;
 
 public class DebuggerBaseTransport implements DebuggerTransport {
 
@@ -26,7 +26,7 @@ public class DebuggerBaseTransport implements DebuggerTransport {
 			session = new Session(socket) {
 
 				@Override
-				protected void handle(Event event) {
+				protected void handle(EObject event) {
 					final DebuggerCallback c = callback;
 					if (c != null) {
 						callback.handleResponse(event);
@@ -44,7 +44,7 @@ public class DebuggerBaseTransport implements DebuggerTransport {
 		}
 	}
 
-	public synchronized void request(Event event) {
+	public synchronized void request(EObject event) throws CoreException {
 		session.request(event);
 	}
 

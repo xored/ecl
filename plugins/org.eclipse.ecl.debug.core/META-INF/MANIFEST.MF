@@ -10,5 +10,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.debug.core,
  org.eclipse.emf.ecore,
  org.eclipse.ecl.debug.runtime
-Export-Package: org.eclipse.ecl.debug.core
+Export-Package: org.eclipse.ecl.debug.core,
+ org.eclipse.ecl.internal.debug.core
 Bundle-ActivationPolicy: lazy

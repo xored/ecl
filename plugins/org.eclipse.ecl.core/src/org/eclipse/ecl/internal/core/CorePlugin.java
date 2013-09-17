@@ -1,5 +1,6 @@
 /*******************************************************************************
- * Copyright (c) 2008 xored software, Inc.  
+ * Copyright (c) 2008 xored software, Inc.
+  
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -67,7 +68,10 @@ public class CorePlugin extends Plugin {
 	}
 
 	public static ScriptletManager getScriptletManager() {
-		return plugin.manager;
+		if (plugin != null) {
+			return plugin.manager;
+		}
+		return null;
 	}
 
 	public static IStatus err(String message) {
