@@ -45,6 +45,7 @@ import org.eclipse.ecl.debug.core.Debugger;
 import org.eclipse.ecl.debug.core.DebuggerCallback;
 import org.eclipse.ecl.debug.core.DebuggerTransport;
 import org.eclipse.ecl.debug.core.EclDebug;
+import org.eclipse.ecl.debug.core.NullDebuggerTransport;
 import org.eclipse.ecl.debug.model.DebugType;
 import org.eclipse.ecl.debug.model.ResolveVariableEvent;
 import org.eclipse.ecl.debug.model.StackEvent;
@@ -73,6 +74,9 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 	}
 
 	public void setTransport(DebuggerTransport transport) {
+		if( transport == null) {
+			transport = new NullDebuggerTransport();
+		}
 		if (this.transport != null) {
 			this.transport.setCallback(null);
 		}
