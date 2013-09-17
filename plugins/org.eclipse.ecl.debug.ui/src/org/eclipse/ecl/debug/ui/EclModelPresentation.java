@@ -76,6 +76,9 @@ public class EclModelPresentation extends LabelProvider implements
 		String detail = "";
 		try {
 			detail = value.getValueString();
+			if( detail == null) {
+				detail = "";
+			}
 		} catch (DebugException e) {
 		}
 		listener.detailComputed(value, detail);

@@ -11,6 +11,7 @@
  *******************************************************************************/
 package org.eclipse.ecl.internal.debug.core;
 
+import org.eclipse.core.runtime.Path;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.model.IDebugTarget;
 import org.eclipse.debug.core.model.IRegisterGroup;
@@ -131,7 +132,7 @@ public class EclStackFrame extends EclDebugElement implements IStackFrame {
 	}
 
 	public String getName() throws DebugException {
-		return frame.getCommand() + " line: " + frame.getLine();
+		return  frame.getCommand() + " ("+new Path(frame.getFile()).removeFileExtension().lastSegment() + ": " + frame.getLine() + ")";
 	}
 
 	public String getFile() {
