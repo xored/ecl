@@ -745,6 +745,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		addEEnumLiteral(debugTypeEEnum, DebugType.BREAKPOINT_REMOVE);
 		addEEnumLiteral(debugTypeEEnum, DebugType.SKIP_ALL);
 		addEEnumLiteral(debugTypeEEnum, DebugType.RESOLVE_VARIABLE);
+		addEEnumLiteral(debugTypeEEnum, DebugType.STEP_RETURN);
 
 		// Create resource
 		createResource(eNS_URI);

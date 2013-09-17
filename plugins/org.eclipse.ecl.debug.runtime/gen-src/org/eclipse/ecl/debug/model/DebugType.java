@@ -98,7 +98,15 @@ public enum DebugType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	RESOLVE_VARIABLE(7, "ResolveVariable", "ResolveVariable");
+	RESOLVE_VARIABLE(7, "ResolveVariable", "ResolveVariable"), /**
+	 * The '<em><b>Step Return</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STEP_RETURN_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	STEP_RETURN(8, "StepReturn", "StepReturn");
 
 	/**
 	 * The '<em><b>Suspend</b></em>' literal value.
@@ -221,6 +229,21 @@ public enum DebugType implements Enumerator {
 	public static final int RESOLVE_VARIABLE_VALUE = 7;
 
 	/**
+	 * The '<em><b>Step Return</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Step Return</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #STEP_RETURN
+	 * @model name="StepReturn"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int STEP_RETURN_VALUE = 8;
+
+	/**
 	 * An array of all the '<em><b>Debug Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -236,6 +259,7 @@ public enum DebugType implements Enumerator {
 			BREAKPOINT_REMOVE,
 			SKIP_ALL,
 			RESOLVE_VARIABLE,
+			STEP_RETURN,
 		};
 
 	/**
@@ -294,6 +318,7 @@ public enum DebugType implements Enumerator {
 			case BREAKPOINT_REMOVE_VALUE: return BREAKPOINT_REMOVE;
 			case SKIP_ALL_VALUE: return SKIP_ALL;
 			case RESOLVE_VARIABLE_VALUE: return RESOLVE_VARIABLE;
+			case STEP_RETURN_VALUE: return STEP_RETURN;
 		}
 		return null;
 	}

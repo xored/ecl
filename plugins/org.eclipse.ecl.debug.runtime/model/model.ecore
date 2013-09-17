@@ -80,6 +80,7 @@
     <eLiterals name="BreakpointRemove" value="5"/>
     <eLiterals name="SkipAll" value="6"/>
     <eLiterals name="ResolveVariable" value="7"/>
+    <eLiterals name="StepReturn" value="8"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResolveVariableCmd" eSuperTypes="#//DebugCmd">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

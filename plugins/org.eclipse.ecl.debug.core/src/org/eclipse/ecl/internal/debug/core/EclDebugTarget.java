@@ -162,6 +162,10 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 		stepOverStarted();
 		request(createDebugCmd(DebugType.STEP_OVER));
 	}
+	public void stepReturn() {
+		stepReturnStarted();
+		request(createDebugCmd(DebugType.STEP_RETURN));
+	}
 
 	public void breakpointAdded(IBreakpoint breakpoint) {
 		try {
@@ -323,6 +327,10 @@ public class EclDebugTarget extends EclDebugElement implements IDebugTarget,
 	private void stepOverStarted() {
 		stepping = true;
 		thread.fireResumeEvent(DebugEvent.STEP_OVER);
+	}
+	private void stepReturnStarted() {
+		stepping = true;
+		thread.fireResumeEvent(DebugEvent.STEP_RETURN);
 	}
 
 	private void stepEnded(StackEvent event) {

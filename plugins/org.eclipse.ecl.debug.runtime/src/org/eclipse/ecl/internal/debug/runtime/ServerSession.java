@@ -80,7 +80,7 @@ public class ServerSession extends Session implements IStackListener {
 				}
 				lastStackLevel = getStackLevel(stack);
 				if (latch.isLocked()) {
-					if (stepOver) {
+					if (StepKind.StepOver.equals(step)) {
 						 if (lastLine != frames.get(0).getLine() && stepOverStackLevel >= lastStackLevel) {
 							lastLine = frames.get(0).getLine();
 							setCurrentState(frames);
@@ -88,9 +88,19 @@ public class ServerSession extends Session implements IStackListener {
 							request(createStackEvent(EventType.STEP_ENDED, frames));
 							await();
 						}
-					} else {
+					}
+					if (StepKind.StepReturn.equals(step)) {
+						 if (lastLine != frames.get(0).getLine() && (stepOverStackLevel > lastStackLevel || lastStackLevel == 0 ) ) {
+							lastLine = frames.get(0).getLine();
+							setCurrentState(frames);
+
+							request(createStackEvent(EventType.STEP_ENDED, frames));
+							await();
+						}
+					}
+					else {
 						setCurrentState(frames);
-						if (step) {
+						if (StepKind.Step.equals(step)) {
 							request(createStackEvent(EventType.STEP_ENDED, frames));
 						} else {
 							request(createStackEvent(EventType.SUSPENDED, frames));
@@ -188,6 +198,9 @@ public class ServerSession extends Session implements IStackListener {
 			case STEP_OVER:
 				stepOver();
 				break;
+			case STEP_RETURN:
+				stepReturn();
+				break;
 			case BREAKPOINT_ADD:
 				addBreakpoint((BreakpointCmd) op);
 				break;
@@ -235,8 +248,7 @@ public class ServerSession extends Session implements IStackListener {
 	}
 
 	private synchronized void resume() {
-		step = false;
-		stepOver = false;
+		step = StepKind.None;
 		latch.unlock();
 		try {
 			request(createEvent(EventType.RESUMED));
@@ -246,14 +258,17 @@ public class ServerSession extends Session implements IStackListener {
 	}
 
 	private void step() {
-		step = true;
-		stepOver = false;
+		step = StepKind.Step;
 		latch.lockAfterUnlock();
 	}
 
 	private void stepOver() {
-		step = false;
-		stepOver = true;
+		step = StepKind.StepOver;
+		stepOverStackLevel = lastStackLevel;
+		latch.lockAfterUnlock();
+	}
+	private void stepReturn() {
+		step = StepKind.StepReturn;
 		stepOverStackLevel = lastStackLevel;
 		latch.lockAfterUnlock();
 	}
@@ -276,9 +291,12 @@ public class ServerSession extends Session implements IStackListener {
 			breakpoints.remove(event.getPath());
 		}
 	}
+	
+	private enum StepKind {
+		None, Step, StepOver, StepReturn
+	}
 
-	private volatile boolean step = false;
-	private volatile boolean stepOver = false;
+	private volatile StepKind step = StepKind.None;
 	private volatile boolean skip = false;
 	private final MultiLatch latch = new MultiLatch();
 
