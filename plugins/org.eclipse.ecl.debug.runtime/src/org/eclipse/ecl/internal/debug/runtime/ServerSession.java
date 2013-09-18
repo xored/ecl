@@ -81,7 +81,7 @@ public class ServerSession extends Session implements IStackListener {
 				lastStackLevel = getStackLevel(stack);
 				if (latch.isLocked()) {
 					if (StepKind.StepOver.equals(step)) {
-						 if (lastLine != frames.get(0).getLine() && stepOverStackLevel >= lastStackLevel) {
+						if (lastLine != frames.get(0).getLine() && stepOverStackLevel >= lastStackLevel) {
 							lastLine = frames.get(0).getLine();
 							setCurrentState(frames);
 
@@ -89,8 +89,9 @@ public class ServerSession extends Session implements IStackListener {
 							await();
 						}
 					}
-					if (StepKind.StepReturn.equals(step)) {
-						 if (lastLine != frames.get(0).getLine() && (stepOverStackLevel > lastStackLevel || lastStackLevel == 0 ) ) {
+					else if (StepKind.StepReturn.equals(step)) {
+						if (lastLine != frames.get(0).getLine()
+								&& (stepOverStackLevel > lastStackLevel || lastStackLevel == 0)) {
 							lastLine = frames.get(0).getLine();
 							setCurrentState(frames);
 
@@ -124,12 +125,12 @@ public class ServerSession extends Session implements IStackListener {
 			Thread.currentThread().interrupt();
 		}
 	}
-	
+
 	private int getStackLevel(CommandStack stack) {
 		int level = 0;
 		CommandStack st = stack.getParent();
-		while(st != null) {
-			if( st.getCommand() instanceof ProcInstance ) {
+		while (st != null) {
+			if (st.getCommand() instanceof ProcInstance) {
 				level++;
 			}
 			st = st.getParent();
@@ -220,7 +221,7 @@ public class ServerSession extends Session implements IStackListener {
 					ResolveVariableEvent event = ModelFactory.eINSTANCE.createResolveVariableEvent();
 					event.setType(EventType.RESOLVE_VARIABLE);
 					event.setVariable(var);
-					if( var != null) {
+					if (var != null) {
 						synchronized (currentVariables) {
 							storeVarIds(var.getChildren());
 						}
@@ -267,6 +268,7 @@ public class ServerSession extends Session implements IStackListener {
 		stepOverStackLevel = lastStackLevel;
 		latch.lockAfterUnlock();
 	}
+
 	private void stepReturn() {
 		step = StepKind.StepReturn;
 		stepOverStackLevel = lastStackLevel;
@@ -291,7 +293,7 @@ public class ServerSession extends Session implements IStackListener {
 			breakpoints.remove(event.getPath());
 		}
 	}
-	
+
 	private enum StepKind {
 		None, Step, StepOver, StepReturn
 	}
