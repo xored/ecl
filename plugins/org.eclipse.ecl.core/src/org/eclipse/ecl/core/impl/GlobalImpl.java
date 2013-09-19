@@ -12,6 +12,7 @@ import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.Declaration;
 import org.eclipse.ecl.core.Global;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -19,6 +20,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -30,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.ecl.core.impl.GlobalImpl#getVals <em>Vals</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.impl.GlobalImpl#isOverride <em>Override</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,6 +48,25 @@ public class GlobalImpl extends CommandImpl implements Global {
 	 * @ordered
 	 */
 	protected EList<Declaration> vals;
+
+	/**
+	 * The default value of the '{@link #isOverride() <em>Override</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOverride()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean OVERRIDE_EDEFAULT = false;
+	/**
+	 * The cached value of the '{@link #isOverride() <em>Override</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOverride()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean override = OVERRIDE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,6 +104,27 @@ public class GlobalImpl extends CommandImpl implements Global {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isOverride() {
+		return override;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOverride(boolean newOverride) {
+		boolean oldOverride = override;
+		override = newOverride;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.GLOBAL__OVERRIDE, oldOverride, override));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -101,6 +144,8 @@ public class GlobalImpl extends CommandImpl implements Global {
 		switch (featureID) {
 			case CorePackage.GLOBAL__VALS:
 				return getVals();
+			case CorePackage.GLOBAL__OVERRIDE:
+				return isOverride();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -118,6 +163,9 @@ public class GlobalImpl extends CommandImpl implements Global {
 				getVals().clear();
 				getVals().addAll((Collection<? extends Declaration>)newValue);
 				return;
+			case CorePackage.GLOBAL__OVERRIDE:
+				setOverride((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -133,6 +181,9 @@ public class GlobalImpl extends CommandImpl implements Global {
 			case CorePackage.GLOBAL__VALS:
 				getVals().clear();
 				return;
+			case CorePackage.GLOBAL__OVERRIDE:
+				setOverride(OVERRIDE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -147,8 +198,26 @@ public class GlobalImpl extends CommandImpl implements Global {
 		switch (featureID) {
 			case CorePackage.GLOBAL__VALS:
 				return vals != null && !vals.isEmpty();
+			case CorePackage.GLOBAL__OVERRIDE:
+				return override != OVERRIDE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (override: ");
+		result.append(override);
+		result.append(')');
+		return result.toString();
 	}
 
 } //GlobalImpl

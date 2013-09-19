@@ -38,7 +38,7 @@ public class GlobalService implements ICommandService {
 						err("Cannot declare uninitialized global value"));
 			}
 
-			globals.declare(val.getName(), val);
+			globals.declare(val.getName(), val, global.isOverride());
 		}
 		return Status.OK_STATUS;
 	}

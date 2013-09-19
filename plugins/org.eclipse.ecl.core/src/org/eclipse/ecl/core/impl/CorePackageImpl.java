@@ -1066,6 +1066,15 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getGlobal_Override() {
+		return (EAttribute)globalEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSessionState() {
 		return sessionStateEClass;
 	}
@@ -1438,6 +1447,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 
 		globalEClass = createEClass(GLOBAL);
 		createEReference(globalEClass, GLOBAL__VALS);
+		createEAttribute(globalEClass, GLOBAL__OVERRIDE);
 
 		sessionStateEClass = createEClass(SESSION_STATE);
 		createEReference(sessionStateEClass, SESSION_STATE__PROCS);
@@ -1651,6 +1661,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 
 		initEClass(globalEClass, Global.class, "Global", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGlobal_Vals(), this.getDeclaration(), null, "vals", null, 0, -1, Global.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGlobal_Override(), theEcorePackage.getEBoolean(), "override", "false", 0, 1, Global.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sessionStateEClass, SessionState.class, "SessionState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSessionState_Procs(), this.getProc(), null, "procs", null, 0, -1, SessionState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

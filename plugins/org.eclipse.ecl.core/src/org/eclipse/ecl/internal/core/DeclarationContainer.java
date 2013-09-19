@@ -24,10 +24,7 @@ public class DeclarationContainer {
 
 	public synchronized void declare(String name, Declaration decl)
 			throws CoreException {
-		if (declarations.containsKey(name)) {
-			throw new CoreException(err(format("'%s' already declared", name)));
-		}
-		declarations.put(name, decl);
+		declare(name, decl, false);
 	}
 
 	public synchronized Declaration lookup(String name) {
@@ -41,6 +38,13 @@ public class DeclarationContainer {
 		}
 
 		return parent.lookup(name);
+	}
+
+	public synchronized void declare(String name, Declaration decl, boolean override) throws CoreException {
+		if (declarations.containsKey(name) && !override) {
+			throw new CoreException(err(format("'%s' already declared", name)));
+		}
+		declarations.put(name, decl);
 	}
 
 }

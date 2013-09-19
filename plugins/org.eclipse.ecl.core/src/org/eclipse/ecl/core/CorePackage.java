@@ -1687,13 +1687,22 @@ public interface CorePackage extends EPackage {
 	int GLOBAL__VALS = COMMAND_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Override</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL__OVERRIDE = COMMAND_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Global</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GLOBAL_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
+	int GLOBAL_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.SessionStateImpl <em>Session State</em>}' class.
@@ -2687,6 +2696,17 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getGlobal_Vals();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Global#isOverride <em>Override</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Override</em>'.
+	 * @see org.eclipse.ecl.core.Global#isOverride()
+	 * @see #getGlobal()
+	 * @generated
+	 */
+	EAttribute getGlobal_Override();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.SessionState <em>Session State</em>}'.
@@ -3686,6 +3706,14 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference GLOBAL__VALS = eINSTANCE.getGlobal_Vals();
+
+		/**
+		 * The meta object literal for the '<em><b>Override</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GLOBAL__OVERRIDE = eINSTANCE.getGlobal_Override();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.SessionStateImpl <em>Session State</em>}' class.
