@@ -86,10 +86,6 @@ public class InteropAdapterFactory extends AdapterFactoryImpl {
 				return createExecProcessResultAdapter();
 			}
 			@Override
-			public Adapter caseGet(Get object) {
-				return createGetAdapter();
-			}
-			@Override
 			public Adapter caseGetMemoryUsage(GetMemoryUsage object) {
 				return createGetMemoryUsageAdapter();
 			}
@@ -156,20 +152,6 @@ public class InteropAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createExecProcessResultAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.interop.Get <em>Get</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.ecl.interop.Get
-	 * @generated
-	 */
-	public Adapter createGetAdapter() {
 		return null;
 	}
 

@@ -155,10 +155,15 @@
             name="Abs"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
-         <scriptlet
+      <scriptlet
             class="org.eclipse.ecl.operations.internal.commands.BetweenService"
             name="Between"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.GetService"
+            name="Get"
+            namespace="http://www.eclipse.org/ecl/core.ecore">
       </scriptlet>
    </extension>
 </plugin>

@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipse.ecl.core.impl;
 
+import java.util.Map;
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Block;
 import org.eclipse.ecl.core.BoxedValue;
@@ -25,13 +26,16 @@ import org.eclipse.ecl.core.EclDouble;
 import org.eclipse.ecl.core.EclException;
 import org.eclipse.ecl.core.EclFloat;
 import org.eclipse.ecl.core.EclInteger;
+import org.eclipse.ecl.core.EclList;
 import org.eclipse.ecl.core.EclLong;
+import org.eclipse.ecl.core.EclMap;
 import org.eclipse.ecl.core.EclShort;
 import org.eclipse.ecl.core.EclStackTraceEntry;
 import org.eclipse.ecl.core.EclString;
 import org.eclipse.ecl.core.Exec;
 import org.eclipse.ecl.core.ExecutableParameter;
 import org.eclipse.ecl.core.Foreach;
+import org.eclipse.ecl.core.Get;
 import org.eclipse.ecl.core.GetVal;
 import org.eclipse.ecl.core.Global;
 import org.eclipse.ecl.core.If;
@@ -262,6 +266,34 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	private EClass restoreStateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass getEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eclListEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eclMapEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eclMapEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1125,6 +1157,105 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGet() {
+		return getEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGet_Input() {
+		return (EReference)getEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGet_Key() {
+		return (EReference)getEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGet_Default() {
+		return (EReference)getEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEclList() {
+		return eclListEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEclList_Elements() {
+		return (EReference)eclListEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEclMap() {
+		return eclMapEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEclMap_Entries() {
+		return (EReference)eclMapEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEclMapEntry() {
+		return eclMapEntryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEclMapEntry_Key() {
+		return (EReference)eclMapEntryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEclMapEntry_Value() {
+		return (EReference)eclMapEntryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1458,6 +1589,21 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		restoreStateEClass = createEClass(RESTORE_STATE);
 		createEReference(restoreStateEClass, RESTORE_STATE__STATE);
 
+		getEClass = createEClass(GET);
+		createEReference(getEClass, GET__INPUT);
+		createEReference(getEClass, GET__KEY);
+		createEReference(getEClass, GET__DEFAULT);
+
+		eclListEClass = createEClass(ECL_LIST);
+		createEReference(eclListEClass, ECL_LIST__ELEMENTS);
+
+		eclMapEClass = createEClass(ECL_MAP);
+		createEReference(eclMapEClass, ECL_MAP__ENTRIES);
+
+		eclMapEntryEClass = createEClass(ECL_MAP_ENTRY);
+		createEReference(eclMapEntryEClass, ECL_MAP_ENTRY__KEY);
+		createEReference(eclMapEntryEClass, ECL_MAP_ENTRY__VALUE);
+
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
 	}
@@ -1522,6 +1668,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		globalEClass.getESuperTypes().add(this.getCommand());
 		saveStateEClass.getESuperTypes().add(this.getCommand());
 		restoreStateEClass.getESuperTypes().add(this.getCommand());
+		getEClass.getESuperTypes().add(this.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1672,6 +1819,21 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEClass(restoreStateEClass, RestoreState.class, "RestoreState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRestoreState_State(), this.getSessionState(), null, "state", null, 0, 1, RestoreState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(getEClass, Get.class, "Get", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGet_Input(), theEcorePackage.getEObject(), null, "input", null, 0, 1, Get.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGet_Key(), theEcorePackage.getEObject(), null, "key", null, 0, 1, Get.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGet_Default(), theEcorePackage.getEObject(), null, "default", null, 0, 1, Get.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eclListEClass, EclList.class, "EclList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEclList_Elements(), theEcorePackage.getEObject(), null, "elements", null, 0, -1, EclList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eclMapEClass, EclMap.class, "EclMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEclMap_Entries(), this.getEclMapEntry(), null, "entries", null, 0, -1, EclMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eclMapEntryEClass, Map.Entry.class, "EclMapEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEclMapEntry_Key(), theEcorePackage.getEObject(), null, "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEclMapEntry_Value(), theEcorePackage.getEObject(), null, "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
@@ -1685,6 +1847,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createDocsAnnotations();
 		// http://www.eclipse.org/ecl/input
 		createInputAnnotations();
+		// docs
+		createDocs_1Annotations();
 	}
 
 	/**
@@ -1734,7 +1898,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (restoreStateEClass, 
 		   source, 
 		   new String[] {
-		   });
+		   });				
 	}
 
 	/**
@@ -1748,7 +1912,40 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (getForeach_Input(), 
 		   source, 
 		   new String[] {
-		   });																							
+		   });																									
+		addAnnotation
+		  (getGet_Input(), 
+		   source, 
+		   new String[] {
+		   });			
+	}
+
+	/**
+	 * Initializes the annotations for <b>docs</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createDocs_1Annotations() {
+		String source = "docs";																																
+		addAnnotation
+		  (getGet_Input(), 
+		   source, 
+		   new String[] {
+			 "description", "Object to get a value from"
+		   });		
+		addAnnotation
+		  (getGet_Key(), 
+		   source, 
+		   new String[] {
+			 "description", "Depending on an input object either a key in a collection, or name of a feature/attribute of EMF object"
+		   });		
+		addAnnotation
+		  (getGet_Default(), 
+		   source, 
+		   new String[] {
+			 "description", "Value to return if input object does not contain value by requested key"
+		   });
 	}
 
 	/**
@@ -1891,7 +2088,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		   source, 
 		   new String[] {
 			 "description", "Marker superclass for user-defined procs"
-		   });					
+		   });									
 	}
 
 } // CorePackageImpl

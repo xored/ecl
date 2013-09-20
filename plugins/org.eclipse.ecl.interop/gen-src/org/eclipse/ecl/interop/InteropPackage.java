@@ -262,62 +262,6 @@ public interface InteropPackage extends EPackage {
 	int EXEC_PROCESS_RESULT_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.interop.impl.GetImpl <em>Get</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.interop.impl.GetImpl
-	 * @see org.eclipse.ecl.interop.impl.InteropPackageImpl#getGet()
-	 * @generated
-	 */
-	int GET = 3;
-
-	/**
-	 * The feature id for the '<em><b>Host</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GET__HOST = CorePackage.COMMAND__HOST;
-
-	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GET__BINDINGS = CorePackage.COMMAND__BINDINGS;
-
-	/**
-	 * The feature id for the '<em><b>Object</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GET__OBJECT = CorePackage.COMMAND_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Property Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GET__PROPERTY_NAME = CorePackage.COMMAND_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Get</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GET_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
-
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.interop.impl.GetMemoryUsageImpl <em>Get Memory Usage</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -325,7 +269,7 @@ public interface InteropPackage extends EPackage {
 	 * @see org.eclipse.ecl.interop.impl.InteropPackageImpl#getGetMemoryUsage()
 	 * @generated
 	 */
-	int GET_MEMORY_USAGE = 4;
+	int GET_MEMORY_USAGE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -518,38 +462,6 @@ public interface InteropPackage extends EPackage {
 	EAttribute getExecProcessResult_Stderr();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.ecl.interop.Get <em>Get</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Get</em>'.
-	 * @see org.eclipse.ecl.interop.Get
-	 * @generated
-	 */
-	EClass getGet();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.interop.Get#getObject <em>Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Object</em>'.
-	 * @see org.eclipse.ecl.interop.Get#getObject()
-	 * @see #getGet()
-	 * @generated
-	 */
-	EAttribute getGet_Object();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.interop.Get#getPropertyName <em>Property Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Property Name</em>'.
-	 * @see org.eclipse.ecl.interop.Get#getPropertyName()
-	 * @see #getGet()
-	 * @generated
-	 */
-	EAttribute getGet_PropertyName();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.interop.GetMemoryUsage <em>Get Memory Usage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -706,32 +618,6 @@ public interface InteropPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EXEC_PROCESS_RESULT__STDERR = eINSTANCE.getExecProcessResult_Stderr();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.ecl.interop.impl.GetImpl <em>Get</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.interop.impl.GetImpl
-		 * @see org.eclipse.ecl.interop.impl.InteropPackageImpl#getGet()
-		 * @generated
-		 */
-		EClass GET = eINSTANCE.getGet();
-
-		/**
-		 * The meta object literal for the '<em><b>Object</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GET__OBJECT = eINSTANCE.getGet_Object();
-
-		/**
-		 * The meta object literal for the '<em><b>Property Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GET__PROPERTY_NAME = eINSTANCE.getGet_PropertyName();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.interop.impl.GetMemoryUsageImpl <em>Get Memory Usage</em>}' class.

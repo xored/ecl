@@ -10,6 +10,7 @@
  ******************************************************************************/
 package org.eclipse.ecl.core.impl;
 
+import java.util.Map;
 import org.eclipse.ecl.core.*;
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Command;
@@ -131,6 +132,10 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.SESSION_STATE: return createSessionState();
 			case CorePackage.SAVE_STATE: return createSaveState();
 			case CorePackage.RESTORE_STATE: return createRestoreState();
+			case CorePackage.GET: return createGet();
+			case CorePackage.ECL_LIST: return createEclList();
+			case CorePackage.ECL_MAP: return createEclMap();
+			case CorePackage.ECL_MAP_ENTRY: return (EObject)createEclMapEntry();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -484,6 +489,46 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public RestoreState createRestoreState() {
 		RestoreStateImpl restoreState = new RestoreStateImpl();
 		return restoreState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Get createGet() {
+		GetImpl get = new GetImpl();
+		return get;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EclList createEclList() {
+		EclListImpl eclList = new EclListImpl();
+		return eclList;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EclMap createEclMap() {
+		EclMapImpl eclMap = new EclMapImpl();
+		return eclMap;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<EObject, EObject> createEclMapEntry() {
+		EclMapEntryImpl eclMapEntry = new EclMapEntryImpl();
+		return eclMapEntry;
 	}
 
 	/**

@@ -318,6 +318,33 @@ public interface CoreFactory extends EFactory {
 	RestoreState createRestoreState();
 
 	/**
+	 * Returns a new object of class '<em>Get</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Get</em>'.
+	 * @generated
+	 */
+	Get createGet();
+
+	/**
+	 * Returns a new object of class '<em>Ecl List</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ecl List</em>'.
+	 * @generated
+	 */
+	EclList createEclList();
+
+	/**
+	 * Returns a new object of class '<em>Ecl Map</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ecl Map</em>'.
+	 * @generated
+	 */
+	EclMap createEclMap();
+
+	/**
 	 * Returns a new object of class '<em>Ecl Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

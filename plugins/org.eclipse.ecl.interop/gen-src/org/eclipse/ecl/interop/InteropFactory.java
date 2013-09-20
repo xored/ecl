@@ -53,15 +53,6 @@ public interface InteropFactory extends EFactory {
 	ExecProcessResult createExecProcessResult();
 
 	/**
-	 * Returns a new object of class '<em>Get</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Get</em>'.
-	 * @generated
-	 */
-	Get createGet();
-
-	/**
 	 * Returns a new object of class '<em>Get Memory Usage</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

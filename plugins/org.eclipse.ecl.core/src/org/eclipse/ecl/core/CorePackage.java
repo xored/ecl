@@ -1825,6 +1825,163 @@ public interface CorePackage extends EPackage {
 	int RESTORE_STATE_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.GetImpl <em>Get</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.GetImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getGet()
+	 * @generated
+	 */
+	int GET = 41;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET__INPUT = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET__KEY = COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET__DEFAULT = COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Get</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclListImpl <em>Ecl List</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EclListImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclList()
+	 * @generated
+	 */
+	int ECL_LIST = 42;
+
+	/**
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_LIST__ELEMENTS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Ecl List</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_LIST_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclMapImpl <em>Ecl Map</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EclMapImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclMap()
+	 * @generated
+	 */
+	int ECL_MAP = 43;
+
+	/**
+	 * The feature id for the '<em><b>Entries</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_MAP__ENTRIES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Ecl Map</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_MAP_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclMapEntryImpl <em>Ecl Map Entry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EclMapEntryImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclMapEntry()
+	 * @generated
+	 */
+	int ECL_MAP_ENTRY = 44;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_MAP_ENTRY__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_MAP_ENTRY__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Ecl Map Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_MAP_ENTRY_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1832,7 +1989,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
 	 * @generated
 	 */
-	int THROWABLE = 41;
+	int THROWABLE = 45;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -2770,6 +2927,125 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRestoreState_State();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Get <em>Get</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Get</em>'.
+	 * @see org.eclipse.ecl.core.Get
+	 * @generated
+	 */
+	EClass getGet();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.Get#getInput <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Input</em>'.
+	 * @see org.eclipse.ecl.core.Get#getInput()
+	 * @see #getGet()
+	 * @generated
+	 */
+	EReference getGet_Input();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.Get#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Key</em>'.
+	 * @see org.eclipse.ecl.core.Get#getKey()
+	 * @see #getGet()
+	 * @generated
+	 */
+	EReference getGet_Key();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.Get#getDefault <em>Default</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Default</em>'.
+	 * @see org.eclipse.ecl.core.Get#getDefault()
+	 * @see #getGet()
+	 * @generated
+	 */
+	EReference getGet_Default();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclList <em>Ecl List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ecl List</em>'.
+	 * @see org.eclipse.ecl.core.EclList
+	 * @generated
+	 */
+	EClass getEclList();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.core.EclList#getElements <em>Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Elements</em>'.
+	 * @see org.eclipse.ecl.core.EclList#getElements()
+	 * @see #getEclList()
+	 * @generated
+	 */
+	EReference getEclList_Elements();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclMap <em>Ecl Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ecl Map</em>'.
+	 * @see org.eclipse.ecl.core.EclMap
+	 * @generated
+	 */
+	EClass getEclMap();
+
+	/**
+	 * Returns the meta object for the map '{@link org.eclipse.ecl.core.EclMap#getEntries <em>Entries</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Entries</em>'.
+	 * @see org.eclipse.ecl.core.EclMap#getEntries()
+	 * @see #getEclMap()
+	 * @generated
+	 */
+	EReference getEclMap_Entries();
+
+	/**
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Ecl Map Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ecl Map Entry</em>'.
+	 * @see java.util.Map.Entry
+	 * @model keyType="org.eclipse.emf.ecore.EObject" keyContainment="true"
+	 *        valueType="org.eclipse.emf.ecore.EObject" valueContainment="true"
+	 * @generated
+	 */
+	EClass getEclMapEntry();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Key</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getEclMapEntry()
+	 * @generated
+	 */
+	EReference getEclMapEntry_Key();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getEclMapEntry()
+	 * @generated
+	 */
+	EReference getEclMapEntry_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclBoolean <em>Ecl Boolean</em>}'.
@@ -3768,6 +4044,102 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference RESTORE_STATE__STATE = eINSTANCE.getRestoreState_State();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.GetImpl <em>Get</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.GetImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getGet()
+		 * @generated
+		 */
+		EClass GET = eINSTANCE.getGet();
+
+		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GET__INPUT = eINSTANCE.getGet_Input();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GET__KEY = eINSTANCE.getGet_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Default</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GET__DEFAULT = eINSTANCE.getGet_Default();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclListImpl <em>Ecl List</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EclListImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclList()
+		 * @generated
+		 */
+		EClass ECL_LIST = eINSTANCE.getEclList();
+
+		/**
+		 * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ECL_LIST__ELEMENTS = eINSTANCE.getEclList_Elements();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclMapImpl <em>Ecl Map</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EclMapImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclMap()
+		 * @generated
+		 */
+		EClass ECL_MAP = eINSTANCE.getEclMap();
+
+		/**
+		 * The meta object literal for the '<em><b>Entries</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ECL_MAP__ENTRIES = eINSTANCE.getEclMap_Entries();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclMapEntryImpl <em>Ecl Map Entry</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EclMapEntryImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclMapEntry()
+		 * @generated
+		 */
+		EClass ECL_MAP_ENTRY = eINSTANCE.getEclMapEntry();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ECL_MAP_ENTRY__KEY = eINSTANCE.getEclMapEntry_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ECL_MAP_ENTRY__VALUE = eINSTANCE.getEclMapEntry_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclBooleanImpl <em>Ecl Boolean</em>}' class.

@@ -21,11 +21,6 @@
             name="ExecProcess"
             namespace="http://www.eclipse.org/ecl/interop.ecore">
       </scriptlet>
-      <scriptlet
-            class="org.eclipse.ecl.interop.internal.commands.GetService"
-            name="Get"
-            namespace="http://www.eclipse.org/ecl/interop.ecore">
-      </scriptlet>
 	   <scriptlet
             class="org.eclipse.ecl.interop.internal.commands.GetMemoryUsageService"
             name="GetMemoryUsage"

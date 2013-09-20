@@ -6,6 +6,7 @@
  */
 package org.eclipse.ecl.core.util;
 
+import java.util.Map;
 import org.eclipse.ecl.core.*;
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Block;
@@ -262,6 +263,22 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseRestoreState(RestoreState object) {
 				return createRestoreStateAdapter();
+			}
+			@Override
+			public Adapter caseGet(Get object) {
+				return createGetAdapter();
+			}
+			@Override
+			public Adapter caseEclList(EclList object) {
+				return createEclListAdapter();
+			}
+			@Override
+			public Adapter caseEclMap(EclMap object) {
+				return createEclMapAdapter();
+			}
+			@Override
+			public Adapter caseEclMapEntry(Map.Entry<EObject, EObject> object) {
+				return createEclMapEntryAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -728,6 +745,62 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRestoreStateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.Get <em>Get</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.Get
+	 * @generated
+	 */
+	public Adapter createGetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EclList <em>Ecl List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.EclList
+	 * @generated
+	 */
+	public Adapter createEclListAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EclMap <em>Ecl Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.core.EclMap
+	 * @generated
+	 */
+	public Adapter createEclMapAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Ecl Map Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createEclMapEntryAdapter() {
 		return null;
 	}
 

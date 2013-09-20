@@ -8,6 +8,7 @@ package org.eclipse.ecl.core.util;
 
 import java.util.List;
 
+import java.util.Map;
 import org.eclipse.ecl.core.*;
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Block;
@@ -394,6 +395,31 @@ public class CoreSwitch<T> {
 				RestoreState restoreState = (RestoreState)theEObject;
 				T result = caseRestoreState(restoreState);
 				if (result == null) result = caseCommand(restoreState);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.GET: {
+				Get get = (Get)theEObject;
+				T result = caseGet(get);
+				if (result == null) result = caseCommand(get);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.ECL_LIST: {
+				EclList eclList = (EclList)theEObject;
+				T result = caseEclList(eclList);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.ECL_MAP: {
+				EclMap eclMap = (EclMap)theEObject;
+				T result = caseEclMap(eclMap);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.ECL_MAP_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<EObject, EObject> eclMapEntry = (Map.Entry<EObject, EObject>)theEObject;
+				T result = caseEclMapEntry(eclMapEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1013,6 +1039,66 @@ public class CoreSwitch<T> {
 	 * @generated
 	 */
 	public T caseRestoreState(RestoreState object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Get</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Get</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGet(Get object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ecl List</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ecl List</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEclList(EclList object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ecl Map</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ecl Map</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEclMap(EclMap object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ecl Map Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ecl Map Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEclMapEntry(Map.Entry<EObject, EObject> object) {
 		return null;
 	}
 
