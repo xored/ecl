@@ -65,6 +65,7 @@ public class InteropFactoryImpl extends EFactoryImpl implements InteropFactory {
 			case InteropPackage.EXEC_PROCESS_RESULT: return createExecProcessResult();
 			case InteropPackage.GET: return createGet();
 			case InteropPackage.GET_MEMORY_USAGE: return createGetMemoryUsage();
+			case InteropPackage.GET_JAVA_PROPERTY: return createGetJavaProperty();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -118,6 +119,16 @@ public class InteropFactoryImpl extends EFactoryImpl implements InteropFactory {
 	public GetMemoryUsage createGetMemoryUsage() {
 		GetMemoryUsageImpl getMemoryUsage = new GetMemoryUsageImpl();
 		return getMemoryUsage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GetJavaProperty createGetJavaProperty() {
+		GetJavaPropertyImpl getJavaProperty = new GetJavaPropertyImpl();
+		return getJavaProperty;
 	}
 
 	/**

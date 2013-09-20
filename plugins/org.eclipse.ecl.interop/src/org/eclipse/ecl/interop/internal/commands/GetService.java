@@ -1,5 +1,7 @@
 package org.eclipse.ecl.interop.internal.commands;
 
+import static org.eclipse.ecl.interop.internal.EclInteropPlugin.error;
+
 import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
@@ -7,7 +9,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.interop.Get;
-import org.eclipse.ecl.interop.internal.EclInteropPlugin;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.emf.ecore.EObject;
@@ -38,7 +39,7 @@ public class GetService implements ICommandService {
 		EStructuralFeature feature = object.eClass().getEStructuralFeature(
 				propName);
 		if (feature == null)
-			return error(String.format("No such property \"%s\".", propName));
+			return error("No such property \"%s\".", propName);
 		Object result = object.eGet(feature);
 		if (result instanceof List) {
 			for (Object item : (List) result) {
@@ -48,10 +49,6 @@ public class GetService implements ICommandService {
 			context.getOutput().write(result);
 		}
 		return Status.OK_STATUS;
-	}
-
-	private static Status error(String message) {
-		return new Status(Status.ERROR, EclInteropPlugin.PLUGIN_ID, message);
 	}
 
 }

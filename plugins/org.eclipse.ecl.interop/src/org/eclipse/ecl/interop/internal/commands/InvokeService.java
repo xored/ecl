@@ -1,5 +1,7 @@
 package org.eclipse.ecl.interop.internal.commands;
 
+import static org.eclipse.ecl.interop.internal.EclInteropPlugin.error;
+
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.util.concurrent.Callable;
@@ -11,7 +13,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.interop.Invoke;
-import org.eclipse.ecl.interop.internal.EclInteropPlugin;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
@@ -67,8 +68,7 @@ public class InvokeService implements ICommandService {
 				result = method.invoke(object, args);
 
 		} catch (Exception e) {
-			return error(String.format("%s: %s", e.getClass().getName(),
-					e.getMessage()));
+			return error("%s: %s", e.getClass().getName(), e.getMessage());
 		}
 
 		if (result != null)
@@ -114,10 +114,6 @@ public class InvokeService implements ICommandService {
 			return Status.OK_STATUS;
 		} else
 			return error("Unknown array pseudo-method name.");
-	}
-
-	private static Status error(String message) {
-		return new Status(Status.ERROR, EclInteropPlugin.PLUGIN_ID, message);
 	}
 
 	@SuppressWarnings("rawtypes")

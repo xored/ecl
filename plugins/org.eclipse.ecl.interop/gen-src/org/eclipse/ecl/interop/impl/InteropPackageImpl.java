@@ -11,6 +11,7 @@ import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.interop.ExecProcess;
 import org.eclipse.ecl.interop.ExecProcessResult;
 import org.eclipse.ecl.interop.Get;
+import org.eclipse.ecl.interop.GetJavaProperty;
 import org.eclipse.ecl.interop.GetMemoryUsage;
 import org.eclipse.ecl.interop.InteropFactory;
 import org.eclipse.ecl.interop.InteropPackage;
@@ -64,6 +65,13 @@ public class InteropPackageImpl extends EPackageImpl implements InteropPackage {
 	 * @generated
 	 */
 	private EClass getMemoryUsageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass getJavaPropertyEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -305,6 +313,33 @@ public class InteropPackageImpl extends EPackageImpl implements InteropPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGetJavaProperty() {
+		return getJavaPropertyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGetJavaProperty_Key() {
+		return (EAttribute)getJavaPropertyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGetJavaProperty_Default() {
+		return (EAttribute)getJavaPropertyEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public InteropFactory getInteropFactory() {
 		return (InteropFactory)getEFactoryInstance();
 	}
@@ -351,6 +386,10 @@ public class InteropPackageImpl extends EPackageImpl implements InteropPackage {
 		createEAttribute(getEClass, GET__PROPERTY_NAME);
 
 		getMemoryUsageEClass = createEClass(GET_MEMORY_USAGE);
+
+		getJavaPropertyEClass = createEClass(GET_JAVA_PROPERTY);
+		createEAttribute(getJavaPropertyEClass, GET_JAVA_PROPERTY__KEY);
+		createEAttribute(getJavaPropertyEClass, GET_JAVA_PROPERTY__DEFAULT);
 	}
 
 	/**
@@ -389,6 +428,7 @@ public class InteropPackageImpl extends EPackageImpl implements InteropPackage {
 		execProcessEClass.getESuperTypes().add(theCorePackage.getCommand());
 		getEClass.getESuperTypes().add(theCorePackage.getCommand());
 		getMemoryUsageEClass.getESuperTypes().add(theCorePackage.getCommand());
+		getJavaPropertyEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(invokeEClass, Invoke.class, "Invoke", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -414,6 +454,10 @@ public class InteropPackageImpl extends EPackageImpl implements InteropPackage {
 		initEAttribute(getGet_PropertyName(), theEcorePackage.getEString(), "propertyName", null, 1, 1, Get.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(getMemoryUsageEClass, GetMemoryUsage.class, "GetMemoryUsage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(getJavaPropertyEClass, GetJavaProperty.class, "GetJavaProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGetJavaProperty_Key(), theEcorePackage.getEString(), "key", null, 1, 1, GetJavaProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGetJavaProperty_Default(), theEcorePackage.getEString(), "default", null, 0, 1, GetJavaProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -519,6 +563,25 @@ public class InteropPackageImpl extends EPackageImpl implements InteropPackage {
 		   source, 
 		   new String[] {
 			 "description", "Name of the property to get the value for."
+		   });		
+		addAnnotation
+		  (getJavaPropertyEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Gets the Java system property indicated by the specified key.",
+			 "returns", "The string value of the system property."
+		   });		
+		addAnnotation
+		  (getGetJavaProperty_Key(), 
+		   source, 
+		   new String[] {
+			 "description", "The name of the system property."
+		   });		
+		addAnnotation
+		  (getGetJavaProperty_Default(), 
+		   source, 
+		   new String[] {
+			 "description", "Default value to use if there is no property with the key."
 		   });
 	}
 
@@ -544,7 +607,7 @@ public class InteropPackageImpl extends EPackageImpl implements InteropPackage {
 		  (getGet_Object(), 
 		   source, 
 		   new String[] {
-		   });		
+		   });					
 	}
 
 } //InteropPackageImpl

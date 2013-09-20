@@ -26,9 +26,14 @@
             name="Get"
             namespace="http://www.eclipse.org/ecl/interop.ecore">
       </scriptlet>
-	   <scriptlet
+      <scriptlet
             class="org.eclipse.ecl.interop.internal.commands.GetMemoryUsageService"
             name="GetMemoryUsage"
+            namespace="http://www.eclipse.org/ecl/interop.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.interop.internal.commands.GetJavaPropertyService"
+            name="GetJavaProperty"
             namespace="http://www.eclipse.org/ecl/interop.ecore">
       </scriptlet>
    </extension>
