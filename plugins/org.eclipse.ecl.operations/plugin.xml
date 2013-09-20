@@ -165,5 +165,28 @@
             name="Get"
             namespace="http://www.eclipse.org/ecl/core.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.EntryService"
+            name="Entry"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.MapService"
+            name="Map"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.ListService"
+            name="List"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
+   </extension>
+   <extension
+         point="org.eclipse.ecl.dispatch.scriptletExtension">
+      <scriptletExtension
+            class="org.eclipse.ecl.operations.internal.commands.GetFromMapService"
+            name="Get"
+            namespace="http://www.eclipse.org/ecl/core.ecore">
+      </scriptletExtension>
    </extension>
 </plugin>

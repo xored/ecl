@@ -8,6 +8,7 @@ package org.eclipse.ecl.core.impl;
 
 import org.eclipse.ecl.core.CorePackage;
 
+import org.eclipse.ecl.core.EclMapEntry;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -28,29 +29,29 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.core.impl.EclMapEntryImpl#getTypedKey <em>Key</em>}</li>
- *   <li>{@link org.eclipse.ecl.core.impl.EclMapEntryImpl#getTypedValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.impl.EclMapEntryImpl#getKey <em>Key</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.impl.EclMapEntryImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class EclMapEntryImpl extends EObjectImpl implements BasicEMap.Entry<EObject,EObject> {
+public class EclMapEntryImpl extends EObjectImpl implements EclMapEntry {
 	/**
-	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' containment reference.
+	 * The cached value of the '{@link #getKey() <em>Key</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTypedKey()
+	 * @see #getKey()
 	 * @generated
 	 * @ordered
 	 */
 	protected EObject key;
 
 	/**
-	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' containment reference.
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTypedValue()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
@@ -80,99 +81,13 @@ public class EclMapEntryImpl extends EObjectImpl implements BasicEMap.Entry<EObj
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject getTypedKey() {
-		return key;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetTypedKey(EObject newKey, NotificationChain msgs) {
-		EObject oldKey = key;
-		key = newKey;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CorePackage.ECL_MAP_ENTRY__KEY, oldKey, newKey);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTypedKey(EObject newKey) {
-		if (newKey != key) {
-			NotificationChain msgs = null;
-			if (key != null)
-				msgs = ((InternalEObject)key).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CorePackage.ECL_MAP_ENTRY__KEY, null, msgs);
-			if (newKey != null)
-				msgs = ((InternalEObject)newKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CorePackage.ECL_MAP_ENTRY__KEY, null, msgs);
-			msgs = basicSetTypedKey(newKey, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.ECL_MAP_ENTRY__KEY, newKey, newKey));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EObject getTypedValue() {
-		return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetTypedValue(EObject newValue, NotificationChain msgs) {
-		EObject oldValue = value;
-		value = newValue;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CorePackage.ECL_MAP_ENTRY__VALUE, oldValue, newValue);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTypedValue(EObject newValue) {
-		if (newValue != value) {
-			NotificationChain msgs = null;
-			if (value != null)
-				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CorePackage.ECL_MAP_ENTRY__VALUE, null, msgs);
-			if (newValue != null)
-				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CorePackage.ECL_MAP_ENTRY__VALUE, null, msgs);
-			msgs = basicSetTypedValue(newValue, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.ECL_MAP_ENTRY__VALUE, newValue, newValue));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CorePackage.ECL_MAP_ENTRY__KEY:
-				return basicSetTypedKey(null, msgs);
+				return basicSetKey(null, msgs);
 			case CorePackage.ECL_MAP_ENTRY__VALUE:
-				return basicSetTypedValue(null, msgs);
+				return basicSetValue(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -186,9 +101,9 @@ public class EclMapEntryImpl extends EObjectImpl implements BasicEMap.Entry<EObj
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CorePackage.ECL_MAP_ENTRY__KEY:
-				return getTypedKey();
+				return getKey();
 			case CorePackage.ECL_MAP_ENTRY__VALUE:
-				return getTypedValue();
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -202,10 +117,10 @@ public class EclMapEntryImpl extends EObjectImpl implements BasicEMap.Entry<EObj
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CorePackage.ECL_MAP_ENTRY__KEY:
-				setTypedKey((EObject)newValue);
+				setKey((EObject)newValue);
 				return;
 			case CorePackage.ECL_MAP_ENTRY__VALUE:
-				setTypedValue((EObject)newValue);
+				setValue((EObject)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -220,10 +135,10 @@ public class EclMapEntryImpl extends EObjectImpl implements BasicEMap.Entry<EObj
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case CorePackage.ECL_MAP_ENTRY__KEY:
-				setTypedKey((EObject)null);
+				setKey((EObject)null);
 				return;
 			case CorePackage.ECL_MAP_ENTRY__VALUE:
-				setTypedValue((EObject)null);
+				setValue((EObject)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -250,37 +165,8 @@ public class EclMapEntryImpl extends EObjectImpl implements BasicEMap.Entry<EObj
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected int hash = -1;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getHash() {
-		if (hash == -1) {
-			Object theKey = getKey();
-			hash = (theKey == null ? 0 : theKey.hashCode());
-		}
-		return hash;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setHash(int hash) {
-		this.hash = hash;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EObject getKey() {
-		return getTypedKey();
+		return key;
 	}
 
 	/**
@@ -288,8 +174,33 @@ public class EclMapEntryImpl extends EObjectImpl implements BasicEMap.Entry<EObj
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setKey(EObject key) {
-		setTypedKey(key);
+	public NotificationChain basicSetKey(EObject newKey, NotificationChain msgs) {
+		EObject oldKey = key;
+		key = newKey;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CorePackage.ECL_MAP_ENTRY__KEY, oldKey, newKey);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setKey(EObject newKey) {
+		if (newKey != key) {
+			NotificationChain msgs = null;
+			if (key != null)
+				msgs = ((InternalEObject)key).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CorePackage.ECL_MAP_ENTRY__KEY, null, msgs);
+			if (newKey != null)
+				msgs = ((InternalEObject)newKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CorePackage.ECL_MAP_ENTRY__KEY, null, msgs);
+			msgs = basicSetKey(newKey, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.ECL_MAP_ENTRY__KEY, newKey, newKey));
 	}
 
 	/**
@@ -298,7 +209,7 @@ public class EclMapEntryImpl extends EObjectImpl implements BasicEMap.Entry<EObj
 	 * @generated
 	 */
 	public EObject getValue() {
-		return getTypedValue();
+		return value;
 	}
 
 	/**
@@ -306,10 +217,14 @@ public class EclMapEntryImpl extends EObjectImpl implements BasicEMap.Entry<EObj
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject setValue(EObject value) {
-		EObject oldValue = getValue();
-		setTypedValue(value);
-		return oldValue;
+	public NotificationChain basicSetValue(EObject newValue, NotificationChain msgs) {
+		EObject oldValue = value;
+		value = newValue;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CorePackage.ECL_MAP_ENTRY__VALUE, oldValue, newValue);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -317,10 +232,18 @@ public class EclMapEntryImpl extends EObjectImpl implements BasicEMap.Entry<EObj
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	public EMap<EObject, EObject> getEMap() {
-		EObject container = eContainer();
-		return container == null ? null : (EMap<EObject, EObject>)container.eGet(eContainmentFeature());
+	public void setValue(EObject newValue) {
+		if (newValue != value) {
+			NotificationChain msgs = null;
+			if (value != null)
+				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CorePackage.ECL_MAP_ENTRY__VALUE, null, msgs);
+			if (newValue != null)
+				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CorePackage.ECL_MAP_ENTRY__VALUE, null, msgs);
+			msgs = basicSetValue(newValue, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.ECL_MAP_ENTRY__VALUE, newValue, newValue));
 	}
 
 } //EclMapEntryImpl

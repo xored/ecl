@@ -1707,6 +1707,153 @@ public interface OperationsPackage extends EPackage {
 	int BETWEEN_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 3;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.EntryImpl <em>Entry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.EntryImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getEntry()
+	 * @generated
+	 */
+	int ENTRY = 32;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY__KEY = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY__VALUE = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.MapImpl <em>Map</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.MapImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getMap()
+	 * @generated
+	 */
+	int MAP = 33;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP__ENTRIES = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Map</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.ListImpl <em>List</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.ListImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getList()
+	 * @generated
+	 */
+	int LIST = 34;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST__ITEMS = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>List</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIST_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Eq <em>Eq</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2369,6 +2516,80 @@ public interface OperationsPackage extends EPackage {
 	EReference getBetween_Right();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Entry <em>Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Entry</em>'.
+	 * @see org.eclipse.ecl.operations.Entry
+	 * @generated
+	 */
+	EClass getEntry();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.operations.Entry#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Key</em>'.
+	 * @see org.eclipse.ecl.operations.Entry#getKey()
+	 * @see #getEntry()
+	 * @generated
+	 */
+	EReference getEntry_Key();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.operations.Entry#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see org.eclipse.ecl.operations.Entry#getValue()
+	 * @see #getEntry()
+	 * @generated
+	 */
+	EReference getEntry_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Map <em>Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Map</em>'.
+	 * @see org.eclipse.ecl.operations.Map
+	 * @generated
+	 */
+	EClass getMap();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.operations.Map#getEntries <em>Entries</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Entries</em>'.
+	 * @see org.eclipse.ecl.operations.Map#getEntries()
+	 * @see #getMap()
+	 * @generated
+	 */
+	EReference getMap_Entries();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.List <em>List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>List</em>'.
+	 * @see org.eclipse.ecl.operations.List
+	 * @generated
+	 */
+	EClass getList();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.operations.List#getItems <em>Items</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Items</em>'.
+	 * @see org.eclipse.ecl.operations.List#getItems()
+	 * @see #getList()
+	 * @generated
+	 */
+	EReference getList_Items();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.BinaryOp <em>Binary Op</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2987,6 +3208,68 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference BETWEEN__RIGHT = eINSTANCE.getBetween_Right();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.EntryImpl <em>Entry</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.EntryImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getEntry()
+		 * @generated
+		 */
+		EClass ENTRY = eINSTANCE.getEntry();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENTRY__KEY = eINSTANCE.getEntry_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENTRY__VALUE = eINSTANCE.getEntry_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.MapImpl <em>Map</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.MapImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getMap()
+		 * @generated
+		 */
+		EClass MAP = eINSTANCE.getMap();
+
+		/**
+		 * The meta object literal for the '<em><b>Entries</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAP__ENTRIES = eINSTANCE.getMap_Entries();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.ListImpl <em>List</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.ListImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getList()
+		 * @generated
+		 */
+		EClass LIST = eINSTANCE.getList();
+
+		/**
+		 * The meta object literal for the '<em><b>Items</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIST__ITEMS = eINSTANCE.getList_Items();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.BinaryOpImpl <em>Binary Op</em>}' class.

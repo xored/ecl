@@ -296,6 +296,33 @@ public interface OperationsFactory extends EFactory {
 	Between createBetween();
 
 	/**
+	 * Returns a new object of class '<em>Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Entry</em>'.
+	 * @generated
+	 */
+	Entry createEntry();
+
+	/**
+	 * Returns a new object of class '<em>Map</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Map</em>'.
+	 * @generated
+	 */
+	Map createMap();
+
+	/**
+	 * Returns a new object of class '<em>List</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>List</em>'.
+	 * @generated
+	 */
+	List createList();
+
+	/**
 	 * Returns a new object of class '<em>Binary Op</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

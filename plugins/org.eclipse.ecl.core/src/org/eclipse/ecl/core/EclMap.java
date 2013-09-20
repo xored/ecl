@@ -6,6 +6,7 @@
  */
 package org.eclipse.ecl.core;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EObject;
@@ -28,20 +29,19 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface EclMap extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Entries</b></em>' map.
-	 * The key is of type {@link org.eclipse.emf.ecore.EObject},
-	 * and the value is of type {@link org.eclipse.emf.ecore.EObject},
+	 * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.ecl.core.EclMapEntry}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Entries</em>' map isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Entries</em>' map.
+	 * @return the value of the '<em>Entries</em>' containment reference list.
 	 * @see org.eclipse.ecl.core.CorePackage#getEclMap_Entries()
-	 * @model mapType="org.eclipse.ecl.core.EclMapEntry<org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject>"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EMap<EObject, EObject> getEntries();
+	EList<EclMapEntry> getEntries();
 
 } // EclMap

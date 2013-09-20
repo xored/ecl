@@ -17,6 +17,7 @@ import org.eclipse.ecl.operations.Bool;
 import org.eclipse.ecl.operations.Concat;
 import org.eclipse.ecl.operations.Div;
 import org.eclipse.ecl.operations.Emit;
+import org.eclipse.ecl.operations.Entry;
 import org.eclipse.ecl.operations.Eq;
 import org.eclipse.ecl.operations.Format;
 import org.eclipse.ecl.operations.FormatTime;
@@ -24,7 +25,9 @@ import org.eclipse.ecl.operations.GetTime;
 import org.eclipse.ecl.operations.Gt;
 import org.eclipse.ecl.operations.Int;
 import org.eclipse.ecl.operations.Length;
+import org.eclipse.ecl.operations.List;
 import org.eclipse.ecl.operations.Lt;
+import org.eclipse.ecl.operations.Map;
 import org.eclipse.ecl.operations.Minus;
 import org.eclipse.ecl.operations.Mult;
 import org.eclipse.ecl.operations.Not;
@@ -117,6 +120,9 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 			case OperationsPackage.MULT: return createMult();
 			case OperationsPackage.ABS: return createAbs();
 			case OperationsPackage.BETWEEN: return createBetween();
+			case OperationsPackage.ENTRY: return createEntry();
+			case OperationsPackage.MAP: return createMap();
+			case OperationsPackage.LIST: return createList();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -390,6 +396,36 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	public Between createBetween() {
 		BetweenImpl between = new BetweenImpl();
 		return between;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Entry createEntry() {
+		EntryImpl entry = new EntryImpl();
+		return entry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map createMap() {
+		MapImpl map = new MapImpl();
+		return map;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List createList() {
+		ListImpl list = new ListImpl();
+		return list;
 	}
 
 	/**

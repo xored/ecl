@@ -21,6 +21,7 @@ import org.eclipse.ecl.operations.Concat;
 import org.eclipse.ecl.operations.Convert;
 import org.eclipse.ecl.operations.Div;
 import org.eclipse.ecl.operations.Emit;
+import org.eclipse.ecl.operations.Entry;
 import org.eclipse.ecl.operations.Eq;
 import org.eclipse.ecl.operations.Format;
 import org.eclipse.ecl.operations.FormatTime;
@@ -29,6 +30,7 @@ import org.eclipse.ecl.operations.Gt;
 import org.eclipse.ecl.operations.Int;
 import org.eclipse.ecl.operations.Length;
 import org.eclipse.ecl.operations.Lt;
+import org.eclipse.ecl.operations.Map;
 import org.eclipse.ecl.operations.Minus;
 import org.eclipse.ecl.operations.Mult;
 import org.eclipse.ecl.operations.Not;
@@ -345,6 +347,27 @@ public class OperationsSwitch<T> {
 				Between between = (Between)theEObject;
 				T result = caseBetween(between);
 				if (result == null) result = caseCommand(between);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.ENTRY: {
+				Entry entry = (Entry)theEObject;
+				T result = caseEntry(entry);
+				if (result == null) result = caseCommand(entry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.MAP: {
+				Map map = (Map)theEObject;
+				T result = caseMap(map);
+				if (result == null) result = caseCommand(map);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.LIST: {
+				org.eclipse.ecl.operations.List list = (org.eclipse.ecl.operations.List)theEObject;
+				T result = caseList(list);
+				if (result == null) result = caseCommand(list);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -831,6 +854,51 @@ public class OperationsSwitch<T> {
 	 * @generated
 	 */
 	public T caseBetween(Between object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntry(Entry object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Map</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Map</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMap(Map object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>List</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>List</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseList(org.eclipse.ecl.operations.List object) {
 		return null;
 	}
 

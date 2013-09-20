@@ -135,7 +135,7 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.GET: return createGet();
 			case CorePackage.ECL_LIST: return createEclList();
 			case CorePackage.ECL_MAP: return createEclMap();
-			case CorePackage.ECL_MAP_ENTRY: return (EObject)createEclMapEntry();
+			case CorePackage.ECL_MAP_ENTRY: return createEclMapEntry();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -526,7 +526,7 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<EObject, EObject> createEclMapEntry() {
+	public EclMapEntry createEclMapEntry() {
 		EclMapEntryImpl eclMapEntry = new EclMapEntryImpl();
 		return eclMapEntry;
 	}

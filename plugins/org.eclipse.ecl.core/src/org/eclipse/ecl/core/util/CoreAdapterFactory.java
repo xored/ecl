@@ -277,7 +277,7 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 				return createEclMapAdapter();
 			}
 			@Override
-			public Adapter caseEclMapEntry(Map.Entry<EObject, EObject> object) {
+			public Adapter caseEclMapEntry(EclMapEntry object) {
 				return createEclMapEntryAdapter();
 			}
 			@Override
@@ -791,13 +791,13 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Ecl Map Entry</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.core.EclMapEntry <em>Ecl Map Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see java.util.Map.Entry
+	 * @see org.eclipse.ecl.core.EclMapEntry
 	 * @generated
 	 */
 	public Adapter createEclMapEntryAdapter() {

@@ -29,6 +29,7 @@ import org.eclipse.ecl.core.EclInteger;
 import org.eclipse.ecl.core.EclList;
 import org.eclipse.ecl.core.EclLong;
 import org.eclipse.ecl.core.EclMap;
+import org.eclipse.ecl.core.EclMapEntry;
 import org.eclipse.ecl.core.EclShort;
 import org.eclipse.ecl.core.EclStackTraceEntry;
 import org.eclipse.ecl.core.EclString;
@@ -1830,9 +1831,9 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEClass(eclMapEClass, EclMap.class, "EclMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEclMap_Entries(), this.getEclMapEntry(), null, "entries", null, 0, -1, EclMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(eclMapEntryEClass, Map.Entry.class, "EclMapEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEclMapEntry_Key(), theEcorePackage.getEObject(), null, "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEclMapEntry_Value(), theEcorePackage.getEObject(), null, "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(eclMapEntryEClass, EclMapEntry.class, "EclMapEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEclMapEntry_Key(), theEcorePackage.getEObject(), null, "key", null, 0, 1, EclMapEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEclMapEntry_Value(), theEcorePackage.getEObject(), null, "value", null, 0, 1, EclMapEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

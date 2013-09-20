@@ -1927,7 +1927,7 @@ public interface CorePackage extends EPackage {
 	int ECL_MAP = 43;
 
 	/**
-	 * The feature id for the '<em><b>Entries</b></em>' map.
+	 * The feature id for the '<em><b>Entries</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3003,10 +3003,10 @@ public interface CorePackage extends EPackage {
 	EClass getEclMap();
 
 	/**
-	 * Returns the meta object for the map '{@link org.eclipse.ecl.core.EclMap#getEntries <em>Entries</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.core.EclMap#getEntries <em>Entries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>Entries</em>'.
+	 * @return the meta object for the containment reference list '<em>Entries</em>'.
 	 * @see org.eclipse.ecl.core.EclMap#getEntries()
 	 * @see #getEclMap()
 	 * @generated
@@ -3014,34 +3014,32 @@ public interface CorePackage extends EPackage {
 	EReference getEclMap_Entries();
 
 	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Ecl Map Entry</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclMapEntry <em>Ecl Map Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Ecl Map Entry</em>'.
-	 * @see java.util.Map.Entry
-	 * @model keyType="org.eclipse.emf.ecore.EObject" keyContainment="true"
-	 *        valueType="org.eclipse.emf.ecore.EObject" valueContainment="true"
+	 * @see org.eclipse.ecl.core.EclMapEntry
 	 * @generated
 	 */
 	EClass getEclMapEntry();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Key</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.EclMapEntry#getKey <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Key</em>'.
-	 * @see java.util.Map.Entry
+	 * @see org.eclipse.ecl.core.EclMapEntry#getKey()
 	 * @see #getEclMapEntry()
 	 * @generated
 	 */
 	EReference getEclMapEntry_Key();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.core.EclMapEntry#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Value</em>'.
-	 * @see java.util.Map.Entry
+	 * @see org.eclipse.ecl.core.EclMapEntry#getValue()
 	 * @see #getEclMapEntry()
 	 * @generated
 	 */
@@ -4108,7 +4106,7 @@ public interface CorePackage extends EPackage {
 		EClass ECL_MAP = eINSTANCE.getEclMap();
 
 		/**
-		 * The meta object literal for the '<em><b>Entries</b></em>' map feature.
+		 * The meta object literal for the '<em><b>Entries</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

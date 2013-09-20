@@ -4,59 +4,56 @@
  *
  * $Id$
  */
-package org.eclipse.ecl.core.impl;
+package org.eclipse.ecl.operations.impl;
 
 import java.util.Collection;
-import org.eclipse.ecl.core.CorePackage;
-import org.eclipse.ecl.core.EclMap;
+import org.eclipse.ecl.core.impl.CommandImpl;
 
-import org.eclipse.ecl.core.EclMapEntry;
+import org.eclipse.ecl.operations.List;
+import org.eclipse.ecl.operations.OperationsPackage;
+
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Ecl Map</b></em>'.
+ * An implementation of the model object '<em><b>List</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.core.impl.EclMapImpl#getEntries <em>Entries</em>}</li>
+ *   <li>{@link org.eclipse.ecl.operations.impl.ListImpl#getItems <em>Items</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class EclMapImpl extends EObjectImpl implements EclMap {
+public class ListImpl extends CommandImpl implements List {
 	/**
-	 * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
+	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEntries()
+	 * @see #getItems()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<EclMapEntry> entries;
+	protected EList<EObject> items;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EclMapImpl() {
+	protected ListImpl() {
 		super();
 	}
 
@@ -67,7 +64,7 @@ public class EclMapImpl extends EObjectImpl implements EclMap {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CorePackage.Literals.ECL_MAP;
+		return OperationsPackage.Literals.LIST;
 	}
 
 	/**
@@ -75,11 +72,11 @@ public class EclMapImpl extends EObjectImpl implements EclMap {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<EclMapEntry> getEntries() {
-		if (entries == null) {
-			entries = new EObjectContainmentEList<EclMapEntry>(EclMapEntry.class, this, CorePackage.ECL_MAP__ENTRIES);
+	public EList<EObject> getItems() {
+		if (items == null) {
+			items = new EObjectContainmentEList<EObject>(EObject.class, this, OperationsPackage.LIST__ITEMS);
 		}
-		return entries;
+		return items;
 	}
 
 	/**
@@ -90,8 +87,8 @@ public class EclMapImpl extends EObjectImpl implements EclMap {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CorePackage.ECL_MAP__ENTRIES:
-				return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
+			case OperationsPackage.LIST__ITEMS:
+				return ((InternalEList<?>)getItems()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -104,8 +101,8 @@ public class EclMapImpl extends EObjectImpl implements EclMap {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CorePackage.ECL_MAP__ENTRIES:
-				return getEntries();
+			case OperationsPackage.LIST__ITEMS:
+				return getItems();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -119,9 +116,9 @@ public class EclMapImpl extends EObjectImpl implements EclMap {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CorePackage.ECL_MAP__ENTRIES:
-				getEntries().clear();
-				getEntries().addAll((Collection<? extends EclMapEntry>)newValue);
+			case OperationsPackage.LIST__ITEMS:
+				getItems().clear();
+				getItems().addAll((Collection<? extends EObject>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -135,8 +132,8 @@ public class EclMapImpl extends EObjectImpl implements EclMap {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CorePackage.ECL_MAP__ENTRIES:
-				getEntries().clear();
+			case OperationsPackage.LIST__ITEMS:
+				getItems().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -150,10 +147,10 @@ public class EclMapImpl extends EObjectImpl implements EclMap {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CorePackage.ECL_MAP__ENTRIES:
-				return entries != null && !entries.isEmpty();
+			case OperationsPackage.LIST__ITEMS:
+				return items != null && !items.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //EclMapImpl
+} //ListImpl

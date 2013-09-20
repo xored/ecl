@@ -19,6 +19,7 @@ import org.eclipse.ecl.operations.Concat;
 import org.eclipse.ecl.operations.Convert;
 import org.eclipse.ecl.operations.Div;
 import org.eclipse.ecl.operations.Emit;
+import org.eclipse.ecl.operations.Entry;
 import org.eclipse.ecl.operations.Eq;
 import org.eclipse.ecl.operations.Format;
 import org.eclipse.ecl.operations.FormatTime;
@@ -26,7 +27,9 @@ import org.eclipse.ecl.operations.GetTime;
 import org.eclipse.ecl.operations.Gt;
 import org.eclipse.ecl.operations.Int;
 import org.eclipse.ecl.operations.Length;
+import org.eclipse.ecl.operations.List;
 import org.eclipse.ecl.operations.Lt;
+import org.eclipse.ecl.operations.Map;
 import org.eclipse.ecl.operations.Minus;
 import org.eclipse.ecl.operations.Mult;
 import org.eclipse.ecl.operations.Not;
@@ -223,6 +226,18 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseBetween(Between object) {
 				return createBetweenAdapter();
+			}
+			@Override
+			public Adapter caseEntry(Entry object) {
+				return createEntryAdapter();
+			}
+			@Override
+			public Adapter caseMap(Map object) {
+				return createMapAdapter();
+			}
+			@Override
+			public Adapter caseList(List object) {
+				return createListAdapter();
 			}
 			@Override
 			public Adapter caseCommand(Command object) {
@@ -695,6 +710,48 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBetweenAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.Entry <em>Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.Entry
+	 * @generated
+	 */
+	public Adapter createEntryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.Map <em>Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.Map
+	 * @generated
+	 */
+	public Adapter createMapAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.List <em>List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.List
+	 * @generated
+	 */
+	public Adapter createListAdapter() {
 		return null;
 	}
 

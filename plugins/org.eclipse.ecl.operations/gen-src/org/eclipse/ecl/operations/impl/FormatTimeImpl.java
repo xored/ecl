@@ -19,18 +19,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.ecl.operations.impl.FormatTimeImpl#getFormat <em>
- * Format</em>}</li>
+ *   <li>{@link org.eclipse.ecl.operations.impl.FormatTimeImpl#getFormat <em>Format</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class FormatTimeImpl extends CommandImpl implements FormatTime {
 	/**
-	 * The default value of the '{@link #getFormat() <em>Format</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getFormat() <em>Format</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFormat()
 	 * @generated
 	 * @ordered
@@ -40,7 +38,6 @@ public class FormatTimeImpl extends CommandImpl implements FormatTime {
 	/**
 	 * The cached value of the '{@link #getFormat() <em>Format</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getFormat()
 	 * @generated
 	 * @ordered
@@ -49,7 +46,6 @@ public class FormatTimeImpl extends CommandImpl implements FormatTime {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected FormatTimeImpl() {
@@ -58,7 +54,6 @@ public class FormatTimeImpl extends CommandImpl implements FormatTime {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -68,7 +63,6 @@ public class FormatTimeImpl extends CommandImpl implements FormatTime {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getFormat() {
@@ -77,84 +71,76 @@ public class FormatTimeImpl extends CommandImpl implements FormatTime {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setFormat(String newFormat) {
 		String oldFormat = format;
 		format = newFormat;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.FORMAT_TIME__FORMAT, oldFormat,
-					format));
+			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.FORMAT_TIME__FORMAT, oldFormat, format));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case OperationsPackage.FORMAT_TIME__FORMAT:
-			return getFormat();
+			case OperationsPackage.FORMAT_TIME__FORMAT:
+				return getFormat();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case OperationsPackage.FORMAT_TIME__FORMAT:
-			setFormat((String) newValue);
-			return;
+			case OperationsPackage.FORMAT_TIME__FORMAT:
+				setFormat((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case OperationsPackage.FORMAT_TIME__FORMAT:
-			setFormat(FORMAT_EDEFAULT);
-			return;
+			case OperationsPackage.FORMAT_TIME__FORMAT:
+				setFormat(FORMAT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case OperationsPackage.FORMAT_TIME__FORMAT:
-			return FORMAT_EDEFAULT == null ? format != null : !FORMAT_EDEFAULT.equals(format);
+			case OperationsPackage.FORMAT_TIME__FORMAT:
+				return FORMAT_EDEFAULT == null ? format != null : !FORMAT_EDEFAULT.equals(format);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (format: ");

@@ -418,7 +418,7 @@ public class CoreSwitch<T> {
 				return result;
 			}
 			case CorePackage.ECL_MAP_ENTRY: {
-				@SuppressWarnings("unchecked") Map.Entry<EObject, EObject> eclMapEntry = (Map.Entry<EObject, EObject>)theEObject;
+				EclMapEntry eclMapEntry = (EclMapEntry)theEObject;
 				T result = caseEclMapEntry(eclMapEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -1098,7 +1098,7 @@ public class CoreSwitch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEclMapEntry(Map.Entry<EObject, EObject> object) {
+	public T caseEclMapEntry(EclMapEntry object) {
 		return null;
 	}
 

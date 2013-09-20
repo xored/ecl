@@ -19,6 +19,7 @@ import org.eclipse.ecl.operations.Concat;
 import org.eclipse.ecl.operations.Convert;
 import org.eclipse.ecl.operations.Div;
 import org.eclipse.ecl.operations.Emit;
+import org.eclipse.ecl.operations.Entry;
 import org.eclipse.ecl.operations.Eq;
 import org.eclipse.ecl.operations.Format;
 import org.eclipse.ecl.operations.FormatTime;
@@ -26,7 +27,9 @@ import org.eclipse.ecl.operations.GetTime;
 import org.eclipse.ecl.operations.Gt;
 import org.eclipse.ecl.operations.Int;
 import org.eclipse.ecl.operations.Length;
+import org.eclipse.ecl.operations.List;
 import org.eclipse.ecl.operations.Lt;
+import org.eclipse.ecl.operations.Map;
 import org.eclipse.ecl.operations.Minus;
 import org.eclipse.ecl.operations.Mult;
 import org.eclipse.ecl.operations.Not;
@@ -238,6 +241,27 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass betweenEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass entryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mapEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass listEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -816,6 +840,69 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEntry() {
+		return entryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEntry_Key() {
+		return (EReference)entryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEntry_Value() {
+		return (EReference)entryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMap() {
+		return mapEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMap_Entries() {
+		return (EReference)mapEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getList() {
+		return listEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getList_Items() {
+		return (EReference)listEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -962,6 +1049,16 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		createEReference(betweenEClass, BETWEEN__INPUT);
 		createEReference(betweenEClass, BETWEEN__LEFT);
 		createEReference(betweenEClass, BETWEEN__RIGHT);
+
+		entryEClass = createEClass(ENTRY);
+		createEReference(entryEClass, ENTRY__KEY);
+		createEReference(entryEClass, ENTRY__VALUE);
+
+		mapEClass = createEClass(MAP);
+		createEReference(mapEClass, MAP__ENTRIES);
+
+		listEClass = createEClass(LIST);
+		createEReference(listEClass, LIST__ITEMS);
 	}
 
 	/**
@@ -1027,6 +1124,9 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		multEClass.getESuperTypes().add(this.getBinaryOp());
 		absEClass.getESuperTypes().add(theCorePackage.getCommand());
 		betweenEClass.getESuperTypes().add(theCorePackage.getCommand());
+		entryEClass.getESuperTypes().add(theCorePackage.getCommand());
+		mapEClass.getESuperTypes().add(theCorePackage.getCommand());
+		listEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1126,6 +1226,16 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		initEReference(getBetween_Input(), theEcorePackage.getEObject(), null, "input", null, 0, 1, Between.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBetween_Left(), theEcorePackage.getEObject(), null, "left", null, 0, 1, Between.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBetween_Right(), theEcorePackage.getEObject(), null, "right", null, 0, 1, Between.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(entryEClass, Entry.class, "Entry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEntry_Key(), theEcorePackage.getEObject(), null, "key", null, 0, 1, Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEntry_Value(), theEcorePackage.getEObject(), null, "value", null, 0, 1, Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(mapEClass, Map.class, "Map", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMap_Entries(), this.getEntry(), null, "entries", null, 0, -1, Map.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(listEClass, List.class, "List", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getList_Items(), theEcorePackage.getEObject(), null, "items", null, 0, -1, List.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

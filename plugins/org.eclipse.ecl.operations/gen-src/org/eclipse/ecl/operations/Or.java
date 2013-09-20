@@ -13,18 +13,16 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Or</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.ecl.operations.Or#getArgs <em>Args</em>}</li>
+ *   <li>{@link org.eclipse.ecl.operations.Or#getArgs <em>Args</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.ecl.operations.OperationsPackage#getOr()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Computes the
- *        result of logical Or operation for passed arguments.' returns='
- *        <code>true</code> or <code>false</code>.'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Computes the result of logical Or operation for passed arguments.' returns='<code>true</code> or <code>false</code>.'"
  * @generated
  */
 public interface Or extends Command {

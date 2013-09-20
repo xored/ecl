@@ -22,17 +22,16 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.ecl.operations.impl.OrImpl#getArgs <em>Args</em>}</li>
+ *   <li>{@link org.eclipse.ecl.operations.impl.OrImpl#getArgs <em>Args</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class OrImpl extends CommandImpl implements Or {
 	/**
-	 * The cached value of the '{@link #getArgs() <em>Args</em>}' reference
-	 * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getArgs() <em>Args</em>}' reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getArgs()
 	 * @generated
 	 * @ordered
@@ -41,7 +40,6 @@ public class OrImpl extends CommandImpl implements Or {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected OrImpl() {
@@ -50,7 +48,6 @@ public class OrImpl extends CommandImpl implements Or {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -60,7 +57,6 @@ public class OrImpl extends CommandImpl implements Or {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<EObject> getArgs() {
@@ -72,60 +68,56 @@ public class OrImpl extends CommandImpl implements Or {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case OperationsPackage.OR__ARGS:
-			return getArgs();
+			case OperationsPackage.OR__ARGS:
+				return getArgs();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case OperationsPackage.OR__ARGS:
-			getArgs().clear();
-			getArgs().addAll((Collection<? extends EObject>) newValue);
-			return;
+			case OperationsPackage.OR__ARGS:
+				getArgs().clear();
+				getArgs().addAll((Collection<? extends EObject>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case OperationsPackage.OR__ARGS:
-			getArgs().clear();
-			return;
+			case OperationsPackage.OR__ARGS:
+				getArgs().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case OperationsPackage.OR__ARGS:
-			return args != null && !args.isEmpty();
+			case OperationsPackage.OR__ARGS:
+				return args != null && !args.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
