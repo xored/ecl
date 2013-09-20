@@ -116,6 +116,13 @@ public class InteropSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case InteropPackage.GET_JAVA_PROPERTY: {
+				GetJavaProperty getJavaProperty = (GetJavaProperty)theEObject;
+				T result = caseGetJavaProperty(getJavaProperty);
+				if (result == null) result = caseCommand(getJavaProperty);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -177,6 +184,21 @@ public class InteropSwitch<T> {
 	 * @generated
 	 */
 	public T caseGetMemoryUsage(GetMemoryUsage object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Get Java Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Get Java Property</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGetJavaProperty(GetJavaProperty object) {
 		return null;
 	}
 

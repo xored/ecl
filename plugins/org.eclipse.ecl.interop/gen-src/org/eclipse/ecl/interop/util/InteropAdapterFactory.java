@@ -90,6 +90,10 @@ public class InteropAdapterFactory extends AdapterFactoryImpl {
 				return createGetMemoryUsageAdapter();
 			}
 			@Override
+			public Adapter caseGetJavaProperty(GetJavaProperty object) {
+				return createGetJavaPropertyAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -166,6 +170,20 @@ public class InteropAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGetMemoryUsageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.interop.GetJavaProperty <em>Get Java Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.interop.GetJavaProperty
+	 * @generated
+	 */
+	public Adapter createGetJavaPropertyAdapter() {
 		return null;
 	}
 

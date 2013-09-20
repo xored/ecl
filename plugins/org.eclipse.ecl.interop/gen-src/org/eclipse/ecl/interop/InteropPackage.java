@@ -300,6 +300,62 @@ public interface InteropPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.interop.impl.GetJavaPropertyImpl <em>Get Java Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.interop.impl.GetJavaPropertyImpl
+	 * @see org.eclipse.ecl.interop.impl.InteropPackageImpl#getGetJavaProperty()
+	 * @generated
+	 */
+	int GET_JAVA_PROPERTY = 4;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_JAVA_PROPERTY__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_JAVA_PROPERTY__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_JAVA_PROPERTY__KEY = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_JAVA_PROPERTY__DEFAULT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Get Java Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GET_JAVA_PROPERTY_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.interop.Invoke <em>Invoke</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -472,6 +528,38 @@ public interface InteropPackage extends EPackage {
 	EClass getGetMemoryUsage();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.interop.GetJavaProperty <em>Get Java Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Get Java Property</em>'.
+	 * @see org.eclipse.ecl.interop.GetJavaProperty
+	 * @generated
+	 */
+	EClass getGetJavaProperty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.interop.GetJavaProperty#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see org.eclipse.ecl.interop.GetJavaProperty#getKey()
+	 * @see #getGetJavaProperty()
+	 * @generated
+	 */
+	EAttribute getGetJavaProperty_Key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.interop.GetJavaProperty#getDefault <em>Default</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Default</em>'.
+	 * @see org.eclipse.ecl.interop.GetJavaProperty#getDefault()
+	 * @see #getGetJavaProperty()
+	 * @generated
+	 */
+	EAttribute getGetJavaProperty_Default();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -628,6 +716,32 @@ public interface InteropPackage extends EPackage {
 		 * @generated
 		 */
 		EClass GET_MEMORY_USAGE = eINSTANCE.getGetMemoryUsage();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.interop.impl.GetJavaPropertyImpl <em>Get Java Property</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.interop.impl.GetJavaPropertyImpl
+		 * @see org.eclipse.ecl.interop.impl.InteropPackageImpl#getGetJavaProperty()
+		 * @generated
+		 */
+		EClass GET_JAVA_PROPERTY = eINSTANCE.getGetJavaProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GET_JAVA_PROPERTY__KEY = eINSTANCE.getGetJavaProperty_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Default</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GET_JAVA_PROPERTY__DEFAULT = eINSTANCE.getGetJavaProperty_Default();
 
 	}
 

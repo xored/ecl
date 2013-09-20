@@ -62,6 +62,15 @@ public interface InteropFactory extends EFactory {
 	GetMemoryUsage createGetMemoryUsage();
 
 	/**
+	 * Returns a new object of class '<em>Get Java Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Get Java Property</em>'.
+	 * @generated
+	 */
+	GetJavaProperty createGetJavaProperty();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

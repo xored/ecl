@@ -1,5 +1,7 @@
 package org.eclipse.ecl.interop.internal.commands;
 
+import static org.eclipse.ecl.interop.internal.EclInteropPlugin.error;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -17,7 +19,6 @@ import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.interop.ExecProcess;
 import org.eclipse.ecl.interop.ExecProcessResult;
 import org.eclipse.ecl.interop.InteropFactory;
-import org.eclipse.ecl.interop.internal.EclInteropPlugin;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
 
@@ -85,11 +86,6 @@ public class ExecProcessService implements ICommandService {
 
 		context.getOutput().write(result);
 		return Status.OK_STATUS;
-	}
-
-	private static Status error(String message, Object... args) {
-		return new Status(Status.ERROR, EclInteropPlugin.PLUGIN_ID,
-				String.format(message, args));
 	}
 
 	private static class ReaderReader extends Thread {
