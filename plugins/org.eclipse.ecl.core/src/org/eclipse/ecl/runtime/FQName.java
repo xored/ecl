@@ -10,6 +10,14 @@
  ******************************************************************************/
 package org.eclipse.ecl.runtime;
 
+import static java.lang.String.format;
+import static org.eclipse.ecl.internal.core.CorePlugin.err;
+
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.ecl.core.Command;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+
 public final class FQName {
 	public final String ns;
 	public final String name;
@@ -17,6 +25,26 @@ public final class FQName {
 	public FQName(String ns, String name) {
 		this.ns = ns;
 		this.name = name;
+	}
+
+	public static FQName fromCommand(Command command) {
+		EClass eClass = command.eClass();
+		return new FQName(eClass.getEPackage().getNsURI(), eClass.getName());
+
+	}
+
+	public static FQName fromAttributes(String ns, String name) throws CoreException {
+		EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(ns);
+		if (ePackage == null) {
+			throw new CoreException(err(format("Unknown package %s", ns)));
+		}
+
+		if (ePackage.getEClassifier(name) == null) {
+			throw new CoreException(err(format("Unknown class %s in package %s", name, ns)));
+		}
+
+		return new FQName(ns, name);
+
 	}
 
 	@Override
