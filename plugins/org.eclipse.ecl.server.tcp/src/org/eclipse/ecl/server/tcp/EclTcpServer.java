@@ -40,7 +40,8 @@ public class EclTcpServer extends Thread {
 			while (!isInterrupted()) {
 				try {
 					Socket client = socket.accept();
-					client.setKeepAlive(true);
+					//client.setKeepAlive(true);
+					client.setTcpNoDelay(true);
 					manager.acceptNewConnection(client);
 				} catch (Exception e) {
 					CorePlugin.log(CorePlugin.err(
