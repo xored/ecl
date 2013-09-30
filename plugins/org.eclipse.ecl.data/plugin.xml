@@ -71,6 +71,11 @@
             name="AsTableData"
             namespace="http://www.eclipse.org/ecl/data/commands.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.data.internal.commands.ReadPropertiesService"
+            name="ReadProperties"
+            namespace="http://www.eclipse.org/ecl/data/commands.ecore">
+      </scriptlet>
    </extension>
 
 </plugin>

@@ -188,5 +188,10 @@
             name="Get"
             namespace="http://www.eclipse.org/ecl/core.ecore">
       </scriptletExtension>
+      <scriptletExtension
+            class="org.eclipse.ecl.operations.internal.commands.GetFromListService"
+            name="Get"
+            namespace="http://www.eclipse.org/ecl/core.ecore">
+      </scriptletExtension>
    </extension>
 </plugin>

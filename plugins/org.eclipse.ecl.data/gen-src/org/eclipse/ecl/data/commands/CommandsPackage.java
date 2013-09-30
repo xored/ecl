@@ -686,6 +686,52 @@ public interface CommandsPackage extends EPackage {
 	int AS_TABLE_DATA_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.impl.ReadPropertiesImpl <em>Read Properties</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.data.commands.impl.ReadPropertiesImpl
+	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getReadProperties()
+	 * @generated
+	 */
+	int READ_PROPERTIES = 11;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_PROPERTIES__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_PROPERTIES__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_PROPERTIES__URI = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Read Properties</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_PROPERTIES_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.data.commands.IgnoreColumnsMode <em>Ignore Columns Mode</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -693,7 +739,7 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getIgnoreColumnsMode()
 	 * @generated
 	 */
-	int IGNORE_COLUMNS_MODE = 11;
+	int IGNORE_COLUMNS_MODE = 12;
 
 
 	/**
@@ -704,7 +750,7 @@ public interface CommandsPackage extends EPackage {
 	 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getRowMatchMode()
 	 * @generated
 	 */
-	int ROW_MATCH_MODE = 12;
+	int ROW_MATCH_MODE = 13;
 
 
 	/**
@@ -1082,6 +1128,27 @@ public interface CommandsPackage extends EPackage {
 	EReference getAsTableData_Input();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.data.commands.ReadProperties <em>Read Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Read Properties</em>'.
+	 * @see org.eclipse.ecl.data.commands.ReadProperties
+	 * @generated
+	 */
+	EClass getReadProperties();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.data.commands.ReadProperties#getUri <em>Uri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Uri</em>'.
+	 * @see org.eclipse.ecl.data.commands.ReadProperties#getUri()
+	 * @see #getReadProperties()
+	 * @generated
+	 */
+	EAttribute getReadProperties_Uri();
+
+	/**
 	 * Returns the meta object for enum '{@link org.eclipse.ecl.data.commands.IgnoreColumnsMode <em>Ignore Columns Mode</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1424,6 +1491,24 @@ public interface CommandsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference AS_TABLE_DATA__INPUT = eINSTANCE.getAsTableData_Input();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.impl.ReadPropertiesImpl <em>Read Properties</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.data.commands.impl.ReadPropertiesImpl
+		 * @see org.eclipse.ecl.data.commands.impl.CommandsPackageImpl#getReadProperties()
+		 * @generated
+		 */
+		EClass READ_PROPERTIES = eINSTANCE.getReadProperties();
+
+		/**
+		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute READ_PROPERTIES__URI = eINSTANCE.getReadProperties_Uri();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.data.commands.IgnoreColumnsMode <em>Ignore Columns Mode</em>}' enum.

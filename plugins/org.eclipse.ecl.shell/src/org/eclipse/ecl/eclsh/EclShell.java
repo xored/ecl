@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.parser.EclCoreParser;
+import org.eclipse.ecl.parser.ScriptErrorStatus;
 import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.EclRuntime;
 import org.eclipse.ecl.runtime.IProcess;
@@ -44,9 +45,16 @@ public class EclShell implements IEclShell {
 				return;
 			IProcess process = session.execute(cmd);
 			IStatus status = process.waitFor();
+			if (status instanceof ScriptErrorStatus) {
+				IStatus cause = ((ScriptErrorStatus) status).getCause();
+				if (cause != null) {
+					status = cause;
+				}
+			}
 			if (status.getSeverity() != IStatus.OK) {
 				outputStream.write((status.getMessage()).getBytes());
 				outputStream.write("\r\n".getBytes());
+
 			}
 
 			// dump pipe

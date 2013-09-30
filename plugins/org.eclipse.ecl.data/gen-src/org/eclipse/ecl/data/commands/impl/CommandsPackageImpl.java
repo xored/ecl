@@ -18,6 +18,7 @@ import org.eclipse.ecl.data.commands.IgnoreColumnsMode;
 import org.eclipse.ecl.data.commands.Print;
 import org.eclipse.ecl.data.commands.ReadCsvFile;
 import org.eclipse.ecl.data.commands.ReadLines;
+import org.eclipse.ecl.data.commands.ReadProperties;
 import org.eclipse.ecl.data.commands.RowMatchMode;
 import org.eclipse.ecl.data.commands.SelectColumns;
 import org.eclipse.ecl.data.commands.SelectRows;
@@ -118,6 +119,13 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * @generated
 	 */
 	private EClass asTableDataEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass readPropertiesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -518,6 +526,24 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getReadProperties() {
+		return readPropertiesEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getReadProperties_Uri() {
+		return (EAttribute)readPropertiesEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getIgnoreColumnsMode() {
 		return ignoreColumnsModeEEnum;
 	}
@@ -605,6 +631,9 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		asTableDataEClass = createEClass(AS_TABLE_DATA);
 		createEReference(asTableDataEClass, AS_TABLE_DATA__INPUT);
 
+		readPropertiesEClass = createEClass(READ_PROPERTIES);
+		createEAttribute(readPropertiesEClass, READ_PROPERTIES__URI);
+
 		// Create enums
 		ignoreColumnsModeEEnum = createEEnum(IGNORE_COLUMNS_MODE);
 		rowMatchModeEEnum = createEEnum(ROW_MATCH_MODE);
@@ -654,6 +683,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		selectRowsEClass.getESuperTypes().add(theCorePackage.getCommand());
 		excludeRowsEClass.getESuperTypes().add(theCorePackage.getCommand());
 		asTableDataEClass.getESuperTypes().add(theCorePackage.getCommand());
+		readPropertiesEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(readCsvFileEClass, ReadCsvFile.class, "ReadCsvFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -701,6 +731,9 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 
 		initEClass(asTableDataEClass, AsTableData.class, "AsTableData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAsTableData_Input(), theEcorePackage.getEObject(), null, "input", null, 0, -1, AsTableData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(readPropertiesEClass, ReadProperties.class, "ReadProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getReadProperties_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, ReadProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(ignoreColumnsModeEEnum, IgnoreColumnsMode.class, "IgnoreColumnsMode");
@@ -935,6 +968,19 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Object(s) to convert from."
+		   });		
+		addAnnotation
+		  (readPropertiesEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Parses given .properties file. Fails if file is not found or format is invalid",
+			 "returns", "ECL map with values from properties file"
+		   });		
+		addAnnotation
+		  (getReadProperties_Uri(), 
+		   source, 
+		   new String[] {
+			 "description", "URI to a file to read. Currently supported schemes are workspace:/ for files in workspace and file:/ for files on local file system"
 		   });
 	}
 
@@ -950,7 +996,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (printEClass, 
 		   source, 
 		   new String[] {
-		   });																																				
+		   });																																						
 	}
 
 	/**
@@ -995,7 +1041,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getAsTableData_Input(), 
 		   source, 
 		   new String[] {
-		   });	
+		   });			
 	}
 
 } //CommandsPackageImpl

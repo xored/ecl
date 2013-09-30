@@ -125,6 +125,15 @@ public interface CommandsFactory extends EFactory {
 	AsTableData createAsTableData();
 
 	/**
+	 * Returns a new object of class '<em>Read Properties</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Read Properties</em>'.
+	 * @generated
+	 */
+	ReadProperties createReadProperties();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
