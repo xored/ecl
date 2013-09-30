@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.ecl.operations.OperationsPackage#getList()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Creates a new list. Also see <a href=\"#get\">get</a> command to find an element by index.'"
  * @generated
  */
 public interface List extends Command {

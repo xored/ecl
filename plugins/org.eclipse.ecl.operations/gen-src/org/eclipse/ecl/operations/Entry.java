@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.ecl.operations.OperationsPackage#getEntry()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Creates a new map entry. Can only be used as an argument for <a href=\"#map\">map</a> command.'"
  * @generated
  */
 public interface Entry extends Command {

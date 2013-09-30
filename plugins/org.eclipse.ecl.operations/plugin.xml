@@ -180,6 +180,11 @@
             name="List"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.EachEntryService"
+            name="EachEntry"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
    </extension>
    <extension
          point="org.eclipse.ecl.dispatch.scriptletExtension">

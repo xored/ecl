@@ -314,18 +314,42 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" unique="false" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Entry" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Creates a new map entry. Can only be used as an argument for &lt;a href=&quot;#map&quot;>map&lt;/a> command."/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Map" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Creates a new map. Also see &lt;a href=&quot;#get&quot;>get&lt;/a> command to find a value by key."/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
         eType="#//Entry" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="List" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Creates a new list. Also see &lt;a href=&quot;#get&quot;>get&lt;/a> command to find an element by index."/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
         eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EachEntry" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Iterates over a map. "/>
+      <details key="example" value="// Iterate over keys and values.&#xA;// Writes 'one = 1' and 'two = 2' into eclipse log&#xA;map [entry one 1] [entry two 2] | each-entry [val key] [val value] {&#xA;    log [format &quot;%s = %d&quot; $key $value]&#xA;}&#xA;&#xA;// Iterate over values only&#xA;map [entry one 1] [entry two 2] | each-entry [val value] { log [format &quot;%d&quot; $value] }"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//EclMap">
+      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="val" lowerBound="1" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//Val"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//Val"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="do" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//Command"
         containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

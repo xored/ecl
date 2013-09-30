@@ -18,6 +18,7 @@ import org.eclipse.ecl.operations.Bool;
 import org.eclipse.ecl.operations.Concat;
 import org.eclipse.ecl.operations.Convert;
 import org.eclipse.ecl.operations.Div;
+import org.eclipse.ecl.operations.EachEntry;
 import org.eclipse.ecl.operations.Emit;
 import org.eclipse.ecl.operations.Entry;
 import org.eclipse.ecl.operations.Eq;
@@ -238,6 +239,10 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseList(List object) {
 				return createListAdapter();
+			}
+			@Override
+			public Adapter caseEachEntry(EachEntry object) {
+				return createEachEntryAdapter();
 			}
 			@Override
 			public Adapter caseCommand(Command object) {
@@ -752,6 +757,20 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createListAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.EachEntry <em>Each Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.EachEntry
+	 * @generated
+	 */
+	public Adapter createEachEntryAdapter() {
 		return null;
 	}
 

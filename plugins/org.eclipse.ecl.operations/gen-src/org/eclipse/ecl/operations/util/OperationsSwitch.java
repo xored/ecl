@@ -20,6 +20,7 @@ import org.eclipse.ecl.operations.Bool;
 import org.eclipse.ecl.operations.Concat;
 import org.eclipse.ecl.operations.Convert;
 import org.eclipse.ecl.operations.Div;
+import org.eclipse.ecl.operations.EachEntry;
 import org.eclipse.ecl.operations.Emit;
 import org.eclipse.ecl.operations.Entry;
 import org.eclipse.ecl.operations.Eq;
@@ -368,6 +369,13 @@ public class OperationsSwitch<T> {
 				org.eclipse.ecl.operations.List list = (org.eclipse.ecl.operations.List)theEObject;
 				T result = caseList(list);
 				if (result == null) result = caseCommand(list);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.EACH_ENTRY: {
+				EachEntry eachEntry = (EachEntry)theEObject;
+				T result = caseEachEntry(eachEntry);
+				if (result == null) result = caseCommand(eachEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -899,6 +907,21 @@ public class OperationsSwitch<T> {
 	 * @generated
 	 */
 	public T caseList(org.eclipse.ecl.operations.List object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Each Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Each Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEachEntry(EachEntry object) {
 		return null;
 	}
 

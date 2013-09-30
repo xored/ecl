@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.ecl.operations.OperationsPackage#getMap()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Creates a new map. Also see <a href=\"#get\">get</a> command to find a value by key.'"
  * @generated
  */
 public interface Map extends Command {

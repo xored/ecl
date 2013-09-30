@@ -16,6 +16,7 @@ import org.eclipse.ecl.operations.BinaryOp;
 import org.eclipse.ecl.operations.Bool;
 import org.eclipse.ecl.operations.Concat;
 import org.eclipse.ecl.operations.Div;
+import org.eclipse.ecl.operations.EachEntry;
 import org.eclipse.ecl.operations.Emit;
 import org.eclipse.ecl.operations.Entry;
 import org.eclipse.ecl.operations.Eq;
@@ -123,6 +124,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 			case OperationsPackage.ENTRY: return createEntry();
 			case OperationsPackage.MAP: return createMap();
 			case OperationsPackage.LIST: return createList();
+			case OperationsPackage.EACH_ENTRY: return createEachEntry();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -426,6 +428,16 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	public List createList() {
 		ListImpl list = new ListImpl();
 		return list;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EachEntry createEachEntry() {
+		EachEntryImpl eachEntry = new EachEntryImpl();
+		return eachEntry;
 	}
 
 	/**

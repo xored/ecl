@@ -18,6 +18,7 @@ import org.eclipse.ecl.operations.Bool;
 import org.eclipse.ecl.operations.Concat;
 import org.eclipse.ecl.operations.Convert;
 import org.eclipse.ecl.operations.Div;
+import org.eclipse.ecl.operations.EachEntry;
 import org.eclipse.ecl.operations.Emit;
 import org.eclipse.ecl.operations.Entry;
 import org.eclipse.ecl.operations.Eq;
@@ -262,6 +263,13 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass listEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eachEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -903,6 +911,51 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEachEntry() {
+		return eachEntryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEachEntry_Input() {
+		return (EReference)eachEntryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEachEntry_Val() {
+		return (EReference)eachEntryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEachEntry_Key() {
+		return (EReference)eachEntryEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEachEntry_Do() {
+		return (EReference)eachEntryEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1059,6 +1112,12 @@ public class OperationsPackageImpl extends EPackageImpl implements
 
 		listEClass = createEClass(LIST);
 		createEReference(listEClass, LIST__ITEMS);
+
+		eachEntryEClass = createEClass(EACH_ENTRY);
+		createEReference(eachEntryEClass, EACH_ENTRY__INPUT);
+		createEReference(eachEntryEClass, EACH_ENTRY__VAL);
+		createEReference(eachEntryEClass, EACH_ENTRY__KEY);
+		createEReference(eachEntryEClass, EACH_ENTRY__DO);
 	}
 
 	/**
@@ -1127,6 +1186,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		entryEClass.getESuperTypes().add(theCorePackage.getCommand());
 		mapEClass.getESuperTypes().add(theCorePackage.getCommand());
 		listEClass.getESuperTypes().add(theCorePackage.getCommand());
+		eachEntryEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1236,6 +1296,12 @@ public class OperationsPackageImpl extends EPackageImpl implements
 
 		initEClass(listEClass, List.class, "List", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getList_Items(), theEcorePackage.getEObject(), null, "items", null, 0, -1, List.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eachEntryEClass, EachEntry.class, "EachEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEachEntry_Input(), theCorePackage.getEclMap(), null, "input", null, 1, 1, EachEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEachEntry_Val(), theCorePackage.getVal(), null, "val", null, 1, 1, EachEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEachEntry_Key(), theCorePackage.getVal(), null, "key", null, 0, 1, EachEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEachEntry_Do(), theCorePackage.getCommand(), null, "do", null, 0, 1, EachEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1565,6 +1631,31 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "description", "<p>returns <code>true</code> if <code>input</code> is greater than or equal to <code>left</code> and less than or equal to <code>right</code></p>\n\n<p>Before performing an operation, arguments are converted according to the following rules:</p>\n<ol>\n  <li><code>string</code> arguments converted to <code>long</code></li>\n  <li><code>boolean</code> arguments converted to <code>long</code> (1 for <code>true</code> and 0 for <code>false</code>)</li>\n  <li>If one of arguments is <code>double</code>, converts the other one to <code>double</code></li>\n  <li>If one of arguments is <code>float</code>, converts the other one to <code>float</code></li>\n  <li>If one of arguments is <code>long</code>, converts the other one to <code>long</code></li>\n  <li>Otherwise (in case of <code>byte</code>, <code>char</code>, or <code>short</code>) converts both arguments to <code>int</code></li>\n</ol>\n"
+		   });			
+		addAnnotation
+		  (entryEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Creates a new map entry. Can only be used as an argument for <a href=\"#map\">map</a> command."
+		   });		
+		addAnnotation
+		  (mapEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Creates a new map. Also see <a href=\"#get\">get</a> command to find a value by key."
+		   });		
+		addAnnotation
+		  (listEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Creates a new list. Also see <a href=\"#get\">get</a> command to find an element by index."
+		   });		
+		addAnnotation
+		  (eachEntryEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Iterates over a map. ",
+			 "example", "// Iterate over keys and values.\n// Writes \'one = 1\' and \'two = 2\' into eclipse log\nmap [entry one 1] [entry two 2] | each-entry [val key] [val value] {\n    log [format \"%s = %d\" $key $value]\n}\n\n// Iterate over values only\nmap [entry one 1] [entry two 2] | each-entry [val value] { log [format \"%d\" $value] }"
 		   });	
 	}
 
@@ -1624,6 +1715,11 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		  (getBetween_Input(), 
 		   source, 
 		   new String[] {
+		   });						
+		addAnnotation
+		  (getEachEntry_Input(), 
+		   source, 
+		   new String[] {
 		   });
 	}
 
@@ -1639,7 +1735,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });																																																
+		   });																																																					
 	}
 
 } // OperationsPackageImpl

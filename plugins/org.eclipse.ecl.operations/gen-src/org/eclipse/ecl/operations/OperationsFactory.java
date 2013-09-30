@@ -323,6 +323,15 @@ public interface OperationsFactory extends EFactory {
 	List createList();
 
 	/**
+	 * Returns a new object of class '<em>Each Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Each Entry</em>'.
+	 * @generated
+	 */
+	EachEntry createEachEntry();
+
+	/**
 	 * Returns a new object of class '<em>Binary Op</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
