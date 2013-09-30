@@ -22,16 +22,43 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.ecl.core.Foreach#getItem <em>Item</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.Foreach#getDo <em>Do</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.Foreach#getInput <em>Input</em>}</li>
  * </ul>
  * </p>
  *
  * @see org.eclipse.ecl.core.CorePackage#getForeach()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Reads objects from input pipe and for each object executes a given <code>do</code> command passing an object into its input pipe  ' returns='An aggregated output of <code>do</code> command' example='list-launch-configurations | foreach {get name | log}'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Reads objects from input pipe and for each object executes a given <code>do</code> command for each item. An optional variable declaration to hold a current value can be passed, if it is not passed, then current value is sent into an input pipe of a <code>do</code> command.  ' returns='An aggregated output of <code>do</code> command' example='// Implicit item: sent to an input pipe of inner script\nlist-launch-configurations | foreach { get name | log }\n\n// Explicit item:\nlist-launch-configuration | foreach [val item] {\n   $item | get-name | log\n}'"
  * @generated
  */
 public interface Foreach extends Command {
+	/**
+	 * Returns the value of the '<em><b>Item</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Item</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Item</em>' containment reference.
+	 * @see #setItem(Val)
+	 * @see org.eclipse.ecl.core.CorePackage#getForeach_Item()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Val getItem();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.ecl.core.Foreach#getItem <em>Item</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Item</em>' containment reference.
+	 * @see #getItem()
+	 * @generated
+	 */
+	void setItem(Val value);
+
 	/**
 	 * Returns the value of the '<em><b>Do</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

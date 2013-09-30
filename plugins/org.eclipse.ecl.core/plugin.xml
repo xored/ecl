@@ -44,7 +44,7 @@
             namespace="http://www.eclipse.org/ecl/core.ecore">
       </scriptlet>
       <scriptlet
-            class="org.eclipse.ecl.internal.commands.ForeachService"
+            class="org.eclipse.ecl.internal.core.ForeachService"
             namespace="http://www.eclipse.org/ecl/core.ecore"
             name="Foreach">
       </scriptlet>     

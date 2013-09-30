@@ -637,10 +637,11 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getForeach_Do() {
+	public EReference getForeach_Item() {
 		return (EReference)foreachEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -648,8 +649,16 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getForeach_Input() {
+	public EReference getForeach_Do() {
 		return (EReference)foreachEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getForeach_Input() {
+		return (EReference)foreachEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1479,6 +1488,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEAttribute(literalParameterEClass, LITERAL_PARAMETER__FORMAT);
 
 		foreachEClass = createEClass(FOREACH);
+		createEReference(foreachEClass, FOREACH__ITEM);
 		createEReference(foreachEClass, FOREACH__DO);
 		createEReference(foreachEClass, FOREACH__INPUT);
 
@@ -1709,6 +1719,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEAttribute(getLiteralParameter_Format(), ecorePackage.getEString(), "format", null, 0, 1, LiteralParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(foreachEClass, Foreach.class, "Foreach", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getForeach_Item(), this.getVal(), null, "item", null, 0, 1, Foreach.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getForeach_Do(), this.getCommand(), null, "do", null, 0, 1, Foreach.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getForeach_Input(), ecorePackage.getEObject(), null, "input", null, 0, -1, Foreach.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1968,9 +1979,9 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (foreachEClass, 
 		   source, 
 		   new String[] {
-			 "description", "Reads objects from input pipe and for each object executes a given <code>do</code> command passing an object into its input pipe  ",
+			 "description", "Reads objects from input pipe and for each object executes a given <code>do</code> command for each item. An optional variable declaration to hold a current value can be passed, if it is not passed, then current value is sent into an input pipe of a <code>do</code> command.  ",
 			 "returns", "An aggregated output of <code>do</code> command",
-			 "example", "list-launch-configurations | foreach {get name | log}"
+			 "example", "// Implicit item: sent to an input pipe of inner script\nlist-launch-configurations | foreach { get name | log }\n\n// Explicit item:\nlist-launch-configuration | foreach [val item] {\n   $item | get-name | log\n}"
 		   });			
 		addAnnotation
 		  (ifEClass, 

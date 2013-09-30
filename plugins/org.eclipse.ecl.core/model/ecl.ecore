@@ -56,10 +56,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Foreach" eSuperTypes="#//Command">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
-      <details key="description" value="Reads objects from input pipe and for each object executes a given &lt;code>do&lt;/code> command passing an object into its input pipe  "/>
+      <details key="description" value="Reads objects from input pipe and for each object executes a given &lt;code>do&lt;/code> command for each item. An optional variable declaration to hold a current value can be passed, if it is not passed, then current value is sent into an input pipe of a &lt;code>do&lt;/code> command.  "/>
       <details key="returns" value="An aggregated output of &lt;code>do&lt;/code> command"/>
-      <details key="example" value="list-launch-configurations | foreach {get name | log}"/>
+      <details key="example" value="// Implicit item: sent to an input pipe of inner script&#xA;list-launch-configurations | foreach { get name | log }&#xA;&#xA;// Explicit item:&#xA;list-launch-configuration | foreach [val item] {&#xA;   $item | get-name | log&#xA;}"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" eType="#//Val" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="do" eType="#//Command"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="input" unique="false" upperBound="-1"

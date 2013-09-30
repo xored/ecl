@@ -15,6 +15,7 @@ import java.util.Collection;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CorePackage;
 import org.eclipse.ecl.core.Foreach;
+import org.eclipse.ecl.core.Val;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.ecl.core.impl.ForeachImpl#getItem <em>Item</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.ForeachImpl#getDo <em>Do</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.ForeachImpl#getInput <em>Input</em>}</li>
  * </ul>
@@ -38,6 +40,16 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * @generated
  */
 public class ForeachImpl extends CommandImpl implements Foreach {
+	/**
+	 * The cached value of the '{@link #getItem() <em>Item</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItem()
+	 * @generated
+	 * @ordered
+	 */
+	protected Val item;
+
 	/**
 	 * The cached value of the '{@link #getDo() <em>Do</em>}' containment reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -71,6 +83,49 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	@Override
 	protected EClass eStaticClass() {
 		return CorePackage.Literals.FOREACH;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Val getItem() {
+		return item;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetItem(Val newItem, NotificationChain msgs) {
+		Val oldItem = item;
+		item = newItem;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CorePackage.FOREACH__ITEM, oldItem, newItem);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setItem(Val newItem) {
+		if (newItem != item) {
+			NotificationChain msgs = null;
+			if (item != null)
+				msgs = ((InternalEObject)item).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CorePackage.FOREACH__ITEM, null, msgs);
+			if (newItem != null)
+				msgs = ((InternalEObject)newItem).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CorePackage.FOREACH__ITEM, null, msgs);
+			msgs = basicSetItem(newItem, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.FOREACH__ITEM, newItem, newItem));
 	}
 
 	/**
@@ -131,6 +186,8 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case CorePackage.FOREACH__ITEM:
+				return basicSetItem(null, msgs);
 			case CorePackage.FOREACH__DO:
 				return basicSetDo(null, msgs);
 		}
@@ -144,6 +201,8 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case CorePackage.FOREACH__ITEM:
+				return getItem();
 			case CorePackage.FOREACH__DO:
 				return getDo();
 			case CorePackage.FOREACH__INPUT:
@@ -160,6 +219,9 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case CorePackage.FOREACH__ITEM:
+				setItem((Val)newValue);
+				return;
 			case CorePackage.FOREACH__DO:
 				setDo((Command)newValue);
 				return;
@@ -178,6 +240,9 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case CorePackage.FOREACH__ITEM:
+				setItem((Val)null);
+				return;
 			case CorePackage.FOREACH__DO:
 				setDo((Command)null);
 				return;
@@ -195,6 +260,8 @@ public class ForeachImpl extends CommandImpl implements Foreach {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case CorePackage.FOREACH__ITEM:
+				return item != null;
 			case CorePackage.FOREACH__DO:
 				return do_ != null;
 			case CorePackage.FOREACH__INPUT:

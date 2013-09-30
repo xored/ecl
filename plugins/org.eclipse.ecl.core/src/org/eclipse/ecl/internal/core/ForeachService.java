@@ -8,13 +8,14 @@
  * Contributors:
  *     xored software, Inc - initial API and implementation
  ******************************************************************************/
-package org.eclipse.ecl.internal.commands;
+package org.eclipse.ecl.internal.core;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.Foreach;
+import org.eclipse.ecl.core.Val;
 import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IPipe;
@@ -28,14 +29,19 @@ public class ForeachService implements ICommandService {
 			throws InterruptedException, CoreException {
 		Foreach foreach = (Foreach) command;
 		IStatus status = Status.OK_STATUS;
-
+		Val val = foreach.getItem();
+		boolean valSet = val != null;
 		for (EObject o : foreach.getInput()) {
 			ISession session = context.getSession();
-
-			IPipe in = session.createPipe();
-			in.write(o);
-			in.close(Status.OK_STATUS);
-
+			IPipe in = null;
+			if (valSet) {
+				val.setValue(o);
+				LetService.getLocals(context).declare(val.getName(), val, true);
+			} else {
+				in = session.createPipe();
+				in.write(o);
+				in.close(Status.OK_STATUS);
+			}
 			IPipe out = session.createPipe();
 			Command doCommand = foreach.getDo();
 
