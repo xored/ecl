@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class LocalProcManager {
 	private EPackage epackage;
@@ -97,10 +98,10 @@ public class LocalProcManager {
 			Val val = (Val) decl;
 			if (val.getValue() != null) {
 				command.eSet(commandClass.getEStructuralFeature(val.getName()),
-						val.getValue());
+						EcoreUtil.copy(val.getValue()));
 			}
-		}		
-		
+		}
+
 		return command;
 	}
 
