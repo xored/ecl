@@ -303,6 +303,11 @@
       <eAnnotations source="http://www.eclipse.org/ecl/input"/>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Mod" eSuperTypes="#//BinaryOp">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="&lt;p>returns &lt;code>left % right&lt;/code>&lt;/p>&#xA;&lt;p>Before performing an operation, arguments are converted to the widest type according to the following rules:&lt;/p>&#xA;&lt;ol>&#xA;  &lt;li>&lt;code>string&lt;/code> arguments converted to &lt;code>long&lt;/code>&lt;/li>&#xA;  &lt;li>&lt;code>boolean&lt;/code> arguments converted to &lt;code>long&lt;/code> (1 for &lt;code>true&lt;/code> and 0 for &lt;code>false&lt;/code>)&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>double&lt;/code>, converts the other one to &lt;code>double&lt;/code>&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>float&lt;/code>, converts the other one to &lt;code>float&lt;/code>&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>long&lt;/code>, converts the other one to &lt;code>long&lt;/code>&lt;/li>&#xA;  &lt;li>Otherwise (in case of &lt;code>byte&lt;/code>, &lt;code>char&lt;/code>, or &lt;code>short&lt;/code>) converts both arguments to &lt;code>int&lt;/code>&lt;/li>&#xA;&lt;/ol>&#xA;"/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Between" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
       <details key="description" value="&lt;p>returns &lt;code>true&lt;/code> if &lt;code>input&lt;/code> is greater than or equal to &lt;code>left&lt;/code> and less than or equal to &lt;code>right&lt;/code>&lt;/p>&#xA;&#xA;&lt;p>Before performing an operation, arguments are converted according to the following rules:&lt;/p>&#xA;&lt;ol>&#xA;  &lt;li>&lt;code>string&lt;/code> arguments converted to &lt;code>long&lt;/code>&lt;/li>&#xA;  &lt;li>&lt;code>boolean&lt;/code> arguments converted to &lt;code>long&lt;/code> (1 for &lt;code>true&lt;/code> and 0 for &lt;code>false&lt;/code>)&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>double&lt;/code>, converts the other one to &lt;code>double&lt;/code>&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>float&lt;/code>, converts the other one to &lt;code>float&lt;/code>&lt;/li>&#xA;  &lt;li>If one of arguments is &lt;code>long&lt;/code>, converts the other one to &lt;code>long&lt;/code>&lt;/li>&#xA;  &lt;li>Otherwise (in case of &lt;code>byte&lt;/code>, &lt;code>char&lt;/code>, or &lt;code>short&lt;/code>) converts both arguments to &lt;code>int&lt;/code>&lt;/li>&#xA;&lt;/ol>&#xA;"/>
@@ -351,5 +356,34 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="do" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//Command"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Loop" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Executes recursive looping of a body. Allows to emulate 'while' and 'for' loops while preserving variable immutability. The idea is taken from Clojure's &lt;a href=&quot;http://clojure.org/functional_programming#Functional%20Programming--Recursive%20Looping&quot;>loop/recur&lt;/a> approach. Also see &lt;a href=&quot;#recur&quot;>recur&lt;/a> command."/>
+      <details key="example" value="// Example 1. returns how many times a 81 is divisible by 3&#xA;loop [val count 0] [val n 81] {&#xA;    if [mod $n 3 | eq 0] {&#xA;        recur [$count | plus 1] [$n | div 3]&#xA;    } -else {&#xA;        log [format &quot;The answer is %d&quot; $count] //prints 'The answer is 4'&#xA;    }&#xA;}&#xA;&#xA;&#xA;// Example 2. deletes all elements from a tree&#xA;proc &quot;get-my-tree&quot; { get-view &quot;My View&quot; | get-tree }&#xA;&#xA;proc &quot;has-elements&quot; {&#xA;    get-my-tree | get-property itemCount -raw | int | gt 0&#xA;}&#xA;&#xA;loop {&#xA;    if [has-elements] {&#xA;        // Selects a first top-level item and invokes &quot;Delete&quot; from context menu&#xA;        get-my-tree | select &quot;.*&quot; | get-menu &quot;Delete&quot; | click&#xA;        // Confirms a removal in popup dialog&#xA;        get-window &quot;Confirm Delete&quot; | get-button OK | click&#xA;        // Continues execution from the beginning of loop body&#xA;        recur&#xA;    }&#xA;}"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vals" upperBound="-1" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//Val"
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Valus which are going to be modified during iterations. All initial values must be set."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="A script to execute. Whenever script invokes &lt;a href=&quot;#recur&quot;>recur&lt;/a> command, an execution jumps to the beginning of loop body script."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Recur" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Returns an execution to the beginning of &lt;a href=&quot;#loop&quot;>loop&lt;/a> command. Cannot be used outside of a loop."/>
+      <details key="example" value="// calc and show a sum of ints from 3 to 10&#xA;&#xA;loop [val result 0] [val i 3] {&#xA;    if [$i | eq 10] {&#xA;        show-alert [str [$result | plus $i]]&#xA;    } -else {&#xA;        recur [$result | plus $i] [$i | plus 1]&#xA;    }&#xA;}"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="A list of new values for variables, declared in &lt;code>loop&lt;/code> command. Value count must exactly match to corresponding val count of a &lt;code>loop&lt;/code> command."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

@@ -1643,6 +1643,61 @@ public interface OperationsPackage extends EPackage {
 	int ABS_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.ModImpl <em>Mod</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.ModImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getMod()
+	 * @generated
+	 */
+	int MOD = 31;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOD__HOST = BINARY_OP__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOD__BINDINGS = BINARY_OP__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Left</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOD__LEFT = BINARY_OP__LEFT;
+
+	/**
+	 * The feature id for the '<em><b>Right</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOD__RIGHT = BINARY_OP__RIGHT;
+
+	/**
+	 * The number of structural features of the '<em>Mod</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOD_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.BetweenImpl <em>Between</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1650,7 +1705,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getBetween()
 	 * @generated
 	 */
-	int BETWEEN = 31;
+	int BETWEEN = 32;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1714,7 +1769,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getEntry()
 	 * @generated
 	 */
-	int ENTRY = 32;
+	int ENTRY = 33;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1769,7 +1824,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getMap()
 	 * @generated
 	 */
-	int MAP = 33;
+	int MAP = 34;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1815,7 +1870,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getList()
 	 * @generated
 	 */
-	int LIST = 34;
+	int LIST = 35;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1861,7 +1916,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getEachEntry()
 	 * @generated
 	 */
-	int EACH_ENTRY = 35;
+	int EACH_ENTRY = 36;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -1925,6 +1980,107 @@ public interface OperationsPackage extends EPackage {
 	 * @ordered
 	 */
 	int EACH_ENTRY_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.LoopImpl <em>Loop</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.LoopImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getLoop()
+	 * @generated
+	 */
+	int LOOP = 37;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Vals</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP__VALS = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP__BODY = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Loop</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.RecurImpl <em>Recur</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.RecurImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getRecur()
+	 * @generated
+	 */
+	int RECUR = 38;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECUR__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECUR__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECUR__VALUES = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Recur</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECUR_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Eq <em>Eq</em>}'.
@@ -2546,6 +2702,16 @@ public interface OperationsPackage extends EPackage {
 	EReference getAbs_Arg();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Mod <em>Mod</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Mod</em>'.
+	 * @see org.eclipse.ecl.operations.Mod
+	 * @generated
+	 */
+	EClass getMod();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Between <em>Between</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2715,6 +2881,59 @@ public interface OperationsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEachEntry_Do();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Loop <em>Loop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Loop</em>'.
+	 * @see org.eclipse.ecl.operations.Loop
+	 * @generated
+	 */
+	EClass getLoop();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.ecl.operations.Loop#getVals <em>Vals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Vals</em>'.
+	 * @see org.eclipse.ecl.operations.Loop#getVals()
+	 * @see #getLoop()
+	 * @generated
+	 */
+	EReference getLoop_Vals();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Loop#getBody <em>Body</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Body</em>'.
+	 * @see org.eclipse.ecl.operations.Loop#getBody()
+	 * @see #getLoop()
+	 * @generated
+	 */
+	EReference getLoop_Body();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Recur <em>Recur</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Recur</em>'.
+	 * @see org.eclipse.ecl.operations.Recur
+	 * @generated
+	 */
+	EClass getRecur();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.eclipse.ecl.operations.Recur#getValues <em>Values</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Values</em>'.
+	 * @see org.eclipse.ecl.operations.Recur#getValues()
+	 * @see #getRecur()
+	 * @generated
+	 */
+	EReference getRecur_Values();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.BinaryOp <em>Binary Op</em>}'.
@@ -3303,6 +3522,16 @@ public interface OperationsPackage extends EPackage {
 		EReference ABS__ARG = eINSTANCE.getAbs_Arg();
 
 		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.ModImpl <em>Mod</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.ModImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getMod()
+		 * @generated
+		 */
+		EClass MOD = eINSTANCE.getMod();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.BetweenImpl <em>Between</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3439,6 +3668,50 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EACH_ENTRY__DO = eINSTANCE.getEachEntry_Do();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.LoopImpl <em>Loop</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.LoopImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getLoop()
+		 * @generated
+		 */
+		EClass LOOP = eINSTANCE.getLoop();
+
+		/**
+		 * The meta object literal for the '<em><b>Vals</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LOOP__VALS = eINSTANCE.getLoop_Vals();
+
+		/**
+		 * The meta object literal for the '<em><b>Body</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LOOP__BODY = eINSTANCE.getLoop_Body();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.RecurImpl <em>Recur</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.RecurImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getRecur()
+		 * @generated
+		 */
+		EClass RECUR = eINSTANCE.getRecur();
+
+		/**
+		 * The meta object literal for the '<em><b>Values</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RECUR__VALUES = eINSTANCE.getRecur_Values();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.BinaryOpImpl <em>Binary Op</em>}' class.

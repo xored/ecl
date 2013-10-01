@@ -29,9 +29,11 @@ import org.eclipse.ecl.operations.Gt;
 import org.eclipse.ecl.operations.Int;
 import org.eclipse.ecl.operations.Length;
 import org.eclipse.ecl.operations.List;
+import org.eclipse.ecl.operations.Loop;
 import org.eclipse.ecl.operations.Lt;
 import org.eclipse.ecl.operations.Map;
 import org.eclipse.ecl.operations.Minus;
+import org.eclipse.ecl.operations.Mod;
 import org.eclipse.ecl.operations.Mult;
 import org.eclipse.ecl.operations.Not;
 import org.eclipse.ecl.operations.NotEq;
@@ -39,6 +41,7 @@ import org.eclipse.ecl.operations.OperationsFactory;
 import org.eclipse.ecl.operations.OperationsPackage;
 import org.eclipse.ecl.operations.Or;
 import org.eclipse.ecl.operations.Plus;
+import org.eclipse.ecl.operations.Recur;
 import org.eclipse.ecl.operations.Repeat;
 import org.eclipse.ecl.operations.RepeatWith;
 import org.eclipse.ecl.operations.Str;
@@ -238,6 +241,13 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	private EClass absEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modEClass = null;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -270,6 +280,20 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass eachEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass loopEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass recurEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -816,6 +840,15 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMod() {
+		return modEClass;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -953,6 +986,51 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	 */
 	public EReference getEachEntry_Do() {
 		return (EReference)eachEntryEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLoop() {
+		return loopEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLoop_Vals() {
+		return (EReference)loopEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLoop_Body() {
+		return (EReference)loopEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRecur() {
+		return recurEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRecur_Values() {
+		return (EReference)recurEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1098,6 +1176,8 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		absEClass = createEClass(ABS);
 		createEReference(absEClass, ABS__ARG);
 
+		modEClass = createEClass(MOD);
+
 		betweenEClass = createEClass(BETWEEN);
 		createEReference(betweenEClass, BETWEEN__INPUT);
 		createEReference(betweenEClass, BETWEEN__LEFT);
@@ -1118,6 +1198,13 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		createEReference(eachEntryEClass, EACH_ENTRY__VAL);
 		createEReference(eachEntryEClass, EACH_ENTRY__KEY);
 		createEReference(eachEntryEClass, EACH_ENTRY__DO);
+
+		loopEClass = createEClass(LOOP);
+		createEReference(loopEClass, LOOP__VALS);
+		createEReference(loopEClass, LOOP__BODY);
+
+		recurEClass = createEClass(RECUR);
+		createEReference(recurEClass, RECUR__VALUES);
 	}
 
 	/**
@@ -1182,11 +1269,14 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		divEClass.getESuperTypes().add(this.getBinaryOp());
 		multEClass.getESuperTypes().add(this.getBinaryOp());
 		absEClass.getESuperTypes().add(theCorePackage.getCommand());
+		modEClass.getESuperTypes().add(this.getBinaryOp());
 		betweenEClass.getESuperTypes().add(theCorePackage.getCommand());
 		entryEClass.getESuperTypes().add(theCorePackage.getCommand());
 		mapEClass.getESuperTypes().add(theCorePackage.getCommand());
 		listEClass.getESuperTypes().add(theCorePackage.getCommand());
 		eachEntryEClass.getESuperTypes().add(theCorePackage.getCommand());
+		loopEClass.getESuperTypes().add(theCorePackage.getCommand());
+		recurEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1282,6 +1372,8 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		initEClass(absEClass, Abs.class, "Abs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAbs_Arg(), theEcorePackage.getEObject(), null, "arg", null, 0, 1, Abs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(modEClass, Mod.class, "Mod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(betweenEClass, Between.class, "Between", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBetween_Input(), theEcorePackage.getEObject(), null, "input", null, 0, 1, Between.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBetween_Left(), theEcorePackage.getEObject(), null, "left", null, 0, 1, Between.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1302,6 +1394,13 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		initEReference(getEachEntry_Val(), theCorePackage.getVal(), null, "val", null, 1, 1, EachEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEachEntry_Key(), theCorePackage.getVal(), null, "key", null, 0, 1, EachEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEachEntry_Do(), theCorePackage.getCommand(), null, "do", null, 0, 1, EachEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(loopEClass, Loop.class, "Loop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLoop_Vals(), theCorePackage.getVal(), null, "vals", null, 0, -1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLoop_Body(), theCorePackage.getCommand(), null, "body", null, 0, 1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(recurEClass, Recur.class, "Recur", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRecur_Values(), theEcorePackage.getEObject(), null, "values", null, 0, -1, Recur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1627,6 +1726,12 @@ public class OperationsPackageImpl extends EPackageImpl implements
 			 "description", "<p>returns <code>java.lang.Math.abs(arg)</code></p>\n<p>The return type of an operation is determined by the following rules:</p>\n<ol>\n  <li><code>string</code> arg is converted to <code>long</code></li>\n  <li><code>boolean</code> arg is converted to <code>long</code> (1 for <code>true</code> and 0 for <code>false</code>)</li>\n  <li><code>double</code>, <code>float</code>, <code>long</code> args retain its original type</li>\n  <li>Otherwise (in case of <code>byte</code>, <code>char</code>, or <code>short</code>) the returned value has type <code>int</code></li>\n</ol>\n"
 		   });			
 		addAnnotation
+		  (modEClass, 
+		   source, 
+		   new String[] {
+			 "description", "<p>returns <code>left % right</code></p>\n<p>Before performing an operation, arguments are converted to the widest type according to the following rules:</p>\n<ol>\n  <li><code>string</code> arguments converted to <code>long</code></li>\n  <li><code>boolean</code> arguments converted to <code>long</code> (1 for <code>true</code> and 0 for <code>false</code>)</li>\n  <li>If one of arguments is <code>double</code>, converts the other one to <code>double</code></li>\n  <li>If one of arguments is <code>float</code>, converts the other one to <code>float</code></li>\n  <li>If one of arguments is <code>long</code>, converts the other one to <code>long</code></li>\n  <li>Otherwise (in case of <code>byte</code>, <code>char</code>, or <code>short</code>) converts both arguments to <code>int</code></li>\n</ol>\n"
+		   });		
+		addAnnotation
 		  (betweenEClass, 
 		   source, 
 		   new String[] {
@@ -1656,7 +1761,39 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		   new String[] {
 			 "description", "Iterates over a map. ",
 			 "example", "// Iterate over keys and values.\n// Writes \'one = 1\' and \'two = 2\' into eclipse log\nmap [entry one 1] [entry two 2] | each-entry [val key] [val value] {\n    log [format \"%s = %d\" $key $value]\n}\n\n// Iterate over values only\nmap [entry one 1] [entry two 2] | each-entry [val value] { log [format \"%d\" $value] }"
-		   });	
+		   });			
+		addAnnotation
+		  (loopEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Executes recursive looping of a body. Allows to emulate \'while\' and \'for\' loops while preserving variable immutability. The idea is taken from Clojure\'s <a href=\"http://clojure.org/functional_programming#Functional%20Programming--Recursive%20Looping\">loop/recur</a> approach. Also see <a href=\"#recur\">recur</a> command.",
+			 "example", "// Example 1. returns how many times a 81 is divisible by 3\nloop [val count 0] [val n 81] {\n    if [mod $n 3 | eq 0] {\n        recur [$count | plus 1] [$n | div 3]\n    } -else {\n        log [format \"The answer is %d\" $count] //prints \'The answer is 4\'\n    }\n}\n\n\n// Example 2. deletes all elements from a tree\nproc \"get-my-tree\" { get-view \"My View\" | get-tree }\n\nproc \"has-elements\" {\n    get-my-tree | get-property itemCount -raw | int | gt 0\n}\n\nloop {\n    if [has-elements] {\n        // Selects a first top-level item and invokes \"Delete\" from context menu\n        get-my-tree | select \".*\" | get-menu \"Delete\" | click\n        // Confirms a removal in popup dialog\n        get-window \"Confirm Delete\" | get-button OK | click\n        // Continues execution from the beginning of loop body\n        recur\n    }\n}"
+		   });		
+		addAnnotation
+		  (getLoop_Vals(), 
+		   source, 
+		   new String[] {
+			 "description", "Valus which are going to be modified during iterations. All initial values must be set."
+		   });		
+		addAnnotation
+		  (getLoop_Body(), 
+		   source, 
+		   new String[] {
+			 "description", "A script to execute. Whenever script invokes <a href=\"#recur\">recur</a> command, an execution jumps to the beginning of loop body script."
+		   });		
+		addAnnotation
+		  (recurEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Returns an execution to the beginning of <a href=\"#loop\">loop</a> command. Cannot be used outside of a loop.",
+			 "example", "// calc and show a sum of ints from 3 to 10\n\nloop [val result 0] [val i 3] {\n    if [$i | eq 10] {\n        show-alert [str [$result | plus $i]]\n    } -else {\n        recur [$result | plus $i] [$i | plus 1]\n    }\n}"
+		   });		
+		addAnnotation
+		  (getRecur_Values(), 
+		   source, 
+		   new String[] {
+			 "description", "A list of new values for variables, declared in <code>loop</code> command. Value count must exactly match to corresponding val count of a <code>loop</code> command."
+		   });
 	}
 
 	/**
@@ -1710,7 +1847,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		  (getAbs_Arg(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });				
 		addAnnotation
 		  (getBetween_Input(), 
 		   source, 
@@ -1720,7 +1857,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		  (getEachEntry_Input(), 
 		   source, 
 		   new String[] {
-		   });
+		   });					
 	}
 
 	/**
@@ -1735,7 +1872,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });																																																					
+		   });																																																											
 	}
 
 } // OperationsPackageImpl

@@ -27,9 +27,11 @@ import org.eclipse.ecl.operations.Gt;
 import org.eclipse.ecl.operations.Int;
 import org.eclipse.ecl.operations.Length;
 import org.eclipse.ecl.operations.List;
+import org.eclipse.ecl.operations.Loop;
 import org.eclipse.ecl.operations.Lt;
 import org.eclipse.ecl.operations.Map;
 import org.eclipse.ecl.operations.Minus;
+import org.eclipse.ecl.operations.Mod;
 import org.eclipse.ecl.operations.Mult;
 import org.eclipse.ecl.operations.Not;
 import org.eclipse.ecl.operations.NotEq;
@@ -37,6 +39,7 @@ import org.eclipse.ecl.operations.OperationsFactory;
 import org.eclipse.ecl.operations.OperationsPackage;
 import org.eclipse.ecl.operations.Or;
 import org.eclipse.ecl.operations.Plus;
+import org.eclipse.ecl.operations.Recur;
 import org.eclipse.ecl.operations.Repeat;
 import org.eclipse.ecl.operations.RepeatWith;
 import org.eclipse.ecl.operations.Str;
@@ -120,11 +123,14 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 			case OperationsPackage.DIV: return createDiv();
 			case OperationsPackage.MULT: return createMult();
 			case OperationsPackage.ABS: return createAbs();
+			case OperationsPackage.MOD: return createMod();
 			case OperationsPackage.BETWEEN: return createBetween();
 			case OperationsPackage.ENTRY: return createEntry();
 			case OperationsPackage.MAP: return createMap();
 			case OperationsPackage.LIST: return createList();
 			case OperationsPackage.EACH_ENTRY: return createEachEntry();
+			case OperationsPackage.LOOP: return createLoop();
+			case OperationsPackage.RECUR: return createRecur();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -392,6 +398,16 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Mod createMod() {
+		ModImpl mod = new ModImpl();
+		return mod;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -438,6 +454,26 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	public EachEntry createEachEntry() {
 		EachEntryImpl eachEntry = new EachEntryImpl();
 		return eachEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Loop createLoop() {
+		LoopImpl loop = new LoopImpl();
+		return loop;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Recur createRecur() {
+		RecurImpl recur = new RecurImpl();
+		return recur;
 	}
 
 	/**

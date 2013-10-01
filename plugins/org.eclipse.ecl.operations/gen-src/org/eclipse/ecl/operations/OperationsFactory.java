@@ -287,6 +287,15 @@ public interface OperationsFactory extends EFactory {
 	Abs createAbs();
 
 	/**
+	 * Returns a new object of class '<em>Mod</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Mod</em>'.
+	 * @generated
+	 */
+	Mod createMod();
+
+	/**
 	 * Returns a new object of class '<em>Between</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -330,6 +339,24 @@ public interface OperationsFactory extends EFactory {
 	 * @generated
 	 */
 	EachEntry createEachEntry();
+
+	/**
+	 * Returns a new object of class '<em>Loop</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Loop</em>'.
+	 * @generated
+	 */
+	Loop createLoop();
+
+	/**
+	 * Returns a new object of class '<em>Recur</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Recur</em>'.
+	 * @generated
+	 */
+	Recur createRecur();
 
 	/**
 	 * Returns a new object of class '<em>Binary Op</em>'.

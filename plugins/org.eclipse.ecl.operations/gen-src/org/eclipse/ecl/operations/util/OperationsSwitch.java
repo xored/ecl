@@ -30,15 +30,18 @@ import org.eclipse.ecl.operations.GetTime;
 import org.eclipse.ecl.operations.Gt;
 import org.eclipse.ecl.operations.Int;
 import org.eclipse.ecl.operations.Length;
+import org.eclipse.ecl.operations.Loop;
 import org.eclipse.ecl.operations.Lt;
 import org.eclipse.ecl.operations.Map;
 import org.eclipse.ecl.operations.Minus;
+import org.eclipse.ecl.operations.Mod;
 import org.eclipse.ecl.operations.Mult;
 import org.eclipse.ecl.operations.Not;
 import org.eclipse.ecl.operations.NotEq;
 import org.eclipse.ecl.operations.OperationsPackage;
 import org.eclipse.ecl.operations.Or;
 import org.eclipse.ecl.operations.Plus;
+import org.eclipse.ecl.operations.Recur;
 import org.eclipse.ecl.operations.Repeat;
 import org.eclipse.ecl.operations.RepeatWith;
 import org.eclipse.ecl.operations.Str;
@@ -344,6 +347,14 @@ public class OperationsSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case OperationsPackage.MOD: {
+				Mod mod = (Mod)theEObject;
+				T result = caseMod(mod);
+				if (result == null) result = caseBinaryOp(mod);
+				if (result == null) result = caseCommand(mod);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case OperationsPackage.BETWEEN: {
 				Between between = (Between)theEObject;
 				T result = caseBetween(between);
@@ -376,6 +387,20 @@ public class OperationsSwitch<T> {
 				EachEntry eachEntry = (EachEntry)theEObject;
 				T result = caseEachEntry(eachEntry);
 				if (result == null) result = caseCommand(eachEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.LOOP: {
+				Loop loop = (Loop)theEObject;
+				T result = caseLoop(loop);
+				if (result == null) result = caseCommand(loop);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.RECUR: {
+				Recur recur = (Recur)theEObject;
+				T result = caseRecur(recur);
+				if (result == null) result = caseCommand(recur);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -852,6 +877,21 @@ public class OperationsSwitch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Mod</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Mod</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMod(Mod object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Between</em>'.
 	 * <!-- begin-user-doc --> This implementation returns
 	 * null; returning a non-null result will terminate the switch. <!--
@@ -922,6 +962,36 @@ public class OperationsSwitch<T> {
 	 * @generated
 	 */
 	public T caseEachEntry(EachEntry object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Loop</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Loop</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLoop(Loop object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Recur</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Recur</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRecur(Recur object) {
 		return null;
 	}
 

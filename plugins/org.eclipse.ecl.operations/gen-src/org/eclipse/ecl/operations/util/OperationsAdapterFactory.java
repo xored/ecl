@@ -29,15 +29,18 @@ import org.eclipse.ecl.operations.Gt;
 import org.eclipse.ecl.operations.Int;
 import org.eclipse.ecl.operations.Length;
 import org.eclipse.ecl.operations.List;
+import org.eclipse.ecl.operations.Loop;
 import org.eclipse.ecl.operations.Lt;
 import org.eclipse.ecl.operations.Map;
 import org.eclipse.ecl.operations.Minus;
+import org.eclipse.ecl.operations.Mod;
 import org.eclipse.ecl.operations.Mult;
 import org.eclipse.ecl.operations.Not;
 import org.eclipse.ecl.operations.NotEq;
 import org.eclipse.ecl.operations.OperationsPackage;
 import org.eclipse.ecl.operations.Or;
 import org.eclipse.ecl.operations.Plus;
+import org.eclipse.ecl.operations.Recur;
 import org.eclipse.ecl.operations.Repeat;
 import org.eclipse.ecl.operations.RepeatWith;
 import org.eclipse.ecl.operations.Str;
@@ -225,6 +228,10 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 				return createAbsAdapter();
 			}
 			@Override
+			public Adapter caseMod(Mod object) {
+				return createModAdapter();
+			}
+			@Override
 			public Adapter caseBetween(Between object) {
 				return createBetweenAdapter();
 			}
@@ -243,6 +250,14 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEachEntry(EachEntry object) {
 				return createEachEntryAdapter();
+			}
+			@Override
+			public Adapter caseLoop(Loop object) {
+				return createLoopAdapter();
+			}
+			@Override
+			public Adapter caseRecur(Recur object) {
+				return createRecurAdapter();
 			}
 			@Override
 			public Adapter caseCommand(Command object) {
@@ -704,6 +719,20 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.Mod <em>Mod</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.Mod
+	 * @generated
+	 */
+	public Adapter createModAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '
 	 * {@link org.eclipse.ecl.operations.Between <em>Between</em>}'. <!--
 	 * begin-user-doc --> This default implementation returns null so that we
@@ -771,6 +800,34 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEachEntryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.Loop <em>Loop</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.Loop
+	 * @generated
+	 */
+	public Adapter createLoopAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.Recur <em>Recur</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.Recur
+	 * @generated
+	 */
+	public Adapter createRecurAdapter() {
 		return null;
 	}
 
