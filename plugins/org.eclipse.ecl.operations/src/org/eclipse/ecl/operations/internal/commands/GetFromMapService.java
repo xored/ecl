@@ -30,7 +30,7 @@ public class GetFromMapService implements IScriptletExtension {
 			return createErr("Map does not contain key %s and default value is not specified",
 					BoxedValues.unbox(get.getKey()));
 		}
-		context.getOutput().write(value);
+		context.getOutput().write(EcoreUtil.copy(value));
 		return Status.OK_STATUS;
 	}
 

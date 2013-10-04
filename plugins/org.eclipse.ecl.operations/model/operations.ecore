@@ -347,21 +347,6 @@
         eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EachEntry" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
-    <eAnnotations source="http://www.eclipse.org/ecl/docs">
-      <details key="description" value="Iterates over a map. "/>
-      <details key="example" value="// Iterate over keys and values.&#xA;// Writes 'one = 1' and 'two = 2' into eclipse log&#xA;map [entry one 1] [entry two 2] | each-entry [val key] [val value] {&#xA;    log [format &quot;%s = %d&quot; $key $value]&#xA;}&#xA;&#xA;// Iterate over values only&#xA;map [entry one 1] [entry two 2] | each-entry [val value] { log [format &quot;%d&quot; $value] }"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//EclMap">
-      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="val" lowerBound="1" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//Val"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//Val"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="do" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//Command"
-        containment="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Loop" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
       <details key="description" value="Executes recursive looping of a body. Allows to emulate 'while' and 'for' loops while preserving variable immutability. The idea is taken from Clojure's &lt;a href=&quot;http://clojure.org/functional_programming#Functional%20Programming--Recursive%20Looping&quot;>loop/recur&lt;/a> approach. Also see &lt;a href=&quot;#recur&quot;>recur&lt;/a> command."/>
@@ -390,5 +375,29 @@
         <details key="description" value="A list of new values for variables, declared in &lt;code>loop&lt;/code> command. Value count must exactly match to corresponding val count of a &lt;code>loop&lt;/code> command."/>
       </eAnnotations>
     </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ToList" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Loads whole input pipe and returns a single EclList object, containing it."/>
+      <details key="example" value="emit 1 2 3 | to-list // same as list 1 2 3&#xA;emit 1 2 3 | to-list | to-list // same as list [list 1 2 3]"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Each" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
+    <eAnnotations source="http://www.eclipse.org/ecl/docs">
+      <details key="description" value="Iterates over &lt;a href=&quot;#list&quot;>list&lt;/a> or &lt;a href=&quot;#map>map&lt;/a>. Accepts one or two variable declarations, when only one variable given, it will be hold list elements or map values. A second variable, if provided, used for map keys or list element indices."/>
+      <details key="example" value="// Iterate over elements.&#xA;list 1 2 3 | each [val element] {&#xA;    log [format &quot;%d&quot; $element]&#xA;}&#xA;&#xA;// Iterate over elements with indices&#xA;list 1 2 3 | each [val element] [val index] {&#xA;    log [format &quot;list[%d] = %d&quot; $index $element]&#xA;}&#xA;&#xA;// Iterate over map values&#xA;map [entry &quot;one&quot; 1] [entry &quot;two&quot; 2] | each [val value] { log $value }&#xA;&#xA;// Iterate over map values with keys&#xA;map [entry &quot;one&quot; 1] [entry &quot;two&quot; 2] | each [val v] [val k] { log [concat $k &quot; = &quot; $v] }"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/ecl/input"/>
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="Map or List"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="val" lowerBound="1" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//Val"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//Val"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="do" eType="ecore:EClass ../../org.eclipse.ecl.core/model/ecl.ecore#//Command"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

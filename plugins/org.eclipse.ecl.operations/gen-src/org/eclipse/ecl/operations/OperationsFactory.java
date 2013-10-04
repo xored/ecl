@@ -332,15 +332,6 @@ public interface OperationsFactory extends EFactory {
 	List createList();
 
 	/**
-	 * Returns a new object of class '<em>Each Entry</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Each Entry</em>'.
-	 * @generated
-	 */
-	EachEntry createEachEntry();
-
-	/**
 	 * Returns a new object of class '<em>Loop</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -357,6 +348,24 @@ public interface OperationsFactory extends EFactory {
 	 * @generated
 	 */
 	Recur createRecur();
+
+	/**
+	 * Returns a new object of class '<em>To List</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>To List</em>'.
+	 * @generated
+	 */
+	ToList createToList();
+
+	/**
+	 * Returns a new object of class '<em>Each</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Each</em>'.
+	 * @generated
+	 */
+	Each createEach();
 
 	/**
 	 * Returns a new object of class '<em>Binary Op</em>'.

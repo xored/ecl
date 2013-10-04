@@ -1918,79 +1918,6 @@ public interface OperationsPackage extends EPackage {
 	int LIST_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.EachEntryImpl <em>Each Entry</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ecl.operations.impl.EachEntryImpl
-	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getEachEntry()
-	 * @generated
-	 */
-	int EACH_ENTRY = 36;
-
-	/**
-	 * The feature id for the '<em><b>Host</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EACH_ENTRY__HOST = CorePackage.COMMAND__HOST;
-
-	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EACH_ENTRY__BINDINGS = CorePackage.COMMAND__BINDINGS;
-
-	/**
-	 * The feature id for the '<em><b>Input</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EACH_ENTRY__INPUT = CorePackage.COMMAND_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Val</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EACH_ENTRY__VAL = CorePackage.COMMAND_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Key</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EACH_ENTRY__KEY = CorePackage.COMMAND_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Do</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EACH_ENTRY__DO = CorePackage.COMMAND_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>Each Entry</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EACH_ENTRY_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 4;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.LoopImpl <em>Loop</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1998,7 +1925,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getLoop()
 	 * @generated
 	 */
-	int LOOP = 37;
+	int LOOP = 36;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -2053,7 +1980,7 @@ public interface OperationsPackage extends EPackage {
 	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getRecur()
 	 * @generated
 	 */
-	int RECUR = 38;
+	int RECUR = 37;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -2090,6 +2017,116 @@ public interface OperationsPackage extends EPackage {
 	 * @ordered
 	 */
 	int RECUR_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.ToListImpl <em>To List</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.ToListImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getToList()
+	 * @generated
+	 */
+	int TO_LIST = 38;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_LIST__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_LIST__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The number of structural features of the '<em>To List</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TO_LIST_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.EachImpl <em>Each</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.EachImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getEach()
+	 * @generated
+	 */
+	int EACH = 39;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EACH__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EACH__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EACH__INPUT = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Val</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EACH__VAL = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EACH__KEY = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Do</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EACH__DO = CorePackage.COMMAND_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Each</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EACH_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 4;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Eq <em>Eq</em>}'.
@@ -2849,60 +2886,6 @@ public interface OperationsPackage extends EPackage {
 	EReference getList_Items();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.EachEntry <em>Each Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Each Entry</em>'.
-	 * @see org.eclipse.ecl.operations.EachEntry
-	 * @generated
-	 */
-	EClass getEachEntry();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.EachEntry#getInput <em>Input</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Input</em>'.
-	 * @see org.eclipse.ecl.operations.EachEntry#getInput()
-	 * @see #getEachEntry()
-	 * @generated
-	 */
-	EReference getEachEntry_Input();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.operations.EachEntry#getVal <em>Val</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Val</em>'.
-	 * @see org.eclipse.ecl.operations.EachEntry#getVal()
-	 * @see #getEachEntry()
-	 * @generated
-	 */
-	EReference getEachEntry_Val();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.operations.EachEntry#getKey <em>Key</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Key</em>'.
-	 * @see org.eclipse.ecl.operations.EachEntry#getKey()
-	 * @see #getEachEntry()
-	 * @generated
-	 */
-	EReference getEachEntry_Key();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.operations.EachEntry#getDo <em>Do</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Do</em>'.
-	 * @see org.eclipse.ecl.operations.EachEntry#getDo()
-	 * @see #getEachEntry()
-	 * @generated
-	 */
-	EReference getEachEntry_Do();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Loop <em>Loop</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2954,6 +2937,70 @@ public interface OperationsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRecur_Values();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.ToList <em>To List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>To List</em>'.
+	 * @see org.eclipse.ecl.operations.ToList
+	 * @generated
+	 */
+	EClass getToList();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Each <em>Each</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Each</em>'.
+	 * @see org.eclipse.ecl.operations.Each
+	 * @generated
+	 */
+	EClass getEach();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.operations.Each#getInput <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Input</em>'.
+	 * @see org.eclipse.ecl.operations.Each#getInput()
+	 * @see #getEach()
+	 * @generated
+	 */
+	EReference getEach_Input();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.operations.Each#getVal <em>Val</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Val</em>'.
+	 * @see org.eclipse.ecl.operations.Each#getVal()
+	 * @see #getEach()
+	 * @generated
+	 */
+	EReference getEach_Val();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.operations.Each#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Key</em>'.
+	 * @see org.eclipse.ecl.operations.Each#getKey()
+	 * @see #getEach()
+	 * @generated
+	 */
+	EReference getEach_Key();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.operations.Each#getDo <em>Do</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Do</em>'.
+	 * @see org.eclipse.ecl.operations.Each#getDo()
+	 * @see #getEach()
+	 * @generated
+	 */
+	EReference getEach_Do();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.BinaryOp <em>Binary Op</em>}'.
@@ -3656,48 +3703,6 @@ public interface OperationsPackage extends EPackage {
 		EReference LIST__ITEMS = eINSTANCE.getList_Items();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.EachEntryImpl <em>Each Entry</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ecl.operations.impl.EachEntryImpl
-		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getEachEntry()
-		 * @generated
-		 */
-		EClass EACH_ENTRY = eINSTANCE.getEachEntry();
-
-		/**
-		 * The meta object literal for the '<em><b>Input</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EACH_ENTRY__INPUT = eINSTANCE.getEachEntry_Input();
-
-		/**
-		 * The meta object literal for the '<em><b>Val</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EACH_ENTRY__VAL = eINSTANCE.getEachEntry_Val();
-
-		/**
-		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EACH_ENTRY__KEY = eINSTANCE.getEachEntry_Key();
-
-		/**
-		 * The meta object literal for the '<em><b>Do</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EACH_ENTRY__DO = eINSTANCE.getEachEntry_Do();
-
-		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.LoopImpl <em>Loop</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3740,6 +3745,58 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference RECUR__VALUES = eINSTANCE.getRecur_Values();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.ToListImpl <em>To List</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.ToListImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getToList()
+		 * @generated
+		 */
+		EClass TO_LIST = eINSTANCE.getToList();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.EachImpl <em>Each</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.EachImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getEach()
+		 * @generated
+		 */
+		EClass EACH = eINSTANCE.getEach();
+
+		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EACH__INPUT = eINSTANCE.getEach_Input();
+
+		/**
+		 * The meta object literal for the '<em><b>Val</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EACH__VAL = eINSTANCE.getEach_Val();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EACH__KEY = eINSTANCE.getEach_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Do</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EACH__DO = eINSTANCE.getEach_Do();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.BinaryOpImpl <em>Binary Op</em>}' class.

@@ -7,39 +7,40 @@
 package org.eclipse.ecl.operations.impl;
 
 import org.eclipse.ecl.core.Command;
-import org.eclipse.ecl.core.EclMap;
+import org.eclipse.ecl.core.EclList;
 import org.eclipse.ecl.core.Val;
 
 import org.eclipse.ecl.core.impl.CommandImpl;
 
-import org.eclipse.ecl.operations.EachEntry;
+import org.eclipse.ecl.operations.Each;
 import org.eclipse.ecl.operations.OperationsPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Each Entry</b></em>'.
+ * An implementation of the model object '<em><b>Each</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.ecl.operations.impl.EachEntryImpl#getInput <em>Input</em>}</li>
- *   <li>{@link org.eclipse.ecl.operations.impl.EachEntryImpl#getVal <em>Val</em>}</li>
- *   <li>{@link org.eclipse.ecl.operations.impl.EachEntryImpl#getKey <em>Key</em>}</li>
- *   <li>{@link org.eclipse.ecl.operations.impl.EachEntryImpl#getDo <em>Do</em>}</li>
+ *   <li>{@link org.eclipse.ecl.operations.impl.EachImpl#getInput <em>Input</em>}</li>
+ *   <li>{@link org.eclipse.ecl.operations.impl.EachImpl#getVal <em>Val</em>}</li>
+ *   <li>{@link org.eclipse.ecl.operations.impl.EachImpl#getKey <em>Key</em>}</li>
+ *   <li>{@link org.eclipse.ecl.operations.impl.EachImpl#getDo <em>Do</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class EachEntryImpl extends CommandImpl implements EachEntry {
+public class EachImpl extends CommandImpl implements Each {
 	/**
 	 * The cached value of the '{@link #getInput() <em>Input</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -48,7 +49,7 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 	 * @generated
 	 * @ordered
 	 */
-	protected EclMap input;
+	protected EObject input;
 
 	/**
 	 * The cached value of the '{@link #getVal() <em>Val</em>}' containment reference.
@@ -85,7 +86,7 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EachEntryImpl() {
+	protected EachImpl() {
 		super();
 	}
 
@@ -96,7 +97,7 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OperationsPackage.Literals.EACH_ENTRY;
+		return OperationsPackage.Literals.EACH;
 	}
 
 	/**
@@ -104,13 +105,13 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EclMap getInput() {
+	public EObject getInput() {
 		if (input != null && input.eIsProxy()) {
 			InternalEObject oldInput = (InternalEObject)input;
-			input = (EclMap)eResolveProxy(oldInput);
+			input = eResolveProxy(oldInput);
 			if (input != oldInput) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OperationsPackage.EACH_ENTRY__INPUT, oldInput, input));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OperationsPackage.EACH__INPUT, oldInput, input));
 			}
 		}
 		return input;
@@ -121,7 +122,7 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EclMap basicGetInput() {
+	public EObject basicGetInput() {
 		return input;
 	}
 
@@ -130,11 +131,11 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInput(EclMap newInput) {
-		EclMap oldInput = input;
+	public void setInput(EObject newInput) {
+		EObject oldInput = input;
 		input = newInput;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.EACH_ENTRY__INPUT, oldInput, input));
+			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.EACH__INPUT, oldInput, input));
 	}
 
 	/**
@@ -155,7 +156,7 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 		Val oldVal = val;
 		val = newVal;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OperationsPackage.EACH_ENTRY__VAL, oldVal, newVal);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OperationsPackage.EACH__VAL, oldVal, newVal);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -170,14 +171,14 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 		if (newVal != val) {
 			NotificationChain msgs = null;
 			if (val != null)
-				msgs = ((InternalEObject)val).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OperationsPackage.EACH_ENTRY__VAL, null, msgs);
+				msgs = ((InternalEObject)val).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OperationsPackage.EACH__VAL, null, msgs);
 			if (newVal != null)
-				msgs = ((InternalEObject)newVal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OperationsPackage.EACH_ENTRY__VAL, null, msgs);
+				msgs = ((InternalEObject)newVal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OperationsPackage.EACH__VAL, null, msgs);
 			msgs = basicSetVal(newVal, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.EACH_ENTRY__VAL, newVal, newVal));
+			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.EACH__VAL, newVal, newVal));
 	}
 
 	/**
@@ -198,7 +199,7 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 		Val oldKey = key;
 		key = newKey;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OperationsPackage.EACH_ENTRY__KEY, oldKey, newKey);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OperationsPackage.EACH__KEY, oldKey, newKey);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -213,14 +214,14 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 		if (newKey != key) {
 			NotificationChain msgs = null;
 			if (key != null)
-				msgs = ((InternalEObject)key).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OperationsPackage.EACH_ENTRY__KEY, null, msgs);
+				msgs = ((InternalEObject)key).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OperationsPackage.EACH__KEY, null, msgs);
 			if (newKey != null)
-				msgs = ((InternalEObject)newKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OperationsPackage.EACH_ENTRY__KEY, null, msgs);
+				msgs = ((InternalEObject)newKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OperationsPackage.EACH__KEY, null, msgs);
 			msgs = basicSetKey(newKey, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.EACH_ENTRY__KEY, newKey, newKey));
+			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.EACH__KEY, newKey, newKey));
 	}
 
 	/**
@@ -241,7 +242,7 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 		Command oldDo = do_;
 		do_ = newDo;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OperationsPackage.EACH_ENTRY__DO, oldDo, newDo);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OperationsPackage.EACH__DO, oldDo, newDo);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -256,14 +257,14 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 		if (newDo != do_) {
 			NotificationChain msgs = null;
 			if (do_ != null)
-				msgs = ((InternalEObject)do_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OperationsPackage.EACH_ENTRY__DO, null, msgs);
+				msgs = ((InternalEObject)do_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OperationsPackage.EACH__DO, null, msgs);
 			if (newDo != null)
-				msgs = ((InternalEObject)newDo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OperationsPackage.EACH_ENTRY__DO, null, msgs);
+				msgs = ((InternalEObject)newDo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OperationsPackage.EACH__DO, null, msgs);
 			msgs = basicSetDo(newDo, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.EACH_ENTRY__DO, newDo, newDo));
+			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.EACH__DO, newDo, newDo));
 	}
 
 	/**
@@ -274,11 +275,11 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case OperationsPackage.EACH_ENTRY__VAL:
+			case OperationsPackage.EACH__VAL:
 				return basicSetVal(null, msgs);
-			case OperationsPackage.EACH_ENTRY__KEY:
+			case OperationsPackage.EACH__KEY:
 				return basicSetKey(null, msgs);
-			case OperationsPackage.EACH_ENTRY__DO:
+			case OperationsPackage.EACH__DO:
 				return basicSetDo(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -292,14 +293,14 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OperationsPackage.EACH_ENTRY__INPUT:
+			case OperationsPackage.EACH__INPUT:
 				if (resolve) return getInput();
 				return basicGetInput();
-			case OperationsPackage.EACH_ENTRY__VAL:
+			case OperationsPackage.EACH__VAL:
 				return getVal();
-			case OperationsPackage.EACH_ENTRY__KEY:
+			case OperationsPackage.EACH__KEY:
 				return getKey();
-			case OperationsPackage.EACH_ENTRY__DO:
+			case OperationsPackage.EACH__DO:
 				return getDo();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -313,16 +314,16 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OperationsPackage.EACH_ENTRY__INPUT:
-				setInput((EclMap)newValue);
+			case OperationsPackage.EACH__INPUT:
+				setInput((EObject)newValue);
 				return;
-			case OperationsPackage.EACH_ENTRY__VAL:
+			case OperationsPackage.EACH__VAL:
 				setVal((Val)newValue);
 				return;
-			case OperationsPackage.EACH_ENTRY__KEY:
+			case OperationsPackage.EACH__KEY:
 				setKey((Val)newValue);
 				return;
-			case OperationsPackage.EACH_ENTRY__DO:
+			case OperationsPackage.EACH__DO:
 				setDo((Command)newValue);
 				return;
 		}
@@ -337,16 +338,16 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OperationsPackage.EACH_ENTRY__INPUT:
-				setInput((EclMap)null);
+			case OperationsPackage.EACH__INPUT:
+				setInput((EObject)null);
 				return;
-			case OperationsPackage.EACH_ENTRY__VAL:
+			case OperationsPackage.EACH__VAL:
 				setVal((Val)null);
 				return;
-			case OperationsPackage.EACH_ENTRY__KEY:
+			case OperationsPackage.EACH__KEY:
 				setKey((Val)null);
 				return;
-			case OperationsPackage.EACH_ENTRY__DO:
+			case OperationsPackage.EACH__DO:
 				setDo((Command)null);
 				return;
 		}
@@ -361,16 +362,16 @@ public class EachEntryImpl extends CommandImpl implements EachEntry {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OperationsPackage.EACH_ENTRY__INPUT:
+			case OperationsPackage.EACH__INPUT:
 				return input != null;
-			case OperationsPackage.EACH_ENTRY__VAL:
+			case OperationsPackage.EACH__VAL:
 				return val != null;
-			case OperationsPackage.EACH_ENTRY__KEY:
+			case OperationsPackage.EACH__KEY:
 				return key != null;
-			case OperationsPackage.EACH_ENTRY__DO:
+			case OperationsPackage.EACH__DO:
 				return do_ != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //EachEntryImpl
+} //EachImpl

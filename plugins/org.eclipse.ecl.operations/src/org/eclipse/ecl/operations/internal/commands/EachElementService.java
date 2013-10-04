@@ -1,12 +1,13 @@
 package org.eclipse.ecl.operations.internal.commands;
 
+import static org.eclipse.ecl.runtime.BoxedValues.box;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CoreFactory;
-import org.eclipse.ecl.core.EclMap;
-import org.eclipse.ecl.core.EclMapEntry;
+import org.eclipse.ecl.core.EclList;
 import org.eclipse.ecl.core.Let;
 import org.eclipse.ecl.core.Val;
 import org.eclipse.ecl.dispatch.IScriptletExtension;
@@ -16,24 +17,25 @@ import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-public class EachEntryService implements IScriptletExtension {
+public class EachElementService implements IScriptletExtension {
 
 	@Override
 	public IStatus service(Command command, IProcess context) throws InterruptedException, CoreException {
 		Each cmd = (Each) command;
-		EclMap map = (EclMap) cmd.getInput();
+		EclList list = (EclList) cmd.getInput();
 		Val val = cmd.getVal();
-		Val key = cmd.getKey();
+		Val index = cmd.getKey();
 
-		boolean hasKey = cmd.getKey() != null;
+		boolean hasIndex = cmd.getKey() != null;
 
-		for (EclMapEntry entry : map.getEntries()) {
+		int length = list.getElements().size();
+		for (int i = 0; i < length; i++) {
 			Let let = CoreFactory.eINSTANCE.createLet();
-			val.setValue(EcoreUtil.copy(entry.getValue()));
+			val.setValue(EcoreUtil.copy(list.getElements().get(i)));
 			let.getVals().add(val);
-			if (hasKey) {
-				key.setValue(entry.getKey());
-				let.getVals().add(key);
+			if (hasIndex) {
+				index.setValue(box(i));
+				let.getVals().add(index);
 			}
 
 			IPipe out = context.getSession().createPipe();
@@ -49,7 +51,7 @@ public class EachEntryService implements IScriptletExtension {
 
 	@Override
 	public boolean canHandle(Command c) {
-		return c instanceof Each && ((Each) c).getInput() instanceof EclMap;
+		return c instanceof Each && ((Each) c).getInput() instanceof EclList;
 	}
 
 }
