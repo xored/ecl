@@ -1096,13 +1096,22 @@ public interface OperationsPackage extends EPackage {
 	int REPEAT__BINDINGS = CorePackage.COMMAND__BINDINGS;
 
 	/**
+	 * The feature id for the '<em><b>Index</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPEAT__INDEX = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Times</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REPEAT__TIMES = CorePackage.COMMAND_FEATURE_COUNT + 0;
+	int REPEAT__TIMES = CorePackage.COMMAND_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Command</b></em>' reference.
@@ -1111,7 +1120,7 @@ public interface OperationsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REPEAT__COMMAND = CorePackage.COMMAND_FEATURE_COUNT + 1;
+	int REPEAT__COMMAND = CorePackage.COMMAND_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Delay</b></em>' attribute.
@@ -1120,7 +1129,7 @@ public interface OperationsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REPEAT__DELAY = CorePackage.COMMAND_FEATURE_COUNT + 2;
+	int REPEAT__DELAY = CorePackage.COMMAND_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Repeat</em>' class.
@@ -1129,7 +1138,7 @@ public interface OperationsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REPEAT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 3;
+	int REPEAT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Host</b></em>' attribute.
@@ -2472,6 +2481,17 @@ public interface OperationsPackage extends EPackage {
 	EClass getRepeat();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.ecl.operations.Repeat#getIndex <em>Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Index</em>'.
+	 * @see org.eclipse.ecl.operations.Repeat#getIndex()
+	 * @see #getRepeat()
+	 * @generated
+	 */
+	EReference getRepeat_Index();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.operations.Repeat#getTimes <em>Times</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3320,6 +3340,14 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass REPEAT = eINSTANCE.getRepeat();
+
+		/**
+		 * The meta object literal for the '<em><b>Index</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REPEAT__INDEX = eINSTANCE.getRepeat_Index();
 
 		/**
 		 * The meta object literal for the '<em><b>Times</b></em>' attribute feature.

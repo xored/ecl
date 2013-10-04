@@ -664,11 +664,20 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRepeat_Index() {
+		return (EReference)repeatEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getRepeat_Times() {
-		return (EAttribute)repeatEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)repeatEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -676,7 +685,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EReference getRepeat_Command() {
-		return (EReference)repeatEClass.getEStructuralFeatures().get(1);
+		return (EReference)repeatEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -684,7 +693,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	public EAttribute getRepeat_Delay() {
-		return (EAttribute)repeatEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)repeatEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1137,6 +1146,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		createEReference(repeatWithEClass, REPEAT_WITH__COMMAND);
 
 		repeatEClass = createEClass(REPEAT);
+		createEReference(repeatEClass, REPEAT__INDEX);
 		createEAttribute(repeatEClass, REPEAT__TIMES);
 		createEReference(repeatEClass, REPEAT__COMMAND);
 		createEAttribute(repeatEClass, REPEAT__DELAY);
@@ -1333,9 +1343,10 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		initEReference(getRepeatWith_Command(), theCorePackage.getCommand(), null, "command", null, 0, 1, RepeatWith.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(repeatEClass, Repeat.class, "Repeat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRepeat_Times(), theEcorePackage.getEIntegerObject(), "times", "1", 1, 1, Repeat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRepeat_Command(), theCorePackage.getCommand(), null, "command", null, 1, 1, Repeat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRepeat_Delay(), theEcorePackage.getEIntegerObject(), "delay", "0", 0, 1, Repeat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRepeat_Index(), theCorePackage.getVal(), null, "index", null, 0, 1, Repeat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRepeat_Times(), theEcorePackage.getEInt(), "times", "1", 0, 1, Repeat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRepeat_Command(), theCorePackage.getCommand(), null, "command", null, 0, 1, Repeat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRepeat_Delay(), theEcorePackage.getEInt(), "delay", "0", 0, 1, Repeat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(assertEmptyEClass, AssertEmpty.class, "AssertEmpty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAssertEmpty_Message(), theEcorePackage.getEString(), "message", null, 0, 1, AssertEmpty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1608,7 +1619,13 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "description", "Execute specified command multiple times.",
-			 "returns", "return\'s -command output if command is successed."
+			 "returns", "Aggregated command output"
+		   });		
+		addAnnotation
+		  (getRepeat_Index(), 
+		   source, 
+		   new String[] {
+			 "description", "Optional value declaration to hold a current index"
 		   });		
 		addAnnotation
 		  (assertEmptyEClass, 
@@ -1837,7 +1854,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		  (getRepeatWith_Commands(), 
 		   source, 
 		   new String[] {
-		   });														
+		   });															
 		addAnnotation
 		  (getBinaryOp_Left(), 
 		   source, 
@@ -1872,7 +1889,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });																																																											
+		   });																																																												
 	}
 
 } // OperationsPackageImpl

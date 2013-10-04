@@ -7,6 +7,7 @@
 package org.eclipse.ecl.operations;
 
 import org.eclipse.ecl.core.Command;
+import org.eclipse.ecl.core.Val;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,6 +17,7 @@ import org.eclipse.ecl.core.Command;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.ecl.operations.Repeat#getIndex <em>Index</em>}</li>
  *   <li>{@link org.eclipse.ecl.operations.Repeat#getTimes <em>Times</em>}</li>
  *   <li>{@link org.eclipse.ecl.operations.Repeat#getCommand <em>Command</em>}</li>
  *   <li>{@link org.eclipse.ecl.operations.Repeat#getDelay <em>Delay</em>}</li>
@@ -23,10 +25,37 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.operations.OperationsPackage#getRepeat()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Execute specified command multiple times.' returns='return\'s -command output if command is successed.'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Execute specified command multiple times.' returns='Aggregated command output'"
  * @generated
  */
 public interface Repeat extends Command {
+	/**
+	 * Returns the value of the '<em><b>Index</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Index</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Index</em>' containment reference.
+	 * @see #setIndex(Val)
+	 * @see org.eclipse.ecl.operations.OperationsPackage#getRepeat_Index()
+	 * @model containment="true"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='Optional value declaration to hold a current index'"
+	 * @generated
+	 */
+	Val getIndex();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.ecl.operations.Repeat#getIndex <em>Index</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Index</em>' containment reference.
+	 * @see #getIndex()
+	 * @generated
+	 */
+	void setIndex(Val value);
+
 	/**
 	 * Returns the value of the '<em><b>Times</b></em>' attribute.
 	 * The default value is <code>"1"</code>.
@@ -37,12 +66,12 @@ public interface Repeat extends Command {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Times</em>' attribute.
-	 * @see #setTimes(Integer)
+	 * @see #setTimes(int)
 	 * @see org.eclipse.ecl.operations.OperationsPackage#getRepeat_Times()
-	 * @model default="1" required="true"
+	 * @model default="1"
 	 * @generated
 	 */
-	Integer getTimes();
+	int getTimes();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.ecl.operations.Repeat#getTimes <em>Times</em>}' attribute.
@@ -52,7 +81,7 @@ public interface Repeat extends Command {
 	 * @see #getTimes()
 	 * @generated
 	 */
-	void setTimes(Integer value);
+	void setTimes(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Command</b></em>' reference.
@@ -65,7 +94,7 @@ public interface Repeat extends Command {
 	 * @return the value of the '<em>Command</em>' reference.
 	 * @see #setCommand(Command)
 	 * @see org.eclipse.ecl.operations.OperationsPackage#getRepeat_Command()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	Command getCommand();
@@ -90,12 +119,12 @@ public interface Repeat extends Command {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Delay</em>' attribute.
-	 * @see #setDelay(Integer)
+	 * @see #setDelay(int)
 	 * @see org.eclipse.ecl.operations.OperationsPackage#getRepeat_Delay()
 	 * @model default="0"
 	 * @generated
 	 */
-	Integer getDelay();
+	int getDelay();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.ecl.operations.Repeat#getDelay <em>Delay</em>}' attribute.
@@ -105,6 +134,6 @@ public interface Repeat extends Command {
 	 * @see #getDelay()
 	 * @generated
 	 */
-	void setDelay(Integer value);
+	void setDelay(int value);
 
 } // Repeat
