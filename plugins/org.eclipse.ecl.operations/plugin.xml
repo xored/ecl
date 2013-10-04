@@ -181,11 +181,6 @@
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
       <scriptlet
-            class="org.eclipse.ecl.operations.internal.commands.EachEntryService"
-            name="EachEntry"
-            namespace="http://www.eclipse.org/ecl/operations.ecore">
-      </scriptlet>
-      <scriptlet
             class="org.eclipse.ecl.operations.internal.commands.LoopService"
             name="Loop"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
