@@ -177,8 +177,8 @@ public class ExecService implements ICommandService {
 				try {
 					value = calcParamValue(param, feature, process, input);
 				} catch (CoreException e) {
-					if (e.getStatus().getCode() != 42) {
-						throw e;
+					if (e.getStatus().getCode() != 42 || !processUnnamed) {
+						return e.getStatus();
 					}
 					// parameter not consumed
 					peekParam = false;
