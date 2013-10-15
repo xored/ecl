@@ -36,6 +36,9 @@ public class SaveScreenshotService implements ICommandService {
 	public IStatus service(Command command, IProcess context)
 			throws InterruptedException, CoreException {
 		SaveScreenshot saveScreenshot = (SaveScreenshot) command;
+		if (saveScreenshot.getOut()==null) {
+			return createError("No output specified");
+		}
 		File output = new File(saveScreenshot.getOut());
 		if (output.exists() && !output.isFile()) {
 			return createError("File %s exists and is a directory",
