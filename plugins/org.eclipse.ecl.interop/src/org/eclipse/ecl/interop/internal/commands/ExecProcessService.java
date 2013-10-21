@@ -48,6 +48,7 @@ public class ExecProcessService implements ICommandService {
 				stdin.write(cmd.getStdin());
 				stdin.flush();
 			}
+			process.getOutputStream().close();
 
 			Executor executor = new Executor(process);
 			executor.start();
