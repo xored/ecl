@@ -1841,7 +1841,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "description", "Iterates over <a href=\"#list\">list</a> or <a href=\"#map\">map</a>. Accepts one or two variable declarations, when only one variable given, it will be hold list elements or map values. A second variable, if provided, used for map keys or list element indices.",
-			 "example", "// Iterate over elements.\nlist 1 2 3 | each [val element] {\n    log [format \"%d\" $element]\n}\n\n// Iterate over elements with indices\nlist 1 2 3 | each [val element] [val index] {\n    log [format \"list[%d] = %d\" $index $element]\n}\n\n// Iterate over map values\nmap [entry \"one\" 1] [entry \"two\" 2] | each [val value] { log $value }\n\n// Iterate over map values with keys\nmap [entry \"one\" 1] [entry \"two\" 2] | each [val v] [val k] { log [concat $k \" = \" $v] }"
+			 "example", "// Iterate over elements.\nlist 1 2 3 | each [val element] {\n    log [format \"%d\" $element]\n}\n\n// Iterate over elements with indices\nlist 1 2 3 | each [val element] [val index] {\n    log [format \"list[%d] = %d\" $index $element]\n}\n\n// Iterate over map values\nmap [entry \"one\" 1] [entry \"two\" 2] | each [val value] { log [str $value] }\n\n// Iterate over map values with keys\nmap [entry \"one\" 1] [entry \"two\" 2] | each [val v] [val k] { log [concat $k \" = \" [str $v]] }"
 		   });			
 		addAnnotation
 		  (getEach_Input(), 
