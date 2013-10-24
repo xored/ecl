@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.ecl.operations.OperationsPackage#getMap()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Creates a new map. Also see <a href=\"#get\">get</a> command to find a value by key.'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Creates a new map. Also see <a href=\"#get\">get</a> command to find a value by key.' example='let [val myMap [map \n   [entry firstName \"Ivan\"]\n   [entry lastName \"Inozemtsev\"]]] {\n   log [format \"%s %s\" [$myMap | get firstName] [$myMap | get lastName]]\n}'"
  * @generated
  */
 public interface Map extends Command {
@@ -39,6 +39,7 @@ public interface Map extends Command {
 	 * @return the value of the '<em>Entries</em>' containment reference list.
 	 * @see org.eclipse.ecl.operations.OperationsPackage#getMap_Entries()
 	 * @model containment="true"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='An arbitrary number of <a href=\"#entry\">entries</a>.'"
 	 * @generated
 	 */
 	EList<Entry> getEntries();

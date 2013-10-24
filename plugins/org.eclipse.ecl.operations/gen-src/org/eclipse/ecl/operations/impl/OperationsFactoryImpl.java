@@ -54,7 +54,6 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
  * @generated
  */
 public class OperationsFactoryImpl extends EFactoryImpl implements
@@ -63,17 +62,16 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static OperationsFactory init() {
 		try {
-			OperationsFactory theOperationsFactory = (OperationsFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://www.eclipse.org/ecl/operations.ecore");
+			OperationsFactory theOperationsFactory = (OperationsFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/ecl/operations.ecore"); 
 			if (theOperationsFactory != null) {
 				return theOperationsFactory;
 			}
-		} catch (Exception exception) {
+		}
+		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new OperationsFactoryImpl();
@@ -83,7 +81,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public OperationsFactoryImpl() {
@@ -92,98 +89,57 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case OperationsPackage.EQ:
-			return createEq();
-		case OperationsPackage.INT:
-			return createInt();
-		case OperationsPackage.LONG:
-			return createLong();
-		case OperationsPackage.FLOAT:
-			return createFloat();
-		case OperationsPackage.BOOL:
-			return createBool();
-		case OperationsPackage.STR:
-			return createStr();
-		case OperationsPackage.ASSERT_TRUE:
-			return createAssertTrue();
-		case OperationsPackage.LENGTH:
-			return createLength();
-		case OperationsPackage.NOT_EQ:
-			return createNotEq();
-		case OperationsPackage.GT:
-			return createGt();
-		case OperationsPackage.LT:
-			return createLt();
-		case OperationsPackage.NOT:
-			return createNot();
-		case OperationsPackage.TRY:
-			return createTry();
-		case OperationsPackage.FORMAT:
-			return createFormat();
-		case OperationsPackage.EMIT:
-			return createEmit();
-		case OperationsPackage.REPEAT_WITH:
-			return createRepeatWith();
-		case OperationsPackage.REPEAT:
-			return createRepeat();
-		case OperationsPackage.ASSERT_EMPTY:
-			return createAssertEmpty();
-		case OperationsPackage.ASSERT_NON_EMPTY:
-			return createAssertNonEmpty();
-		case OperationsPackage.CONCAT:
-			return createConcat();
-		case OperationsPackage.OR:
-			return createOr();
-		case OperationsPackage.AND:
-			return createAnd();
-		case OperationsPackage.GET_TIME:
-			return createGetTime();
-		case OperationsPackage.FORMAT_TIME:
-			return createFormatTime();
-		case OperationsPackage.BINARY_OP:
-			return createBinaryOp();
-		case OperationsPackage.PLUS:
-			return createPlus();
-		case OperationsPackage.MINUS:
-			return createMinus();
-		case OperationsPackage.DIV:
-			return createDiv();
-		case OperationsPackage.MULT:
-			return createMult();
-		case OperationsPackage.ABS:
-			return createAbs();
-		case OperationsPackage.MOD:
-			return createMod();
-		case OperationsPackage.BETWEEN:
-			return createBetween();
-		case OperationsPackage.ENTRY:
-			return createEntry();
-		case OperationsPackage.MAP:
-			return createMap();
-		case OperationsPackage.LIST:
-			return createList();
-		case OperationsPackage.LOOP:
-			return createLoop();
-		case OperationsPackage.RECUR:
-			return createRecur();
-		case OperationsPackage.TO_LIST:
-			return createToList();
-		case OperationsPackage.EACH:
-			return createEach();
-		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+			case OperationsPackage.EQ: return createEq();
+			case OperationsPackage.INT: return createInt();
+			case OperationsPackage.LONG: return createLong();
+			case OperationsPackage.FLOAT: return createFloat();
+			case OperationsPackage.BOOL: return createBool();
+			case OperationsPackage.STR: return createStr();
+			case OperationsPackage.ASSERT_TRUE: return createAssertTrue();
+			case OperationsPackage.LENGTH: return createLength();
+			case OperationsPackage.NOT_EQ: return createNotEq();
+			case OperationsPackage.GT: return createGt();
+			case OperationsPackage.LT: return createLt();
+			case OperationsPackage.NOT: return createNot();
+			case OperationsPackage.TRY: return createTry();
+			case OperationsPackage.FORMAT: return createFormat();
+			case OperationsPackage.EMIT: return createEmit();
+			case OperationsPackage.REPEAT_WITH: return createRepeatWith();
+			case OperationsPackage.REPEAT: return createRepeat();
+			case OperationsPackage.ASSERT_EMPTY: return createAssertEmpty();
+			case OperationsPackage.ASSERT_NON_EMPTY: return createAssertNonEmpty();
+			case OperationsPackage.CONCAT: return createConcat();
+			case OperationsPackage.OR: return createOr();
+			case OperationsPackage.AND: return createAnd();
+			case OperationsPackage.GET_TIME: return createGetTime();
+			case OperationsPackage.FORMAT_TIME: return createFormatTime();
+			case OperationsPackage.BINARY_OP: return createBinaryOp();
+			case OperationsPackage.PLUS: return createPlus();
+			case OperationsPackage.MINUS: return createMinus();
+			case OperationsPackage.DIV: return createDiv();
+			case OperationsPackage.MULT: return createMult();
+			case OperationsPackage.ABS: return createAbs();
+			case OperationsPackage.MOD: return createMod();
+			case OperationsPackage.BETWEEN: return createBetween();
+			case OperationsPackage.ENTRY: return createEntry();
+			case OperationsPackage.MAP: return createMap();
+			case OperationsPackage.LIST: return createList();
+			case OperationsPackage.LOOP: return createLoop();
+			case OperationsPackage.RECUR: return createRecur();
+			case OperationsPackage.TO_LIST: return createToList();
+			case OperationsPackage.EACH: return createEach();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Eq createEq() {
@@ -193,7 +149,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Int createInt() {
@@ -203,7 +158,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public org.eclipse.ecl.operations.Long createLong() {
@@ -213,7 +167,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public org.eclipse.ecl.operations.Float createFloat() {
@@ -223,7 +176,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Bool createBool() {
@@ -233,7 +185,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Str createStr() {
@@ -243,7 +194,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public AssertTrue createAssertTrue() {
@@ -253,7 +203,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Length createLength() {
@@ -263,7 +212,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotEq createNotEq() {
@@ -273,7 +221,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Gt createGt() {
@@ -283,7 +230,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Lt createLt() {
@@ -293,7 +239,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Not createNot() {
@@ -303,7 +248,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Try createTry() {
@@ -313,7 +257,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Format createFormat() {
@@ -323,7 +266,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Emit createEmit() {
@@ -333,7 +275,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public RepeatWith createRepeatWith() {
@@ -343,7 +284,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Repeat createRepeat() {
@@ -353,7 +293,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public AssertEmpty createAssertEmpty() {
@@ -363,7 +302,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public AssertNonEmpty createAssertNonEmpty() {
@@ -373,7 +311,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Concat createConcat() {
@@ -383,7 +320,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Or createOr() {
@@ -393,7 +329,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public And createAnd() {
@@ -403,7 +338,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public GetTime createGetTime() {
@@ -413,7 +347,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public FormatTime createFormatTime() {
@@ -423,7 +356,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Plus createPlus() {
@@ -433,7 +365,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Minus createMinus() {
@@ -443,7 +374,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Div createDiv() {
@@ -453,7 +383,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Mult createMult() {
@@ -463,7 +392,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Abs createAbs() {
@@ -474,7 +402,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Mod createMod() {
@@ -484,7 +411,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Between createBetween() {
@@ -495,7 +421,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Entry createEntry() {
@@ -506,7 +431,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Map createMap() {
@@ -517,7 +441,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public List createList() {
@@ -528,7 +451,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Loop createLoop() {
@@ -539,7 +461,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Recur createRecur() {
@@ -550,7 +471,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public ToList createToList() {
@@ -561,7 +481,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Each createEach() {
@@ -571,7 +490,6 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public BinaryOp createBinaryOp() {
@@ -581,16 +499,14 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public OperationsPackage getOperationsPackage() {
-		return (OperationsPackage) getEPackage();
+		return (OperationsPackage)getEPackage();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @deprecated
 	 * @generated
 	 */

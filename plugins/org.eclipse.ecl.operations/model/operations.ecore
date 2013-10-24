@@ -335,9 +335,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="Map" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
       <details key="description" value="Creates a new map. Also see &lt;a href=&quot;#get&quot;>get&lt;/a> command to find a value by key."/>
+      <details key="example" value="let [val myMap [map &#xA;   [entry firstName &quot;Ivan&quot;]&#xA;   [entry lastName &quot;Inozemtsev&quot;]]] {&#xA;   log [format &quot;%s %s&quot; [$myMap | get firstName] [$myMap | get lastName]]&#xA;}"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
-        eType="#//Entry" containment="true"/>
+        eType="#//Entry" containment="true">
+      <eAnnotations source="http://www.eclipse.org/ecl/docs">
+        <details key="description" value="An arbitrary number of &lt;a href=&quot;#entry&quot;>entries&lt;/a>."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="List" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
@@ -384,7 +389,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Each" eSuperTypes="../../org.eclipse.ecl.core/model/ecl.ecore#//Command">
     <eAnnotations source="http://www.eclipse.org/ecl/docs">
-      <details key="description" value="Iterates over &lt;a href=&quot;#list&quot;>list&lt;/a> or &lt;a href=&quot;#map>map&lt;/a>. Accepts one or two variable declarations, when only one variable given, it will be hold list elements or map values. A second variable, if provided, used for map keys or list element indices."/>
+      <details key="description" value="Iterates over &lt;a href=&quot;#list&quot;>list&lt;/a> or &lt;a href=&quot;#map&quot;>map&lt;/a>. Accepts one or two variable declarations, when only one variable given, it will be hold list elements or map values. A second variable, if provided, used for map keys or list element indices."/>
       <details key="example" value="// Iterate over elements.&#xA;list 1 2 3 | each [val element] {&#xA;    log [format &quot;%d&quot; $element]&#xA;}&#xA;&#xA;// Iterate over elements with indices&#xA;list 1 2 3 | each [val element] [val index] {&#xA;    log [format &quot;list[%d] = %d&quot; $index $element]&#xA;}&#xA;&#xA;// Iterate over map values&#xA;map [entry &quot;one&quot; 1] [entry &quot;two&quot; 2] | each [val value] { log $value }&#xA;&#xA;// Iterate over map values with keys&#xA;map [entry &quot;one&quot; 1] [entry &quot;two&quot; 2] | each [val v] [val k] { log [concat $k &quot; = &quot; $v] }"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">

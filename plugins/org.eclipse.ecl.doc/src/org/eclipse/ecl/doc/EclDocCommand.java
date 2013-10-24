@@ -87,7 +87,7 @@ public class EclDocCommand implements IEclDocProvider {
 			"proc-instance", "save-session", "restore-session",
 			"global", "upload-file", "declaration", "unzip-file",
 			"shoutdown-player", "path-utils", "list-executed-suites",
-			"kill-all-executed");
+			"kill-all-executed", "binary-op");
 
 	private static EClass COMMAND = (EClass) EPackage.Registry.INSTANCE
 			.getEPackage("http://www.eclipse.org/ecl/core.ecore")

@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.ecl.core.CorePackage#getGet()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Depending on input object, either returns a value by key from <a href=\"#map\">map</a>, or element by index from <a href=\"#list\">list</a>, or member of EMF object by name.'"
  * @generated
  */
 public interface Get extends Command {
@@ -39,7 +39,7 @@ public interface Get extends Command {
 	 * @see #setInput(EObject)
 	 * @see org.eclipse.ecl.core.CorePackage#getGet_Input()
 	 * @model containment="true"
-	 *        annotation="docs description='Object to get a value from'"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='Object to get a value from'"
 	 * @generated
 	 */
 	EObject getInput();
@@ -66,7 +66,7 @@ public interface Get extends Command {
 	 * @see #setKey(EObject)
 	 * @see org.eclipse.ecl.core.CorePackage#getGet_Key()
 	 * @model containment="true"
-	 *        annotation="docs description='Depending on an input object either a key in a collection, or name of a feature/attribute of EMF object'"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='Depending on an input object either a key in a map, or index in a list, or name of a feature/attribute of EMF object'"
 	 * @generated
 	 */
 	EObject getKey();
@@ -93,7 +93,7 @@ public interface Get extends Command {
 	 * @see #setDefault(EObject)
 	 * @see org.eclipse.ecl.core.CorePackage#getGet_Default()
 	 * @model containment="true"
-	 *        annotation="docs description='Value to return if input object does not contain value by requested key'"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='Value to return if input object does not contain value by requested key'"
 	 * @generated
 	 */
 	EObject getDefault();

@@ -1859,8 +1859,6 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createDocsAnnotations();
 		// http://www.eclipse.org/ecl/input
 		createInputAnnotations();
-		// docs
-		createDocs_1Annotations();
 	}
 
 	/**
@@ -1910,7 +1908,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (restoreStateEClass, 
 		   source, 
 		   new String[] {
-		   });				
+		   });					
 	}
 
 	/**
@@ -1924,40 +1922,12 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (getForeach_Input(), 
 		   source, 
 		   new String[] {
-		   });																									
+		   });																										
 		addAnnotation
 		  (getGet_Input(), 
 		   source, 
 		   new String[] {
 		   });			
-	}
-
-	/**
-	 * Initializes the annotations for <b>docs</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createDocs_1Annotations() {
-		String source = "docs";																																
-		addAnnotation
-		  (getGet_Input(), 
-		   source, 
-		   new String[] {
-			 "description", "Object to get a value from"
-		   });		
-		addAnnotation
-		  (getGet_Key(), 
-		   source, 
-		   new String[] {
-			 "description", "Depending on an input object either a key in a collection, or name of a feature/attribute of EMF object"
-		   });		
-		addAnnotation
-		  (getGet_Default(), 
-		   source, 
-		   new String[] {
-			 "description", "Value to return if input object does not contain value by requested key"
-		   });
 	}
 
 	/**
@@ -2100,7 +2070,31 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		   source, 
 		   new String[] {
 			 "description", "Marker superclass for user-defined procs"
-		   });									
+		   });							
+		addAnnotation
+		  (getEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Depending on input object, either returns a value by key from <a href=\"#map\">map</a>, or element by index from <a href=\"#list\">list</a>, or member of EMF object by name."
+		   });			
+		addAnnotation
+		  (getGet_Input(), 
+		   source, 
+		   new String[] {
+			 "description", "Object to get a value from"
+		   });		
+		addAnnotation
+		  (getGet_Key(), 
+		   source, 
+		   new String[] {
+			 "description", "Depending on an input object either a key in a map, or index in a list, or name of a feature/attribute of EMF object"
+		   });		
+		addAnnotation
+		  (getGet_Default(), 
+		   source, 
+		   new String[] {
+			 "description", "Value to return if input object does not contain value by requested key"
+		   });
 	}
 
 } // CorePackageImpl

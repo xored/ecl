@@ -55,7 +55,6 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
  * an adapter <code>createXXX</code> method for each class of the model. <!--
  * end-user-doc -->
- * 
  * @see org.eclipse.ecl.operations.OperationsPackage
  * @generated
  */
@@ -63,7 +62,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected static OperationsPackage modelPackage;
@@ -72,7 +70,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * Creates an instance of the adapter factory.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public OperationsAdapterFactory() {
@@ -86,7 +83,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- begin-user-doc --> This implementation returns <code>true</code> if
 	 * the object is either the model's package or is an instance object of the
 	 * model. <!-- end-user-doc -->
-	 * 
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
@@ -96,7 +92,7 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
-			return ((EObject) object).eClass().getEPackage() == modelPackage;
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -108,230 +104,187 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	protected OperationsSwitch<Adapter> modelSwitch = new OperationsSwitch<Adapter>() {
-		@Override
-		public Adapter caseEq(Eq object) {
-			return createEqAdapter();
-		}
-
-		@Override
-		public Adapter caseInt(Int object) {
-			return createIntAdapter();
-		}
-
-		@Override
-		public Adapter caseLong(org.eclipse.ecl.operations.Long object) {
-			return createLongAdapter();
-		}
-
-		@Override
-		public Adapter caseFloat(org.eclipse.ecl.operations.Float object) {
-			return createFloatAdapter();
-		}
-
-		@Override
-		public Adapter caseBool(Bool object) {
-			return createBoolAdapter();
-		}
-
-		@Override
-		public Adapter caseStr(Str object) {
-			return createStrAdapter();
-		}
-
-		@Override
-		public Adapter caseConvert(Convert object) {
-			return createConvertAdapter();
-		}
-
-		@Override
-		public Adapter caseAssertTrue(AssertTrue object) {
-			return createAssertTrueAdapter();
-		}
-
-		@Override
-		public Adapter caseLength(Length object) {
-			return createLengthAdapter();
-		}
-
-		@Override
-		public Adapter caseNotEq(NotEq object) {
-			return createNotEqAdapter();
-		}
-
-		@Override
-		public Adapter caseGt(Gt object) {
-			return createGtAdapter();
-		}
-
-		@Override
-		public Adapter caseLt(Lt object) {
-			return createLtAdapter();
-		}
-
-		@Override
-		public Adapter caseNot(Not object) {
-			return createNotAdapter();
-		}
-
-		@Override
-		public Adapter caseTry(Try object) {
-			return createTryAdapter();
-		}
-
-		@Override
-		public Adapter caseFormat(Format object) {
-			return createFormatAdapter();
-		}
-
-		@Override
-		public Adapter caseEmit(Emit object) {
-			return createEmitAdapter();
-		}
-
-		@Override
-		public Adapter caseRepeatWith(RepeatWith object) {
-			return createRepeatWithAdapter();
-		}
-
-		@Override
-		public Adapter caseRepeat(Repeat object) {
-			return createRepeatAdapter();
-		}
-
-		@Override
-		public Adapter caseAssertEmpty(AssertEmpty object) {
-			return createAssertEmptyAdapter();
-		}
-
-		@Override
-		public Adapter caseAssertNonEmpty(AssertNonEmpty object) {
-			return createAssertNonEmptyAdapter();
-		}
-
-		@Override
-		public Adapter caseConcat(Concat object) {
-			return createConcatAdapter();
-		}
-
-		@Override
-		public Adapter caseOr(Or object) {
-			return createOrAdapter();
-		}
-
-		@Override
-		public Adapter caseAnd(And object) {
-			return createAndAdapter();
-		}
-
-		@Override
-		public Adapter caseGetTime(GetTime object) {
-			return createGetTimeAdapter();
-		}
-
-		@Override
-		public Adapter caseFormatTime(FormatTime object) {
-			return createFormatTimeAdapter();
-		}
-
-		@Override
-		public Adapter caseBinaryOp(BinaryOp object) {
-			return createBinaryOpAdapter();
-		}
-
-		@Override
-		public Adapter casePlus(Plus object) {
-			return createPlusAdapter();
-		}
-
-		@Override
-		public Adapter caseMinus(Minus object) {
-			return createMinusAdapter();
-		}
-
-		@Override
-		public Adapter caseDiv(Div object) {
-			return createDivAdapter();
-		}
-
-		@Override
-		public Adapter caseMult(Mult object) {
-			return createMultAdapter();
-		}
-
-		@Override
-		public Adapter caseAbs(Abs object) {
-			return createAbsAdapter();
-		}
-
-		@Override
-		public Adapter caseMod(Mod object) {
-			return createModAdapter();
-		}
-
-		@Override
-		public Adapter caseBetween(Between object) {
-			return createBetweenAdapter();
-		}
-
-		@Override
-		public Adapter caseEntry(Entry object) {
-			return createEntryAdapter();
-		}
-
-		@Override
-		public Adapter caseMap(Map object) {
-			return createMapAdapter();
-		}
-
-		@Override
-		public Adapter caseList(List object) {
-			return createListAdapter();
-		}
-
-		@Override
-		public Adapter caseLoop(Loop object) {
-			return createLoopAdapter();
-		}
-
-		@Override
-		public Adapter caseRecur(Recur object) {
-			return createRecurAdapter();
-		}
-
-		@Override
-		public Adapter caseToList(ToList object) {
-			return createToListAdapter();
-		}
-
-		@Override
-		public Adapter caseEach(Each object) {
-			return createEachAdapter();
-		}
-
-		@Override
-		public Adapter caseCommand(Command object) {
-			return createCommandAdapter();
-		}
-
-		@Override
-		public Adapter defaultCase(EObject object) {
-			return createEObjectAdapter();
-		}
-	};
+			@Override
+			public Adapter caseEq(Eq object) {
+				return createEqAdapter();
+			}
+			@Override
+			public Adapter caseInt(Int object) {
+				return createIntAdapter();
+			}
+			@Override
+			public Adapter caseLong(org.eclipse.ecl.operations.Long object) {
+				return createLongAdapter();
+			}
+			@Override
+			public Adapter caseFloat(org.eclipse.ecl.operations.Float object) {
+				return createFloatAdapter();
+			}
+			@Override
+			public Adapter caseBool(Bool object) {
+				return createBoolAdapter();
+			}
+			@Override
+			public Adapter caseStr(Str object) {
+				return createStrAdapter();
+			}
+			@Override
+			public Adapter caseConvert(Convert object) {
+				return createConvertAdapter();
+			}
+			@Override
+			public Adapter caseAssertTrue(AssertTrue object) {
+				return createAssertTrueAdapter();
+			}
+			@Override
+			public Adapter caseLength(Length object) {
+				return createLengthAdapter();
+			}
+			@Override
+			public Adapter caseNotEq(NotEq object) {
+				return createNotEqAdapter();
+			}
+			@Override
+			public Adapter caseGt(Gt object) {
+				return createGtAdapter();
+			}
+			@Override
+			public Adapter caseLt(Lt object) {
+				return createLtAdapter();
+			}
+			@Override
+			public Adapter caseNot(Not object) {
+				return createNotAdapter();
+			}
+			@Override
+			public Adapter caseTry(Try object) {
+				return createTryAdapter();
+			}
+			@Override
+			public Adapter caseFormat(Format object) {
+				return createFormatAdapter();
+			}
+			@Override
+			public Adapter caseEmit(Emit object) {
+				return createEmitAdapter();
+			}
+			@Override
+			public Adapter caseRepeatWith(RepeatWith object) {
+				return createRepeatWithAdapter();
+			}
+			@Override
+			public Adapter caseRepeat(Repeat object) {
+				return createRepeatAdapter();
+			}
+			@Override
+			public Adapter caseAssertEmpty(AssertEmpty object) {
+				return createAssertEmptyAdapter();
+			}
+			@Override
+			public Adapter caseAssertNonEmpty(AssertNonEmpty object) {
+				return createAssertNonEmptyAdapter();
+			}
+			@Override
+			public Adapter caseConcat(Concat object) {
+				return createConcatAdapter();
+			}
+			@Override
+			public Adapter caseOr(Or object) {
+				return createOrAdapter();
+			}
+			@Override
+			public Adapter caseAnd(And object) {
+				return createAndAdapter();
+			}
+			@Override
+			public Adapter caseGetTime(GetTime object) {
+				return createGetTimeAdapter();
+			}
+			@Override
+			public Adapter caseFormatTime(FormatTime object) {
+				return createFormatTimeAdapter();
+			}
+			@Override
+			public Adapter caseBinaryOp(BinaryOp object) {
+				return createBinaryOpAdapter();
+			}
+			@Override
+			public Adapter casePlus(Plus object) {
+				return createPlusAdapter();
+			}
+			@Override
+			public Adapter caseMinus(Minus object) {
+				return createMinusAdapter();
+			}
+			@Override
+			public Adapter caseDiv(Div object) {
+				return createDivAdapter();
+			}
+			@Override
+			public Adapter caseMult(Mult object) {
+				return createMultAdapter();
+			}
+			@Override
+			public Adapter caseAbs(Abs object) {
+				return createAbsAdapter();
+			}
+			@Override
+			public Adapter caseMod(Mod object) {
+				return createModAdapter();
+			}
+			@Override
+			public Adapter caseBetween(Between object) {
+				return createBetweenAdapter();
+			}
+			@Override
+			public Adapter caseEntry(Entry object) {
+				return createEntryAdapter();
+			}
+			@Override
+			public Adapter caseMap(Map object) {
+				return createMapAdapter();
+			}
+			@Override
+			public Adapter caseList(List object) {
+				return createListAdapter();
+			}
+			@Override
+			public Adapter caseLoop(Loop object) {
+				return createLoopAdapter();
+			}
+			@Override
+			public Adapter caseRecur(Recur object) {
+				return createRecurAdapter();
+			}
+			@Override
+			public Adapter caseToList(ToList object) {
+				return createToListAdapter();
+			}
+			@Override
+			public Adapter caseEach(Each object) {
+				return createEachAdapter();
+			}
+			@Override
+			public Adapter caseCommand(Command object) {
+				return createCommandAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object) {
+				return createEObjectAdapter();
+			}
+		};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
-	 * @param target
-	 *            the object to adapt.
+	 * @param target the object to adapt.
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**
@@ -340,7 +293,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the
 	 * cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Eq
 	 * @generated
@@ -355,7 +307,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the
 	 * cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Int
 	 * @generated
@@ -412,7 +363,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the
 	 * cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Str
 	 * @generated
@@ -484,7 +434,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the
 	 * cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Gt
 	 * @generated
@@ -499,7 +448,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the
 	 * cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Lt
 	 * @generated
@@ -514,7 +462,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the
 	 * cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Not
 	 * @generated
@@ -529,7 +476,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the
 	 * cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Try
 	 * @generated
@@ -596,12 +542,10 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.AssertEmpty
-	 * <em>Assert Empty</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.AssertEmpty <em>Assert Empty</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null so that
 	 * we can easily ignore cases; it's useful to ignore a case when inheritance
 	 * will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.AssertEmpty
 	 * @generated
@@ -611,13 +555,11 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.AssertNonEmpty
-	 * <em>Assert Non Empty</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.AssertNonEmpty <em>Assert Non Empty</em>}'.
 	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.AssertNonEmpty
 	 * @generated
@@ -646,7 +588,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the
 	 * cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Or
 	 * @generated
@@ -661,7 +602,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the
 	 * cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.And
 	 * @generated
@@ -734,7 +674,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the
 	 * cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Div
 	 * @generated
@@ -763,7 +702,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the
 	 * cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Abs
 	 * @generated
@@ -778,7 +716,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Mod
 	 * @generated
@@ -807,7 +744,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Entry
 	 * @generated
@@ -822,7 +758,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Map
 	 * @generated
@@ -837,7 +772,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.List
 	 * @generated
@@ -852,7 +786,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Loop
 	 * @generated
@@ -867,7 +800,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Recur
 	 * @generated
@@ -882,7 +814,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.ToList
 	 * @generated
@@ -897,7 +828,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see org.eclipse.ecl.operations.Each
 	 * @generated
@@ -939,7 +869,6 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * Creates a new adapter for the default case.
 	 * <!-- begin-user-doc --> This
 	 * default implementation returns null. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @generated
 	 */
