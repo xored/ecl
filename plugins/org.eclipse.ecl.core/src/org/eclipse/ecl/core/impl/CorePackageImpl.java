@@ -18,6 +18,7 @@ import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.ConvertedToEMFPipe;
 import org.eclipse.ecl.core.CoreFactory;
 import org.eclipse.ecl.core.CorePackage;
+import org.eclipse.ecl.core.CreateObject;
 import org.eclipse.ecl.core.Declaration;
 import org.eclipse.ecl.core.EclBoolean;
 import org.eclipse.ecl.core.EclByte;
@@ -40,6 +41,7 @@ import org.eclipse.ecl.core.Get;
 import org.eclipse.ecl.core.GetVal;
 import org.eclipse.ecl.core.Global;
 import org.eclipse.ecl.core.If;
+import org.eclipse.ecl.core.Import;
 import org.eclipse.ecl.core.Let;
 import org.eclipse.ecl.core.Listen;
 import org.eclipse.ecl.core.LiteralParameter;
@@ -295,6 +297,20 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	private EClass eclMapEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass importEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass createObjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1266,6 +1282,60 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getImport() {
+		return importEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getImport_Package() {
+		return (EAttribute)importEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getImport_Name() {
+		return (EAttribute)importEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getImport_As() {
+		return (EAttribute)importEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCreateObject() {
+		return createObjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCreateObject_Type() {
+		return (EReference)createObjectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1615,6 +1685,14 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEReference(eclMapEntryEClass, ECL_MAP_ENTRY__KEY);
 		createEReference(eclMapEntryEClass, ECL_MAP_ENTRY__VALUE);
 
+		importEClass = createEClass(IMPORT);
+		createEAttribute(importEClass, IMPORT__PACKAGE);
+		createEAttribute(importEClass, IMPORT__NAME);
+		createEAttribute(importEClass, IMPORT__AS);
+
+		createObjectEClass = createEClass(CREATE_OBJECT);
+		createEReference(createObjectEClass, CREATE_OBJECT__TYPE);
+
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
 	}
@@ -1680,6 +1758,8 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		saveStateEClass.getESuperTypes().add(this.getCommand());
 		restoreStateEClass.getESuperTypes().add(this.getCommand());
 		getEClass.getESuperTypes().add(this.getCommand());
+		importEClass.getESuperTypes().add(this.getCommand());
+		createObjectEClass.getESuperTypes().add(this.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1846,6 +1926,14 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEReference(getEclMapEntry_Key(), theEcorePackage.getEObject(), null, "key", null, 0, 1, EclMapEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEclMapEntry_Value(), theEcorePackage.getEObject(), null, "value", null, 0, 1, EclMapEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getImport_Package(), theEcorePackage.getEString(), "package", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getImport_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getImport_As(), theEcorePackage.getEString(), "as", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(createObjectEClass, CreateObject.class, "CreateObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCreateObject_Type(), this.getImport(), null, "type", null, 0, 1, CreateObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
@@ -1908,7 +1996,17 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (restoreStateEClass, 
 		   source, 
 		   new String[] {
-		   });					
+		   });							
+		addAnnotation
+		  (createObjectEClass, 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getCreateObject_Type(), 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 	/**
@@ -1927,7 +2025,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		  (getGet_Input(), 
 		   source, 
 		   new String[] {
-		   });			
+		   });					
 	}
 
 	/**
@@ -2094,7 +2192,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		   source, 
 		   new String[] {
 			 "description", "Value to return if input object does not contain value by requested key"
-		   });
+		   });		
 	}
 
 } // CorePackageImpl

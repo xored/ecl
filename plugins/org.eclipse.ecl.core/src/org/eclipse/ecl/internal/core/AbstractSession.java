@@ -8,6 +8,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Binding;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.CommandStack;
+import org.eclipse.ecl.core.CreateObject;
 import org.eclipse.ecl.core.ProcInstance;
 import org.eclipse.ecl.core.SessionListenerManager;
 import org.eclipse.ecl.runtime.CoreUtils;
@@ -31,13 +32,14 @@ public abstract class AbstractSession implements ISession {
 		return execute(command, null, null);
 	}
 
-	//public IProcess execute(final Command scriptlet, IPipe in, IPipe out)
-	//		throws CoreException 
+	// public IProcess execute(final Command scriptlet, IPipe in, IPipe out)
+	// throws CoreException
 	public IProcess execute(Command scriptlet, IPipe in, IPipe out)
-					throws CoreException {
+			throws CoreException {
 		final ICommandService svc = scriptlet instanceof ProcInstance ? new ProcInstanceService()
-				: CorePlugin.getScriptletManager().getScriptletService(
-						scriptlet);
+				: scriptlet instanceof CreateObject ? new CreateObjectService() : CorePlugin
+						.getScriptletManager().getScriptletService(
+								scriptlet);
 		final IPipe tinput = in == null ? createPipe().close(Status.OK_STATUS)
 				: in;
 		final IPipe output = out == null ? createPipe() : out;
@@ -52,14 +54,14 @@ public abstract class AbstractSession implements ISession {
 		final Process process = new Process(session, input, output);
 		doExecute(scriptlet, svc, inputContent, process);
 		return process;
-	}	
-	
-	//protected void internalDoExecute(final Command scriptlet,
-	//		final ICommandService svc, final List<Object> inputContent,
-	//		final Process process)
+	}
+
+	// protected void internalDoExecute(final Command scriptlet,
+	// final ICommandService svc, final List<Object> inputContent,
+	// final Process process)
 	protected void internalDoExecute(Command scriptlet,
 			final ICommandService svc, final List<Object> inputContent,
-			final Process process){
+			final Process process) {
 		IStatus s = null;
 		CommandStack stack = ((AbstractSession) process.getSession())
 				.getStack();

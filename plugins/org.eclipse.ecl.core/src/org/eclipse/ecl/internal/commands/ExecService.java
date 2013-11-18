@@ -84,6 +84,11 @@ public class ExecService implements ICommandService {
 
 	private Command createCommand(FQName fqn, IProcess process)
 			throws CoreException {
+		Command createObject = getProcs(process).createCreateObject(fqn.name);
+		if (createObject != null) {
+			return createObject; // so that it has higher priority than
+									// built-in commands
+		}
 		try {
 			return CoreUtils.createCommand(fqn.ns, fqn.name);
 		} catch (CoreException e) {

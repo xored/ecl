@@ -1991,6 +1991,116 @@ public interface CorePackage extends EPackage {
 	int ECL_MAP_ENTRY_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.ImportImpl <em>Import</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.ImportImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getImport()
+	 * @generated
+	 */
+	int IMPORT = 45;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMPORT__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMPORT__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMPORT__PACKAGE = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMPORT__NAME = COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>As</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMPORT__AS = COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Import</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMPORT_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.CreateObjectImpl <em>Create Object</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.CreateObjectImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getCreateObject()
+	 * @generated
+	 */
+	int CREATE_OBJECT = 46;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_OBJECT__HOST = COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_OBJECT__BINDINGS = COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_OBJECT__TYPE = COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Create Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_OBJECT_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1998,7 +2108,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
 	 * @generated
 	 */
-	int THROWABLE = 45;
+	int THROWABLE = 47;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -3064,6 +3174,70 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEclMapEntry_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Import <em>Import</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Import</em>'.
+	 * @see org.eclipse.ecl.core.Import
+	 * @generated
+	 */
+	EClass getImport();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Import#getPackage <em>Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Package</em>'.
+	 * @see org.eclipse.ecl.core.Import#getPackage()
+	 * @see #getImport()
+	 * @generated
+	 */
+	EAttribute getImport_Package();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Import#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.eclipse.ecl.core.Import#getName()
+	 * @see #getImport()
+	 * @generated
+	 */
+	EAttribute getImport_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.Import#getAs <em>As</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>As</em>'.
+	 * @see org.eclipse.ecl.core.Import#getAs()
+	 * @see #getImport()
+	 * @generated
+	 */
+	EAttribute getImport_As();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.CreateObject <em>Create Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Create Object</em>'.
+	 * @see org.eclipse.ecl.core.CreateObject
+	 * @generated
+	 */
+	EClass getCreateObject();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.ecl.core.CreateObject#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Type</em>'.
+	 * @see org.eclipse.ecl.core.CreateObject#getType()
+	 * @see #getCreateObject()
+	 * @generated
+	 */
+	EReference getCreateObject_Type();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclBoolean <em>Ecl Boolean</em>}'.
@@ -4166,6 +4340,58 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference ECL_MAP_ENTRY__VALUE = eINSTANCE.getEclMapEntry_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.ImportImpl <em>Import</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.ImportImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getImport()
+		 * @generated
+		 */
+		EClass IMPORT = eINSTANCE.getImport();
+
+		/**
+		 * The meta object literal for the '<em><b>Package</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IMPORT__PACKAGE = eINSTANCE.getImport_Package();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IMPORT__NAME = eINSTANCE.getImport_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>As</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IMPORT__AS = eINSTANCE.getImport_As();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.CreateObjectImpl <em>Create Object</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.CreateObjectImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getCreateObject()
+		 * @generated
+		 */
+		EClass CREATE_OBJECT = eINSTANCE.getCreateObject();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CREATE_OBJECT__TYPE = eINSTANCE.getCreateObject_Type();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclBooleanImpl <em>Ecl Boolean</em>}' class.

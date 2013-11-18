@@ -423,6 +423,20 @@ public class CoreSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CorePackage.IMPORT: {
+				Import import_ = (Import)theEObject;
+				T result = caseImport(import_);
+				if (result == null) result = caseCommand(import_);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CorePackage.CREATE_OBJECT: {
+				CreateObject createObject = (CreateObject)theEObject;
+				T result = caseCreateObject(createObject);
+				if (result == null) result = caseCommand(createObject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -1099,6 +1113,36 @@ public class CoreSwitch<T> {
 	 * @generated
 	 */
 	public T caseEclMapEntry(EclMapEntry object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Import</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Import</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseImport(Import object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Create Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Create Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCreateObject(CreateObject object) {
 		return null;
 	}
 

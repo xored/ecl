@@ -354,6 +354,24 @@ public interface CoreFactory extends EFactory {
 	EclMapEntry createEclMapEntry();
 
 	/**
+	 * Returns a new object of class '<em>Import</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Import</em>'.
+	 * @generated
+	 */
+	Import createImport();
+
+	/**
+	 * Returns a new object of class '<em>Create Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Create Object</em>'.
+	 * @generated
+	 */
+	CreateObject createCreateObject();
+
+	/**
 	 * Returns a new object of class '<em>Ecl Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

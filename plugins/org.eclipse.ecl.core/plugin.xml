@@ -89,6 +89,17 @@
             namespace="http://www.eclipse.org/ecl/core.ecore">
       </scriptlet>
       <scriptlet
+            class="org.eclipse.ecl.internal.core.ImportService"
+            name="Import"
+            namespace="http://www.eclipse.org/ecl/core.ecore">
+      </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.internal.core.CreateObjectService"
+            name="CreateObject"
+            namespace="http://www.eclipse.org/ecl/core.ecore">
+      </scriptlet>
+      
+      <scriptlet
             class="org.eclipse.ecl.internal.core.GlobalService"
             name="Global"
             namespace="http://www.eclipse.org/ecl/core.ecore">
