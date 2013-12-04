@@ -63,7 +63,9 @@ public class TryService implements ICommandService {
 							t.getCatch(), input, output);
 					IStatus status2 = doProcess.waitFor();
 					if (status2.isOK()) {
-						CoreUtils.readPipeContent(output);
+						content = CoreUtils.readPipeContent(output);
+						for (Object o : content)
+							process.getOutput().write(o);
 						status = status2;
 					} else {
 						status = status2;
@@ -81,7 +83,9 @@ public class TryService implements ICommandService {
 						t.getFinally(), input, output);
 				IStatus status2 = doProcess.waitFor();
 				if (status2.isOK()) {
-					CoreUtils.readPipeContent(output);
+					content = CoreUtils.readPipeContent(output);
+					for (Object o : content)
+						process.getOutput().write(o);
 				} else {
 					status = status2;
 				}
