@@ -1,5 +1,6 @@
 package org.eclipse.ecl.operations.internal.commands;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
@@ -34,6 +35,7 @@ public class RepeatService implements ICommandService {
 		IStatus status = Status.OK_STATUS;
 
 		Val indexVal = t.getIndex();
+		List<Object> contentOutput = new ArrayList<Object>();
 
 		for (int i = 0; i < times; i++) {
 			IPipe input = process.getSession().createPipe();
@@ -45,15 +47,18 @@ public class RepeatService implements ICommandService {
 			IProcess doProcess = process.getSession().execute(wrapBody(i, indexVal, t.getCommand()),
 					input, output);
 			status = doProcess.waitFor();
-			if (!status.isOK()) {
-				content = CoreUtils.readPipeContent(output);
-				for (Object o : content)
-					process.getOutput().write(o);
-				// return status;
+			if (status.isOK()) {
+				contentOutput.addAll(CoreUtils.readPipeContent(output));
+			} else {
 				break;
 			}
 			if (delay > 0) {
 				Thread.sleep(delay);
+			}
+		}
+		if (status.isOK()) {
+			for (Object o : contentOutput) {
+				process.getOutput().write(o);
 			}
 		}
 		return status;
