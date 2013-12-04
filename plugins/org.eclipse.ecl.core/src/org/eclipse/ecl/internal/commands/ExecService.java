@@ -173,9 +173,9 @@ public class ExecService implements ICommandService {
 			String currentParamName = param.getName();
 
 			while (setParamsCount < upperBound) {
-				Object value = null;
 				try {
-					value = calcParamValue(param, feature, process, input);
+					Object value = calcParamValue(param, feature, process, input);
+					setFeatureValue(target, feature, value);
 				} catch (CoreException e) {
 					if (e.getStatus().getCode() != 42 || !processUnnamed) {
 						return e.getStatus();
@@ -185,7 +185,6 @@ public class ExecService implements ICommandService {
 					break;
 				}
 
-				setFeatureValue(target, feature, value);
 				peekParam = true;
 				setParamsCount++;
 				if (paramIterator.hasNext()) {
@@ -244,7 +243,7 @@ public class ExecService implements ICommandService {
 					list.add(value);
 			}
 		} catch (ClassCastException cce) {
-			IStatus status = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
+			IStatus status = new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID, 42,
 					"Can't assign value " + value + " to parameter "
 							+ feature.getName(), cce);
 			throw new CoreException(status);
@@ -304,6 +303,7 @@ public class ExecService implements ICommandService {
 
 		// box or unbox
 		value = processBoxUnbox(feature, value);
+
 		return value;
 	}
 
