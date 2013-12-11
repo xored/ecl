@@ -99,7 +99,7 @@
             namespace="http://www.eclipse.org/ecl/platform/commands.ecore">
       </scriptlet>
       <scriptlet
-            class="org.eclipse.ecl.platform.internal.commands.FindService"
+            class="org.eclipse.ecl.platform.internal.commands.GetWorkspaceLocationService"
             name="GetWorkspaceLocation"
             namespace="http://www.eclipse.org/ecl/platform/commands.ecore">
       </scriptlet>
