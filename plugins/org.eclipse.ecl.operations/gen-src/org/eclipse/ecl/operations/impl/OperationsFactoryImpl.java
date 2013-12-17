@@ -42,6 +42,7 @@ import org.eclipse.ecl.operations.Plus;
 import org.eclipse.ecl.operations.Recur;
 import org.eclipse.ecl.operations.Repeat;
 import org.eclipse.ecl.operations.RepeatWith;
+import org.eclipse.ecl.operations.Split;
 import org.eclipse.ecl.operations.Str;
 import org.eclipse.ecl.operations.ToList;
 import org.eclipse.ecl.operations.Try;
@@ -133,6 +134,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 			case OperationsPackage.RECUR: return createRecur();
 			case OperationsPackage.TO_LIST: return createToList();
 			case OperationsPackage.EACH: return createEach();
+			case OperationsPackage.SPLIT: return createSplit();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -486,6 +488,16 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	public Each createEach() {
 		EachImpl each = new EachImpl();
 		return each;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Split createSplit() {
+		SplitImpl split = new SplitImpl();
+		return split;
 	}
 
 	/**

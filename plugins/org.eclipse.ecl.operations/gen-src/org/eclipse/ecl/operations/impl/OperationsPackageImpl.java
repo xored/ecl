@@ -44,6 +44,7 @@ import org.eclipse.ecl.operations.Plus;
 import org.eclipse.ecl.operations.Recur;
 import org.eclipse.ecl.operations.Repeat;
 import org.eclipse.ecl.operations.RepeatWith;
+import org.eclipse.ecl.operations.Split;
 import org.eclipse.ecl.operations.Str;
 import org.eclipse.ecl.operations.ToList;
 import org.eclipse.ecl.operations.Try;
@@ -302,6 +303,13 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass eachEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass splitEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1056,6 +1064,51 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSplit() {
+		return splitEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSplit_Str() {
+		return (EAttribute)splitEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSplit_Sep() {
+		return (EAttribute)splitEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSplit_TrimResults() {
+		return (EAttribute)splitEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSplit_OmitEmptyStrings() {
+		return (EAttribute)splitEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1230,6 +1283,12 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		createEReference(eachEClass, EACH__VAL);
 		createEReference(eachEClass, EACH__KEY);
 		createEReference(eachEClass, EACH__DO);
+
+		splitEClass = createEClass(SPLIT);
+		createEAttribute(splitEClass, SPLIT__STR);
+		createEAttribute(splitEClass, SPLIT__SEP);
+		createEAttribute(splitEClass, SPLIT__TRIM_RESULTS);
+		createEAttribute(splitEClass, SPLIT__OMIT_EMPTY_STRINGS);
 	}
 
 	/**
@@ -1303,6 +1362,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		recurEClass.getESuperTypes().add(theCorePackage.getCommand());
 		toListEClass.getESuperTypes().add(theCorePackage.getCommand());
 		eachEClass.getESuperTypes().add(theCorePackage.getCommand());
+		splitEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1430,6 +1490,12 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		initEReference(getEach_Val(), theCorePackage.getVal(), null, "val", null, 1, 1, Each.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEach_Key(), theCorePackage.getVal(), null, "key", null, 0, 1, Each.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEach_Do(), theCorePackage.getCommand(), null, "do", null, 0, 1, Each.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(splitEClass, Split.class, "Split", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSplit_Str(), theEcorePackage.getEString(), "str", null, 0, 1, Split.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSplit_Sep(), theEcorePackage.getEString(), "sep", null, 0, 1, Split.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSplit_TrimResults(), theEcorePackage.getEBoolean(), "trimResults", "false", 0, 1, Split.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSplit_OmitEmptyStrings(), theEcorePackage.getEBoolean(), "omitEmptyStrings", "false", 0, 1, Split.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1848,7 +1914,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "description", "Map or List"
-		   });
+		   });	
 	}
 
 	/**
@@ -1912,7 +1978,12 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		  (getEach_Input(), 
 		   source, 
 		   new String[] {
-		   });	
+		   });			
+		addAnnotation
+		  (getSplit_Str(), 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 	/**
@@ -1927,7 +1998,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });																																																															
+		   });																																																																
 	}
 
 } // OperationsPackageImpl

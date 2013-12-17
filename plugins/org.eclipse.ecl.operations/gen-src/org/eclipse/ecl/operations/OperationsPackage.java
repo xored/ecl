@@ -2129,6 +2129,79 @@ public interface OperationsPackage extends EPackage {
 	int EACH_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.operations.impl.SplitImpl <em>Split</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.operations.impl.SplitImpl
+	 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getSplit()
+	 * @generated
+	 */
+	int SPLIT = 40;
+
+	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT__HOST = CorePackage.COMMAND__HOST;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT__BINDINGS = CorePackage.COMMAND__BINDINGS;
+
+	/**
+	 * The feature id for the '<em><b>Str</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT__STR = CorePackage.COMMAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Sep</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT__SEP = CorePackage.COMMAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Trim Results</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT__TRIM_RESULTS = CorePackage.COMMAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Omit Empty Strings</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT__OMIT_EMPTY_STRINGS = CorePackage.COMMAND_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Split</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPLIT_FEATURE_COUNT = CorePackage.COMMAND_FEATURE_COUNT + 4;
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Eq <em>Eq</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3003,6 +3076,60 @@ public interface OperationsPackage extends EPackage {
 	EReference getEach_Do();
 
 	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.Split <em>Split</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Split</em>'.
+	 * @see org.eclipse.ecl.operations.Split
+	 * @generated
+	 */
+	EClass getSplit();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.operations.Split#getStr <em>Str</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Str</em>'.
+	 * @see org.eclipse.ecl.operations.Split#getStr()
+	 * @see #getSplit()
+	 * @generated
+	 */
+	EAttribute getSplit_Str();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.operations.Split#getSep <em>Sep</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sep</em>'.
+	 * @see org.eclipse.ecl.operations.Split#getSep()
+	 * @see #getSplit()
+	 * @generated
+	 */
+	EAttribute getSplit_Sep();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.operations.Split#isTrimResults <em>Trim Results</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Trim Results</em>'.
+	 * @see org.eclipse.ecl.operations.Split#isTrimResults()
+	 * @see #getSplit()
+	 * @generated
+	 */
+	EAttribute getSplit_TrimResults();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.operations.Split#isOmitEmptyStrings <em>Omit Empty Strings</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Omit Empty Strings</em>'.
+	 * @see org.eclipse.ecl.operations.Split#isOmitEmptyStrings()
+	 * @see #getSplit()
+	 * @generated
+	 */
+	EAttribute getSplit_OmitEmptyStrings();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.operations.BinaryOp <em>Binary Op</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3797,6 +3924,48 @@ public interface OperationsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EACH__DO = eINSTANCE.getEach_Do();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.SplitImpl <em>Split</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.operations.impl.SplitImpl
+		 * @see org.eclipse.ecl.operations.impl.OperationsPackageImpl#getSplit()
+		 * @generated
+		 */
+		EClass SPLIT = eINSTANCE.getSplit();
+
+		/**
+		 * The meta object literal for the '<em><b>Str</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPLIT__STR = eINSTANCE.getSplit_Str();
+
+		/**
+		 * The meta object literal for the '<em><b>Sep</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPLIT__SEP = eINSTANCE.getSplit_Sep();
+
+		/**
+		 * The meta object literal for the '<em><b>Trim Results</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPLIT__TRIM_RESULTS = eINSTANCE.getSplit_TrimResults();
+
+		/**
+		 * The meta object literal for the '<em><b>Omit Empty Strings</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPLIT__OMIT_EMPTY_STRINGS = eINSTANCE.getSplit_OmitEmptyStrings();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.operations.impl.BinaryOpImpl <em>Binary Op</em>}' class.

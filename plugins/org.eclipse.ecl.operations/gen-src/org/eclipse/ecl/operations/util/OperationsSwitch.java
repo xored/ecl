@@ -44,6 +44,7 @@ import org.eclipse.ecl.operations.Plus;
 import org.eclipse.ecl.operations.Recur;
 import org.eclipse.ecl.operations.Repeat;
 import org.eclipse.ecl.operations.RepeatWith;
+import org.eclipse.ecl.operations.Split;
 import org.eclipse.ecl.operations.Str;
 import org.eclipse.ecl.operations.ToList;
 import org.eclipse.ecl.operations.Try;
@@ -409,6 +410,13 @@ public class OperationsSwitch<T> {
 				Each each = (Each)theEObject;
 				T result = caseEach(each);
 				if (result == null) result = caseCommand(each);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case OperationsPackage.SPLIT: {
+				Split split = (Split)theEObject;
+				T result = caseSplit(split);
+				if (result == null) result = caseCommand(split);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -999,6 +1007,21 @@ public class OperationsSwitch<T> {
 	 * @generated
 	 */
 	public T caseEach(Each object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Split</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Split</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSplit(Split object) {
 		return null;
 	}
 

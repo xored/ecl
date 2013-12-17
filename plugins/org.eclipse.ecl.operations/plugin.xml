@@ -205,6 +205,11 @@
             name="Each"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
       </scriptlet>
+      <scriptlet
+            class="org.eclipse.ecl.operations.internal.commands.SplitService"
+            name="Split"
+            namespace="http://www.eclipse.org/ecl/operations.ecore">
+      </scriptlet>
    </extension>
    <extension
          point="org.eclipse.ecl.dispatch.scriptletExtension">
@@ -227,6 +232,6 @@
             class="org.eclipse.ecl.operations.internal.commands.EachElementService"
             name="Each"
             namespace="http://www.eclipse.org/ecl/operations.ecore">
-      </scriptletExtension>            
+      </scriptletExtension>
    </extension>
 </plugin>

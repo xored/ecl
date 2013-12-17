@@ -43,6 +43,7 @@ import org.eclipse.ecl.operations.Plus;
 import org.eclipse.ecl.operations.Recur;
 import org.eclipse.ecl.operations.Repeat;
 import org.eclipse.ecl.operations.RepeatWith;
+import org.eclipse.ecl.operations.Split;
 import org.eclipse.ecl.operations.Str;
 import org.eclipse.ecl.operations.ToList;
 import org.eclipse.ecl.operations.Try;
@@ -263,6 +264,10 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEach(Each object) {
 				return createEachAdapter();
+			}
+			@Override
+			public Adapter caseSplit(Split object) {
+				return createSplitAdapter();
 			}
 			@Override
 			public Adapter caseCommand(Command object) {
@@ -833,6 +838,20 @@ public class OperationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEachAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.operations.Split <em>Split</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.operations.Split
+	 * @generated
+	 */
+	public Adapter createSplitAdapter() {
 		return null;
 	}
 

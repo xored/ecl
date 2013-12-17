@@ -368,6 +368,15 @@ public interface OperationsFactory extends EFactory {
 	Each createEach();
 
 	/**
+	 * Returns a new object of class '<em>Split</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Split</em>'.
+	 * @generated
+	 */
+	Split createSplit();
+
+	/**
 	 * Returns a new object of class '<em>Binary Op</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
