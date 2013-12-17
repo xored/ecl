@@ -16,6 +16,7 @@ import org.eclipse.ecl.core.EclChar;
 import org.eclipse.ecl.core.EclDouble;
 import org.eclipse.ecl.core.EclFloat;
 import org.eclipse.ecl.core.EclInteger;
+import org.eclipse.ecl.core.EclJavaObject;
 import org.eclipse.ecl.core.EclLong;
 import org.eclipse.ecl.core.EclShort;
 import org.eclipse.ecl.core.EclString;
@@ -56,6 +57,7 @@ public class BoxedValues {
 		for (Entry<String, String> entry : TO_BOXED_TYPE.entrySet()) {
 			FROM_BOXED_TYPE.put(entry.getValue(), entry.getKey());
 		}
+		FROM_BOXED_TYPE.put(CorePackage.eINSTANCE.getEclJavaObject().getName(), Object.class.getName());
 	}
 
 	public static class BoxedSwitch<T> {
@@ -128,12 +130,12 @@ public class BoxedValues {
 
 	/**
 	 * Wraps any object into {@link EObject}. If object is already EObject, no
-	 * conversions performed, therefore this method is idempotent, i.e.
-	 * <code>box(box(box(box(foo))))</code> equals to <code>box(foo)</code>.
+	 * conversions performed, therefore this method is idempotent, i.e. <code>box(box(box(box(foo))))</code> equals to
+	 * <code>box(foo)</code>.
 	 * 
 	 * If object is not null and not EObject, performs conversion according to
-	 * object type so that {@link String} is converted to {@link EclString},
-	 * {@link Integer} to {@link EclInteger} and so on
+	 * object type so that {@link String} is converted to {@link EclString}, {@link Integer} to {@link EclInteger} and
+	 * so on
 	 * 
 	 * @param object
 	 * @return {@link EObject} or <code>null</code>, if input is null.
@@ -150,9 +152,10 @@ public class BoxedValues {
 
 		String className = object.getClass().getName();
 		if (!TO_BOXED_TYPE.containsKey(className)) {
-			throw new IllegalArgumentException(String.format(
-					"Do not know how to box value of type '%s'", object
-							.getClass().getName()));
+			// wrap to EclJavaObject
+			EclJavaObject result = CoreFactory.eINSTANCE.createEclJavaObject();
+			result.setValue(object);
+			return result;
 		}
 		EClass boxedType = (EClass) CorePackage.eINSTANCE
 				.getEClassifier(TO_BOXED_TYPE.get(object.getClass().getName()));
@@ -217,8 +220,7 @@ public class BoxedValues {
 
 	/**
 	 * Unwraps an object if it has been boxed to {@link EObject}. This method is
-	 * idempotent, i.e. <code>unbox(unbox(unbox(unbox(foo))))</code> equals to
-	 * <code>unbox(foo)</code>.
+	 * idempotent, i.e. <code>unbox(unbox(unbox(unbox(foo))))</code> equals to <code>unbox(foo)</code>.
 	 * 
 	 * @param object
 	 * @return

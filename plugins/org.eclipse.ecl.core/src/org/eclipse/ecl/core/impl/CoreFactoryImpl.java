@@ -136,6 +136,7 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			case CorePackage.ECL_LIST: return createEclList();
 			case CorePackage.ECL_MAP: return createEclMap();
 			case CorePackage.ECL_MAP_ENTRY: return createEclMapEntry();
+			case CorePackage.ECL_JAVA_OBJECT: return createEclJavaObject();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -529,6 +530,16 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	public EclMapEntry createEclMapEntry() {
 		EclMapEntryImpl eclMapEntry = new EclMapEntryImpl();
 		return eclMapEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EclJavaObject createEclJavaObject() {
+		EclJavaObjectImpl eclJavaObject = new EclJavaObjectImpl();
+		return eclJavaObject;
 	}
 
 	/**

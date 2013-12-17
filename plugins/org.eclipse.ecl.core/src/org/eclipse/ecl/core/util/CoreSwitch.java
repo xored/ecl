@@ -423,6 +423,13 @@ public class CoreSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CorePackage.ECL_JAVA_OBJECT: {
+				EclJavaObject eclJavaObject = (EclJavaObject)theEObject;
+				T result = caseEclJavaObject(eclJavaObject);
+				if (result == null) result = caseBoxedValue(eclJavaObject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -1099,6 +1106,21 @@ public class CoreSwitch<T> {
 	 * @generated
 	 */
 	public T caseEclMapEntry(EclMapEntry object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ecl Java Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ecl Java Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEclJavaObject(EclJavaObject object) {
 		return null;
 	}
 

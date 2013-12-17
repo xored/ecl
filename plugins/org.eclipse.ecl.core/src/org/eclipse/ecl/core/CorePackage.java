@@ -1991,6 +1991,34 @@ public interface CorePackage extends EPackage {
 	int ECL_MAP_ENTRY_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.ecl.core.impl.EclJavaObjectImpl <em>Ecl Java Object</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.ecl.core.impl.EclJavaObjectImpl
+	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclJavaObject()
+	 * @generated
+	 */
+	int ECL_JAVA_OBJECT = 45;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_JAVA_OBJECT__VALUE = BOXED_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Ecl Java Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ECL_JAVA_OBJECT_FEATURE_COUNT = BOXED_VALUE_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '<em>Throwable</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1998,7 +2026,7 @@ public interface CorePackage extends EPackage {
 	 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getThrowable()
 	 * @generated
 	 */
-	int THROWABLE = 45;
+	int THROWABLE = 46;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.Command <em>Command</em>}'.
@@ -3064,6 +3092,27 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEclMapEntry_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclJavaObject <em>Ecl Java Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ecl Java Object</em>'.
+	 * @see org.eclipse.ecl.core.EclJavaObject
+	 * @generated
+	 */
+	EClass getEclJavaObject();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.ecl.core.EclJavaObject#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.ecl.core.EclJavaObject#getValue()
+	 * @see #getEclJavaObject()
+	 * @generated
+	 */
+	EAttribute getEclJavaObject_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.ecl.core.EclBoolean <em>Ecl Boolean</em>}'.
@@ -4166,6 +4215,24 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference ECL_MAP_ENTRY__VALUE = eINSTANCE.getEclMapEntry_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclJavaObjectImpl <em>Ecl Java Object</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.ecl.core.impl.EclJavaObjectImpl
+		 * @see org.eclipse.ecl.core.impl.CorePackageImpl#getEclJavaObject()
+		 * @generated
+		 */
+		EClass ECL_JAVA_OBJECT = eINSTANCE.getEclJavaObject();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ECL_JAVA_OBJECT__VALUE = eINSTANCE.getEclJavaObject_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.ecl.core.impl.EclBooleanImpl <em>Ecl Boolean</em>}' class.
