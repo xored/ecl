@@ -40,8 +40,10 @@ public class EachElementService implements IScriptletExtension {
 
 			IPipe out = context.getSession().createPipe();
 			let.setBody(EcoreUtil.copy(cmd.getDo()));
-			context.getSession().execute(let, null, out);
-
+			IStatus bodyStatus = context.getSession().execute(let, null, out).waitFor();
+			if (!bodyStatus.isOK()) {
+				return bodyStatus;
+			}
 			for (Object outObj : CoreUtils.readPipeContent(out)) {
 				context.getOutput().write(outObj);
 			}
