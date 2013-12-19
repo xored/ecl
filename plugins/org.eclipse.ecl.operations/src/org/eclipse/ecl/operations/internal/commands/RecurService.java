@@ -1,11 +1,10 @@
 package org.eclipse.ecl.operations.internal.commands;
 
-import static org.eclipse.ecl.operations.internal.OperationsPlugin.PLUGIN_ID;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.operations.Recur;
+import org.eclipse.ecl.runtime.ExecutionFlowStatus;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.emf.ecore.EObject;
@@ -18,58 +17,14 @@ public class RecurService implements ICommandService {
 		throw new CoreException(new RecurStatus(recur.getValues().toArray(new EObject[0])));
 	}
 
-	public static class RecurStatus implements IStatus {
-		public final EObject[] vals;
-
+	public static class RecurStatus extends ExecutionFlowStatus {
 		public RecurStatus(EObject[] vals) {
-			this.vals = vals;
+			super(vals);
 		}
 
-		@Override
-		public IStatus[] getChildren() {
-			return new IStatus[0];
+		public EObject[] getVals() {
+			return (EObject[]) value;
 		}
-
-		@Override
-		public int getCode() {
-			return 0;
-		}
-
-		@Override
-		public Throwable getException() {
-			return null;
-		}
-
-		@Override
-		public String getMessage() {
-			return null;
-		}
-
-		@Override
-		public String getPlugin() {
-			return PLUGIN_ID;
-		}
-
-		@Override
-		public int getSeverity() {
-			return OK;
-		}
-
-		@Override
-		public boolean isMultiStatus() {
-			return false;
-		}
-
-		@Override
-		public boolean isOK() {
-			return true;
-		}
-
-		@Override
-		public boolean matches(int severityMask) {
-			return (OK & severityMask) != 0;
-		}
-
 	}
 
 }

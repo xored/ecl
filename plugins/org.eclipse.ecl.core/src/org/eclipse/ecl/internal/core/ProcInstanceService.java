@@ -9,8 +9,11 @@ import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.Declaration;
 import org.eclipse.ecl.core.ProcInstance;
 import org.eclipse.ecl.core.Val;
+import org.eclipse.ecl.internal.core.ReturnService.ReturnStatus;
 import org.eclipse.ecl.runtime.BoxedValues;
+import org.eclipse.ecl.runtime.CoreUtils;
 import org.eclipse.ecl.runtime.ICommandService;
+import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
@@ -39,12 +42,21 @@ public class ProcInstanceService implements ICommandService {
 			locals.declare(val.getName(), val);
 		}
 
+		IPipe out = context.getSession().createPipe();
 		IStatus s = context
 				.getSession()
 				.execute(instance.getDefinition().getBody(),
 						inputUsed ? null : context.getInput(),
-						context.getOutput()).waitFor();
+						out).waitFor();
 
+		if (s instanceof ReturnStatus) {
+			context.getOutput().write(((ReturnStatus) s).getValue());
+			return Status.OK_STATUS;
+		}
+
+		for (Object object : CoreUtils.readPipeContent(out)) {
+			context.getOutput().write(object);
+		}
 		return s.isOK() ? Status.OK_STATUS : new ProcErrorStatus(s);
 	}
 

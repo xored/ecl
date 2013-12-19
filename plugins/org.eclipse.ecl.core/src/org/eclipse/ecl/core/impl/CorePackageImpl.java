@@ -51,6 +51,7 @@ import org.eclipse.ecl.core.Proc;
 import org.eclipse.ecl.core.ProcInstance;
 import org.eclipse.ecl.core.ProcessStatus;
 import org.eclipse.ecl.core.RestoreState;
+import org.eclipse.ecl.core.Return;
 import org.eclipse.ecl.core.SaveState;
 import org.eclipse.ecl.core.Script;
 import org.eclipse.ecl.core.Sequence;
@@ -295,6 +296,13 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * @generated
 	 */
 	private EClass eclMapEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass returnEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1266,6 +1274,24 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getReturn() {
+		return returnEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getReturn_Result() {
+		return (EReference)returnEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1615,6 +1641,9 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEReference(eclMapEntryEClass, ECL_MAP_ENTRY__KEY);
 		createEReference(eclMapEntryEClass, ECL_MAP_ENTRY__VALUE);
 
+		returnEClass = createEClass(RETURN);
+		createEReference(returnEClass, RETURN__RESULT);
+
 		// Create data types
 		throwableEDataType = createEDataType(THROWABLE);
 	}
@@ -1680,6 +1709,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		saveStateEClass.getESuperTypes().add(this.getCommand());
 		restoreStateEClass.getESuperTypes().add(this.getCommand());
 		getEClass.getESuperTypes().add(this.getCommand());
+		returnEClass.getESuperTypes().add(this.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1845,6 +1875,9 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEClass(eclMapEntryEClass, EclMapEntry.class, "EclMapEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEclMapEntry_Key(), theEcorePackage.getEObject(), null, "key", null, 0, 1, EclMapEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEclMapEntry_Value(), theEcorePackage.getEObject(), null, "value", null, 0, 1, EclMapEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(returnEClass, Return.class, "Return", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getReturn_Result(), theEcorePackage.getEObject(), null, "result", null, 0, 1, Return.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(throwableEDataType, Throwable.class, "Throwable", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

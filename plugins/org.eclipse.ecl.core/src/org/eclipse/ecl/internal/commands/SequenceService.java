@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.Sequence;
 import org.eclipse.ecl.runtime.CoreUtils;
+import org.eclipse.ecl.runtime.ExecutionFlowStatus;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
@@ -45,6 +46,9 @@ public class SequenceService implements ICommandService {
 			IProcess child = process.getSession().execute(cmd, pipe, i == commandCount - 1 ? lastChildOutput : null);
 			status = child.waitFor();
 
+			if (status instanceof ExecutionFlowStatus) {
+				return status;
+			}
 			if (!status.isOK()) {
 				return status;
 			}

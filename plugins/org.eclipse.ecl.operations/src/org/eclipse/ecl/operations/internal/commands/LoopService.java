@@ -14,6 +14,7 @@ import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.ecl.runtime.ISession;
+import org.eclipse.emf.ecore.EObject;
 
 public class LoopService implements ICommandService {
 	@Override
@@ -40,13 +41,14 @@ public class LoopService implements ICommandService {
 				}
 				return status;
 			}
-			if (recurStatus.vals.length != vals.length) {
+			EObject[] newVals = recurStatus.getVals();
+			if (newVals.length != vals.length) {
 				throw new CoreException(OperationsPlugin.createErr(
 						"Illegal arity in recur call, expected: %d, invoked: %d", vals.length,
-						recurStatus.vals.length));
+						newVals.length));
 			}
-			for (int i = 0; i < recurStatus.vals.length; i++) {
-				vals[i].setValue(recurStatus.vals[i]);
+			for (int i = 0; i < newVals.length; i++) {
+				vals[i].setValue(newVals[i]);
 			}
 		}
 	}

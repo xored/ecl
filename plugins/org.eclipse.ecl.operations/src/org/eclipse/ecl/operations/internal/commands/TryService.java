@@ -9,6 +9,7 @@ import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.operations.Try;
 import org.eclipse.ecl.runtime.CoreUtils;
+import org.eclipse.ecl.runtime.ExecutionFlowStatus;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
@@ -40,6 +41,12 @@ public class TryService implements ICommandService {
 				IProcess doProcess = process.getSession().execute(
 						t.getCommand(), input, output);
 				status = doProcess.waitFor();
+
+				if (status instanceof ExecutionFlowStatus) {
+					return status; // return immediately,
+									// don't alter out pipe
+				}
+
 				if (status.isOK()) {
 					content = CoreUtils.readPipeContent(output);
 					for (Object o : content)
@@ -50,6 +57,7 @@ public class TryService implements ICommandService {
 				if (delay > 0) {
 					Thread.sleep(delay);
 				}
+
 			}
 			// Do catch
 			if (!status.isOK()) {
@@ -62,6 +70,11 @@ public class TryService implements ICommandService {
 					IProcess doProcess = process.getSession().execute(
 							t.getCatch(), input, output);
 					IStatus status2 = doProcess.waitFor();
+
+					if (status2 instanceof ExecutionFlowStatus) {
+						return status2; // return immediately
+										// don't alter out pipe
+					}
 					if (status2.isOK()) {
 						content = CoreUtils.readPipeContent(output);
 						for (Object o : content)
@@ -81,13 +94,11 @@ public class TryService implements ICommandService {
 				IPipe output = process.getSession().createPipe();
 				IProcess doProcess = process.getSession().execute(
 						t.getFinally(), input, output);
-				IStatus status2 = doProcess.waitFor();
-				if (status2.isOK()) {
-					content = CoreUtils.readPipeContent(output);
-					for (Object o : content)
-						process.getOutput().write(o);
-				} else {
-					status = status2;
+				IStatus finallyStatus = doProcess.waitFor();
+
+				if (!finallyStatus.isOK()) {
+					status = finallyStatus; // failing finally block overrides
+											// body status even if it is ExecutionFlowStatus
 				}
 			}
 		}

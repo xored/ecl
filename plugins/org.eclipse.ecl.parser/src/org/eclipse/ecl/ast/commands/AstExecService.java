@@ -18,6 +18,7 @@ import org.eclipse.ecl.internal.commands.ExecService;
 import org.eclipse.ecl.internal.core.CorePlugin;
 import org.eclipse.ecl.internal.core.ProcErrorStatus;
 import org.eclipse.ecl.parser.ScriptErrorStatus;
+import org.eclipse.ecl.runtime.ExecutionFlowStatus;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
 
@@ -28,7 +29,7 @@ public class AstExecService implements ICommandService {
 		AstExec exec = (AstExec) command;
 		IStatus s = new ExecService().service(exec, process);
 
-		if (!s.isOK() && !(s instanceof ScriptErrorStatus)) {
+		if (!s.isOK() && !(s instanceof ScriptErrorStatus) && !(s instanceof ExecutionFlowStatus)) {
 			IStatus cause = s instanceof ProcErrorStatus ? ((ProcErrorStatus) s).getStatus() : s;
 
 			return new ScriptErrorStatus(IStatus.ERROR, CorePlugin.PLUGIN_ID, exec.getName(), exec.getResourceID(),
