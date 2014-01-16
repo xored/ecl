@@ -38,7 +38,6 @@ import org.eclipse.ecl.runtime.ISession;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 public class EclTcpSession implements ISession {
-
 	private static final ExecutionNode CLOSE_NODE = new ExecutionNode();
 
 	private final AtomicBoolean closed = new AtomicBoolean(false);
@@ -65,20 +64,17 @@ public class EclTcpSession implements ISession {
 	private Thread processingThread;
 
 	public EclTcpSession(InetAddress address, int port) throws IOException {
+		NetworkUtil.initTimeouts();
 		this.address = address;
 		this.port = port;
 
-		socket = new Socket();
-		socket.setReuseAddress(true);
 		try {
-			this.socket.setTcpNoDelay(true);
-		} catch (SocketException e) {
-			EclTcpClientPlugin.log(new Status(IStatus.ERROR, EclTcpClientPlugin.PLUGIN_ID,
-					"Error setting TCP_NODELAY on client socket"));
+			initSocket(address, port, true);
+		} catch (IOException e) {
+			initSocket(address, port, false);
+			EclTcpClientPlugin
+					.logInfo("Could not open a session with NO_DELAY and SO_REUSEADDR, succeeded with default socket");
 		}
-		socket.connect(new InetSocketAddress(address, port));
-
-		initSessionId(socket);
 		processingThread = new Thread(new Runnable() {
 			public void run() {
 				try {
@@ -129,6 +125,23 @@ public class EclTcpSession implements ISession {
 			}
 		}, "ECL TCP session execute: " + sessionID);
 		processingThread.start();
+	}
+
+	private void initSocket(InetAddress address, int port, boolean nonDefaultSocket) throws SocketException,
+			IOException {
+		socket = new Socket();
+		if (nonDefaultSocket) {
+			socket.setReuseAddress(true);
+			try {
+				this.socket.setTcpNoDelay(true);
+			} catch (SocketException e) {
+				EclTcpClientPlugin.log(new Status(IStatus.ERROR, EclTcpClientPlugin.PLUGIN_ID,
+						"Error setting TCP_NODELAY on client socket"));
+			}
+		}
+		socket.connect(new InetSocketAddress(address, port));
+
+		initSessionId(socket);
 	}
 
 	private void initSessionId(Socket socket) throws IOException {

@@ -70,6 +70,10 @@ public class EclTcpClientPlugin extends Plugin {
 		return new Status(IStatus.ERROR, PLUGIN_ID, message);
 	}
 
+	public static void logInfo(String format, Object... args) {
+		log(new Status(IStatus.INFO, PLUGIN_ID, String.format(format, args)));
+	}
+
 	public static void log(IStatus status) {
 		getDefault().getLog().log(status);
 	}
