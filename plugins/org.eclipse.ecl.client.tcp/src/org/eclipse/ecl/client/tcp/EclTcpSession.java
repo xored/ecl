@@ -73,7 +73,8 @@ public class EclTcpSession implements ISession {
 		try {
 			this.socket.setTcpNoDelay(true);
 		} catch (SocketException e) {
-			e.printStackTrace();
+			EclTcpClientPlugin.log(new Status(IStatus.ERROR, EclTcpClientPlugin.PLUGIN_ID,
+					"Error setting TCP_NODELAY on client socket"));
 		}
 		socket.connect(new InetSocketAddress(address, port));
 
