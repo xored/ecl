@@ -9,3 +9,4 @@ Require-Bundle: org.eclipse.ecl.core,
 Export-Package: org.eclipse.ecl.client.tcp
 Bundle-Activator: org.eclipse.ecl.client.tcp.EclTcpClientPlugin
 Bundle-Vendor: xored software, Inc.
+Bundle-ActivationPolicy: lazy
