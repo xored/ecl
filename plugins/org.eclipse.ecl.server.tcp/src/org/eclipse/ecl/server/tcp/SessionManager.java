@@ -45,6 +45,7 @@ public class SessionManager {
 			String uuid = EcoreUtil.generateUUID();
 			uuid = EcoreUtil.generateUUID();
 			dout.writeUTF(uuid);
+			dout.flush();
 			return uuid;
 
 		}

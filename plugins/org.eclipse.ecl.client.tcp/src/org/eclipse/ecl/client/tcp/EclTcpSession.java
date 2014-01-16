@@ -137,6 +137,7 @@ public class EclTcpSession implements ISession {
 		DataOutputStream dout = new DataOutputStream(outputStream);
 		DataInputStream din = new DataInputStream(inputStream);
 		dout.writeUTF("newsession");
+		dout.flush();
 		sessionID = din.readUTF();
 	}
 
