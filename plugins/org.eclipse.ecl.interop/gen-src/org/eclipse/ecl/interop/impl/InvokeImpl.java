@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
@@ -157,7 +158,7 @@ public class InvokeImpl extends CommandImpl implements Invoke {
 	 */
 	public EList<Object> getArgs() {
 		if (args == null) {
-			args = new EDataTypeUniqueEList<Object>(Object.class, this, InteropPackage.INVOKE__ARGS);
+			args = new EDataTypeEList<Object>(Object.class, this, InteropPackage.INVOKE__ARGS);
 		}
 		return args;
 	}

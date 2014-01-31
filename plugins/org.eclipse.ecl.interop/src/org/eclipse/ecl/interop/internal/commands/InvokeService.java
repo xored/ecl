@@ -3,6 +3,7 @@ package org.eclipse.ecl.interop.internal.commands;
 import static org.eclipse.ecl.interop.internal.EclInteropPlugin.error;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
@@ -49,23 +50,28 @@ public class InvokeService implements ICommandService {
 		Object result = null;
 		try {
 			final Method method = matchMethod(class_, name, args);
-			if (method == null)
-				return error("Method not found.");
+			if (method == null) {
+				if (args.length > 0) {
+					return error("Method not found.");
+				}
+				result = getFieldValue(class_, object, name);
+			} else {
 
-			if (object instanceof Widget) {
-				Widget widget = (Widget) object;
+				if (object instanceof Widget) {
+					Widget widget = (Widget) object;
 
-				// no reason to go into generics here, everything is just Object
-				RunnableFuture future = new FutureTask(new Callable() {
-					public Object call() throws Exception {
-						return method.invoke(object, args);
-					}
-				});
+					// no reason to go into generics here, everything is just Object
+					RunnableFuture future = new FutureTask(new Callable() {
+						public Object call() throws Exception {
+							return method.invoke(object, args);
+						}
+					});
 
-				widget.getDisplay().syncExec(future);
-				result = future.get();
-			} else
-				result = method.invoke(object, args);
+					widget.getDisplay().syncExec(future);
+					result = future.get();
+				} else
+					result = method.invoke(object, args);
+			}
 
 		} catch (Exception e) {
 			return error("%s: %s", e.getClass().getName(), e.getMessage());
@@ -74,6 +80,29 @@ public class InvokeService implements ICommandService {
 		if (result != null)
 			context.getOutput().write(result);
 		return Status.OK_STATUS;
+	}
+
+	private static Object getFieldValue(Class<?> class_, Object object, String name) throws CoreException {
+		if (class_ == null) {
+			throw new CoreException(error("method or field not fould"));
+		}
+
+		try {
+			Field field = class_.getDeclaredField(name);
+			// Can't be null -- NoSuchFieldException raised otherwise
+			field.setAccessible(true);
+			return field.get(object);
+		} catch (IllegalArgumentException e) {
+			// should not happen
+			throw new CoreException(error(e, "Unexpected error getting field %s", name));
+		} catch (SecurityException e) {
+			throw new CoreException(error(e, "Unexpected error getting field %s", name));
+		} catch (IllegalAccessException e) {
+			throw new CoreException(error(e, "Unexpected error getting field %s", name));
+		} catch (NoSuchFieldException e) {
+			return getFieldValue(class_.getSuperclass(), object, name);
+		}
+
 	}
 
 	private static IStatus processArrayMethod(Object array, String name,

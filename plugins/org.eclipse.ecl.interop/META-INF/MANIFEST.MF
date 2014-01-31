@@ -13,3 +13,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.swt
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.ecl.interop
+Bundle-Activator: org.eclipse.ecl.interop.internal.EclInteropPlugin

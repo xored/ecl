@@ -94,7 +94,8 @@ public interface Invoke extends Command {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Args</em>' attribute list.
 	 * @see org.eclipse.ecl.interop.InteropPackage#getInvoke_Args()
-	 * @model annotation="http://www.eclipse.org/ecl/docs description='Variable number of arguments to the method.'"
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/ecl/docs description='Variable number of arguments to the method.'"
 	 * @generated
 	 */
 	EList<Object> getArgs();
