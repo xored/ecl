@@ -923,7 +923,7 @@ public class ECLBinaryResourceImpl extends ResourceImpl {
 
 		protected EPackageData readEPackage() throws IOException {
 			int id = readCompressedInt();
-			if (ePackageDataList.size() > id || id < 0) {
+			if (ePackageDataList.size() < id || id < 0) {
 				throw new RuntimeException("Package id is not incremented by 1");
 			} else if (ePackageDataList.size() == id) {
 				EPackageData ePackageData = new EPackageData();
