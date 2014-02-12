@@ -923,7 +923,9 @@ public class ECLBinaryResourceImpl extends ResourceImpl {
 
 		protected EPackageData readEPackage() throws IOException {
 			int id = readCompressedInt();
-			if (ePackageDataList.size() <= id) {
+			if (ePackageDataList.size() > id || id < 0) {
+				throw new RuntimeException("Package id is not incremented by 1");
+			} else if (ePackageDataList.size() == id) {
 				EPackageData ePackageData = new EPackageData();
 				String nsURI = readString();
 				URI uri = readURI();
@@ -938,6 +940,9 @@ public class ECLBinaryResourceImpl extends ResourceImpl {
 					ePackageData.ePackage = EPackage.Registry.INSTANCE
 							.getEPackage(nsURI);
 				}
+				if (ePackageData.ePackage == null)
+					throw new NullPointerException("Can load package " + nsURI
+							+ ", " + uri.toString());
 				ePackageData.eClassData = new EClassData[ePackageData.ePackage
 						.getEClassifiers().size()];
 				ePackageDataList.add(ePackageData);
