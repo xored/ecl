@@ -4,3 +4,4 @@ target/
 .DS_Store
 /tests/org.eclipse.ecl.doc.tests/output/core.html
 .settings/
+.metadata/
