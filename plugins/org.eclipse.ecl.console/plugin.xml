@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension-point id="swtControlFactory" name="SWT Control factory" schema="schema/swtControlFactory.exsd"/>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="org.eclipse.ecl.console.view.View"
+            icon="icons/script.gif"
+            id="org.eclipse.ecl.console.html.ui.view"
+            name="ECL Shell">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.themes">
+      <themeElementCategory
+            id="org.eclipse.ecl.console.html.ui.category"
+            label="ECL Console">
+      </themeElementCategory>
+      <fontDefinition
+            categoryId="org.eclipse.ecl.console.html.ui.category"
+            id="org.eclipse.ecl.console.html.ui.defaultFont"
+            isEditable="true"
+            label="Main font"
+            value="Tohoma-regular-14">
+      </fontDefinition>
+      <colorDefinition
+            categoryId="org.eclipse.ecl.console.html.ui.category"
+            id="org.eclipse.ecl.console.html.ui.mainFgColor"
+            isEditable="true"
+            label="Main Foreground color"
+            value="COLOR_BLACK">
+      </colorDefinition>
+      <colorDefinition
+            categoryId="org.eclipse.ecl.console.html.ui.category"
+            id="org.eclipse.ecl.console.html.ui.mainBgColor"
+            isEditable="true"
+            label="Background color"
+            value="COLOR_WHITE">
+      </colorDefinition>
+   </extension>
+   <extension
+         point="org.eclipse.ui.viewActions">
+      <viewContribution
+            id="org.eclipse.ecl.console.html.ui.viewContribution"
+            targetID="org.eclipse.ecl.console.html.ui.view">
+         <action
+               class="org.eclipse.ecl.console.action.SaveViewActionDelegate"
+               icon="icons/save-as.gif"
+               id="org.eclipse.ecl.console.html.ui.actionSave"
+               label="Save">
+         </action>
+         <action
+               class="org.eclipse.ecl.console.action.ClearViewActionDelegate"
+               icon="icons/clear.gif"
+               id="org.eclipse.ecl.console.html.ui.actionClear"
+               label="Clear"
+               menubarPath="additions"
+               toolbarPath="Normal/additions">
+         </action>
+      </viewContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ecl.console.swtControlFactory">
+      <factory
+            class="org.eclipse.ecl.console.factories.SWTControlFactory">
+      </factory>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://eclipse.org/ecl/console/commands.core"
+            class="org.eclipse.ecl.console.commands.ConsolePackage"
+            genModel="model/console.genmodel"/>
+   </extension>
+   
+   <extension point="org.eclipse.ecl.core.scriptlet">
+      <scriptlet
+            class="org.eclipse.ecl.console.operations.WriteService"
+            name="Write"
+            namespace="http://eclipse.org/ecl/console/commands.core">
+      </scriptlet>
+      
+      <scriptlet
+            class="org.eclipse.ecl.console.operations.ListCommandsService"
+            name="ListCommands"
+            namespace="http://eclipse.org/ecl/console/commands.core">
+      </scriptlet>
+  </extension>
+
+</plugin>
