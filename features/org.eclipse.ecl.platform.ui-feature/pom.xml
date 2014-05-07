@@ -5,7 +5,7 @@
   <parent>
     <artifactId>ecl-features</artifactId>
     <groupId>org.eclipse.ecl</groupId>
-    <version>1.2.0</version>
+    <version>1.3.0-SNAPSHOT</version>
   </parent>
   <groupId>org.eclipse.ecl.features</groupId>
   <artifactId>org.eclipse.ecl.platform.ui</artifactId>
