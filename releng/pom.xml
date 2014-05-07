@@ -3,7 +3,6 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.eclipse.ecl</groupId>
   <artifactId>ecl-releng</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <parent>
     <artifactId>ecl</artifactId>
