@@ -2,7 +2,7 @@
 <feature 
 	id="org.eclipse.ecl.server" 
 	label="ECL Server" 
-	version="1.1.0.qualifier"
+	version="1.2.0"
 	provider-name="xored software, Inc.">
 	
 	<description url="http://www.xored.com/q7/discover/ecl">

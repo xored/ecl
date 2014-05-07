@@ -9,6 +9,5 @@
   </parent>
   <groupId>org.eclipse.ecl.features</groupId>
   <artifactId>org.eclipse.ecl.platform.ui</artifactId>
-  <version>1.1.0-SNAPSHOT</version>
   <packaging>eclipse-feature</packaging>
 </project>

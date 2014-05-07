@@ -3,7 +3,7 @@
 	id="org.eclipse.ecl.shell" 
 	label="ECL Telnet Shell" 
 	provider-name="xored software, Inc." 
-	version="1.1.0.qualifier">
+	version="1.2.0">
 	
   <description url="http://www.xored.com/q7/discover/ecl">
 	Telnet shell for interactive remote execution of ECL commands
