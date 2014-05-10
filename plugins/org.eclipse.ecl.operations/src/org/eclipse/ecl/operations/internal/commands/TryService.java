@@ -28,12 +28,12 @@ public class TryService implements ICommandService {
 		if (times != null && times <= 0)
 			return new Status(IStatus.ERROR, CorePlugin.PLUGIN_ID,
 					"Illegal parameter 'times'");
-		List<Object> content = CoreUtils.readPipeContent(process.getInput());
+		final List<Object> inputContent = CoreUtils.readPipeContent(process.getInput());
 		IStatus status = Status.OK_STATUS;
 		try {
 			for (int i = 0; times == null || i < times; i++) {
 				IPipe input = process.getSession().createPipe();
-				for (Object o : content)
+				for (Object o : inputContent)
 					input.write(o);
 				input.close(Status.OK_STATUS);
 				IPipe output = process.getSession().createPipe();
@@ -41,8 +41,8 @@ public class TryService implements ICommandService {
 						t.getCommand(), input, output);
 				status = doProcess.waitFor();
 				if (status.isOK()) {
-					content = CoreUtils.readPipeContent(output);
-					for (Object o : content)
+					List<Object> outputContent = CoreUtils.readPipeContent(output);
+					for (Object o : outputContent)
 						process.getOutput().write(o);
 					// return status;
 					break;
@@ -55,7 +55,7 @@ public class TryService implements ICommandService {
 			if (!status.isOK()) {
 				if (t.getCatch() != null) {
 					IPipe input = process.getSession().createPipe();
-					for (Object o : content)
+					for (Object o : inputContent)
 						input.write(o);
 					input.close(Status.OK_STATUS);
 					IPipe output = process.getSession().createPipe();
@@ -63,8 +63,8 @@ public class TryService implements ICommandService {
 							t.getCatch(), input, output);
 					IStatus status2 = doProcess.waitFor();
 					if (status2.isOK()) {
-						content = CoreUtils.readPipeContent(output);
-						for (Object o : content)
+						List<Object> outputContent = CoreUtils.readPipeContent(output);
+						for (Object o : outputContent)
 							process.getOutput().write(o);
 						status = status2;
 					} else {
@@ -75,7 +75,7 @@ public class TryService implements ICommandService {
 		} finally {
 			if (t.getFinally() != null) {
 				IPipe input = process.getSession().createPipe();
-				for (Object o : content)
+				for (Object o : inputContent)
 					input.write(o);
 				input.close(Status.OK_STATUS);
 				IPipe output = process.getSession().createPipe();
@@ -83,8 +83,8 @@ public class TryService implements ICommandService {
 						t.getFinally(), input, output);
 				IStatus status2 = doProcess.waitFor();
 				if (status2.isOK()) {
-					content = CoreUtils.readPipeContent(output);
-					for (Object o : content)
+					List<Object> outputContent = CoreUtils.readPipeContent(output);
+					for (Object o : outputContent)
 						process.getOutput().write(o);
 				} else {
 					status = status2;
