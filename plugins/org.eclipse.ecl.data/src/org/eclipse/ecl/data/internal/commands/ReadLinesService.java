@@ -10,6 +10,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.data.commands.ReadLines;
+import org.eclipse.ecl.data.internal.EclDataPlugin;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
 
@@ -30,7 +31,7 @@ public class ReadLinesService implements ICommandService {
 				context.getOutput().write(line);
 			}
 		} catch (IOException e) {
-
+			return new Status(IStatus.ERROR, EclDataPlugin.PLUGIN_ID, e.getMessage(), e);
 		} finally {
 			if (br != null) {
 				try {
