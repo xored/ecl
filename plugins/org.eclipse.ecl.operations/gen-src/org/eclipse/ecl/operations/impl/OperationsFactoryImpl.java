@@ -38,6 +38,7 @@ import org.eclipse.ecl.operations.NotEq;
 import org.eclipse.ecl.operations.OperationsFactory;
 import org.eclipse.ecl.operations.OperationsPackage;
 import org.eclipse.ecl.operations.Or;
+import org.eclipse.ecl.operations.ParseTime;
 import org.eclipse.ecl.operations.Plus;
 import org.eclipse.ecl.operations.Recur;
 import org.eclipse.ecl.operations.Repeat;
@@ -67,7 +68,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	 */
 	public static OperationsFactory init() {
 		try {
-			OperationsFactory theOperationsFactory = (OperationsFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/ecl/operations.ecore"); 
+			OperationsFactory theOperationsFactory = (OperationsFactory)EPackage.Registry.INSTANCE.getEFactory(OperationsPackage.eNS_URI);
 			if (theOperationsFactory != null) {
 				return theOperationsFactory;
 			}
@@ -135,6 +136,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 			case OperationsPackage.TO_LIST: return createToList();
 			case OperationsPackage.EACH: return createEach();
 			case OperationsPackage.SPLIT: return createSplit();
+			case OperationsPackage.PARSE_TIME: return createParseTime();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -498,6 +500,16 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	public Split createSplit() {
 		SplitImpl split = new SplitImpl();
 		return split;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParseTime createParseTime() {
+		ParseTimeImpl parseTime = new ParseTimeImpl();
+		return parseTime;
 	}
 
 	/**

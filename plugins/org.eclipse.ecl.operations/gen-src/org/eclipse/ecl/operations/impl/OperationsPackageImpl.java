@@ -40,6 +40,7 @@ import org.eclipse.ecl.operations.NotEq;
 import org.eclipse.ecl.operations.OperationsFactory;
 import org.eclipse.ecl.operations.OperationsPackage;
 import org.eclipse.ecl.operations.Or;
+import org.eclipse.ecl.operations.ParseTime;
 import org.eclipse.ecl.operations.Plus;
 import org.eclipse.ecl.operations.Recur;
 import org.eclipse.ecl.operations.Repeat;
@@ -310,6 +311,13 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EClass splitEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass parseTimeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1109,6 +1117,24 @@ public class OperationsPackageImpl extends EPackageImpl implements
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getParseTime() {
+		return parseTimeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParseTime_Format() {
+		return (EAttribute)parseTimeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1289,6 +1315,9 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		createEAttribute(splitEClass, SPLIT__SEP);
 		createEAttribute(splitEClass, SPLIT__TRIM_RESULTS);
 		createEAttribute(splitEClass, SPLIT__OMIT_EMPTY_STRINGS);
+
+		parseTimeEClass = createEClass(PARSE_TIME);
+		createEAttribute(parseTimeEClass, PARSE_TIME__FORMAT);
 	}
 
 	/**
@@ -1363,6 +1392,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		toListEClass.getESuperTypes().add(theCorePackage.getCommand());
 		eachEClass.getESuperTypes().add(theCorePackage.getCommand());
 		splitEClass.getESuperTypes().add(theCorePackage.getCommand());
+		parseTimeEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1496,6 +1526,9 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		initEAttribute(getSplit_Sep(), theEcorePackage.getEString(), "sep", null, 0, 1, Split.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSplit_TrimResults(), theEcorePackage.getEBoolean(), "trimResults", "false", 0, 1, Split.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSplit_OmitEmptyStrings(), theEcorePackage.getEBoolean(), "omitEmptyStrings", "false", 0, 1, Split.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(parseTimeEClass, ParseTime.class, "ParseTime", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getParseTime_Format(), theEcorePackage.getEString(), "format", null, 0, 1, ParseTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1914,7 +1947,14 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		   source, 
 		   new String[] {
 			 "description", "Map or List"
-		   });	
+		   });			
+		addAnnotation
+		  (parseTimeEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Reads a string from input pipe and parses it accoridng to a given format string.",
+			 "returns", "Timestamp value (as a number of milliseconds since January, 1, 1970)"
+		   });
 	}
 
 	/**
@@ -1983,7 +2023,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		  (getSplit_Str(), 
 		   source, 
 		   new String[] {
-		   });
+		   });	
 	}
 
 	/**
@@ -1998,7 +2038,7 @@ public class OperationsPackageImpl extends EPackageImpl implements
 		  (convertEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																
+		   });																																																																	
 	}
 
 } // OperationsPackageImpl
