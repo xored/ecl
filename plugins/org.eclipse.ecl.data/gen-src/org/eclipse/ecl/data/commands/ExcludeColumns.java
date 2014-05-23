@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.ecl.data.commands.CommandsPackage#getExcludeColumns()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Takes a table from input and returns the same table which has some columns excluded. ' returns='Copy of input table object without columns with names listed in <code>columns</code>'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Takes a table from input and returns the same table which has some columns excluded. ' returns='Copy of input table object without columns with names listed in <code>columns</code>' example='get-view \"Error Log\" | get-tree | get-table-data | exclude-columns \"Message\" \"Plug-in\" | write-csv-file \"workspace:/MyProject/AssertData/table.csv\"'"
  * @generated
  */
 public interface ExcludeColumns extends Command {

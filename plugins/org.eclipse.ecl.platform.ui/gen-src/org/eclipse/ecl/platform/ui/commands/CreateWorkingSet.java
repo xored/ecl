@@ -22,7 +22,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.platform.ui.commands.CommandsPackage#getCreateWorkingSet()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Creates working set with a given name.' returns='Nothing'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Creates working set with a given name.' returns='Nothing' example='create-working-set \"MyWorkingSet\"'"
  * @generated
  */
 public interface CreateWorkingSet extends Command {

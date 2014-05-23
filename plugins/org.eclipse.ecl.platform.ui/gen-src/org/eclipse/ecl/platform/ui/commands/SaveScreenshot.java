@@ -21,7 +21,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.platform.ui.commands.CommandsPackage#getSaveScreenshot()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Saves the screenshot.' returns='Nothing' example='get-eclipse-window | get-object | save-screenshot [substitute-variables \"${workspace_loc}/images/actual.png\"]'"
  * @generated
  */
 public interface SaveScreenshot extends Command {

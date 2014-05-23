@@ -21,7 +21,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.platform.commands.CommandsPackage#getListPlugins()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Returns list of all plugins.' returns='Lists all available plugins. '"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Returns list of all plugins.' returns='Lists all available plugins. ' example='list-plugins | foreach [val item]  {\n\n\tif [$item | get name | matches \"Q7 ECL.*\"]{\n    \t\t$item | get name | log\n\t}\n}'"
  * @generated
  */
 public interface ListPlugins extends Command {

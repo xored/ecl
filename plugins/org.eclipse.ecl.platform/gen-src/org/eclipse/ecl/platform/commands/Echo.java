@@ -21,7 +21,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.platform.commands.CommandsPackage#getEcho()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Takes a string argument and writes it into an output pipe. ' returns='value of <code>str</code> argument'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Takes a string argument and writes it into an output pipe. ' returns='value of <code>str</code> argument' example='echo \"MyStr\" | log'"
  * @generated
  */
 public interface Echo extends Command {

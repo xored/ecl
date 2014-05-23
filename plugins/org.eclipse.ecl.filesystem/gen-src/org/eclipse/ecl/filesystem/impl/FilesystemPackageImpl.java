@@ -228,7 +228,8 @@ public class FilesystemPackageImpl extends EPackageImpl implements FilesystemPac
 		   source, 
 		   new String[] {
 			 "description", "Copies <code>source</code> file or directory into <code>destination</code> directory, optionally giving it a new <code>name</code>.",
-			 "returns", "Nothing."
+			 "returns", "Nothing.",
+			 "example", "copy-file -source \"/Users/Ulik_MacAir/aut-Q7-1.3.12-B2/Project/t.test\" \n-destination \"/Users/Ulik_MacAir/aut-Q7-1.3.12-B2/Project/Folder\" -name \"Clone.test\""
 		   });		
 		addAnnotation
 		  (getCopyFile_Source(), 
@@ -240,13 +241,13 @@ public class FilesystemPackageImpl extends EPackageImpl implements FilesystemPac
 		  (getCopyFile_Destination(), 
 		   source, 
 		   new String[] {
-			 "description", "Destination directory under which a <code>source</code> file or directory will be stored."
+			 "description", "Destination directory under which the <code>source</code> file or directory will be stored."
 		   });		
 		addAnnotation
 		  (getCopyFile_Name(), 
 		   source, 
 		   new String[] {
-			 "description", "New name for a file or directory."
+			 "description", "New name for the <code>source</code> file or directory."
 		   });
 	}
 

@@ -23,7 +23,7 @@ import org.eclipse.ecl.platform.ui.objects.WorkingSet;
  * </p>
  *
  * @see org.eclipse.ecl.platform.ui.commands.CommandsPackage#getDeleteWorkingSet()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Deletes working set' returns='Nothing'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Deletes working set' returns='Nothing' example='list-working-sets | foreach {delete-working-set}'"
  * @generated
  */
 public interface DeleteWorkingSet extends Command {

@@ -24,7 +24,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.operations.OperationsPackage#getSplit()
- * @model
+ * @model annotation="http://www.eclipse.org/ecl/docs description='' example='str \"1, 2, 3, 4, 5\" | split -sep \",\" -trimResults | foreach [val item]{\n\t$item | log\n}\n'"
  * @generated
  */
 public interface Split extends Command {

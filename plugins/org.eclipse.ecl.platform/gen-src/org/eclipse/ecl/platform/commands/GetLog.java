@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.ecl.platform.commands.CommandsPackage#getGetLog()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Returns log entries sorted by timestamp descending.' returns='Log entries'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Returns log entries sorted by timestamp descending.' returns='Log entries' example='get-log -levels error | as-table-data | write-csv-file \"workspace:/Project/file2.csv\"'"
  * @generated
  */
 public interface GetLog extends Command {

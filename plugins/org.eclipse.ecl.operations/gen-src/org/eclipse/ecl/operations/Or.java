@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.ecl.operations.OperationsPackage#getOr()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Computes the result of logical Or operation for passed arguments.' returns='<code>true</code> or <code>false</code>.'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Computes the result of logical Or operation for passed arguments.' returns='<code>true</code> or <code>false</code>.' example='with [get-view \"Q7 Explorer\" | get-tree] {\n  if [or[get-item Project | get-property caption -raw | eq Project][get-property itemCount -raw | eq 1]] {\n    log -message \"One of two verifications passed\"\n  }\n}'"
  * @generated
  */
 public interface Or extends Command {

@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  *
  * @see org.eclipse.ecl.operations.OperationsPackage#getGt()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Compares arguments on to one be greater then another' returns='<code>true</code> when left are greater then right, <code>false</code> otherwise.'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Compares arguments on to one be greater then another' returns='<code>true</code> when left are greater then right, <code>false</code> otherwise.' example='plus 6 4 | gt 8 | verify-true'"
  * @generated
  */
 public interface Gt extends BinaryOp {

@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.ecl.operations.OperationsPackage#getNotEq()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Compares arguments are different' returns='<code>false</code> when args are equal, <code>true</code> otherwise.'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Compares arguments are different' returns='<code>false</code> when args are equal, <code>true</code> otherwise.' example=' int 9 | not-eq 10 | verify-true'"
  * @generated
  */
 public interface NotEq extends Command {

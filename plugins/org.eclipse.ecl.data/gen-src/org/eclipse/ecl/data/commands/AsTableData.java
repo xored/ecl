@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see org.eclipse.ecl.data.commands.CommandsPackage#getAsTableData()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Converts its input to table data format, exactly the same as <code>get-table-data</code> returns.' returns='Table data.'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Converts its input to table data format, exactly the same as <code>get-table-data</code> returns.' returns='Table data.' example='get-log -levels error | as-table-data | write-csv-file \"workspace:/Project/file2.csv\"'"
  * @generated
  */
 public interface AsTableData extends Command {

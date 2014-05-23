@@ -435,7 +435,8 @@ public class InteropPackageImpl extends EPackageImpl implements InteropPackage {
 		   source, 
 		   new String[] {
 			 "description", "Invokes method on Java object.",
-			 "returns", "Value returned by method."
+			 "returns", "Value returned by method.",
+			 "example", "get-eclipse-window | get-object | invoke setSize 700 700"
 		   });			
 		addAnnotation
 		  (getInvoke_Object(), 
@@ -460,7 +461,8 @@ public class InteropPackageImpl extends EPackageImpl implements InteropPackage {
 		   source, 
 		   new String[] {
 			 "description", "Executes shell command.",
-			 "returns", "ExecProcessResult filled with execution results: exit code, captured stdout and stderr."
+			 "returns", "ExecProcessResult filled with execution results: exit code, captured stdout and stderr.",
+			 "example", "exec-process \"\\\"C:\\\\Program Files\\\\Sikuli X\\\\Sikuli-IDE.exe\\\"\"\"-r\" [substitute-variables \"\\\"${resource_loc:sikuli/MistypeClassName.sikuli}\\\"\"]\"-s\"-ignoreExitCode"
 		   });		
 		addAnnotation
 		  (getExecProcess_Command(), 
@@ -503,7 +505,8 @@ public class InteropPackageImpl extends EPackageImpl implements InteropPackage {
 		   source, 
 		   new String[] {
 			 "description", "Gets the Java system property indicated by the specified key.",
-			 "returns", "The string value of the system property."
+			 "returns", "The string value of the system property.",
+			 "example", "get-java-property \"java.home\" | log"
 		   });		
 		addAnnotation
 		  (getGetJavaProperty_Key(), 

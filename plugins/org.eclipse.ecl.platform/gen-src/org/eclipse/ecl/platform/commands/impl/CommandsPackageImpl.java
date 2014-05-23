@@ -774,7 +774,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Returns list of all plugins.",
-			 "returns", "Lists all available plugins. "
+			 "returns", "Lists all available plugins. ",
+			 "example", "list-plugins | foreach [val item]  {\n\n\tif [$item | get name | matches \"Q7 ECL.*\"]{\n    \t\t$item | get name | log\n\t}\n}"
 		   });		
 		addAnnotation
 		  (getListPlugins_IncludeDependencies(), 
@@ -787,14 +788,16 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Returns list of all features.",
-			 "returns", "Lists all available features. "
+			 "returns", "Lists all available features. ",
+			 "example", "list-features | foreach [val item]  {\n\tif [$item | get id | matches \"com.xored.q7.*\"]{\n    \t\t$item | get name | log\n\t}\n}"
 		   });		
 		addAnnotation
 		  (listRepositoriesEClass, 
 		   source, 
 		   new String[] {
 			 "description", "Returns list of p2 repositories.",
-			 "returns", "List of p2 repositories"
+			 "returns", "List of p2 repositories",
+			 "example", "list-repositories | foreach [val item] {\n\tif [$item | get name | equals \"download cache\"]{\n\t\t$item | get isArtifact | equals true | verify-true\n\t}\n}\n"
 		   });		
 		addAnnotation
 		  (addRepositoryEClass, 
@@ -830,14 +833,16 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Returns list of all install units.",
-			 "returns", "Lists all install units."
+			 "returns", "Lists all install units.",
+			 "example", "list-install-units | write-lines -uri \"workspace:/Project/Folder/file.txt\"\n"
 		   });		
 		addAnnotation
 		  (getLogEClass, 
 		   source, 
 		   new String[] {
 			 "description", "Returns log entries sorted by timestamp descending.",
-			 "returns", "Log entries"
+			 "returns", "Log entries",
+			 "example", "get-log -levels error | as-table-data | write-csv-file \"workspace:/Project/file2.csv\""
 		   });		
 		addAnnotation
 		  (getGetLog_Levels(), 
@@ -856,7 +861,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Writes an entry into Eclipse log",
-			 "returns", "Nothing"
+			 "returns", "Nothing",
+			 "example", "log -message \"Error\" -severity error -plugin \"com.xored.q7\"\necho \"Warning\" | log -severity warning"
 		   });			
 		addAnnotation
 		  (getLog_Message(), 
@@ -881,7 +887,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Takes a string argument and writes it into an output pipe. ",
-			 "returns", "value of <code>str</code> argument"
+			 "returns", "value of <code>str</code> argument",
+			 "example", "echo \"MyStr\" | log"
 		   });			
 		addAnnotation
 		  (clearLogEClass, 
@@ -895,7 +902,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Returns list of launch configurations.",
-			 "returns", "List of launch configurations."
+			 "returns", "List of launch configurations.",
+			 "example", "list-launch-configurations | write-lines -uri \"workspace:/Project/Folder/file.txt\""
 		   });		
 		addAnnotation
 		  (launchEClass, 
@@ -908,8 +916,9 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (substituteVariablesEClass, 
 		   source, 
 		   new String[] {
-			 "descriprion", "Recursively resolves and replaces all variable references in the given expression with their corresponding values. Allows the client to control whether references to undefined variables are reported as an error (i.e. an exception is thrown). See <a href=\'http://help.eclipse.org/indigo/topic/org.eclipse.platform.doc.isv/reference/api/org/eclipse/core/variables/IStringVariableManager.html\'>IStringVariableManager</a>for more information.",
-			 "returns", "expression with variable references replaced with variable values"
+			 "description", "Recursively resolves and replaces all variable references in the given expression with their corresponding values. Allows the client to control whether references to undefined variables are reported as an error (i.e. an exception is thrown). See <a href=\'http://www.xored.com/2013/09/03/how-to-pass-a-value-to-a-test-during-its-execution/\'>How to pass a value to a test</a> for more information.",
+			 "returns", "expression with variable references replaced with variable values",
+			 "example", "//writes prop val to AUT workspace log\nlog [subsitute-variables \"${system_property:propertyName}\"] "
 		   });		
 		addAnnotation
 		  (getSubstituteVariables_Expression(), 
@@ -928,7 +937,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "descriprion", "Returns the path to workspace root.",
-			 "returns", "path to workspace root"
+			 "returns", "path to workspace root",
+			 "example", "get-workspace-location | equals \"/Users/My_MacAir/aut-Q7-1.3.12-B2\" | verify-true"
 		   });		
 		addAnnotation
 		  (findInWorkspaceEClass, 

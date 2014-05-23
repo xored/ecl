@@ -23,7 +23,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.platform.commands.CommandsPackage#getLog()
- * @model annotation="http://www.eclipse.org/ecl/docs description='Writes an entry into Eclipse log' returns='Nothing'"
+ * @model annotation="http://www.eclipse.org/ecl/docs description='Writes an entry into Eclipse log' returns='Nothing' example='log -message \"Error\" -severity error -plugin \"com.xored.q7\"\necho \"Warning\" | log -severity warning'"
  * @generated
  */
 public interface Log extends Command {

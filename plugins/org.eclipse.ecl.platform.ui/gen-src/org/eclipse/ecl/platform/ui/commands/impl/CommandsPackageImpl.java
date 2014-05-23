@@ -432,14 +432,16 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Returns a list of all working sets available",
-			 "returns", "Working set objects"
+			 "returns", "Working set objects",
+			 "example", "list-working-sets | foreach {delete-working-set}"
 		   });		
 		addAnnotation
 		  (createWorkingSetEClass, 
 		   source, 
 		   new String[] {
 			 "description", "Creates working set with a given name.",
-			 "returns", "Nothing"
+			 "returns", "Nothing",
+			 "example", "create-working-set \"MyWorkingSet\""
 		   });			
 		addAnnotation
 		  (getCreateWorkingSet_Name(), 
@@ -458,7 +460,8 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   source, 
 		   new String[] {
 			 "description", "Deletes working set",
-			 "returns", "Nothing"
+			 "returns", "Nothing",
+			 "example", "list-working-sets | foreach {delete-working-set}"
 		   });			
 		addAnnotation
 		  (getDeleteWorkingSet_Input(), 
@@ -485,6 +488,14 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		   new String[] {
 			 "description", "Clears error log. If Error log is open, then it is closed before log clearing and then open again.",
 			 "returns", "Nothing"
+		   });		
+		addAnnotation
+		  (saveScreenshotEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Saves the screenshot.",
+			 "returns", "Nothing",
+			 "example", "get-eclipse-window | get-object | save-screenshot [substitute-variables \"${workspace_loc}/images/actual.png\"]"
 		   });
 	}
 
@@ -505,7 +516,7 @@ public class CommandsPackageImpl extends EPackageImpl implements CommandsPackage
 		  (getDeleteWorkingSet_Input(), 
 		   source, 
 		   new String[] {
-		   });				
+		   });					
 	}
 
 } //CommandsPackageImpl
