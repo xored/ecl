@@ -1,8 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
- * $Id$
  */
 package org.eclipse.ecl.filesystem.util;
 
@@ -78,6 +74,18 @@ public class FilesystemAdapterFactory extends AdapterFactoryImpl {
 				return createCopyFileAdapter();
 			}
 			@Override
+			public Adapter caseUriFromPath(UriFromPath object) {
+				return createUriFromPathAdapter();
+			}
+			@Override
+			public Adapter caseGetFile(GetFile object) {
+				return createGetFileAdapter();
+			}
+			@Override
+			public Adapter caseFile(File object) {
+				return createFileAdapter();
+			}
+			@Override
 			public Adapter caseCommand(Command object) {
 				return createCommandAdapter();
 			}
@@ -112,6 +120,48 @@ public class FilesystemAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCopyFileAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.filesystem.UriFromPath <em>Uri From Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.filesystem.UriFromPath
+	 * @generated
+	 */
+	public Adapter createUriFromPathAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.filesystem.GetFile <em>Get File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.filesystem.GetFile
+	 * @generated
+	 */
+	public Adapter createGetFileAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.ecl.filesystem.File <em>File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.ecl.filesystem.File
+	 * @generated
+	 */
+	public Adapter createFileAdapter() {
 		return null;
 	}
 
