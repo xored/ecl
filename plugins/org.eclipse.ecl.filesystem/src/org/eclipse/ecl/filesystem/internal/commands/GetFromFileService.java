@@ -8,6 +8,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.URIUtil;
@@ -39,7 +40,7 @@ public class GetFromFileService extends SingleCommandService<Get> implements
 		try {
 			// TODO: implement a method that doesn't use exceptions to indicate
 			// invalid strings
-			return Key.valueOf(Key.class, keyString.toUpperCase());
+			return Key.valueOf(Key.class, keyString.toUpperCase(Locale.US));
 		} catch (IllegalArgumentException e) {
 			return null;
 		}
