@@ -27,6 +27,14 @@
             name="GetFile"
             namespace="http://www.eclipse.org/ecl/filesystem.ecore">
       </scriptlet>
+   </extension>
+   <extension
+         point="org.eclipse.ecl.dispatch.scriptletExtension">
+      <scriptletExtension
+            class="org.eclipse.ecl.filesystem.internal.commands.GetFromFileService"
+            name="Get"
+            namespace="http://www.eclipse.org/ecl/core.ecore">
+      </scriptletExtension>
    </extension>   
 
 </plugin>

@@ -1,5 +1,7 @@
 package org.eclipse.ecl.filesystem.internal.commands;
 
+import static org.eclipse.ecl.filesystem.EclFilesystemPlugin.createError;
+
 import java.io.File;
 import java.net.MalformedURLException;
 
@@ -21,7 +23,7 @@ public class UriFromPathService extends SingleCommandService<UriFromPath> {
 			throws InterruptedException, CoreException {
 		String path = command.getPath();
 		if (path == null)
-			throw new CoreException(new Status(IStatus.ERROR, EclFilesystemPlugin.PLUGIN_ID, "No path argument for uri-from-path."));
+			throw new CoreException(createError("No path argument for uri-from-path."));
 		try {
 			return new File(path).toURI().toURL().toExternalForm();
 		} catch (MalformedURLException e) {

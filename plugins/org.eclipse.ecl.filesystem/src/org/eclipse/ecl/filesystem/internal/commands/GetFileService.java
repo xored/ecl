@@ -1,10 +1,12 @@
 package org.eclipse.ecl.filesystem.internal.commands;
 
 
+import static org.eclipse.ecl.filesystem.EclFilesystemPlugin.createError;
+
+import java.net.URISyntaxException;
+
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.ecl.filesystem.EclFilesystemPlugin;
+import org.eclipse.core.runtime.URIUtil;
 import org.eclipse.ecl.filesystem.File;
 import org.eclipse.ecl.filesystem.FilesystemFactory;
 import org.eclipse.ecl.filesystem.GetFile;
@@ -21,8 +23,13 @@ public class GetFileService extends SingleCommandService<GetFile> {
 	protected Object serviceTyped(GetFile command)
 			throws InterruptedException, CoreException {
 		if ( command.getUri() == null)
-			throw new CoreException(new Status(IStatus.ERROR, EclFilesystemPlugin.PLUGIN_ID, "No uri argument for get-file command."));
+			throw new CoreException(createError("No uri argument for get-file command."));
 		File rv = FilesystemFactory.eINSTANCE.createFile();
+		try {
+			URIUtil.fromString(command.getUri());
+		} catch (URISyntaxException e) {
+			throw new CoreException(createError("Failed to parse file URI: "+ command.getUri()));
+		}
 		rv.setUri(command.getUri());
 		return rv;
 	}
