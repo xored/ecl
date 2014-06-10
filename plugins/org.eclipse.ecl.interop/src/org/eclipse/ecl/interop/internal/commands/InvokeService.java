@@ -14,9 +14,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.interop.Invoke;
+import org.eclipse.ecl.interop.InvokeUi;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IPipe;
 import org.eclipse.ecl.runtime.IProcess;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Widget;
 
 public class InvokeService implements ICommandService {
@@ -57,8 +59,8 @@ public class InvokeService implements ICommandService {
 				result = getFieldValue(class_, object, name);
 			} else {
 
-				if (object instanceof Widget) {
-					Widget widget = (Widget) object;
+				if (object instanceof Widget || cmd instanceof InvokeUi) {
+					Display display = object instanceof Widget ? ((Widget) object).getDisplay() : Display.getDefault();
 
 					// no reason to go into generics here, everything is just Object
 					RunnableFuture future = new FutureTask(new Callable() {
@@ -67,14 +69,14 @@ public class InvokeService implements ICommandService {
 						}
 					});
 
-					widget.getDisplay().syncExec(future);
+					display.syncExec(future);
 					result = future.get();
 				} else
 					result = method.invoke(object, args);
 			}
 
 		} catch (Exception e) {
-			return error("%s: %s", e.getClass().getName(), e.getMessage());
+			return error(e, "%s: %s", e.getClass().getName(), e.getMessage());
 		}
 
 		if (result != null)
@@ -146,7 +148,7 @@ public class InvokeService implements ICommandService {
 	}
 
 	@SuppressWarnings("rawtypes")
-	private static Method matchMethod(Class class_, String name, Object[] args) {
+	static Method matchMethod(Class class_, String name, Object[] args) {
 		Method result = matchMethod(class_, name, args, false, false);
 		if (result == null)
 			result = matchMethod(class_, name, args, true, false);
@@ -169,7 +171,7 @@ public class InvokeService implements ICommandService {
 	 * -method-tricky.html
 	 */
 	@SuppressWarnings({ "rawtypes" })
-	private static Method matchMethod(Class class_, String name, Object[] args,
+	static Method matchMethod(Class class_, String name, Object[] args,
 			boolean doWiden, boolean doNarrow) {
 		final Method[] methods = class_.getMethods();
 
