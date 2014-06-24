@@ -6,12 +6,12 @@ import static org.eclipse.ecl.runtime.BoxedValues.unbox;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+import org.eclipse.core.filesystem.EFS;
+import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.URIUtil;
 import org.eclipse.ecl.core.Command;
 import org.eclipse.ecl.core.Get;
 import org.eclipse.ecl.dispatch.IScriptletExtension;
@@ -65,7 +65,8 @@ public class GetFromFileService extends SingleCommandService<Get> implements
 					+ command.getKey()));
 		}
 		String uriString = ((File) command.getInput()).getUri();
-		URI input = URI.create(uriString);
+		URI uri = URI.create(uriString);
+		IFileStore input = EFS.getStore(uri);
 		switch (key) {
 		case CHILDREN:
 			return handleChildren(input);
@@ -79,17 +80,15 @@ public class GetFromFileService extends SingleCommandService<Get> implements
 		throw new CoreException(createError("Wrong key: " + key));
 	}
 
-	private boolean handleIsDirectory(URI input) {
-		return URIUtil.toFile(input).isDirectory();
+	private boolean handleIsDirectory(IFileStore input) throws CoreException {
+		return input.fetchInfo().isDirectory();
 	}
 
-	private List<File> handleChildren(URI input) throws CoreException {
+	private List<File> handleChildren(IFileStore input) throws CoreException {
 		try {
-			java.io.File[] files = URIUtil.toFile(input).listFiles();
-			if (files == null)
-				return Collections.emptyList();
+			IFileStore[] files = input.childStores(EFS.NONE, null);
 			ArrayList<File> rv = new ArrayList<File>();
-			for (java.io.File child : files) {
+			for (IFileStore child : files) {
 				File item = FilesystemFactory.eINSTANCE.createFile();
 				item.setUri(child.toURI().toURL().toExternalForm());
 				rv.add(item);
@@ -100,12 +99,12 @@ public class GetFromFileService extends SingleCommandService<Get> implements
 		}
 	}
 
-	private Object handleName(URI uri) {
-		return URIUtil.lastSegment(uri);
+	private String handleName(IFileStore input) {
+		return input.fetchInfo().getName();
 	}
 
-	private boolean handleExists(URI input) {
-		return URIUtil.toFile(input).exists();
+	private boolean handleExists(IFileStore input) throws CoreException {
+		return input.fetchInfo().exists();
 	}
 
 }

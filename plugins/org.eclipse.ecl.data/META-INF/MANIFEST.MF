@@ -8,11 +8,14 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.ecl.data.commands,
+ org.eclipse.ecl.data.commands.impl,
+ org.eclipse.ecl.data.commands.util,
  org.eclipse.ecl.data.objects,
  org.eclipse.ecl.data.objects.impl,
  org.eclipse.ecl.data.objects.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.ecl.core;bundle-version="1.1.0",
+ org.eclipse.ecl.data;visibility:=reexport,
  org.eclipse.core.resources;resolution:=optional
 Bundle-ActivationPolicy: lazy

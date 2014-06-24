@@ -32,7 +32,7 @@ public class CommandsFactoryImpl extends EFactoryImpl implements CommandsFactory
 	 */
 	public static CommandsFactory init() {
 		try {
-			CommandsFactory theCommandsFactory = (CommandsFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/debug/runtime/commands.ecore"); 
+			CommandsFactory theCommandsFactory = (CommandsFactory)EPackage.Registry.INSTANCE.getEFactory(CommandsPackage.eNS_URI);
 			if (theCommandsFactory != null) {
 				return theCommandsFactory;
 			}

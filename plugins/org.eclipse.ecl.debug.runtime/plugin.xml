@@ -51,4 +51,12 @@
          namespace="http://www.eclipse.org/debug/runtime/commands.ecore"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated model -->
+      <package
+            uri="http://www.eclipse.org/debug/runtime/model.ecore"
+            class="org.eclipse.ecl.debug.model.ModelPackage"
+            genModel="model/model.genmodel"/>
+   </extension>
+
 </plugin>
