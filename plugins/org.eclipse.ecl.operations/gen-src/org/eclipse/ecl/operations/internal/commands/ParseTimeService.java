@@ -4,6 +4,7 @@ import static org.eclipse.ecl.operations.internal.OperationsPlugin.createErr;
 
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -28,8 +29,11 @@ public class ParseTimeService implements ICommandService {
 					"Expected string value from input pipe, but got '%s'",
 					value);
 		}
-		context.getOutput().write(
-				new SimpleDateFormat(format).parse((String) value, new ParsePosition(0)).getTime());
+		
+		Date result = new SimpleDateFormat(format).parse((String) value, new ParsePosition(0));
+		if (result == null)
+			return createErr("Failed to parse date: %s of format: %s", value, format);
+		context.getOutput().write(result.getTime());
 		return Status.OK_STATUS;
 	}
 }
