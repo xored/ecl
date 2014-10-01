@@ -5,4 +5,7 @@ Bundle-SymbolicName: org.eclipse.ecl.data.tests
 Bundle-Version: 1.0.0.qualifier
 Fragment-Host: org.eclipse.ecl.data
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: org.junit;bundle-version="4.8.2"
+Require-Bundle: org.junit;bundle-version="4.8.2",
+ org.eclipse.ecl.parser.test,
+ com.google.guava,
+ org.eclipse.ecl.operations;bundle-version="1.1.0"

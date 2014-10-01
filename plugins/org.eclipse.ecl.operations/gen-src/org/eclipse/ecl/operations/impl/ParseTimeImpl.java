@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.ecl.operations.impl.ParseTimeImpl#getInput <em>Input</em>}</li>
  *   <li>{@link org.eclipse.ecl.operations.impl.ParseTimeImpl#getFormat <em>Format</em>}</li>
  * </ul>
  * </p>
@@ -27,6 +28,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class ParseTimeImpl extends CommandImpl implements ParseTime {
+	/**
+	 * The default value of the '{@link #getInput() <em>Input</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInput()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INPUT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInput() <em>Input</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInput()
+	 * @generated
+	 * @ordered
+	 */
+	protected String input = INPUT_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getFormat() <em>Format</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -71,6 +92,27 @@ public class ParseTimeImpl extends CommandImpl implements ParseTime {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getInput() {
+		return input;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInput(String newInput) {
+		String oldInput = input;
+		input = newInput;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OperationsPackage.PARSE_TIME__INPUT, oldInput, input));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getFormat() {
 		return format;
 	}
@@ -95,6 +137,8 @@ public class ParseTimeImpl extends CommandImpl implements ParseTime {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case OperationsPackage.PARSE_TIME__INPUT:
+				return getInput();
 			case OperationsPackage.PARSE_TIME__FORMAT:
 				return getFormat();
 		}
@@ -109,6 +153,9 @@ public class ParseTimeImpl extends CommandImpl implements ParseTime {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case OperationsPackage.PARSE_TIME__INPUT:
+				setInput((String)newValue);
+				return;
 			case OperationsPackage.PARSE_TIME__FORMAT:
 				setFormat((String)newValue);
 				return;
@@ -124,6 +171,9 @@ public class ParseTimeImpl extends CommandImpl implements ParseTime {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case OperationsPackage.PARSE_TIME__INPUT:
+				setInput(INPUT_EDEFAULT);
+				return;
 			case OperationsPackage.PARSE_TIME__FORMAT:
 				setFormat(FORMAT_EDEFAULT);
 				return;
@@ -139,6 +189,8 @@ public class ParseTimeImpl extends CommandImpl implements ParseTime {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case OperationsPackage.PARSE_TIME__INPUT:
+				return INPUT_EDEFAULT == null ? input != null : !INPUT_EDEFAULT.equals(input);
 			case OperationsPackage.PARSE_TIME__FORMAT:
 				return FORMAT_EDEFAULT == null ? format != null : !FORMAT_EDEFAULT.equals(format);
 		}
@@ -155,7 +207,9 @@ public class ParseTimeImpl extends CommandImpl implements ParseTime {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (format: ");
+		result.append(" (input: ");
+		result.append(input);
+		result.append(", format: ");
 		result.append(format);
 		result.append(')');
 		return result.toString();

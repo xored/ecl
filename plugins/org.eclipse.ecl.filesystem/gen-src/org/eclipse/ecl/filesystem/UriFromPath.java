@@ -17,7 +17,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.filesystem.FilesystemPackage#getUriFromPath()
- * @model annotation="http://www.eclipse.org/ecl/docs returns='URI string. Platform independent (can be used on every OS).'"
+ * @model annotation="http://www.eclipse.org/ecl/docs returns='URI string. Platform independent (can be used on every OS).' example='get-file [uri-from-path \"C:\\windows\"] | get exists'"
  * @generated
  */
 public interface UriFromPath extends Command {

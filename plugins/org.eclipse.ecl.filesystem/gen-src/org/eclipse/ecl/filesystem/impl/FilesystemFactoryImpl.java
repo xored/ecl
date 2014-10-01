@@ -60,6 +60,7 @@ public class FilesystemFactoryImpl extends EFactoryImpl implements FilesystemFac
 			case FilesystemPackage.URI_FROM_PATH: return createUriFromPath();
 			case FilesystemPackage.GET_FILE: return createGetFile();
 			case FilesystemPackage.FILE: return createFile();
+			case FilesystemPackage.DELETE_FILE: return createDeleteFile();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -103,6 +104,16 @@ public class FilesystemFactoryImpl extends EFactoryImpl implements FilesystemFac
 	public File createFile() {
 		FileImpl file = new FileImpl();
 		return file;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DeleteFile createDeleteFile() {
+		DeleteFileImpl deleteFile = new DeleteFileImpl();
+		return deleteFile;
 	}
 
 	/**

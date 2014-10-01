@@ -68,7 +68,7 @@ public class OperationsFactoryImpl extends EFactoryImpl implements
 	 */
 	public static OperationsFactory init() {
 		try {
-			OperationsFactory theOperationsFactory = (OperationsFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/ecl/operations.ecore"); 
+			OperationsFactory theOperationsFactory = (OperationsFactory)EPackage.Registry.INSTANCE.getEFactory(OperationsPackage.eNS_URI);
 			if (theOperationsFactory != null) {
 				return theOperationsFactory;
 			}

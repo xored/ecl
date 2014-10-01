@@ -5,7 +5,7 @@
     modelPluginID="org.eclipse.ecl.filesystem" modelName="Filesystem" editPluginClass="org.eclipse.ecl.filesystem.provider.FilesystemEditPlugin"
     editorPluginClass="org.eclipse.ecl.filesystem.presentation.FilesystemEditorPlugin"
     testSuiteClass="org.eclipse.ecl.filesystem.tests.FilesystemAllTests" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="6.0" copyrightFields="false" usedGenPackages="../../org.eclipse.ecl.core/model/ecl.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+    complianceLevel="6.0" copyrightFields="false" runtimeVersion="2.5" usedGenPackages="../../org.eclipse.ecl.core/model/ecl.genmodel#//core platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>filesystem.ecore</foreignModel>
   <genPackages prefix="Filesystem" basePackage="org.eclipse.ecl" disposableProviderFactory="true"
       ecorePackage="filesystem.ecore#/">

@@ -1,8 +1,7 @@
 package org.eclipse.ecl.data.internal.commands;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +13,9 @@ import org.eclipse.ecl.data.commands.WriteCsvFile;
 import org.eclipse.ecl.data.internal.EclDataPlugin;
 import org.eclipse.ecl.data.objects.Row;
 import org.eclipse.ecl.data.objects.Table;
+import org.eclipse.ecl.filesystem.EclFile;
+import org.eclipse.ecl.filesystem.FileResolver;
+import org.eclipse.ecl.filesystem.Util;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
 
@@ -28,8 +30,8 @@ public class WriteCsvFileService implements ICommandService {
 			return Status.CANCEL_STATUS;
 		}
 		WriteCsvFile wcf = (WriteCsvFile) command;
-		File file = FileResolver.resolve(wcf.getUri());
-		file.getParentFile().mkdirs();
+		EclFile file = FileResolver.resolve(wcf.getUri());
+//		file.getParentFile().mkdirs();
 		Table table = wcf.getTable();
 
 		List<String> columns = new ArrayList<String>();
@@ -41,16 +43,16 @@ public class WriteCsvFileService implements ICommandService {
 		columns.addAll(table.getColumns());
 
 		try {
-			CSVWriter writer = new CSVWriter(new FileWriter(file));
+			Writer fileWriter = Util.getWriter(file, false);
+			CSVWriter writer = new CSVWriter(fileWriter);
 			writer.writeNext(columns.toArray(new String[columns.size()]), false);
 			for (Row row : table.getRows()) {
 				writeRow(writer, row, 0, haveChildren);
 			}
 			writer.close();
-			FileResolver.refresh(file);
 		} catch (IOException e) {
 			return EclDataPlugin.createErr(e, "Error writing file %s",
-					file.getAbsolutePath());
+					file.toURI());
 		}
 
 		context.getOutput().write(table);

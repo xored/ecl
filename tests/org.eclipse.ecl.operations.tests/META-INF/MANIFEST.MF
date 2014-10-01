@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tests
+Bundle-SymbolicName: org.eclipse.ecl.operations.test
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.junit,
+ org.eclipse.ecl.core,
+ org.eclipse.equinox.common,
+ org.eclipse.ecl.operations,
+ org.eclipse.ecl.parser,
+ org.eclipse.ecl.parser.test
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

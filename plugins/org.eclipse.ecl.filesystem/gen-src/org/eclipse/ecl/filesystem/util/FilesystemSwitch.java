@@ -2,14 +2,17 @@
  */
 package org.eclipse.ecl.filesystem.util;
 
+import java.util.List;
+
 import org.eclipse.ecl.core.Command;
-
-import org.eclipse.ecl.filesystem.*;
-
+import org.eclipse.ecl.filesystem.CopyFile;
+import org.eclipse.ecl.filesystem.DeleteFile;
+import org.eclipse.ecl.filesystem.File;
+import org.eclipse.ecl.filesystem.FilesystemPackage;
+import org.eclipse.ecl.filesystem.GetFile;
+import org.eclipse.ecl.filesystem.UriFromPath;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-
-import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +27,7 @@ import org.eclipse.emf.ecore.util.Switch;
  * @see org.eclipse.ecl.filesystem.FilesystemPackage
  * @generated
  */
-public class FilesystemSwitch<T> extends Switch<T> {
+public class FilesystemSwitch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -46,16 +49,14 @@ public class FilesystemSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Checks whether this is a switch for the given package.
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
-	 * @return whether this is a switch for the given package.
+	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	@Override
-	protected boolean isSwitchFor(EPackage ePackage) {
-		return ePackage == modelPackage;
+	public T doSwitch(EObject theEObject) {
+		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
 	/**
@@ -65,7 +66,26 @@ public class FilesystemSwitch<T> extends Switch<T> {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	@Override
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
+		if (theEClass.eContainer() == modelPackage) {
+			return doSwitch(theEClass.getClassifierID(), theEObject);
+		}
+		else {
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
+			return
+				eSuperTypes.isEmpty() ?
+					defaultCase(theEObject) :
+					doSwitch(eSuperTypes.get(0), theEObject);
+		}
+	}
+
+	/**
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @generated
+	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case FilesystemPackage.COPY_FILE: {
@@ -92,6 +112,13 @@ public class FilesystemSwitch<T> extends Switch<T> {
 			case FilesystemPackage.FILE: {
 				File file = (File)theEObject;
 				T result = caseFile(file);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case FilesystemPackage.DELETE_FILE: {
+				DeleteFile deleteFile = (DeleteFile)theEObject;
+				T result = caseDeleteFile(deleteFile);
+				if (result == null) result = caseCommand(deleteFile);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -160,6 +187,21 @@ public class FilesystemSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Delete File</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Delete File</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDeleteFile(DeleteFile object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Command</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -185,7 +227,6 @@ public class FilesystemSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	@Override
 	public T defaultCase(EObject object) {
 		return null;
 	}

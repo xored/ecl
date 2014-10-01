@@ -9,12 +9,14 @@ import org.eclipse.ecl.data.internal.EclDataPlugin;
 import org.eclipse.ecl.data.objects.ObjectsFactory;
 import org.eclipse.ecl.data.objects.Row;
 import org.eclipse.ecl.data.objects.Table;
+import org.eclipse.ecl.runtime.BoxedValues;
 import org.eclipse.ecl.runtime.ICommandService;
 import org.eclipse.ecl.runtime.IProcess;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 public class AsTableDataService implements ICommandService {
 
@@ -42,13 +44,13 @@ public class AsTableDataService implements ICommandService {
 
 	private static void addRow(Table table, EObject o) {
 		Row row = ObjectsFactory.eINSTANCE.createRow();
-		for (EAttribute attr : o.eClass().getEAllAttributes())
-			row.getValues().add(o.eGet(attr).toString());
+		for (EStructuralFeature attr : o.eClass().getEAllStructuralFeatures())
+			row.getValues().add(""+BoxedValues.unbox(o.eGet(attr)));
 		table.getRows().add(row);
 	}
 
 	private static void addColumns(Table table, EClass class_) {
-		for (EAttribute attr : class_.getEAllAttributes())
+		for (EStructuralFeature attr : class_.getEAllStructuralFeatures())
 			table.getColumns().add(attr.getName());
 	}
 

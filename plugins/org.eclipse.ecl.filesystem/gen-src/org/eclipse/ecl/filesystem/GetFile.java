@@ -17,7 +17,7 @@ import org.eclipse.ecl.core.Command;
  * </p>
  *
  * @see org.eclipse.ecl.filesystem.FilesystemPackage#getGetFile()
- * @model annotation="http://www.eclipse.org/ecl/docs example='get-file [uri-from-path \"C:\\windows\"] | get exists' returns='A File object.  Properties: uri, name, exists, children.'"
+ * @model annotation="http://www.eclipse.org/ecl/docs returns='A File object.  Properties: uri, name, exists, children.' description='Creates a file object by its URI.' example='get-file \"file:/C:/Windows/System32\"  | get exists'"
  * @generated
  */
 public interface GetFile extends Command {

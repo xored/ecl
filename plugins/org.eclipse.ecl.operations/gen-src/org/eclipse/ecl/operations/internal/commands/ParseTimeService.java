@@ -22,17 +22,15 @@ public class ParseTimeService implements ICommandService {
 		if (!(command instanceof ParseTime)) {
 			return Status.CANCEL_STATUS;
 		}
-		String format = ((ParseTime) command).getFormat();
-		Object value = BoxedValues.unbox(context.getInput().take(10000));
-		if (!(value instanceof String)) {
-			return createErr(
-					"Expected string value from input pipe, but got '%s'",
-					value);
-		}
-		
-		Date result = new SimpleDateFormat(format).parse((String) value, new ParsePosition(0));
+		ParseTime parseCommand = (ParseTime) command;
+		String format = parseCommand.getFormat();
+		String strValue = parseCommand.getInput();
+		if (strValue == null)
+			return createErr("Mandatory input is missing");
+	
+		Date result = new SimpleDateFormat(format).parse(strValue, new ParsePosition(0));
 		if (result == null)
-			return createErr("Failed to parse date: %s of format: %s", value, format);
+			return createErr("Failed to parse date: %s of format: %s", strValue, format);
 		context.getOutput().write(result.getTime());
 		return Status.OK_STATUS;
 	}

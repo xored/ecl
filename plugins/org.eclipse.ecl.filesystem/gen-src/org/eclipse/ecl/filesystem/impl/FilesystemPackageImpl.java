@@ -5,6 +5,7 @@ package org.eclipse.ecl.filesystem.impl;
 import org.eclipse.ecl.core.CorePackage;
 
 import org.eclipse.ecl.filesystem.CopyFile;
+import org.eclipse.ecl.filesystem.DeleteFile;
 import org.eclipse.ecl.filesystem.File;
 import org.eclipse.ecl.filesystem.FilesystemFactory;
 import org.eclipse.ecl.filesystem.FilesystemPackage;
@@ -52,6 +53,13 @@ public class FilesystemPackageImpl extends EPackageImpl implements FilesystemPac
 	 * @generated
 	 */
 	private EClass fileEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass deleteFileEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -212,6 +220,24 @@ public class FilesystemPackageImpl extends EPackageImpl implements FilesystemPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDeleteFile() {
+		return deleteFileEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDeleteFile_Uri() {
+		return (EAttribute)deleteFileEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public FilesystemFactory getFilesystemFactory() {
 		return (FilesystemFactory)getEFactoryInstance();
 	}
@@ -248,6 +274,9 @@ public class FilesystemPackageImpl extends EPackageImpl implements FilesystemPac
 
 		fileEClass = createEClass(FILE);
 		createEAttribute(fileEClass, FILE__URI);
+
+		deleteFileEClass = createEClass(DELETE_FILE);
+		createEAttribute(deleteFileEClass, DELETE_FILE__URI);
 	}
 
 	/**
@@ -285,6 +314,7 @@ public class FilesystemPackageImpl extends EPackageImpl implements FilesystemPac
 		copyFileEClass.getESuperTypes().add(theCorePackage.getCommand());
 		uriFromPathEClass.getESuperTypes().add(theCorePackage.getCommand());
 		getFileEClass.getESuperTypes().add(theCorePackage.getCommand());
+		deleteFileEClass.getESuperTypes().add(theCorePackage.getCommand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(copyFileEClass, CopyFile.class, "CopyFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -300,6 +330,9 @@ public class FilesystemPackageImpl extends EPackageImpl implements FilesystemPac
 
 		initEClass(fileEClass, File.class, "File", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFile_Uri(), theEcorePackage.getEString(), "uri", null, 1, 1, File.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(deleteFileEClass, DeleteFile.class, "DeleteFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDeleteFile_Uri(), theEcorePackage.getEString(), "uri", null, 1, 1, DeleteFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -349,7 +382,8 @@ public class FilesystemPackageImpl extends EPackageImpl implements FilesystemPac
 		  (uriFromPathEClass, 
 		   source, 
 		   new String[] {
-			 "returns", "URI string. Platform independent (can be used on every OS)."
+			 "returns", "URI string. Platform independent (can be used on every OS).",
+			 "example", "get-file [uri-from-path \"C:\\windows\"] | get exists"
 		   });			
 		addAnnotation
 		  (getUriFromPath_Path(), 
@@ -362,8 +396,9 @@ public class FilesystemPackageImpl extends EPackageImpl implements FilesystemPac
 		  (getFileEClass, 
 		   source, 
 		   new String[] {
-			 "example", "get-file [uri-from-path \"C:\\windows\"] | get exists",
-			 "returns", "A File object.  Properties: uri, name, exists, children."
+			 "returns", "A File object.  Properties: uri, name, exists, children.",
+			 "description", "Creates a file object by its URI.",
+			 "example", "get-file \"file:/C:/Windows/System32\"  | get exists"
 		   });			
 		addAnnotation
 		  (getGetFile_Uri(), 
@@ -371,6 +406,21 @@ public class FilesystemPackageImpl extends EPackageImpl implements FilesystemPac
 		   new String[] {
 			 "description", "URI of a file or directory. Can be created manually, or with uri-from-path.",
 			 "example", "file:/C:/windows/system32"
+		   });		
+		addAnnotation
+		  (deleteFileEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Deletes file or folder identified by URI.\r\nCurrently supported schemes are workspace:/ for files in workspace and file:/ for files on local file system.",
+			 "returns", "Nothing",
+			 "example", "delete-file \"file:/C:/temp/1.txt\"\r\ndelete-file [uri-from-path \"C:/temp/2.txt\"]\r\nuri-from-path \"C:/temp/3.txt\" | delete-file\r\nget-file \"file:/C:/temp/4.txt\" | delete-file\r\nstr \"workspace:/MyProject/text.txt\" | delete-file\r\n\r\n"
+		   });			
+		addAnnotation
+		  (getDeleteFile_Uri(), 
+		   source, 
+		   new String[] {
+			 "description", "URI of a file or directory. Can be created manually, or with uri-from-path.",
+			 "example", "file:/C:/temp"
 		   });
 	}
 
@@ -389,6 +439,11 @@ public class FilesystemPackageImpl extends EPackageImpl implements FilesystemPac
 		   });				
 		addAnnotation
 		  (getGetFile_Uri(), 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  (getDeleteFile_Uri(), 
 		   source, 
 		   new String[] {
 		   });	

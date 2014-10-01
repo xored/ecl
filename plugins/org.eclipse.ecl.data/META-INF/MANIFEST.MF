@@ -17,5 +17,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.ecl.core;bundle-version="1.1.0",
  org.eclipse.ecl.data;visibility:=reexport,
- org.eclipse.core.resources;resolution:=optional
+ org.eclipse.core.resources;resolution:=optional,
+ org.eclipse.ecl.filesystem
 Bundle-ActivationPolicy: lazy
