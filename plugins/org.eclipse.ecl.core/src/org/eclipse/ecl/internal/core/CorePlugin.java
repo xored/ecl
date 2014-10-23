@@ -16,11 +16,16 @@ package org.eclipse.ecl.internal.core;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.osgi.framework.BundleContext;
 
 public class CorePlugin extends Plugin {
 
 	public static final String PLUGIN_ID = "org.eclipse.ecl.core";
+
+	public static final String ECL_MAXIMUM_LINE_WIDTH = "ECL_MAXIMUM_LINE_WIDTH";
+	public static final int DEFAULT_ECL_MAXIMUM_LINE_WIDTH = 120;
 
 	private static CorePlugin plugin;
 
@@ -103,6 +108,26 @@ public class CorePlugin extends Plugin {
 
 	public static void log(Throwable throwable) {
 		log(err(throwable.getMessage(), throwable));
+	}
+
+	@SuppressWarnings("deprecation")
+	public static IEclipsePreferences getPreferences() {
+		return new InstanceScope().getNode(PLUGIN_ID);
+	}
+
+	public static int getECLMaximumLineWidth() {
+		final IEclipsePreferences preferences = getPreferences();
+		return preferences.getInt(ECL_MAXIMUM_LINE_WIDTH, DEFAULT_ECL_MAXIMUM_LINE_WIDTH);
+	}
+
+	public static void setECLMaximumLineWidth(final int width) {
+		final IEclipsePreferences preferences = getPreferences();
+		preferences.putInt(ECL_MAXIMUM_LINE_WIDTH, width);
+		try {
+			preferences.flush();
+		} catch (final Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
