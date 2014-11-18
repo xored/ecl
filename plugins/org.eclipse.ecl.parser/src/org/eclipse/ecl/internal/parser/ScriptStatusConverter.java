@@ -17,6 +17,7 @@ import org.eclipse.ecl.gen.ast.AstFactory;
 import org.eclipse.ecl.gen.ast.AstPackage;
 import org.eclipse.ecl.gen.ast.ScriptProcessStatus;
 import org.eclipse.ecl.internal.core.EMFConverterManager;
+import org.eclipse.ecl.internal.core.ProcessStatusConverter;
 import org.eclipse.ecl.parser.ScriptErrorStatus;
 import org.eclipse.ecl.runtime.IEMFConverter;
 import org.eclipse.emf.ecore.EClass;

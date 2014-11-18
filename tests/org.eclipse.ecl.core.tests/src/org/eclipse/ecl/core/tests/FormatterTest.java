@@ -21,6 +21,7 @@ import org.eclipse.ecl.core.tests.model.SampleCommand;
 import org.eclipse.ecl.core.util.CommandToStringConverter;
 import org.eclipse.ecl.core.util.DefaultFormatter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.junit.Test;
 
 public class FormatterTest extends TestCase {
 
