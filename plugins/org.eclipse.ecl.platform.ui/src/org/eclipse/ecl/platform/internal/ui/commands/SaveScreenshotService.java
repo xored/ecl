@@ -109,10 +109,18 @@ public class SaveScreenshotService implements ICommandService {
 
 	private static boolean isValidInput(Object input) {
 		return input instanceof Control || input instanceof TreeItem
-				|| input instanceof TableItem;
+				|| input instanceof TableItem || input instanceof ToolItem;
 	}
 
 	private static Rectangle getScreenBounds(Object input) {
+		if (input instanceof Shell) {
+			return ((Shell) input).getBounds();
+		}
+		if (input instanceof Control) {
+			Rectangle bounds = getBounds(input);
+			return shift(new Rectangle(0, 0, bounds.width, bounds.height), ((Control) input).toDisplay(0, 0));
+		}
+
 		Object parent = getParent(input);
 		Point location = parent == null ? new Point(0, 0)
 				: topLeft(getScreenBounds(parent));
@@ -129,6 +137,9 @@ public class SaveScreenshotService implements ICommandService {
 		}
 		if (input instanceof TableItem) {
 			return ((TableItem) input).getBounds();
+		}
+		if (input instanceof ToolItem) {
+			return ((ToolItem) input).getBounds();
 		}
 		throw new IllegalArgumentException(input.getClass().toString());
 	}
@@ -150,6 +161,10 @@ public class SaveScreenshotService implements ICommandService {
 		if (input instanceof TableItem) {
 			return ((TableItem) input).getParent();
 		}
+
+		if (input instanceof ToolItem) {
+			return ((ToolItem) input).getParent();
+		}
 		throw new IllegalArgumentException(input.getClass().toString());
 	}
 
@@ -162,6 +177,9 @@ public class SaveScreenshotService implements ICommandService {
 		}
 		if (input instanceof TableItem) {
 			return ((TableItem) input).getParent().getShell();
+		}
+		if (input instanceof ToolItem) {
+			return ((ToolItem) input).getParent().getShell();
 		}
 		throw new IllegalArgumentException(input.getClass().toString());
 	}

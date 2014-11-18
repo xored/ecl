@@ -1,4 +1,14 @@
-package org.eclipse.ecl.filesystem;
+/*******************************************************************************
+ * Copyright (c) 2009, 2014 Xored Software Inc and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Xored Software Inc - initial API and implementation and/or initial documentation
+ *******************************************************************************/
+package org.eclipse.rcptt.ecl.filesystem;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Plugin;
@@ -10,7 +20,7 @@ public class EclFilesystemPlugin extends Plugin implements BundleActivator {
 	
 	private static EclFilesystemPlugin plugin = null;
 	
-	public static final String PLUGIN_ID = "org.eclipse.ecl.filesystem";
+	public static final String PLUGIN_ID = "org.eclipse.rcptt.ecl.filesystem";
 
 	private static BundleContext context;
 
@@ -61,6 +71,10 @@ public class EclFilesystemPlugin extends Plugin implements BundleActivator {
 	}
 
 	public static Status createError(Throwable throwable, String message, Object... args) {
+		if (message == null)
+			message = "";
+		if (args == null)
+			args = new Object[0];
 		return new Status(IStatus.ERROR, EclFilesystemPlugin.PLUGIN_ID, String.format(message, args), throwable);
 	}
 

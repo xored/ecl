@@ -49,6 +49,7 @@ public class ScriptStatusConverter implements
 			throws CoreException {
 		ScriptProcessStatus ps = AstFactory.eINSTANCE
 				.createScriptProcessStatus();
+		ProcessStatusConverter.toEObject(status, ps);
 		ps.setResourceID(status.getResource());
 		ps.setLine(status.getLine());
 		ps.setColumn(status.getColumn());
@@ -60,10 +61,6 @@ public class ScriptStatusConverter implements
 			ps.setCause(cause);
 		}
 
-		ps.setCode(status.getCode());
-		ps.setMessage(status.getMessage());
-		ps.setPluginId(status.getPlugin());
-		ps.setSeverity(status.getSeverity());
 		return ps;
 	}
 

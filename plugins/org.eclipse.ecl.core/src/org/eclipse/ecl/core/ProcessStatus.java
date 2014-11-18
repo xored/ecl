@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.ecl.core.ProcessStatus#getMessage <em>Message</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.ProcessStatus#getSeverity <em>Severity</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.ProcessStatus#getException <em>Exception</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.ProcessStatus#getChildren <em>Children</em>}</li>
  * </ul>
  * </p>
  *
@@ -162,5 +163,21 @@ public interface ProcessStatus extends EObject {
 	 * @generated
 	 */
 	void setException(EclException value);
+
+	/**
+	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.ecl.core.ProcessStatus}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Children</em>' containment reference list.
+	 * @see org.eclipse.ecl.core.CorePackage#getProcessStatus_Children()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ProcessStatus> getChildren();
 
 } // ProcessStatus

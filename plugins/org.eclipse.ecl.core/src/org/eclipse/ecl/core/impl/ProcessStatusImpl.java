@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link org.eclipse.ecl.core.impl.ProcessStatusImpl#getMessage <em>Message</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.ProcessStatusImpl#getSeverity <em>Severity</em>}</li>
  *   <li>{@link org.eclipse.ecl.core.impl.ProcessStatusImpl#getException <em>Exception</em>}</li>
+ *   <li>{@link org.eclipse.ecl.core.impl.ProcessStatusImpl#getChildren <em>Children</em>}</li>
  * </ul>
  * </p>
  *
@@ -130,6 +131,16 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 	 * @ordered
 	 */
 	protected EclException exception;
+
+	/**
+	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getChildren()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ProcessStatus> children;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -282,11 +293,25 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ProcessStatus> getChildren() {
+		if (children == null) {
+			children = new EObjectContainmentEList<ProcessStatus>(ProcessStatus.class, this, CorePackage.PROCESS_STATUS__CHILDREN);
+		}
+		return children;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CorePackage.PROCESS_STATUS__EXCEPTION:
 				return basicSetException(null, msgs);
+			case CorePackage.PROCESS_STATUS__CHILDREN:
+				return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -309,6 +334,8 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 				return getSeverity();
 			case CorePackage.PROCESS_STATUS__EXCEPTION:
 				return getException();
+			case CorePackage.PROCESS_STATUS__CHILDREN:
+				return getChildren();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -318,6 +345,7 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -335,6 +363,10 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 				return;
 			case CorePackage.PROCESS_STATUS__EXCEPTION:
 				setException((EclException)newValue);
+				return;
+			case CorePackage.PROCESS_STATUS__CHILDREN:
+				getChildren().clear();
+				getChildren().addAll((Collection<? extends ProcessStatus>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -363,6 +395,9 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 			case CorePackage.PROCESS_STATUS__EXCEPTION:
 				setException((EclException)null);
 				return;
+			case CorePackage.PROCESS_STATUS__CHILDREN:
+				getChildren().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -385,6 +420,8 @@ public class ProcessStatusImpl extends EObjectImpl implements ProcessStatus {
 				return severity != SEVERITY_EDEFAULT;
 			case CorePackage.PROCESS_STATUS__EXCEPTION:
 				return exception != null;
+			case CorePackage.PROCESS_STATUS__CHILDREN:
+				return children != null && !children.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
