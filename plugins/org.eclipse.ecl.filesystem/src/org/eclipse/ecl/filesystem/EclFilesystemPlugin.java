@@ -20,7 +20,7 @@ public class EclFilesystemPlugin extends Plugin implements BundleActivator {
 	
 	private static EclFilesystemPlugin plugin = null;
 	
-	public static final String PLUGIN_ID = "org.eclipse.rcptt.ecl.filesystem";
+	public static final String PLUGIN_ID = "org.eclipse.ecl.filesystem";
 
 	private static BundleContext context;
 
