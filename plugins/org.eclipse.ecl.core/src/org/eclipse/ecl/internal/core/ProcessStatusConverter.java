@@ -27,10 +27,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 public class ProcessStatusConverter implements
-		IEMFConverter<Status, ProcessStatus> {
+		IEMFConverter<IStatus, ProcessStatus> {
 
-	public Class<Status> getJavaClass() {
-		return Status.class;
+	public Class<IStatus> getJavaClass() {
+		return IStatus.class;
 	}
 
 	public EClass getEClass() {
@@ -114,9 +114,9 @@ public class ProcessStatusConverter implements
 		return stack;
 	}
 
-	public ProcessStatus toEObject(Status status) throws CoreException {
+	public ProcessStatus toEObject(IStatus status) throws CoreException {
 		ProcessStatus rv = CoreFactory.eINSTANCE.createProcessStatus();
-		toEObject((IStatus) status, rv);
+		toEObject(status, rv);
 		return rv;
 	}
 
